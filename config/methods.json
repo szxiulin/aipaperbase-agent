@@ -1,0 +1,156 @@
+{
+  "version": "methods-v2",
+  "description": "技术标签（怎么做）：扁平标签表，命中即贴、可并存，永不参与主题判定。与 config/topics.json v2 主题树配套。",
+  "tags": [
+    {
+      "tag": "diffusion",
+      "category": "生成方法",
+      "terms": ["diffusion", "score-based", "denoising diffusion", "ddpm", "latent diffusion", "stable diffusion"]
+    },
+    {
+      "tag": "gan",
+      "category": "生成方法",
+      "terms": ["generative adversarial", "gan", "gans", "adversarial training"]
+    },
+    {
+      "tag": "vae",
+      "category": "生成方法",
+      "terms": ["variational autoencoder", "variational auto-encoder", "vae"]
+    },
+    {
+      "tag": "autoregressive",
+      "category": "生成方法",
+      "terms": ["autoregressive", "auto-regressive", "causal lm"]
+    },
+    {
+      "tag": "flow",
+      "category": "生成方法",
+      "terms": ["flow matching", "normalizing flow", "rectified flow", "stochastic interpolant"]
+    },
+    {
+      "tag": "energy-based",
+      "category": "生成方法",
+      "terms": ["energy-based model", "energy based model", "contrastive energy"]
+    },
+    {
+      "tag": "transformer",
+      "category": "模型范式",
+      "terms": ["transformer", "self-attention", "attention mechanism", "vit", "swin"]
+    },
+    {
+      "tag": "cnn",
+      "category": "模型范式",
+      "terms": ["convolutional neural network", "cnn", "convolutional network", "convnet"]
+    },
+    {
+      "tag": "mamba",
+      "category": "模型范式",
+      "terms": ["mamba", "state space model", "state-space", "ssm"]
+    },
+    {
+      "tag": "hybrid",
+      "category": "模型范式",
+      "terms": ["hybrid architecture", "hybrid model", "convolution-transformer"]
+    },
+    {
+      "tag": "agentic",
+      "category": "Agent/LLM 用法",
+      "terms": ["agentic", "llm agent", "llm agents", "language agent", "autonomous agent", "tool calling", "tool use", "function calling"]
+    },
+    {
+      "tag": "llm-based",
+      "category": "Agent/LLM 用法",
+      "terms": ["large language model", "llm", "llms", "language model", "gpt-4", "gpt-4o", "chatgpt"]
+    },
+    {
+      "tag": "vlm-based",
+      "category": "Agent/LLM 用法",
+      "terms": ["vision-language model", "vision language model", "vlm", "multimodal large language", "multimodal llm", "mllm", "llava", "blip", "flamingo"]
+    },
+    {
+      "tag": "multi-agent",
+      "category": "Agent/LLM 用法",
+      "terms": ["multi-agent", "multi agent", "multiagent", "agent collaboration", "agent society", "agent debate"]
+    },
+    {
+      "tag": "rag-based",
+      "category": "Agent/LLM 用法",
+      "terms": ["retrieval-augmented", "retrieval augmented", "rag"]
+    },
+    {
+      "tag": "rl-based",
+      "category": "Agent/LLM 用法",
+      "terms": ["reinforcement learning", "rl", "rlhf", "preference optimization"]
+    },
+    {
+      "tag": "world-model",
+      "category": "Agent/LLM 用法",
+      "terms": ["world model", "world-model"]
+    },
+    {
+      "tag": "nerf",
+      "category": "3D 表示",
+      "terms": ["nerf", "neural radiance field", "radiance field"]
+    },
+    {
+      "tag": "3d-gaussian",
+      "category": "3D 表示",
+      "terms": ["3d gaussian", "gaussian splatting", "3dgs"]
+    },
+    {
+      "tag": "mesh",
+      "category": "3D 表示",
+      "terms": ["3d mesh", "mesh generation", "mesh reconstruction", "triangle mesh"]
+    },
+    {
+      "tag": "point-cloud",
+      "category": "3D 表示",
+      "terms": ["point cloud", "point-cloud", "lidar"]
+    },
+    {
+      "tag": "implicit-neural",
+      "category": "3D 表示",
+      "terms": ["implicit neural", "neural implicit", "signed distance function", "occupancy network"]
+    },
+    {
+      "tag": "efficient",
+      "category": "横切关注",
+      "terms": ["parameter-efficient", "lightweight", "efficient", "low-cost"]
+    },
+    {
+      "tag": "quantized",
+      "category": "横切关注",
+      "terms": ["quantization", "quantized", "low-bit", "integer-only"]
+    },
+    {
+      "tag": "distilled",
+      "category": "横切关注",
+      "terms": ["distillation", "distilled", "knowledge distillation"]
+    },
+    {
+      "tag": "robust",
+      "category": "横切关注",
+      "terms": ["adversarial robustness", "certified robustness", "robustness"]
+    },
+    {
+      "tag": "explainable",
+      "category": "横切关注",
+      "terms": ["explainability", "interpretability", "interpretable", "explanation"]
+    },
+    {
+      "tag": "privacy",
+      "category": "横切关注",
+      "terms": ["privacy", "differential privacy", "federated learning"]
+    },
+    {
+      "tag": "benchmark-intro",
+      "category": "横切关注",
+      "terms": ["introduce a benchmark", "new benchmark", "propose a benchmark", "benchmark suite", "a comprehensive benchmark"]
+    },
+    {
+      "tag": "dataset-intro",
+      "category": "横切关注",
+      "terms": ["introduce a dataset", "new dataset", "propose a dataset", "large-scale dataset", "dataset collection", "curate"]
+    }
+  ]
+}

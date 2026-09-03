@@ -1,0 +1,20 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.venv/
+.env
+
+# 用户本地生成的数据与个人内容
+data/database/*
+data/papers/*
+data/parsed/*
+data/indexes/*
+data/analyses/*
+data/user/*
+
+# 前后端构建、缓存与依赖
+node_modules/
+dist/
+build/
+.cache/
+coverage/

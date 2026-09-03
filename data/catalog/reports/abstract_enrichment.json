@@ -1,0 +1,237 @@
+{
+  "generated_at": "2026-08-13T09:37:42+00:00",
+  "hf_parquet": "/private/tmp/apexpaperrag-all-papers.parquet",
+  "hf_dataset_url": "https://huggingface.co/datasets/ai-conferences/all-papers",
+  "reviewarena_dataset_url": "https://huggingface.co/datasets/anonymousNeurIPS2026submission4281/reviewarena",
+  "records": 118338,
+  "abstracts": 113287,
+  "missing": 5051,
+  "missing_with_semantic_scholar_id": 3952,
+  "missing_without_supported_id": 1099,
+  "coverage_rate": 95.7,
+  "updates_by_pass": {
+    "acl_official": 11357,
+    "crossref": 2684,
+    "huggingface": 71028,
+    "reviewarena_tmlr": 3532,
+    "openalex": 21823,
+    "openalex_sources": 0,
+    "official_pages": 2863
+  },
+  "records_by_abstract_tier": {
+    "missing": 5051,
+    "official": 14220,
+    "official_plus_secondary": 2684,
+    "third_party_crosschecked": 96383
+  },
+  "records_by_abstract_source": {
+    "Hugging Face ai-conferences (openreview)": 40159,
+    "OpenAlex": 21823,
+    "Hugging Face ai-conferences (cvf)": 16862,
+    "ACL Anthology official XML": 11357,
+    "Hugging Face ai-conferences (crossref)": 11086,
+    "missing": 5051,
+    "ReviewArena OpenReview snapshot (2026-04)": 3532,
+    "Crossref publisher-registered metadata": 2684,
+    "Hugging Face ai-conferences (ecva)": 2387,
+    "NeurIPS Proceedings official paper page": 1314,
+    "JMLR official paper page": 1269,
+    "Hugging Face ai-conferences (arxiv)": 534,
+    "MLSys Proceedings official paper page": 279,
+    "CVF Open Access official paper page": 1
+  },
+  "venues": {
+    "3DV": {
+      "records": 296,
+      "abstracts": 295,
+      "coverage_rate": 99.7
+    },
+    "AAAI": {
+      "records": 11086,
+      "abstracts": 11086,
+      "coverage_rate": 100.0
+    },
+    "ACL": {
+      "records": 6009,
+      "abstracts": 6009,
+      "coverage_rate": 100.0
+    },
+    "ACM MM": {
+      "records": 3497,
+      "abstracts": 3014,
+      "coverage_rate": 86.2
+    },
+    "AIJ": {
+      "records": 481,
+      "abstracts": 194,
+      "coverage_rate": 40.3
+    },
+    "COLM": {
+      "records": 1573,
+      "abstracts": 1250,
+      "coverage_rate": 79.5
+    },
+    "CVPR": {
+      "records": 12008,
+      "abstracts": 12006,
+      "coverage_rate": 100.0
+    },
+    "ECCV": {
+      "records": 2387,
+      "abstracts": 2387,
+      "coverage_rate": 100.0
+    },
+    "EMNLP": {
+      "records": 4124,
+      "abstracts": 4115,
+      "coverage_rate": 99.8
+    },
+    "ICCV": {
+      "records": 4857,
+      "abstracts": 4857,
+      "coverage_rate": 100.0
+    },
+    "ICLR": {
+      "records": 12888,
+      "abstracts": 12888,
+      "coverage_rate": 100.0
+    },
+    "ICML": {
+      "records": 14109,
+      "abstracts": 14017,
+      "coverage_rate": 99.3
+    },
+    "IJCAI": {
+      "records": 2897,
+      "abstracts": 1949,
+      "coverage_rate": 67.3
+    },
+    "IJCV": {
+      "records": 1236,
+      "abstracts": 279,
+      "coverage_rate": 22.6
+    },
+    "JMLR": {
+      "records": 1269,
+      "abstracts": 1269,
+      "coverage_rate": 100.0
+    },
+    "KDD": {
+      "records": 2085,
+      "abstracts": 1920,
+      "coverage_rate": 92.1
+    },
+    "MLSys": {
+      "records": 279,
+      "abstracts": 279,
+      "coverage_rate": 100.0
+    },
+    "NAACL": {
+      "records": 1280,
+      "abstracts": 1279,
+      "coverage_rate": 99.9
+    },
+    "NeurIPS": {
+      "records": 13856,
+      "abstracts": 13852,
+      "coverage_rate": 100.0
+    },
+    "SIGGRAPH": {
+      "records": 1097,
+      "abstracts": 989,
+      "coverage_rate": 90.2
+    },
+    "SIGGRAPH Asia": {
+      "records": 790,
+      "abstracts": 702,
+      "coverage_rate": 88.9
+    },
+    "SIGIR": {
+      "records": 1839,
+      "abstracts": 1642,
+      "coverage_rate": 89.3
+    },
+    "TIP": {
+      "records": 2235,
+      "abstracts": 2224,
+      "coverage_rate": 99.5
+    },
+    "TKDE": {
+      "records": 2135,
+      "abstracts": 1965,
+      "coverage_rate": 92.0
+    },
+    "TMLR": {
+      "records": 4211,
+      "abstracts": 3532,
+      "coverage_rate": 83.9
+    },
+    "TOG": {
+      "records": 1006,
+      "abstracts": 1006,
+      "coverage_rate": 100.0
+    },
+    "TOIS": {
+      "records": 604,
+      "abstracts": 602,
+      "coverage_rate": 99.7
+    },
+    "TPAMI": {
+      "records": 3373,
+      "abstracts": 3330,
+      "coverage_rate": 98.7
+    },
+    "TVCG": {
+      "records": 2609,
+      "abstracts": 2522,
+      "coverage_rate": 96.7
+    },
+    "WWW": {
+      "records": 2222,
+      "abstracts": 1828,
+      "coverage_rate": 82.3
+    }
+  },
+  "dimensions": {
+    "year": {
+      "2023": {
+        "records": 22729,
+        "abstracts": 22394,
+        "missing": 335,
+        "coverage_rate": 98.5
+      },
+      "2024": {
+        "records": 28689,
+        "abstracts": 27003,
+        "missing": 1686,
+        "coverage_rate": 94.1
+      },
+      "2025": {
+        "records": 36672,
+        "abstracts": 35718,
+        "missing": 954,
+        "coverage_rate": 97.4
+      },
+      "2026": {
+        "records": 30248,
+        "abstracts": 28172,
+        "missing": 2076,
+        "coverage_rate": 93.1
+      }
+    },
+    "list_status": {
+      "final": {
+        "records": 88090,
+        "abstracts": 85115,
+        "missing": 2975,
+        "coverage_rate": 96.6
+      },
+      "rolling": {
+        "records": 30248,
+        "abstracts": 28172,
+        "missing": 2076,
+        "coverage_rate": 93.1
+      }
+    }
+  }
+}

@@ -1,0 +1,830 @@
+﻿doi,venues,years,title,download_policy
+10.1145/3592093,SIGGRAPH; TOG,2023,HACK: Learning a Parametric Head and Neck Model for High-fidelity Animation,download_once_by_doi
+10.1145/3592094,SIGGRAPH; TOG,2023,DreamFace: Progressive Generation of Animatable 3D Faces under Text Guidance,download_once_by_doi
+10.1145/3592095,SIGGRAPH; TOG,2023,Masonry Shell Structures with Discrete Equivalence Classes,download_once_by_doi
+10.1145/3592096,SIGGRAPH; TOG,2023,Generating Activity Snippets by Learning Human-Scene Interactions,download_once_by_doi
+10.1145/3592097,SIGGRAPH; TOG,2023,GestureDiffuCLIP: Gesture Diffusion Model with CLIP Latents,download_once_by_doi
+10.1145/3592098,SIGGRAPH; TOG,2023,Generalizing Shallow Water Simulations with Dispersive Surface Waves,download_once_by_doi
+10.1145/3592099,SIGGRAPH; TOG,2023,"EgoLocate: Real-time Motion Capture, Localization, and Mapping with Sparse Body-mounted Sensors",download_once_by_doi
+10.1145/3592100,SIGGRAPH; TOG,2023,SketchFaceNeRF: Sketch-based Facial Generation and Editing in Neural Radiance Fields,download_once_by_doi
+10.1145/3592101,SIGGRAPH; TOG,2023,AvatarReX: Real-time Expressive Full-body Avatars,download_once_by_doi
+10.1145/3592102,SIGGRAPH; TOG,2023,A Temporal Coherent Topology Optimization Approach for Assembly Planning of Bespoke Frame Structures,download_once_by_doi
+10.1145/3592103,SIGGRAPH; TOG,2023,Locally Attentional SDF Diffusion for Controllable 3D Shape Generation,download_once_by_doi
+10.1145/3592104,SIGGRAPH; TOG,2023,Second-order Stencil Descent for Interior-point Hyperelasticity,download_once_by_doi
+10.1145/3592105,SIGGRAPH; TOG,2023,Variational quasi-harmonic maps for computing diffeomorphisms,download_once_by_doi
+10.1145/3592106,SIGGRAPH; TOG,2023,CT2Hair: High-Fidelity 3D Hair Modeling using Computed Tomography,download_once_by_doi
+10.1145/3592107,SIGGRAPH; TOG,2023,Unsupervised Learning of Robust Spectral Shape Matching,download_once_by_doi
+10.1145/3592108,SIGGRAPH; TOG,2023,Potentially Visible Hidden-Volume Rendering for Multi-View Warping,download_once_by_doi
+10.1145/3592109,SIGGRAPH; TOG,2023,A Practical Walk-on-Boundary Method for Boundary Value Problems,download_once_by_doi
+10.1145/3592110,SIGGRAPH; TOG,2023,Split-Lohmann Multifocal Displays,download_once_by_doi
+10.1145/3592111,SIGGRAPH; TOG,2023,Language-based Photo Color Adjustment for Graphic Designs,download_once_by_doi
+10.1145/3592112,SIGGRAPH; TOG,2023,Beyond Chainmail: Computational Modeling of Discrete Interlocking Materials,download_once_by_doi
+10.1145/3592113,SIGGRAPH; TOG,2023,ScanBot: Autonomous Reconstruction via Deep Reinforcement Learning,download_once_by_doi
+10.1145/3592114,SIGGRAPH; TOG,2023,Differentiable Stripe Patterns for Inverse Design of Structured Surfaces,download_once_by_doi
+10.1145/3592115,SIGGRAPH; TOG,2023,A Contact Proxy Splitting Method for Lagrangian Solid-Fluid Coupling,download_once_by_doi
+10.1145/3592116,SIGGRAPH; TOG,2023,Attend-and-Excite: Attention-Based Semantic Guidance for Text-to-Image Diffusion Models,download_once_by_doi
+10.1145/3592117,SIGGRAPH; TOG,2023,Contact Edit: Artist Tools for Intuitive Modeling of Hand-Object Interactions,download_once_by_doi
+10.1145/3592118,SIGGRAPH; TOG,2023,Eventfulness for Interactive Video Alignment,download_once_by_doi
+10.1145/3592119,SIGGRAPH; TOG,2023,Example-Based Procedural Modeling Using Graph Grammars,download_once_by_doi
+10.1145/3592120,SIGGRAPH; TOG,2023,Pyramid Texture Filtering,download_once_by_doi
+10.1145/3592121,SIGGRAPH; TOG,2023,"Coupling Conduction, Convection and Radiative Transfer in a Single Path-Space: Application to Infrared Rendering",download_once_by_doi
+10.1145/3592122,SIGGRAPH; TOG,2023,ArrangementNet: Learning Scene Arrangements for Vectorized Indoor Scene Modeling,download_once_by_doi
+10.1145/3592123,SIGGRAPH; TOG,2023,Word-As-Image for Semantic Typography,download_once_by_doi
+10.1145/3592124,SIGGRAPH; TOG,2023,Computational Long Exposure Mobile Photography,download_once_by_doi
+10.1145/3592125,SIGGRAPH; TOG,2023,B-rep Matching for Collaborating Across CAD Systems,download_once_by_doi
+10.1145/3592126,SIGGRAPH; TOG,2023,"Dense, Interlocking-Free and Scalable Spectral Packing of Generic 3D Objects",download_once_by_doi
+10.1145/3592127,SIGGRAPH; TOG,2023,Film Grain Rendering and Parameter Estimation,download_once_by_doi
+10.1145/3592128,SIGGRAPH; TOG,2023,Image vectorization and editing via linear gradient layer decomposition,download_once_by_doi
+10.1145/3592129,SIGGRAPH; TOG,2023,Globally Consistent Normal Orientation for Point Clouds by Regularizing the Winding-Number Field,download_once_by_doi
+10.1145/3592130,SIGGRAPH; TOG,2023,StripMaker: Perception-driven Learned Vector Sketch Consolidation,download_once_by_doi
+10.1145/3592131,SIGGRAPH; TOG,2023,OctFormer: Octree-based Transformers for 3D Point Clouds,download_once_by_doi
+10.1145/3592132,SIGGRAPH; TOG,2023,End-to-end Procedural Material Capture with Proxy-Free Mixed-Integer Optimization,download_once_by_doi
+10.1145/3592133,SIGGRAPH; TOG,2023,Encoder-based Domain Tuning for Fast Personalization of Text-to-Image Models,download_once_by_doi
+10.1145/3592134,SIGGRAPH; TOG,2023,NeRO: Neural Geometry and BRDF Reconstruction of Reflective Objects from Multiview Images,download_once_by_doi
+10.1145/3592135,SIGGRAPH; TOG,2023,Dictionary Fields: Learning a Neural Basis Decomposition,download_once_by_doi
+10.1145/3592136,SIGGRAPH; TOG,2023,Shortest Path to Boundary for Self-Intersecting Meshes,download_once_by_doi
+10.1145/3592137,SIGGRAPH; TOG,2023,Meso-Facets for Goniochromatic 3D Printing,download_once_by_doi
+10.1145/3592138,SIGGRAPH; TOG,2023,Fluid-Solid Coupling in Kinetic Two-Phase Flow Simulation,download_once_by_doi
+10.1145/3592139,SIGGRAPH; TOG,2023,Recursive Control Variates for Inverse Rendering,download_once_by_doi
+10.1145/3592140,SIGGRAPH; TOG,2023,Evolutionary Piecewise Developable Approximations,download_once_by_doi
+10.1145/3592141,SIGGRAPH; TOG,2023,Neural Volumetric Reconstruction for Coherent Synthetic Aperture Sonar,download_once_by_doi
+10.1145/3592142,SIGGRAPH; TOG,2023,Scratch-based Reflection Art via Differentiable Rendering,download_once_by_doi
+10.1145/3592143,SIGGRAPH; TOG,2023,Sag-Free Initialization for Strand-Based Hybrid Hair Simulation,download_once_by_doi
+10.1145/3592144,SIGGRAPH; TOG,2023,∇-Prox: Differentiable Proximal Algorithm Modeling for Large-Scale Optimization,download_once_by_doi
+10.1145/3592145,SIGGRAPH; TOG,2023,Rhizomorph: The Coordinated Function of Shoots and Roots,download_once_by_doi
+10.1145/3592146,SIGGRAPH; TOG,2023,PolyStokes: A Polynomial Model Reduction Method for Viscous Fluid Simulation,download_once_by_doi
+10.1145/3592147,SIGGRAPH; TOG,2023,Towards Material Digitization with a Dual-scale Optical System,download_once_by_doi
+10.1145/3592390,SIGGRAPH; TOG,2023,Materialistic: Selecting Similar Materials in Images,download_once_by_doi
+10.1145/3592391,SIGGRAPH; TOG,2023,The Visual Language of Fabrics,download_once_by_doi
+10.1145/3592392,SIGGRAPH; TOG,2023,Semi-supervised reference-based sketch extraction using a contrastive learning framework,download_once_by_doi
+10.1145/3592393,SIGGRAPH; TOG,2023,Deployable strip structures,download_once_by_doi
+10.1145/3592394,SIGGRAPH; TOG,2023,Building a Virtual Weakly-Compressible Wind Tunnel Testing Facility,download_once_by_doi
+10.1145/3592395,SIGGRAPH; TOG,2023,Example-based Motion Synthesis via Generative Motion Matching,download_once_by_doi
+10.1145/3592396,SIGGRAPH; TOG,2023,Robust Low-Poly Meshing for General 3D Models,download_once_by_doi
+10.1145/3592397,SIGGRAPH; TOG,2023,Complex Wrinkle Field Evolution,download_once_by_doi
+10.1145/3592398,SIGGRAPH; TOG,2023,Walk on Stars: A Grid-Free Monte Carlo Method for PDEs with Neumann Boundary Conditions,download_once_by_doi
+10.1145/3592399,SIGGRAPH; TOG,2023,Computational Exploration of Multistable Elastic Knots,download_once_by_doi
+10.1145/3592400,SIGGRAPH; TOG,2023,Boundary Value Caching for Walk on Spheres,download_once_by_doi
+10.1145/3592401,SIGGRAPH; TOG,2023,Winding Numbers on Discrete Surfaces,download_once_by_doi
+10.1145/3592402,SIGGRAPH; TOG,2023,Fluid Cohomology,download_once_by_doi
+10.1145/3592403,SIGGRAPH; TOG,2023,Surface Simplification using Intrinsic Error Metrics,download_once_by_doi
+10.1145/3592404,SIGGRAPH; TOG,2023,Fast Complementary Dynamics via Skinning Eigenmodes,download_once_by_doi
+10.1145/3592405,SIGGRAPH; TOG,2023,ColorfulCurves: Palette-Aware Lightness Control and Color Editing via Sparse Optimization,download_once_by_doi
+10.1145/3592406,SIGGRAPH; TOG,2023,Towards Attention–aware Foveated Rendering,download_once_by_doi
+10.1145/3592407,SIGGRAPH; TOG,2023,Random-Access Neural Compression of Material Textures,download_once_by_doi
+10.1145/3592408,SIGGRAPH; TOG,2023,Learning Physically Simulated Tennis Skills from Broadcast Videos,download_once_by_doi
+10.1145/3592409,SIGGRAPH; TOG,2023,Inkjet 4D Print: Self-folding Tessellated Origami Objects by Inkjet UV Printing,download_once_by_doi
+10.1145/3592410,SIGGRAPH; TOG,2023,Galaxy Maps: Localized Foliations for Bijective Volumetric Mapping,download_once_by_doi
+10.1145/3592411,SIGGRAPH; TOG,2023,PCBend: Light Up Your 3D Shapes With Foldable Circuit Boards,download_once_by_doi
+10.1145/3592412,SIGGRAPH; TOG,2023,Orientable Dense Cyclic Infill for Anisotropic Appearance Fabrication,download_once_by_doi
+10.1145/3592413,SIGGRAPH; TOG,2023,VideoDoodles: Hand-Drawn Animations on Videos with Scene-Aware Canvases,download_once_by_doi
+10.1145/3592414,SIGGRAPH; TOG,2023,A Full-Wave Reference Simulator for Computing Surface Reflectance,download_once_by_doi
+10.1145/3592415,SIGGRAPH; TOG,2023,HumanRF: High-Fidelity Neural Radiance Fields for Humans in Motion,download_once_by_doi
+10.1145/3592416,SIGGRAPH; TOG,2023,ShapeCoder: Discovering Abstractions for Visual Programs from Unstructured Primitives,download_once_by_doi
+10.1145/3592417,SIGGRAPH; TOG,2023,Motion from Shape Change,download_once_by_doi
+10.1145/3592418,SIGGRAPH; TOG,2023,Patternshop: Editing Point Patterns by Image Manipulation,download_once_by_doi
+10.1145/3592419,SIGGRAPH; TOG,2023,ETER: Elastic Tessellation for Real-Time Pixel-Accurate Rendering of Large-Scale NURBS Models,download_once_by_doi
+10.1145/3592420,SIGGRAPH; TOG,2023,Differential Operators on Sketches via Alpha Contours,download_once_by_doi
+10.1145/3592421,SIGGRAPH; TOG,2023,Expansion Cones: A Progressive Volumetric Mapping Framework,download_once_by_doi
+10.1145/3592422,SIGGRAPH; TOG,2023,Forming Terrains by Glacial Erosion,download_once_by_doi
+10.1145/3592423,SIGGRAPH; TOG,2023,FactorMatte: Redefining Video Matting for Re-Composition Tasks,download_once_by_doi
+10.1145/3592424,SIGGRAPH; TOG,2023,Improved Water Sound Synthesis using Coupled Bubbles,download_once_by_doi
+10.1145/3592425,SIGGRAPH; TOG,2023,Anatomically Detailed Simulation of Human Torso,download_once_by_doi
+10.1145/3592426,SIGGRAPH; TOG,2023,MERF: Memory-Efficient Radiance Fields for Real-time View Synthesis in Unbounded Scenes,download_once_by_doi
+10.1145/3592427,SIGGRAPH; TOG,2023,"An Extensible, Data-Oriented Architecture for High-Performance, Many-World Simulation",download_once_by_doi
+10.1145/3592428,SIGGRAPH; TOG,2023,In-Timestep Remeshing for Contacting Elastodynamics,download_once_by_doi
+10.1145/3592429,SIGGRAPH; TOG,2023,Virtual Mirrors: Non-Line-of-Sight Imaging Beyond the Third Bounce,download_once_by_doi
+10.1145/3592430,SIGGRAPH; TOG,2023,Flexible Isosurface Extraction for Gradient-Based Mesh Optimization,download_once_by_doi
+10.1145/3592431,SIGGRAPH; TOG,2023,Effect-based Multi-viewer Caching for Cloud-native Rendering,download_once_by_doi
+10.1145/3592432,SIGGRAPH; TOG,2023,Skin-Screen: A Computational Fabrication Framework for Color Tattoos,download_once_by_doi
+10.1145/3592433,SIGGRAPH; TOG,2023,3D Gaussian Splatting for Real-Time Radiance Field Rendering,download_once_by_doi
+10.1145/3592434,SIGGRAPH; TOG,2023,Trim Regions for Online Computation of From-Region Potentially Visible Sets,download_once_by_doi
+10.1145/3592435,SIGGRAPH; TOG,2023,Revisiting controlled mixture sampling for rendering applications,download_once_by_doi
+10.1145/3592436,SIGGRAPH; TOG,2023,Juxtaform: interactive visual summarization for exploratory shape design,download_once_by_doi
+10.1145/3592437,SIGGRAPH; TOG,2023,Min-Deviation-Flow in Bi-directed Graphs for T-Mesh Quantization,download_once_by_doi
+10.1145/3592438,SIGGRAPH; TOG,2023,Seeing Photons in Color,download_once_by_doi
+10.1145/3592439,SIGGRAPH; TOG,2023,P2M: A Fast Solver for Querying Distance from Point to Mesh Surface,download_once_by_doi
+10.1145/3592440,SIGGRAPH; TOG,2023,Micro-Mesh Construction,download_once_by_doi
+10.1145/3592441,SIGGRAPH; TOG,2023,Étendue Expansion in Holographic Near Eye Displays through Sparse Eye-box Generation Using Lens Array Eyepiece,download_once_by_doi
+10.1145/3592442,SIGGRAPH; TOG,2023,3DShape2VecSet: A 3D Shape Representation for Neural Fields and Generative Diffusion Models,download_once_by_doi
+10.1145/3592443,SIGGRAPH; TOG,2023,Neural Prefiltering for Correlation-Aware Levels of Detail,download_once_by_doi
+10.1145/3592444,SIGGRAPH; TOG,2023,Generative Design of Sheet Metal Structures,download_once_by_doi
+10.1145/3592445,SIGGRAPH; TOG,2023,Efficient Embeddings in Exact Arithmetic,download_once_by_doi
+10.1145/3592446,SIGGRAPH; TOG,2023,A Practical Wave Optics Reflection Model for Hair and Fur,download_once_by_doi
+10.1145/3592447,SIGGRAPH; TOG,2023,Composite Motion Learning with Task Control,download_once_by_doi
+10.1145/3592448,SIGGRAPH; TOG,2023,Temporal Set Inversion for Animated Implicits,download_once_by_doi
+10.1145/3592449,SIGGRAPH; TOG,2023,Semantics and Scheduling for Machine Knitting Compilers,download_once_by_doi
+10.1145/3592450,SIGGRAPH; TOG,2023,Blended Latent Diffusion,download_once_by_doi
+10.1145/3592451,SIGGRAPH; TOG,2023,UniTune: Text-Driven Image Editing by Fine Tuning a Diffusion Model on a Single Image,download_once_by_doi
+10.1145/3592452,SIGGRAPH; TOG,2023,Topology driven approximation to rational surface-surface intersection via interval algebraic topology analysis,download_once_by_doi
+10.1145/3592453,SIGGRAPH; TOG,2023,Guided Linear Upsampling,download_once_by_doi
+10.1145/3592454,SIGGRAPH; TOG,2023,DOC: Differentiable Optimal Control for Retargeting Motions onto Legged Robots,download_once_by_doi
+10.1145/3592455,SIGGRAPH; TOG,2023,NeRSemble: Multi-view Radiance Field Reconstruction of Human Heads,download_once_by_doi
+10.1145/3592456,SIGGRAPH; TOG,2023,Bodyformer: Semantics-guided 3D Body Gesture Synthesis with Transformer,download_once_by_doi
+10.1145/3592457,SIGGRAPH; TOG,2023,Locally Meshable Frame Fields,download_once_by_doi
+10.1145/3592458,SIGGRAPH; TOG,2023,"Listen, Denoise, Action! Audio-Driven Motion Synthesis with Diffusion Models",download_once_by_doi
+10.1145/3592459,SIGGRAPH; TOG,2023,GREIL-Crowds: Crowd Simulation with Deep Reinforcement Learning and Examples,download_once_by_doi
+10.1145/3592460,SIGGRAPH; TOG,2023,Real-Time Radiance Fields for Single-Image Portrait View Synthesis,download_once_by_doi
+10.1145/3618306,SIGGRAPH Asia; TOG,2023,Computational Design of LEGO <sup>®</sup> Sketch Art,download_once_by_doi
+10.1145/3618307,SIGGRAPH Asia; TOG,2023,ART-Owen Scrambling,download_once_by_doi
+10.1145/3618308,SIGGRAPH Asia; TOG,2023,Analysis and Synthesis of Digital Dyadic Sequences,download_once_by_doi
+10.1145/3618309,SIGGRAPH Asia; TOG,2023,GroomGen: A High-Quality Generative Hair Model Using Hierarchical Latent Representations,download_once_by_doi
+10.1145/3618310,SIGGRAPH Asia; TOG,2023,Non-Newtonian ViRheometry via Similarity Analysis,download_once_by_doi
+10.1145/3618311,SIGGRAPH Asia; TOG,2023,Neural-Singular-Hessian: Implicit Neural Representation of Unoriented Point Clouds by Enforcing Singular Hessian,download_once_by_doi
+10.1145/3618312,SIGGRAPH Asia; TOG,2023,EXIM: A Hybrid Explicit-Implicit Representation for Text-Guided 3D Shape Generation,download_once_by_doi
+10.1145/3618313,SIGGRAPH Asia; TOG,2023,A Parametric Kinetic Solver for Simulating Boundary-Dominated Turbulent Flow Phenomena,download_once_by_doi
+10.1145/3618314,SIGGRAPH Asia; TOG,2023,Robust Zero Level-Set Extraction from Unsigned Distance Fields Based on Double Covering,download_once_by_doi
+10.1145/3618315,SIGGRAPH Asia; TOG,2023,Concept Decomposition for Visual Exploration and Inspiration,download_once_by_doi
+10.1145/3618316,SIGGRAPH Asia; TOG,2023,Editing Motion Graphics Video via Motion Vectorization and Transformation,download_once_by_doi
+10.1145/3618317,SIGGRAPH Asia; TOG,2023,Learning the Geodesic Embedding with Graph Neural Networks,download_once_by_doi
+10.1145/3618318,SIGGRAPH Asia; TOG,2023,DiffFR: Differentiable SPH-Based Fluid-Rigid Coupling for Rigid Body Control,download_once_by_doi
+10.1145/3618319,SIGGRAPH Asia; TOG,2023,Towards Garment Sewing Pattern Reconstruction from a Single Image,download_once_by_doi
+10.1145/3618320,SIGGRAPH Asia; TOG,2023,Commonsense Knowledge-Driven Joint Reasoning Approach for Object Retrieval in Virtual Reality,download_once_by_doi
+10.1145/3618321,SIGGRAPH Asia; TOG,2023,CamP: Camera Preconditioning for Neural Radiance Fields,download_once_by_doi
+10.1145/3618322,SIGGRAPH Asia; TOG,2023,A Neural Space-Time Representation for Text-to-Image Personalization,download_once_by_doi
+10.1145/3618323,SIGGRAPH Asia; TOG,2023,EMS: 3D Eyebrow Modeling from Single-View Images,download_once_by_doi
+10.1145/3618324,SIGGRAPH Asia; TOG,2023,VASCO: Volume and Surface Co-Decomposition for Hybrid Manufacturing,download_once_by_doi
+10.1145/3618325,SIGGRAPH Asia; TOG,2023,Neural Metamaterial Networks for Nonlinear Material Design,download_once_by_doi
+10.1145/3618326,SIGGRAPH Asia; TOG,2023,Text-Guided Synthesis of Eulerian Cinemagraphs,download_once_by_doi
+10.1145/3618327,SIGGRAPH Asia; TOG,2023,Interaction-Driven Active 3D Reconstruction with Object Interiors,download_once_by_doi
+10.1145/3618328,SIGGRAPH Asia; TOG,2023,TwinTex: Geometry-Aware Texture Generation for Abstracted 3D Architectural Models,download_once_by_doi
+10.1145/3618329,SIGGRAPH Asia; TOG,2023,Decaf: Monocular Deformation Capture for Face and Hand Interactions,download_once_by_doi
+10.1145/3618330,SIGGRAPH Asia; TOG,2023,Warped-Area Reparameterization of Differential Path Integrals,download_once_by_doi
+10.1145/3618331,SIGGRAPH Asia; TOG,2023,Amortizing Samples in Physics-Based Inverse Rendering Using ReSTIR,download_once_by_doi
+10.1145/3618332,SIGGRAPH Asia; TOG,2023,3D Bézier Guarding: Boundary-Conforming Curved Tetrahedral Meshing,download_once_by_doi
+10.1145/3618333,SIGGRAPH Asia; TOG,2023,Object Motion Guided Human Motion Synthesis,download_once_by_doi
+10.1145/3618334,SIGGRAPH Asia; TOG,2023,The Shortest Route is Not Always the Fastest: Probability-Modeled Stereoscopic Eye Movement Completion Time in VR,download_once_by_doi
+10.1145/3618335,SIGGRAPH Asia; TOG,2023,Doppler Time-of-Flight Rendering,download_once_by_doi
+10.1145/3618336,SIGGRAPH Asia; TOG,2023,Reconstructing Close Human Interactions from Multiple Views,download_once_by_doi
+10.1145/3618337,SIGGRAPH Asia; TOG,2023,Efficient Visualization of Light Pollution for the Night Sky,download_once_by_doi
+10.1145/3618338,SIGGRAPH Asia; TOG,2023,Scene-Aware Activity Program Generation with Language Guidance,download_once_by_doi
+10.1145/3618339,SIGGRAPH Asia; TOG,2023,Online Scene CAD Recomposition via Autonomous Scanning,download_once_by_doi
+10.1145/3618340,SIGGRAPH Asia; TOG,2023,Neural Field Convolutions by Repeated Differentiation,download_once_by_doi
+10.1145/3618341,SIGGRAPH Asia; TOG,2023,High-Order Moment-Encoded Kinetic Simulation of Turbulent Flows,download_once_by_doi
+10.1145/3618342,SIGGRAPH Asia; TOG,2023,ProSpect: Prompt Spectrum for Attribute-Aware Personalization of Diffusion Models,download_once_by_doi
+10.1145/3618343,SIGGRAPH Asia; TOG,2023,<i>NodeGit</i> : Diffing and Merging Node Graphs,download_once_by_doi
+10.1145/3618344,SIGGRAPH Asia; TOG,2023,Power Plastics: A Hybrid Lagrangian/Eulerian Solver for Mesoscale Inelastic Flows,download_once_by_doi
+10.1145/3618345,SIGGRAPH Asia; TOG,2023,Meshes with Spherical Faces,download_once_by_doi
+10.1145/3618346,SIGGRAPH Asia; TOG,2023,DR-Occluder: Generating Occluders Using Differentiable Rendering,download_once_by_doi
+10.1145/3618347,SIGGRAPH Asia; TOG,2023,High Density Ratio Multi-Fluid Simulation with Peridynamics,download_once_by_doi
+10.1145/3618348,SIGGRAPH Asia; TOG,2023,Learning Based 2D Irregular Shape Packing,download_once_by_doi
+10.1145/3618349,SIGGRAPH Asia; TOG,2023,Topology Guaranteed B-Spline Surface/Surface Intersection,download_once_by_doi
+10.1145/3618350,SIGGRAPH Asia; TOG,2023,Authoring and Simulating Meandering Rivers,download_once_by_doi
+10.1145/3618351,SIGGRAPH Asia; TOG,2023,GarmentCode: Programming Parametric Sewing Patterns,download_once_by_doi
+10.1145/3618352,SIGGRAPH Asia; TOG,2023,Constrained Delaunay Tetrahedrization: A Robust and Practical Approach,download_once_by_doi
+10.1145/3618353,SIGGRAPH Asia; TOG,2023,"SLANG.D: Fast, Modular and Differentiable Shader Programming",download_once_by_doi
+10.1145/3618354,SIGGRAPH Asia; TOG,2023,Neural Packing: from Visual Sensing to Reinforcement Learning,download_once_by_doi
+10.1145/3618355,SIGGRAPH Asia; TOG,2023,Developable Quad Meshes and Contact Element Nets,download_once_by_doi
+10.1145/3618356,SIGGRAPH Asia; TOG,2023,Controllable Group Choreography Using Contrastive Diffusion,download_once_by_doi
+10.1145/3618357,SIGGRAPH Asia; TOG,2023,Diffusion Posterior Illumination for Ambiguity-Aware Inverse Rendering,download_once_by_doi
+10.1145/3618358,SIGGRAPH Asia; TOG,2023,OpenSVBRDF: A Database of Measured Spatially-Varying Reflectance,download_once_by_doi
+10.1145/3618359,SIGGRAPH Asia; TOG,2023,Locally-Adaptive Level-of-Detail for Hardware-Accelerated Ray Tracing,download_once_by_doi
+10.1145/3618360,SIGGRAPH Asia; TOG,2023,Manifold Path Guiding for Importance Sampling Specular Chains,download_once_by_doi
+10.1145/3618361,SIGGRAPH Asia; TOG,2023,Reconstruction of Machine-Made Shapes from Bitmap Sketches,download_once_by_doi
+10.1145/3618362,SIGGRAPH Asia; TOG,2023,Efficient Hybrid Zoom Using Camera Fusion on Mobile Phones,download_once_by_doi
+10.1145/3618363,SIGGRAPH Asia; TOG,2023,MIPS-Fusion: Multi-Implicit-Submaps for Scalable and Robust Online Neural RGB-D Reconstruction,download_once_by_doi
+10.1145/3618364,SIGGRAPH Asia; TOG,2023,IconShop: Text-Guided Vector Icon Synthesis with Autoregressive Transformers,download_once_by_doi
+10.1145/3618365,SIGGRAPH Asia; TOG,2023,MetaLayer: A Meta-Learned BSDF Model for Layered Materials,download_once_by_doi
+10.1145/3618366,SIGGRAPH Asia; TOG,2023,C-Shells: Deployable Gridshells with Curved Beams,download_once_by_doi
+10.1145/3618367,SIGGRAPH Asia; TOG,2023,"An Implicit Neural Representation for the Image Stack: Depth, All in Focus, and High Dynamic Range",download_once_by_doi
+10.1145/3618368,SIGGRAPH Asia; TOG,2023,AvatarStudio: Text-Driven Editing of 3D Dynamic Human Head Avatars,download_once_by_doi
+10.1145/3618369,SIGGRAPH Asia; TOG,2023,ScaNeRF: Scalable Bundle-Adjusting Neural Radiance Fields for Large-Scale Scene Rendering,download_once_by_doi
+10.1145/3618370,SIGGRAPH Asia; TOG,2023,SAILOR: Synergizing Radiance and Occupancy Fields for Live Human Performance Capture,download_once_by_doi
+10.1145/3618371,SIGGRAPH Asia; TOG,2023,GeoLatent: A Geometric Approach to Latent Space Design for Deformable Shape Generators,download_once_by_doi
+10.1145/3618372,SIGGRAPH Asia; TOG,2023,Stable Discrete Bending by Analytic Eigensystem and Adaptive Orthotropic Geometric Stiffness,download_once_by_doi
+10.1145/3618373,SIGGRAPH Asia; TOG,2023,Low-Light Image Enhancement with Wavelet-Based Diffusion Models,download_once_by_doi
+10.1145/3618374,SIGGRAPH Asia; TOG,2023,An Adaptive Fast-Multipole-Accelerated Hybrid Boundary Integral Equation Method for Accurate Diffusion Curves,download_once_by_doi
+10.1145/3618375,SIGGRAPH Asia; TOG,2023,AdaptNet: Policy Adaptation for Physics-Based Character Control,download_once_by_doi
+10.1145/3618376,SIGGRAPH Asia; TOG,2023,ClothCombo: Modeling Inter-Cloth Interaction for Draping Multi-Layered Clothes,download_once_by_doi
+10.1145/3618377,SIGGRAPH Asia; TOG,2023,GARM-LS: A Gradient-Augmented Reference-Map Method for Level-Set Fluid Simulation,download_once_by_doi
+10.1145/3618378,SIGGRAPH Asia; TOG,2023,Rectifying Strip Patterns,download_once_by_doi
+10.1145/3618379,SIGGRAPH Asia; TOG,2023,Discontinuity-Aware 2D Neural Fields,download_once_by_doi
+10.1145/3618380,SIGGRAPH Asia; TOG,2023,Multisource Holography,download_once_by_doi
+10.1145/3618381,SIGGRAPH Asia; TOG,2023,From Skin to Skeleton: Towards Biomechanically Accurate 3D Digital Humans,download_once_by_doi
+10.1145/3618382,SIGGRAPH Asia; TOG,2023,ToRoS: A Topology Optimization Approach for Designing Robotic Skins,download_once_by_doi
+10.1145/3618383,SIGGRAPH Asia; TOG,2023,K-Surfaces: Bézier-Splines Interpolating at Gaussian Curvature Extrema,download_once_by_doi
+10.1145/3618384,SIGGRAPH Asia; TOG,2023,Collapsing Embedded Cell Complexes for Safer Hexahedral Meshing,download_once_by_doi
+10.1145/3618385,SIGGRAPH Asia; TOG,2023,Projective Sampling for Differentiable Rendering of Geometry,download_once_by_doi
+10.1145/3618386,SIGGRAPH Asia; TOG,2023,Shrink &amp; Morph: 3D-Printed Self-Shaping Shells Actuated by a Shape Memory Effect,download_once_by_doi
+10.1145/3618387,SIGGRAPH Asia; TOG,2023,Differentiable Rendering of Parametric Geometry,download_once_by_doi
+10.1145/3618388,SIGGRAPH Asia; TOG,2023,Progressive Shell Qasistatics for Unstructured Meshes,download_once_by_doi
+10.1145/3618389,SIGGRAPH Asia; TOG,2023,Enhancing Diffusion Models with 3D Perspective Geometry Constraints,download_once_by_doi
+10.1145/3618390,SIGGRAPH Asia; TOG,2023,Adaptive Shells for Efficient Neural Radiance Field Rendering,download_once_by_doi
+10.1145/3618391,SIGGRAPH Asia; TOG,2023,Slippage-Preserving Reshaping of Human-Made 3D Content,download_once_by_doi
+10.1145/3618392,SIGGRAPH Asia; TOG,2023,Fluid Simulation on Neural Flow Maps,download_once_by_doi
+10.1145/3618393,SIGGRAPH Asia; TOG,2023,ReShader: View-Dependent Highlights for Single Image View-Synthesis,download_once_by_doi
+10.1145/3618394,SIGGRAPH Asia; TOG,2023,Metric Optimization in Penner Coordinates,download_once_by_doi
+10.1145/3618395,SIGGRAPH Asia; TOG,2023,Depolarized Holography with Polarization-Multiplexing Metasurface,download_once_by_doi
+10.1145/3618396,SIGGRAPH Asia; TOG,2023,Computational Design of Flexible Planar Microstructures,download_once_by_doi
+10.1145/3618397,SIGGRAPH Asia; TOG,2023,Neural Categorical Priors for Physics-Based Character Control,download_once_by_doi
+10.1145/3618398,SIGGRAPH Asia; TOG,2023,Thin On-Sensor Nanophotonic Array Cameras,download_once_by_doi
+10.1145/3618399,SIGGRAPH Asia; TOG,2023,BakedAvatar: Baking Neural Fields for Real-Time Head Avatar Synthesis,download_once_by_doi
+10.1145/3618400,SIGGRAPH Asia; TOG,2023,An Unified <i>λ</i> -subdivision Scheme for Quadrilateral Meshes with Optimal Curvature Performance in Extraordinary Regions,download_once_by_doi
+10.1145/3618401,SIGGRAPH Asia; TOG,2023,FLARE: Fast Learning of Animatable and Relightable Mesh Avatars,download_once_by_doi
+10.1145/3618402,SIGGRAPH Asia; TOG,2023,GANeRF: Leveraging Discriminators to Optimize Neural Radiance Fields,download_once_by_doi
+10.1145/3618403,SIGGRAPH Asia; TOG,2023,Variational Barycentric Coordinates,download_once_by_doi
+10.1145/3618404,SIGGRAPH Asia; TOG,2023,Optimal Design of Robotic Character Kinematics,download_once_by_doi
+10.1145/3618405,SIGGRAPH Asia; TOG,2023,Kirchhoff-Love Shells with Arbitrary Hyperelastic Materials,download_once_by_doi
+10.1145/3618406,SIGGRAPH Asia; TOG,2023,Capturing Animation-Ready Isotropic Materials Using Systematic Poking,download_once_by_doi
+10.1145/3618407,SIGGRAPH Asia; TOG,2023,Efficient Cone Singularity Construction for Conformal Parameterizations,download_once_by_doi
+10.1145/3658120,SIGGRAPH; TOG,2024,SketchDream: Sketch-based Text-To-3D Generation and Editing,download_once_by_doi
+10.1145/3658121,SIGGRAPH; TOG,2024,From microfacets to participating media: A unified theory of light transport with stochastic geometry,download_once_by_doi
+10.1145/3658122,SIGGRAPH; TOG,2024,Differentiable Geodesic Distance for Intrinsic Minimization on Triangle Meshes,download_once_by_doi
+10.1145/3658123,SIGGRAPH; TOG,2024,Solid Knitting,download_once_by_doi
+10.1145/3658124,SIGGRAPH; TOG,2024,An Induce-on-Boundary Magnetostatic Solver for Grid-Based Ferrofluids,download_once_by_doi
+10.1145/3658125,SIGGRAPH; TOG,2024,Computational Homogenization for Inverse Design of Surface-based Inflatables,download_once_by_doi
+10.1145/3658126,SIGGRAPH; TOG,2024,PEA-PODs: Perceptual Evaluation of Algorithms for Power Optimization in XR Displays,download_once_by_doi
+10.1145/3658127,SIGGRAPH; TOG,2024,Mesh Neural Cellular Automata,download_once_by_doi
+10.1145/3658128,SIGGRAPH; TOG,2024,Automatic Digital Garment Initialization from Sewing Patterns,download_once_by_doi
+10.1145/3658129,SIGGRAPH; TOG,2024,BrepGen: A B-rep Generative Diffusion Model with Structured Latent Geometry,download_once_by_doi
+10.1145/3658130,SIGGRAPH; TOG,2024,Binary Opacity Grids: Capturing Fine Geometric Detail for Mesh-Based View Synthesis,download_once_by_doi
+10.1145/3658131,SIGGRAPH; TOG,2024,Stochastic Computation of Barycentric Coordinates,download_once_by_doi
+10.1145/3658132,SIGGRAPH; TOG,2024,Specular Polynomials,download_once_by_doi
+10.1145/3658133,SIGGRAPH; TOG,2024,Conditional Mixture Path Guiding for Differentiable Rendering,download_once_by_doi
+10.1145/3658134,SIGGRAPH; TOG,2024,Semantic Gesticulator: Semantics-Aware Co-Speech Gesture Synthesis,download_once_by_doi
+10.1145/3658135,SIGGRAPH; TOG,2024,A Neural Network Model for Efficient Musculoskeletal-Driven Skin Deformation,download_once_by_doi
+10.1145/3658136,SIGGRAPH; TOG,2024,Analogist: Out-of-the-box Visual In-Context Learning with Image Diffusion Model,download_once_by_doi
+10.1145/3658137,SIGGRAPH; TOG,2024,MoConVQ: Unified Physics-Based Motion Control via Scalable Discrete Representations,download_once_by_doi
+10.1145/3658138,SIGGRAPH; TOG,2024,Cybersickness Reduction via Gaze-Contingent Image Deformation,download_once_by_doi
+10.1145/3658139,SIGGRAPH; TOG,2024,Spin-Weighted Spherical Harmonics for Polarized Light Transport,download_once_by_doi
+10.1145/3658140,SIGGRAPH; TOG,2024,Interactive Character Control with Auto-Regressive Motion Diffusion Models,download_once_by_doi
+10.1145/3658141,SIGGRAPH; TOG,2024,Towards Motion Metamers for Foveated Rendering,download_once_by_doi
+10.1145/3658142,SIGGRAPH; TOG,2024,Alignment conditions for NURBS-based design of mixed tension-compression grid shells,download_once_by_doi
+10.1145/3658143,SIGGRAPH; TOG,2024,Super-Resolution Cloth Animation with Spatial and Temporal Coherence,download_once_by_doi
+10.1145/3658144,SIGGRAPH; TOG,2024,"ColorVideoVDP: A visual difference predictor for image, video and display distortions",download_once_by_doi
+10.1145/3658145,SIGGRAPH; TOG,2024,Curvature-Driven Conformal Deformations,download_once_by_doi
+10.1145/3658146,SIGGRAPH; TOG,2024,CLAY: A Controllable Large-scale Generative Model for Creating High-quality 3D Assets,download_once_by_doi
+10.1145/3658147,SIGGRAPH; TOG,2024,DressCode: Autoregressively Sewing and Generating Garments from Text Guidance,download_once_by_doi
+10.1145/3658148,SIGGRAPH; TOG,2024,Bilateral Guided Radiance Field Processing,download_once_by_doi
+10.1145/3658149,SIGGRAPH; TOG,2024,Cyclogenesis: Simulating Hurricanes and Tornadoes,download_once_by_doi
+10.1145/3658150,SIGGRAPH; TOG,2024,Transparent Image Layer Diffusion using Latent Transparency,download_once_by_doi
+10.1145/3658151,SIGGRAPH; TOG,2024,Fabric Tessellation: Realizing Freeform Surfaces by Smocking,download_once_by_doi
+10.1145/3658152,SIGGRAPH; TOG,2024,Differentiable Voronoi Diagrams for Simulation of Cell-Based Mechanical Systems,download_once_by_doi
+10.1145/3658153,SIGGRAPH; TOG,2024,Walkin’ Robin: Walk on Stars with Robin Boundary Conditions,download_once_by_doi
+10.1145/3658154,SIGGRAPH; TOG,2024,Position-Based Nonlinear Gauss-Seidel for Quasistatic Hyperelasticity,download_once_by_doi
+10.1145/3658155,SIGGRAPH; TOG,2024,Split-and-Fit: Learning B-Reps via Structure-Aware Voronoi Partitioning,download_once_by_doi
+10.1145/3658156,SIGGRAPH; TOG,2024,3Doodle: Compact Abstraction of Objects with 3D Strokes,download_once_by_doi
+10.1145/3658157,SIGGRAPH; TOG,2024,Training-Free Consistent Text-to-Image Generation,download_once_by_doi
+10.1145/3658158,SIGGRAPH; TOG,2024,Surface-Filling Curve Flows via Implicit Medial Axes,download_once_by_doi
+10.1145/3658159,SIGGRAPH; TOG,2024,CWF: Consolidating Weak Features in High-quality Mesh Simplification,download_once_by_doi
+10.1145/3658160,SIGGRAPH; TOG,2024,A Hierarchical 3D Gaussian Representation for Real-Time Rendering of Very Large Datasets,download_once_by_doi
+10.1145/3658161,SIGGRAPH; TOG,2024,Stylized Rendering as a Function of Expectation,download_once_by_doi
+10.1145/3658162,SIGGRAPH; TOG,2024,Portrait3D: Text-Guided High-Quality 3D Portrait Generation Using Pyramid Representation and GANs Prior,download_once_by_doi
+10.1145/3658163,SIGGRAPH; TOG,2024,Neural Gaussian Scale-Space Fields,download_once_by_doi
+10.1145/3658164,SIGGRAPH; TOG,2024,Going with the Flow,download_once_by_doi
+10.1145/3658165,SIGGRAPH; TOG,2024,A Vortex Particle-on-Mesh Method for Soap Film Simulation,download_once_by_doi
+10.1145/3658166,SIGGRAPH; TOG,2024,A Free-Space Diffraction BSDF,download_once_by_doi
+10.1145/3658167,SIGGRAPH; TOG,2024,Creating LEGO Figurines from Single Images,download_once_by_doi
+10.1145/3658168,SIGGRAPH; TOG,2024,Holographic Parallax Improves 3D Perceptual Realism,download_once_by_doi
+10.1145/3658169,SIGGRAPH; TOG,2024,Spatial and Surface Correspondence Field for Interaction Transfer,download_once_by_doi
+10.1145/3658170,SIGGRAPH; TOG,2024,DreamMat: High-quality PBR Material Generation with Geometry- and Light-aware Diffusion Models,download_once_by_doi
+10.1145/3658171,SIGGRAPH; TOG,2024,NeurCADRecon: Neural Representation for Reconstructing CAD Surfaces by Enforcing Zero Gaussian Curvature,download_once_by_doi
+10.1145/3658172,SIGGRAPH; TOG,2024,"S3: Speech, Script and Scene driven Head and Eye Animation",download_once_by_doi
+10.1145/3658173,SIGGRAPH; TOG,2024,ZeroGrads: Learning Local Surrogates for Non-Differentiable Graphics,download_once_by_doi
+10.1145/3658174,SIGGRAPH; TOG,2024,Repulsive Shells,download_once_by_doi
+10.1145/3658175,SIGGRAPH; TOG,2024,FlexScale: Modeling and Characterization of Flexible Scaled Sheets,download_once_by_doi
+10.1145/3658176,SIGGRAPH; TOG,2024,Real-time Physically Guided Hair Interpolation,download_once_by_doi
+10.1145/3658177,SIGGRAPH; TOG,2024,Proxy Asset Generation for Cloth Simulation in Games,download_once_by_doi
+10.1145/3658178,SIGGRAPH; TOG,2024,Kinetic Simulation of Turbulent Multifluid Flows,download_once_by_doi
+10.1145/3658179,SIGGRAPH; TOG,2024,Vertex Block Descent,download_once_by_doi
+10.1145/3658180,SIGGRAPH; TOG,2024,Eulerian-Lagrangian Fluid Simulation on Particle Flow Maps,download_once_by_doi
+10.1145/3658181,SIGGRAPH; TOG,2024,Implicit Swept Volume SDF: Enabling Continuous Collision-Free Trajectory Generation for Arbitrary Shapes,download_once_by_doi
+10.1145/3658182,SIGGRAPH; TOG,2024,Target-Aware Image Denoising for Inverse Monte Carlo Rendering,download_once_by_doi
+10.1145/3658183,SIGGRAPH; TOG,2024,3D-Layers: Bringing Layer-Based Color Editing to VR Painting,download_once_by_doi
+10.1145/3658184,SIGGRAPH; TOG,2024,"Simplicits: Mesh-Free, Geometry-Agnostic Elastic Simulation",download_once_by_doi
+10.1145/3658185,SIGGRAPH; TOG,2024,Capacitive Touch Sensing on General 3D Surfaces,download_once_by_doi
+10.1145/3658186,SIGGRAPH; TOG,2024,NeuralTO: Neural Reconstruction and View Synthesis of Translucent Objects,download_once_by_doi
+10.1145/3658187,SIGGRAPH; TOG,2024,StopThePop: Sorted Gaussian Splatting for View-Consistent Real-time Rendering,download_once_by_doi
+10.1145/3658188,SIGGRAPH; TOG,2024,BlockFusion: Expandable 3D Scene Generation using Latent Tri-plane Extrapolation,download_once_by_doi
+10.1145/3658189,SIGGRAPH; TOG,2024,Learning a Generalized Physical Face Model From Data,download_once_by_doi
+10.1145/3658190,SIGGRAPH; TOG,2024,Learning Images Across Scales Using Adversarial Training,download_once_by_doi
+10.1145/3658191,SIGGRAPH; TOG,2024,Contact detection between curved fibres: high order makes a difference,download_once_by_doi
+10.1145/3658192,SIGGRAPH; TOG,2024,Scintilla: Simulating Combustible Vegetation for Wildfires,download_once_by_doi
+10.1145/3658193,SIGGRAPH; TOG,2024,SMERF: Streamable Memory Efficient Radiance Fields for Real-Time Large-Scene Exploration,download_once_by_doi
+10.1145/3658194,SIGGRAPH; TOG,2024,Spin-It Faster: Quadrics Solve All Topology Optimization Problems That Depend Only On Mass Moments,download_once_by_doi
+10.1145/3658195,SIGGRAPH; TOG,2024,One Noise to Rule Them All: Learning a Unified Model of Spatially-Varying Noise Patterns,download_once_by_doi
+10.1145/3658196,SIGGRAPH; TOG,2024,Cricket: A Self-Powered Chirping Pixel,download_once_by_doi
+10.1145/3658197,SIGGRAPH; TOG,2024,Deep Sketch Vectorization via Implicit Surface Extraction,download_once_by_doi
+10.1145/3658198,SIGGRAPH; TOG,2024,Lifting Directional Fields to Minimal Sections,download_once_by_doi
+10.1145/3658199,SIGGRAPH; TOG,2024,Lightning-fast Method of Fundamental Solutions,download_once_by_doi
+10.1145/3658200,SIGGRAPH; TOG,2024,Terrain Amplification using Multi Scale Erosion,download_once_by_doi
+10.1145/3658201,SIGGRAPH; TOG,2024,Ray Tracing Harmonic Functions,download_once_by_doi
+10.1145/3658202,SIGGRAPH; TOG,2024,Seamless Parametrization in Penner Coordinates,download_once_by_doi
+10.1145/3658203,SIGGRAPH; TOG,2024,Real-Time Path Guiding Using Bounding Voxel Sampling,download_once_by_doi
+10.1145/3658204,SIGGRAPH; TOG,2024,Text-to-Vector Generation with Neural Path Representation,download_once_by_doi
+10.1145/3658205,SIGGRAPH; TOG,2024,TIP-Editor: An Accurate 3D Editor Following Both Text-Prompts And Image-Prompts,download_once_by_doi
+10.1145/3658206,SIGGRAPH; TOG,2024,Interactive Invigoration: Volumetric Modeling of Trees with Strands,download_once_by_doi
+10.1145/3658207,SIGGRAPH; TOG,2024,Smooth Bijective Projection in a High-order Shell,download_once_by_doi
+10.1145/3658208,SIGGRAPH; TOG,2024,Biharmonic Coordinates and their Derivatives for Triangular 3D Cages,download_once_by_doi
+10.1145/3658209,SIGGRAPH; TOG,2024,Categorical Codebook Matching for Embodied Character Controllers,download_once_by_doi
+10.1145/3658210,SIGGRAPH; TOG,2024,Area ReSTIR: Resampling for Real-Time Defocus and Antialiasing,download_once_by_doi
+10.1145/3658211,SIGGRAPH; TOG,2024,TensoSDF: Roughness-aware Tensorial Representation for Robust Geometry and Material Reconstruction,download_once_by_doi
+10.1145/3658212,SIGGRAPH; TOG,2024,Neural Slicer for Multi-Axis 3D Printing,download_once_by_doi
+10.1145/3658213,SIGGRAPH; TOG,2024,Efficient Debris-flow Simulation for Steep Terrain Erosion,download_once_by_doi
+10.1145/3658214,SIGGRAPH; TOG,2024,Progressive Dynamics for Cloth and Shell Animation,download_once_by_doi
+10.1145/3658215,SIGGRAPH; TOG,2024,Adaptive grid generation for discretizing implicit complexes,download_once_by_doi
+10.1145/3658216,SIGGRAPH; TOG,2024,Proxy Tracing: Unbiased Reciprocal Estimation for Optimized Sampling in BDPT,download_once_by_doi
+10.1145/3658217,SIGGRAPH; TOG,2024,CharacterGen: Efficient 3D Character Generation from Single Images with Multi-View Pose Canonicalization,download_once_by_doi
+10.1145/3658218,SIGGRAPH; TOG,2024,Temporally Stable Metropolis Light Transport Denoising using Recurrent Transformer Blocks,download_once_by_doi
+10.1145/3658219,SIGGRAPH; TOG,2024,Variational Feature Extraction in Scientific Visualization,download_once_by_doi
+10.1145/3658220,SIGGRAPH; TOG,2024,A Heat Method for Generalized Signed Distance,download_once_by_doi
+10.1145/3658221,SIGGRAPH; TOG,2024,DiffPoseTalk: Speech-Driven Stylistic 3D Facial Animation and Head Pose Generation via Diffusion Models,download_once_by_doi
+10.1145/3658222,SIGGRAPH; TOG,2024,EASI-Tex: Edge-Aware Mesh Texturing from Single Image,download_once_by_doi
+10.1145/3658223,SIGGRAPH; TOG,2024,Multi-Material Mesh-Based Surface Tracking with Implicit Topology Changes,download_once_by_doi
+10.1145/3658224,SIGGRAPH; TOG,2024,A Fully-correlated Anisotropic Micrograin BSDF Model,download_once_by_doi
+10.1145/3658225,SIGGRAPH; TOG,2024,Split-Aperture 2-in-1 Computational Cameras,download_once_by_doi
+10.1145/3658226,SIGGRAPH; TOG,2024,"fVDB : A Deep-Learning Framework for Sparse, Large Scale, and High Performance Spatial Intelligence",download_once_by_doi
+10.1145/3658227,SIGGRAPH; TOG,2024,Interactive Design of Stylized Walking Gaits for Robotic Characters,download_once_by_doi
+10.1145/3658228,SIGGRAPH; TOG,2024,Robust Containment Queries over Collections of Rational Parametric Curves via Generalized Winding Numbers,download_once_by_doi
+10.1145/3658229,SIGGRAPH; TOG,2024,LightFormer: Light-Oriented Global Neural Rendering in Dynamic Scene,download_once_by_doi
+10.1145/3658230,SIGGRAPH; TOG,2024,NICER: A New and Improved Consumed Endurance and Recovery Metric to Quantify Muscle Fatigue of Mid-Air Interactions,download_once_by_doi
+10.1145/3658231,SIGGRAPH; TOG,2024,Computational Illusion Knitting,download_once_by_doi
+10.1145/3658232,SIGGRAPH; TOG,2024,Theory of Human Tetrachromatic Color Experience and Printing,download_once_by_doi
+10.1145/3658233,SIGGRAPH; TOG,2024,X-SLAM: Scalable Dense SLAM for Task-aware Optimization using CSFD,download_once_by_doi
+10.1145/3658234,SIGGRAPH; TOG,2024,Universal Facial Encoding of Codec Avatars from VR Headsets,download_once_by_doi
+10.1145/3658235,SIGGRAPH; TOG,2024,Audio Matters Too! Enhancing Markerless Motion Capture with Audio Signals for String Performance Capture,download_once_by_doi
+10.1145/3658236,SIGGRAPH; TOG,2024,DiffCAD: Weakly-Supervised Probabilistic CAD Model Retrieval and Alignment from an RGB Image,download_once_by_doi
+10.1145/3658237,SIGGRAPH; TOG,2024,RealFill: Reference-Driven Generation for Authentic Image Completion,download_once_by_doi
+10.1145/3687755,SIGGRAPH Asia; TOG,2024,Learn to Create Simple LEGO Micro Buildings,download_once_by_doi
+10.1145/3687756,SIGGRAPH Asia; TOG,2024,Real-time Large-scale Deformation of Gaussian Splatting,download_once_by_doi
+10.1145/3687757,SIGGRAPH Asia; TOG,2024,NU-NeRF: Neural Reconstruction of Nested Transparent Objects with Uncontrolled Capture Environment,download_once_by_doi
+10.1145/3687758,SIGGRAPH Asia; TOG,2024,MiNNIE: a Mixed Multigrid Method for Real-time Simulation of Nonlinear Near-Incompressible Elastics,download_once_by_doi
+10.1145/3687759,SIGGRAPH Asia; TOG,2024,GaussianObject: High-Quality 3D Object Reconstruction from Four Views with Gaussian Splatting,download_once_by_doi
+10.1145/3687760,SIGGRAPH Asia; TOG,2024,Efficient GPU Cloth Simulation with Non-distance Barriers and Subspace Reuse,download_once_by_doi
+10.1145/3687761,SIGGRAPH Asia; TOG,2024,ToonCrafter: Generative Cartoon Interpolation,download_once_by_doi
+10.1145/3687762,SIGGRAPH Asia; TOG,2024,LetsGo: Large-Scale Garage Modeling and Rendering via LiDAR-Assisted Gaussian Primitives,download_once_by_doi
+10.1145/3687763,SIGGRAPH Asia; TOG,2024,MATTopo: Topology-preserving Medial Axis Transform with Restricted Power Diagram,download_once_by_doi
+10.1145/3687764,SIGGRAPH Asia; TOG,2024,Differentiable Owen Scrambling,download_once_by_doi
+10.1145/3687765,SIGGRAPH Asia; TOG,2024,Optimized shock-protecting microstructures,download_once_by_doi
+10.1145/3687766,SIGGRAPH Asia; TOG,2024,GPU Coroutines for Flexible Splitting and Scheduling of Rendering Tasks,download_once_by_doi
+10.1145/3687767,SIGGRAPH Asia; TOG,2024,Polarimetric BSSRDF Acquisition of Dynamic Faces,download_once_by_doi
+10.1145/3687768,SIGGRAPH Asia; TOG,2024,GroomCap: High-Fidelity Prior-Free Hair Capture,download_once_by_doi
+10.1145/3687769,SIGGRAPH Asia; TOG,2024,DreamUDF: Generating Unsigned Distance Fields from A Single Image,download_once_by_doi
+10.1145/3687770,SIGGRAPH Asia; TOG,2024,mpcMech: Multi-Point Conjugation Mechanisms,download_once_by_doi
+10.1145/3687771,SIGGRAPH Asia; TOG,2024,PuzzleAvatar: Assembling 3D Avatars from Personal Albums,download_once_by_doi
+10.1145/3687772,SIGGRAPH Asia; TOG,2024,"Look Ma, no markers: holistic performance capture without the hassle",download_once_by_doi
+10.1145/3687895,SIGGRAPH Asia; TOG,2024,Fast and Globally Consistent Normal Orientation based on the Winding Number Normal Consistency,download_once_by_doi
+10.1145/3687896,SIGGRAPH Asia; TOG,2024,PVP-Recon: Progressive View Planning via Warping Consistency for Sparse-View Surface Reconstruction,download_once_by_doi
+10.1145/3687897,SIGGRAPH Asia; TOG,2024,DirectL: Efficient Radiance Fields Rendering for 3D Light Field Displays,download_once_by_doi
+10.1145/3687898,SIGGRAPH Asia; TOG,2024,Alignable Lamella Gridshells,download_once_by_doi
+10.1145/3687899,SIGGRAPH Asia; TOG,2024,Computational Biomimetics of Winged Seeds,download_once_by_doi
+10.1145/3687900,SIGGRAPH Asia; TOG,2024,Neural Differential Appearance Equations,download_once_by_doi
+10.1145/3687901,SIGGRAPH Asia; TOG,2024,Neural Laplacian Operator for 3D Point Clouds,download_once_by_doi
+10.1145/3687902,SIGGRAPH Asia; TOG,2024,A Generalized Ray Formulation For Wave-Optical Light Transport,download_once_by_doi
+10.1145/3687903,SIGGRAPH Asia; TOG,2024,Generative Portrait Shadow Removal,download_once_by_doi
+10.1145/3687904,SIGGRAPH Asia; TOG,2024,CBIL: Collective Behavior Imitation Learning for Fish from Real Videos,download_once_by_doi
+10.1145/3687905,SIGGRAPH Asia; TOG,2024,Architectural Co-LOD Generation,download_once_by_doi
+10.1145/3687906,SIGGRAPH Asia; TOG,2024,A Flexible Mold for Facade Panel Fabrication,download_once_by_doi
+10.1145/3687907,SIGGRAPH Asia; TOG,2024,"EgoHDM: A Real-time Egocentric-Inertial Human Motion Capture, Localization, and Dense Mapping System",download_once_by_doi
+10.1145/3687908,SIGGRAPH Asia; TOG,2024,A Cubic Barrier with Elasticity-Inclusive Dynamic Stiffness,download_once_by_doi
+10.1145/3687909,SIGGRAPH Asia; TOG,2024,TEXGen: a Generative Diffusion Model for Mesh Textures,download_once_by_doi
+10.1145/3687910,SIGGRAPH Asia; TOG,2024,LVCD: Reference-based Lineart Video Colorization with Diffusion Models,download_once_by_doi
+10.1145/3687911,SIGGRAPH Asia; TOG,2024,Volumetric Homogenization for Knitwear Simulation,download_once_by_doi
+10.1145/3687912,SIGGRAPH Asia; TOG,2024,Evaluating Visual Perception of Object Motion in Dynamic Environments,download_once_by_doi
+10.1145/3687913,SIGGRAPH Asia; TOG,2024,Differential Walk on Spheres,download_once_by_doi
+10.1145/3687914,SIGGRAPH Asia; TOG,2024,3D Reconstruction with Fast Dipole Sums,download_once_by_doi
+10.1145/3687915,SIGGRAPH Asia; TOG,2024,Stripe Embedding: Efficient Maps with Exact Numeric Computation,download_once_by_doi
+10.1145/3687916,SIGGRAPH Asia; TOG,2024,Particle-Laden Fluid on Flow Maps,download_once_by_doi
+10.1145/3687918,SIGGRAPH Asia; TOG,2024,Large Scale Farm Scene Modeling from Remote Sensing Imagery,download_once_by_doi
+10.1145/3687919,SIGGRAPH Asia; TOG,2024,Representing Long Volumetric Video with Temporal Gaussian Hierarchy,download_once_by_doi
+10.1145/3687920,SIGGRAPH Asia; TOG,2024,PCO: Precision-Controllable Offset Surfaces with Sharp Features,download_once_by_doi
+10.1145/3687921,SIGGRAPH Asia; TOG,2024,GarVerseLOD: High-Fidelity 3D Garment Reconstruction from a Single In-the-Wild Image using a Dataset with Levels of Details,download_once_by_doi
+10.1145/3687922,SIGGRAPH Asia; TOG,2024,ParSEL: Parameterized Shape Editing with Language,download_once_by_doi
+10.1145/3687923,SIGGRAPH Asia; TOG,2024,GFFE: G-buffer Free Frame Extrapolation for Low-latency Real-time Rendering,download_once_by_doi
+10.1145/3687924,SIGGRAPH Asia; TOG,2024,Inverse Rendering for Tomographic Volumetric Additive Manufacturing,download_once_by_doi
+10.1145/3687925,SIGGRAPH Asia; TOG,2024,Exact and Efficient Intersection Resolution for Mesh Arrangements,download_once_by_doi
+10.1145/3687926,SIGGRAPH Asia; TOG,2024,Robust Dual Gaussian Splatting for Immersive Human-centric Volumetric Videos,download_once_by_doi
+10.1145/3687927,SIGGRAPH Asia; TOG,2024,GaussianHeads: End-to-End Learning of Drivable Gaussian Head Avatars from Coarse-to-fine Representations,download_once_by_doi
+10.1145/3687928,SIGGRAPH Asia; TOG,2024,Chebyshev Parameterization for Woven Fabric Modeling,download_once_by_doi
+10.1145/3687929,SIGGRAPH Asia; TOG,2024,Identifying Behavioral Correlates to Visual Discomfort,download_once_by_doi
+10.1145/3687930,SIGGRAPH Asia; TOG,2024,DARTS: Diffusion Approximated Residual Time Sampling for Time-of-flight Rendering in Homogeneous Scattering Media,download_once_by_doi
+10.1145/3687931,SIGGRAPH Asia; TOG,2024,StyleTex: Style Image-Guided Texture Generation for 3D Models,download_once_by_doi
+10.1145/3687932,SIGGRAPH Asia; TOG,2024,CPoser: An Optimization-after-Parsing Approach for Text-to-Pose Generation Using Large Language Models,download_once_by_doi
+10.1145/3687933,SIGGRAPH Asia; TOG,2024,Learning Based Toolpath Planner on Diverse Graphs for 3D Printing,download_once_by_doi
+10.1145/3687934,SIGGRAPH Asia; TOG,2024,3D Gaussian Ray Tracing: Fast Tracing of Particle Scenes,download_once_by_doi
+10.1145/3687935,SIGGRAPH Asia; TOG,2024,V^3: Viewing Volumetric Videos on Mobiles via Streamable 2D Dynamic Gaussians,download_once_by_doi
+10.1145/3687936,SIGGRAPH Asia; TOG,2024,Direct Manipulation of Procedural Implicit Surfaces,download_once_by_doi
+10.1145/3687937,SIGGRAPH Asia; TOG,2024,Gaussian Opacity Fields: Efficient Adaptive Surface Reconstruction in Unbounded Scenes,download_once_by_doi
+10.1145/3687938,SIGGRAPH Asia; TOG,2024,Online Neural Denoising with Cross-Regression for Interactive Rendering,download_once_by_doi
+10.1145/3687939,SIGGRAPH Asia; TOG,2024,Quad mesh mechanisms,download_once_by_doi
+10.1145/3687940,SIGGRAPH Asia; TOG,2024,Designing triangle meshes with controlled roughness,download_once_by_doi
+10.1145/3687941,SIGGRAPH Asia; TOG,2024,SKEL-Betweener: a Neural Motion Rig for Interactive Motion Authoring,download_once_by_doi
+10.1145/3687942,SIGGRAPH Asia; TOG,2024,Approximation by Meshes with Spherical Faces,download_once_by_doi
+10.1145/3687943,SIGGRAPH Asia; TOG,2024,Efficient Image-Space Shape Splatting for Monte Carlo Rendering,download_once_by_doi
+10.1145/3687944,SIGGRAPH Asia; TOG,2024,Stochastic Normal Orientation for Point Clouds,download_once_by_doi
+10.1145/3687945,SIGGRAPH Asia; TOG,2024,Still-Moving: Customized Video Generation without Customized Video Data,download_once_by_doi
+10.1145/3687946,SIGGRAPH Asia; TOG,2024,Trading Spaces: Adaptive Subspace Time Integration for Contacting Elastodynamics,download_once_by_doi
+10.1145/3687947,SIGGRAPH Asia; TOG,2024,All you need is rotation: Construction of developable strips,download_once_by_doi
+10.1145/3687948,SIGGRAPH Asia; TOG,2024,UFO Instruction Graphs Are Machine Knittable,download_once_by_doi
+10.1145/3687949,SIGGRAPH Asia; TOG,2024,Neural Kernel Regression for Consistent Monte Carlo Denoising,download_once_by_doi
+10.1145/3687950,SIGGRAPH Asia; TOG,2024,Bijective Volumetric Mapping via Star Decomposition,download_once_by_doi
+10.1145/3687951,SIGGRAPH Asia; TOG,2024,MaskedMimic: Unified Physics-Based Character Control Through Masked Motion Inpainting,download_once_by_doi
+10.1145/3687952,SIGGRAPH Asia; TOG,2024,3DGSR: Implicit Surface Reconstruction with 3D Gaussian Splatting,download_once_by_doi
+10.1145/3687953,SIGGRAPH Asia; TOG,2024,"Quark: Real-time, High-resolution, and General Neural View Synthesis",download_once_by_doi
+10.1145/3687954,SIGGRAPH Asia; TOG,2024,Enhancing the Aesthetics of 3D Shapes via Reference-based Editing,download_once_by_doi
+10.1145/3687955,SIGGRAPH Asia; TOG,2024,Skeleton-Driven Inbetweening of Bitmap Character Drawings,download_once_by_doi
+10.1145/3687956,SIGGRAPH Asia; TOG,2024,Surface Reconstruction Using Rotation Systems,download_once_by_doi
+10.1145/3687957,SIGGRAPH Asia; TOG,2024,SGEdit: Bridging LLM with Text2Image Generative Model for Scene Graph-based Image Editing,download_once_by_doi
+10.1145/3687958,SIGGRAPH Asia; TOG,2024,Differentiable Photon Mapping using Generalized Path Gradients,download_once_by_doi
+10.1145/3687959,SIGGRAPH Asia; TOG,2024,Solid-Fluid Interaction on Particle Flow Maps,download_once_by_doi
+10.1145/3687960,SIGGRAPH Asia; TOG,2024,A Time-Dependent Inclusion-Based Method for Continuous Collision Detection between Parametric Surfaces,download_once_by_doi
+10.1145/3687961,SIGGRAPH Asia; TOG,2024,Accelerate Neural Subspace-Based Reduced-Order Solver of Deformable Simulation by Lipschitz Optimization,download_once_by_doi
+10.1145/3687962,SIGGRAPH Asia; TOG,2024,Geometry-Aware Retargeting for Two-Skinned Characters Interaction,download_once_by_doi
+10.1145/3687963,SIGGRAPH Asia; TOG,2024,An Impulse Ghost Fluid Method for Simulating Two-Phase Flows,download_once_by_doi
+10.1145/3687964,SIGGRAPH Asia; TOG,2024,Medial Skeletal Diagram: A Generalized Medial Axis Approach for Compact 3D Shape Representation,download_once_by_doi
+10.1145/3687965,SIGGRAPH Asia; TOG,2024,Dense Server Design for Immersion Cooling,download_once_by_doi
+10.1145/3687966,SIGGRAPH Asia; TOG,2024,Computational Design of a Kit of Parts for Bending Active Structures,download_once_by_doi
+10.1145/3687967,SIGGRAPH Asia; TOG,2024,Tencers: Tension-Constrained Elastic Rods,download_once_by_doi
+10.1145/3687968,SIGGRAPH Asia; TOG,2024,Deformation Recovery: Localized Learning for Detail-Preserving Deformations,download_once_by_doi
+10.1145/3687969,SIGGRAPH Asia; TOG,2024,AR-DAVID: Augmented Reality Display Artifact Video Dataset,download_once_by_doi
+10.1145/3687970,SIGGRAPH Asia; TOG,2024,Fluid Implicit Particles on Coadjoint Orbits,download_once_by_doi
+10.1145/3687971,SIGGRAPH Asia; TOG,2024,StableNormal: Reducing Diffusion Variance for Stable and Sharp Normal,download_once_by_doi
+10.1145/3687972,SIGGRAPH Asia; TOG,2024,C^0 Generalized Coons Patches for High-order Cage-based Deformation,download_once_by_doi
+10.1145/3687973,SIGGRAPH Asia; TOG,2024,MVImgNet2.0: A Larger-scale Dataset of Multi-view Images,download_once_by_doi
+10.1145/3687974,SIGGRAPH Asia; TOG,2024,VOODOO XP: Expressive One-Shot Head Reenactment for VR Telepresence,download_once_by_doi
+10.1145/3687975,SIGGRAPH Asia; TOG,2024,StyleCrafter: Taming Artistic Video Diffusion with Reference-Augmented Adapter Learning,download_once_by_doi
+10.1145/3687976,SIGGRAPH Asia; TOG,2024,Learned Multi-aperture Color-coded Optics for Snapshot Hyperspectral Imaging,download_once_by_doi
+10.1145/3687977,SIGGRAPH Asia; TOG,2024,MV2MV: Multi-View Image Translation via View-Consistent Diffusion Models,download_once_by_doi
+10.1145/3687978,SIGGRAPH Asia; TOG,2024,NFPLight: Deep SVBRDF Estimation via the Combination of Near and Far Field Point Lighting,download_once_by_doi
+10.1145/3687979,SIGGRAPH Asia; TOG,2024,Procedural Material Generation with Reinforcement Learning,download_once_by_doi
+10.1145/3687980,SIGGRAPH Asia; TOG,2024,360-degree Human Video Generation with 4D Diffusion Transformer,download_once_by_doi
+10.1145/3687981,SIGGRAPH Asia; TOG,2024,Content-aware Tile Generation using Exterior Boundary Inpainting,download_once_by_doi
+10.1145/3687982,SIGGRAPH Asia; TOG,2024,Volume Scattering Probability Guiding,download_once_by_doi
+10.1145/3687983,SIGGRAPH Asia; TOG,2024,Appearance Modeling of Iridescent Feathers with Diverse Nanostructures,download_once_by_doi
+10.1145/3687984,SIGGRAPH Asia; TOG,2024,Colorful Diffuse Intrinsic Image Decomposition in the Wild,download_once_by_doi
+10.1145/3687985,SIGGRAPH Asia; TOG,2024,Multi-Resolution Real-Time Deep Pose-Space Deformation,download_once_by_doi
+10.1145/3687986,SIGGRAPH Asia; TOG,2024,A Mesh-based Simulation Framework using Automatic Code Generation,download_once_by_doi
+10.1145/3687987,SIGGRAPH Asia; TOG,2024,A class of new tuned primal subdivision schemes with high-quality limit surface in extraordinary regions,download_once_by_doi
+10.1145/3687988,SIGGRAPH Asia; TOG,2024,Barrier-Augmented Lagrangian for GPU-based Elastodynamic Contact,download_once_by_doi
+10.1145/3687989,SIGGRAPH Asia; TOG,2024,Multi-level Partition of Unity on Differentiable Moving Particles,download_once_by_doi
+10.1145/3687990,SIGGRAPH Asia; TOG,2024,Solving Inverse PDE Problems using Grid-Free Monte Carlo Estimators,download_once_by_doi
+10.1145/3687991,SIGGRAPH Asia; TOG,2024,ELMO: Enhanced Real-time LiDAR Motion Capture through Upsampling,download_once_by_doi
+10.1145/3687992,SIGGRAPH Asia; TOG,2024,A Progressive Embedding Approach to Bijective Tetrahedral Maps driven by Cluster Mesh Topology,download_once_by_doi
+10.1145/3687993,SIGGRAPH Asia; TOG,2024,Gaussian Surfel Splatting for Live Human Performance Capture,download_once_by_doi
+10.1145/3687994,SIGGRAPH Asia; TOG,2024,"HFH-Font: Few-shot Chinese Font Synthesis with Higher Quality, Faster Speed, and Higher Resolution",download_once_by_doi
+10.1145/3687995,SIGGRAPH Asia; TOG,2024,Perspective-Aligned AR Mirror with Under-Display Camera,download_once_by_doi
+10.1145/3687996,SIGGRAPH Asia; TOG,2024,An Eulerian Vortex Method on Flow Maps,download_once_by_doi
+10.1145/3730819,SIGGRAPH; TOG,2025,Correct your balance heuristic: Optimizing balance-style multiple importance sampling weights,download_once_by_doi
+10.1145/3730821,SIGGRAPH; TOG,2025,Sobol' Sequences with Guaranteed-Quality 2D Projections,download_once_by_doi
+10.1145/3730822,SIGGRAPH; TOG,2025,Improving Global Motion Estimation in Sparse IMU-based Motion Capture with Physics,download_once_by_doi
+10.1145/3730824,SIGGRAPH; TOG,2025,Learning to Assemble with Alternative Plans,download_once_by_doi
+10.1145/3730825,SIGGRAPH; TOG,2025,Facial Appearance Capture at Home with Patch-Level Reflectance Prior,download_once_by_doi
+10.1145/3730826,SIGGRAPH; TOG,2025,Fast Subspace Fluid Simulation with a Temporally-Aware Basis,download_once_by_doi
+10.1145/3730828,SIGGRAPH; TOG,2025,A Fully-statistical Wave Scattering Model for Heterogeneous Surfaces,download_once_by_doi
+10.1145/3730829,SIGGRAPH; TOG,2025,A Hybrid Near-wall Model for Kinetic Simulation of Turbulent Boundary Layer Flows,download_once_by_doi
+10.1145/3730834,SIGGRAPH; TOG,2025,Fast But Accurate: A Real-Time Hyperelastic Simulator with Robust Frictional Contact,download_once_by_doi
+10.1145/3730836,SIGGRAPH; TOG,2025,Hand-Shadow Poser,download_once_by_doi
+10.1145/3730840,SIGGRAPH; TOG,2025,BANG: Dividing 3D Assets via Generative Exploded Dynamics,download_once_by_doi
+10.1145/3730841,SIGGRAPH; TOG,2025,CAST: Component-Aligned 3D Scene Reconstruction from an RGB Image,download_once_by_doi
+10.1145/3730842,SIGGRAPH; TOG,2025,HoLa: B-Rep Generation using a Holistic Latent Representation,download_once_by_doi
+10.1145/3730843,SIGGRAPH; TOG,2025,TokenVerse: Versatile Multi-concept Personalization in Token Modulation Space,download_once_by_doi
+10.1145/3730845,SIGGRAPH; TOG,2025,Sphere Carving: Bounding Volumes for Signed Distance Fields,download_once_by_doi
+10.1145/3730847,SIGGRAPH; TOG,2025,Segment-based Light Transport Simulation,download_once_by_doi
+10.1145/3730848,SIGGRAPH; TOG,2025,Creating Fluid-Interactive Virtual Agents by an Efficient Simulator with Local-domain Control,download_once_by_doi
+10.1145/3730851,SIGGRAPH; TOG,2025,TetWeave: Isosurface Extraction using On-The-Fly Delaunay Tetrahedral Grids for Gradient-Based Mesh Optimization,download_once_by_doi
+10.1145/3730853,SIGGRAPH; TOG,2025,Claycode: Stylable and Deformable 2D Scannable Codes,download_once_by_doi
+10.1145/3730854,SIGGRAPH; TOG,2025,Adaptive Phase-Field-FLIP for Very Large Scale Two-Phase Fluid Simulation,download_once_by_doi
+10.1145/3730855,SIGGRAPH; TOG,2025,Practical Inverse Rendering of Textured and Translucent Appearance,download_once_by_doi
+10.1145/3730858,SIGGRAPH; TOG,2025,Order Matters: Learning Element Ordering for Graphic Design Generation,download_once_by_doi
+10.1145/3730862,SIGGRAPH; TOG,2025,Digital Animation of Powder-Snow Avalanches,download_once_by_doi
+10.1145/3730866,SIGGRAPH; TOG,2025,Piecewise Ruled Approximation for Freeform Mesh Surfaces,download_once_by_doi
+10.1145/3730868,SIGGRAPH; TOG,2025,In Search of Empty Spheres: 3D Apollonius Diagrams on GPU,download_once_by_doi
+10.1145/3730872,SIGGRAPH; TOG,2025,A Versatile Quaternion-Based Constrained Rigid Body Dynamics,download_once_by_doi
+10.1145/3730874,SIGGRAPH; TOG,2025,The Mokume Dataset and Inverse Modeling of Solid Wood Textures,download_once_by_doi
+10.1145/3730879,SIGGRAPH; TOG,2025,Streaming-Aware Neural Monte Carlo Rendering Framework with Unified Denoising-Compression and Client Collaboration,download_once_by_doi
+10.1145/3730880,SIGGRAPH; TOG,2025,Designing Pin-pression Gripper and Learning its Dexterous Grasping with Online In-hand Adjustment,download_once_by_doi
+10.1145/3730886,SIGGRAPH; TOG,2025,Closed-form Generalized Winding Numbers of Rational Parametric Curves for Robust Containment Queries,download_once_by_doi
+10.1145/3730887,SIGGRAPH; TOG,2025,Polynomial 2D Biharmonic Coordinates for High-order Cages,download_once_by_doi
+10.1145/3730888,SIGGRAPH; TOG,2025,Asymptotic analysis and design of linear elastic shell lattice metamaterials,download_once_by_doi
+10.1145/3730889,SIGGRAPH; TOG,2025,Field Smoothness-Controlled Partition for Quadrangulation,download_once_by_doi
+10.1145/3730891,SIGGRAPH; TOG,2025,Revisiting Tradition and Beyond: A Customized Bilateral Filtering Framework for Point Cloud Denoising,download_once_by_doi
+10.1145/3730892,SIGGRAPH; TOG,2025,TransparentGS: Fast Inverse Rendering of Transparent Objects with Gaussians,download_once_by_doi
+10.1145/3730899,SIGGRAPH; TOG,2025,Moment Bounds are Differentiable: Efficiently Approximating Measures in Inverse Rendering,download_once_by_doi
+10.1145/3730900,SIGGRAPH; TOG,2025,Differentiable Geometric Acoustic Path Tracing using Time-Resolved Path Replay Backpropagation,download_once_by_doi
+10.1145/3730908,SIGGRAPH; TOG,2025,Boolean Operation for CAD Models Using a Hybrid Representation,download_once_by_doi
+10.1145/3730913,SIGGRAPH; TOG,2025,On-the-fly Reconstruction for Large-Scale Novel View Synthesis from Unposed Images,download_once_by_doi
+10.1145/3730919,SIGGRAPH; TOG,2025,DesignManager: An Agent-Powered Copilot for Designers to Integrate AI Design Tools into Creative Workflows,download_once_by_doi
+10.1145/3730922,SIGGRAPH; TOG,2025,"Neural Co-Optimization of Structural Topology, Manufacturable Layers, and Path Orientations for Fiber-Reinforced Composites",download_once_by_doi
+10.1145/3730923,SIGGRAPH; TOG,2025,A Divide-and-Conquer Approach for Global Orientation of Non-Watertight Scene-Level Point Clouds with 0-1 Integer Optimization,download_once_by_doi
+10.1145/3730925,SIGGRAPH; TOG,2025,When Gaussian Meets Surfel: Ultra-fast High-fidelity Radiance Field Rendering,download_once_by_doi
+10.1145/3730926,SIGGRAPH; TOG,2025,MonetGPT: Solving Puzzles Enhances MLLMs' Image Retouching Skills,download_once_by_doi
+10.1145/3730928,SIGGRAPH; TOG,2025,Multi-Dimensional Procedural Wave Noise,download_once_by_doi
+10.1145/3730929,SIGGRAPH; TOG,2025,"Tiny is not small enough: High quality, low-resource facial animation models through hybrid knowledge distillation",download_once_by_doi
+10.1145/3730930,SIGGRAPH; TOG,2025,One Model to Rig Them All: Diverse Skeleton Rigging with UniRig,download_once_by_doi
+10.1145/3730933,SIGGRAPH; TOG,2025,C-Tubes: Design and Optimization of Tubular Structures Composed of Developable Strips,download_once_by_doi
+10.1145/3730935,SIGGRAPH; TOG,2025,WishGI: Lightweight Static Global Illumination Baking via Spherical Harmonics Fitting,download_once_by_doi
+10.1145/3730937,SIGGRAPH; TOG,2025,Transformer IMU Calibrator: Dynamic On-body IMU Calibration for Inertial Motion Capture,download_once_by_doi
+10.1145/3730940,SIGGRAPH; TOG,2025,HexHex: Highspeed Extraction of Hexahedral Meshes,download_once_by_doi
+10.1145/3730942,SIGGRAPH; TOG,2025,Conformal First Passage for Epsilon-free Walk-on-Spheres,download_once_by_doi
+10.1145/3730943,SIGGRAPH; TOG,2025,NAM: Neural Adjoint Maps for refining shape correspondences,download_once_by_doi
+10.1145/3730944,SIGGRAPH; TOG,2025,Painless Differentiable Rotation Dynamics,download_once_by_doi
+10.1145/3731142,SIGGRAPH; TOG,2025,Geometric Contact Potential,download_once_by_doi
+10.1145/3731143,SIGGRAPH; TOG,2025,Single Edge Collapse Quad-Dominant Mesh Reduction,download_once_by_doi
+10.1145/3731144,SIGGRAPH; TOG,2025,Multiple Importance Reweighting for Path Guiding,download_once_by_doi
+10.1145/3731145,SIGGRAPH; TOG,2025,Bernstein Bounds for Caustics,download_once_by_doi
+10.1145/3731146,SIGGRAPH; TOG,2025,Quadric-Based Silhouette Sampling for Differentiable Rendering,download_once_by_doi
+10.1145/3731147,SIGGRAPH; TOG,2025,Linear-Time Transport with Rectified Flows,download_once_by_doi
+10.1145/3731148,SIGGRAPH; TOG,2025,Shape Space Spectra,download_once_by_doi
+10.1145/3731149,SIGGRAPH; TOG,2025,RigAnything: Template-Free Autoregressive Rigging for Diverse 3D Assets,download_once_by_doi
+10.1145/3731150,SIGGRAPH; TOG,2025,A Monte Carlo Rendering Framework for Simulating Optical Heterodyne Detection,download_once_by_doi
+10.1145/3731151,SIGGRAPH; TOG,2025,C <sup>5</sup> D: Sequential Continuous Convex Collision Detection Using Cone Casting,download_once_by_doi
+10.1145/3731152,SIGGRAPH; TOG,2025,Solving partial differential equations in participating media,download_once_by_doi
+10.1145/3731154,SIGGRAPH; TOG,2025,VR-Doh: Hands-on 3D Modeling in Virtual Reality,download_once_by_doi
+10.1145/3731155,SIGGRAPH; TOG,2025,CK-MPM: A Compact-Kernel Material Point Method,download_once_by_doi
+10.1145/3731157,SIGGRAPH; TOG,2025,Topological Offsets,download_once_by_doi
+10.1145/3731158,SIGGRAPH; TOG,2025,AlignTex: Pixel-Precise Texture Generation from Multi-view Artwork,download_once_by_doi
+10.1145/3731159,SIGGRAPH; TOG,2025,NeurCross: A Neural Approach to Computing Cross Fields for Quad Mesh Generation,download_once_by_doi
+10.1145/3731160,SIGGRAPH; TOG,2025,Generating Past and Future in Digital Painting Processes,download_once_by_doi
+10.1145/3731161,SIGGRAPH; TOG,2025,Stochastic Preconditioning for Neural Field Optimization,download_once_by_doi
+10.1145/3731162,SIGGRAPH; TOG,2025,Dynamic Mesh Processing on the GPU,download_once_by_doi
+10.1145/3731163,SIGGRAPH; TOG,2025,Gaussian Wave Splatting for Computer-Generated Holography,download_once_by_doi
+10.1145/3731164,SIGGRAPH; TOG,2025,GenAnalysis: Joint Shape Analysis by Learning Man-Made Shape Generators with Deformation Regularizations,download_once_by_doi
+10.1145/3731165,SIGGRAPH; TOG,2025,Interspatial Attention for Efficient 4D Human Video Generation,download_once_by_doi
+10.1145/3731166,SIGGRAPH; TOG,2025,DeFillet: Detection and Removal of Fillet Regions in Polygonal CAD Models,download_once_by_doi
+10.1145/3731167,SIGGRAPH; TOG,2025,Sketch2Anim: Towards Transferring Sketch Storyboards into 3D Animation,download_once_by_doi
+10.1145/3731168,SIGGRAPH; TOG,2025,Transforming Unstructured Hair Strands into Procedural Hair Grooms,download_once_by_doi
+10.1145/3731170,SIGGRAPH; TOG,2025,Controllable Complex Freezing Dynamics Simulation on Thin Films,download_once_by_doi
+10.1145/3731172,SIGGRAPH; TOG,2025,MyTimeMachine: Personalized Facial Age Transformation,download_once_by_doi
+10.1145/3731173,SIGGRAPH; TOG,2025,IntrinsicEdit: Precise generative image manipulation in intrinsic space,download_once_by_doi
+10.1145/3731174,SIGGRAPH; TOG,2025,Unbiased Differential Visibility Using Fixed-Step Walk-on-Spherical-Caps And Closest Silhouettes,download_once_by_doi
+10.1145/3731175,SIGGRAPH; TOG,2025,Vector-Valued Monte Carlo Integration Using Ratio Control Variates,download_once_by_doi
+10.1145/3731176,SIGGRAPH; TOG,2025,Rectangular Surface Parameterization,download_once_by_doi
+10.1145/3731177,SIGGRAPH; TOG,2025,Dress-1-to-3: Single Image to Simulation-Ready 3D Outfit with Diffusion Prior and Differentiable Physics,download_once_by_doi
+10.1145/3731178,SIGGRAPH; TOG,2025,Predicting Fabric Appearance Through Thread Scattering and Inversion,download_once_by_doi
+10.1145/3731179,SIGGRAPH; TOG,2025,Adaptive Algebraic Reuse of Reordering in Cholesky Factorizations with Dynamic Sparsity Patterns,download_once_by_doi
+10.1145/3731180,SIGGRAPH; TOG,2025,Leapfrog Flow Maps for Real-Time Fluid Simulation,download_once_by_doi
+10.1145/3731181,SIGGRAPH; TOG,2025,Designing 3D Anisotropic Frame Fields with Odeco Tensors,download_once_by_doi
+10.1145/3731182,SIGGRAPH; TOG,2025,High-performance CPU Cloth Simulation Using Domain-decomposed Projective Dynamics,download_once_by_doi
+10.1145/3731183,SIGGRAPH; TOG,2025,JGS2: Near Second-order Converging Jacobi/Gauss-Seidel for GPU Elastodynamics,download_once_by_doi
+10.1145/3731184,SIGGRAPH; TOG,2025,Real-Time Knit Deformation and Rendering,download_once_by_doi
+10.1145/3731186,SIGGRAPH; TOG,2025,UltraMeshRenderer: Efficient Structure and Management of GPU Out-of-core Memory for Real-time Rendering of Gigantic 3D Meshes,download_once_by_doi
+10.1145/3731187,SIGGRAPH; TOG,2025,Inverse Geometric Locomotion,download_once_by_doi
+10.1145/3731189,SIGGRAPH; TOG,2025,4D Gaussian Videos with Motion Layering,download_once_by_doi
+10.1145/3731190,SIGGRAPH; TOG,2025,Cirrus: Adaptive Hybrid Particle-Grid Flow Maps on GPU,download_once_by_doi
+10.1145/3731191,SIGGRAPH; TOG,2025,Variational Surface Reconstruction Using Natural Neighbors,download_once_by_doi
+10.1145/3731192,SIGGRAPH; TOG,2025,Fluid Simulation on Compressible Flow Maps,download_once_by_doi
+10.1145/3731193,SIGGRAPH; TOG,2025,EDGE: Epsilon-Difference Gradient Evolution for Buffer-Free Flow Maps,download_once_by_doi
+10.1145/3731194,SIGGRAPH; TOG,2025,Clebsch Gauge Fluid on Particle Flow Maps,download_once_by_doi
+10.1145/3731195,SIGGRAPH; TOG,2025,Augmented Vertex Block Descent,download_once_by_doi
+10.1145/3731196,SIGGRAPH; TOG,2025,Lightning-fast Boundary Element Method,download_once_by_doi
+10.1145/3731197,SIGGRAPH; TOG,2025,Discrete Torsion of Connection Forms on Simplicial Meshes,download_once_by_doi
+10.1145/3731198,SIGGRAPH; TOG,2025,Fluid Simulation on Vortex Particle Flow Maps,download_once_by_doi
+10.1145/3731199,SIGGRAPH; TOG,2025,MaterialPicker: Multi-Modal DiT-Based Material Generation,download_once_by_doi
+10.1145/3731200,SIGGRAPH; TOG,2025,Collaborative On-Sensor Array Cameras,download_once_by_doi
+10.1145/3731201,SIGGRAPH; TOG,2025,Arenite: A Physics-based Sandstone Simulator,download_once_by_doi
+10.1145/3731202,SIGGRAPH; TOG,2025,"Progressive Dynamics++: A Framework for Stable, Continuous, and Consistent Animation Across Resolution and Time",download_once_by_doi
+10.1145/3731203,SIGGRAPH; TOG,2025,Putting Rigid Bodies to Rest,download_once_by_doi
+10.1145/3731204,SIGGRAPH; TOG,2025,Optimal r-Adaptive In-Timestep Remeshing for Elastodynamics,download_once_by_doi
+10.1145/3731205,SIGGRAPH; TOG,2025,Offset Geometric Contact,download_once_by_doi
+10.1145/3731206,SIGGRAPH; TOG,2025,Diffuse-CLoC: Guided Diffusion for Physics-based Character Look-ahead Control,download_once_by_doi
+10.1145/3731207,SIGGRAPH; TOG,2025,MiSo: A DSL for Robust and Efficient Solve and MInimize Problems,download_once_by_doi
+10.1145/3731208,SIGGRAPH; TOG,2025,ANIME-Rod: Adjustable Nonlinear Isotropic Materials for Elastic Rods,download_once_by_doi
+10.1145/3731209,SIGGRAPH; TOG,2025,MoVer: Motion Verification for Motion Graphics Animations,download_once_by_doi
+10.1145/3731210,SIGGRAPH; TOG,2025,IMLS-Splatting: Efficient Mesh Reconstruction from Multi-view Images via Point Representation,download_once_by_doi
+10.1145/3731211,SIGGRAPH; TOG,2025,3DGH: 3D Head Generation with Composable Hair and Face,download_once_by_doi
+10.1145/3731212,SIGGRAPH; TOG,2025,Faraday Cage Estimation of Normals for Point Clouds and Ribbon Sketches,download_once_by_doi
+10.1145/3731213,SIGGRAPH; TOG,2025,QUASAR: Quad-based Adaptive Streaming And Rendering,download_once_by_doi
+10.1145/3731214,SIGGRAPH; TOG,2025,Echoes of the Coliseum: Towards 3D Live streaming of Sports Events,download_once_by_doi
+10.1145/3731216,SIGGRAPH; TOG,2025,Feature-Aligned Parametrization in Penner Coordinates,download_once_by_doi
+10.1145/3731421,SIGGRAPH; TOG,2025,Variational Green and Biharmonic Coordinates for 2D Polynomial Cages,download_once_by_doi
+10.1145/3731422,SIGGRAPH; TOG,2025,Meschers: Geometry Processing of Impossible Objects,download_once_by_doi
+10.1145/3731423,SIGGRAPH; TOG,2025,Hybrid Tours: A Clip-based System for Authoring Long-take Touring Shots,download_once_by_doi
+10.1145/3731424,SIGGRAPH; TOG,2025,ViSA: Physics-based Virtual Stunt Actors for Ballistic Stunts,download_once_by_doi
+10.1145/3731425,SIGGRAPH; TOG,2025,PhysicsFC: Learning User-Controlled Skills for a Physics-Based Football Player Controller,download_once_by_doi
+10.1145/3731426,SIGGRAPH; TOG,2025,A Deep Learning-based Virtual Oculoplastic Surgery Simulator,download_once_by_doi
+10.1145/3731427,SIGGRAPH; TOG,2025,Instant Self-Intersection Repair for 3D Meshes,download_once_by_doi
+10.1145/3731428,SIGGRAPH; TOG,2025,Variable Shared Template for Consistent Non-rigid ICP,download_once_by_doi
+10.1145/3731429,SIGGRAPH; TOG,2025,Light Pipe Holographic Display: Bandwidth-preserved Kaleidoscopic Guiding for AR Glasses,download_once_by_doi
+10.1145/3731430,SIGGRAPH; TOG,2025,FLoD: Integrating Flexible Level of Detail into 3D Gaussian Splatting for Customizable Rendering,download_once_by_doi
+10.1145/3763270,SIGGRAPH Asia; TOG,2025,RL-ACD: Reinforcement Learning-based Approximate Convex Decomposition,download_once_by_doi
+10.1145/3763271,SIGGRAPH Asia; TOG,2025,GarmageNet: A Multimodal Generative Framework for Sewing Pattern Design and Generic Garment Modeling,download_once_by_doi
+10.1145/3763272,SIGGRAPH Asia; TOG,2025,"SZ Sequences: Binary-Based (0, 2 <i> <sup>q</sup> </i> )-Sequences",download_once_by_doi
+10.1145/3763273,SIGGRAPH Asia; TOG,2025,Jackknife Transmittance and MIS Weight Estimation,download_once_by_doi
+10.1145/3763274,SIGGRAPH Asia; TOG,2025,Computational Modeling and Design of Capacitive Stretch Sensors,download_once_by_doi
+10.1145/3763275,SIGGRAPH Asia; TOG,2025,Designing and Fabricating Color BRDFs with Differentiable Wave Optics,download_once_by_doi
+10.1145/3763276,SIGGRAPH Asia; TOG,2025,Frame-Free Representation of Polarized Light for Resolving Stokes Vector Singularities,download_once_by_doi
+10.1145/3763277,SIGGRAPH Asia; TOG,2025,Simplifying Textured Triangle Meshes in the Wild,download_once_by_doi
+10.1145/3763278,SIGGRAPH Asia; TOG,2025,Fovea Stacking: Imaging with Dynamic Localized Aberration Correction,download_once_by_doi
+10.1145/3763279,SIGGRAPH Asia; TOG,2025,The Granule-In-Cell Method for Simulating Sand–Water Mixtures,download_once_by_doi
+10.1145/3763280,SIGGRAPH Asia; TOG,2025,From Rigging to Waving: 3D-Guided Diffusion for Natural Animation of Hand-Drawn Characters,download_once_by_doi
+10.1145/3763281,SIGGRAPH Asia; TOG,2025,BSP-OT: Sparse transport plans between discrete measures in loglinear time,download_once_by_doi
+10.1145/3763282,SIGGRAPH Asia; TOG,2025,Evaluating and Sampling Glinty NDFs in Constant Time,download_once_by_doi
+10.1145/3763283,SIGGRAPH Asia; TOG,2025,A Highly-Efficient Hybrid Simulation System for Flight Controller Design and Evaluation of Unmanned Aerial Vehicles,download_once_by_doi
+10.1145/3763284,SIGGRAPH Asia; TOG,2025,NURBS-Based Grid Shell Form Finding on Domains with Topologically Arbitrary Boundaries,download_once_by_doi
+10.1145/3763285,SIGGRAPH Asia; TOG,2025,LEGO®-Maker: Autoregressive Image-Conditioned LEGO® Model Creation,download_once_by_doi
+10.1145/3763286,SIGGRAPH Asia; TOG,2025,Jump Restore Light Transport,download_once_by_doi
+10.1145/3763287,SIGGRAPH Asia; TOG,2025,Acoustic Reliefs,download_once_by_doi
+10.1145/3763288,SIGGRAPH Asia; TOG,2025,Kinetic Free-Surface Flows and Foams with Sharp Interfaces,download_once_by_doi
+10.1145/3763289,SIGGRAPH Asia; TOG,2025,Underwater Optical Backscatter Communication using Acousto-Optic Beam Steering,download_once_by_doi
+10.1145/3763290,SIGGRAPH Asia; TOG,2025,One-shot Embroidery Customization via Contrastive LoRA Modulation,download_once_by_doi
+10.1145/3763291,SIGGRAPH Asia; TOG,2025,Automatic Sampling for Discontinuities in Differentiable Shaders,download_once_by_doi
+10.1145/3763292,SIGGRAPH Asia; TOG,2025,Aerial Path Planning for Urban Geometry and Texture Co-Capture,download_once_by_doi
+10.1145/3763293,SIGGRAPH Asia; TOG,2025,Scattering-Aware Color Calibration for 3D Printers Using a Simple Calibration Target,download_once_by_doi
+10.1145/3763294,SIGGRAPH Asia; TOG,2025,Modeling and Exploiting the Time Course of Chromatic Adaptation for Display Power Optimizations in Virtual Reality,download_once_by_doi
+10.1145/3763295,SIGGRAPH Asia; TOG,2025,Auto Hair Card Extraction for Smooth Hair with Differentiable Rendering,download_once_by_doi
+10.1145/3763296,SIGGRAPH Asia; TOG,2025,Closed-Form Construction of Voronoi Diagrams with Star-Shaped Metrics,download_once_by_doi
+10.1145/3763297,SIGGRAPH Asia; TOG,2025,Generalized Unbiased Reconstruction for Gradient-Domain Rendering,download_once_by_doi
+10.1145/3763298,SIGGRAPH Asia; TOG,2025,PoissonNet: A Local-Global Approach for Learning on Surfaces,download_once_by_doi
+10.1145/3763299,SIGGRAPH Asia; TOG,2025,CrossGen: Learning and Generating Cross Fields for Quad Meshing,download_once_by_doi
+10.1145/3763300,SIGGRAPH Asia; TOG,2025,Generative Head-Mounted Camera Captures for Photorealistic Avatars,download_once_by_doi
+10.1145/3763301,SIGGRAPH Asia; TOG,2025,Example-Based Feature Painting on Textures,download_once_by_doi
+10.1145/3763302,SIGGRAPH Asia; TOG,2025,SS4D: Native 4D Generative Model via Structured Spacetime Latents,download_once_by_doi
+10.1145/3763303,SIGGRAPH Asia; TOG,2025,ConsiStyle: Style Diversity in Training-Free Consistent T2I Generation,download_once_by_doi
+10.1145/3763304,SIGGRAPH Asia; TOG,2025,MiGumi: Making Tightly Coupled Integral Joints Millable,download_once_by_doi
+10.1145/3763305,SIGGRAPH Asia; TOG,2025,Differentiable Light Transport with Gaussian Surfels via Adapted Radiosity for Efficient Relighting and Geometry Reconstruction,download_once_by_doi
+10.1145/3763306,SIGGRAPH Asia; TOG,2025,"Generating the Past, Present and Future from a Motion-Blurred Image",download_once_by_doi
+10.1145/3763307,SIGGRAPH Asia; TOG,2025,KISSColor: Kinetic and Intuitive Stroke Stretching for Vector Drawing Colorization,download_once_by_doi
+10.1145/3763308,SIGGRAPH Asia; TOG,2025,Overlap Region Extraction of Two NURBS Surfaces,download_once_by_doi
+10.1145/3763309,SIGGRAPH Asia; TOG,2025,SMF: Template-free and Rig-free Animation Transfer using Kinetic Codes,download_once_by_doi
+10.1145/3763310,SIGGRAPH Asia; TOG,2025,Force-Dual Modes: Subspace Design from Stochastic Forces,download_once_by_doi
+10.1145/3763311,SIGGRAPH Asia; TOG,2025,Shape-aware Inertial Poser: Motion Tracking for Humans with Diverse Shapes Using Sparse Inertial Sensors,download_once_by_doi
+10.1145/3763312,SIGGRAPH Asia; TOG,2025,DiffTex: Differentiable Texturing for Architectural Proxy Models,download_once_by_doi
+10.1145/3763313,SIGGRAPH Asia; TOG,2025,Waste-to-Value: Reutilized Material Maximization for Additive and Subtractive Hybrid Remanufacturing,download_once_by_doi
+10.1145/3763314,SIGGRAPH Asia; TOG,2025,Chapper: Carvable Hull-and-Pack for Subtractive Manufacturing,download_once_by_doi
+10.1145/3763315,SIGGRAPH Asia; TOG,2025,DSCombiner: Double Shrinkage for Combining Biased and Unbiased Monte Carlo Renderings,download_once_by_doi
+10.1145/3763316,SIGGRAPH Asia; TOG,2025,G <sup>2</sup> Interpolating Spline with Local Maximum Curvature,download_once_by_doi
+10.1145/3763317,SIGGRAPH Asia; TOG,2025,WATER: Watertight Tessellation for Real-Time Pixel-Accurate Rendering of Large-Scale Surfaces,download_once_by_doi
+10.1145/3763318,SIGGRAPH Asia; TOG,2025,CFC: Simulating Character-Fluid Coupling using a Two-Level World Model,download_once_by_doi
+10.1145/3763319,SIGGRAPH Asia; TOG,2025,Control Operators for Interactive Character Animation,download_once_by_doi
+10.1145/3763320,SIGGRAPH Asia; TOG,2025,Viscous Vortex Dynamics on Surfaces,download_once_by_doi
+10.1145/3763321,SIGGRAPH Asia; TOG,2025,Gaussian Integral Linear Operators for Precomputed Graphics,download_once_by_doi
+10.1145/3763322,SIGGRAPH Asia; TOG,2025,Harmonic Caching for Walk on Spheres,download_once_by_doi
+10.1145/3763323,SIGGRAPH Asia; TOG,2025,BrepGPT: Autoregressive B-rep Generation with Voronoi Half-Patch,download_once_by_doi
+10.1145/3763324,SIGGRAPH Asia; TOG,2025,Sparse SVBRDF Acquisition via Importance-Aware Illumination Multiplexing,download_once_by_doi
+10.1145/3763325,SIGGRAPH Asia; TOG,2025,Implicit Incompressible Porous Flow using SPH,download_once_by_doi
+10.1145/3763326,SIGGRAPH Asia; TOG,2025,AnySplat: Feed-forward 3D Gaussian Splatting from Unconstrained Views,download_once_by_doi
+10.1145/3763327,SIGGRAPH Asia; TOG,2025,Fast Galerkin Multigrid Method for Unstructured Meshes,download_once_by_doi
+10.1145/3763328,SIGGRAPH Asia; TOG,2025,Marching Neurons: Accurate Surface Extraction for Neural Implicit Shapes,download_once_by_doi
+10.1145/3763329,SIGGRAPH Asia; TOG,2025,Practical Gaussian Process Implicit Surfaces with Sparse Convolutions,download_once_by_doi
+10.1145/3763330,SIGGRAPH Asia; TOG,2025,Voyager: Long-Range and World-Consistent Video Diffusion for Explorable 3D Scene Generation,download_once_by_doi
+10.1145/3763331,SIGGRAPH Asia; TOG,2025,NeuVAS: Neural Implicit Surfaces for Variational Shape Modeling,download_once_by_doi
+10.1145/3763332,SIGGRAPH Asia; TOG,2025,Fine-Grained Spatially Varying Material Selection in Images,download_once_by_doi
+10.1145/3763333,SIGGRAPH Asia; TOG,2025,Robust Derivative Estimation with Walk on Stars,download_once_by_doi
+10.1145/3763334,SIGGRAPH Asia; TOG,2025,Environment-aware Motion Matching,download_once_by_doi
+10.1145/3763335,SIGGRAPH Asia; TOG,2025,Imperfect Image-Space Control Variates for Monte Carlo Rendering,download_once_by_doi
+10.1145/3763336,SIGGRAPH Asia; TOG,2025,Detail Enhanced Gaussian Splatting for Large-Scale Volumetric Capture,download_once_by_doi
+10.1145/3763337,SIGGRAPH Asia; TOG,2025,"HRC-Net: Learning Visual Hypothesis, Representative, and Collaboration for Multi-Domain Image Inpainting",download_once_by_doi
+10.1145/3763338,SIGGRAPH Asia; TOG,2025,Fire-X: Extinguishing Fire with Stoichiometric Heat Release,download_once_by_doi
+10.1145/3763339,SIGGRAPH Asia; TOG,2025,MILo: Mesh-In-the-Loop Gaussian Splatting for Detailed and Efficient Surface Reconstruction,download_once_by_doi
+10.1145/3763340,SIGGRAPH Asia; TOG,2025,MILO: A Lightweight Perceptual Quality Metric for Image and Latent-Space Optimization,download_once_by_doi
+10.1145/3763341,SIGGRAPH Asia; TOG,2025,MALeR: Improving Compositional Fidelity in Layout-Guided Generation,download_once_by_doi
+10.1145/3763342,SIGGRAPH Asia; TOG,2025,PractiLight: Practical Light Control Using Foundational Diffusion Models,download_once_by_doi
+10.1145/3763343,SIGGRAPH Asia; TOG,2025,Split4D: Decomposed 4D Scene Reconstruction Without Video Segmentation,download_once_by_doi
+10.1145/3763344,SIGGRAPH Asia; TOG,2025,Numerical Homogenization of Sand from Grain-level Simulations,download_once_by_doi
+10.1145/3763345,SIGGRAPH Asia; TOG,2025,Neural Image abstraction using long smoothing B-splines,download_once_by_doi
+10.1145/3763346,SIGGRAPH Asia; TOG,2025,Harnessing Diffusion-Yielded Score Priors for Image Restoration,download_once_by_doi
+10.1145/3763347,SIGGRAPH Asia; TOG,2025,JumpingGS: Level-jump 3D Gaussian Representation for Delicate Textures in Aerial Large-scale Scene Rendering,download_once_by_doi
+10.1145/3763348,SIGGRAPH Asia; TOG,2025,"Lightweight, Edge-Aware, and Temporally Consistent Supersampling for Mobile Real-Time Rendering",download_once_by_doi
+10.1145/3763349,SIGGRAPH Asia; TOG,2025,A Stack-Free Parallel h-Adaptation Algorithm for Dynamically Balanced Trees on GPUs,download_once_by_doi
+10.1145/3763350,SIGGRAPH Asia; TOG,2025,STGlight: Online Indoor Lighting Estimation via Spatio-Temporal Gaussian Fusion,download_once_by_doi
+10.1145/3763351,SIGGRAPH Asia; TOG,2025,Ultrafast and Controllable Online Motion Retargeting for Game Scenarios,download_once_by_doi
+10.1145/3763352,SIGGRAPH Asia; TOG,2025,Curve-Based Slicer for Multi-Axis DLP 3D Printing,download_once_by_doi
+10.1145/3763353,SIGGRAPH Asia; TOG,2025,Imaginarium: Vision-guided High-Quality 3D Scene Layout Generation,download_once_by_doi
+10.1145/3763354,SIGGRAPH Asia; TOG,2025,INF-3DP: Implicit Neural Fields for Collision-Free Multi-Axis 3D Printing,download_once_by_doi
+10.1145/3763355,SIGGRAPH Asia; TOG,2025,Can Any Model Be Fabricated? Inverse Operation Based Planning for Hybrid Additive-Subtractive Manufacturing,download_once_by_doi
+10.1145/3763356,SIGGRAPH Asia; TOG,2025,Glare Pattern Depiction: High-Fidelity Physical Computation and Physiologically-Inspired Visual Response,download_once_by_doi
+10.1145/3763357,SIGGRAPH Asia; TOG,2025,One String to Pull Them All: Fast Assembly of Curved Structures from Flat Auxetic Linkages,download_once_by_doi
+10.1145/3763358,SIGGRAPH Asia; TOG,2025,Large-Area Fabrication-aware Computational Diffractive Optics,download_once_by_doi
+10.1145/3763359,SIGGRAPH Asia; TOG,2025,Realistic Cloth Rendering with a Ray-Wave Hybrid Shading Model,download_once_by_doi
+10.1145/3763360,SIGGRAPH Asia; TOG,2025,Lifted Surfacing of Generalized Sweep Volumes,download_once_by_doi
+10.1145/3763361,SIGGRAPH Asia; TOG,2025,Artifact-Resilient Real-Time Holography,download_once_by_doi
+10.1145/3763362,SIGGRAPH Asia; TOG,2025,Neural Octahedral Field: Octahedral Prior for Simultaneous Smoothing and Sharp Edge Regularization,download_once_by_doi
+10.1145/3763363,SIGGRAPH Asia; TOG,2025,Consecutive Frame Extrapolation with Predictive Sparse Shading,download_once_by_doi
+10.1145/3763364,SIGGRAPH Asia; TOG,2025,Wavelet Fluids,download_once_by_doi
+10.1145/3763365,SIGGRAPH Asia; TOG,2025,Shaping Strands with Neural Style Transfer,download_once_by_doi
+10.1145/3763366,SIGGRAPH Asia; TOG,2025,Curvature Enthusiasm: Correspondence-Free Interpolation and Matching of Articulated 3D Shapes using Compressed Normal Cycles,download_once_by_doi
+10.1145/3763367,SIGGRAPH Asia; TOG,2025,Learning to Ball: Composing Policies for Long-Horizon Basketball Moves,download_once_by_doi
+10.1145/3763368,SIGGRAPH Asia; TOG,2025,Sums of Wedges: Conforming Weighted Delaunay Triangulations are Polynomial in Fixed Dimension,download_once_by_doi
+10.1145/3763808,SIGGRAPH Asia; TOG,2025,Snapping Deployable Toroids for Modular Gridshells,download_once_by_doi
+10.1145/3811271,SIGGRAPH; TOG,2026,Manifold k-NN: Accelerated k-NN Queries for Manifold Point Clouds,download_once_by_doi
+10.1145/3811272,SIGGRAPH; TOG,2026,Gaussian Point Splatting,download_once_by_doi
+10.1145/3811273,SIGGRAPH; TOG,2026,Low-Rank Koopman Deformables with Log-Linear Time Integration,download_once_by_doi
+10.1145/3811274,SIGGRAPH; TOG,2026,JGS2-GQ: Training-free 2nd Jacobi with Gaussian Quadrature,download_once_by_doi
+10.1145/3811275,SIGGRAPH; TOG,2026,Heterogeneous Subspace Corrections for GPU Deformable Multibody Dynamics,download_once_by_doi
+10.1145/3811276,SIGGRAPH; TOG,2026,"M-ABD: Scalable, Efficient, and Robust Multi-Affine-Body Dynamics",download_once_by_doi
+10.1145/3811277,SIGGRAPH; TOG,2026,Interactive Yarn-level Knitwear with Nested Douglas-Rachford Splitting,download_once_by_doi
+10.1145/3811278,SIGGRAPH; TOG,2026,Efficient B-Spline Finite Elements for Cloth Simulation,download_once_by_doi
+10.1145/3811279,SIGGRAPH; TOG,2026,Component Modes Synthesis Method with Multiple Partitions for Large-scale Eigenvalue Problem,download_once_by_doi
+10.1145/3811280,SIGGRAPH; TOG,2026,Uncertainty-aware geometry processing on Gaussian Process Implicit Surfaces,download_once_by_doi
+10.1145/3811281,SIGGRAPH; TOG,2026,GenPIE: A Time-Resolved Plenoptic Imager,download_once_by_doi
+10.1145/3811282,SIGGRAPH; TOG,2026,SMP: Reusable Score-Matching Motion Priors for Physics-Based Character Control,download_once_by_doi
+10.1145/3811283,SIGGRAPH; TOG,2026,NILE: Nested Interleaving of Low-Dimensional Elements,download_once_by_doi
+10.1145/3811284,SIGGRAPH; TOG,2026,Autoregressive Diffusion with Hybrid Representation for Interactive Human Motion Generation,download_once_by_doi
+10.1145/3811285,SIGGRAPH; TOG,2026,ComboStoc: Combinatorial Stochasticity for Diffusion Generative Models,download_once_by_doi
+10.1145/3811286,SIGGRAPH; TOG,2026,Strips as Tokens: Artist Mesh Generation with Native UV Segmentation,download_once_by_doi
+10.1145/3811287,SIGGRAPH; TOG,2026,GPU-accelerated Certified Hausdorff Distance Between Triangle Meshes,download_once_by_doi
+10.1145/3811288,SIGGRAPH; TOG,2026,Pixels2Peaks: Converting Terrain Images to Heightmaps,download_once_by_doi
+10.1145/3811289,SIGGRAPH; TOG,2026,Spatiotemporal FLIP for Fast Free-Surface and Two-Phase Simulation With Very Large Time Steps,download_once_by_doi
+10.1145/3811290,SIGGRAPH; TOG,2026,An Extended Full GKS Formulation for High-Efficiency and Low-Memory Two-Phase Flow Simulation,download_once_by_doi
+10.1145/3811291,SIGGRAPH; TOG,2026,Structural MAT: Clean and Scalable Medial Axis Simplification via Explicit Surface Correspondence,download_once_by_doi
+10.1145/3811292,SIGGRAPH; TOG,2026,Kinetic Predicted-Moment Flux Reconstruction for High-Order High-Performance Fluid Simulation,download_once_by_doi
+10.1145/3811293,SIGGRAPH; TOG,2026,GimmBO: Interactive Generative Image Model Merging via Bayesian Optimization,download_once_by_doi
+10.1145/3811294,SIGGRAPH; TOG,2026,MPM Lite: Linear Kernels and Integration without Particles,download_once_by_doi
+10.1145/3811295,SIGGRAPH; TOG,2026,Gradient Domain Reconstruction for Monte Carlo PDE Solvers,download_once_by_doi
+10.1145/3811296,SIGGRAPH; TOG,2026,Differentiable Neutron Transport,download_once_by_doi
+10.1145/3811297,SIGGRAPH; TOG,2026,AniGen: Unified S <sup>3</sup> Fields for Animatable 3D Asset Generation,download_once_by_doi
+10.1145/3811298,SIGGRAPH; TOG,2026,Implicit Surface Compression -- with Good Old Discrete Cosine Transform and Motion Compensation,download_once_by_doi
+10.1145/3811299,SIGGRAPH; TOG,2026,ToF ReSTIR: Time-of-Flight Rendering with Spatio-temporal Reservoir Resampling,download_once_by_doi
+10.1145/3811300,SIGGRAPH; TOG,2026,PR-Cage: Progressive Feasibility Relaxation for Tight Bounding Cage Generation,download_once_by_doi
+10.1145/3811301,SIGGRAPH; TOG,2026,A Unified Homogenization Framework for Straight- and Curved-Crease Origami Materials,download_once_by_doi
+10.1145/3811302,SIGGRAPH; TOG,2026,Volume-Preserving LBM-MPM Coupling for Air-Water-Sand Mixtures,download_once_by_doi
+10.1145/3811303,SIGGRAPH; TOG,2026,Learning a Delighting Prior for Facial Appearance Capture in the Wild,download_once_by_doi
+10.1145/3811304,SIGGRAPH; TOG,2026,UniVidX: A Unified Multimodal Framework for Versatile Video Generation via Diffusion Priors,download_once_by_doi
+10.1145/3811305,SIGGRAPH; TOG,2026,High-Fidelity 4D Cloth Capture Pipeline with a Two-Level Pattern,download_once_by_doi
+10.1145/3811306,SIGGRAPH; TOG,2026,ATGS: Anchored Temporal Gaussian Splatting for Long Volumetric Video Representation,download_once_by_doi
+10.1145/3811307,SIGGRAPH; TOG,2026,Learned Universal Interoperable Virtual Try-ON,download_once_by_doi
+10.1145/3811308,SIGGRAPH; TOG,2026,MOCHI: Motion Enhancement of Collaborative Human-object Interactions,download_once_by_doi
+10.1145/3811309,SIGGRAPH; TOG,2026,Matérn Noise for Triangulation-Agnostic Flow Matching on Meshes,download_once_by_doi
+10.1145/3811310,SIGGRAPH; TOG,2026,Floating-Point Robustness in Parametric Surface Continuous Collision Detection: From Algorithm to Benchmarking,download_once_by_doi
+10.1145/3811311,SIGGRAPH; TOG,2026,Bounding Stratified Bernoulli Impulses for Ray Marching Gaussian Process Implicit Surfaces,download_once_by_doi
+10.1145/3811312,SIGGRAPH; TOG,2026,Mixwell: Sharp 2D Fluid Brushes for Progressive Physics-Based Mixing,download_once_by_doi
+10.1145/3811313,SIGGRAPH; TOG,2026,Semantic-Structural Alignment for Generative Pictorial Charts,download_once_by_doi
+10.1145/3811314,SIGGRAPH; TOG,2026,Schrödinger Bridges on Discretized Geometric Domains,download_once_by_doi
+10.1145/3811315,SIGGRAPH; TOG,2026,Fast VEM Fluid Simulation,download_once_by_doi
+10.1145/3811316,SIGGRAPH; TOG,2026,TwinPose: Person-Specific Subspaces for Multi-View 3D Pose Estimation,download_once_by_doi
+10.1145/3811317,SIGGRAPH; TOG,2026,RCGP: Resource Contracts for Graphics Programming,download_once_by_doi
+10.1145/3811318,SIGGRAPH; TOG,2026,Neural Quadrature Rule and Autoregressive Adaptive Sampling,download_once_by_doi
+10.1145/3811319,SIGGRAPH; TOG,2026,Role-Aware Virtual Agents for Navigational Interaction guided by a Multimodal Large Language Model,download_once_by_doi
+10.1145/3811320,SIGGRAPH; TOG,2026,MorphSkein: A Shape-Changing Afterimage Display Preserving Pixel Density During Surface-Area Changes Across Troposkein-Based Shapes,download_once_by_doi
+10.1145/3811321,SIGGRAPH; TOG,2026,Monte Carlo PDE Solvers for Nonlinear Radiative Boundary Conditions,download_once_by_doi
+10.1145/3811322,SIGGRAPH; TOG,2026,Generalized Spherical Harmonics Products using Spherical Grids,download_once_by_doi
+10.1145/3811323,SIGGRAPH; TOG,2026,"The Antipodal Method: Fast, Accurate, and Robust 3D Generalized Winding Numbers",download_once_by_doi
+10.1145/3811324,SIGGRAPH; TOG,2026,PQ-Free HD: Priority-Queue-Free Hausdorff Distance for Triangle Meshes on GPU,download_once_by_doi
+10.1145/3811325,SIGGRAPH; TOG,2026,Robust Computation of Boundary Path Integrals Using Kernel-Density Estimation,download_once_by_doi
+10.1145/3811326,SIGGRAPH; TOG,2026,Uniformly Deployable Kirigami on Arbitrary Planar Graphs,download_once_by_doi
+10.1145/3811327,SIGGRAPH; TOG,2026,"YASPS: A Symbolic Framework for Extensible, High-Performance IPC Simulation",download_once_by_doi
+10.1145/3811328,SIGGRAPH; TOG,2026,"A Real-time, Multiscale and Procedural Feather Appearance Model",download_once_by_doi
+10.1145/3811329,SIGGRAPH; TOG,2026,Sample Matching for Joint Extinction Gradient Estimation in Differentiable Volume Rendering,download_once_by_doi
+10.1145/3811330,SIGGRAPH; TOG,2026,SharpNet: Enhancing MLPs to Represent Functions with Controlled Non-differentiability,download_once_by_doi
+10.1145/3811331,SIGGRAPH; TOG,2026,Explicit flows for implicit surfaces,download_once_by_doi
+10.1145/3811332,SIGGRAPH; TOG,2026,Single-View Holographic Volumetric 3D Printing with Coupled Differentiable Wave-Optical and Photochemical Optimization,download_once_by_doi
+10.1145/3811333,SIGGRAPH; TOG,2026,GMT: A Geometric Multigrid Transformer Solver for Microstructure Homogenization,download_once_by_doi
+10.1145/3811334,SIGGRAPH; TOG,2026,MotionBricks: Scalable Real-Time Motions with Modular Latent Generative Model and Smart Primitives,download_once_by_doi
+10.1145/3811335,SIGGRAPH; TOG,2026,A Two-Millisecond Passthrough Headset for Perceptual Studies,download_once_by_doi
+10.1145/3811336,SIGGRAPH; TOG,2026,Stochastic geomorphological transport for terrain erosion simulation,download_once_by_doi
+10.1145/3811337,SIGGRAPH; TOG,2026,DiffSurFlow: Efficient and Robust Differentiable Fluid Optimization via Surrogate Strategy on Flow Map,download_once_by_doi
+10.1145/3811338,SIGGRAPH; TOG,2026,Locality-Aware Automatic Differentiation on the GPU for Mesh-Based Computations,download_once_by_doi
+10.1145/3811339,SIGGRAPH; TOG,2026,Fast and Exact Winding Numbers for Triangle Meshes,download_once_by_doi
+10.1145/3811340,SIGGRAPH; TOG,2026,Walk on Decomposed Subdomains: A Hybrid Monte Carlo–Deterministic Solver for Elliptic PDEs,download_once_by_doi
+10.1145/3811341,SIGGRAPH; TOG,2026,SAND: Spatially Adaptive Network Depth for Fast Sampling of Neural Implicit Surfaces,download_once_by_doi
+10.1145/3811342,SIGGRAPH; TOG,2026,Generative Modeling with Orbit-Space Particle Flow Matching,download_once_by_doi
+10.1145/3811343,SIGGRAPH; TOG,2026,Efficient Fur and Hair Multiple Scattering Using Volumetric Approximation,download_once_by_doi
+10.1145/3811344,SIGGRAPH; TOG,2026,Nexus: Native Mesh Generation with Diffusion,download_once_by_doi
+10.1145/3811345,SIGGRAPH; TOG,2026,Mixed Material Point Methods for Stiff Elastoplasticity,download_once_by_doi
+10.1145/3811346,SIGGRAPH; TOG,2026,EgoRelight: Egocentric Human Capture and Illumination Recovery for Relightable and Photoreal Avatar Rendering,download_once_by_doi
+10.1145/3811347,SIGGRAPH; TOG,2026,CasLayout: Cascaded 3D Layout Diffusion for Indoor Scene Synthesis with Implicit Relation Modeling,download_once_by_doi
+10.1145/3811348,SIGGRAPH; TOG,2026,SQuadGen: Generating Simple Quad Layouts via Chart Distance Fields,download_once_by_doi
+10.1145/3811349,SIGGRAPH; TOG,2026,ProXeek: Seeking and Leveraging Real-World Objects and Environments as Haptic Proxies for Virtual Reality through Multimodal Reasoning,download_once_by_doi
+10.1145/3811350,SIGGRAPH; TOG,2026,HairGPT: Strand-as-Language Autoregressive Modeling for Realistic 3D Hairstyle Synthesis,download_once_by_doi
+10.1145/3811351,SIGGRAPH; TOG,2026,HoloPathTracer: Fast and Accurate Wave Path Tracing for Holography,download_once_by_doi
+10.1145/3811352,SIGGRAPH; TOG,2026,BodyReLux: Temporally Consistent Full-Body Video Relighting,download_once_by_doi
+10.1145/3811353,SIGGRAPH; TOG,2026,Physics-Inspired Procedural Texturing of Extremely Deformable Surfaces,download_once_by_doi
+10.1145/3811354,SIGGRAPH; TOG,2026,Skinned Motion Retargeting with Spatially Adaptive Interaction Guidance,download_once_by_doi
+10.1145/3811355,SIGGRAPH; TOG,2026,NeuBase: Spline Surfaces with Neural Basis Functions,download_once_by_doi
+10.1145/3811356,SIGGRAPH; TOG,2026,STyMo: Fast and Controllable Few-Shot Motion Style Transfer,download_once_by_doi
+10.1145/3811357,SIGGRAPH; TOG,2026,Robust Planar Maps for 3D Vectorization,download_once_by_doi
+10.1145/3811358,SIGGRAPH; TOG,2026,Subgrid Marching Tetrahedra,download_once_by_doi
+10.1145/3811359,SIGGRAPH; TOG,2026,Lifting Lines and Tone: Image-Space Stylization in Path-Space,download_once_by_doi
+10.1145/3811360,SIGGRAPH; TOG,2026,StyleID: A Perception-Aware Dataset and Metric for Stylization-Agnostic Facial Identity Recognition,download_once_by_doi
+10.1145/3811361,SIGGRAPH; TOG,2026,HumanFlow: Controllable Human Image Generation via Flow Matching,download_once_by_doi
+10.1145/3811362,SIGGRAPH; TOG,2026,Tempo3D: Efficient Temporal-Aware Fine-Tuning and Multi-View Latent Aggregation for 3D Generation,download_once_by_doi
+10.1145/3811363,SIGGRAPH; TOG,2026,AtomSlicer: Constant-Thickness Field-Aligned Non-Planar Slicing and Continuous Toolpaths for FFF,download_once_by_doi
+10.1145/3811364,SIGGRAPH; TOG,2026,LayerInbetween: Occlusion-Aware Stroke Correspondence and Inbetweening with Automatic Layering,download_once_by_doi
+10.1145/3811365,SIGGRAPH; TOG,2026,SCom DAG: compact representation of spatial data for real-time rendering,download_once_by_doi
+10.1145/3811366,SIGGRAPH; TOG,2026,Probe-based Walk on Spheres for Efficient Path Reusing,download_once_by_doi
+10.1145/3811367,SIGGRAPH; TOG,2026,Efficient Multiscale Lanczos Eigenpair Extraction,download_once_by_doi
+10.1145/3811368,SIGGRAPH; TOG,2026,Implicit Minimal Surfaces for Bijective Correspondences,download_once_by_doi
+10.1145/3811369,SIGGRAPH; TOG,2026,Gabor Fields: Orientation-Selective Level-of-Detail for Volume Rendering,download_once_by_doi
+10.1145/3811370,SIGGRAPH; TOG,2026,Constant Mean Curvature Surfaces from Discrete Harmonic Maps,download_once_by_doi
+10.1145/3811371,SIGGRAPH; TOG,2026,Iskra: A System for Inverse Geometry Processing,download_once_by_doi
+10.1145/3811372,SIGGRAPH; TOG,2026,Soft Anisotropic Diagrams for Differentiable Image Representation,download_once_by_doi
+10.1145/3811373,SIGGRAPH; TOG,2026,"Better Bending: Analysis, Construction and Verification of Discrete Bending Models for Kirchhoff-Love Shells",download_once_by_doi
+10.1145/3811374,SIGGRAPH; TOG,2026,Lucky High Dynamic Range Smartphone Imaging,download_once_by_doi
+10.1145/3811375,SIGGRAPH; TOG,2026,Sketch2Arti: Sketch-based Articulation Modeling of CAD Objects,download_once_by_doi
+10.1145/3811376,SIGGRAPH; TOG,2026,Woodstock: Interactive Modeling of Fungal Wood Decay,download_once_by_doi
+10.1145/3811377,SIGGRAPH; TOG,2026,"Forget Superresolution, Sample Adaptively (when Path Tracing)",download_once_by_doi
+10.1145/3811378,SIGGRAPH; TOG,2026,ReActor: Reinforcement Learning for Physics-Aware Motion Retargeting,download_once_by_doi
+10.1145/3811379,SIGGRAPH; TOG,2026,The PhaseTree: Multiphase Signed Distance Fields,download_once_by_doi
+10.1145/3811380,SIGGRAPH; TOG,2026,A Few-Step Generative Model on Cumulative Flow Maps,download_once_by_doi
+10.1145/3811381,SIGGRAPH; TOG,2026,Invisible Holographic Window: Full-color 3D Image Reconstruction from Transparent Surface-relief Computer-generated Holograms,download_once_by_doi
+10.1145/3811382,SIGGRAPH; TOG,2026,Untangling Surfaces via Shape and Mesh Repulsion,download_once_by_doi
+10.1145/3811383,SIGGRAPH; TOG,2026,Progressing Level-of-Detail Animation for Volumetric Elastodynamics,download_once_by_doi
+10.1145/3811384,SIGGRAPH; TOG,2026,Persistence-guided Prescribed Topological Simplification,download_once_by_doi
+10.1145/3811385,SIGGRAPH; TOG,2026,Points as Tori: Fast Pointwise Signed Distance for Point Clouds,download_once_by_doi
+10.1145/3811386,SIGGRAPH; TOG,2026,MeshFEM: A Block-accelerated Solver for Nonlinear Finite Elements,download_once_by_doi
+10.1145/3811387,SIGGRAPH; TOG,2026,Stress-Aware Panelization of Freeform Surfaces,download_once_by_doi
+10.1145/3811388,SIGGRAPH; TOG,2026,Dual Contouring over Expanded Cubes (DCx) for Zero-Level Set Extraction from Neural Unsigned Distance Functions,download_once_by_doi
+10.1145/3811389,SIGGRAPH; TOG,2026,Spatially Accelerated Winding Numbers for Curved Geometry,download_once_by_doi
+10.1145/3811390,SIGGRAPH; TOG,2026,DissolveStereo: Coarse Depth Injection for Zero-Shot Stereo Video Generation,download_once_by_doi
+10.1145/3811391,SIGGRAPH; TOG,2026,Inverse Rendering for Discrete X-Ray Computed Tomography,download_once_by_doi
+10.1145/3811392,SIGGRAPH; TOG,2026,ACT: A Unified Framework for Rigging and Animating Characters with Arbitrary Topologies,download_once_by_doi
+10.1145/3811393,SIGGRAPH; TOG,2026,Co-Optimization of Structure and Manufacturable Semi-Continuous Layers for Laminated Composites,download_once_by_doi
+10.1145/3811394,SIGGRAPH; TOG,2026,Mechanical Cloaking of Halftoned Imagery,download_once_by_doi
+10.1145/3811395,SIGGRAPH; TOG,2026,Surface chamfering for robust tetrahedral meshing,download_once_by_doi
+10.1145/3811396,SIGGRAPH; TOG,2026,Photons × Force: Differentiable Radiation Pressure Modeling,download_once_by_doi
+10.1145/3811397,SIGGRAPH; TOG,2026,Monte Carlo Rendering of Biharmonic Diffusion Curves,download_once_by_doi
+10.1145/3811398,SIGGRAPH; TOG,2026,Radiance Caching for Differentiable Path Tracing,download_once_by_doi
+10.1145/3811399,SIGGRAPH; TOG,2026,SegviGen: Repurposing 3D Generative Model for Part Segmentation,download_once_by_doi
+10.1145/3811400,SIGGRAPH; TOG,2026,Pixel Cube: Diffusion-based Portrait Video Relighting Through Realistic Lighting Reproduction,download_once_by_doi
+10.1145/3811401,SIGGRAPH; TOG,2026,Surface Power Diagrams for Knit Singularity Placement,download_once_by_doi
+10.1145/3811402,SIGGRAPH; TOG,2026,MUSIC: Learning Muscle-Driven Dexterous Hand Control,download_once_by_doi

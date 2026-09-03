@@ -1,0 +1,8 @@
+{
+  "evaluation_version": "topic-audit-v2",
+  "reviewer_type": "model_assisted",
+  "reviewer_name": "codex-title-abstract-review-v2",
+  "evidence_level": "title_abstract",
+  "reviewed_at": "",
+  "reviews": {}
+}

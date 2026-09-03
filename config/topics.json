@@ -1,0 +1,1673 @@
+{
+ "version": "topic-tree-v2-20260902",
+ "description": "主题树 v2：族 → 方向/叶 三级树。strong 强档 weight 3.0，weak 弱档 weight 1.0，标题命中×2；benchmarks 白名单命中 +3.0 并定向点亮叶。叶阈值默认 3.0。primary=最高分叶；附加叶 ≤2。统计按叶上卷到族。",
+ "title_multiplier": 2.0,
+ "default_threshold": 3.0,
+ "max_extra_topics": 2,
+ "topics": [
+  {
+   "topic_id": "f1_ml_basis",
+   "parent_topic_id": "",
+   "name": "机器学习基础与方法",
+   "description": "研究对象 = 通用方法/模型本身（非具体任务应用）。",
+   "strong": [],
+   "weak": [],
+   "benchmarks": [],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "ml_paradigm",
+   "parent_topic_id": "f1_ml_basis",
+   "name": "学习范式",
+   "description": "监督/自监督/少样本/持续/迁移/元学习 等通用学习设定。",
+   "threshold": 3.0,
+   "strong": [
+    "meta-learning",
+    "meta learning",
+    "few-shot learning",
+    "few shot learning",
+    "continual learning",
+    "continual learning",
+    "self-supervised learning",
+    "self supervised learning",
+    "semi-supervised learning",
+    "semi supervised learning",
+    "transfer learning",
+    "curriculum learning",
+    "in-context learning"
+   ],
+   "weak": [
+    "learning paradigm",
+    "learning setting",
+    "unsupervised learning",
+    "domain adaptation",
+    "domain generalization",
+    "out-of-distribution"
+   ],
+   "benchmarks": [
+    "omniglot",
+    "mini-imagenet",
+    "tiered-imagenet",
+    "cifar-fs"
+   ],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "ml_arch",
+   "parent_topic_id": "f1_ml_basis",
+   "name": "架构与表征",
+   "description": "通用网络架构、表征学习、预训练范式本身（不绑定具体任务）。",
+   "threshold": 3.0,
+   "strong": [
+    "neural architecture search",
+    "architecture search",
+    "representation learning",
+    "feature learning",
+    "graph neural network",
+    "graph neural networks",
+    "message passing",
+    "mixture of experts",
+    "parameter sharing"
+   ],
+   "weak": [
+    "backbone",
+    "architecture",
+    "self-supervised representation",
+    "contrastive learning",
+    "masked autoencoder",
+    "bottleneck"
+   ],
+   "benchmarks": [],
+   "cooccurrences": [
+    {
+     "all": [
+      "representation learning",
+      "downstream"
+     ],
+     "weight": 2.0
+    }
+   ]
+  },
+  {
+   "topic_id": "ml_theory",
+   "parent_topic_id": "f1_ml_basis",
+   "name": "训练理论与优化",
+   "description": "优化器、损失设计、泛化理论、初始化与训练动态。",
+   "threshold": 3.0,
+   "strong": [
+    "optimization algorithm",
+    "optimizer",
+    "gradient descent",
+    "loss landscape",
+    "generalization bound",
+    "sample complexity",
+    "learning theory",
+    "convergence analysis",
+    "lipschitz"
+   ],
+   "weak": [
+    "regularization",
+    "objective function",
+    "training dynamics",
+    "overfitting",
+    "stability",
+    "benign overfitting"
+   ],
+   "benchmarks": [],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "ml_eval",
+   "parent_topic_id": "f1_ml_basis",
+   "name": "评测基准与数据方法",
+   "description": "通用 benchmark/评测协议/数据集方法论（不绑定单一任务族）。",
+   "threshold": 3.0,
+   "strong": [
+    "benchmark suite",
+    "evaluation protocol",
+    "evaluation methodology",
+    "leaderboard",
+    "testbed",
+    "reproducibility"
+   ],
+   "weak": [
+    "benchmark",
+    "evaluation",
+    "metrics",
+    "dataset"
+   ],
+   "benchmarks": [],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "f2_llm_models",
+   "parent_topic_id": "",
+   "name": "大语言模型（本体）",
+   "description": "研究对象 = LLM 与通用能力本身。只收本体论文，用法仅打标签。",
+   "strong": [],
+   "weak": [],
+   "benchmarks": [],
+   "cooccurrences": [],
+   "anchor_terms": [
+    "llm",
+    "large language model",
+    "large language models",
+    "language model",
+    "language models",
+    "gpt",
+    "chatgpt",
+    "decoder"
+   ]
+  },
+  {
+   "topic_id": "llm_alignment",
+   "parent_topic_id": "f2_llm_models",
+   "name": "预训练与对齐",
+   "description": "预训练、指令微调、RLHF/DPO、安全对齐、上下文学习。",
+   "threshold": 3.0,
+   "strong": [
+    "instruction tuning",
+    "instruction fine-tuning",
+    "reinforcement learning from human feedback",
+    "rlhf",
+    "direct preference optimization",
+    "preference optimization",
+    "constitutional ai",
+    "language model alignment",
+    "model alignment",
+    "supervised fine-tuning",
+    "sft"
+   ],
+   "weak": [
+    "alignment",
+    "preference",
+    "fine-tuning",
+    "human feedback",
+    "safety training",
+    "red-teaming",
+    "jailbreak"
+   ],
+   "benchmarks": [
+    "alpacaeval",
+    "mt-bench",
+    "arena-hard",
+    "harmbench"
+   ],
+   "cooccurrences": [
+    {
+     "all": [
+      "large language model",
+      "alignment"
+     ],
+     "weight": 3.0
+    },
+    {
+     "all": [
+      "llm",
+      "alignment"
+     ],
+     "weight": 3.0
+    }
+   ]
+  },
+  {
+   "topic_id": "llm_reasoning",
+   "parent_topic_id": "f2_llm_models",
+   "name": "推理与规划",
+   "description": "CoT、搜索、测试时计算、reasoning 模型。",
+   "threshold": 3.0,
+   "strong": [
+    "chain-of-thought",
+    "chain of thought",
+    "test-time scaling",
+    "test time scaling",
+    "reasoning model",
+    "reasoning llm",
+    "large reasoning model",
+    "self-consistency",
+    "tree of thoughts",
+    "process supervision",
+    "outcome supervision",
+    "verifier"
+   ],
+   "weak": [
+    "reasoning",
+    "planning",
+    "logical inference",
+    "math reasoning",
+    "tool-integrated reasoning"
+   ],
+   "benchmarks": [
+    "gsm8k",
+    "math500",
+    "aime",
+    "amc",
+    "minerva math",
+    "olympiad"
+   ],
+   "cooccurrences": [
+    {
+     "all": [
+      "large language model",
+      "reasoning"
+     ],
+     "weight": 2.5
+    },
+    {
+     "all": [
+      "llm",
+      "planning"
+     ],
+     "weight": 2.5
+    }
+   ]
+  },
+  {
+   "topic_id": "llm_efficiency",
+   "parent_topic_id": "f2_llm_models",
+   "name": "效率与部署",
+   "description": "量化、蒸馏、剪枝、长上下文、推理加速。",
+   "threshold": 3.0,
+   "strong": [
+    "quantization",
+    "knowledge distillation",
+    "model distillation",
+    "pruning",
+    "sparsification",
+    "inference acceleration",
+    "speculative decoding",
+    "kv cache",
+    "context compression",
+    "long-context language model",
+    "long context language model"
+   ],
+   "weak": [
+    "efficient inference",
+    "model compression",
+    "low-rank",
+    "memory efficient",
+    "deployment"
+   ],
+   "benchmarks": [],
+   "cooccurrences": [
+    {
+     "all": [
+      "language model",
+      "quantization"
+     ],
+     "weight": 2.5
+    },
+    {
+     "all": [
+      "large language model",
+      "inference"
+     ],
+     "weight": 2.0
+    }
+   ]
+  },
+  {
+   "topic_id": "llm_eval",
+   "parent_topic_id": "f2_llm_models",
+   "name": "LLM 评测",
+   "description": "LLM benchmark、能力评测、红队。",
+   "threshold": 3.0,
+   "strong": [
+    "llm benchmark",
+    "language model evaluation",
+    "llm evaluation",
+    "evaluation of large language",
+    "capability evaluation",
+    "red teaming llm"
+   ],
+   "weak": [
+    "benchmarking llm",
+    "evaluation suite",
+    "model evaluation"
+   ],
+   "benchmarks": [
+    "mmlu",
+    "mmlu-pro",
+    "gpqa",
+    "big-bench",
+    "helm",
+    "openllm leaderboard"
+   ],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "f3_agent_systems",
+   "parent_topic_id": "",
+   "name": "智能体与工具使用（本体）",
+   "description": "研究对象 = Agent/RAG 系统本身。只收本体；CV/NLP 里用 agent 的只打 agentic 标签。",
+   "strong": [],
+   "weak": [],
+   "benchmarks": [],
+   "cooccurrences": [],
+   "anchor_terms": [
+    "llm",
+    "gpt",
+    "chatgpt",
+    "large language model",
+    "large language models",
+    "language model",
+    "language models",
+    "agentic",
+    "language agent",
+    "language agents",
+    "llm agent",
+    "llm agents",
+    "llm society",
+    "multi-agent llm"
+   ]
+  },
+  {
+   "topic_id": "agent_mechanism",
+   "parent_topic_id": "f3_agent_systems",
+   "name": "Agent 机制",
+   "description": "规划、记忆、反思、工具调用学习、ReAct 式编排。",
+   "threshold": 3.0,
+   "strong": [
+    "agent framework",
+    "agent architecture",
+    "tool-using agent",
+    "tool-use agent",
+    "agent planning",
+    "plan-and-execute",
+    "reflexion",
+    "react",
+    "agent memory",
+    "agentic workflow",
+    "agent design",
+    "tool calling agent",
+    "llm-based agent",
+    "llm agent",
+    "autonomous agent"
+   ],
+   "weak": [
+    "agent",
+    "tool use",
+    "tool calling",
+    "function calling",
+    "agentic",
+    "assistant",
+    "orchestration"
+   ],
+   "benchmarks": [
+    "toolbench",
+    "api-bank",
+    "tau-bench"
+   ],
+   "cooccurrences": [
+    {
+     "all": [
+      "large language model",
+      "tool"
+     ],
+     "weight": 2.5
+    }
+   ]
+  },
+  {
+   "topic_id": "multi_agent",
+   "parent_topic_id": "f3_agent_systems",
+   "name": "多智能体协作",
+   "description": "debate、多角色、团队、社会模拟。",
+   "threshold": 3.0,
+   "strong": [
+    "multi-agent",
+    "multi agent",
+    "multiagent",
+    "agent collaboration",
+    "agent debate",
+    "agent society",
+    "multi-agent llm",
+    "agent team",
+    "role-playing agent",
+    "llm society",
+    "agent simulation"
+   ],
+   "weak": [
+    "collaboration",
+    "negotiation",
+    "communication between agents"
+   ],
+   "benchmarks": [],
+   "cooccurrences": [
+    {
+     "all": [
+      "agent",
+      "debate"
+     ],
+     "weight": 3.0
+    }
+   ]
+  },
+  {
+   "topic_id": "rag_knowledge",
+   "parent_topic_id": "f3_agent_systems",
+   "name": "RAG 与知识增强",
+   "description": "检索增强生成、重排、长文档、图 RAG。",
+   "threshold": 3.0,
+   "strong": [
+    "retrieval-augmented generation",
+    "retrieval augmented generation",
+    "retrieval-augmented",
+    "retrieval augmented",
+    "knowledge-augmented generation",
+    "retrieval-enhanced generation",
+    "graph rag",
+    "agentic rag"
+   ],
+   "weak": [
+    "rag",
+    "retriever",
+    "reranking",
+    "hybrid search",
+    "long document question"
+   ],
+   "benchmarks": [
+    "natural questions",
+    "hotpotqa",
+    "triviaqa",
+    "ms marco",
+    "kilt"
+   ],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "agent_eval_infra",
+   "parent_topic_id": "f3_agent_systems",
+   "name": "Agent 评测与基建",
+   "description": "benchmark、harness、环境、轨迹。",
+   "threshold": 3.0,
+   "strong": [
+    "agent benchmark",
+    "agent evaluation",
+    "agent harness",
+    "agent scaffold",
+    "agent trajectory",
+    "agent environment",
+    "web agent benchmark",
+    "computer-use benchmark",
+    "software engineering agent"
+   ],
+   "weak": [
+    "evaluation of agents",
+    "benchmarking agents",
+    "trajectory"
+   ],
+   "benchmarks": [
+    "webarena",
+    "mint-bench",
+    "agentbench",
+    "alfworld",
+    "swe-bench"
+   ],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "f4_nlp_tasks",
+   "parent_topic_id": "",
+   "name": "自然语言处理任务",
+   "description": "研究对象 = 具体语言任务（应用侧），非模型本体。",
+   "strong": [],
+   "weak": [],
+   "benchmarks": [],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "nlp_translation",
+   "parent_topic_id": "f4_nlp_tasks",
+   "name": "翻译与多语",
+   "description": "机器翻译、多语、低资源翻译。",
+   "threshold": 3.0,
+   "strong": [
+    "machine translation",
+    "neural machine translation",
+    "speech translation",
+    "simultaneous translation",
+    "multilingual translation",
+    "translation quality estimation",
+    "document-level translation"
+   ],
+   "weak": [
+    "translation",
+    "multilingual",
+    "cross-lingual",
+    "bitext",
+    "parallel corpus",
+    "low-resource language"
+   ],
+   "benchmarks": [
+    "wmt",
+    "flores",
+    "iwslt",
+    "ntrex"
+   ],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "nlp_summary",
+   "parent_topic_id": "f4_nlp_tasks",
+   "name": "摘要与生成",
+   "description": "文本摘要、开放生成、长文本生成。",
+   "threshold": 3.0,
+   "strong": [
+    "summarization",
+    "abstractive summarization",
+    "extractive summarization",
+    "long-form generation",
+    "story generation",
+    "text generation",
+    "dialogue summarization"
+   ],
+   "weak": [
+    "summary",
+    "generation",
+    "paraphrase"
+   ],
+   "benchmarks": [
+    "cnn/dailymail",
+    "xsum"
+   ],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "nlp_qa",
+   "parent_topic_id": "f4_nlp_tasks",
+   "name": "问答与对话",
+   "description": "开放问答、阅读理解、多轮对话。",
+   "threshold": 3.0,
+   "strong": [
+    "question answering",
+    "open-domain question answering",
+    "reading comprehension",
+    "machine reading comprehension",
+    "multimodal question answering",
+    "visual question answering",
+    "conversational question answering"
+   ],
+   "weak": [
+    "qa",
+    "dialogue",
+    "conversation",
+    "chatbot",
+    "response generation"
+   ],
+   "benchmarks": [
+    "squad",
+    "natural questions",
+    "hotpotqa",
+    "truthfulqa",
+    "multirc"
+   ],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "nlp_ie",
+   "parent_topic_id": "f4_nlp_tasks",
+   "name": "信息抽取与知识",
+   "description": "NER、关系抽取、事件抽取、知识图谱、实体链接。",
+   "threshold": 3.0,
+   "strong": [
+    "named entity recognition",
+    "relation extraction",
+    "event extraction",
+    "knowledge graph",
+    "knowledge base completion",
+    "entity linking",
+    "coreference resolution",
+    "open information extraction",
+    "slot filling",
+    "information extraction"
+   ],
+   "weak": [
+    "ner",
+    "triple extraction",
+    "semantic parsing",
+    "fact extraction"
+   ],
+   "benchmarks": [
+    "conll",
+    "tacred",
+    "fewrel",
+    "webqsp"
+   ],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "nlp_sentiment",
+   "parent_topic_id": "f4_nlp_tasks",
+   "name": "文本分类与情感",
+   "description": "文本分类、情感分析、立场检测、主题分类。",
+   "threshold": 3.0,
+   "strong": [
+    "sentiment analysis",
+    "text classification",
+    "emotion recognition in text",
+    "stance detection",
+    "aspect-based sentiment",
+    "hate speech detection",
+    "topic classification",
+    "intent detection"
+   ],
+   "weak": [
+    "classification",
+    "sentiment",
+    "stance"
+   ],
+   "benchmarks": [
+    "imdb",
+    "sst-2",
+    "ag news",
+    "tweet eval"
+   ],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "nlp_code",
+   "parent_topic_id": "f4_nlp_tasks",
+   "name": "代码生成",
+   "description": "代码生成、程序合成、代码补全、程序修复。",
+   "threshold": 3.0,
+   "strong": [
+    "code generation",
+    "program synthesis",
+    "code completion",
+    "program repair",
+    "code repair",
+    "code summarization",
+    "unit test generation",
+    "repository-level code"
+   ],
+   "weak": [
+    "code",
+    "programming",
+    "compilation",
+    "llm for code"
+   ],
+   "benchmarks": [
+    "humaneval",
+    "mbpp",
+    "coderabbit",
+    "defects4j",
+    "swift-bench"
+   ],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "nlp_lowresource",
+   "parent_topic_id": "f4_nlp_tasks",
+   "name": "低资源与语篇适配",
+   "description": "低资源语言、语篇话语、篇章结构（无具体任务可归时的 NLP 落点）。",
+   "threshold": 3.0,
+   "strong": [
+    "low-resource nlp",
+    "low resource language",
+    "discourse parsing",
+    "discourse relation",
+    "coreference"
+   ],
+   "weak": [
+    "discourse",
+    "pragmatics",
+    "linguistic"
+   ],
+   "benchmarks": [],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "f5_lowlevel_vision",
+   "parent_topic_id": "",
+   "name": "图像与视频底层视觉",
+   "description": "CVPR low-level vision + computational imaging。超分单列方向；复原含复原子叶。",
+   "strong": [],
+   "weak": [],
+   "benchmarks": [],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "sr_direction",
+   "parent_topic_id": "f5_lowlevel_vision",
+   "name": "图像超分辨率",
+   "description": "单图/盲SR/参考/视频/任意倍率超分辨率。",
+   "threshold": 3.0,
+   "strong": [
+    "super-resolution",
+    "super resolution",
+    "image super",
+    "single image super-resolution",
+    "blind super-resolution",
+    "reference-based super-resolution",
+    "video super-resolution",
+    "arbitrary-scale super-resolution",
+    "real-world super-resolution",
+    "efficient super-resolution",
+    "lightweight super-resolution",
+    "face super-resolution",
+    "sr",
+    "image upsampling"
+   ],
+   "weak": [
+    "upsampling",
+    "upscale",
+    "high-resolution reconstruction",
+    "×4",
+    "x4"
+   ],
+   "benchmarks": [
+    "set5",
+    "set14",
+    "urban100",
+    "bsd100",
+    "manga109",
+    "div2k",
+    "real-sr",
+    "realsr",
+    "ntire"
+   ],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "restoration_direction",
+   "parent_topic_id": "f5_lowlevel_vision",
+   "name": "图像复原",
+   "description": "容器方向：去噪/去雨/去模糊/去雾/划痕伪影/通用复原。按退化词落子叶；无具体退化命中时不作为独立判定目标。",
+   "strong": [],
+   "weak": [],
+   "benchmarks": [],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "rst_denoise",
+   "parent_topic_id": "restoration_direction",
+   "name": "图像去噪",
+   "description": "合成/真实噪声去除。裸 denoising 与生成方法(denoising diffusion)撞车，不设强档。",
+   "threshold": 3.0,
+   "strong": [
+    "image denoising",
+    "noise removal",
+    "noise reduction",
+    "real-world denoising",
+    "gaussian denoising",
+    "burst denoising",
+    "raw denoising",
+    "image noise"
+   ],
+   "weak": [
+    "noisy",
+    "noise",
+    "clean image recovery"
+   ],
+   "benchmarks": [
+    "sidd",
+    "dnd",
+    "bsd68",
+    "cbsd68",
+    "kodak24",
+    "polyu",
+    "rni6"
+   ],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "rst_derain",
+   "parent_topic_id": "restoration_direction",
+   "name": "图像去雨",
+   "description": "雨痕去除、单图去雨。",
+   "threshold": 3.0,
+   "strong": [
+    "deraining",
+    "rain removal",
+    "image deraining",
+    "rain streak removal",
+    "single image deraining"
+   ],
+   "weak": [
+    "rain",
+    "rainy"
+   ],
+   "benchmarks": [
+    "rain100l",
+    "rain100h",
+    "rain200h",
+    "rain200l",
+    "rain800",
+    "spa-data",
+    "did-mdn"
+   ],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "rst_deblur",
+   "parent_topic_id": "restoration_direction",
+   "name": "图像去模糊",
+   "description": "运动/散焦/盲去模糊、视频去模糊。",
+   "threshold": 3.0,
+   "strong": [
+    "deblurring",
+    "motion deblur",
+    "image deblurring",
+    "defocus deblur",
+    "blind deblurring",
+    "video deblurring",
+    "deblur"
+   ],
+   "weak": [
+    "blur",
+    "blurry",
+    "blurred"
+   ],
+   "benchmarks": [
+    "gopro",
+    "realblur",
+    "reds",
+    "dvd",
+    "kohler"
+   ],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "rst_dehaze",
+   "parent_topic_id": "restoration_direction",
+   "name": "图像去雾",
+   "description": "雾霾去除、水下图像增强（去雾语义）。",
+   "threshold": 3.0,
+   "strong": [
+    "dehazing",
+    "image dehazing",
+    "haze removal",
+    "single image dehazing",
+    "underwater image enhancement"
+   ],
+   "weak": [
+    "haze",
+    "fog",
+    "mist"
+   ],
+   "benchmarks": [
+    "reside",
+    "sots",
+    "haze4k",
+    "nh-haze",
+    "dense-haze"
+   ],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "rst_artifact",
+   "parent_topic_id": "restoration_direction",
+   "name": "去划痕与伪影",
+   "description": "压缩伪影、划痕、胶片退化去除。",
+   "threshold": 3.0,
+   "strong": [
+    "artifact removal",
+    "compression artifact",
+    "scratch removal",
+    "jpeg artifact",
+    "demoiré",
+    "moiré removal",
+    "dewatermark",
+    "watermark removal",
+    "film restoration",
+    "image harmonization"
+   ],
+   "weak": [
+    "artifact",
+    "scratch",
+    "jpeg"
+   ],
+   "benchmarks": [],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "rst_general",
+   "parent_topic_id": "restoration_direction",
+   "name": "通用图像复原",
+   "description": "盲复原、all-in-one 多退化、无从属叶时的泛复原落点。",
+   "threshold": 3.0,
+   "strong": [
+    "blind image restoration",
+    "all-in-one image restoration",
+    "general image restoration",
+    "unified image restoration",
+    "multi-degradation restoration",
+    "image restoration",
+    "degradation-agnostic"
+   ],
+   "weak": [
+    "restoration",
+    "degradation removal",
+    "degraded images"
+   ],
+   "benchmarks": [],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "llie_direction",
+   "parent_topic_id": "f5_lowlevel_vision",
+   "name": "图像增强",
+   "description": "低光增强、Retinex、对比度/色彩、水下（非去雾语义）。",
+   "threshold": 3.0,
+   "strong": [
+    "low-light image enhancement",
+    "low light image enhancement",
+    "low-light enhancement",
+    "image enhancement",
+    "retinex",
+    "illumination enhancement",
+    "color enhancement",
+    "contrast enhancement",
+    "dark image",
+    "low-light image"
+   ],
+   "weak": [
+    "enhancement",
+    "illumination",
+    "underexposed",
+    "hdr enhancement"
+   ],
+   "benchmarks": [
+    "lol",
+    "lol-v2",
+    "lolv2",
+    "sice",
+    "fivek",
+    "mit-adobe fivek",
+    "pairlite"
+   ],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "computational_imaging",
+   "parent_topic_id": "f5_lowlevel_vision",
+   "name": "计算成像与逆问题",
+   "description": "demosaic、HDR、相位、压缩感知、事件相机、NeRF之外的逆问题。",
+   "threshold": 3.0,
+   "strong": [
+    "computational imaging",
+    "demosaicing",
+    "demosaic",
+    "high dynamic range imaging",
+    "compressive sensing",
+    "phase retrieval",
+    "event camera",
+    "ghost imaging",
+    "coded aperture",
+    "computational photography",
+    "image reconstruction",
+    "tomography",
+    "inverse problem",
+    "magnetic resonance imaging",
+    "ct reconstruction",
+    "mri reconstruction"
+   ],
+   "weak": [
+    "ill-posed",
+    "forward model",
+    "imaging"
+   ],
+   "benchmarks": [
+    "kodak",
+    "div2k",
+    "hdr+",
+    "midas"
+   ],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "video_lowlevel",
+   "parent_topic_id": "f5_lowlevel_vision",
+   "name": "视频底层处理",
+   "description": "视频复原/插帧/对齐/视频SR（非单图 SR 可归时）。",
+   "threshold": 3.0,
+   "strong": [
+    "video restoration",
+    "video frame interpolation",
+    "frame interpolation",
+    "video enhancement",
+    "video deblurring",
+    "temporal consistency",
+    "video alignment",
+    "video frame synthesis",
+    "video super"
+   ],
+   "weak": [
+    "video",
+    "temporal"
+   ],
+   "benchmarks": [
+    "vimeo-90k",
+    "vimeo90k",
+    "reds",
+    "davis"
+   ],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "f6_generation",
+   "parent_topic_id": "",
+   "name": "图像与视频生成编辑",
+   "description": "文生图/视频、条件生成、图像编辑、可控与素材生成。",
+   "strong": [],
+   "weak": [],
+   "benchmarks": [],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "gen_text2image",
+   "parent_topic_id": "f6_generation",
+   "name": "文生图与视频生成",
+   "description": "text-to-image、text-to-video、image/video 合成。",
+   "threshold": 3.0,
+   "strong": [
+    "text-to-image",
+    "text to image",
+    "text-to-video",
+    "text to video",
+    "image generation",
+    "image synthesis",
+    "video generation",
+    "video synthesis",
+    "image-to-video",
+    "t2i",
+    "t2v",
+    "image diffusion",
+    "video diffusion",
+    "prompt-to-image"
+   ],
+   "weak": [
+    "generation",
+    "synthesis",
+    "diffusion-based generation",
+    "image generator"
+   ],
+   "benchmarks": [
+    "fid",
+    "laion",
+    "pickscore",
+    "videofact"
+   ],
+   "cooccurrences": [
+    {
+     "all": [
+      "diffusion",
+      "image generation"
+     ],
+     "weight": 2.5
+    }
+   ]
+  },
+  {
+   "topic_id": "gen_editing",
+   "parent_topic_id": "f6_generation",
+   "name": "图像编辑与重绘",
+   "description": "inpainting/outpainting（生成语义）、拖拽编辑、风格迁移、图生图、对象移除。",
+   "threshold": 3.0,
+   "strong": [
+    "image editing",
+    "image inpainting",
+    "image outpainting",
+    "inpainting",
+    "outpainting",
+    "text-guided editing",
+    "instruction-based editing",
+    "drag editing",
+    "image-to-image",
+    "style transfer",
+    "style translation",
+    "object removal",
+    "image manipulation",
+    "content editing",
+    "local editing",
+    "reference-based editing"
+   ],
+   "weak": [
+    "editing",
+    "edit",
+    "manipulation",
+    "synthesis"
+   ],
+   "benchmarks": [
+    "pascal voc"
+   ],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "gen_controllable",
+   "parent_topic_id": "f6_generation",
+   "name": "可控与素材生成",
+   "description": "布局/参考/一致性控制、素材生成。",
+   "threshold": 3.0,
+   "strong": [
+    "controllable generation",
+    "layout-to-image",
+    "reference-based generation",
+    "subject-driven generation",
+    "personalization",
+    "identity-preserving generation",
+    "consistency model",
+    "controlnet",
+    "compositional generation",
+    "spatial control",
+    "multi-concept generation"
+   ],
+   "weak": [
+    "control",
+    "conditioning",
+    "guidance"
+   ],
+   "benchmarks": [],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "f7_highlevel_vision",
+   "parent_topic_id": "",
+   "name": "图像高层理解与视频理解",
+   "description": "检测、分割、识别检索、姿态动作、跟踪、视频场景理解。",
+   "strong": [],
+   "weak": [],
+   "benchmarks": [],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "hv_detection",
+   "parent_topic_id": "f7_highlevel_vision",
+   "name": "目标检测",
+   "description": "通用/开集/3D/异常检测。",
+   "threshold": 3.0,
+   "strong": [
+    "object detection",
+    "3d object detection",
+    "open-vocabulary detection",
+    "open-set detection",
+    "anomaly detection",
+    "out-of-distribution detection",
+    "salient object detection",
+    "video object detection",
+    "detection transformer",
+    "yolo",
+    "proposal"
+   ],
+   "weak": [
+    "detection",
+    "bounding box",
+    "localization",
+    "objectness"
+   ],
+   "benchmarks": [
+    "coco",
+    "voc",
+    "pascal voc",
+    "cityscapes",
+    "kitti",
+    "waymo",
+    "lvis"
+   ],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "hv_segmentation",
+   "parent_topic_id": "f7_highlevel_vision",
+   "name": "图像分割",
+   "description": "语义/实例/全景/交互/医学分割。",
+   "threshold": 3.0,
+   "strong": [
+    "semantic segmentation",
+    "instance segmentation",
+    "panoptic segmentation",
+    "interactive segmentation",
+    "medical image segmentation",
+    "video segmentation",
+    "referring segmentation",
+    "image segmentation",
+    "segmentation"
+   ],
+   "weak": [
+    "mask",
+    "pixel-level classification",
+    "region proposal"
+   ],
+   "benchmarks": [
+    "cityscapes",
+    "ade20k",
+    "coco",
+    "pascal voc",
+    "synthia"
+   ],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "hv_recognition",
+   "parent_topic_id": "f7_highlevel_vision",
+   "name": "识别与检索",
+   "description": "分类、细粒度、ReID、人脸、图像检索、特征匹配。",
+   "threshold": 3.0,
+   "strong": [
+    "image classification",
+    "fine-grained recognition",
+    "fine-grained classification",
+    "person re-identification",
+    "reid",
+    "face recognition",
+    "image retrieval",
+    "face detection",
+    "keypoint detection",
+    "image matching",
+    "visual place recognition",
+    "zero-shot classification"
+   ],
+   "weak": [
+    "recognition",
+    "retrieval",
+    "identification",
+    "classification",
+    "embedding"
+   ],
+   "benchmarks": [
+    "imagenet",
+    "oxford",
+    "paris",
+    "market1501",
+    "lfw",
+    "cub"
+   ],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "hv_pose_tracking",
+   "parent_topic_id": "f7_highlevel_vision",
+   "name": "姿态动作与跟踪",
+   "description": "人体姿态、动作识别、目标跟踪。",
+   "threshold": 3.0,
+   "strong": [
+    "pose estimation",
+    "human pose",
+    "action recognition",
+    "action detection",
+    "visual tracking",
+    "object tracking",
+    "multi-object tracking",
+    "motion prediction",
+    "trajectory prediction",
+    "skeleton-based"
+   ],
+   "weak": [
+    "tracking",
+    "pose",
+    "action",
+    "motion"
+   ],
+   "benchmarks": [
+    "mpii",
+    "coco",
+    "kinetics",
+    "something-something",
+    "mot",
+    "got-10k",
+    "uav123"
+   ],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "hv_video_understanding",
+   "parent_topic_id": "f7_highlevel_vision",
+   "name": "视频场景理解",
+   "description": "视频时序理解、captioning、时间定位、检索。",
+   "threshold": 3.0,
+   "strong": [
+    "video understanding",
+    "video captioning",
+    "temporal action localization",
+    "temporal grounding",
+    "video-text retrieval",
+    "video question answering",
+    "moment retrieval",
+    "video summarization"
+   ],
+   "weak": [
+    "video analysis",
+    "temporal reasoning",
+    "clip-level"
+   ],
+   "benchmarks": [
+    "activitynet",
+    "charades",
+    "msvd",
+    "msr-vtt",
+    "anet"
+   ],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "f8_3d",
+   "parent_topic_id": "",
+   "name": "三维视觉与重建",
+   "description": "几何重建、神经渲染、3D 生成。",
+   "strong": [],
+   "weak": [],
+   "benchmarks": [],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "d3_geometry",
+   "parent_topic_id": "f8_3d",
+   "name": "几何重建",
+   "description": "深度、MVS、SfM、SLAM、点云、双目。",
+   "threshold": 3.0,
+   "strong": [
+    "depth estimation",
+    "monocular depth",
+    "multi-view stereo",
+    "mvs",
+    "structure from motion",
+    "sfm",
+    "slam",
+    "point cloud",
+    "stereo matching",
+    "binocular depth",
+    "surface reconstruction",
+    "3d reconstruction",
+    "neural surface",
+    "signed distance function"
+   ],
+   "weak": [
+    "depth",
+    "geometry",
+    "correspondence",
+    "triangulation"
+   ],
+   "benchmarks": [
+    "kitti",
+    "scannet",
+    "dtu",
+    "middlebury",
+    "nyu depth",
+    "matterport3d"
+   ],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "d3_neural_rendering",
+   "parent_topic_id": "f8_3d",
+   "name": "神经渲染",
+   "description": "NeRF、3DGS、新视角合成、动态场景。",
+   "threshold": 3.0,
+   "strong": [
+    "neural radiance field",
+    "nerf",
+    "3d gaussian splatting",
+    "gaussian splatting",
+    "novel view synthesis",
+    "view synthesis",
+    "neural rendering",
+    "radiance field",
+    "light field",
+    "implicit scene representation",
+    "volumetric rendering"
+   ],
+   "weak": [
+    "rendering",
+    "viewpoint",
+    "gaussian"
+   ],
+   "benchmarks": [
+    "nerf-synthetic",
+    "dtu",
+    "tanks and temples",
+    "mip-nerf360",
+    "blender",
+    "llff"
+   ],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "d3_generation",
+   "parent_topic_id": "f8_3d",
+   "name": "3D 生成",
+   "description": "文生3D、图生3D、材质PBR、纹理、数字人、网格生成。",
+   "threshold": 3.0,
+   "strong": [
+    "text-to-3d",
+    "text to 3d",
+    "image-to-3d",
+    "image to 3d",
+    "3d generation",
+    "3d asset generation",
+    "3d content generation",
+    "textured mesh generation",
+    "texture generation",
+    "pbr material",
+    "material generation",
+    "single-image 3d",
+    "single image 3d",
+    "avatar generation",
+    "digital human",
+    "head avatar",
+    "3d editing",
+    "multi-view diffusion"
+   ],
+   "weak": [
+    "3d",
+    "mesh",
+    "3d synthesis",
+    "generative 3d"
+   ],
+   "benchmarks": [
+    "objaverse",
+    "shapenet",
+    "text2shape",
+    "mvimgnet"
+   ],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "f9_multimodal",
+   "parent_topic_id": "",
+   "name": "多模态与具身智能",
+   "description": "VLM 理解推理、音视频多模态、具身、自动驾驶。",
+   "strong": [],
+   "weak": [],
+   "benchmarks": [],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "mm_vlm",
+   "parent_topic_id": "f9_multimodal",
+   "name": "VLM 理解推理",
+   "description": "图文 QA、grounding、幻觉、OCR 文档理解、VLM 本体。",
+   "threshold": 3.0,
+   "strong": [
+    "vision-language model",
+    "vision language model",
+    "vlm",
+    "multimodal large language",
+    "multimodal llm",
+    "visual instruction tuning",
+    "visual question answering",
+    "vqa",
+    "image captioning",
+    "grounding",
+    "referring expression",
+    "hallucination",
+    "ocr",
+    "document understanding",
+    "document parsing",
+    "multimodal reasoning",
+    "visual language understanding",
+    "llava",
+    "gpt-4v"
+   ],
+   "weak": [
+    "multimodal",
+    "vision-language",
+    "captioning",
+    "visual reasoning"
+   ],
+   "benchmarks": [
+    "vqa-v2",
+    "gqa",
+    "ok-vqa",
+    "scienceqa",
+    "textvqa",
+    "docvqa",
+    "mmmu",
+    "seed-bench",
+    "vizwiz",
+    "ocrbench"
+   ],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "mm_audiovisual",
+   "parent_topic_id": "f9_multimodal",
+   "name": "音视频多模态",
+   "description": "音频-视觉联合、视频-语言、跨模态检索。",
+   "threshold": 3.0,
+   "strong": [
+    "audio-visual",
+    "audiovisual",
+    "video-text retrieval",
+    "video-language",
+    "cross-modal retrieval",
+    "audio-language",
+    "speech-text",
+    "multimodal fusion",
+    "audio-visual learning",
+    "video-text"
+   ],
+   "weak": [
+    "cross-modal",
+    "multimodal alignment",
+    "audio",
+    "video language"
+   ],
+   "benchmarks": [
+    "msr-vtt",
+    "msvd",
+    "howto100m",
+    "audioset",
+    "vatex"
+   ],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "mm_embodied",
+   "parent_topic_id": "f9_multimodal",
+   "name": "具身智能",
+   "description": "导航、操作、world model、机器人、embodied agent。",
+   "threshold": 3.0,
+   "strong": [
+    "embodied ai",
+    "embodied agent",
+    "robot learning",
+    "robotic manipulation",
+    "manipulation policy",
+    "visual navigation",
+    "embodied navigation",
+    "world model",
+    "sim-to-real",
+    "imitation learning",
+    "reinforcement learning robot"
+   ],
+   "weak": [
+    "robot",
+    "embodied",
+    "navigation",
+    "policy learning"
+   ],
+   "benchmarks": [
+    "alfred",
+    "habitat",
+    "robothor",
+    "metaworld",
+    "rlbench",
+    "calvin"
+   ],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "mm_driving",
+   "parent_topic_id": "f9_multimodal",
+   "name": "自动驾驶",
+   "description": "感知决策一体、端到端驾驶、场景理解。",
+   "threshold": 3.0,
+   "strong": [
+    "autonomous driving",
+    "end-to-end driving",
+    "self-driving",
+    "driving scene",
+    "trajectory planning driving",
+    "motion planning",
+    "vehicle perception",
+    "adas",
+    "lane detection",
+    "driving policy"
+   ],
+   "weak": [
+    "driving",
+    "vehicle",
+    "road scene"
+   ],
+   "benchmarks": [
+    "nuScenes",
+    "kitti",
+    "waymo",
+    "bdd100k",
+    "carla"
+   ],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "f10_speech",
+   "parent_topic_id": "",
+   "name": "语音与音频",
+   "description": "ASR、TTS、语音增强、音频生成、说话人。",
+   "strong": [],
+   "weak": [],
+   "benchmarks": [],
+   "cooccurrences": []
+  },
+  {
+   "topic_id": "speech_audio",
+   "parent_topic_id": "f10_speech",
+   "name": "语音与音频",
+   "description": "识别、合成、增强、说话人、音频事件。",
+   "threshold": 3.0,
+   "strong": [
+    "automatic speech recognition",
+    "speech recognition",
+    "asr",
+    "text-to-speech",
+    "speech synthesis",
+    "tts",
+    "speech enhancement",
+    "speaker verification",
+    "speaker recognition",
+    "voice conversion",
+    "audio generation",
+    "music generation",
+    "sound event detection",
+    "speech separation",
+    "audio captioning",
+    "speech emotion"
+   ],
+   "weak": [
+    "speech",
+    "audio",
+    "acoustic",
+    "voice"
+   ],
+   "benchmarks": [
+    "librispeech",
+    "libritts",
+    "common voice",
+    "voxceleb",
+    "tedlium",
+    "aishell"
+   ],
+   "cooccurrences": []
+  }
+ ]
+}

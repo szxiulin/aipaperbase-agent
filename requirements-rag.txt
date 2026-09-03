@@ -1,0 +1,4 @@
+# RAG 子系统运行时依赖（配合 .env 使用）
+mineru-open-sdk   # MinerU Open API 客户端（PDF 解析）
+qdrant-client     # Qdrant 向量库客户端
+httpx             # OpenAI 兼容 API 调用（Embedding / Reranker / LLM）

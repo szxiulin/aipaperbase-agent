@@ -1,0 +1,289 @@
+{
+  "version": "personal-themes-v1",
+  "title_multiplier": 2.0,
+  "topics": [
+    {
+      "topic_id": "foundation_models",
+      "parent_topic_id": "",
+      "name": "大模型",
+      "description": "LLM、VLM 与多模态基础模型的训练、对齐、推理和高效化。",
+      "threshold": 3.0,
+      "phrases": [
+        {"text": "large language model", "weight": 3.0},
+        {"text": "large language models", "weight": 3.0},
+        {"text": "llm", "weight": 3.0},
+        {"text": "foundation model", "weight": 2.5},
+        {"text": "foundation models", "weight": 2.5},
+        {"text": "vision-language model", "weight": 3.0},
+        {"text": "vision language model", "weight": 3.0},
+        {"text": "vlm", "weight": 3.0},
+        {"text": "multimodal large language", "weight": 3.0},
+        {"text": "multimodal language model", "weight": 3.0},
+        {"text": "language model alignment", "weight": 2.5},
+        {"text": "instruction tuning", "weight": 2.0},
+        {"text": "in-context learning", "weight": 2.0},
+        {"text": "chain-of-thought", "weight": 2.5},
+        {"text": "reinforcement learning from human feedback", "weight": 3.0},
+        {"text": "direct preference optimization", "weight": 3.0},
+        {"text": "parameter-efficient fine-tuning", "weight": 3.0}
+      ],
+      "cooccurrences": [
+        {"all": ["language model", "reasoning"], "weight": 2.0},
+        {"all": ["language model", "alignment"], "weight": 2.0},
+        {"all": ["language model", "prompt"], "weight": 1.5}
+      ]
+    },
+    {
+      "topic_id": "llm_training_alignment",
+      "parent_topic_id": "foundation_models",
+      "name": "训练与对齐",
+      "description": "预训练、指令微调、偏好优化、RLHF 与对齐。",
+      "threshold": 2.5,
+      "phrases": [
+        {"text": "instruction tuning", "weight": 2.5},
+        {"text": "instruction fine-tuning", "weight": 2.5},
+        {"text": "reinforcement learning from human feedback", "weight": 3.0},
+        {"text": "rlhf", "weight": 3.0},
+        {"text": "direct preference optimization", "weight": 3.0},
+        {"text": "preference optimization", "weight": 2.5},
+        {"text": "language model alignment", "weight": 2.5}
+      ],
+      "cooccurrences": [
+        {"all": ["large language model", "fine-tuning"], "weight": 2.5},
+        {"all": ["large language model", "preference"], "weight": 2.0}
+      ]
+    },
+    {
+      "topic_id": "llm_reasoning",
+      "parent_topic_id": "foundation_models",
+      "name": "推理与规划",
+      "description": "大模型的链式思考、数学/代码推理和规划。",
+      "threshold": 2.5,
+      "phrases": [
+        {"text": "chain-of-thought", "weight": 3.0},
+        {"text": "chain of thought", "weight": 3.0},
+        {"text": "reasoning language model", "weight": 3.0},
+        {"text": "reasoning llm", "weight": 3.0},
+        {"text": "test-time scaling", "weight": 2.5}
+      ],
+      "cooccurrences": [
+        {"all": ["large language model", "reasoning"], "weight": 2.5},
+        {"all": ["llm", "planning"], "weight": 2.5}
+      ]
+    },
+    {
+      "topic_id": "vlm_multimodal",
+      "parent_topic_id": "foundation_models",
+      "name": "VLM 与多模态",
+      "description": "视觉语言模型、多模态基础模型与多模态对齐。",
+      "threshold": 2.5,
+      "phrases": [
+        {"text": "vision-language model", "weight": 3.0},
+        {"text": "vision language model", "weight": 3.0},
+        {"text": "vlm", "weight": 3.0},
+        {"text": "multimodal large language", "weight": 3.0},
+        {"text": "multimodal language model", "weight": 3.0},
+        {"text": "large multimodal model", "weight": 3.0},
+        {"text": "vision-language foundation", "weight": 3.0}
+      ],
+      "cooccurrences": []
+    },
+    {
+      "topic_id": "llm_efficiency",
+      "parent_topic_id": "foundation_models",
+      "name": "高效微调与推理",
+      "description": "PEFT、LoRA、量化、压缩与大模型推理加速。",
+      "threshold": 2.5,
+      "phrases": [
+        {"text": "parameter-efficient fine-tuning", "weight": 3.0},
+        {"text": "parameter efficient fine tuning", "weight": 3.0},
+        {"text": "peft", "weight": 3.0},
+        {"text": "low-rank adaptation", "weight": 2.5}
+      ],
+      "cooccurrences": [
+        {"all": ["language model", "quantization"], "weight": 2.5},
+        {"all": ["llm", "inference"], "weight": 2.0},
+        {"all": ["language model", "compression"], "weight": 2.5}
+      ]
+    },
+    {
+      "topic_id": "agent_systems",
+      "parent_topic_id": "",
+      "name": "Agent 系统",
+      "description": "LLM Agent、RAG、工具使用、多 Agent 协作与工程 Harness。",
+      "threshold": 3.0,
+      "phrases": [
+        {"text": "llm agent", "weight": 3.0},
+        {"text": "llm agents", "weight": 3.0},
+        {"text": "language model agent", "weight": 3.0},
+        {"text": "large language model agent", "weight": 3.0},
+        {"text": "large language model agents", "weight": 3.0},
+        {"text": "language agents", "weight": 3.0},
+        {"text": "agentic", "weight": 3.0},
+        {"text": "retrieval-augmented generation", "weight": 3.0},
+        {"text": "retrieval augmented generation", "weight": 3.0},
+        {"text": "rag", "weight": 3.0},
+        {"text": "tool-using", "weight": 2.5},
+        {"text": "tool use", "weight": 2.0},
+        {"text": "tool calling", "weight": 3.0},
+        {"text": "function calling", "weight": 2.5},
+        {"text": "web agent", "weight": 3.0},
+        {"text": "computer use agent", "weight": 3.0},
+        {"text": "software engineering agent", "weight": 3.0},
+        {"text": "coding agent", "weight": 3.0},
+        {"text": "agent framework", "weight": 2.5},
+        {"text": "agent benchmark", "weight": 2.5}
+      ],
+      "cooccurrences": []
+    },
+    {
+      "topic_id": "rag",
+      "parent_topic_id": "agent_systems",
+      "name": "RAG",
+      "description": "检索增强生成、知识库增强与检索生成联合系统。",
+      "threshold": 2.5,
+      "phrases": [
+        {"text": "retrieval-augmented generation", "weight": 3.0},
+        {"text": "retrieval augmented generation", "weight": 3.0},
+        {"text": "rag", "weight": 3.0},
+        {"text": "retrieval-enhanced generation", "weight": 3.0},
+        {"text": "knowledge-augmented generation", "weight": 2.5}
+      ],
+      "cooccurrences": []
+    },
+    {
+      "topic_id": "agent_tool_use",
+      "parent_topic_id": "agent_systems",
+      "name": "工具使用与执行",
+      "description": "Agent 的工具调用、代码执行、网页交互与环境操作。",
+      "threshold": 2.5,
+      "phrases": [
+        {"text": "tool-using", "weight": 3.0},
+        {"text": "tool use", "weight": 2.5},
+        {"text": "tool calling", "weight": 3.0},
+        {"text": "function calling", "weight": 2.5},
+        {"text": "web agent", "weight": 3.0},
+        {"text": "coding agent", "weight": 3.0},
+        {"text": "software engineering agent", "weight": 3.0},
+        {"text": "computer use", "weight": 2.0}
+      ],
+      "cooccurrences": []
+    },
+    {
+      "topic_id": "multi_agent",
+      "parent_topic_id": "agent_systems",
+      "name": "多 Agent 协作",
+      "description": "基于语言模型的多 Agent 协作、交互和社会模拟。",
+      "threshold": 2.5,
+      "phrases": [
+        {"text": "multi-agent llm", "weight": 3.0},
+        {"text": "multi-agent language model", "weight": 3.0},
+        {"text": "multi-agent debate", "weight": 3.0},
+        {"text": "language agent society", "weight": 3.0}
+      ],
+      "cooccurrences": []
+    },
+    {
+      "topic_id": "agent_evaluation_harness",
+      "parent_topic_id": "agent_systems",
+      "name": "评测与 Harness",
+      "description": "Agent 评测、执行框架、脚手架、轨迹和可靠性。",
+      "threshold": 2.5,
+      "phrases": [
+        {"text": "agent benchmark", "weight": 3.0},
+        {"text": "agent evaluation", "weight": 3.0},
+        {"text": "agent framework", "weight": 2.5},
+        {"text": "agent harness", "weight": 3.0},
+        {"text": "agent scaffold", "weight": 3.0},
+        {"text": "agent trajectory", "weight": 2.0}
+      ],
+      "cooccurrences": []
+    },
+    {
+      "topic_id": "image_generation_restoration",
+      "parent_topic_id": "",
+      "name": "图像生成与恢复",
+      "description": "图像生成、编辑、超分辨率、修复和画质增强。",
+      "threshold": 3.0,
+      "phrases": [
+        {"text": "text-to-image", "weight": 3.0},
+        {"text": "text to image", "weight": 3.0},
+        {"text": "image generation", "weight": 3.0},
+        {"text": "image synthesis", "weight": 3.0},
+        {"text": "image editing", "weight": 3.0},
+        {"text": "image inpainting", "weight": 3.0},
+        {"text": "image outpainting", "weight": 3.0},
+        {"text": "super-resolution", "weight": 3.0},
+        {"text": "super resolution", "weight": 3.0},
+        {"text": "image restoration", "weight": 3.0},
+        {"text": "image deblurring", "weight": 3.0},
+        {"text": "image denoising", "weight": 3.0},
+        {"text": "image dehazing", "weight": 3.0},
+        {"text": "image deraining", "weight": 3.0},
+        {"text": "low-light image enhancement", "weight": 3.0},
+        {"text": "low light image enhancement", "weight": 3.0}
+      ],
+      "cooccurrences": [
+        {"all": ["diffusion model", "image"], "weight": 2.5},
+        {"all": ["diffusion models", "visual"], "weight": 2.5},
+        {"all": ["generative model", "image"], "weight": 2.0}
+      ]
+    },
+    {
+      "topic_id": "image_generation",
+      "parent_topic_id": "image_generation_restoration",
+      "name": "图像生成与编辑",
+      "description": "文生图、图像合成、可控生成、编辑与局部重绘。",
+      "threshold": 2.5,
+      "phrases": [
+        {"text": "text-to-image", "weight": 3.0},
+        {"text": "text to image", "weight": 3.0},
+        {"text": "image generation", "weight": 3.0},
+        {"text": "image synthesis", "weight": 3.0},
+        {"text": "image editing", "weight": 3.0},
+        {"text": "image inpainting", "weight": 3.0},
+        {"text": "image outpainting", "weight": 3.0},
+        {"text": "controllable image generation", "weight": 3.0}
+      ],
+      "cooccurrences": [
+        {"all": ["diffusion model", "image"], "weight": 2.5},
+        {"all": ["generative model", "image"], "weight": 2.0}
+      ]
+    },
+    {
+      "topic_id": "super_resolution",
+      "parent_topic_id": "image_generation_restoration",
+      "name": "超分辨率",
+      "description": "图像、视频、多模态和任意倍率超分辨率。",
+      "threshold": 2.5,
+      "phrases": [
+        {"text": "super-resolution", "weight": 3.0},
+        {"text": "super resolution", "weight": 3.0},
+        {"text": "image upsampling", "weight": 2.5}
+      ],
+      "cooccurrences": []
+    },
+    {
+      "topic_id": "image_restoration",
+      "parent_topic_id": "image_generation_restoration",
+      "name": "图像恢复",
+      "description": "去噪、去模糊、去雨、去雾、低照度增强与通用恢复。",
+      "threshold": 2.5,
+      "phrases": [
+        {"text": "image restoration", "weight": 3.0},
+        {"text": "image deblurring", "weight": 3.0},
+        {"text": "image denoising", "weight": 3.0},
+        {"text": "image dehazing", "weight": 3.0},
+        {"text": "image deraining", "weight": 3.0},
+        {"text": "low-light image enhancement", "weight": 3.0},
+        {"text": "low light image enhancement", "weight": 3.0},
+        {"text": "blind image restoration", "weight": 3.0},
+        {"text": "all-in-one image restoration", "weight": 3.0}
+      ],
+      "cooccurrences": [
+        {"all": ["image", "noise removal"], "weight": 2.5},
+        {"all": ["image", "blur removal"], "weight": 2.5}
+      ]
+    }
+  ]
+}
