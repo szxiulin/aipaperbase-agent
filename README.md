@@ -80,7 +80,7 @@ docker run -d -p 6333:6333 qdrant/qdrant
 
 ### Try it hands-free with an AI coding agent
 
-Paste the block below into Claude Code, Cursor, or any coding agent run from the repo root:
+Paste the block below into an AI coding agent running from the repo root:
 
 ```text
 Set up this project and verify it runs.

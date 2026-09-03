@@ -80,7 +80,7 @@ docker run -d -p 6333:6333 qdrant/qdrant
 
 ### 用 AI 编程 agent 免手把手上手
 
-把下面整段粘贴给 Claude Code / Cursor 等 coding agent（在仓库根目录运行）：
+把下面整段粘贴给你的 AI coding agent（在仓库根目录运行）：
 
 ```text
 帮我搭好这个项目并验证能跑起来。
