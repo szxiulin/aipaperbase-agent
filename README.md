@@ -76,6 +76,26 @@ docker run -d -p 6333:6333 qdrant/qdrant
 .venv/bin/python -m unittest discover -s tests -p 'test_*.py'
 ```
 
+`requirements-catalog.txt` is only for maintainers re-collecting venue metadata — you do not need it to install or run.
+
+### Try it hands-free with an AI coding agent
+
+Paste the block below into Claude Code, Cursor, or any coding agent run from the repo root:
+
+```text
+Set up this project and verify it runs.
+1) python3 -m venv .venv && .venv/bin/pip install -r requirements-rag.txt
+2) cp .env.example .env        # leave keys blank unless you use RAG/agent features
+3) build the catalog (stdlib only, no Qdrant/keys):
+   .venv/bin/python -m backend.catalog.import_csv
+4) start the console: .venv/bin/python -m backend.api.server  ->  open http://127.0.0.1:8765
+5) run tests: .venv/bin/python -m unittest discover -s tests -p 'test_*.py'
+Always use .venv/bin/python, never the system python (PEP 668).
+Only if RAG/agent features are wanted: start Qdrant
+(docker run -d -p 6333:6333 qdrant/qdrant) and fill EMBEDDING_*/RERANKER_*/GENERATOR_* in .env.
+This is a WIP personal project — report any failure verbatim.
+```
+
 ### What needs what
 
 | You want to… | You need |

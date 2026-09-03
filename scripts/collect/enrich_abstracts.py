@@ -229,7 +229,7 @@ def enrich_crossref(
                 "filter": f"from-pub-date:{year}-01-01,until-pub-date:{year}-12-31,type:journal-article",
                 "rows": "1000",
                 "cursor": cursor,
-                "mailto": "metadata@apexpaperrag.local",
+                "mailto": "you@example.com",
             }
             url = f"https://api.crossref.org/journals/{JOURNAL_ISSNS[venue]}/works?{urlencode(params)}"
             payload = json.loads(session.get_bytes(url, ".json"))
@@ -381,7 +381,7 @@ def enrich_openalex(
             "filter": "doi:" + "|".join(dois),
             "select": "id,doi,title,abstract_inverted_index",
             "per-page": "50",
-            "mailto": "metadata@apexpaperrag.local",
+            "mailto": "you@example.com",
         }
         url = f"{OPENALEX_WORKS_URL}?{urlencode(params, safe='|:/')}"
         payload = json.loads(session.get_bytes(url, ".json"))
@@ -419,7 +419,7 @@ def enrich_openalex_sources(
                 "select": "id,title,publication_year,abstract_inverted_index",
                 "per-page": "200",
                 "cursor": cursor,
-                "mailto": "metadata@apexpaperrag.local",
+                "mailto": "you@example.com",
             }
             url = f"{OPENALEX_WORKS_URL}?{urlencode(params, safe='|:/')}"
             payload = json.loads(session.get_bytes(url, ".json"))
@@ -678,7 +678,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="为 AIPaperbase Agent 年度清单补全可追溯摘要")
     parser.add_argument("--hf-parquet", type=Path, required=True)
     parser.add_argument("--reviewarena-tmlr", type=Path, help="可选的 ReviewArena TMLR parquet 快照")
-    parser.add_argument("--cache", type=Path, default=Path("/tmp/apexpaperrag-abstract-cache"))
+    parser.add_argument("--cache", type=Path, default=Path("/tmp/aipaperbase-abstract-cache"))
     parser.add_argument("--skip-acl", action="store_true", help="跳过 ACL Anthology 官方 XML")
     parser.add_argument("--skip-crossref", action="store_true", help="跳过 Crossref 期刊元数据")
     parser.add_argument("--skip-openalex", action="store_true", help="跳过 OpenAlex DOI 摘要补充")

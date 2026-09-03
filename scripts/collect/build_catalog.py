@@ -670,7 +670,7 @@ def crossref_journal(
             ),
             "rows": "1000",
             "cursor": cursor,
-            "mailto": "metadata@apexpaperrag.local",
+            "mailto": "you@example.com",
         }
         url = endpoint + "?" + urlencode(params)
         payload = json.loads(fetcher.get(url, ".json"))
@@ -1054,7 +1054,7 @@ def validate(papers: list[Paper], path: Path) -> list[dict[str, str]]:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--cache", type=Path, default=Path("/tmp/apexpaperrag-catalog-cache"))
+    parser.add_argument("--cache", type=Path, default=Path("/tmp/aipaperbase-catalog-cache"))
     parser.add_argument("--skip-fallback", action="store_true")
     args = parser.parse_args()
     fetcher = Fetcher(args.cache)

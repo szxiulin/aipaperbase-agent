@@ -76,6 +76,26 @@ docker run -d -p 6333:6333 qdrant/qdrant
 .venv/bin/python -m unittest discover -s tests -p 'test_*.py'
 ```
 
+`requirements-catalog.txt` 仅供维护者重采集 venue 元数据使用，安装/运行用不到。
+
+### 用 AI 编程 agent 免手把手上手
+
+把下面整段粘贴给 Claude Code / Cursor 等 coding agent（在仓库根目录运行）：
+
+```text
+帮我搭好这个项目并验证能跑起来。
+1) python3 -m venv .venv && .venv/bin/pip install -r requirements-rag.txt
+2) cp .env.example .env   # 不用 RAG/agent 功能可全部留空
+3) 建目录库（仅标准库，无需 Qdrant/key）：
+   .venv/bin/python -m backend.catalog.import_csv
+4) 起控制台：.venv/bin/python -m backend.api.server → 打开 http://127.0.0.1:8765
+5) 跑测试：.venv/bin/python -m unittest discover -s tests -p 'test_*.py'
+一律用 .venv/bin/python，不要用系统 python（PEP 668 会拒绝装依赖）。
+仅当要用 RAG/agent 功能：起 Qdrant（docker run -d -p 6333:6333 qdrant/qdrant）
+并在 .env 里填 EMBEDDING_*/RERANKER_*/GENERATOR_*。
+这是个人项目、开发中——任何失败请原样汇报。
+```
+
 ### 各功能需要什么
 
 | 你想… | 需要 |

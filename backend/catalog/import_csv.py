@@ -222,7 +222,7 @@ def build_database(target: Path = DEFAULT_DATABASE) -> dict[str, object]:
     target = target.resolve()
     target.parent.mkdir(parents=True, exist_ok=True)
 
-    temporary_dir = Path(tempfile.mkdtemp(prefix="apexpaper-catalog-", dir=target.parent))
+    temporary_dir = Path(tempfile.mkdtemp(prefix="aipaperbase-catalog-", dir=target.parent))
     temporary_database = temporary_dir / "catalog.sqlite"
     try:
         connection = connect(temporary_database)

@@ -34,7 +34,7 @@ JOBS: list[tuple[str, int, str]] = [
 
 
 def main() -> int:
-    fetcher = Fetcher(Path("/tmp/apexpaperrag-catalog-cache"))
+    fetcher = Fetcher(Path("/tmp/aipaperbase-catalog-cache"))
     ok, failures = 0, []
     for venue, year, collection in JOBS:
         try:
