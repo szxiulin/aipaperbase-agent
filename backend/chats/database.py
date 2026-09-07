@@ -45,6 +45,18 @@ CREATE TABLE IF NOT EXISTS message_snapshots (
     messages_json     TEXT NOT NULL,
     created_at        TEXT NOT NULL
 );
+
+CREATE TABLE IF NOT EXISTS ingest_tasks (
+    task_id TEXT PRIMARY KEY,
+    conversation_id TEXT NOT NULL REFERENCES conversations(conversation_id) ON DELETE CASCADE,
+    requested_json TEXT NOT NULL,
+    status TEXT NOT NULL,
+    result_json TEXT NOT NULL DEFAULT '',
+    error TEXT NOT NULL DEFAULT '',
+    started_at TEXT NOT NULL,
+    finished_at TEXT NOT NULL DEFAULT ''
+);
+CREATE INDEX IF NOT EXISTS idx_ingest_tasks_conversation ON ingest_tasks(conversation_id, started_at);
 """
 
 # Incremental column migration for older databases (SQLite does not support ADD COLUMN IF NOT EXISTS)
@@ -55,8 +67,8 @@ _MIGRATIONS = {
 }
 
 
-def connect(path: Path = DEFAULT_DATABASE, *, read_only: bool = False) -> sqlite3.Connection:
-    path = Path(path).resolve()
+def connect(path: Path | None = None, *, read_only: bool = False) -> sqlite3.Connection:
+    path = Path(path or DEFAULT_DATABASE).resolve()
     if read_only:
         connection = sqlite3.connect(f"file:{path}?mode=ro", uri=True)
     else:

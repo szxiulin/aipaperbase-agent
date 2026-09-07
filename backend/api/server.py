@@ -18,10 +18,14 @@ from backend.chats import store as chats_store
 from backend.collections import database as collections_db
 from backend.collections import service as collections_service
 from backend.collections import export as collections_export
+from backend.collections import organization as collections_organization
 from backend.library import planner as library_planner
 from backend.library import tasks as download_tasks
 from backend.library import store as download_store
 from backend.library import downloader as library_downloader
+from backend.library import ingest as library_ingest
+from backend.library import sources as library_sources
+from backend.library import local_status as library_local_status
 from backend.rag import parser as rag_parser
 from backend.rag import parse_store as rag_store
 from backend.rag import service as rag_service
@@ -75,6 +79,16 @@ class Handler(BaseHTTPRequestHandler):
             raise ValueError("请求体必须是 JSON 对象")
         return data
 
+    def _organization_request(self, callback):
+        try:
+            callback()
+        except KeyError as exc:
+            self.send_error_json(HTTPStatus.NOT_FOUND, f"草稿或集合不存在: {exc}")
+        except ValueError as exc:
+            self.send_error_json(HTTPStatus.BAD_REQUEST, str(exc))
+        except Exception:
+            self.send_error_json(HTTPStatus.INTERNAL_SERVER_ERROR, "操作失败，未完成写入，请重试")
+
     def do_GET(self) -> None:  # noqa: N802
         parsed = urlparse(self.path)
         if parsed.path.startswith("/api/"):
@@ -84,6 +98,10 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_POST(self) -> None:  # noqa: N802
         parsed = urlparse(self.path)
+        if parsed.path.startswith("/api/research"):
+            from backend.research.api import handle
+            self._organization_request(lambda: handle(self, parsed.path, write=True))
+            return
         if parsed.path == "/api/downloads":
             self._handle_start_download()
             return
@@ -126,6 +144,12 @@ class Handler(BaseHTTPRequestHandler):
         if parsed.path == "/api/cleanup":
             self._handle_cleanup()
             return
+        if parsed.path == "/api/organization/plan":
+            self._organization_request(self._handle_organization_plan)
+            return
+        if parsed.path == "/api/organization/apply":
+            self._organization_request(self._handle_organization_apply)
+            return
         self._handle_collection_method("POST")
 
     def do_PATCH(self) -> None:  # noqa: N802
@@ -166,6 +190,10 @@ class Handler(BaseHTTPRequestHandler):
         self.handle_collections(method, parsed.path, parse_qs(parsed.query), body)
 
     def handle_api(self, path: str, params: dict[str, list[str]]) -> None:
+        if path.startswith("/api/research"):
+            from backend.research.api import handle
+            self._organization_request(lambda: handle(self, path, params))
+            return
         if path == "/api/downloads/status":
             self._handle_task_status(params)
             return
@@ -185,6 +213,9 @@ class Handler(BaseHTTPRequestHandler):
             self._handle_list_chats(params)
             return
         parts = [part for part in path.split("/") if part]
+        if len(parts) == 4 and parts[0] == "api" and parts[1] == "chats" and parts[3] == "ingest-tasks":
+            self._handle_chat_ingest_tasks(parts[2])
+            return
         if len(parts) == 4 and parts[0] == "api" and parts[1] == "chats" and parts[3] == "messages":
             self._handle_chat_messages(parts[2])
             return
@@ -197,6 +228,15 @@ class Handler(BaseHTTPRequestHandler):
         if path == "/api/downloads":
             self._handle_downloads_list()
             return
+        if path == "/api/my-library":
+            self._handle_local_library(include_saved=True)
+            return
+        if path == "/api/local-library":
+            self._handle_local_library()
+            return
+        if path.startswith("/api/organization-runs/"):
+            self._organization_request(lambda: self._handle_organization_run(path.rsplit("/", 1)[-1]))
+            return
         if path.startswith("/api/downloads/") and path.endswith("/pdf"):
             self._handle_download_pdf(path.split("/")[-2])
             return
@@ -208,6 +248,9 @@ class Handler(BaseHTTPRequestHandler):
             return
         if path == "/api/download-plan":
             self._handle_download_plan(params)
+            return
+        if path == "/api/ingest-plan":
+            self._handle_ingest_plan(params)
             return
         if not self.database_path.exists():
             self.send_error_json(HTTPStatus.SERVICE_UNAVAILABLE, "数据库尚未构建，请先运行导入命令")
@@ -389,7 +432,17 @@ class Handler(BaseHTTPRequestHandler):
             self.send_error_json(HTTPStatus.INTERNAL_SERVER_ERROR, f"服务器错误: {exc}")
 
     def _open_user_connection(self, read_only: bool = False):
-        return collections_db.connect(self.collections_path, read_only=read_only)
+        if read_only and not self.collections_path.exists():
+            import sqlite3
+            connection = sqlite3.connect(":memory:")
+            connection.row_factory = sqlite3.Row
+            collections_db.initialize(connection)
+            connection.execute("PRAGMA query_only=ON")
+            return connection
+        connection = collections_db.connect(self.collections_path, read_only=read_only)
+        if not read_only:
+            collections_db.initialize(connection)
+        return connection
 
     def _open_chats_connection(self, read_only: bool = False):
         connection = chats_db.connect(self.chats_path, read_only=read_only)
@@ -500,12 +553,22 @@ class Handler(BaseHTTPRequestHandler):
             self.send_error_json(HTTPStatus.BAD_REQUEST, "mode 仅支持 pipeline/agent")
             return
 
+        from backend.research import store as research_store
+        research_conn = self._open_user_connection(read_only=True)
+        try:
+            scope = research_store.chat_scope(research_conn, conversation_id)
+        finally:
+            research_conn.close()
+        if scope is not None and mode != "agent":
+            self.send_error_json(HTTPStatus.BAD_REQUEST, "限定范围会话请使用 Agent 模式")
+            return
+
         def job(update, is_cancelled):
             conn = self._open_chats_connection()
             try:
                 message = chats_service.ask(
                     conn, conversation_id=conversation_id, query=query, top_k=top_k, mode=mode,
-                    is_cancelled=is_cancelled,
+                    is_cancelled=is_cancelled, scope=scope,
                 )
             finally:
                 conn.close()
@@ -583,6 +646,13 @@ class Handler(BaseHTTPRequestHandler):
             conn.close()
         self.send_json(snapshot)
 
+    def _handle_chat_ingest_tasks(self, conversation_id: str) -> None:
+        conn = self._open_chats_connection(read_only=True)
+        try:
+            self.send_json({"items": chats_store.list_ingest_tasks(conn, conversation_id)})
+        finally:
+            conn.close()
+
     def _handle_chat_snapshot_restore(self, conversation_id: str, snapshot_id: str) -> None:
         conn = self._open_chats_connection()
         try:
@@ -607,6 +677,16 @@ class Handler(BaseHTTPRequestHandler):
             self.send_error_json(HTTPStatus.BAD_REQUEST, "缺少 entity_ids")
             return
 
+        # Confirmation returns immediately.  This is intentionally local-only;
+        # potentially slow arXiv/OpenAlex resolution happens inside the job.
+        catalog_ro = connect(self.database_path, read_only=True)
+        try:
+            plan = library_planner.build_plan(catalog_ro, entity_ids)
+            self._enrich_download_status(plan)
+        finally:
+            catalog_ro.close()
+        plan_items = plan["items"]
+
         def job(update, is_cancelled):
             catalog_conn = connect(self.database_path, read_only=True)
             store_conn = download_store.connect()
@@ -614,22 +694,53 @@ class Handler(BaseHTTPRequestHandler):
             parse_conn = rag_store.connect()
             rag_store.initialize(parse_conn)
             try:
-                stats: dict = {"entity_ids": entity_ids, "downloaded": 0, "parsed": 0, "ingested": 0}
-                if not is_cancelled():
-                    dl = library_downloader.run_download(
-                        catalog_conn, store_conn, entity_ids, is_cancelled=is_cancelled, on_progress=update,
+                update({"stage": "resolving_external", "current": "正在查找可信开放来源…"})
+                # Rebuild only after confirmation, now permitting read-only
+                # source lookups. A failure remains an item-level unavailable
+                # result rather than blocking the confirmation request itself.
+                resolve_ids = [item["requested_entity_id"] for item in plan_items
+                               if item.get("ingest_status") != "success"
+                               and item.get("download_status") not in {"success", "duplicate"}]
+                resolved_plan = library_planner.build_plan(
+                    catalog_conn, resolve_ids, arxiv_lookup=library_sources.remote_arxiv_candidates,
+                    openalex_lookup=library_sources.remote_openalex_candidates,
+                )
+                resolved = {item["requested_entity_id"]: item for item in resolved_plan["items"]}
+                execution_items = [resolved.get(item["requested_entity_id"], item) for item in plan_items]
+                execution_canonical = {item["requested_entity_id"]: item["canonical_entity_id"] for item in execution_items}
+                execution_runnable = []
+                execution_seen: set[str] = set()
+                for item in execution_items:
+                    canonical = item["canonical_entity_id"]
+                    needs_work = item.get("ingest_status") != "success" and (
+                        item.get("downloadable") or item.get("download_status") in {"success", "duplicate"}
                     )
-                    stats["downloaded"] = (dl or {}).get("downloaded", 0)
+                    if needs_work and canonical not in execution_seen:
+                        execution_runnable.append(item)
+                        execution_seen.add(canonical)
+                download = {"success": 0, "failed": 0}
+                parsed = {"parsed": 0, "failed": 0}
+                indexed: dict = {"documents": 0, "ingested_chunks": 0, "already_indexed": 0}
                 if not is_cancelled():
-                    pr = rag_parser.run_parse(
-                        store_conn, parse_conn, entity_ids, is_cancelled=is_cancelled, on_progress=update,
+                    download = library_downloader.run_download(
+                        catalog_conn, store_conn, [item["canonical_entity_id"] for item in execution_runnable],
+                        is_cancelled=is_cancelled, on_progress=update, plan_items=execution_runnable,
                     )
-                    stats["parsed"] = (pr or {}).get("parsed", 0)
+                # A duplicate PDF belongs to another entity. Keep its item visible
+                # but do not create a second parsed/vector representation or merge
+                # catalog identities implicitly.
+                parse_ids = library_ingest.parseable_ids_after_pdf_dedup(store_conn, execution_runnable)
                 if not is_cancelled():
-                    ig = rag_service.ingest_parsed(
-                        catalog_conn, parse_conn, entity_ids, on_progress=update, is_cancelled=is_cancelled,
+                    parsed = rag_parser.run_parse(
+                        store_conn, parse_conn, parse_ids,
+                        is_cancelled=is_cancelled, on_progress=update,
                     )
-                    stats["ingested"] = (ig or {}).get("ingested", 0)
+                if not is_cancelled():
+                    indexed = rag_service.ingest_parsed(
+                        catalog_conn, parse_conn, parse_ids,
+                        on_progress=update, is_cancelled=is_cancelled, canonical_ids=execution_canonical,
+                    )
+                result = library_ingest.finalize(execution_items, download or {}, parsed or {}, indexed or {})
                 # append a system message on completion
                 try:
                     chats_conn = self._open_chats_connection()
@@ -637,24 +748,49 @@ class Handler(BaseHTTPRequestHandler):
                         chats_store = __import__("backend.chats.store", fromlist=["add_message"]).add_message
                         chats_store(
                             chats_conn, conversation_id, "assistant",
-                            content=(f"已入库 {stats['ingested']} 篇论文（下载 {stats['downloaded']} / "
-                                     f"解析 {stats['parsed']}），现在可以追问它们的具体内容了。"),
+                            content=library_ingest.completion_message(result),
                         )
                     finally:
                         chats_conn.close()
                 except Exception as exc:
-                    stats["message_error"] = str(exc)
-                return stats
+                    result["message_error"] = str(exc)[:500]
+                return result
             finally:
                 parse_conn.close()
                 store_conn.close()
                 catalog_conn.close()
+
+        def started(task_id: str) -> None:
+            conn = self._open_chats_connection()
+            try:
+                chats_store.create_ingest_task(conn, task_id, conversation_id, entity_ids)
+            finally:
+                conn.close()
+
+        def finished(state: dict) -> None:
+            conn = self._open_chats_connection()
+            try:
+                previous = chats_store.get_ingest_task(conn, state["task_id"])
+                chats_store.finish_ingest_task(
+                    conn, state["task_id"], status=state.get("status", "error"),
+                    result={k: v for k, v in state.items() if k not in {"error", "cancel"}},
+                    error=state.get("error", ""),
+                )
+                if state.get("status") == "error" and previous and previous.get("status") != "error":
+                    chats_store.add_message(
+                        conn, conversation_id, "assistant",
+                        content=f"入库任务失败：{state.get('error') or '未知错误'}",
+                        error=(state.get("error") or "")[:500],
+                    )
+            finally:
+                conn.close()
 
         try:
             task_id = download_tasks.start_job(
                 job,
                 max_active=int(os.environ.get("ASK_MAX_CONCURRENCY", "2")),
                 timeout=float(os.environ.get("ASK_TIMEOUT", "600")),
+                on_started=started, on_finished=finished,
             )
         except RuntimeError as exc:
             self.send_error_json(HTTPStatus.TOO_MANY_REQUESTS, str(exc))
@@ -835,6 +971,20 @@ class Handler(BaseHTTPRequestHandler):
             return
         self.send_json(payload)
 
+    def _handle_ingest_plan(self, params: dict[str, list[str]]) -> None:
+        raw = self.param(params, "entity_ids")
+        entity_ids = [value for value in raw.split(",") if value]
+        if not entity_ids:
+            self.send_error_json(HTTPStatus.BAD_REQUEST, "缺少 entity_ids")
+            return
+        catalog_conn = connect(self.database_path, read_only=True)
+        try:
+            payload = library_planner.build_plan(catalog_conn, entity_ids)
+            self._enrich_download_status(payload)
+            self.send_json(payload)
+        finally:
+            catalog_conn.close()
+
     def _handle_start_download(self) -> None:
         try:
             body = self.read_json_body()
@@ -918,6 +1068,91 @@ class Handler(BaseHTTPRequestHandler):
             conn.close()
         self.send_json({"items": items, "counts": counts})
 
+    def _handle_local_library(self, include_saved=False) -> None:
+        """Read-only aggregation; downloads/parsed manifests remain the source of truth."""
+        catalog_conn = connect(self.database_path, read_only=True)
+        user_conn = self._open_user_connection(read_only=True)
+        try:
+            payload = self._local_reconcile(catalog_conn)
+            memberships = user_conn.execute("SELECT m.entity_id,c.collection_id,c.name FROM collection_members m JOIN collections c USING(collection_id)").fetchall()
+            identities = collections_service.resolve_entity_ids(catalog_conn, [r["entity_id"] for r in memberships])
+            if include_saved:
+                present = {item["entity_id"] for item in payload["items"]}
+                saved_ids = list(dict.fromkeys(info["entity_id"] for info in identities.values() if info["status"] != "missing" and info["entity_id"] not in present))
+                metadata = collections_organization._metadata(catalog_conn, saved_ids)
+                payload["items"].extend({"entity_id": eid, "title": metadata.get(eid, {}).get("title", eid)} for eid in saved_ids)
+            for item in payload["items"]:
+                item["collections"] = [{"collection_id": r["collection_id"], "name": r["name"]} for r in memberships
+                    if identities[r["entity_id"]]["entity_id"] == item["entity_id"]]
+            payload["catalog_total"] = catalog_conn.execute("SELECT COUNT(*) FROM paper_entities").fetchone()[0]
+            self.send_json(payload)
+        finally:
+            user_conn.close()
+            catalog_conn.close()
+
+    def _local_reconcile(self, catalog_conn, *, probe_vectors=True):
+        downloads_conn = download_store.connect(read_only=True) if download_store.DEFAULT_DATABASE.exists() else None
+        parsed_conn = rag_store.connect(read_only=True) if rag_store.DEFAULT_DATABASE.exists() else None
+        try:
+            counts, fingerprint = rag_service.index_reconcile_snapshot() if probe_vectors else (None, "")
+            return library_local_status.snapshot(catalog_conn, downloads_conn=downloads_conn, parsed_conn=parsed_conn,
+                                                 document_chunk_counts=counts, pipeline_fingerprint=fingerprint)
+        finally:
+            if downloads_conn is not None:
+                downloads_conn.close()
+            if parsed_conn is not None:
+                parsed_conn.close()
+
+    def _handle_organization_plan(self) -> None:
+        body = self.read_json_body()
+        collection_ids = body.get("collection_ids") or []
+        user_conn = self._open_user_connection()
+        catalog_conn = connect(self.database_path, read_only=True)
+        try:
+            collections_service.ensure_schema(user_conn)
+            reconcile = self._local_reconcile(catalog_conn, probe_vectors=body.get("operation") != "assign")
+            # Explicit selections may be catalog metadata without a local PDF.
+            # Never extend the scope of an all-local request to the catalog.
+            if body.get("operation") == "assign" and isinstance(body.get("entity_ids"), list):
+                requested = collections_service.resolve_entity_ids(catalog_conn, body["entity_ids"])
+                known = {item["entity_id"] for item in reconcile["items"]}
+                metadata = collections_organization._metadata(catalog_conn, list(dict.fromkeys(info["entity_id"] for info in requested.values() if info["status"] != "missing")))
+                reconcile["items"].extend({"entity_id": eid, "title": item["title"]} for eid, item in metadata.items() if eid not in known)
+            result = collections_organization.propose(
+                user_conn, catalog_conn, reconcile,
+                operation=str(body.get("operation") or "classify"), target_name=str(body.get("target_name") or ""),
+                collection_ids=[str(x) for x in collection_ids], conversation_id=str(body.get("conversation_id") or ""),
+                entity_ids=[str(x) for x in body.get("entity_ids", [])] if isinstance(body.get("entity_ids"), list) else None,
+                allow_all=bool(body.get("allow_all", False)),
+                rules=body.get("rules") if isinstance(body.get("rules"), dict) else None,
+            )
+        finally:
+            user_conn.close(); catalog_conn.close()
+        self.send_json(result, HTTPStatus.CREATED)
+
+    def _handle_organization_apply(self) -> None:
+        body = self.read_json_body()
+        user_conn = self._open_user_connection()
+        catalog_conn = connect(self.database_path, read_only=True)
+        try:
+            collections_service.ensure_schema(user_conn)
+            selected = body.get("selected") or []
+            if not isinstance(selected, list):
+                raise ValueError("selected 必须为列表")
+            result = collections_organization.apply(
+                user_conn, catalog_conn, ({} if collections_organization.get_run(user_conn, str(body.get("run_id") or ""))["operation"] == "assign" else self._local_reconcile(catalog_conn)), run_id=str(body.get("run_id") or ""), selected=selected,
+            )
+        finally:
+            user_conn.close(); catalog_conn.close()
+        self.send_json(result)
+
+    def _handle_organization_run(self, run_id: str) -> None:
+        user_conn = self._open_user_connection(read_only=True)
+        try:
+            self.send_json(collections_organization.get_run(user_conn, run_id))
+        finally:
+            user_conn.close()
+
     @staticmethod
     def _enrich_download_status(payload: dict) -> None:
         items = payload["items"]
@@ -929,10 +1164,12 @@ class Handler(BaseHTTPRequestHandler):
             finally:
                 conn.close()
         parse_statuses: dict[str, str] = {}
+        index_states: dict[str, dict] = {}
         if rag_store.DEFAULT_DATABASE.exists():
             conn = rag_store.connect(read_only=True)
             try:
                 parse_statuses = rag_store.status_map(conn, [item["entity_id"] for item in items])
+                index_states = {item["entity_id"]: rag_store.index_state(conn, item["entity_id"]) for item in items}
             finally:
                 conn.close()
         downloaded = 0
@@ -948,8 +1185,23 @@ class Handler(BaseHTTPRequestHandler):
             item["parse_status"] = pstatus
             if pstatus == "success":
                 parsed += 1
-            istatus = "success" if item["entity_id"] in ingested else ""
+            index_state = index_states.get(item["entity_id"], {})
+            chunk_count = int(index_state.get("indexed_chunk_count") or 0)
+            istatus = "success" if item["entity_id"] in ingested and chunk_count > 0 else ""
             item["ingest_status"] = istatus
+            item["chunk_count"] = chunk_count
+            item["parsed_sha256"] = index_state.get("parsed_sha256", "")
+            item["pipeline_fingerprint"] = index_state.get("indexed_pipeline_fingerprint", "")
+            if istatus:
+                item["plan_status"] = "already_indexed"
+            elif item.get("reason_code") == "ambiguous_match":
+                item["plan_status"] = "ambiguous"
+            elif status in {"success", "duplicate"} or pstatus == "success":
+                item["plan_status"] = "local_ready"
+            elif item.get("source") == "catalog":
+                item["plan_status"] = "catalog_candidate"
+            else:
+                item["plan_status"] = "needs_external_resolution"
             if istatus:
                 ingested_count += 1
         payload["summary"]["downloaded_count"] = downloaded
@@ -1120,11 +1372,17 @@ class Handler(BaseHTTPRequestHandler):
         self.send_json(result)
 
     def _handle_rag_status(self) -> None:
+        from raglib.config import load_config, load_dotenv
         try:
-            rag_service.get_pipeline()
-            self.send_json({"status": "ready"})
-        except Exception as exc:
-            self.send_json({"status": "error", "error": str(exc)})
+            load_dotenv()
+            config = load_config()
+            configured = bool(config.generator.base_url and config.generator.model)
+            self.send_json({"status": "configured" if configured else "unconfigured",
+                "error": "" if configured else "未配置模型；本地库与指定加入仍可使用。",
+                "embedding_configured": bool(config.embedder.base_url and config.embedder.model and config.embedder.dim),
+                "qdrant_configured": bool(config.qdrant.url)})
+        except (ValueError, TypeError):
+            self.send_json({"status": "unconfigured", "error": "配置格式错误，请检查模型配置"})
 
     def handle_static(self, path: str) -> None:
         requested = "index.html" if path in {"", "/"} else unquote(path.lstrip("/"))

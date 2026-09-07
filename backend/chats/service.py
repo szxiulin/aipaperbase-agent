@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 import threading
 from typing import Callable
 
@@ -13,6 +14,7 @@ _PRONOUNS = (
 )
 _MIN_STANDALONE_LEN = 12
 _HISTORY_LIMIT = 4
+_CITATION_MARKER = re.compile(r"\[(\d+)\]")
 
 # Serialize within the same session (locked by conversation_id); parallel across sessions
 class _LockRegistry:
@@ -28,6 +30,32 @@ class _LockRegistry:
 
 
 _conv_locks = _LockRegistry()
+
+
+def _cited_evidence(answer: str, ledger: list[dict]) -> tuple[list[dict], str]:
+    """Select final-answer citations and make out-of-range markers visible.
+
+    This validates only the [n] range; it deliberately does not claim that every
+    generated fact is entailed by its cited evidence.
+    """
+    cited: list[int] = []
+    invalid: list[int] = []
+    for marker in _CITATION_MARKER.findall(answer or ""):
+        index = int(marker)
+        if 1 <= index <= len(ledger):
+            if index not in cited:
+                cited.append(index)
+        elif index not in invalid:
+            invalid.append(index)
+    evidence = [{**ledger[index - 1], "citation_index": index} for index in cited]
+    warning = ""
+    if invalid:
+        markers = "、".join(f"[{index}]" for index in invalid)
+        warning = (
+            f"\n\n> ⚠️ **引用校验警告**：回答包含越界引用 {markers}；"
+            f"本轮证据账本共有 {len(ledger)} 条，未为这些引用展示证据卡。"
+        )
+    return evidence, warning
 
 
 def build_search_query(current: str, history: list[dict]) -> str:
@@ -83,29 +111,81 @@ def _chunks_to_raglib(chunks: list[dict]) -> list[Chunk]:
     ]
 
 
-def _default_agent_fn(is_cancelled=None) -> Callable[[str, list[dict], int], "AgentRun"]:
+def _default_agent_fn(conversation_id: str = "", is_cancelled=None, scope=None) -> Callable[[str, list[dict], int], "AgentRun"]:
     from backend.agent import run_agent
     from backend.catalog.database import DEFAULT_DATABASE, connect as catalog_connect
     from backend.collections import database as collections_db
+    from backend.library import store as download_store
+    from backend.rag import parse_store, service as rag_service
 
     def agent_fn(query: str, history: list[dict], top_k: int):
         catalog_conn = catalog_connect(DEFAULT_DATABASE, read_only=True)
         collections_conn = None
+        organization_draft_conn = None
+        downloads_conn = None
+        parsed_conn = None
+        def draft_factory():
+            connection = collections_db.connect()
+            collections_db.initialize(connection)
+            return connection
+
         if collections_db.DEFAULT_DATABASE.exists():
             collections_conn = collections_db.connect(read_only=True)
+            # Keep the agent's collection view read-only.  A separate connection
+            # is passed only to the draft tool; that tool can INSERT a draft but
+            # exposes no collection-member mutation operation.
+            organization_draft_conn = draft_factory()
+        if download_store.DEFAULT_DATABASE.exists():
+            downloads_conn = download_store.connect(read_only=True)
+        if parse_store.DEFAULT_DATABASE.exists():
+            parsed_conn = parse_store.connect(read_only=True)
+        direct_assignment = re.fullmatch(r"(?:请)?把本地(?:全文)?库(?:所有|全部)论文加入[到]?\s*(.+?)[。！!]?", query.strip())
+        document_chunk_counts, active_pipeline_fingerprint = (None, "") if direct_assignment else rag_service.index_reconcile_snapshot()
         try:
-            # The pipeline is lazily loaded by full-text tools (_ensure_pipeline); catalog-type questions don't depend on Qdrant
+            # Keep authoritative local manifests in the tool context. This is read-only;
+            # it avoids inferring full-text state from catalog metadata.
             ctx = {
                 "catalog_conn": catalog_conn,
                 "collections_conn": collections_conn,
+                "organization_draft_conn": organization_draft_conn,
+                "organization_draft_factory": draft_factory,
+                "downloads_conn": downloads_conn,
+                "parsed_conn": parsed_conn,
+                "document_chunk_counts": document_chunk_counts,
+                "pipeline_fingerprint": active_pipeline_fingerprint,
+                "conversation_id": conversation_id,
+                "query": query,
+                "allowed_entity_ids": scope.get("entity_ids") if scope is not None else None,
                 "pipeline": None,
             }
+            if scope and scope.get("collection_id") and collections_conn is not None:
+                from backend.research.store import list_records
+                ctx["research_progress"] = [r["data"] for r in list_records(collections_conn)
+                    if r["kind"] == "progress" and r["data"].get("collection_id") == scope["collection_id"]]
+            if direct_assignment:
+                from backend.agent.runner import AgentRun
+                from backend.agent.tools.base import ToolRegistry
+                from backend.agent.tools.organization import organization_tools
+                args = {"target_name": direct_assignment.group(1).strip(), "allow_all": True}
+                result = ToolRegistry(organization_tools()).dispatch("propose_collection_membership", args, ctx)
+                return AgentRun(answer=("已生成指定加入草稿，请核对论文名单并确认。" if result.ok and result.data.get("suggestions") else
+                                        "本地全文库没有可加入的论文。" if result.ok else result.data["error"]),
+                    finish_reason="local_assignment", reasoning="", ledger=[], model="local",
+                    trace=[{"tool": "propose_collection_membership", "args": args, "ok": result.ok,
+                            "organization_run_id": result.data.get("organization_run_id", "")}])
             return run_agent(query=query, history=history, top_k=top_k,
                              ctx_builder=lambda: ctx, is_cancelled=is_cancelled)
         finally:
             catalog_conn.close()
             if collections_conn is not None:
                 collections_conn.close()
+            draft_conn = ctx.get("organization_draft_conn")
+            if draft_conn is not None:
+                draft_conn.close()
+            if downloads_conn is not None:
+                downloads_conn.close()
+            if parsed_conn is not None:
+                parsed_conn.close()
 
     return agent_fn
 
@@ -119,6 +199,7 @@ def ask(
     query_fn: Callable[[str, int, list[dict]], dict] | None = None,
     agent_fn: Callable[[str, list[dict], int], "AgentRun"] | None = None,
     mode: str = "pipeline",
+    scope: dict | None = None,
     is_cancelled: Callable[[], bool] | None = None,
 ) -> dict:
     """One round of Q&A: persist the user message → retrieval/tool loop → persist the assistant message.
@@ -146,22 +227,24 @@ def ask(
 
         if mode == "agent":
             try:
-                run = (agent_fn or _default_agent_fn(is_cancelled))(query, history, top_k)
+                run = (agent_fn or _default_agent_fn(conversation_id, is_cancelled, scope))(query, history, top_k)
             except Exception as exc:
                 store.add_message(conn, conversation_id, "assistant", error=str(exc))
                 raise
             ledger = run.ledger
-            if ledger:
+            cited_ledger, citation_warning = _cited_evidence(run.answer or "", ledger)
+            content = (run.answer or "") + citation_warning
+            if cited_ledger:
                 assistant_message = store.add_message(
                     conn, conversation_id, "assistant",
-                    content=run.answer or "", chunks=ledger, top_k=top_k,
+                    content=content, chunks=cited_ledger, top_k=top_k,
                     model=run.model, finish_reason=run.finish_reason,
                     reasoning=run.reasoning, tool_trace=run.trace,
                 )
             else:
                 assistant_message = store.add_message(
                     conn, conversation_id, "assistant",
-                    content=run.answer or "未检索到相关内容。",
+                    content=content or "未检索到相关内容。",
                     finish_reason=run.finish_reason, reasoning=run.reasoning,
                     tool_trace=run.trace,
                 )
@@ -175,13 +258,15 @@ def ask(
             store.add_message(conn, conversation_id, "assistant", error=str(exc))
             raise
         chunks = result.get("chunks") or []
-        if chunks:
+        cited_chunks, citation_warning = _cited_evidence(result.get("answer") or "", chunks)
+        content = (result.get("answer") or "") + citation_warning
+        if cited_chunks:
             assistant_message = store.add_message(
                 conn,
                 conversation_id,
                 "assistant",
-                content=result.get("answer") or "",
-                chunks=chunks,
+                content=content,
+                chunks=cited_chunks,
                 top_k=top_k,
                 model=result.get("model"),
                 finish_reason=result.get("finish_reason"),
@@ -192,7 +277,11 @@ def ask(
                 conn,
                 conversation_id,
                 "assistant",
-                content="没有检索到相关内容。",
+                content=content or "没有检索到相关内容。",
+                top_k=top_k,
+                model=result.get("model"),
+                finish_reason=result.get("finish_reason"),
+                reasoning=result.get("reasoning"),
             )
     return assistant_message
 
@@ -225,12 +314,13 @@ def regenerate(
     history = _history_of(conn, conversation_id, rowid)
     with _conv_locks.get(conversation_id):
         result = generate_fn(last_user["content"], _chunks_to_raglib(chunks), history)
+        cited_chunks, citation_warning = _cited_evidence(result.get("answer") or "", chunks)
         new_message = store.add_message(
             conn,
             conversation_id,
             "assistant",
-            content=result.get("answer") or "",
-            chunks=chunks,
+            content=(result.get("answer") or "") + citation_warning,
+            chunks=cited_chunks,
             top_k=message.get("top_k"),
             model=result.get("model"),
             finish_reason=result.get("finish_reason"),

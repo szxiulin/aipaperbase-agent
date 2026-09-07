@@ -19,6 +19,8 @@ class VectorStore(Protocol):
 
     def list_by_document(self, document_id: str) -> list[Chunk]: ...
 
+    def document_chunk_counts(self) -> dict[str, int]: ...
+
     def delete(self, document_id: str) -> None: ...
 
 
@@ -38,7 +40,14 @@ class InMemoryStore:
         scored: list[tuple[Chunk, float]] = []
         for chunk_id, vector in self._vectors.items():
             chunk = self._chunks[chunk_id]
-            if filters and not all(chunk.metadata.get(k) == v for k, v in filters.items()):
+            def value(key: str):
+                return chunk.document_id if key == "document_id" else chunk.metadata.get(key)
+
+            if filters and not all(
+                value(key) in expected if isinstance(expected, (list, tuple, set))
+                else value(key) == expected
+                for key, expected in filters.items()
+            ):
                 continue
             scored.append((chunk, self._cosine(query_vector, vector)))
         scored.sort(key=lambda item: item[1], reverse=True)
@@ -55,6 +64,12 @@ class InMemoryStore:
     def document_ids(self) -> set[str]:
         return {chunk.document_id for chunk in self._chunks.values()}
 
+    def document_chunk_counts(self) -> dict[str, int]:
+        counts: dict[str, int] = {}
+        for chunk in self._chunks.values():
+            counts[chunk.document_id] = counts.get(chunk.document_id, 0) + 1
+        return counts
+
     @staticmethod
     def _cosine(a: list[float], b: list[float]) -> float:
         dot = sum(x * y for x, y in zip(a, b))
@@ -66,7 +81,7 @@ class InMemoryStore:
 class QdrantStore:
     """Qdrant vector store (requires a local or remote Qdrant service)."""
 
-    def __init__(self, url: str, collection: str, vector_size: int) -> None:
+    def __init__(self, url: str, collection: str, vector_size: int, *, create_if_missing: bool = True) -> None:
         try:
             from qdrant_client import QdrantClient
             from qdrant_client.models import Distance, VectorParams
@@ -81,11 +96,13 @@ class QdrantStore:
             httpx = None
         try:
             self._client = QdrantClient(url=url)
-            if not self._client.collection_exists(self.collection):
+            if not self._client.collection_exists(self.collection) and create_if_missing:
                 self._client.create_collection(
                     collection_name=self.collection,
                     vectors_config=VectorParams(size=self.vector_size, distance=Distance.COSINE),
                 )
+            elif not self._client.collection_exists(self.collection):
+                raise RuntimeError(f"Qdrant collection 不存在：{self.collection}")
         except Exception as exc:
             connect_error = (httpx is not None and isinstance(exc, httpx.ConnectError)) or isinstance(exc, ConnectionError)
             if connect_error:
@@ -175,7 +192,10 @@ class QdrantStore:
         return items
 
     def document_ids(self) -> set[str]:
-        ids: set[str] = set()
+        return set(self.document_chunk_counts())
+
+    def document_chunk_counts(self) -> dict[str, int]:
+        counts: dict[str, int] = {}
         offset = None
         while True:
             points, next_offset = self._client.scroll(
@@ -187,8 +207,8 @@ class QdrantStore:
             for point in points:
                 doc_id = (point.payload or {}).get("document_id", "")
                 if doc_id:
-                    ids.add(doc_id)
+                    counts[doc_id] = counts.get(doc_id, 0) + 1
             if next_offset is None:
                 break
             offset = next_offset
-        return ids
+        return counts

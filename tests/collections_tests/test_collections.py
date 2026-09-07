@@ -142,6 +142,32 @@ class CollectionTest(unittest.TestCase):
             with self.assertRaises(ValueError):
                 service.add_members(user, self.catalog, created["collection_id"], ["nope"])
 
+    def test_add_members_canonicalizes_alias_and_detects_historical_alias(self) -> None:
+        with open_collections_db() as user:
+            created = service.create_collection(user, name="规范化", catalog_release_id="rel-1")
+            result = service.add_members(user, self.catalog, created["collection_id"], ["old_e3", "e3"])
+            self.assertEqual(result["added"], 1)
+            self.assertEqual(result["already_present"], 0)
+            self.assertEqual(service.collection_entity_ids(user, created["collection_id"]), ["e3"])
+
+            # Simulate a pre-Sprint-021 stored alias. It remains untouched but
+            # must block a new canonical duplicate.
+            user.execute(
+                "INSERT INTO collection_members (collection_id, entity_id, added_by, added_at) VALUES (?, ?, ?, ?)",
+                (created["collection_id"], "old_e3", "manual", "2026-01-01T00:00:00+00:00"),
+            )
+            user.execute("DELETE FROM collection_members WHERE collection_id=? AND entity_id='e3'", (created["collection_id"],))
+            result = service.add_members(user, self.catalog, created["collection_id"], ["e3"])
+            self.assertEqual(result["added"], 0)
+            self.assertEqual(result["already_present"], 1)
+            self.assertEqual(result["historical_alias_members"][0]["stored_entity_id"], "old_e3")
+
+    def test_same_canonical_can_belong_to_multiple_collections(self) -> None:
+        with open_collections_db() as user:
+            collections = [service.create_collection(user, name=f"集合{i}", catalog_release_id="rel-1") for i in range(3)]
+            for collection in collections:
+                self.assertEqual(service.add_members(user, self.catalog, collection["collection_id"], ["old_e3"])["added"], 1)
+
     def test_export_skips_missing_and_dedupes_alias(self) -> None:
         with open_collections_db() as user:
             created = service.create_collection(

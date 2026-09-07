@@ -151,7 +151,7 @@ class Fetcher:
         self.delay = delay
         self.session = requests.Session()
         self.session.headers.update({
-            "User-Agent": "AIPaperbaseAgent-catalog/0.1 (research metadata; contact: local-user)"
+            "User-Agent": "AIPaperbase Agent-catalog/0.1 (research metadata; contact: local-user)"
         })
 
     def get(self, url: str, suffix: str = ".html") -> bytes:
@@ -670,7 +670,7 @@ def crossref_journal(
             ),
             "rows": "1000",
             "cursor": cursor,
-            "mailto": "you@example.com",
+            "mailto": "metadata@apexpaperrag.local",
         }
         url = endpoint + "?" + urlencode(params)
         payload = json.loads(fetcher.get(url, ".json"))
@@ -1054,7 +1054,7 @@ def validate(papers: list[Paper], path: Path) -> list[dict[str, str]]:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--cache", type=Path, default=Path("/tmp/aipaperbase-catalog-cache"))
+    parser.add_argument("--cache", type=Path, default=Path("/tmp/apexpaperrag-catalog-cache"))
     parser.add_argument("--skip-fallback", action="store_true")
     args = parser.parse_args()
     fetcher = Fetcher(args.cache)

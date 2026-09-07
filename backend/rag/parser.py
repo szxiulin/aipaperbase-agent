@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import sqlite3
+import hashlib
 from typing import Any, Callable
 
 from backend.library import store as download_store
@@ -81,6 +82,7 @@ def run_parse(
             parse_store.mark(
                 parse_conn, entity_id, "success",
                 source_pdf_path=str(pdf_path), markdown_path=str(dest), char_count=len(result.markdown),
+                parsed_sha256=hashlib.sha256(result.markdown.encode("utf-8")).hexdigest(),
             )
             results["parsed"] += 1
         except Exception as exc:

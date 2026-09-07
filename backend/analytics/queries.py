@@ -301,7 +301,7 @@ def topic_papers(
         "total": total,
         "page": page,
         "page_size": page_size,
-        "total_pages": (page + page_size - 1) // page_size,
+        "total_pages": (total + page_size - 1) // page_size,
     }
 
 

@@ -228,7 +228,7 @@ def remove_record(connection: sqlite3.Connection, record_id: str) -> None:
 def match_record_ids(
     connection: sqlite3.Connection,
     fts_query: str,
-    limit: int = 2000,
+    limit: int | None = None,
 ) -> list[str]:
     """FTS search, returning record_id list ordered by BM25 score descending (after intent guessing)."""
     rows = connection.execute(
@@ -238,7 +238,7 @@ def match_record_ids(
             WHERE fts_papers MATCH ?
             ORDER BY bm25(fts_papers, {BM25_WEIGHTS}), f.rowid
             LIMIT ?""",
-        (fts_query, limit),
+        (fts_query, -1 if limit is None else limit),
     ).fetchall()
     return [row["record_id"] for row in rows]
 
@@ -253,7 +253,23 @@ def has_index(connection: sqlite3.Connection) -> bool:
     )
 
 
-def resolve(connection: sqlite3.Connection, query: str, limit: int = 2000) -> list[str] | None:
+def resolve_fts_query(connection: sqlite3.Connection, query: str) -> str | None:
+    """Return the effective FTS expression without materializing every matching record id.
+
+    ``None`` means FTS is unavailable (so callers retain their LIKE fallback); an empty
+    string means the input has no searchable tokens and must remain a zero-result query.
+    """
+    if not has_index(connection):
+        return None
+    fts_query, _ = build_fts_query(query)
+    if not fts_query:
+        return ""
+    if not match_record_ids(connection, fts_query, limit=1):
+        return build_fts_query_or(query)
+    return fts_query
+
+
+def resolve(connection: sqlite3.Connection, query: str, limit: int | None = None) -> list[str] | None:
     """Full intent-guessing search entry: AND combination → auto OR fallback on 0 results.
 
     Returns record_id list ordered by BM25; [] when query has no valid tokens; None when the
@@ -261,18 +277,12 @@ def resolve(connection: sqlite3.Connection, query: str, limit: int = 2000) -> li
     """
     if not (query or "").strip():
         return []
-    if not has_index(connection):
+    fts_query = resolve_fts_query(connection, query)
+    if fts_query is None:
         return None
-    fts_query, _ = build_fts_query(query)
     if not fts_query:
         return []
-    ids = match_record_ids(connection, fts_query, limit)
-    if ids:
-        return ids
-    fts_or = build_fts_query_or(query)
-    if not fts_or:
-        return []
-    return match_record_ids(connection, fts_or, limit)
+    return match_record_ids(connection, fts_query, limit)
 
 
 def order_case(ids: list[str]) -> str:

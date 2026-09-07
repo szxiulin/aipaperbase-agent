@@ -1,4 +1,8 @@
 const state = { page: 1, pageSize: 25, entityPage: 1, entityPageSize: 25, topicPage: 1, topicPageSize: 20, venues: [], years: [], topics: [], collections: [], currentCollectionId: null, selection: new Set(), planSelection: new Set(), detailTarget: null, detailPage: 1, detailPageSize: 25 };
+let collectionRequest = 0;
+let downloadPlanRequest = 0;
+let planCollectionId = null;
+let planEntityIds = new Set();
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => [...document.querySelectorAll(selector)];
 const formatNumber = (value) => new Intl.NumberFormat("zh-CN").format(value ?? 0);
@@ -49,7 +53,9 @@ async function loadOverview() {
   const [summary, venues, years] = await Promise.all([api("/api/summary"), api("/api/venues"), api("/api/years")]);
   state.venues = venues.items;
   state.years = years.items;
-  $("#release-id").textContent = summary.release.release_id;
+  const releaseId = summary.release.release_id || "";
+  $("#release-id").textContent = releaseId.includes("-") ? `catalog ${releaseId.split("-").pop().slice(0, 8)}` : releaseId;
+  $("#release-id").title = releaseId;
   $("#summary-cards").classList.remove("skeleton-grid");
   $("#summary-cards").innerHTML = [
     statCard("论文清单记录", summary.record_count, `${formatNumber(summary.abstract_count)} 条已有摘要`),
@@ -58,7 +64,6 @@ async function loadOverview() {
     statCard("年度清单", summary.edition_count, `${summary.min_year}—${summary.max_year}`),
   ].join("");
   $("#year-chart").innerHTML = barRows(years.items.map((x) => ({ ...x, label: String(x.year) })), "label", "record_count");
-  $("#venue-chart").innerHTML = barRows(venues.items, "venue", "record_count", 10);
   const errors = summary.issue_counts.error || 0;
   $("#release-status").textContent = errors ? `${errors} 个阻塞问题` : "构建通过";
   $("#release-status").className = `badge ${errors ? "error" : "success"}`;
@@ -460,11 +465,18 @@ async function loadEntities() {
 function renderTopicCard(topic) {
   const subtopics = topic.subtopics.map((item) => `<span class="topic-chip">${escapeHtml(item.name)} <strong>${formatNumber(item.entity_count)}</strong></span>`).join("");
   const venues = topic.top_venues.map((item) => `<span>${escapeHtml(item.venue)} ${formatNumber(item.entity_count)}</span>`).join("");
-  return `<article class="panel topic-card"><div class="topic-card-head"><div><p class="eyebrow">${escapeHtml(topic.topic_id)}</p><h2>${escapeHtml(topic.name)}</h2></div><strong>${formatNumber(topic.entity_count)}</strong></div><p>${escapeHtml(topic.description)}</p><div class="topic-chips">${subtopics}</div><div class="topic-venues"><small>TOP VENUES</small>${venues}</div><button class="text-button topic-drilldown" data-topic="${escapeHtml(topic.topic_id)}">查看构成论文 →</button></article>`;
+  return `<article class="panel topic-card" title="${escapeHtml(topic.topic_id)}"><div class="topic-card-head"><div><h2>${escapeHtml(topic.name)}</h2></div><strong>${formatNumber(topic.entity_count)}</strong></div><p>${escapeHtml(topic.description)}</p><div class="topic-chips">${subtopics}</div><div class="topic-venues"><small>TOP VENUES</small>${venues}</div><button class="text-button topic-drilldown" data-topic="${escapeHtml(topic.topic_id)}">查看构成论文 →</button></article>`;
 }
 
 const bandLabel = (band) => ({ high: "高分", middle: "中分", boundary: "边界" })[band] || band;
 const verdictLabel = (verdict) => ({ relevant: "相关", mention_only: "仅提及", wrong_signal: "错误信号", uncertain: "待定" })[verdict] || verdict;
+const issueTypeLabel = (code) => ({
+  cross_venue_doi: "跨 venue 重复 DOI",
+  incomplete_abstract_provenance: "摘要来源信息不完整",
+  orphan_abstract_provenance: "摘要来源信息多余",
+  invalid_url: "URL 格式异常",
+})[code] || code;
+
 const errorLabel = (error) => ({
   non_llm_agent: "非 LLM Agent", incidental_mention: "偶然提及", incidental_method: "非核心方法",
   scope_too_broad: "范围过宽", acronym_collision: "缩写冲突", incidental_benchmark: "仅作评测",
@@ -492,6 +504,45 @@ function renderEvaluation(data, sampleData) {
   $("#evaluation-note").textContent = `${data.metric_note} 评估版本：${data.evaluation.evaluation_version}；分类版本：${data.evaluation.classifier_version}。`;
 }
 
+// ---- Abstract list: expand / collapse all on the current page ----
+// Each row is a <details class="abstract-details">; two fixed-wording buttons in the
+// panel head show/hide by state so the bilingual (static-chrome) labels never need
+// rewriting. Both buttons are hidden unless the current page actually has abstracts.
+function syncAbstractToggle(group) {
+  if (!group) return;
+  const expand = group.querySelector('.abstract-action[data-action="expand"]');
+  const collapse = group.querySelector('.abstract-action[data-action="collapse"]');
+  if (!expand || !collapse) return;
+  const details = group.querySelectorAll("details.abstract-details");
+  if (!details.length) { expand.classList.add("hidden"); collapse.classList.add("hidden"); return; }
+  let openCount = 0;
+  details.forEach((d) => { if (d.open) openCount += 1; });
+  expand.classList.toggle("hidden", openCount === details.length);
+  collapse.classList.toggle("hidden", openCount === 0);
+}
+
+function afterAbstractListRender(id) {
+  const wrap = $(id);
+  const group = wrap && wrap.closest(".panel");
+  if (group) syncAbstractToggle(group);
+}
+
+document.addEventListener("click", (event) => {
+  const button = event.target.closest(".abstract-action");
+  if (!button) return;
+  const group = button.closest(".panel");
+  if (!group) return;
+  const open = button.dataset.action === "expand";
+  group.querySelectorAll("details.abstract-details").forEach((details) => { details.open = open; });
+});
+document.addEventListener("toggle", (event) => {
+  const node = event.target;
+  if (node && node.classList && node.classList.contains("abstract-details")) {
+    const group = node.closest(".panel");
+    if (group) syncAbstractToggle(group);
+  }
+}, true);
+
 function topicPaperQuery() {
   const form = new FormData($("#topic-filters"));
   const params = new URLSearchParams({ page: state.topicPage, page_size: state.topicPageSize });
@@ -509,24 +560,15 @@ async function loadTopicPapers() {
   $("#topic-page-info").textContent = `第 ${data.page} / ${Math.max(data.total_pages, 1)} 页`;
   $("#prev-topic-page").disabled = data.page <= 1;
   $("#next-topic-page").disabled = data.page >= data.total_pages;
-  $("#topic-papers-table").innerHTML = data.items.length ? `<table><thead><tr><th><input type="checkbox" class="select-all-page" title="全选本页" /></th><th>论文实体</th><th>Venue / 年份</th><th>弱标签得分</th><th>命中依据</th></tr></thead><tbody>${data.items.map((paper) => `<tr><td><input type="checkbox" class="select-entity" data-entity="${escapeHtml(paper.entity_id)}" /></td><td class="paper-title">${paper.paper_url ? `<a href="${escapeHtml(paper.paper_url)}" target="_blank" rel="noreferrer">${escapeHtml(paper.title)}</a>` : escapeHtml(paper.title)}<div class="muted">${escapeHtml(paper.authors || "作者未知")}</div><div class="muted entity-id">${escapeHtml(paper.entity_id)}</div>${paper.abstract ? `<details class="abstract-details"><summary>查看摘要</summary><p>${escapeHtml(paper.abstract)}</p></details>` : ""}</td><td>${paper.appearances.map((item) => `<div class="appearance"><strong>${escapeHtml(item.venue)}</strong> · ${item.year}<span class="badge ${item.list_status === "rolling" ? "warning" : "success"}">${item.list_status}</span></div>`).join("")}</td><td><span class="topic-score">${Number(paper.score).toFixed(1)}</span><div class="muted">${escapeHtml(paper.classifier_version)}</div></td><td class="evidence-list">${paper.evidence.map((item) => `<span><strong>${escapeHtml(item.signal)}</strong><small>${escapeHtml(item.field)} · +${Number(item.points).toFixed(1)}</small></span>`).join("")}</td></tr>`).join("")}</tbody></table>` : `<div class="empty">当前筛选条件下没有主题论文</div>`;
+  $("#topic-papers-table").innerHTML = data.items.length ? `<table><thead><tr><th><input type="checkbox" class="select-all-page" title="全选本页" /></th><th>论文实体</th><th>Venue / 年份</th><th>弱标签得分</th><th>命中依据</th></tr></thead><tbody>${data.items.map((paper) => `<tr><td><input type="checkbox" class="select-entity" data-entity="${escapeHtml(paper.entity_id)}" /></td><td class="paper-title">${paper.paper_url ? `<a href="${escapeHtml(paper.paper_url)}" target="_blank" rel="noreferrer">${escapeHtml(paper.title)}</a>` : escapeHtml(paper.title)}<div class="muted">${escapeHtml(paper.authors || "作者未知")}</div>${paper.abstract ? `<details class="abstract-details"><summary>查看摘要</summary><p>${escapeHtml(paper.abstract)}</p></details>` : ""}</td><td>${paper.appearances.map((item) => `<div class="appearance"><strong>${escapeHtml(item.venue)}</strong> · ${item.year}<span class="badge ${item.list_status === "rolling" ? "warning" : "success"}">${item.list_status}</span></div>`).join("")}</td><td><span class="topic-score">${Number(paper.score).toFixed(1)}</span></td><td class="evidence-list">${paper.evidence.map((item) => `<span><strong>${escapeHtml(item.signal)}</strong><small>${escapeHtml(item.field)} · +${Number(item.points).toFixed(1)}</small></span>`).join("")}</td></tr>`).join("")}</tbody></table>` : `<div class="empty">当前筛选条件下没有主题论文</div>`;
   attachSelection();
+  afterAbstractListRender("#topic-papers-table");
 }
 
 async function loadTopics() {
-  const [overview, trends, evaluation, evaluationSamples] = await Promise.all([
-    api("/api/topics"), api("/api/topic-trends"), api("/api/topic-evaluation"),
-    api("/api/topic-evaluation-samples?page_size=25"),
-  ]);
+  const [overview, trends] = await Promise.all([api("/api/topics"), api("/api/topic-trends")]);
   state.topics = overview.topics;
-  $("#topic-summary-cards").innerHTML = [
-    statCard("已覆盖论文实体", overview.classified_entity_count, `${overview.classified_rate}% 的全量实体命中至少一个主题`),
-    statCard("顶级主题", overview.topics.length, "大模型 · Agent · 图像生成与恢复"),
-    statCard("主题标签关系", overview.root_assignment_count, "允许同一论文属于多个研究方向"),
-    statCard("分类版本", overview.run?.config_version || "—", "规则和数据版本可追溯"),
-  ].join("");
   $("#topic-cards").innerHTML = overview.topics.map(renderTopicCard).join("");
-  renderEvaluation(evaluation, evaluationSamples);
   const trendMap = new Map(trends.items.map((item) => [`${item.year}:${item.topic_id}`, item]));
   $("#topic-trend-table").innerHTML = `<table class="trend-table"><thead><tr><th>年份</th><th>清单状态</th>${overview.topics.map((topic) => `<th>${escapeHtml(topic.name)}</th>`).join("")}</tr></thead><tbody>${trends.years.map((year) => `<tr><td><strong>${year.year}</strong></td><td><span class="badge ${year.rolling_records ? "warning" : "success"}">${year.rolling_records ? "rolling" : "final"}</span><div class="muted">${formatNumber(year.total_entities)} 个实体</div></td>${overview.topics.map((topic) => { const item = trendMap.get(`${year.year}:${topic.topic_id}`) || {entity_count:0,share_rate:0}; return `<td><strong>${formatNumber(item.entity_count)}</strong><div class="muted">${item.share_rate}%</div></td>`; }).join("")}</tr>`).join("")}</tbody></table>`;
   const topicSelect = $("#topic-filters select[name=topic_id]");
@@ -551,7 +593,12 @@ async function loadQuality() {
   $("#completeness-chart").innerHTML = barRows(quality.completeness, "field", "rate", quality.completeness.length, true);
   const sourceRows = (items) => items.map((item) => `<div class="source-item"><div><strong>${escapeHtml(item.source_tier)}</strong><div class="muted">${formatNumber(item.count)} 条记录</div></div><span class="badge success">${item.rate}%</span></div>`).join("");
   $("#source-tier-list").innerHTML = `<h3>目录元数据</h3>${sourceRows(quality.source_tiers)}<h3>摘要元数据</h3>${sourceRows(quality.abstract_source_tiers)}`;
-  $("#issue-table").innerHTML = quality.issue_groups.length ? `<table><thead><tr><th>等级</th><th>类型</th><th>数量</th><th>解释</th></tr></thead><tbody>${quality.issue_groups.map((item) => `<tr><td><span class="badge ${item.severity === "error" ? "error" : item.severity === "warning" ? "warning" : "success"}">${item.severity}</span></td><td>${escapeHtml(item.issue_type)}</td><td>${formatNumber(item.count)}</td><td>${item.issue_type === "cross_venue_doi" ? "同一 DOI 出现在多个 venue，保留清单记录并单独识别" : "查看构建报告进一步核对"}</td></tr>`).join("")}</tbody></table>` : `<div class="empty">当前没有质量问题</div>`;
+  $("#issue-table").innerHTML = quality.issue_groups.length ? `<table><thead><tr><th>等级</th><th>类型</th><th>数量</th><th>解释</th></tr></thead><tbody>${quality.issue_groups.map((item) => `<tr><td><span class="badge ${item.severity === "error" ? "error" : item.severity === "warning" ? "warning" : "success"}">${item.severity}</span></td><td>${escapeHtml(issueTypeLabel(item.issue_type))}</td><td>${formatNumber(item.count)}</td><td>${item.issue_type === "cross_venue_doi" ? "同一 DOI 出现在多个 venue，保留清单记录并单独识别" : "查看构建报告进一步核对"}</td></tr>`).join("")}</tbody></table>` : `<div class="empty">当前没有质量问题</div>`;
+  // Classification calibration lives on this tab too (moved here from the directions page).
+  const [evaluation, evaluationSamples] = await Promise.all([
+    api("/api/topic-evaluation"), api("/api/topic-evaluation-samples?page_size=25"),
+  ]);
+  renderEvaluation(evaluation, evaluationSamples);
 }
 
 function populateFilters() {
@@ -576,6 +623,7 @@ async function loadPapers() {
   $("#next-page").disabled = data.page >= data.total_pages;
   $("#papers-table").innerHTML = data.items.length ? `<table><thead><tr><th><input type="checkbox" class="select-all-page" title="全选本页" /></th><th>论文</th><th>Venue</th><th>年份</th><th>状态</th><th>作者</th><th>标识</th></tr></thead><tbody>${data.items.map((paper) => `<tr><td><input type="checkbox" class="select-entity" data-entity="${escapeHtml(paper.entity_id)}" /></td><td class="paper-title">${paper.paper_url ? `<a href="${escapeHtml(paper.paper_url)}" target="_blank" rel="noreferrer">${escapeHtml(paper.title)}</a>` : escapeHtml(paper.title)}<div class="muted">${escapeHtml(paper.track)} · ${escapeHtml(paper.source_tier)}</div>${paper.abstract ? `<details class="abstract-details"><summary>查看摘要</summary><p>${escapeHtml(paper.abstract)}</p><small>来源：${paper.abstract_source_url ? `<a href="${escapeHtml(paper.abstract_source_url)}" target="_blank" rel="noreferrer">${escapeHtml(paper.abstract_source_name)}</a>` : escapeHtml(paper.abstract_source_name)}</small></details>` : `<div class="abstract-missing">暂未获得可追溯摘要</div>`}</td><td class="nowrap"><strong>${escapeHtml(paper.venue)}</strong><div class="muted">${paper.venue_type === "conference" ? "会议" : paper.venue_type === "preprint" ? "预印本" : "期刊"}</div></td><td>${paper.year}</td><td><span class="badge ${paper.list_status === "rolling" ? "warning" : "success"}">${paper.list_status}</span></td><td class="authors">${escapeHtml(paper.authors || "未知")}</td><td class="nowrap">${paper.doi ? `<div>DOI</div><div class="muted">${escapeHtml(paper.doi)}</div>` : paper.arxiv_id ? `<div>arXiv</div><div class="muted">${escapeHtml(paper.arxiv_id)}</div>` : `<span class="muted">—</span>`}</td></tr>`).join("")}</tbody></table>` : `<div class="empty">当前筛选条件下没有论文记录</div>`;
   attachSelection();
+  afterAbstractListRender("#papers-table");
 }
 
 // ---- Paper collections ----
@@ -594,6 +642,71 @@ async function loadCollections() {
   renderCollectionBar();
 }
 
+const myLibrary = {items: [], filter: "all", selected: new Set(), request: 0};
+
+async function loadLocalLibrary() {
+  const request = ++myLibrary.request;
+  const data = await api("/api/my-library");
+  if (request !== myLibrary.request) return;
+  myLibrary.items = data.items || [];
+  if (window.Research) await window.Research.sync();
+  const known = new Set(myLibrary.items.map(item => item.entity_id));
+  myLibrary.selected.forEach(id => { if (!known.has(id)) myLibrary.selected.delete(id); });
+  renderMyPapers();
+}
+
+function readingState(item) {
+  if (item.index_status === "indexed_current") return {key: "ready", label: "可全文问答"};
+  if ([item.pdf_status, item.parse_status].some(s => ["pending", "downloading", "parsing"].includes(s))) return {key: "processing", label: "处理中"};
+  if (!item.pdf_status && !item.parse_status && !item.index_status) return {key: "missing", label: "未获取全文"};
+  return {key: "attention", label: "需要处理"};
+}
+
+function renderMyPapers() {
+  const query = $("#my-paper-search").value.trim().toLowerCase();
+  const status = $("#my-paper-status").value;
+  const items = myLibrary.items.filter(item =>
+    (myLibrary.filter === "all" || (myLibrary.filter === "unfiled" ? !item.collections?.length : item.collections?.some(c => c.collection_id === myLibrary.filter))) &&
+    (!query || `${item.title} ${item.entity_id}`.toLowerCase().includes(query)) &&
+    (status === "all" || readingState(item).key === status));
+  $("#my-library-title").textContent = myLibrary.filter === "all" ? "全部论文" : myLibrary.filter === "unfiled" ? "未归类" : state.collections.find(c => c.collection_id === myLibrary.filter)?.name || "集合";
+  $("#local-library").innerHTML = `<p class="muted">${items.length} 篇 · 收藏到集合不等于已获取全文</p><div class="my-paper-actions"><span>已选 ${myLibrary.selected.size} 篇</span><button id="my-add" class="primary-button" ${myLibrary.selected.size ? "" : "disabled"}>加入集合</button><button id="my-fetch" class="secondary-button" ${myLibrary.selected.size && !myLibrary.fetching ? "" : "disabled"}>${myLibrary.fetching ? "处理中…" : "获取全文"}</button><button id="my-ask" class="secondary-button">围绕所选提问</button><button id="my-compare" class="secondary-button">比较所选</button><button id="my-clear" class="text-button">清除选择</button></div>${items.length ? `<div class="table-wrap"><table class="my-papers-table"><thead><tr><th>选择</th><th>论文</th><th>阅读状态</th><th>所属集合</th></tr></thead><tbody>${items.map(item => `<tr><td><input class="local-paper-select" type="checkbox" value="${escapeHtml(item.entity_id)}" aria-label="选择 ${escapeHtml(item.title)}" ${myLibrary.selected.has(item.entity_id) ? "checked" : ""}/></td><td class="paper-title">${escapeHtml(item.title)}<div class="my-paper-links">${["success", "duplicate"].includes(item.pdf_status) ? `<a href="/api/downloads/${encodeURIComponent(item.entity_id)}/pdf" target="_blank" rel="noreferrer">打开 PDF</a>` : ""}${item.parse_status === "success" ? ` <a href="/api/parse/${encodeURIComponent(item.entity_id)}/md" target="_blank" rel="noreferrer">阅读解析文本</a>` : ""}</div><details><summary>处理详情</summary><div class="muted">${escapeHtml(item.entity_id)}<br>PDF：${escapeHtml(item.pdf_status || "未获取")} · 解析：${escapeHtml(item.parse_status || "未解析")}<br>索引：${escapeHtml(item.index_status || "未建立")} · chunk：${item.chunk_count || 0}<br>${escapeHtml(item.failure || "")}</div></details></td><td><span class="reading-state">${readingState(item).label}</span><select class="reading-progress" data-entity="${escapeHtml(item.entity_id)}" aria-label="阅读进度 ${escapeHtml(item.title)}">${[ ["unread","待读"],["reading","阅读中"],["read","已读"] ].map(([v,label]) => `<option value="${v}" ${(window.Research?.reading(item.entity_id) || "unread") === v ? "selected" : ""}>${label}</option>`).join("")}</select></td><td>${escapeHtml((item.collections || []).map(c => c.name).join("、") || "未归类")}</td></tr>`).join("")}</tbody></table></div>` : '<div class="empty">暂无论文。到公共目录选择论文加入集合，或在聊天中获取论文。</div>'}`;
+  $$(".local-paper-select").forEach(box => box.addEventListener("change", () => {
+    if (box.checked) myLibrary.selected.add(box.value); else myLibrary.selected.delete(box.value);
+    renderMyPapers();
+  }));
+  $("#my-ask").onclick = () => window.Research?.startScoped().catch(showError);
+  $("#my-compare").onclick = () => window.Research?.createComparison().catch(showError);
+  $$(".reading-progress").forEach(select => select.onchange = () => window.Research?.saveReading(select.dataset.entity,select.value).catch(showError));
+  $("#my-add").onclick = () => openPicker([...myLibrary.selected]).catch(showError);
+  $("#my-clear").onclick = () => { myLibrary.selected.clear(); renderMyPapers(); };
+  $("#my-fetch").onclick = () => fetchSelectedFulltext().catch(showError);
+}
+
+async function fetchSelectedFulltext() {
+  const entity_ids = [...myLibrary.selected];
+  if (!entity_ids.length || myLibrary.fetching) return;
+  myLibrary.fetching = true;
+  renderMyPapers();
+  try {
+    if (!await askConfirm(`获取所选 ${entity_ids.length} 篇论文的全文？将按配置下载、解析并建立索引，外部服务可能收费。`)) return;
+    const conversation = await postJson("/api/chats", {title: "获取全文"});
+    const task = await postJson(`/api/chats/${conversation.conversation_id}/ingest`, {entity_ids});
+    $("#my-library-notice").textContent = "正在获取全文，可在聊天中查看任务结果…";
+    await waitTask(task.task_id, "/api/downloads/status");
+    $("#my-library-notice").textContent = "处理已结束，请检查逐篇阅读状态；详细结果已保存到“获取全文”会话。";
+    await refreshMembershipViews();
+  } finally { myLibrary.fetching = false; renderMyPapers(); }
+}
+
+async function refreshMembershipViews() {
+  await loadCollections();
+  await loadLocalLibrary();
+  if (state.currentCollectionId && state.collections.some(c => c.collection_id === state.currentCollectionId)) {
+    await openCollection(state.currentCollectionId);
+  }
+}
+
 function renderCollectionBar() {
   const bar = $("#library-collections-bar");
   if (!bar) return;
@@ -609,35 +722,52 @@ function renderCollectionBar() {
       `<button class="collection-chip" data-cid="${c.collection_id}" title="${escapeHtml(c.description || c.name)}">${escapeHtml(c.name)}<span class="chip-count">${c.member_count}</span></button>`
     ).join("")}<button class="bar-action" id="bar-new-collection">＋ 新建</button></div>`;
   $$(".collection-chip").forEach((b) => b.addEventListener("click", () => {
+    switchView("library");
     activateSubTab("library-view", "collections");
     openCollection(b.dataset.cid).catch(showError);
   }));
   const newBtn = $("#bar-new-collection");
-  if (newBtn) newBtn.addEventListener("click", () => activateSubTab("library-view", "collections").then(() => $("#collection-create-form input[name=name]").focus()));
+  if (newBtn) newBtn.addEventListener("click", () => { activateSubTab("library-view", "collections"); $("#collection-create-form input[name=name]").focus(); });
 }
 
 function renderCollectionList() {
-  const items = state.collections;
-  $("#collection-list").innerHTML = items.length
-    ? `<table><thead><tr><th>集合</th><th>来源</th><th>成员</th><th>更新时间</th><th>操作</th></tr></thead><tbody>${items.map((collection) => `<tr><td class="paper-title"><button class="text-button collection-open" data-id="${collection.collection_id}">${escapeHtml(collection.name)}</button><div class="muted">${escapeHtml(collection.description || "—")}</div></td><td><span class="badge success">${escapeHtml(collectionSourceLabel(collection.source_type))}</span></td><td>${formatNumber(collection.member_count)}</td><td class="nowrap muted">${new Date(collection.updated_at).toLocaleString("zh-CN")}</td><td class="nowrap"><button class="text-button collection-delete" data-id="${collection.collection_id}" data-name="${escapeHtml(collection.name)}">删除</button></td></tr>`).join("")}</tbody></table>`
-    : `<div class="empty">还没有集合。先在「论文目录」勾选论文，或在上方新建一个空集合。</div>`;
-  $$(".collection-open").forEach((button) => button.addEventListener("click", () => openCollection(button.dataset.id).catch(showError)));
-  $$(".collection-delete").forEach((button) => armDangerButton(
-    button, "确认删除？", () => deleteCollection(button.dataset.id).catch(showError)
-  ));
+  const choices = [{collection_id:"all",name:"全部论文"},{collection_id:"unfiled",name:"未归类"},...state.collections];
+  $("#collection-list").innerHTML = choices.map(c => `<button class="collection-nav ${myLibrary.filter === c.collection_id ? "active" : ""}" data-id="${escapeHtml(c.collection_id)}">${escapeHtml(c.name)}${c.member_count === undefined ? "" : `<span>${c.member_count}</span>`}</button>`).join("");
+  $$(".collection-nav").forEach(button => button.onclick = () => {
+    myLibrary.filter = button.dataset.id; myLibrary.selected.clear(); renderCollectionList(); renderMyPapers();
+    if (!["all", "unfiled"].includes(myLibrary.filter)) openCollection(myLibrary.filter).catch(showError);
+    else {
+      collectionRequest += 1; downloadPlanRequest += 1; state.currentCollectionId = null;
+      state.planSelection.clear(); planCollectionId = null; planEntityIds.clear(); syncSelectAll();
+      $("#download-plan").innerHTML = "";
+      $("#collection-detail-title").textContent = "集合详情";
+      $("#collection-detail").innerHTML = "请选择集合查看设置"; $("#collection-actions").innerHTML = "";
+    }
+  });
 }
 
 async function openCollection(collectionId) {
+  const request = ++collectionRequest;
   const data = await api(`/api/collections/${collectionId}`);
+  if (request !== collectionRequest) return;
+  myLibrary.filter = collectionId;
+  renderCollectionList();
+  renderMyPapers();
   renderCollectionDetail(data);
   loadDownloadPlan().catch(showError);
 }
 
 function renderCollectionDetail(data) {
   const collection = data.collection;
+  if (state.currentCollectionId !== collection.collection_id) state.planSelection.clear();
+  // Invalidate the previous plan while the new one is loading, including late responses.
+  downloadPlanRequest += 1;
+  planCollectionId = null;
+  planEntityIds.clear();
   state.currentCollectionId = collection.collection_id;
   $("#collection-detail-title").textContent = collection.name;
   $("#download-plan").innerHTML = `<div class="empty">点击「生成下载计划」查看可下载范围与空间估算。</div>`;
+  syncSelectAll();
   $("#pipeline-progress").classList.add("hidden");
   $("#pipeline-progress").innerHTML = "";
   $("#collection-actions").innerHTML = `<span class="muted">${formatNumber(collection.member_count)} 成员 · 当前 ${formatNumber(data.counts.current)} · 迁移 ${formatNumber(data.counts.alias)} · 失效 ${formatNumber(data.counts.missing)}</span><button class="secondary-button" data-export="csv">CSV</button><button class="secondary-button" data-export="json">JSON</button><button class="secondary-button" data-export="bibtex">BibTeX</button><button class="secondary-button" data-export="markdown">Markdown</button>`;
@@ -645,22 +775,45 @@ function renderCollectionDetail(data) {
   $("#collection-detail").innerHTML = data.items.length
     ? `<table><thead><tr><th>论文</th><th>Venue / 年份</th><th>状态</th><th>操作</th></tr></thead><tbody>${data.items.map((item) => `<tr><td class="paper-title">${item.status === "missing" ? `<span class="muted">已失效实体 ${escapeHtml(item.entity_id)}</span>` : (item.paper_url ? `<a href="${escapeHtml(item.paper_url)}" target="_blank" rel="noreferrer">${escapeHtml(item.title)}</a>` : escapeHtml(item.title))}<div class="muted entity-id">${escapeHtml(item.entity_id)}</div>${item.authors ? `<div class="muted">${escapeHtml(item.authors)}</div>` : ""}</td><td>${(item.appearances || []).map((appearance) => `<div class="appearance"><strong>${escapeHtml(appearance.venue)}</strong> · ${appearance.year}<span class="badge ${appearance.list_status === "rolling" ? "warning" : "success"}">${appearance.list_status}</span></div>`).join("")}</td><td><span class="badge ${item.status === "missing" ? "error" : item.status === "alias" ? "warning" : "success"}">${statusLabel(item.status)}</span></td><td><button class="text-button collection-remove" data-entity="${escapeHtml(item.entity_id)}">移除</button></td></tr>`).join("")}</tbody></table>`
     : `<div class="empty">集合为空，去「论文目录」勾选论文加入。</div>`;
+  $("#collection-detail").insertAdjacentHTML("afterbegin", `<form id="collection-settings" class="collection-create-form"><label>集合名称<input name="name" required value="${escapeHtml(collection.name)}"></label><label>智能分类规则<input name="description" value="${escapeHtml(collection.description || "")}" placeholder="描述哪些内容应该加入此集合"></label><button class="secondary-button">保存设置</button><button type="button" id="collection-delete" class="text-button">删除集合</button></form>`);
+  $("#collection-delete").onclick = async () => {
+    if (await askConfirm(`删除集合“${collection.name}”？此操作将移除该集合的成员关联。`)) deleteCollection(collection.collection_id).catch(showError);
+  };
+  $("#collection-settings").onsubmit = async event => {
+    event.preventDefault();
+    const button = event.target.querySelector("button");
+    if (button.disabled) return;
+    button.disabled = true;
+    try {
+      const form = new FormData(event.target);
+      await api(`/api/collections/${collection.collection_id}`, {method:"PATCH", headers:{"Content-Type":"application/json"}, body:JSON.stringify({name:form.get("name"),description:form.get("description")})});
+      await refreshMembershipViews();
+      $("#my-library-notice").textContent = "集合设置已保存。";
+    } catch (error) {showError(error);} finally {button.disabled = false;}
+  };
   $$(".collection-remove").forEach((button) => button.addEventListener("click", () => removeMember(button.dataset.entity).catch(showError)));
 }
 
 async function removeMember(entityId) {
   await deleteJson(`/api/collections/${state.currentCollectionId}/members`, { entity_ids: [entityId] });
-  await openCollection(state.currentCollectionId);
-  await loadCollections();
+  await refreshMembershipViews();
 }
 
 async function deleteCollection(collectionId) {
   await api(`/api/collections/${collectionId}`, { method: "DELETE" });
+  collectionRequest += 1;
+  downloadPlanRequest += 1;
   state.currentCollectionId = null;
+  state.planSelection.clear();
+  planCollectionId = null;
+  planEntityIds.clear();
+  $("#download-plan").innerHTML = "";
+  syncSelectAll();
   $("#collection-detail-title").textContent = "集合详情";
   $("#collection-actions").innerHTML = "";
   $("#collection-detail").innerHTML = `<div class="empty">从上方选择一个集合查看成员</div>`;
-  await loadCollections();
+  myLibrary.filter = "all";
+  await refreshMembershipViews();
 }
 
 function exportCollection(collectionId, format) {
@@ -696,11 +849,19 @@ async function loadDownloadPlan() {
     showError(new Error("请先在列表中选择一个集合"));
     return;
   }
-  const data = await api(`/api/download-plan?collection_id=${state.currentCollectionId}`);
+  const collectionId = state.currentCollectionId;
+  const request = ++downloadPlanRequest;
+  const data = await api(`/api/download-plan?collection_id=${collectionId}`);
+  if (request !== downloadPlanRequest || collectionId !== state.currentCollectionId) return;
   renderDownloadPlan(data);
 }
 
 function renderDownloadPlan(data) {
+  planCollectionId = state.currentCollectionId;
+  planEntityIds = new Set(data.items.map((item) => item.entity_id));
+  for (const id of state.planSelection) {
+    if (!planEntityIds.has(id)) state.planSelection.delete(id);
+  }
   const summary = data.summary;
   const restricted = summary.counts.restricted || 0;
   const unspecified = summary.counts.unspecified || 0;
@@ -736,17 +897,23 @@ function attachPlanSelection() {
 function syncSelectAll() {
   const all = $("#select-all-papers");
   const boxes = $$(".plan-select");
-  if (all && boxes.length) {
-    all.checked = boxes.every((cb) => cb.checked);
+  if (all) {
+    all.checked = boxes.length > 0 && boxes.every((cb) => cb.checked);
   }
 }
 
 async function createCollectionFromForm(event) {
   event.preventDefault();
-  const form = new FormData(event.target);
-  await postJson("/api/collections", { name: form.get("name"), description: form.get("description"), source_type: "manual" });
-  event.target.reset();
-  await loadCollections();
+  const button = event.target.querySelector("button");
+  if (button.disabled) return;
+  button.disabled = true;
+  try {
+    const form = new FormData(event.target);
+    const created = await postJson("/api/collections", { name: form.get("name"), description: form.get("description"), source_type: "manual" });
+    event.target.reset();
+    await refreshMembershipViews();
+    if (created.collection_id) await openCollection(created.collection_id);
+  } finally { button.disabled = false; }
 }
 
 function attachSelection() {
@@ -774,7 +941,7 @@ function attachSelection() {
 
 function updateSelectionBar() {
   const count = state.selection.size;
-  $("#selection-bar").classList.toggle("hidden", count === 0);
+  $("#selection-bar").classList.toggle("hidden", count === 0 || !$("#papers-view").classList.contains("active") || !$("#library-view").classList.contains("active"));
   $("#selection-count").textContent = `已选 ${formatNumber(count)} 篇`;
 }
 
@@ -811,44 +978,61 @@ async function selectAllTopicResults() {
   attachSelection();
 }
 
-async function openPicker() {
+const pickerState = {ids: [], run: null, request: 0, timer: null, busy: false};
+async function openPicker(ids = [...state.selection]) {
+  if (pickerState.busy) return;
+  pickerState.ids = [...ids]; pickerState.run = null;
+  if (!pickerState.ids.length) return;
   await loadCollections();
-  $("#picker-existing").innerHTML = state.collections.map((collection) => `<option value="${collection.collection_id}">${escapeHtml(collection.name)}</option>`).join("");
+  $("#picker-existing").innerHTML = `<option value="">创建新集合</option>` + state.collections.map(c => `<option value="${escapeHtml(c.collection_id)}">${escapeHtml(c.name)}</option>`).join("");
   $("#picker-new-name").value = "";
-  $("#picker-count").textContent = `将加入 ${formatNumber(state.selection.size)} 篇论文`;
+  $("#picker-count").textContent = `已选 ${pickerState.ids.length} 篇；仅添加集合归属，不获取全文。`;
+  $("#picker-papers").textContent = pickerState.ids.join("、");
   $("#collection-picker").classList.remove("hidden");
+  $("#picker-existing").onchange = schedulePickerDraft;
+  $("#picker-new-name").oninput = schedulePickerDraft;
+  schedulePickerDraft();
 }
-
+function schedulePickerDraft() {
+  clearTimeout(pickerState.timer); pickerState.request += 1; pickerState.run = null;
+  $("#picker-confirm").disabled = true;
+  const target = $("#picker-existing").value;
+  $("#picker-new-name").disabled = !!target;
+  $("#picker-feedback").textContent = target || $("#picker-new-name").value.trim() ? "正在核对论文与集合…" : "请选择集合，或填写新集合名称。";
+  if (target || $("#picker-new-name").value.trim()) pickerState.timer = setTimeout(() => preparePickerDraft().catch(error => {$("#picker-feedback").textContent = error.message;}), 250);
+}
+async function preparePickerDraft() {
+  const request = pickerState.request;
+  const target = $("#picker-existing").value;
+  const name = $("#picker-new-name").value.trim();
+  const plan = await postJson("/api/organization/plan", {operation:"assign", entity_ids:pickerState.ids, collection_ids:target ? [target] : [], target_name:target ? "" : name});
+  if (request !== pickerState.request) return;
+  pickerState.run = plan;
+  $("#picker-papers").innerHTML = plan.suggestions.map(item => `<label class="picker-paper"><input type="checkbox" class="picker-paper-check" data-entity="${escapeHtml(item.entity_id)}" data-collection="${escapeHtml(item.collection_id)}" checked ${item.already_present ? "disabled" : ""}/> <span>${escapeHtml(item.title)} <small>${item.already_present ? "已存在" : "新增"}</small></span></label>`).join("");
+  const similar = !target && state.collections.some(c => c.name.toLowerCase().includes(name.toLowerCase()) || name.toLowerCase().includes(c.name.toLowerCase()));
+  $("#picker-feedback").textContent = `${plan.pending_collection ? "将创建集合“" + name + "”并加入。" : "目标：" + plan.rules.map(r => r.name).join("、") + "。"}新增 ${plan.summary.suggested_add} 篇，已存在 ${plan.summary.already_present} 篇。${similar ? "已有相似名称，请核对目标，或选择已有集合。" : ""}`;
+  $("#picker-confirm").disabled = !plan.suggestions.length;
+}
 function closePicker() {
+  if (pickerState.busy) return;
+  pickerState.request += 1; clearTimeout(pickerState.timer);
   $("#collection-picker").classList.add("hidden");
 }
-
 async function confirmPicker() {
-  const entityIds = [...state.selection];
-  if (!entityIds.length) return;
-  const newName = $("#picker-new-name").value.trim();
-  const existingId = $("#picker-existing").value;
-  let targetId;
+  if (pickerState.busy || !pickerState.run) return;
+  const plan = pickerState.run;
+  const selected = $$(".picker-paper-check:checked").map(box => ({entity_id:box.dataset.entity,collection_id:box.dataset.collection}));
+  pickerState.busy = true; $("#picker-confirm").disabled = true;
+  $("#picker-existing").disabled = true; $("#picker-new-name").disabled = true;
   try {
-    if (newName) {
-      const created = await postJson("/api/collections", { name: newName, source_type: "manual" });
-      targetId = created.collection_id;
-    } else if (existingId) {
-      targetId = existingId;
-    } else {
-      showError(new Error("请选择已有集合或输入新集合名称"));
-      return;
-    }
-    await postJson(`/api/collections/${targetId}/members`, { entity_ids: entityIds, added_by: "manual" });
-  } catch (error) {
-    showError(error);
-    return;
-  }
-  closePicker();
-  state.selection.clear();
-  updateSelectionBar();
-  $$(".select-entity").forEach((checkbox) => { checkbox.checked = false; });
-  await loadCollections();
+    const result = await postJson("/api/organization/apply", {run_id:plan.run_id, selected});
+    state.selection.clear(); myLibrary.selected.clear(); updateSelectionBar();
+    $$(".select-entity").forEach(box => {box.checked = false;});
+    pickerState.busy = false; closePicker();
+    $("#my-library-notice").textContent = `已加入 ${result.added || 0} 篇，已存在 ${result.already_present || 0} 篇；目标：${plan.rules.map(r => r.name).join("、")}。`;
+    await refreshMembershipViews().catch(error => showError(new Error("收藏已保存，刷新失败：" + error.message)));
+  } catch (error) { $("#picker-feedback").textContent = error.message; }
+  finally { pickerState.busy = false; $("#picker-confirm").disabled = false; $("#picker-existing").disabled = false; $("#picker-new-name").disabled = !!$("#picker-existing").value; }
 }
 
 /* ===== Research Q&A Chat ===== */
@@ -861,6 +1045,21 @@ const fmtTime = (iso) => {
   } catch {
     return iso.slice(11, 16);
   }
+};
+
+// Chat-list timestamps: full YYYY-MM-DD HH:mm in Shanghai time, anchored to the
+// conversation's creation time (created_at) so continuing a chat never moves it.
+const fmtDateTimeFull = (iso) => {
+  if (!iso) return "";
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return String(iso).slice(0, 16);
+  const parts = new Intl.DateTimeFormat("zh-CN", {
+    timeZone: "Asia/Shanghai",
+    year: "numeric", month: "2-digit", day: "2-digit",
+    hour: "2-digit", minute: "2-digit", hourCycle: "h23",
+  }).formatToParts(d);
+  const m = Object.fromEntries(parts.map((x) => [x.type, x.value]));
+  return `${m.year}-${m.month}-${m.day} ${m.hour}:${m.minute}`;
 };
 
 const UNSAFE_URL = /^\s*(?:javascript|vbscript|data):/i;
@@ -916,7 +1115,7 @@ function chatItemHtml(conv) {
     <input type="checkbox" class="chat-select" data-cid="${conv.conversation_id}"${checked} />
     <div class="chat-item-body">
       <div class="chat-item-title">${escapeHtml(conv.title || "新对话")}</div>
-      <div class="chat-item-time">${escapeHtml(fmtTime(conv.updated_at))}</div>
+      <div class="chat-item-time" title="${escapeHtml(conv.created_at || "")}">${escapeHtml(fmtDateTimeFull(conv.created_at))}</div>
     </div>
   </div>`;
 }
@@ -958,9 +1157,24 @@ async function openChat(conversationId) {
   $("#chat-title").textContent = data.conversation.title || "新对话";
   $("#chat-meta").textContent = data.messages.length ? `共 ${data.messages.length} 条消息` : "新对话";
   renderChatMessages(data.messages);
+  window.Research?.showScope(conversationId).catch(showError);
+  restoreIngestTaskState(conversationId).catch(showError);
   updateArchiveLabel();
   $("#chat-input").focus();
   loadChats().catch(showError);
+}
+
+async function restoreIngestTaskState(conversationId) {
+  const data = await api(`/api/chats/${conversationId}/ingest-tasks`);
+  if (!chatState.current || chatState.current.conversation_id !== conversationId) return;
+  const task = (data.items || [])[0];
+  if (!task) return;
+  const box = document.createElement("div");
+  box.className = "muted";
+  box.textContent = task.status === "running"
+    ? `已恢复入库任务状态：${task.task_id} 仍标记为运行中。若服务曾重启，请重新确认该任务。`
+    : `最近入库任务：${task.status}（${task.finished_at || task.started_at}）。`;
+  $("#chat-messages").prepend(box);
 }
 
 function updateArchiveLabel() {
@@ -970,12 +1184,13 @@ function updateArchiveLabel() {
 }
 
 function evidenceItemHtml(citation, index) {
+  const citationIndex = citation.citation_index || index + 1;
   const score = citation.score != null ? `<span class="chat-score">${Number(citation.score).toFixed(2)}</span>` : "";
   const link = citation.url
     ? ` <a class="evidence-link" href="${escapeHtml(citation.url)}" target="_blank" rel="noopener">↗ 原文</a>`
     : "";
-  return `<div class="chat-evidence-item" data-evidence="${index + 1}">
-    <div class="chat-evidence-head"><span class="cite-badge">${index + 1}</span>
+  return `<div class="chat-evidence-item" data-evidence="${citationIndex}">
+    <div class="chat-evidence-head"><span class="cite-badge">${citationIndex}</span>
       <strong>${escapeHtml(citation.title || citation.entity_id)}</strong>
       <span class="muted">${escapeHtml(citation.section || "")}</span>${link}${score}</div>
     <p>${escapeHtml(citation.text)}</p>
@@ -990,13 +1205,19 @@ function evidenceBoxHtml(chunks) {
     <div class="chat-evidence-list">${chunks.map(evidenceItemHtml).join("")}</div></details>`;
 }
 
+function rawToolMarkup(content) {
+  const value = String(content || "");
+  return value.includes("DSML") && (value.includes("tool_calls") || value.includes("invoke"));
+}
+
 function messageHtml(message, lastUserContent) {
   if (message.role === "user") {
     const editBtn = chatState.pending
       ? ""
       : `<button class="chat-edit-btn" data-mid="${message.message_id}" title="编辑并重发">✎</button>`;
     return `<div class="chat-msg chat-msg-user"><div class="chat-bubble-user" data-mid="${message.message_id}">
-      <span class="chat-msg-content">${escapeHtml(message.content)}</span>${editBtn}</div></div>`;
+      <span class="chat-msg-content">${escapeHtml(message.content)}</span>${editBtn}
+      <div class="chat-meta-line"><span class="muted">${escapeHtml(fmtDateTimeFull(message.created_at))}</span></div></div></div>`;
   }
   if (message.error) {
     const query = escapeHtml(lastUserContent || "");
@@ -1012,7 +1233,9 @@ function messageHtml(message, lastUserContent) {
     ? `<details class="chat-trace"><summary>工具轨迹（${message.tool_trace.length} 步）</summary>
         <div class="chat-trace-list">${message.tool_trace.map(traceItemHtml).join("")}</div></details>`
     : "";
-  const content = message.content
+  const content = rawToolMarkup(message.content)
+    ? `<div class="chat-error">模型返回了未解析的工具调用协议，本轮没有生成可用回答。请重试。</div>`
+    : message.content
     ? `<div class="chat-md">${mdToHtml(message.content)}</div>`
     : `<div class="empty chat-degraded">未生成回答（未配置生成模型）。</div>`;
   const truncated = message.finish_reason === "length"
@@ -1023,9 +1246,45 @@ function messageHtml(message, lastUserContent) {
   const model = message.model ? ` · ${escapeHtml(message.model)}` : "";
   const topk = message.top_k != null ? ` · top_k=${message.top_k}` : "";
   return `<div class="chat-msg chat-msg-assistant"><div class="chat-bubble-assistant">
-    ${thinking}${trace}${content}${ingestCardHtml(message)}${evidenceBoxHtml(message.chunks)}
-    <div class="chat-meta-line"><span class="muted">${escapeHtml(fmtTime(message.created_at))}${model}${topk}</span>${truncated}${regen}</div>
+    ${thinking}${trace}${content}<button class="text-button save-research-note" data-mid="${escapeHtml(message.message_id)}">保存回答与证据</button>${ingestCardHtml(message)}${organizationCardHtml(message)}${evidenceBoxHtml(message.chunks)}
+    <div class="chat-meta-line"><span class="muted">${escapeHtml(fmtDateTimeFull(message.created_at))}${model}${topk}</span>${truncated}${regen}</div>
   </div></div>`;
+}
+
+function organizationCardHtml(message) {
+  const runs = [...new Set((message.tool_trace || []).map(step => step.organization_run_id).filter(Boolean))];
+  return runs.map(run => `<div class="ingest-card organization-chat-card" data-run-id="${escapeHtml(run)}"><div class="ingest-card-desc">正在恢复集合草稿…</div></div>`).join("");
+}
+
+function organizationMatrixHtml(plan) {
+  const kind = plan.operation === "assign" ? "指定加入" : "智能分类";
+  if (plan.status !== "draft") {
+    return `<strong>${kind} · ${plan.status === "applied" ? "已完成" : "已过期或失败"}</strong><p>范围：${(plan.scope || []).length} 篇；实际新增 ${plan.result?.added || 0} 条，已存在 ${plan.result?.already_present || 0} 条。</p>${(plan.result?.details || []).map(x => `<div>${escapeHtml((plan.suggestions || []).find(s => s.entity_id === x.entity_id)?.title || x.entity_id)} → ${escapeHtml((plan.rules || []).find(r => r.collection_id === x.collection_id)?.name || "集合")} · ${x.status === "added" ? "已加入" : "已存在"}</div>`).join("")}`;
+  }
+  const label = {include: "加入", exclude: "不建议", review: "待复核"};
+  const rows = (plan.suggestions || []).map(item => `<tr><td>${escapeHtml(item.title)}</td><td>${escapeHtml(item.collection_name)}</td><td>${item.already_present ? "已存在" : label[item.decision]}</td>${plan.operation === "assign" ? "" : `<td><details><summary>规则、理由与证据</summary><p>${escapeHtml((plan.rules || []).find(r => r.collection_id === item.collection_id)?.rule || "用户指定归属")}</p><p>${escapeHtml(item.reason)}</p>${(item.evidence || []).map(e => `<blockquote>${escapeHtml(e.text_preview || e.text || "")}<br>${escapeHtml(e.chunk_id || "")}</blockquote>`).join("")}</details></td>`}<td><input class="organization-select" type="checkbox" data-entity="${escapeHtml(item.entity_id)}" data-collection="${escapeHtml(item.collection_id)}" ${item.decision === "include" || item.already_present ? "checked" : ""} ${item.decision === "exclude" || item.already_present ? "disabled" : ""}/></td></tr>`).join("");
+  return `<strong>${kind}确认卡${plan.pending_collection ? " · 创建集合并加入这些论文" : ""}</strong><p>明确范围：${(plan.scope || []).length} 篇；新增候选 ${plan.summary?.suggested_add || 0} 条；已存在 ${plan.summary?.already_present || 0} 条；待复核 ${plan.summary?.review || 0} 条。</p>${(plan.skipped || []).map(x => `<p>${escapeHtml(x.entity_id)}：${escapeHtml(x.reason)}</p>`).join("")}<table><thead><tr><th>论文范围</th><th>目标集合</th><th>操作</th>${plan.operation === "assign" ? "" : "<th>依据</th>"}<th>加入</th></tr></thead><tbody>${rows}</tbody></table><p><button class="organization-apply primary-button" ${rows ? "" : "disabled"}>确认加入勾选项</button></p>`;
+}
+
+function hydrateOrganizationCards() {
+  $$(".organization-chat-card").forEach((card) => {
+    if (card.dataset.hydrated) return;
+    card.dataset.hydrated = "1";
+    api(`/api/organization-runs/${encodeURIComponent(card.dataset.runId)}`).then((plan) => {
+      card.innerHTML = organizationMatrixHtml(plan);
+      const button = card.querySelector(".organization-apply");
+      if (button) button.addEventListener("click", async () => {
+        if (button.disabled) return;
+        button.disabled = true; button.textContent = "正在确认…";
+        try {
+          const selected = [...card.querySelectorAll(".organization-select:checked")].map((node) => ({entity_id: node.dataset.entity, collection_id: node.dataset.collection}));
+          const result = await postJson("/api/organization/apply", {run_id: plan.run_id || plan.organization_run_id || card.dataset.runId, selected});
+          card.innerHTML = organizationMatrixHtml(await api(`/api/organization-runs/${encodeURIComponent(card.dataset.runId)}`));
+          await refreshMembershipViews();
+        } catch (error) { card.innerHTML += `<p class="chat-error">${escapeHtml(error.message || String(error))}</p>`; button.disabled = false; button.textContent = "确认加入勾选项"; }
+      });
+    }).catch((error) => { card.innerHTML = `<div class="chat-error">分类草稿恢复失败：${escapeHtml(error.message || String(error))}</div>`; });
+  });
 }
 
 function ingestCardHtml(message) {
@@ -1036,12 +1295,35 @@ function ingestCardHtml(message) {
   if (!entityIds.length) return "";
   return `<div class="ingest-card">
     <div class="ingest-card-title">检测到入库请求 · ${entityIds.length} 篇论文</div>
-    <div class="ingest-card-desc">将执行：下载 PDF → 解析 → 嵌入向量库。执行后即可追问这些论文的具体内容。</div>
+    <div class="ingest-card-desc">正在检查本地 PDF、解析与索引状态；确认后才会查询外部开放来源。</div>
     <div class="ingest-card-actions">
-      <button class="ingest-confirm primary-button" data-ids="${escapeHtml(entityIds.join(","))}">确认执行</button>
-      <span class="muted">仅在本地执行，不会上传任何数据</span>
+      <button class="ingest-confirm primary-button" data-ids="${escapeHtml(entityIds.join(","))}">确认处理</button>
+      <span class="muted">确认后按配置获取论文并解析，可能调用外部服务</span>
     </div>
   </div>`;
+}
+
+function hydrateIngestCards() {
+  $$(".ingest-card").forEach((card) => {
+    const button = card.querySelector(".ingest-confirm");
+    if (!button || button.dataset.resolved) return;
+    button.dataset.resolved = "1";
+    api(`/api/ingest-plan?entity_ids=${encodeURIComponent(button.dataset.ids || "")}`).then((plan) => {
+      const items = plan.items || [];
+      const current = items.filter((item) => item.plan_status === "already_indexed").length;
+      const external = items.filter((item) => item.plan_status === "needs_external_resolution").length;
+      const ready = items.filter((item) => item.plan_status !== "already_indexed" && item.plan_status !== "ambiguous").length;
+      const ambiguous = items.filter((item) => item.plan_status === "ambiguous").length;
+      card.querySelector(".ingest-card-desc").textContent =
+        `本地计划：已当前入库 ${current} 篇；可处理 ${ready} 篇；确认后为 ${external} 篇查找 arXiv/OpenAlex 来源${ambiguous ? `；${ambiguous} 篇身份待确认` : ""}。`;
+      button.disabled = ready === 0;
+      if (ready) button.textContent = `确认处理 ${ready} 篇${external ? `，并为 ${external} 篇查找外部来源` : ""}`;
+      else button.textContent = current ? "均已当前入库" : "没有可执行论文";
+    }).catch((error) => {
+      card.querySelector(".ingest-card-desc").textContent = `本地计划读取失败：${error.message || error}`;
+      button.disabled = true;
+    });
+  });
 }
 
 function traceItemHtml(step) {
@@ -1069,6 +1351,8 @@ function renderChatMessages(messages) {
   }).join("");
   container.innerHTML = html || `<div class="empty chat-empty">新建或选择一个对话开始提问。</div>`;
   container.querySelectorAll(".chat-md").forEach(renderMathInElementIfPresent);
+  hydrateIngestCards();
+  hydrateOrganizationCards();
   container.scrollTop = container.scrollHeight;
 }
 
@@ -1078,6 +1362,8 @@ function scrollChat() {
 }
 
 function appendUserBubble(query) {
+  $("#chat-messages .chat-empty")?.remove();
+  $("#error-banner").classList.add("hidden");
   const div = document.createElement("div");
   div.className = "chat-msg chat-msg-user";
   div.innerHTML = `<div class="chat-bubble-user">${escapeHtml(query)}</div>`;
@@ -1099,6 +1385,8 @@ function replacePending(message, lastUserContent) {
   el.outerHTML = messageHtml(message, lastUserContent);
   const md = $("#chat-messages .chat-md");
   if (md) renderMathInElementIfPresent(md);
+  hydrateIngestCards();
+  hydrateOrganizationCards();
   scrollChat();
 }
 
@@ -1134,9 +1422,18 @@ async function sendChat(query, options = {}) {
     const result = await waitTask(task_id, "/api/chats/ask/status");
     if (chatState.pendingTaskId !== task_id) return; // Already stopped, ignore the late result
     replacePending(result.message, query);
+    if (chatState.current?.conversation_id === cid) {
+      const saved = await api(`/api/chats/${cid}/messages`);
+      if (chatState.current?.conversation_id === cid && chatState.pendingTaskId === task_id) {
+        chatState.current = saved.conversation;
+        $("#chat-title").textContent = saved.conversation.title;
+        $("#chat-meta").textContent = `共 ${saved.messages.length} 条消息`;
+        renderChatMessages(saved.messages);
+      }
+    }
     if (chatState.current && chatState.current.conversation_id === cid) loadChats().catch(showError);
   } catch (error) {
-    if (chatState.pendingTaskId === null) return; // Already stopped
+    if (!chatState.pending) return; // Already stopped
     replacePendingError(error.message || String(error), query);
   } finally {
     chatState.pending = false;
@@ -1295,7 +1592,8 @@ async function viewSnapshot(snapshotId) {
 
 function snapshotMessageHtml(message) {
   if (message.role === "user") {
-    return `<div class="chat-msg chat-msg-user"><div class="chat-bubble-user snapshot-readonly"><span>${escapeHtml(message.content)}</span></div></div>`;
+    return `<div class="chat-msg chat-msg-user"><div class="chat-bubble-user snapshot-readonly"><span>${escapeHtml(message.content)}</span>
+      <div class="chat-meta-line"><span class="muted">${escapeHtml(fmtDateTimeFull(message.created_at))}</span></div></div></div>`;
   }
   if (message.error) {
     return `<div class="chat-msg chat-msg-assistant"><div class="chat-error">${escapeHtml(message.error)}</div></div>`;
@@ -1307,7 +1605,7 @@ function snapshotMessageHtml(message) {
     : `<div class="empty chat-degraded">未生成回答。</div>`;
   return `<div class="chat-msg chat-msg-assistant"><div class="chat-bubble-assistant">
     ${thinking}${content}${evidenceBoxHtml(message.chunks)}
-    <div class="chat-meta-line"><span class="muted">${escapeHtml(fmtTime(message.created_at))}${message.model ? ` · ${escapeHtml(message.model)}` : ""}</span></div>
+    <div class="chat-meta-line"><span class="muted">${escapeHtml(fmtDateTimeFull(message.created_at))}${message.model ? ` · ${escapeHtml(message.model)}` : ""}</span></div>
   </div></div>`;
 }
 
@@ -1335,6 +1633,7 @@ async function newChat() {
   $("#chat-title").textContent = conv.title;
   $("#chat-meta").textContent = "新对话";
   renderChatMessages([]);
+  await window.Research?.showScope(conv.conversation_id);
   loadChats().catch(showError);
   $("#chat-input").focus();
 }
@@ -1519,30 +1818,39 @@ function bindChatEvents() {
     const editBtn = event.target.closest(".chat-edit-btn");
     if (editBtn) { editUserMessage(editBtn.dataset.mid); return; }
     const ingestBtn = event.target.closest(".ingest-confirm");
-    if (ingestBtn) { confirmIngest(ingestBtn.dataset.ids).catch(showError); return; }
+    if (ingestBtn) { confirmIngest(ingestBtn.dataset.ids, ingestBtn).catch(showError); return; }
   });
 }
 
-async function confirmIngest(entityIdsCsv) {
+async function confirmIngest(entityIdsCsv, button = null) {
   if (!chatState.current) return;
+  if (button && button.dataset.submitting === "1") return;
   const entityIds = (entityIdsCsv || "").split(",").filter(Boolean);
   if (!entityIds.length) return;
-  if (!(await askConfirm(`确认在本地执行入库？将下载 ${entityIds.length} 篇论文 PDF 并解析嵌入（可能需要几分钟）。`))) return;
+  if (button) {
+    button.dataset.submitting = "1";
+    button.disabled = true;
+  }
+  if (!(await askConfirm(`确认在本地执行入库？将下载 ${entityIds.length} 篇论文 PDF 并解析嵌入（可能需要几分钟）。`))) {
+    if (button) { button.dataset.submitting = ""; button.disabled = false; }
+    return;
+  }
   const cid = chatState.current.conversation_id;
-  chatState.pending = true;
-  $("#chat-input").disabled = true;
-  $("#chat-send").disabled = true;
-  appendPending();
+  if (button) {
+    button.textContent = "入库任务处理中…";
+  }
   try {
     const { task_id } = await postJson(`/api/chats/${cid}/ingest`, { entity_ids: entityIds });
-    const result = await waitTask(task_id, "/api/chats/ask/status");
-    const d = await api(`/api/chats/${cid}/messages`);
-    renderChatMessages(d.messages);
+    await waitTask(task_id, "/api/chats/ask/status");
+    // The user may keep chatting or switch conversations while ingest runs.
+    // Only the originating, still-active chat may update the visible message list.
+    if (chatState.current?.conversation_id === cid && !chatState.pending) {
+      const d = await api(`/api/chats/${cid}/messages`);
+      if (chatState.current?.conversation_id === cid && !chatState.pending) renderChatMessages(d.messages);
+    }
     loadChats().catch(showError);
   } finally {
-    chatState.pending = false;
-    $("#chat-input").disabled = false;
-    $("#chat-send").disabled = false;
+    if (button) button.dataset.submitting = "done";
   }
 }
 
@@ -1581,8 +1889,18 @@ async function waitTask(taskId, statusUrl) {
   }
 }
 
-async function runPipeline() {
+function selectedPlanEntities() {
   const entityIds = [...state.planSelection];
+  if (!state.currentCollectionId || planCollectionId !== state.currentCollectionId || entityIds.some((id) => !planEntityIds.has(id))) {
+    showError(new Error("勾选范围与当前集合计划不一致，请刷新计划后重新勾选"));
+    return null;
+  }
+  return entityIds;
+}
+
+async function runPipeline() {
+  const entityIds = selectedPlanEntities();
+  if (!entityIds) return;
   if (!entityIds.length) { showError(new Error("请先勾选要处理的论文")); return; }
   const steps = $$(".step-check").filter((cb) => cb.checked).map((cb) => cb.dataset.step);
   if (!steps.length) { showError(new Error("请至少勾选一个步骤")); return; }
@@ -1608,9 +1926,12 @@ async function runPipeline() {
 }
 
 async function runCleanup(action) {
-  const entityIds = [...state.planSelection];
+  const entityIds = selectedPlanEntities();
+  if (!entityIds) return;
   if (!entityIds.length) { showError(new Error("请先勾选要清理的论文")); return; }
+  const collectionId = state.currentCollectionId;
   await postJson("/api/cleanup", { entity_ids: entityIds, action });
+  if (collectionId !== state.currentCollectionId) return;
   state.planSelection.clear();
   await loadDownloadPlan().catch(showError);
 }
@@ -1622,16 +1943,16 @@ async function singleDelete(entityId, action) {
 }
 
 const VIEW_TITLES = { rag: "科研助手", library: "论文库", insights: "数据洞察" };
-const VIEW_GROUPS = { rag: ["rag-view"], library: ["library-view"], insights: ["insights-view"] };
+const VIEW_GROUPS = { research: ["research-view"], rag: ["rag-view"], library: ["library-view"], insights: ["insights-view"] };
 const INSIGHT_TABS = [["overview", "概览", "overview-view"], ["topics", "方向趋势", "topics-view"],
   ["quality", "数据质量", "quality-view"], ["entities", "论文实体", "entities-view"], ["details", "分类/venue 详情", "details-view"]];
-const LIBRARY_TABS = [["catalog", "目录", "papers-view"], ["collections", "集合与处理", "collections-view"]];
+const LIBRARY_TABS = [["catalog", "公共目录", "papers-view"], ["collections", "我的论文", "collections-view"]];
 
 // English chrome used when I18N is set to "en" (default stays Chinese).
 const VIEW_TITLES_EN = { rag: "Research Assistant", library: "Paper Library", insights: "Data Insights" };
 const INSIGHT_TABS_EN = [["overview", "Overview", "overview-view"], ["topics", "Topics & trends", "topics-view"],
   ["quality", "Data quality", "quality-view"], ["entities", "Paper entities", "entities-view"], ["details", "Topic / venue detail", "details-view"]];
-const LIBRARY_TABS_EN = [["catalog", "Catalog", "papers-view"], ["collections", "Collections & pipeline", "collections-view"]];
+const LIBRARY_TABS_EN = [["catalog", "Catalog", "papers-view"], ["collections", "My papers", "collections-view"]];
 const _EN_LOOKUP = { "library-view": LIBRARY_TABS_EN, "insights-view": INSIGHT_TABS_EN };
 const _ZH_LOOKUP = { "library-view": LIBRARY_TABS, "insights-view": INSIGHT_TABS };
 
@@ -1643,6 +1964,7 @@ function subTabLabel(group, key) {
 }
 
 function viewTitle(view) {
+  if (view === "research") return "研究资料";
   const useEn = window.I18N && window.I18N.isEn();
   const fallback = useEn ? "Research Assistant" : "科研助手";
   return (useEn ? VIEW_TITLES_EN[view] : VIEW_TITLES[view]) || fallback;
@@ -1703,10 +2025,11 @@ function activateSubTab(group, tab) {
   const base = group.endsWith("-view") ? group.slice(0, -"-view".length) : group;
   shell.querySelectorAll(".sub-tab").forEach((button) => button.classList.toggle("active", button.dataset.tab === tab));
   shell.querySelectorAll(".subview").forEach((section) => section.classList.toggle("active", section.dataset.subtab === tab));
-  if (base === "library" && tab === "collections") loadCollections().catch(showError);
+  updateSelectionBar();
+  if (base === "library" && tab === "collections") { loadCollections().catch(showError); loadLocalLibrary().catch(showError); }
   if (base === "insights") {
     if (tab === "overview" && !$("#summary-cards").children.length) loadOverview().catch(showError);
-    if (tab === "topics" && !$("#topic-summary-cards").children.length) loadTopics().catch(showError);
+    if (tab === "topics" && !$("#topic-cards").children.length) loadTopics().catch(showError);
     if (tab === "quality" && !$("#quality-cards").children.length) loadQuality().catch(showError);
     if (tab === "entities" && !$("#entity-cards").children.length) loadEntities().catch(showError);
     if (tab === "details") renderCurrentDetail().catch(showError);
@@ -1718,6 +2041,7 @@ function bindSubTabs() {
 }
 
 function switchView(view) {
+  $("#error-banner").classList.add("hidden");
   $$(".nav-item").forEach((item) => item.classList.toggle("active", item.dataset.view === view));
   $$(".view").forEach((item) => item.classList.toggle("active", (VIEW_GROUPS[view] || []).includes(item.id)));
   $("#page-title").textContent = viewTitle(view);
@@ -1727,7 +2051,9 @@ function switchView(view) {
     loadCollections().catch(showError);
     activateSubTab("library-view", "catalog");
   }
+  if (view === "research") window.Research?.load().catch(showError);
   if (view === "insights") activateSubTab("insights-view", "overview");
+  updateSelectionBar();
 }
 
 function bindEvents() {
@@ -1742,6 +2068,7 @@ function bindEvents() {
   $$(".nav-item").forEach((item) => item.addEventListener("click", () => switchView(item.dataset.view)));
   $$('[data-go="papers"]').forEach((item) => item.addEventListener("click", () => { switchView("library"); activateSubTab("library-view", "catalog"); }));
   $("#filters").addEventListener("submit", (event) => { event.preventDefault(); state.page = 1; loadPapers().catch(showError); });
+  $("#local-library-refresh").addEventListener("click", () => loadLocalLibrary().catch(showError));
   $("#select-all-results").addEventListener("click", () => selectAllPaperResults().catch(showError));
   $("#reset-filters").addEventListener("click", () => { $("#filters").reset(); state.page = 1; loadPapers().catch(showError); });
   $("#prev-page").addEventListener("click", () => { state.page -= 1; loadPapers().catch(showError); });
@@ -1777,7 +2104,16 @@ function bindEvents() {
       button.addEventListener("click", () => runCleanup(button.dataset.action).catch(showError));
     }
   });
+  $("#my-paper-search").oninput = renderMyPapers;
+  $("#my-paper-status").onchange = renderMyPapers;
   bindChatEvents();
+  api("/api/rag/status").then(config => {
+    const node = document.querySelector("#chat-config-status");
+    if (node) node.textContent = config.error || "";
+  }).catch(() => {
+    const node = document.querySelector("#chat-config-status");
+    if (node) node.textContent = "配置状态读取失败";
+  });
 }
 
 bindEvents();

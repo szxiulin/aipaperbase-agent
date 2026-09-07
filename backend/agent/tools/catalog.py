@@ -16,20 +16,22 @@ _LOCAL_STATUS_SQL = {
 
 def _local_status(ctx: dict, entity_id: str) -> dict[str, bool]:
     status: dict[str, bool] = {"downloaded": False, "parsed": False, "ingested": False}
-    for key, sql in _LOCAL_STATUS_SQL.items():
-        conn = ctx.get(f"{key}_conn")
-        if conn is None:
-            continue
-        try:
-            status[key] = conn.execute(sql, (entity_id,)).fetchone() is not None
-        except Exception:
-            status[key] = False
-    pipeline = ctx.get("pipeline")
-    if pipeline is not None:
-        try:
-            status["ingested"] = entity_id in pipeline.ingested_document_ids()
-        except Exception:
-            status["ingested"] = False
+    try:
+        from backend.library import local_status
+        data = local_status.snapshot(
+            ctx["catalog_conn"], downloads_conn=ctx.get("downloads_conn"), parsed_conn=ctx.get("parsed_conn"),
+            document_chunk_counts=ctx.get("document_chunk_counts"),
+            pipeline_fingerprint=ctx.get("pipeline_fingerprint", ""),
+        )
+        item = next((row for row in data["items"] if row["entity_id"] == entity_id), {})
+        status = {
+            "downloaded": item.get("pdf_status") in {"success", "duplicate"},
+            "parsed": item.get("parse_status") == "success" and bool(item.get("markdown_exists")),
+            "ingested": item.get("index_status") == "indexed_current",
+        }
+    except Exception:
+        # Status is observational. A broken local manifest must not make a catalog query fail.
+        status = {"downloaded": False, "parsed": False, "ingested": False}
     return status
 
 

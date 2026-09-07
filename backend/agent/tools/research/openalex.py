@@ -63,7 +63,7 @@ _AUTHOR_SELECT = "id,display_name,orcid,works_count,cited_by_count,summary_stats
 
 
 def _mailto() -> str:
-    return os.environ.get("OPENALEX_MAILTO", "you@example.com")
+    return os.environ.get("OPENALEX_MAILTO", "metadata@apexpaperrag.local")
 
 
 def _api_key() -> str:
@@ -90,7 +90,7 @@ def _get(url: str, params: dict[str, str]) -> dict:
     params = dict(params)
     params.setdefault("mailto", _mailto())
     key = _api_key()
-    headers = {"User-Agent": f"aipaperbase mailto:{_mailto()}"}
+    headers = {"User-Agent": f"apexpaperrag mailto:{_mailto()}"}
     if key:
         headers["api-key"] = key
     attempt = 0

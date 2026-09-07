@@ -1,10 +1,13 @@
 from __future__ import annotations
 
 import sqlite3
+import socket
+import time
 import unittest
+from unittest import mock
 from pathlib import Path
 
-from backend.library import planner
+from backend.library import planner, sources
 
 
 CATALOG = Path(__file__).resolve().parents[2] / "data" / "database" / "catalog.sqlite"
@@ -61,9 +64,9 @@ class PlannerTest(unittest.TestCase):
         by_id = {item["entity_id"]: item for item in plan["items"]}
         self.assertEqual(by_id["e1"]["source"], "arxiv")
         self.assertEqual(by_id["e1"]["download_url"], "https://arxiv.org/pdf/2401.00001")
-        self.assertEqual(by_id["e2"]["source"], "open")
-        self.assertEqual(by_id["e3"]["source"], "restricted")
-        self.assertEqual(by_id["e4"]["source"], "unspecified")
+        self.assertEqual(by_id["e2"]["source"], "catalog")
+        self.assertEqual(by_id["e3"]["source"], "none")
+        self.assertEqual(by_id["e4"]["source"], "none")
         self.assertEqual(by_id["e5"]["source"], "none")
         # arxiv_id takes priority over the restricted pdf_url
         self.assertEqual(by_id["e6"]["source"], "arxiv")
@@ -74,7 +77,7 @@ class PlannerTest(unittest.TestCase):
         summary = plan["summary"]
         self.assertEqual(summary["total"], 6)
         self.assertEqual(summary["counts"], {
-            "arxiv": 2, "open": 1, "restricted": 1, "unspecified": 1, "none": 1,
+            "arxiv": 2, "catalog": 1, "none": 3,
         })
         self.assertEqual(summary["downloadable"], 3)
         self.assertEqual(
@@ -94,12 +97,92 @@ class PlannerTest(unittest.TestCase):
 
     def test_input_dedup(self) -> None:
         plan = planner.build_plan(self.catalog, ["e1", "e1", "e2"])
-        self.assertEqual(plan["summary"]["total"], 2)
+        self.assertEqual(plan["summary"]["total"], 3)
+        duplicates = [item for item in plan["items"] if item.get("reason_code") == "duplicate_entity"]
+        self.assertEqual(len(duplicates), 1)
+        self.assertFalse(duplicates[0]["downloadable"])
 
     def test_empty_input(self) -> None:
         plan = planner.build_plan(self.catalog, [])
         self.assertEqual(plan["summary"]["total"], 0)
         self.assertEqual(plan["items"], [])
+
+    def test_source_fallback_and_ambiguous_candidates_are_explicit(self) -> None:
+        arxiv = lambda _: [{"title": "Paper Five", "year": 2023, "authors": ["Eve"], "pdf_url": "https://arxiv.org/pdf/1"}]
+        plan = planner.build_plan(self.catalog, ["e5"], arxiv_lookup=arxiv)
+        self.assertEqual(plan["items"][0]["source"], "arxiv")
+        self.assertEqual(plan["items"][0]["match_basis"], "title_author_or_year")
+        ambiguous = planner.build_plan(self.catalog, ["e5"], arxiv_lookup=lambda _: [
+            {"title": "Paper Five", "year": 2023, "authors": ["Eve"], "pdf_url": "https://arxiv.org/pdf/1"},
+            {"title": "Paper Five", "year": 2023, "authors": ["Eve"], "pdf_url": "https://arxiv.org/pdf/2"},
+        ])
+        self.assertFalse(ambiguous["items"][0]["downloadable"])
+        self.assertEqual(ambiguous["items"][0]["reason_code"], "ambiguous_match")
+
+        oa = planner.build_plan(self.catalog, ["e5"], openalex_lookup=lambda _: [{
+            "title": "Paper Five", "year": 2023, "authors": ["Eve"],
+            "pdf_url": "https://openreview.net/pdf?id=paper-five",
+        }])
+        self.assertEqual(oa["items"][0]["source"], "openalex")
+        self.assertTrue(oa["items"][0]["downloadable"])
+
+    def test_catalog_candidate_does_not_preflight_later_sources(self) -> None:
+        plan = planner.build_plan(
+            self.catalog, ["e2"],
+            openalex_lookup=lambda _: [{"title": "Paper Two", "year": 2024, "authors": ["Bob"],
+                                        "pdf_url": "https://openreview.net/pdf?id=paper-two"}],
+        )
+        item = plan["items"][0]
+        self.assertEqual(item["source"], "catalog")
+        self.assertEqual(item["fallback_sources"], [])
+
+    def test_network_failure_is_not_cached_as_no_source(self) -> None:
+        sources._CANDIDATE_CACHE.clear()
+        item = {"title": "Paper Five", "doi": "", "arxiv_id": ""}
+        with mock.patch("backend.library.sources.urllib.request.urlopen") as request:
+            request.side_effect = OSError("offline")
+            self.assertEqual(sources.remote_openalex_candidates(item), [])
+            self.assertEqual(sources.remote_openalex_candidates(item), [])
+        self.assertEqual(request.call_count, 2)
+
+    def test_definitive_empty_lookup_is_negative_cached(self) -> None:
+        sources._CANDIDATE_CACHE.clear()
+        item = {"title": "Paper Five", "doi": "", "arxiv_id": ""}
+        loader = mock.Mock(return_value=sources.LookupCandidates([], attempts=[{
+            "source": "openalex", "status": "ok", "candidate_count": 0, "direct_pdf_count": 0,
+        }]))
+        self.assertEqual(sources._cached("openalex", item, loader), [])
+        self.assertEqual(sources._cached("openalex", item, loader), [])
+        self.assertEqual(loader.call_count, 1)
+
+    def test_source_timeout_is_visible_and_not_negative_cached(self) -> None:
+        sources._CANDIDATE_CACHE.clear()
+        item = {"title": "Paper Five", "doi": "", "arxiv_id": ""}
+        with mock.patch("backend.library.sources.urllib.request.urlopen") as request:
+            request.side_effect = socket.timeout("timed out")
+            resolved = sources.resolve(item, openalex_lookup=sources.remote_openalex_candidates)
+            self.assertEqual(resolved["reason_code"], "source_timeout")
+            self.assertEqual(resolved["source_attempts"][0]["source"], "OpenAlex")
+            self.assertIn("超时", resolved["message"])
+            sources.remote_openalex_candidates(item)
+        self.assertEqual(request.call_count, 2)
+
+    def test_definitive_no_source_remains_distinct_from_lookup_failure(self) -> None:
+        resolved = sources.resolve(
+            {"title": "Paper Five", "doi": "", "arxiv_id": "", "authors": "Eve", "years": [2023]},
+            arxiv_lookup=lambda _: sources.LookupCandidates([], attempts=[{"source": "arxiv", "status": "ok", "candidate_count": 0}]),
+            openalex_lookup=lambda _: sources.LookupCandidates([], attempts=[{"source": "openalex", "status": "ok", "candidate_count": 0, "direct_pdf_count": 0}]),
+        )
+        self.assertEqual(resolved["reason_code"], "no_download_source")
+        self.assertEqual(len(resolved["source_attempts"]), 2)
+
+    def test_local_plan_never_calls_external_lookup_and_is_fast(self) -> None:
+        with mock.patch("backend.library.sources.remote_arxiv_candidates", side_effect=AssertionError("network")), \
+             mock.patch("backend.library.sources.remote_openalex_candidates", side_effect=AssertionError("network")):
+            started = time.monotonic()
+            plan = planner.build_plan(self.catalog, ["e5"])
+        self.assertLess(time.monotonic() - started, 0.5)
+        self.assertEqual(plan["items"][0]["source"], "none")
 
 
 class RealCatalogPlannerTest(unittest.TestCase):

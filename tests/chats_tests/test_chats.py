@@ -80,6 +80,22 @@ class ConversationStoreTests(unittest.TestCase):
             conn.close()
             tmp.cleanup()
 
+    def test_ingest_task_result_survives_refresh(self):
+        conn, tmp = _fresh_conn()
+        try:
+            conv = store.create_conversation(conn)
+            store.create_ingest_task(conn, "task-1", conv["conversation_id"], ["e1"])
+            store.finish_ingest_task(conn, "task-1", status="error",
+                                     result={"requested": 1, "items": [{"reason_code": "download_timeout"}]},
+                                     error="下载阶段超时")
+            saved = store.get_ingest_task(conn, "task-1")
+            self.assertEqual(saved["status"], "error")
+            self.assertEqual(saved["result"]["items"][0]["reason_code"], "download_timeout")
+            self.assertEqual(saved["error"], "下载阶段超时")
+        finally:
+            conn.close()
+            tmp.cleanup()
+
 
 class BuildSearchQueryTests(unittest.TestCase):
     def test_standalone_question_passthrough(self):
@@ -215,6 +231,35 @@ class AskFlowTests(unittest.TestCase):
             # readable back after persistence
             messages = store.list_messages(conn, cid)
             self.assertEqual(messages[1]["tool_trace"][0]["tool"], "search_catalog")
+        finally:
+            conn.close()
+            tmp.cleanup()
+
+    def test_agent_persists_only_answer_cited_evidence_and_warns_on_invalid_citation(self):
+        """The ledger is an audit trail; cards must match the answer's valid [n] markers."""
+        conn, tmp = _fresh_conn()
+        try:
+            cid = store.create_conversation(conn)["conversation_id"]
+
+            class FakeRun:
+                answer = "第二条证据支持结论 [2]；另见不存在的 [9]。"
+                finish_reason = "stop"
+                reasoning = ""
+                model = "fake-agent"
+                ledger = [
+                    {"entity_id": "ape_a", "source": "catalog", "text": "第一条"},
+                    {"entity_id": "ape_b", "source": "catalog", "text": "第二条"},
+                    {"entity_id": "ape_c", "source": "catalog", "text": "第三条"},
+                ]
+                trace = []
+
+            message = service.ask(
+                conn, conversation_id=cid, query="测试引用", mode="agent",
+                agent_fn=lambda *_: FakeRun(),
+            )
+            self.assertEqual([item["entity_id"] for item in message["chunks"]], ["ape_b"])
+            self.assertIn("引用校验警告", message["content"])
+            self.assertIn("[9]", message["content"])
         finally:
             conn.close()
             tmp.cleanup()

@@ -197,6 +197,22 @@ class FulltextToolsTests(unittest.TestCase):
             self.assertIn("chunk_id", item)
             self.assertIn("score", item)
 
+    def test_empty_collection_scope_does_not_search_entire_store(self):
+        ctx, tools = self._pipeline_with_paper()
+        collections = sqlite3.connect(":memory:")
+        collections.row_factory = sqlite3.Row
+        collections.execute("CREATE TABLE collection_members (collection_id TEXT, entity_id TEXT)")
+        ctx["collections_conn"] = collections
+        try:
+            result = tools["search_evidence"].handler(
+                ctx, query="EGH CMF", collection_id="empty", top_k=2
+            )
+            self.assertTrue(result.ok)
+            self.assertEqual(result.data["items"], [])
+            self.assertIn("限定论文内", result.summary)
+        finally:
+            collections.close()
+
 
 class LoopTests(unittest.TestCase):
     def _ctx(self):
@@ -252,9 +268,20 @@ class LoopTests(unittest.TestCase):
             self.assertTrue(all("reasoning_content" in m for m in assistant_msgs))
             # tool messages are present
             self.assertTrue(any(m.get("role") == "tool" for m in state["calls"][1]))
+            tool_message = next(m for m in state["calls"][1] if m.get("role") == "tool")
+            self.assertEqual(json.loads(tool_message["content"])["items"][0]["citation_index"], 1)
         finally:
             conn.close()
             tmp.cleanup()
+
+    def test_repeated_evidence_keeps_one_stable_citation_number(self):
+        evidence = {"source": "catalog", "entity_id": "e1", "title": "Paper", "text": "Fact"}
+        ledger = []
+        first = runner_mod._record_evidence(ledger, [evidence], {"items": [{"title": "Paper"}]})
+        second = runner_mod._record_evidence(ledger, [dict(evidence)], {"items": [{"title": "Paper"}]})
+        self.assertEqual(len(ledger), 1)
+        self.assertEqual(first["items"][0]["citation_index"], 1)
+        self.assertEqual(second["items"][0]["citation_index"], 1)
 
     def test_agent_max_rounds_falls_back_to_synthesis(self):
         ctx, (conn, tmp) = self._ctx()
@@ -272,6 +299,26 @@ class LoopTests(unittest.TestCase):
             self.assertEqual(run.finish_reason, "agent_final_synthesis")
             self.assertEqual(run.answer, "综合回答 [1]。")
             self.assertEqual(len(run.trace), 4)  # 2 round + 2 tool
+        finally:
+            conn.close()
+            tmp.cleanup()
+
+    def test_final_synthesis_never_exposes_raw_dsml(self):
+        ctx, (conn, tmp) = self._ctx()
+        try:
+            call = {"id": "call_1", "function": {"name": "list_collections", "arguments": "{}"}}
+            responses = [self._resp(self._message(tool_calls=[call]), "tool_calls")] * 2
+            responses.append(self._resp(self._message(content='<｜｜DSML｜｜tool_calls>'), "stop"))
+            fake_llm, _ = self._scripted(responses)
+            orig = runner_mod.llm_chat
+            runner_mod.llm_chat = fake_llm
+            try:
+                run = run_agent(query="q", max_rounds=2, ctx_builder=lambda: ctx, config=_FakeConfig())
+            finally:
+                runner_mod.llm_chat = orig
+            self.assertEqual(run.finish_reason, "agent_final_synthesis")
+            self.assertIn("未解析的工具调用协议", run.answer)
+            self.assertNotIn("DSML", run.answer)
         finally:
             conn.close()
             tmp.cleanup()
@@ -353,7 +400,7 @@ class ExecToolsTests(unittest.TestCase):
             self.assertTrue(result.ok)
             plan = result.data["plan"]
             self.assertEqual(plan["total"], 2)
-            self.assertEqual(plan["steps"], ["download", "parse", "embed"])
+            self.assertNotIn("steps", plan)  # local plan has not established executable stages yet
             self.assertTrue(plan["confirm_required"])
             titles = {p["entity_id"]: p["title"] for p in plan["papers"]}
             self.assertEqual(titles["ape_a"], "A Diffusion Baseline for SR")
@@ -371,6 +418,14 @@ class ExecToolsTests(unittest.TestCase):
 
 
 class WebToolsTests(unittest.TestCase):
+    def setUp(self):
+        from unittest.mock import patch
+        import socket
+
+        self.enterContext(patch("socket.getaddrinfo", return_value=[
+            (socket.AF_INET, socket.SOCK_STREAM, socket.IPPROTO_TCP, "", ("93.184.216.34", 443)),
+        ]))
+
     def test_url_validation_blocks_internal(self):
         from backend.agent.tools.web import _valid_http_url
         blocked = ["http://localhost:8765/x", "file:///etc/passwd", "http://127.0.0.1/x",

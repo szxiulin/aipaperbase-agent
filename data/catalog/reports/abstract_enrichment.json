@@ -1,5 +1,6 @@
 {
   "generated_at": "2026-08-13T09:37:42+00:00",
+  "hf_parquet": "/private/tmp/apexpaperrag-all-papers.parquet",
   "hf_dataset_url": "https://huggingface.co/datasets/ai-conferences/all-papers",
   "reviewarena_dataset_url": "https://huggingface.co/datasets/anonymousNeurIPS2026submission4281/reviewarena",
   "records": 118338,

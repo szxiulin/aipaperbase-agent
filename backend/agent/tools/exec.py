@@ -26,21 +26,18 @@ def _ingest_papers(ctx: dict, entity_ids: list[str]) -> ToolResult:
         {
             "entity_id": entity_id,
             "title": titles.get(entity_id, entity_id),
-            "steps": ["download", "parse", "embed"],
         }
         for entity_id in ids
     ]
     plan = {
         "papers": papers,
         "total": len(papers),
-        "steps": ["download", "parse", "embed"],
-        "estimated_minutes": max(1, len(papers) * 2),
         "confirm_required": True,
     }
     return ToolResult(
         ok=True,
-        data={"plan": plan, "hint": "执行需要用户确认：回答里会出现确认卡片，点确认后才会真正下载/解析/入库"},
-        summary=f"计划入库 {len(papers)} 篇（下载+解析+嵌入），等待用户确认",
+        data={"plan": plan, "hint": "已识别入库请求；确认卡会先展示本地状态。缺少本地 PDF 的论文会在确认后依次尝试目录链接、arXiv 与 OpenAlex，逐篇结果以后台任务为准。"},
+        summary=f"已识别 {len(papers)} 篇入库请求，等待用户确认",
     )
 
 

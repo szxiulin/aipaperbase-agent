@@ -12,13 +12,14 @@ from backend.agent.tools.base import ToolDef, ToolResult
 def _resolve_entity_ids(ctx: dict, entity_ids: list[str] | None, collection_id: str | None) -> list[str]:
     ids = list(dict.fromkeys(entity_ids or []))
     if collection_id:
-        collections_conn = ctx.get("collections_conn")
-        if collections_conn is not None:
-            rows = collections_conn.execute(
-                "SELECT entity_id FROM collection_members WHERE collection_id = ?", (collection_id,)
-            ).fetchall()
-            ids.extend(row["entity_id"] for row in rows)
+        conn = ctx.get("collections_conn")
+        members = [r["entity_id"] for r in conn.execute("SELECT entity_id FROM collection_members WHERE collection_id=?", (collection_id,))] if conn is not None else []
+        ids = [eid for eid in ids if eid in members] if entity_ids is not None else members
+    if ctx.get("allowed_entity_ids") is not None:
+        allowed = ctx["allowed_entity_ids"]
+        ids = [eid for eid in ids if eid in allowed] if entity_ids is not None or collection_id else list(allowed)
     return list(dict.fromkeys(ids))
+
 
 
 def _ensure_pipeline(ctx: dict):
@@ -36,20 +37,26 @@ def _ensure_pipeline(ctx: dict):
 
 def _search_evidence(ctx: dict, query: str, entity_ids: list[str] | None = None,
                      collection_id: str | None = None, top_k: int = 10) -> ToolResult:
+    resolved = _resolve_entity_ids(ctx, entity_ids, collection_id)
+    scope_requested = bool(entity_ids is not None or collection_id or ctx.get("allowed_entity_ids") is not None)
+    if scope_requested and not resolved:
+        return ToolResult(
+            ok=True, data={"items": [], "total": 0},
+            summary="限定论文内未检索到相关内容",
+        )
     try:
         pipeline = _ensure_pipeline(ctx)
     except Exception as exc:
         return ToolResult(ok=False, data={"error": f"全文库暂不可用：{exc}"}, summary="全文库暂不可用")
     filters = None
-    resolved = _resolve_entity_ids(ctx, entity_ids, collection_id)
-    if resolved:
+    if scope_requested:
         filters = {"document_id": resolved}
     try:
         hits = pipeline.retriever.retrieve_scored(query, top_k, filters)
     except Exception as exc:
         return ToolResult(ok=False, data={"error": f"全文检索失败：{exc}"}, summary="全文检索失败")
     if not hits:
-        scope = "限定论文内" if resolved else "全文库"
+        scope = "限定论文内" if scope_requested else "全文库"
         return ToolResult(
             ok=True, data={"items": [], "total": 0},
             summary=f"{scope}未检索到相关内容",
@@ -85,6 +92,8 @@ def _search_evidence(ctx: dict, query: str, entity_ids: list[str] | None = None,
 
 def _get_evidence(ctx: dict, entity_id: str) -> ToolResult:
     """Section structure map: list all ingested sections of this paper + the first snippet of each section (to survey the structure before deep diving)."""
+    if ctx.get("allowed_entity_ids") is not None and entity_id not in ctx["allowed_entity_ids"]:
+        return ToolResult(False, {"error":"该论文不在当前研究范围内"})
     try:
         pipeline = _ensure_pipeline(ctx)
     except Exception as exc:
@@ -125,7 +134,7 @@ def _get_evidence(ctx: dict, entity_id: str) -> ToolResult:
 def _list_collections(ctx: dict) -> ToolResult:
     conn = ctx.get("collections_conn")
     if conn is None:
-        return ToolResult(ok=False, data={"error": "集合库不可用"}, summary="集合库不可用")
+        return ToolResult(ok=True, data={"items": []}, summary="尚无个人集合，可生成创建集合并加入草稿")
     rows = conn.execute(
         """SELECT c.collection_id, c.name, c.description,
                   (SELECT COUNT(*) FROM collection_members m WHERE m.collection_id = c.collection_id) AS member_count

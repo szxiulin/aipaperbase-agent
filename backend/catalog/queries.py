@@ -270,10 +270,11 @@ def _paper_filters(
     list_status: str = "",
     has_abstract: str = "",
     search: str = "",
-    fts_ids: list[str] | None = None,
-) -> tuple[str, list[Any]]:
+    fts_query: str | None = None,
+) -> tuple[str, str, list[Any]]:
     clauses: list[str] = []
     params: list[Any] = []
+    fts_join = ""
     if venue:
         clauses.append("p.venue = ?")
         params.append(venue)
@@ -290,11 +291,16 @@ def _paper_filters(
         clauses.append("p.abstract <> ''")
     elif has_abstract == "no":
         clauses.append("p.abstract = ''")
-    if fts_ids is not None:
-        # FTS hit set (intent guessing): empty set → always false (0 results)
-        if fts_ids:
-            clauses.append(f"p.record_id IN ({','.join('?' * len(fts_ids))})")
-            params.extend(fts_ids)
+    if fts_query is not None:
+        # Keep the hit set inside SQLite.  Expanding it into IN / CASE parameters
+        # makes otherwise valid large FTS searches slow and can exceed bind limits.
+        if fts_query:
+            fts_join = (
+                " JOIN fts_map fm ON fm.record_id = p.record_id"
+                " JOIN fts_papers f ON f.rowid = fm.rowid"
+            )
+            clauses.append("fts_papers MATCH ?")
+            params.append(fts_query)
         else:
             clauses.append("1 = 0")
     elif search:
@@ -303,7 +309,7 @@ def _paper_filters(
         term = f"%{search}%"
         params.extend([term, term, term, term, term, term])
     where = f" WHERE {' AND '.join(clauses)}" if clauses else ""
-    return where, params
+    return fts_join, where, params
 
 
 def papers_entity_ids(
@@ -317,12 +323,13 @@ def papers_entity_ids(
     search: str = "",
 ) -> dict[str, Any]:
     """All distinct entity ids matching the same filters as papers(), unpaginated."""
-    fts_ids = search_mod.resolve(connection, search) if search else None
-    where, params = _paper_filters(venue, year, venue_type, list_status, has_abstract, search, fts_ids)
+    fts_query = search_mod.resolve_fts_query(connection, search) if search else None
+    fts_join, where, params = _paper_filters(venue, year, venue_type, list_status, has_abstract, search, fts_query)
     rows = connection.execute(
         f"""SELECT DISTINCT m.entity_id
             FROM paper_records p
             JOIN entity_memberships m ON m.record_id = p.record_id
+            {fts_join}
             {where}
             ORDER BY m.entity_id""",
         params,
@@ -344,23 +351,28 @@ def search_records(
     returning the top `limit` paper summaries deduplicated by entity. Parameterized SQL to prevent injection.
     """
     clauses: list[str] = []
-    params: list[Any] = []
+    where_params: list[Any] = []
+    fts_join = ""
     if venue:
         clauses.append("p.venue = ?")
-        params.append(venue)
+        where_params.append(venue)
     if year is not None:
         clauses.append("p.year = ?")
-        params.append(year)
+        where_params.append(year)
     if search:
-        ids = search_mod.resolve(connection, search)
-        if ids is None:
+        fts_query = search_mod.resolve_fts_query(connection, search)
+        if fts_query is None:
             # no FTS index: LIKE fallback
             clauses.append("(p.title LIKE ? OR p.authors LIKE ? OR p.abstract LIKE ? OR p.paper_id LIKE ? OR p.doi LIKE ?)")
             term = f"%{search}%"
-            params.extend([term, term, term, term, term])
-        elif ids:
-            clauses.append(f"p.record_id IN ({','.join('?' * len(ids))})")
-            params.extend(ids)
+            where_params.extend([term, term, term, term, term])
+        elif fts_query:
+            fts_join = (
+                " JOIN fts_map fm ON fm.record_id = p.record_id"
+                " JOIN fts_papers f ON f.rowid = fm.rowid"
+            )
+            clauses.append("fts_papers MATCH ?")
+            where_params.append(fts_query)
         else:
             clauses.append("1 = 0")
     where = f" WHERE {' AND '.join(clauses)}" if clauses else ""
@@ -372,18 +384,21 @@ def search_records(
             " JOIN topic_ancestors tanc ON tanc.topic_id = ta.topic_id"
             " JOIN topic_definitions td ON td.topic_id = tanc.ancestor_topic_id AND td.name = ?"
         )
-        params.append(topic)
+        topic_params = [topic]
+    else:
+        topic_params = []
+    params = [*topic_params, *where_params]
     total = connection.execute(
         f"""SELECT COUNT(DISTINCT m.entity_id) FROM paper_records p
-            JOIN entity_memberships m ON m.record_id = p.record_id{topic_join}{where}""",
+            JOIN entity_memberships m ON m.record_id = p.record_id{topic_join}{fts_join}{where}""",
         params,
     ).fetchone()[0]
     rows = connection.execute(
         f"""SELECT m.entity_id, e.canonical_title AS title, p.venue, p.venue_type, p.year,
                    p.authors, substr(p.abstract, 1, 300) AS abstract_snippet
             FROM paper_records p
-            JOIN entity_memberships m ON m.record_id = p.record_id
-            JOIN paper_entities e ON e.entity_id = m.entity_id{topic_join}{where}
+            JOIN entity_memberships m ON m.record_id = p.record_id{topic_join}{fts_join}
+            JOIN paper_entities e ON e.entity_id = m.entity_id{where}
             ORDER BY p.year DESC, p.venue
             LIMIT ?""",
         [*params, max(1, min(limit, 50))],
@@ -547,17 +562,16 @@ def papers(
 ) -> dict[str, Any]:
     page = max(page, 1)
     page_size = min(max(page_size, 1), 100)
-    fts_ids = search_mod.resolve(connection, search) if search else None
-    where, params = _paper_filters(venue, year, venue_type, list_status, has_abstract, search, fts_ids)
+    fts_query = search_mod.resolve_fts_query(connection, search) if search else None
+    fts_join, where, params = _paper_filters(venue, year, venue_type, list_status, has_abstract, search, fts_query)
     total = connection.execute(
         f"""SELECT COUNT(*) FROM paper_records p
-            JOIN entity_memberships m ON m.record_id = p.record_id{where}""",
+            JOIN entity_memberships m ON m.record_id = p.record_id{fts_join}{where}""",
         params,
     ).fetchone()[0]
-    order, order_params = "p.year DESC, p.venue, p.title", []
-    if fts_ids:
-        order = f"{search_mod.order_case(fts_ids)}, p.year DESC, p.title"
-        order_params = list(fts_ids)  # CASE WHEN ? binding params for order_case
+    order = "p.year DESC, p.venue, p.title"
+    if fts_query:
+        order = f"bm25(fts_papers, {search_mod.BM25_WEIGHTS}), f.rowid, p.year DESC, p.title"
     rows = connection.execute(
         f"""SELECT p.record_id, p.paper_id, p.venue, p.venue_type, p.year, p.track,
                    p.title, p.authors, p.abstract, p.abstract_source_name,
@@ -569,10 +583,11 @@ def papers(
             FROM paper_records p
             JOIN entity_memberships m ON m.record_id = p.record_id
             JOIN paper_entities e ON e.entity_id = m.entity_id
+            {fts_join}
             {where}
             ORDER BY {order}
             LIMIT ? OFFSET ?""",
-        [*params, *order_params, page_size, (page - 1) * page_size],
+        [*params, page_size, (page - 1) * page_size],
     ).fetchall()
     return {
         "items": _dicts(rows),

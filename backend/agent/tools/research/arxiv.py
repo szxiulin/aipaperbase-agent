@@ -26,7 +26,7 @@ from backend.agent.tools import schemas
 from backend.agent.tools.base import ToolDef, ToolResult
 
 API_BASE = "https://export.arxiv.org/api/query"
-USER_AGENT = "AIPaperbaseAgent-arxiv/0.1 (personal research)"
+USER_AGENT = "AIPaperbase Agent-arxiv/0.1 (personal research)"
 RATE_LIMIT_SECONDS = 3.0
 ARXIV_VERSION = re.compile(r"v\d+$", re.IGNORECASE)
 

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Any, Protocol
 
-from ._budget import charge
+from ._budget import charge, check_budget
 from .documents import Chunk
 
 
@@ -71,6 +71,7 @@ class OpenAICompatGenerator:
             payload["thinking"] = {"type": "disabled"}
             payload["temperature"] = self.temperature
             payload["top_p"] = self.top_p
+        check_budget()
         response = self._client.post(
             f"{self.base_url}/chat/completions",
             headers={"Authorization": f"Bearer {self.api_key}"},

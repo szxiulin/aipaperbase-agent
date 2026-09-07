@@ -20,6 +20,12 @@ CREATE TABLE IF NOT EXISTS parsed_documents (
     source_pdf_path TEXT NOT NULL DEFAULT '',
     markdown_path TEXT NOT NULL DEFAULT '',
     char_count INTEGER NOT NULL DEFAULT 0,
+    -- Current parse artifact.  This is intentionally independent from the
+    -- last artifact that was successfully written to the vector store.
+    parsed_sha256 TEXT NOT NULL DEFAULT '',
+    indexed_parsed_sha256 TEXT NOT NULL DEFAULT '',
+    indexed_pipeline_fingerprint TEXT NOT NULL DEFAULT '',
+    indexed_chunk_count INTEGER NOT NULL DEFAULT 0,
     error TEXT NOT NULL DEFAULT '',
     created_at TEXT NOT NULL,
     updated_at TEXT NOT NULL
@@ -27,6 +33,13 @@ CREATE TABLE IF NOT EXISTS parsed_documents (
 
 CREATE INDEX IF NOT EXISTS idx_parsed_status ON parsed_documents(status);
 """
+
+_MIGRATIONS = {
+    "parsed_sha256": "ALTER TABLE parsed_documents ADD COLUMN parsed_sha256 TEXT NOT NULL DEFAULT ''",
+    "indexed_parsed_sha256": "ALTER TABLE parsed_documents ADD COLUMN indexed_parsed_sha256 TEXT NOT NULL DEFAULT ''",
+    "indexed_pipeline_fingerprint": "ALTER TABLE parsed_documents ADD COLUMN indexed_pipeline_fingerprint TEXT NOT NULL DEFAULT ''",
+    "indexed_chunk_count": "ALTER TABLE parsed_documents ADD COLUMN indexed_chunk_count INTEGER NOT NULL DEFAULT 0",
+}
 
 
 def utc_now() -> str:
@@ -46,8 +59,8 @@ def _file_exists(entity_id: str) -> bool:
     return parsed_path(entity_id).exists() or (PARSED_ROOT / f"{entity_id}.md").exists()
 
 
-def connect(path: Path = DEFAULT_DATABASE, *, read_only: bool = False) -> sqlite3.Connection:
-    path = path.resolve()
+def connect(path: Path | None = None, *, read_only: bool = False) -> sqlite3.Connection:
+    path = (path or DEFAULT_DATABASE).resolve()
     if read_only:
         connection = sqlite3.connect(f"file:{path}?mode=ro", uri=True)
     else:
@@ -60,6 +73,11 @@ def connect(path: Path = DEFAULT_DATABASE, *, read_only: bool = False) -> sqlite
 
 def initialize(connection: sqlite3.Connection) -> None:
     connection.executescript(SCHEMA)
+    existing = {row["name"] for row in connection.execute("PRAGMA table_info(parsed_documents)")}
+    for name, ddl in _MIGRATIONS.items():
+        if name not in existing:
+            connection.execute(ddl)
+    connection.commit()
 
 
 def mark(
@@ -70,20 +88,40 @@ def mark(
     source_pdf_path: str = "",
     markdown_path: str = "",
     char_count: int = 0,
+    parsed_sha256: str = "",
     error: str = "",
 ) -> None:
     now = utc_now()
     with connection:
         connection.execute(
             """INSERT INTO parsed_documents
-               (entity_id, status, source_pdf_path, markdown_path, char_count, error, created_at, updated_at)
-               VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+               (entity_id, status, source_pdf_path, markdown_path, char_count, parsed_sha256, error, created_at, updated_at)
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
                ON CONFLICT(entity_id) DO UPDATE SET
                  status=excluded.status, source_pdf_path=excluded.source_pdf_path,
-                 markdown_path=excluded.markdown_path, char_count=excluded.char_count,
+                 markdown_path=excluded.markdown_path, char_count=excluded.char_count, parsed_sha256=excluded.parsed_sha256,
                  error=excluded.error, updated_at=excluded.updated_at""",
-            (entity_id, status, source_pdf_path, markdown_path, char_count, error, now, now),
+            (entity_id, status, source_pdf_path, markdown_path, char_count, parsed_sha256, error, now, now),
         )
+
+
+def set_index_state(connection: sqlite3.Connection, entity_id: str, *, parsed_sha256: str,
+                    pipeline_fingerprint: str, chunk_count: int) -> None:
+    with connection:
+        connection.execute(
+            "UPDATE parsed_documents SET parsed_sha256=CASE WHEN parsed_sha256='' THEN ? ELSE parsed_sha256 END, "
+            "indexed_parsed_sha256=?, indexed_pipeline_fingerprint=?, indexed_chunk_count=?, updated_at=? "
+            "WHERE entity_id=?", (parsed_sha256, parsed_sha256, pipeline_fingerprint, chunk_count, utc_now(), entity_id)
+        )
+
+
+def index_state(connection: sqlite3.Connection, entity_id: str) -> dict[str, Any]:
+    row = connection.execute(
+        "SELECT parsed_sha256, indexed_parsed_sha256, indexed_pipeline_fingerprint, indexed_chunk_count "
+        "FROM parsed_documents WHERE entity_id=?", (entity_id,)
+    ).fetchone()
+    return dict(row) if row else {"parsed_sha256": "", "indexed_parsed_sha256": "",
+                                  "indexed_pipeline_fingerprint": "", "indexed_chunk_count": 0}
 
 
 def is_parsed(connection: sqlite3.Connection, entity_id: str) -> bool:

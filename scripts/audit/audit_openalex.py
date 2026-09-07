@@ -47,7 +47,7 @@ YEARS = [2023, 2024, 2025, 2026]
 
 
 def _mailto() -> str:
-    return os.environ.get("OPENALEX_MAILTO", "you@example.com")
+    return os.environ.get("OPENALEX_MAILTO", "metadata@apexpaperrag.local")
 
 
 def _api_key() -> str:
@@ -58,7 +58,7 @@ def _get(params: dict[str, str]) -> dict:
     """GET OpenAlex (exponential backoff on 429). Returns (status, data) — network failures raise an exception."""
     params = dict(params)
     params.setdefault("mailto", _mailto())
-    headers = {"User-Agent": f"aipaperbase-audit mailto:{_mailto()}"}
+    headers = {"User-Agent": f"apexpaperrag-audit mailto:{_mailto()}"}
     key = _api_key()
     if key:
         headers["api-key"] = key

@@ -6,10 +6,15 @@ Design principles (researched from browser-use / agent-browser / Playwright MCP)
 - What's given to the LLM is a structured text snapshot (body/links), not a screenshot or the full DOM;
 - Single-shot: each call opens an independent browser session, reads once and closes—no multi-step interaction loop (interactive v2 deferred);
 - Cost control: per-task browser call budget (default 3) + body truncation + hard timeout;
-- Safety: only public http/https allowed; rejects file:// / localhost / internal IPs (SSRF guard).
+- Safety: public-domain http/https only; DNS checks and context-wide interception.
+  Redirects are checked hop by hop; service workers and WebSockets are blocked.
+  DNS is NOT connection-pinned:
+  resolver differences / DNS rebinding still require network-level egress enforcement.
 """
 
+import ipaddress
 import re
+import socket
 import urllib.parse
 from typing import Any
 
@@ -19,33 +24,104 @@ BROWSER_TIMEOUT_MS = 15000
 NETWORK_IDLE_MS = 5000
 MAX_TEXT = 6000
 MAX_LINKS = 20
+MAX_REDIRECTS = 5
 DEFAULT_BUDGET = 3
 
-_LOCAL_HOST_RE = re.compile(
-    r"(localhost|127\.|10\.|172\.(1[6-9]|2\d|3[01])\.|192\.168\.|0\.0\.0\.0|::1|169\.254\.)", re.I
-)
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
 
 
 def _valid_http_url(url: str) -> bool:
-    if not url or len(url) > 2048:
+    """Fail closed on ambiguous URLs and any non-public DNS answer (not IP pinning)."""
+    if not isinstance(url, str) or not url or len(url) > 2048:
         return False
-    parsed = urllib.parse.urlparse(url)
-    if parsed.scheme not in ("http", "https"):
-        return False
-    host = (parsed.hostname or "").lower()
-    if not host or _LOCAL_HOST_RE.search(host):
-        return False
-    if "." not in host:  # single-label hostname (http://a) may resolve to an internal address
+    # urllib strips some controls; Chromium treats backslashes as URL separators.
+    if "\\" in url or any(c.isspace() or ord(c) < 32 or ord(c) == 127 for c in url):
         return False
     try:
-        import ipaddress
-
-        ipaddress.ip_address(host)  # bare IP → reject (local/internal)
+        parsed = urllib.parse.urlsplit(url)
+        port = parsed.port  # Invalid, empty and out-of-range ports must not slip through.
+        host = (parsed.hostname or "").lower().removesuffix(".")
+    except ValueError:
+        return False
+    if (parsed.scheme not in ("http", "https") or parsed.username is not None
+            or parsed.netloc.endswith(":") or port == 0):
+        return False
+    try:
+        ipaddress.ip_address(host)
+        # Keep the existing domain-only policy, including normalized public literals.
         return False
     except ValueError:
         pass
-    return True
+    # ASCII/punycode only: Python IDNA and the browser's UTS46 mapping can disagree.
+    labels = host.split(".")
+    if (len(labels) < 2 or len(host) > 253 or labels[-1] == "localhost"
+            or any(not re.fullmatch(r"[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?", label)
+                   for label in labels)):
+        return False
+    # WHATWG numeric IPv4 includes short, integer, octal and hexadecimal forms.
+    if re.fullmatch(r"(?:[0-9]+|0x[0-9a-f]+)", labels[-1]):
+        return False
+    try:
+        answers = socket.getaddrinfo(host, port or (443 if parsed.scheme == "https" else 80),
+                                     type=socket.SOCK_STREAM)
+        addresses = [ipaddress.ip_address(answer[4][0]) for answer in answers]
+    except (OSError, ValueError):
+        return False
+    return bool(addresses) and all(
+        address.is_global and not address.is_multicast and not address.is_reserved
+        for address in addresses
+    )
+
+
+def _guard_browser_request(route: Any) -> str | None:
+    """Check every routed request, without letting either fetch or Chromium follow 3xx."""
+    try:
+        url = route.request.url
+        method = route.request.method
+        body = route.request.post_data_buffer
+        # Do not call all_headers() on a paused request (Playwright can deadlock).
+        headers = {key.lower(): value for key, value in route.request.headers.items()}
+        options: dict[str, Any] = {"max_redirects": 0, "timeout": BROWSER_TIMEOUT_MS}
+        for hop in range(MAX_REDIRECTS + 1):
+            if not _valid_http_url(url):
+                raise ValueError("Unsafe request or redirect URL")
+            # continue_() may follow redirects without another route callback.
+            response = route.fetch(**options)
+            try:
+                if not 300 <= response.status < 400:
+                    # The caller reopens the main document at this URL before
+                    # extraction; subresource/iframe URL semantics remain limited.
+                    route.fulfill(response=response)
+                    return url
+                location = response.headers.get("location", "")
+                if (response.status not in (301, 302, 303, 307, 308) or not location
+                        or hop == MAX_REDIRECTS or "\\" in location
+                        or any(c.isspace() or ord(c) < 32 or ord(c) == 127 for c in location)):
+                    raise ValueError("Invalid redirect or redirect limit exceeded")
+                target = urllib.parse.urljoin(url, location)
+                old, new = urllib.parse.urlsplit(url), urllib.parse.urlsplit(target)
+                if (old.scheme, old.netloc.lower()) != (new.scheme, new.netloc.lower()):
+                    for key in ("authorization", "proxy-authorization"):
+                        headers.pop(key, None)
+                # Let the request context compute the target Host and cookie jar.
+                for key in ("host", "cookie"):
+                    headers.pop(key, None)
+                if ((response.status in (301, 302) and method == "POST")
+                        or (response.status == 303 and method not in ("GET", "HEAD"))):
+                    method, body = "GET", b""
+                    for key in ("content-type", "content-length", "content-encoding",
+                                "content-language", "content-location", "transfer-encoding"):
+                        headers.pop(key, None)
+                # Empty headers fall back to the original request in Route.fetch.
+                headers.setdefault("user-agent", UA)
+                options.update(url=target, method=method, headers=dict(headers),
+                               post_data=body if body is not None else b"")
+                url = target
+            finally:
+                response.dispose()
+    except Exception:
+        # Includes older Playwright without fetch(max_redirects=0): never continue.
+        route.abort()
 
 
 def _spend_budget(ctx: dict) -> str | None:
@@ -58,17 +134,47 @@ def _spend_budget(ctx: dict) -> str | None:
 
 def _browser_page(url: str) -> dict:
     """Open the page (wait for JS rendering) → extract title/body/links → close the browser. Returns dict."""
+    if not _valid_http_url(url):
+        raise ValueError("URL 非法或指向内网/本地地址（仅允许公网 http/https）")
     from playwright.sync_api import sync_playwright
 
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(headless=True)
         try:
-            page = browser.new_page(user_agent=UA)
-            page.goto(url, wait_until="domcontentloaded", timeout=BROWSER_TIMEOUT_MS)
-            try:
-                page.wait_for_load_state("networkidle", timeout=NETWORK_IDLE_MS)
-            except Exception:
-                pass
+            context = browser.new_context(user_agent=UA, service_workers="block")
+            page = None
+            document_url = None
+
+            def guard_request(route: Any) -> None:
+                nonlocal document_url
+                final_url = _guard_browser_request(route)
+                request = route.request
+                if (final_url and page is not None and request.resource_type == "document"
+                        and request.is_navigation_request() and request.frame == page.main_frame):
+                    document_url = final_url
+
+            context.route("**/*", guard_request)
+            route_web_socket = getattr(context, "route_web_socket", None)
+            if not callable(route_web_socket):
+                raise RuntimeError("Playwright WebSocket routing is required; upgrade Playwright")
+            # Do not connect_to_server(): routed sockets stay disconnected by default.
+            route_web_socket("**/*", lambda ws: ws.close(code=1008, reason="WebSockets disabled"))
+            # Context routing covers subresources, frames and popup pages as well.
+            page = context.new_page()
+            for _ in range(MAX_REDIRECTS + 1):
+                document_url = None
+                page.goto(url, wait_until="domcontentloaded", timeout=BROWSER_TIMEOUT_MS)
+                try:
+                    page.wait_for_load_state("networkidle", timeout=NETWORK_IDLE_MS)
+                except Exception:
+                    pass
+                if (not document_url or urllib.parse.urldefrag(document_url)[0]
+                        == urllib.parse.urldefrag(page.url)[0]):
+                    break
+                # A fresh guarded GET restores document.URL/baseURI after fulfill.
+                url = document_url
+            else:
+                raise ValueError("Main document navigation limit exceeded")
             title = (page.title() or "").strip()
             text = page.evaluate("() => document.body ? document.body.innerText : ''") or ""
             links = page.eval_on_selector_all(

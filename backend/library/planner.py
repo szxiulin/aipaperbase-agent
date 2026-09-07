@@ -6,6 +6,8 @@ from collections import defaultdict
 from typing import Any
 from urllib.parse import urlparse
 
+from backend.library import identity, sources
+
 
 ARXIV_VERSION = re.compile(r"v\d+$", re.IGNORECASE)
 
@@ -66,9 +68,15 @@ def _chunked(values: list[str], size: int):
         yield values[start : start + size]
 
 
-def build_plan(catalog_conn: sqlite3.Connection, entity_ids: list[str]) -> dict[str, Any]:
+def build_plan(
+    catalog_conn: sqlite3.Connection, entity_ids: list[str], *,
+    arxiv_lookup=None, openalex_lookup=None,
+) -> dict[str, Any]:
     """Build a download plan for a set of paper entities."""
-    ids = list(dict.fromkeys(entity_ids))
+    requested_values = list(entity_ids)
+    resolved_ids = identity.resolve_entity_ids(catalog_conn, list(dict.fromkeys(requested_values)))
+    ids = list(dict.fromkeys(item["canonical_entity_id"] for item in resolved_ids.values()
+                             if item.get("status") != "failed"))
     counts: dict[str, int] = defaultdict(int)
     items: list[dict[str, Any]] = []
 
@@ -106,7 +114,15 @@ def build_plan(catalog_conn: sqlite3.Connection, entity_ids: list[str]) -> dict[
         ).fetchall():
             members[row["entity_id"]].append(dict(row))
 
-    for entity_id in ids:
+    # Preserve an item for every requested id, including unknown ids and aliases.
+    for requested_id, identity_item in resolved_ids.items():
+        entity_id = identity_item["canonical_entity_id"]
+        if identity_item.get("status") == "failed":
+            items.append({**identity_item, "entity_id": requested_id, "source": "none", "downloadable": False,
+                          "download_url": "", "source_url": "", "match_basis": "", "estimated_bytes": 0,
+                          "authors": "", "paper_url": "", "doi": "", "arxiv_id": "", "venues": [], "years": []})
+            counts["none"] += 1
+            continue
         info = titles.get(entity_id, {})
         rows = members.get(entity_id, [])
 
@@ -115,45 +131,50 @@ def build_plan(catalog_conn: sqlite3.Connection, entity_ids: list[str]) -> dict[
         restricted = any(_classify_url(row["pdf_url"]) == "restricted" for row in rows)
         unspecified = any(_classify_url(row["pdf_url"]) == "unspecified" for row in rows)
 
-        if arxiv_ids:
-            source = "arxiv"
-            download_url = arxiv_pdf_url(arxiv_ids[0])
+        # Catalog's explicit open PDF is the first choice.  The resolver then
+        # falls back to known arXiv, strict arXiv matching and OpenAlex OA PDF.
+        catalog_pdf_url = open_urls[0] if open_urls else ""
+        base = {
+            "entity_id": entity_id, "requested_entity_id": requested_id,
+            "canonical_entity_id": entity_id, "title": info.get("title", identity_item.get("title", "")),
+            "authors": info.get("authors", ""), "paper_url": info.get("paper_url", ""),
+            "doi": info.get("doi", ""), "catalog_pdf_url": catalog_pdf_url,
+            "arxiv_id": arxiv_ids[0] if arxiv_ids else "", "venues": sorted({row["venue"] for row in rows if row["venue"]}),
+            "years": sorted({row["year"] for row in rows if row["year"]}),
+        }
+        source_info = sources.resolve(base, arxiv_lookup=arxiv_lookup, openalex_lookup=openalex_lookup)
+        source = source_info["source"]
+        download_url = source_info["source_url"]
+        if source == "arxiv":
             estimated_bytes = ARXIV_ESTIMATED_BYTES
-        elif open_urls:
-            source = "open"
-            download_url = open_urls[0]
+        elif source in {"catalog", "openalex"}:
             estimated_bytes = OPEN_ESTIMATED_BYTES
-        elif restricted:
-            source = "restricted"
-            download_url = ""
-            estimated_bytes = 0
-        elif unspecified:
-            source = "unspecified"
-            download_url = ""
-            estimated_bytes = 0
         else:
-            source = "none"
-            download_url = ""
             estimated_bytes = 0
 
         counts[source] += 1
-        venues = sorted({row["venue"] for row in rows if row["venue"]})
-        years = sorted({row["year"] for row in rows if row["year"]})
-        items.append({
-            "entity_id": entity_id,
-            "title": info.get("title", ""),
-            "authors": info.get("authors", ""),
-            "paper_url": info.get("paper_url", ""),
-            "doi": info.get("doi", ""),
-            "source": source,
+        items.append({**base, **source_info,
             "downloadable": source in {"arxiv", "open"},
             "download_url": download_url,
             "estimated_bytes": estimated_bytes,
-            "arxiv_id": arxiv_ids[0] if arxiv_ids else "",
-            "venues": venues,
-            "years": years,
+            # Backward compatible plan field.  Catalog/OpenAlex OA are both
+            # downloadable; the old UI called any non-arXiv source "open".
+            "downloadable": bool(source_info["downloadable"]),
+            "fallback_sources": source_info.get("fallback_sources", []),
         })
 
+    # Preserve repeated requests as explicit no-op rows instead of silently
+    # dropping them. The first occurrence is the only runnable canonical job.
+    seen_requested: set[str] = set()
+    for requested_id in requested_values:
+        if requested_id not in seen_requested:
+            seen_requested.add(requested_id)
+            continue
+        original = next((item for item in items if item["requested_entity_id"] == requested_id), None)
+        if original:
+            items.append({**original, "downloadable": False, "status": "ambiguous_duplicate",
+                          "reason_code": "duplicate_entity", "message": "同一请求已包含该论文，已合并执行。"})
+            counts["none"] += 1
     items.sort(key=lambda item: (not item["downloadable"], item["source"], item["title"]))
     estimated_total_bytes = sum(item["estimated_bytes"] for item in items)
     downloadable = sum(item["downloadable"] for item in items)

@@ -13,10 +13,10 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import Any, Callable
 
-from backend.library import planner, store
+from backend.library import planner, sources, store
 
 
-USER_AGENT = "AIPaperbaseAgent-download/0.1 (personal research; contact: local-user)"
+USER_AGENT = "AIPaperbase Agent-download/0.1 (personal research; contact: local-user)"
 PDF_HEADER = b"%PDF"
 MIN_PDF_BYTES = 1024
 
@@ -55,6 +55,21 @@ def _atomic_write(dest: Path, content: bytes) -> None:
         raise
 
 
+def _next_source_after_failure(item: dict[str, Any], failed_source: str) -> dict[str, Any] | None:
+    """Resolve exactly the next source after an actual download failure.
+
+    No future source is queried while the current candidate has not failed.
+    """
+    base = {**item, "catalog_pdf_url": "", "download_url": ""}
+    if failed_source == "catalog":
+        return sources.resolve(base, arxiv_lookup=sources.remote_arxiv_candidates,
+                               openalex_lookup=sources.remote_openalex_candidates)
+    if failed_source == "arxiv":
+        base["arxiv_id"] = ""
+        return sources.resolve(base, openalex_lookup=sources.remote_openalex_candidates)
+    return None
+
+
 def run_download(
     catalog_conn: sqlite3.Connection,
     store_conn: sqlite3.Connection,
@@ -63,9 +78,10 @@ def run_download(
     is_cancelled: Callable[[], bool] | None = None,
     on_progress: Callable[[dict[str, Any]], None] | None = None,
     workers: int = 4,
+    plan_items: list[dict[str, Any]] | None = None,
 ) -> dict[str, int]:
     """Concurrently download all downloadable entities, recording status and deduplicating by content."""
-    plan = planner.build_plan(catalog_conn, entity_ids)
+    plan = {"items": plan_items} if plan_items is not None else planner.build_plan(catalog_conn, entity_ids)
     downloadable = [item for item in plan["items"] if item["downloadable"]]
     total = len(downloadable)
     results = {"success": 0, "failed": 0, "duplicate": 0, "skipped": 0}
@@ -89,7 +105,26 @@ def run_download(
         with lock:
             store.mark(store_conn, entity_id, "downloading", source=item["source"], download_url=item["download_url"])
         try:
-            content, size = download_pdf(item["download_url"])
+            attempts = [{"source": item["source"], "source_url": item["download_url"]}]
+            last_error = None
+            while attempts:
+                source_attempt = attempts.pop(0)
+                try:
+                    content, size = download_pdf(source_attempt["source_url"])
+                    item = {**item, "source": source_attempt["source"], "download_url": source_attempt["source_url"]}
+                    item.setdefault("source_attempts", []).append({"source": source_attempt["source"], "status": "success"})
+                    break
+                except Exception as exc:  # try the next verified source, if any
+                    last_error = exc
+                    item.setdefault("source_attempts", []).append({"source": source_attempt["source"], "status": "failed",
+                                                                     "reason_code": "download_failed", "message": "PDF 下载失败，继续尝试下一来源。"})
+                    next_source = _next_source_after_failure(item, source_attempt["source"])
+                    if next_source:
+                        item.setdefault("source_attempts", []).extend(next_source.get("source_attempts", []))
+                        if next_source.get("downloadable"):
+                            attempts.append({"source": next_source["source"], "source_url": next_source["source_url"]})
+            else:
+                raise RuntimeError(f"下载失败: {last_error}")
             digest = hashlib.sha256(content).hexdigest()
             # Dedup check + file write + mark are all kept under one lock, so the same content is written only once under concurrency
             with lock:

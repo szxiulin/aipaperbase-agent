@@ -21,7 +21,9 @@ def active_count() -> int:
         return _active
 
 
-def start_job(job: Job, *, max_active: int | None = None, timeout: float | None = None) -> str:
+def start_job(job: Job, *, max_active: int | None = None, timeout: float | None = None,
+              on_started: Callable[[str], None] | None = None,
+              on_finished: Callable[[dict], None] | None = None) -> str:
     """Start a background task.
 
     max_active: concurrency cap; exceeding it raises RuntimeError (the caller turns it into 429);
@@ -43,6 +45,14 @@ def start_job(job: Job, *, max_active: int | None = None, timeout: float | None 
     }
     with _lock:
         _tasks[task_id] = state
+    if on_started:
+        on_started(task_id)
+
+    def notify_finished() -> None:
+        if on_finished:
+            with _lock:
+                snapshot = dict(state)
+            on_finished(snapshot)
 
     def update(snapshot: dict) -> None:
         with _lock:
@@ -77,13 +87,15 @@ def start_job(job: Job, *, max_active: int | None = None, timeout: float | None 
                 with _active_cond:
                     global _active
                     _active = max(_active - 1, 0)
+            notify_finished()
 
     def _timeout_kill() -> None:
         with _lock:
             if state["status"] == "running":
                 state["status"] = "error"
                 state["cancel"] = True
-                state["error"] = f"任务执行超时（>{timeout:.0f}s），已强制终止"
+                state["error"] = f"任务执行超时（>{timeout:.0f}s），已请求停止，请检查逐篇完成状态"
+        notify_finished()
 
     threading.Thread(target=run, daemon=True).start()
     if timeout is not None:

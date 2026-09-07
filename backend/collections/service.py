@@ -264,22 +264,32 @@ def add_members(
     _require_collection(user_conn, collection_id)
     if added_by not in ADDED_BY:
         raise ValueError(f"非法加入方式: {added_by}")
-    ids = list(dict.fromkeys(entity_ids))
-    if not ids:
-        return {"added": 0, "already_present": 0, "unknown": []}
-    current, aliases = _known_entities(catalog_conn, ids)
+    requested = list(dict.fromkeys(entity_ids))
+    if not requested:
+        return {"added": 0, "already_present": 0, "unknown": [], "historical_alias_members": []}
+    current, aliases = _known_entities(catalog_conn, requested)
     known = current | set(aliases)
-    unknown = [entity_id for entity_id in ids if entity_id not in known]
+    unknown = [entity_id for entity_id in requested if entity_id not in known]
     if unknown:
         preview = ", ".join(unknown[:5])
         raise ValueError(f"存在未知论文实体: {preview}{' 等' if len(unknown) > 5 else ''}")
+    # New rows always use the catalog's current canonical ID.  Resolving before
+    # deduplication also makes alias + canonical in one request a single intent.
+    canonical_ids = list(dict.fromkeys(aliases.get(entity_id, entity_id) for entity_id in requested))
     now = utc_now()
-    existing = {
-        row[0] for row in user_conn.execute(
-            "SELECT entity_id FROM collection_members WHERE collection_id = ?", (collection_id,)
-        )
+    existing_rows = [row["entity_id"] for row in user_conn.execute(
+        "SELECT entity_id FROM collection_members WHERE collection_id = ?", (collection_id,)
+    )]
+    existing_resolution = resolve_entity_ids(catalog_conn, existing_rows)
+    existing_canonical = {
+        info["entity_id"] for info in existing_resolution.values() if info["status"] != "missing"
     }
-    to_add = [entity_id for entity_id in ids if entity_id not in existing]
+    historical_alias_members = [
+        {"stored_entity_id": stored_id, "canonical_entity_id": info["entity_id"]}
+        for stored_id, info in existing_resolution.items() if info["status"] == "alias"
+        and info["entity_id"] in canonical_ids
+    ]
+    to_add = [entity_id for entity_id in canonical_ids if entity_id not in existing_canonical]
     with user_conn:
         if to_add:
             user_conn.executemany(
@@ -292,7 +302,10 @@ def add_members(
             "UPDATE collections SET updated_at = ? WHERE collection_id = ?",
             (now, collection_id),
         )
-    return {"added": len(to_add), "already_present": len(ids) - len(to_add), "unknown": []}
+    return {
+        "added": len(to_add), "already_present": len(canonical_ids) - len(to_add), "unknown": [],
+        "historical_alias_members": historical_alias_members,
+    }
 
 
 def remove_members(
@@ -331,15 +344,17 @@ def update_collection(
         name = name.strip()
         if not name:
             raise ValueError("集合名称不能为空")
-        user_conn.execute(
-            "UPDATE collections SET name = ?, updated_at = ? WHERE collection_id = ?",
-            (name, now, collection_id),
-        )
-    if description is not None:
-        user_conn.execute(
-            "UPDATE collections SET description = ?, updated_at = ? WHERE collection_id = ?",
-            (description, now, collection_id),
-        )
+    with user_conn:
+        if name is not None:
+            user_conn.execute(
+                "UPDATE collections SET name = ?, updated_at = ? WHERE collection_id = ?",
+                (name, now, collection_id),
+            )
+        if description is not None:
+            user_conn.execute(
+                "UPDATE collections SET description = ?, updated_at = ? WHERE collection_id = ?",
+                (description, now, collection_id),
+            )
     return collection_summary(user_conn, collection_id)
 
 

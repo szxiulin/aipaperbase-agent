@@ -27,12 +27,35 @@ class Pipeline:
         self.generator = generator
 
     def ingest(self, documents: list[Document]) -> int:
+        chunks_by_document = []
         all_chunks = []
         for document in documents:
-            all_chunks.extend(self.splitter.split(document))
-        if all_chunks:
-            vectors = self.embedder.embed_texts([chunk.text for chunk in all_chunks])
-            self.store.upsert(all_chunks, vectors)
+            chunks = self.splitter.split(document)
+            chunks_by_document.append((document.id, chunks))
+            all_chunks.extend(chunks)
+        vectors = self.embedder.embed_texts([chunk.text for chunk in all_chunks]) if all_chunks else []
+        if chunks_by_document:
+            offset = 0
+            for document_id, chunks in chunks_by_document:
+                document_vectors = vectors[offset : offset + len(chunks)]
+                offset += len(chunks)
+                # Embedding completes before replacement, so an embedding failure leaves
+                # the existing index intact. A vector-store replacement is not transactional,
+                # so retain the old chunks for a best-effort compensating restore on write error.
+                old_chunks = self.store.list_by_document(document_id)
+                self.store.delete(document_id)
+                try:
+                    if chunks:
+                        self.store.upsert(chunks, document_vectors)
+                except Exception:
+                    if old_chunks:
+                        try:
+                            self.store.delete(document_id)  # remove a possible partial new write
+                            old_vectors = self.embedder.embed_texts([chunk.text for chunk in old_chunks])
+                            self.store.upsert(old_chunks, old_vectors)
+                        except Exception:
+                            pass  # preserve the original write error for the caller to retry
+                    raise
         return len(all_chunks)
 
     def query(self, text: str, top_k: int = 5, filters: dict | None = None, history: list[dict] | None = None) -> dict:

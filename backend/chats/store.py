@@ -187,6 +187,40 @@ def list_messages(connection: sqlite3.Connection, conversation_id: str) -> list[
     return [_message_dict(row) for row in rows]
 
 
+def create_ingest_task(connection: sqlite3.Connection, task_id: str, conversation_id: str, requested: list[str]) -> None:
+    connection.execute(
+        "INSERT INTO ingest_tasks (task_id, conversation_id, requested_json, status, started_at) VALUES (?, ?, ?, 'running', ?)",
+        (task_id, conversation_id, json.dumps(requested, ensure_ascii=False), utc_now()),
+    )
+    connection.commit()
+
+
+def finish_ingest_task(connection: sqlite3.Connection, task_id: str, *, status: str,
+                       result: dict | None = None, error: str = "") -> None:
+    connection.execute(
+        "UPDATE ingest_tasks SET status=?, result_json=?, error=?, finished_at=? WHERE task_id=?",
+        (status, json.dumps(result or {}, ensure_ascii=False), (error or "")[:500], utc_now(), task_id),
+    )
+    connection.commit()
+
+
+def get_ingest_task(connection: sqlite3.Connection, task_id: str) -> dict | None:
+    row = connection.execute("SELECT * FROM ingest_tasks WHERE task_id=?", (task_id,)).fetchone()
+    if row is None:
+        return None
+    value = dict(row)
+    value["requested"] = json.loads(value.pop("requested_json"))
+    value["result"] = json.loads(value.pop("result_json") or "{}")
+    return value
+
+
+def list_ingest_tasks(connection: sqlite3.Connection, conversation_id: str) -> list[dict]:
+    rows = connection.execute(
+        "SELECT * FROM ingest_tasks WHERE conversation_id=? ORDER BY started_at DESC", (conversation_id,)
+    ).fetchall()
+    return [get_ingest_task(connection, row["task_id"]) for row in rows]
+
+
 def history_before(connection: sqlite3.Connection, conversation_id: str, before_rowid: int, limit: int = 4) -> list[dict]:
     """Return the most recent valid messages before a given message (for assembling chat history, in insertion order)."""
     rows = connection.execute(

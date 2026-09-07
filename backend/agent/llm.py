@@ -16,7 +16,7 @@ from typing import Any
 
 import httpx
 
-from raglib._budget import charge as _charge_tokens, spent as _token_spent
+from raglib._budget import charge as _charge_tokens, check_budget as _check_budget, spent as _token_spent
 
 TIMEOUT = 120.0
 MAX_RETRIES = 3
@@ -40,13 +40,19 @@ def chat(
     max_tokens: int,
 ) -> dict:
     """Single OpenAI-compatible /chat/completions call (with backoff retry + token accounting)."""
+    if not base_url or not model:
+        raise RuntimeError("未配置聊天模型：请设置 GENERATOR_BASE_URL 和 GENERATOR_MODEL。指定加入可使用本地库勾选操作。")
     payload: dict = {
         "model": model,
         "messages": messages,
-        "tools": tools,
-        "tool_choice": "auto",
         "max_tokens": max_tokens,
     }
+    # Some OpenAI-compatible providers emit their private tool markup when
+    # tool_choice=auto is paired with an empty tools list. A final synthesis is
+    # text-only, so omit both fields altogether.
+    if tools:
+        payload["tools"] = tools
+        payload["tool_choice"] = "auto"
     if thinking == "enabled":
         payload["thinking"] = {"type": "enabled"}
         payload["reasoning_effort"] = reasoning_effort
@@ -54,6 +60,7 @@ def chat(
         payload["thinking"] = {"type": "disabled"}
     attempt = 0
     while True:
+        _check_budget()
         try:
             resp = client.post(
                 f"{base_url}/chat/completions",

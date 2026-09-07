@@ -41,8 +41,8 @@ def paper_path(entity_id: str) -> Path:
     return PAPERS_ROOT / f"{entity_id}.pdf"
 
 
-def connect(path: Path = DEFAULT_DATABASE, *, read_only: bool = False) -> sqlite3.Connection:
-    path = path.resolve()
+def connect(path: Path | None = None, *, read_only: bool = False) -> sqlite3.Connection:
+    path = (path or DEFAULT_DATABASE).resolve()
     if read_only:
         connection = sqlite3.connect(f"file:{path}?mode=ro", uri=True, check_same_thread=False)
     else:

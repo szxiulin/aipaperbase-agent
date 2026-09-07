@@ -115,6 +115,84 @@ class FtsIndexTest(unittest.TestCase):
         ids = search.resolve(self.conn, "idempotent")
         self.assertEqual(ids.count("r1"), 1)
 
+    def test_default_search_does_not_silently_stop_at_2000(self) -> None:
+        rows = [
+            (f"r{i}", f"Common retrieval paper {i}", "", "", "", "", "")
+            for i in range(2005)
+        ]
+        self.conn.executemany("INSERT INTO paper_records VALUES (?, ?, ?, ?, ?, ?, ?)", rows)
+        for record_id, *_ in rows:
+            search.index_record(self.conn, record_id)
+        self.assertEqual(len(search.resolve(self.conn, "common retrieval")), 2005)
+
+
+class LargeFtsCatalogQueryTest(unittest.TestCase):
+    """Exercise the catalog callers, not only search.resolve(), above SQLite's bind limit."""
+
+    HIT_COUNT = 17_000
+
+    def setUp(self) -> None:
+        self.conn = sqlite3.connect(":memory:")
+        self.conn.row_factory = sqlite3.Row
+        self.conn.executescript("""
+            CREATE TABLE paper_records (
+                record_id TEXT PRIMARY KEY, paper_id TEXT, venue TEXT, venue_type TEXT,
+                year INTEGER, track TEXT, title TEXT, authors TEXT, abstract TEXT,
+                abstract_source_name TEXT, abstract_source_url TEXT, abstract_source_tier TEXT,
+                abstract_fetched_at TEXT, doi TEXT, arxiv_id TEXT, paper_url TEXT, pdf_url TEXT,
+                source_tier TEXT, verification_status TEXT, list_status TEXT, source_file TEXT
+            );
+            CREATE TABLE entity_memberships (record_id TEXT, entity_id TEXT, match_method TEXT);
+            CREATE TABLE paper_entities (entity_id TEXT PRIMARY KEY, canonical_title TEXT, record_count INTEGER);
+            CREATE INDEX entity_memberships_record_id ON entity_memberships(record_id);
+        """)
+        search._exec_ddl(self.conn)
+        rows = []
+        memberships = []
+        entities = []
+        for index in range(self.HIT_COUNT):
+            record_id = f"r{index:04d}"
+            entity_id = f"e{index:04d}"
+            rows.append((record_id, "", "CVPR", "conference", 2025, "", f"Common retrieval paper {index}", "", "", "", "", "", "", "", "", "", "", "", "", "final", ""))
+            memberships.append((record_id, entity_id, "exact"))
+            entities.append((entity_id, f"Common retrieval paper {index}", 1))
+        self.conn.executemany("INSERT INTO paper_records VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", rows)
+        self.conn.executemany("INSERT INTO entity_memberships VALUES (?,?,?)", memberships)
+        self.conn.executemany("INSERT INTO paper_entities VALUES (?,?,?)", entities)
+        for record_id, *_ in rows:
+            search.index_record(self.conn, record_id)
+
+    def tearDown(self) -> None:
+        self.conn.close()
+
+    def test_catalog_fts_callers_keep_all_hits_without_expanding_bind_parameters(self) -> None:
+        class RecordingConnection:
+            def __init__(self, connection):
+                self.connection = connection
+                self.max_bind_count = 0
+
+            def execute(self, sql, params=()):
+                self.max_bind_count = max(self.max_bind_count, len(params))
+                return self.connection.execute(sql, params)
+
+            def __getattr__(self, name):
+                return getattr(self.connection, name)
+
+        connection = RecordingConnection(self.conn)
+        page = queries.papers(connection, search="common retrieval", page=680, page_size=25)
+        self.assertEqual(page["total"], self.HIT_COUNT)
+        self.assertEqual(len(page["items"]), 25)
+        self.assertEqual(page["items"][0]["record_id"], "r16975")
+
+        entity_ids = queries.papers_entity_ids(connection, search="common retrieval")
+        self.assertEqual(entity_ids["total"], self.HIT_COUNT)
+        self.assertEqual(len(entity_ids["entity_ids"]), self.HIT_COUNT)
+
+        records = queries.search_records(connection, search="common retrieval", limit=10)
+        self.assertEqual(records["total"], self.HIT_COUNT)
+        self.assertEqual(len(records["items"]), 10)
+        self.assertLessEqual(connection.max_bind_count, 10)
+
 
 @unittest.skipUnless(DATABASE.exists(), "catalog.sqlite 尚未构建")
 class CatalogSearchIntegrationTest(unittest.TestCase):

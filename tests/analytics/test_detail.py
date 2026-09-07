@@ -62,6 +62,26 @@ class TopicDetailTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             analytics_queries.topic_detail(self.connection, "")
 
+    def test_topic_papers_total_pages_math(self) -> None:
+        # regression: total_pages was computed from `page` instead of `total`,
+        # so multi-page topic lists reported "第 1 / 1 页" and blocked paging.
+        page_size = 20
+        for topic_id in ("f1_ml_basis", "f2_llm_models"):
+            p = analytics_queries.topic_papers(self.connection, topic_id=topic_id, page=1, page_size=page_size)
+            self.assertEqual(p["total_pages"], (p["total"] + page_size - 1) // page_size)
+            self.assertEqual(len(p["items"]), min(page_size, p["total"]))
+
+    def test_topic_papers_second_page_is_distinct_and_reachable(self) -> None:
+        page_size = 20
+        p1 = analytics_queries.topic_papers(self.connection, topic_id="f2_llm_models", page=1, page_size=page_size)
+        if p1["total_pages"] < 2:
+            self.skipTest("样本主题不足两页")
+        p2 = analytics_queries.topic_papers(self.connection, topic_id="f2_llm_models", page=2, page_size=page_size)
+        self.assertEqual(p2["page"], 2)
+        ids1 = {i["entity_id"] for i in p1["items"]}
+        ids2 = {i["entity_id"] for i in p2["items"]}
+        self.assertFalse(ids1 & ids2)
+
 
 class VenueDetailTest(unittest.TestCase):
     @classmethod

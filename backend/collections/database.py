@@ -33,11 +33,26 @@ CREATE TABLE IF NOT EXISTS collection_members (
 );
 
 CREATE INDEX IF NOT EXISTS idx_collection_members_entity ON collection_members(entity_id);
+
+CREATE TABLE IF NOT EXISTS collection_organization_runs (
+    run_id TEXT PRIMARY KEY,
+    conversation_id TEXT NOT NULL DEFAULT '',
+    target_collection_ids_json TEXT NOT NULL,
+    rule_snapshot_json TEXT NOT NULL,
+    suggestions_json TEXT NOT NULL,
+    status TEXT NOT NULL CHECK (status IN ('draft', 'applied', 'expired', 'failed')),
+    classifier_version TEXT NOT NULL,
+    created_at TEXT NOT NULL,
+    applied_at TEXT NOT NULL DEFAULT '',
+    result_json TEXT NOT NULL DEFAULT ''
+);
+
+CREATE INDEX IF NOT EXISTS idx_organization_runs_conversation ON collection_organization_runs(conversation_id, created_at DESC);
 """
 
 
-def connect(path: Path = DEFAULT_DATABASE, *, read_only: bool = False) -> sqlite3.Connection:
-    path = path.resolve()
+def connect(path: Path | None = None, *, read_only: bool = False) -> sqlite3.Connection:
+    path = (path or DEFAULT_DATABASE).resolve()
     if read_only:
         connection = sqlite3.connect(f"file:{path}?mode=ro", uri=True)
     else:
@@ -50,3 +65,7 @@ def connect(path: Path = DEFAULT_DATABASE, *, read_only: bool = False) -> sqlite
 
 def initialize(connection: sqlite3.Connection) -> None:
     connection.executescript(SCHEMA)
+    columns = {row["name"] for row in connection.execute("PRAGMA table_info(collection_organization_runs)")}
+    if "result_json" not in columns:
+        connection.execute("ALTER TABLE collection_organization_runs ADD COLUMN result_json TEXT NOT NULL DEFAULT ''")
+    connection.commit()

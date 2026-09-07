@@ -13,12 +13,12 @@ Abstract-enrichment entry point:
 
 ```bash
 python scripts/collect/enrich_abstracts.py \
-  --hf-parquet /tmp/aipaperbase-all-papers.parquet \
-  --reviewarena-tmlr /tmp/aipaperbase-reviewarena-tmlr.parquet \
+  --hf-parquet /tmp/apexpaperrag-all-papers.parquet \
+  --reviewarena-tmlr /tmp/apexpaperrag-reviewarena-tmlr.parquet \
   --official-pages
 ```
 
-Web-page caches are written only to `/tmp/aipaperbase-abstract-cache`; the project directory keeps only the unified fields and quality reports.
+Web-page caches are written only to `/tmp/apexpaperrag-abstract-cache`; the project directory keeps only the unified fields and quality reports.
 
 Topic-classification calibration:
 
@@ -46,12 +46,12 @@ The first command generates a reproducible stratified sample using a fixed versi
 
 ```bash
 python scripts/collect/enrich_abstracts.py \
-  --hf-parquet /tmp/aipaperbase-all-papers.parquet \
-  --reviewarena-tmlr /tmp/aipaperbase-reviewarena-tmlr.parquet \
+  --hf-parquet /tmp/apexpaperrag-all-papers.parquet \
+  --reviewarena-tmlr /tmp/apexpaperrag-reviewarena-tmlr.parquet \
   --official-pages
 ```
 
-网页缓存只写入 `/tmp/aipaperbase-abstract-cache`，项目目录只保留统一后的字段和质量报告。
+网页缓存只写入 `/tmp/apexpaperrag-abstract-cache`，项目目录只保留统一后的字段和质量报告。
 
 主题分类校准：
 

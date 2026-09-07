@@ -47,6 +47,9 @@ h2 { margin-bottom: 0; font-size: 17px; }
 .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-bottom: 18px; }
 .panel { padding: 21px; margin-bottom: 18px; }
 .panel-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 22px; }
+.panel-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+.abstract-actions { display: inline-flex; align-items: center; gap: 6px; }
+.abstract-actions .text-button { padding: 0; cursor: pointer; }
 .text-button { border: 0; background: transparent; color: var(--accent); font-weight: 700; }
 .bar-chart { display: grid; gap: 10px; min-height: 250px; align-content: center; }
 .bar-row { display: grid; grid-template-columns: 92px minmax(0, 1fr) 74px; align-items: center; gap: 10px; font-size: 12px; }
@@ -508,3 +511,48 @@ tr:last-child td { border-bottom: 0; }
   flex-wrap: wrap;
 }
 
+
+/* ---- Data Insights: lead + glossary ---- */
+.insights-lead { margin: 0 0 18px; max-width: 80ch; line-height: 1.7; font-size: 13px; }
+.insights-glossary { margin: 0 0 22px; border: 1px solid var(--line); border-radius: 10px; background: #fafbfc; }
+.insights-glossary summary { cursor: pointer; font-size: 12px; color: var(--muted); padding: 10px 14px; user-select: none; }
+.insights-glossary dl { margin: 0; padding: 0 14px 12px; display: grid; gap: 8px; }
+.insights-glossary dl > div { border-top: 1px solid var(--line); padding-top: 8px; }
+.insights-glossary dt { font-weight: 700; font-size: 12.5px; }
+.insights-glossary dd { margin: 2px 0 0; font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+/* My papers: one list, collections as filters. */
+.my-library-layout {display:grid;grid-template-columns:220px minmax(0,1fr);gap:20px;align-items:start}
+.my-collections .collection-create-form {display:flex;flex-direction:column;gap:12px;margin-top:16px}
+.collection-nav {display:flex;justify-content:space-between;width:100%;text-align:left;border:0;background:transparent;padding:12px;margin:4px 0;border-radius:8px;color:inherit;cursor:pointer}
+.collection-nav.active {background:#def2ed;color:#126e5d;font-weight:700}
+.my-library-filters,.my-paper-actions {display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:12px 0}
+.my-library-filters input {flex:1;min-width:160px}
+.my-papers-table .reading-state {white-space:nowrap}
+.my-papers-table th:first-child {width:45px}
+.my-papers-table td {vertical-align:top}
+.my-papers-table .paper-title {min-width:170px;width:48%}
+.my-papers-table details {font-weight:400;margin-top:8px;font-size:12px}
+.my-paper-panel {min-width:0}
+.advanced-library {margin-top:20px}
+.advanced-library>summary,.my-collections summary {cursor:pointer;font-weight:600}
+.advanced-library>.panel {box-shadow:none;margin-top:15px}
+#library-collections-bar {display:none!important}
+#picker-papers {max-height:40vh;overflow:auto;margin:16px 0}
+.picker-paper {display:flex;align-items:start;gap:10px;padding:10px 0}
+.picker-paper small {color:#64748b}
+#collection-picker .overlay-card {max-height:90vh;overflow:auto}
+#chat-config-status {position:absolute;bottom:100%;font-size:11px;background:white;margin:0;padding:3px 12px}
+.chat-form {position:relative}
+@media(max-width:850px){.my-library-layout {grid-template-columns:1fr}.my-collections #collection-list {display:flex;overflow:auto}.collection-nav {width:auto;flex-shrink:0;gap:10px}.my-papers-table {min-width:560px}.my-collections h2 {font-size:16px}.my-collections {padding:14px}}
+.my-library-filters input,.my-library-filters select,.collection-create-form input{padding:10px 12px;border:1px solid #dce4ec;border-radius:10px;background:#fff;color:inherit;font:inherit;min-width:0}
+.my-library-filters input{flex:1}
+.my-paper-links{display:flex;gap:12px;font-size:12px;margin-top:6px}
+.organization-chat-card{overflow-x:auto}
+.organization-chat-card th,.organization-chat-card td:nth-child(3){white-space:nowrap}
+.organization-chat-card td:first-child{min-width:100px}
+.organization-chat-card td:nth-child(2){min-width:72px}
+.research-toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}.research-record{padding:16px 0;border-bottom:1px solid #dce4ec}.research-record p{color:#687789}.research-record button{margin-right:10px}
+#research-view input,#research-view select,#research-view textarea,.reading-progress{padding:9px;border:1px solid #dce4ec;border-radius:8px;font:inherit;max-width:100%;background:white}
+#research-edit-form label{display:block;margin:12px 0}#research-edit-form textarea{display:block;width:100%;min-height:110px}#research-edit-form table textarea{min-width:180px}#research-view>details{margin-top:20px}#research-view summary{cursor:pointer;font-weight:600}#research-view form{margin:12px 0}
+.reading-progress{display:block;font-size:12px;margin-top:8px}#chat-research-scope{padding:8px 16px;font-size:12px;background:#eef8f5;overflow-wrap:anywhere}.my-paper-actions{flex-wrap:wrap}

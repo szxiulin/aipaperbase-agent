@@ -87,6 +87,37 @@ class ConfigTest(unittest.TestCase):
 
 
 class PipelineTest(unittest.TestCase):
+    def test_reingest_replaces_obsolete_chunks(self) -> None:
+        store = InMemoryStore()
+        pipeline = Pipeline(MarkdownSplitter(max_chars=20), FakeEmbedder(), store)
+        pipeline.ingest([Document(id="doc", text="# Part\n\nfirst paragraph\n\nsecond paragraph")])
+        self.assertGreater(len(store.list_by_document("doc")), 1)
+        pipeline.ingest([Document(id="doc", text="replacement")])
+        chunks = store.list_by_document("doc")
+        self.assertEqual(len(chunks), 1)
+        self.assertEqual(chunks[0].text, "replacement")
+
+    def test_reingest_write_failure_restores_previous_document(self) -> None:
+        class FailingStore(InMemoryStore):
+            fail_next_write = False
+
+            def upsert(self, chunks, vectors):
+                if self.fail_next_write:
+                    self.fail_next_write = False
+                    raise RuntimeError("simulated vector write failure")
+                super().upsert(chunks, vectors)
+
+        store = FailingStore()
+        pipeline = Pipeline(MarkdownSplitter(max_chars=20), FakeEmbedder(), store)
+        pipeline.ingest([Document(id="doc", text="old indexed text")])
+        before = store.list_by_document("doc")
+        store.fail_next_write = True
+
+        with self.assertRaisesRegex(RuntimeError, "write failure"):
+            pipeline.ingest([Document(id="doc", text="replacement text")])
+
+        self.assertEqual(store.list_by_document("doc"), before)
+
     def test_ingest_and_query(self) -> None:
         pipeline = Pipeline(
             MarkdownSplitter(), FakeEmbedder(), InMemoryStore(),

@@ -45,12 +45,13 @@
     document.querySelectorAll("[data-i18n-en], [data-i18n-ph-en], [data-i18n-title-en]").forEach((node) => {
       snapshotStatic(node);
       const orig = originals.get(node);
+      const staticText = orig.text !== undefined && [orig.text, node.getAttribute("data-i18n-en")].includes(node.textContent);
       if (locale === "en") {
-        if (orig.text !== undefined) node.textContent = node.getAttribute("data-i18n-en");
+        if (staticText) node.textContent = node.getAttribute("data-i18n-en");
         if (orig.placeholder !== undefined) node.setAttribute("placeholder", node.getAttribute("data-i18n-ph-en"));
         if (orig.title !== undefined) node.setAttribute("title", node.getAttribute("data-i18n-title-en"));
       } else {
-        if (orig.text !== undefined) node.textContent = orig.text;
+        if (staticText) node.textContent = orig.text;
         if (orig.placeholder !== undefined) node.setAttribute("placeholder", orig.placeholder);
         if (orig.title !== undefined) node.setAttribute("title", orig.title);
       }
@@ -369,7 +370,8 @@
     ".chat-md", ".chat-thinking", ".chat-msg-user", ".chat-msg-content", ".chat-error",
     ".chat-evidence-item", ".chat-evidence-list", ".chat-trace-list",
     ".abstract-details p", ".collection-name", ".chat-item-title",
-    "button.collection-chip", "button.collection-open",
+    "button.collection-chip", "button.collection-open", ".paper-title",
+    "#research-editor", ".research-record strong", "#chat-research-scope", ".collection-nav", "#my-library-title", "#picker-existing", "#picker-papers", "#picker-feedback",
   ].join(", ");
 
   function isContent(el) {
@@ -380,9 +382,16 @@
     return false;
   }
 
+  const translatedText = new WeakMap();
   function translateTextNode(node, toEn) {
     const raw = node.nodeValue || "";
     if (!raw) return;
+    if (!toEn) {
+      const previous = translatedText.get(node);
+      if (previous && raw === previous.en) node.nodeValue = previous.zh;
+      translatedText.delete(node);
+      return;
+    }
     if (toEn && !CJK.test(raw)) return; // already-English node
     if (!toEn && !/[A-Za-z]/.test(raw)) return; // already-Chinese node
     let out = raw;
@@ -395,7 +404,7 @@
     }
     // Then the longest-match vocabulary (individual labels/names inside longer text).
     out = toEn ? out.replace(EN_RE, (m) => CHROME[m]) : out.replace(ZH_RE, (m) => REVERSE[m]);
-    if (out !== raw) node.nodeValue = out;
+    if (out !== raw) { translatedText.set(node, {zh: raw, en: out}); node.nodeValue = out; }
   }
 
   function walkText(root, toEn) {
