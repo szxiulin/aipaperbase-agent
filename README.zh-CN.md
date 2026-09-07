@@ -6,7 +6,7 @@
 
 > **状态：个人项目，持续开发中。** 为个人使用而建，目录控制台已稳定；RAG/Agent 层已端到端可用、仍在演进。按你自己的节奏使用。
 
-![控制台概览](screenshots/overview.png)
+![AIPaperbase Agent 数据洞察概览](screenshots/overview.png)
 
 ## 这是什么、给谁用
 
@@ -49,7 +49,7 @@ venue 年度 CSV（已入库，data/catalog）
 
 ## 快速开始
 
-前置：**Python 3.12+**。只浏览目录和管理本地资料不需要 API key、Docker 或 Node.js。
+前置：**Python 3.12+**，支持 macOS 和 Linux（Windows 建议使用 WSL）。只浏览目录和管理本地资料不需要 API key、Docker 或 Node.js。
 
 ```bash
 git clone https://github.com/szxiulin/aipaperbase-agent.git
@@ -59,6 +59,24 @@ python3 -m venv .venv
 ```
 
 首次运行会自动从仓库自带的 CSV 构建公共目录，实测约 2–5 分钟，占用约 1 GB；以后启动会直接复用。打开 <http://127.0.0.1:8765> 即可浏览目录、创建集合和记录研究资料。
+
+### 让代码 Agent 一键安装
+
+把下面这段提示词直接交给 Codex、Claude Code、Cursor 等能够操作终端的代码 Agent：
+
+```text
+请帮我安装并启动 AIPaperbase Agent：https://github.com/szxiulin/aipaperbase-agent
+
+要求：
+1. 在当前目录克隆仓库；如果目录已存在，先检查状态，不覆盖我的改动。
+2. 检查 Python 版本必须为 3.12 或更高，然后创建项目内的 .venv。
+3. 在可持续运行的终端会话中启动 ./run.sh。首次构建公共论文目录可能需要 2–5 分钟和约 1 GB 磁盘空间，请等待服务就绪。
+4. 访问 http://127.0.0.1:8765/api/summary 验证服务，再把可打开的页面地址和验证结果告诉我。
+5. 先不要创建或读取 .env，不安装可选 RAG 依赖，不启动 Qdrant，不调用任何模型、MinerU 或付费 API。
+6. 不要修改项目代码。如果失败，请保留现场并告诉我准确错误，不要删除已有文件或数据。
+```
+
+这段提示词安装的是无需密钥的基础版。确认基础版正常后，再按下一节启用 PDF 解析、全文问答和 Agent 对话。
 
 需要下载解析、全文问答和 Agent 时，再执行：
 
@@ -85,7 +103,7 @@ MinerU 只在解析 PDF 时需要；Embedding 用于向量入库与检索；生�
 
 ## 配置参考
 
-完整 key 列表见 [`.env.example`](./.env.example)。平台均为 OpenAI 兼容，换供应商只改 `base_url` + `api_key` + `model`。
+完整 key 列表见 [`.env.example`](./.env.example)。Embedding、Reranker 和生成模型使用 OpenAI 兼容接口，换供应商主要修改 `base_url` + `api_key` + `model`；MinerU 使用自己的 token。
 
 ## 仓库结构
 

@@ -1,13 +1,13 @@
 # Integrations
 
-Handles CSV, JSON, BibTeX, and Markdown export, plus connections to Zotero, IMA, MCP, and other Agents.
+Reserved for future connections to external reference managers, knowledge bases, and agent protocols.
 
-This module only reuses existing business capabilities; it does not reimplement paper query, analysis, or RAG. When no stable official interface exists, it prefers standard file exchange.
+The current CSV, JSON, BibTeX, and Markdown collection exports live in `backend/collections/export.py`. Direct Zotero, IMA, and MCP connections are not implemented yet.
 
 ---
 
 ## 中文
 
-负责 CSV、JSON、BibTeX、Markdown 导出，以及 Zotero、IMA、MCP 和其他 Agent 的连接。
+这里为后续接入外部文献管理器、知识库和 Agent 协议保留边界。
 
-本模块只复用已有业务能力，不重新实现论文查询、分析或 RAG。没有稳定官方接口时，优先提供标准文件交换。
+当前 CSV、JSON、BibTeX、Markdown 集合导出实现在 `backend/collections/export.py`。Zotero、IMA 和 MCP 直连尚未实现。

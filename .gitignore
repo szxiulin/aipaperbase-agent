@@ -17,4 +17,5 @@ node_modules/
 dist/
 build/
 .cache/
+.playwright-cli/
 coverage/

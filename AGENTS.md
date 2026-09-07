@@ -13,26 +13,20 @@ Status: **personal project, work in progress.** The catalog console is solid; th
 Requirements: **Python 3.12+**; **Docker** and OpenAI-compatible API keys are needed only for RAG/agent features.
 
 ```bash
-# 1) virtualenv + RAG runtime deps (small; harmless even if you never use RAG)
-python3 -m venv .venv && .venv/bin/pip install -r requirements-rag.txt
+# 1) key-free base version; run.sh builds the catalog on first start
+#    (~2–5 minutes and ~1 GB), then opens http://127.0.0.1:8765
+python3 -m venv .venv
+./run.sh
 
-# 2) config — only fill keys if you plan to use RAG/agent features
-cp .env.example .env
-
-# 3) build the read-only catalog from the committed venue CSVs (stdlib only;
-#    no Qdrant, no keys; ~tens of minutes and several GB of disk for the DB)
-.venv/bin/python -m backend.catalog.import_csv
-
-# 4) run the console -> http://127.0.0.1:8765
-.venv/bin/python -m backend.api.server
-
-# 5) tests
+# 2) tests
 .venv/bin/python -m unittest discover -s tests -p 'test_*.py'
 ```
 
 Optional, for RAG/agent features only:
 
 ```bash
+.venv/bin/pip install -r requirements-rag.txt
+cp .env.example .env
 docker run -d -p 6333:6333 qdrant/qdrant   # vector store
 # then fill EMBEDDING_* / RERANKER_* / GENERATOR_* (OpenAI-compatible) and,
 # if parsing downloaded PDFs, MINERU_TOKEN in .env
@@ -40,10 +34,10 @@ docker run -d -p 6333:6333 qdrant/qdrant   # vector store
 
 ## Gotchas
 
-- **Always invoke Python via `.venv/bin/python`.** The system Homebrew Python is PEP 668-managed and refuses `pip install`.
+- **Always invoke project commands via `.venv/bin/python`.** Some system Python installations refuse package installs, and the project environment should stay isolated.
 - `data/catalog/` CSVs are the **committed, rebuildable source** of the catalog. Generated DBs, PDF downloads, parsed text and user data live under ignored paths (`data/database`, `data/papers`, …) and are never committed. Deleting any generated DB is safe — rebuild with `import_csv`.
 - `requirements-catalog.txt` (pandas/pyarrow/…) is for **maintainers re-collecting venue metadata**; it is not needed to install or run.
 - Qdrant point IDs are UUIDs derived from chunk ids; the collection default is `papers`.
-- All model/API endpoints are OpenAI-compatible: switching a provider means changing `base_url` + `model` + `api_key` in `.env`.
+- Embedding, reranking, and generation endpoints are OpenAI-compatible: switching those providers means changing `base_url` + `model` + `api_key` in `.env`. MinerU uses its own token.
 - The frontend `frontend/i18n.js` keeps the UI Chinese-first; English chrome is a mirrored vocabulary (best-effort). `topics.json` taxonomy names are currently Chinese.
 - Report back failures verbatim; it is normal for a fresh setup to have no downloaded papers or collections — those start empty by design.

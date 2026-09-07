@@ -10,7 +10,7 @@ This directory holds only data and its state, not business code.
 | `parsed/` | Structured content after PDF parsing | Rebuildable from PDFs |
 | `indexes/` | Full-text and vector indexes | Rebuildable from parsed results |
 | `analyses/` | Versioned analysis results such as topics and trends | Rebuildable from specified data and config |
-| `user/` | Paper collections, notes, and personal settings | Not auto-rebuildable; needs protection |
+| `user/` | Collections, chats, reading records, notes, progress, and comparison tables | Not auto-rebuildable; needs protection |
 
 Development code must not write absolute local paths into public metadata.
 
@@ -28,6 +28,6 @@ Development code must not write absolute local paths into public metadata.
 | `parsed/` | PDF 解析后的结构化内容 | 可由 PDF 重建 |
 | `indexes/` | 全文和向量索引 | 可由解析结果重建 |
 | `analyses/` | 主题、趋势等版本化分析结果 | 可由指定数据和配置重建 |
-| `user/` | 论文集合、笔记和个人设置 | 不可自动重建，需要重点保护 |
+| `user/` | 集合、对话、阅读记录、笔记、进展和比较表 | 不可自动重建，需要重点保护 |
 
 开发代码不得把绝对本地路径写入公共元数据。

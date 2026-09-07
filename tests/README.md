@@ -1,16 +1,16 @@
 # Tests
 
-The test directory is organized by business module: `catalog/`, `analytics/`, `library/`, `rag/`, and `integrations/`.
+The test directory covers catalog, analytics, chats, collections, library, RAG, agent tools, research records, and frontend workflows.
 
-`e2e/` verifies cross-module user closed loops. Tests should prefer real but controllable data slices; formal acceptance still requires running data-consistency and performance checks against the complete product scope.
+Cross-module HTTP tests use isolated writable fixtures and block real model and network calls. Tests should prefer real but controllable data slices; formal acceptance still requires data-consistency and performance checks against the complete product scope.
 
 ---
 
 ## 中文
 
-测试目录按业务模块组织：`catalog/`、`analytics/`、`library/`、`rag/` 和 `integrations/`。
+测试目录覆盖目录、分析、对话、集合、全文库、RAG、Agent 工具、研究资料和前端工作流。
 
-`e2e/` 验证跨模块用户闭环。测试应优先使用真实但可控的数据切片；正式验收仍需对完整产品范围运行数据一致性和性能检查。
+跨模块 HTTP 测试使用可写的隔离 fixture，并阻断真实模型和网络调用。测试应优先使用真实但可控的数据切片；正式验收仍需对完整产品范围运行数据一致性和性能检查。
 
 ## 正确性回归
 
@@ -27,7 +27,7 @@ node --check frontend/app.js
 `http://127.0.0.1:8766` 提供真实前端、只读目录以及 QA 集合 A/B；服务拒绝所有写请求，不访问实际用户集合或模型 API。
 
 
-## Sprint-023 隔离写入验收
+## 隔离写入工作流
 
 ```bash
 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m unittest tests.frontend.test_workflow_http -v
@@ -35,9 +35,9 @@ node --test tests/frontend/collection_selection.test.cjs
 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m tests.frontend.serve_workflow_fixture --root /tmp/apex-qa-unique --port 8767
 ```
 
-`test_workflow_http` 不在默认 unittest discover 的目录发现范围内，需单独运行。fixture 使用真实前端、聊天 Runner、工具分发、入库编排及 SQLite；只 stub 外部适配器并阻断真实网络。它允许写入临时数据，与旧 `serve_fixture` 只读展示用途不同。详情与截图见 Sprint-023。
+`test_workflow_http` 不在默认 unittest discover 的目录发现范围内，需单独运行。fixture 使用真实前端、聊天 Runner、工具分发、入库编排及 SQLite；只 stub 外部适配器并阻断真实网络。它允许写入临时数据，与旧 `serve_fixture` 只读展示用途不同。
 
 
-## Sprint-025
+## 当前发布回归
 
-新增 tests/research_tests/test_research.py（默认 discover 覆盖）：范围约束、只读记录、备份事务回滚和新数据库恢复。独立 HTTP 套件新增研究资料、PDF 上传、遗留任务状态、比较工具草稿确认测试。最终 322 Python + 7 HTTP + 20 Node，通过 349，失败/跳过 0；隔离浏览器证据见 Sprint-025。
+`tests/research_tests/test_research.py` 覆盖范围约束、只读记录、备份事务回滚和新数据库恢复。独立 HTTP 套件覆盖研究资料、PDF 上传、遗留任务状态、比较工具草稿确认。最近一次发布回归为 322 个默认 Python 测试、7 个独立 HTTP 测试和 20 个 Node 测试，共 349 个通过，失败/跳过 0。

@@ -6,7 +6,7 @@
 
 > **Status — personal project, work in progress.** Built for one user, actively developed. The catalog console is solid; the RAG/agent layer works end-to-end but is still evolving. Use at your own pace.
 
-![Console overview](screenshots/overview.png)
+![AIPaperbase Agent data-insights overview](screenshots/overview.png)
 
 ## What this is, for whom
 
@@ -49,7 +49,7 @@ Two vocabularies, deliberately separate: the **topic tree** answers “research 
 
 ## Quick start
 
-Requirement: **Python 3.12+**. Catalog browsing and local research organization need no API key, Docker or Node.js.
+Requirement: **Python 3.12+** on macOS or Linux (use WSL on Windows). Catalog browsing and local research organization need no API key, Docker or Node.js.
 
 ```bash
 git clone https://github.com/szxiulin/aipaperbase-agent.git
@@ -59,6 +59,24 @@ python3 -m venv .venv
 ```
 
 On first run, `run.sh` builds the public catalog from the committed CSV files. Expect roughly 2–5 minutes and about 1 GB of disk space. Later starts reuse it. Open <http://127.0.0.1:8765> to browse papers, create collections and keep research material.
+
+### One-prompt install with a coding agent
+
+Paste this prompt into Codex, Claude Code, Cursor, or another coding agent that can use a terminal:
+
+```text
+Install and start AIPaperbase Agent for me: https://github.com/szxiulin/aipaperbase-agent
+
+Requirements:
+1. Clone it in the current directory. If the directory already exists, inspect its state first and preserve my changes.
+2. Require Python 3.12 or newer and create the repository-local .venv.
+3. Start ./run.sh in a persistent terminal session. The first catalog build may take 2–5 minutes and about 1 GB of disk; wait until the service is ready.
+4. Verify http://127.0.0.1:8765/api/summary, then report the page URL and verification result.
+5. Do not create or read .env, install optional RAG dependencies, start Qdrant, or call any model, MinerU, or paid API yet.
+6. Do not modify the project code. If anything fails, preserve the current files and data and report the exact error.
+```
+
+This prompt installs the key-free base version. After it works, use the next section to enable PDF parsing, full-text Q&A, and agent chat.
 
 For PDF parsing, full-text RAG and agent chat, add the optional runtime:
 
@@ -85,7 +103,7 @@ MinerU is needed only for PDF parsing; embeddings power indexing and retrieval; 
 
 ## Configuration reference
 
-Full key list lives in [`.env.example`](./.env.example). Platform is OpenAI-compatible, so switching providers is just `base_url` + `api_key` + `model`.
+Full key list lives in [`.env.example`](./.env.example). Embedding, reranking, and generation use OpenAI-compatible interfaces, so switching those providers mainly means changing `base_url` + `api_key` + `model`; MinerU uses its own token.
 
 ## Repository layout
 
