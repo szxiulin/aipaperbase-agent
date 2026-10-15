@@ -64,7 +64,7 @@ class TopicDetailTest(unittest.TestCase):
 
     def test_topic_papers_total_pages_math(self) -> None:
         # regression: total_pages was computed from `page` instead of `total`,
-        # so multi-page topic lists reported "第 1 / 1 页" and blocked paging.
+        # so multi-page topic lists reported "page 1 of 1" and blocked paging.
         page_size = 20
         for topic_id in ("f1_ml_basis", "f2_llm_models"):
             p = analytics_queries.topic_papers(self.connection, topic_id=topic_id, page=1, page_size=page_size)

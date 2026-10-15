@@ -396,7 +396,7 @@
     if (!toEn && !/[A-Za-z]/.test(raw)) return; // already-Chinese node
     let out = raw;
     // Composite/numeric phrases first (they may contain words that the generic dictionary
-    // would otherwise translate piecemeal and break, e.g. "…记录已建立关系").
+    // would otherwise translate piecemeal and break mid-sentence).
     for (const p of PATTERNS) {
       const re = toEn ? p.toEn : p.toZh;
       const fmt = toEn ? p.en : p.zh;
@@ -436,7 +436,7 @@
       try {
         for (const rec of records) {
           if (rec.type === "characterData" && rec.target.nodeType === Node.TEXT_NODE) {
-            // text written later via textContent (counts like "共 N 条", dates, …)
+            // text written later via textContent (record counts, dates, …)
             if (!isContent(rec.target.parentElement)) translateTextNode(rec.target, true);
           } else if (rec.type === "childList") {
             for (const added of rec.addedNodes) {

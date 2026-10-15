@@ -96,7 +96,7 @@ def _attempts(candidates: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
 
 def _json(url: str) -> dict[str, Any]:
-    request = urllib.request.Request(url, headers={"User-Agent": "AIPaperbase Agent/1.0 (metadata lookup)"})
+    request = urllib.request.Request(url, headers={"User-Agent": "AIPaperbaseAgent/1.0 (metadata lookup)"})
     with urllib.request.urlopen(request, timeout=READ_TIMEOUT_SECONDS) as response:  # nosec B310: fixed public APIs
         return json.loads(response.read().decode("utf-8"))
 
@@ -111,7 +111,7 @@ def remote_arxiv_candidates(item: dict[str, Any]) -> LookupCandidates:
             else:
                 query = {"search_query": f'all:"{item.get("title", "")}"', "start": "0", "max_results": "5"}
             url = "https://export.arxiv.org/api/query?" + urllib.parse.urlencode(query)
-            request = urllib.request.Request(url, headers={"User-Agent": "AIPaperbase Agent/1.0 (metadata lookup)"})
+            request = urllib.request.Request(url, headers={"User-Agent": "AIPaperbaseAgent/1.0 (metadata lookup)"})
             with urllib.request.urlopen(request, timeout=READ_TIMEOUT_SECONDS) as response:  # nosec B310: fixed public API
                 entries = arxiv._parse_feed(response.read().decode("utf-8"))["entries"]
                 return LookupCandidates(entries, attempts=[{"source": "arxiv", "status": "ok",

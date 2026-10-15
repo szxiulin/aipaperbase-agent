@@ -16,7 +16,7 @@ from typing import Any, Callable
 from backend.library import planner, sources, store
 
 
-USER_AGENT = "AIPaperbase Agent-download/0.1 (personal research; contact: local-user)"
+USER_AGENT = "AIPaperbaseAgent-download/0.1 (personal research; contact: local-user)"
 PDF_HEADER = b"%PDF"
 MIN_PDF_BYTES = 1024
 

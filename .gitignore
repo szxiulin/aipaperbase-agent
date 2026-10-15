@@ -17,5 +17,13 @@ node_modules/
 dist/
 build/
 .cache/
-.playwright-cli/
 coverage/
+
+# 本地验收/调试产物
+.playwright-cli/
+output/
+
+# Public repo only: never commit dev notes or local databases
+docs/
+CLAUDE.md
+data/*.sqlite
