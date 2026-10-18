@@ -118,3 +118,7 @@ docker run -d -p 6333:6333 qdrant/qdrant
 - Library search matches keywords in titles and abstracts (in English). A synonym the paper does not use can be missed; the agent searches several phrasings to compensate.
 - Area and direction labels come from LLMs; some papers are misfiled, and about 30 correction notices are still counted.
 - Answers depend on the model you choose. Check important claims against the cited papers.
+
+## License
+
+The code is released under the [MIT License](./LICENSE). The paper metadata in `data/catalog/` comes from the public sources listed above and remains subject to their own terms; the label files in `data/labels/` are provided under the same MIT terms as the code.
