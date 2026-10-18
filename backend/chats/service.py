@@ -58,6 +58,17 @@ def _cited_evidence(answer: str, ledger: list[dict]) -> tuple[list[dict], str]:
     return evidence, warning
 
 
+def _title_from(query: str, limit: int = 32) -> str:
+    """Conversation title from the first question; cut at a word boundary for Latin text."""
+    text = " ".join(query.split())
+    if len(text) <= limit:
+        return text
+    cut = text[:limit]
+    if cut[-1].isascii() and " " in cut:
+        cut = cut.rsplit(" ", 1)[0]
+    return cut + "…"
+
+
 def build_search_query(current: str, history: list[dict]) -> str:
     """Build the retrieval query: standalone questions are used as-is; follow-ups containing
     pronouns or that are too short are concatenated with the previous user question.
@@ -111,7 +122,8 @@ def _chunks_to_raglib(chunks: list[dict]) -> list[Chunk]:
     ]
 
 
-def _default_agent_fn(conversation_id: str = "", is_cancelled=None, scope=None) -> Callable[[str, list[dict], int], "AgentRun"]:
+def _default_agent_fn(conversation_id: str = "", is_cancelled=None, scope=None, web_search: bool = False,
+                      on_event=None) -> Callable[[str, list[dict], int], "AgentRun"]:
     from backend.agent import run_agent
     from backend.catalog.database import DEFAULT_DATABASE, connect as catalog_connect
     from backend.collections import database as collections_db
@@ -174,7 +186,8 @@ def _default_agent_fn(conversation_id: str = "", is_cancelled=None, scope=None) 
                     trace=[{"tool": "propose_collection_membership", "args": args, "ok": result.ok,
                             "organization_run_id": result.data.get("organization_run_id", "")}])
             return run_agent(query=query, history=history, top_k=top_k,
-                             ctx_builder=lambda: ctx, is_cancelled=is_cancelled)
+                             ctx_builder=lambda: ctx, is_cancelled=is_cancelled,
+                             web_search=web_search, on_event=on_event)
         finally:
             catalog_conn.close()
             if collections_conn is not None:
@@ -201,6 +214,8 @@ def ask(
     mode: str = "pipeline",
     scope: dict | None = None,
     is_cancelled: Callable[[], bool] | None = None,
+    web_search: bool = False,
+    on_event: Callable[[dict], None] | None = None,
 ) -> dict:
     """One round of Q&A: persist the user message → retrieval/tool loop → persist the assistant message.
 
@@ -222,12 +237,12 @@ def ask(
     with _conv_locks.get(conversation_id):
         user_message = store.add_message(conn, conversation_id, "user", content=query)
         if conversation["title"] in ("", "新对话"):
-            store.update_conversation(conn, conversation_id, title=query[:20])
+            store.update_conversation(conn, conversation_id, title=_title_from(query))
         history = _history_of(conn, conversation_id, store.message_rowid(conn, user_message["message_id"]))
 
         if mode == "agent":
             try:
-                run = (agent_fn or _default_agent_fn(conversation_id, is_cancelled, scope))(query, history, top_k)
+                run = (agent_fn or _default_agent_fn(conversation_id, is_cancelled, scope, web_search, on_event))(query, history, top_k)
             except Exception as exc:
                 store.add_message(conn, conversation_id, "assistant", error=str(exc))
                 raise

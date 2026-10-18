@@ -1,0 +1,597 @@
+{
+ "agents-d02-r": {
+  "name_zh": "自主代码生成与执行反馈",
+  "name_en": "Autonomous Code Generation with Execution Feedback",
+  "definition": "研究智能体依据执行反馈自主生成、调试与改进代码及软件系统的任务。"
+ },
+ "agents-d02-s02": {
+  "name_zh": "软件工程智能体",
+  "name_en": "Software Engineering Agents",
+  "definition": "研究由智能体自主完成代码修改、测试与软件维护等工程任务的能力。"
+ },
+ "agents-d02-s03": {
+  "name_zh": "智能体硬件代码生成",
+  "name_en": "Agentic Hardware Code Generation",
+  "definition": "研究智能体自动生成与优化GPU内核、并行程序及硬件描述代码。"
+ },
+ "agents-d02-s01": {
+  "name_zh": "智能体代码生成",
+  "name_en": "Agentic Code Generation",
+  "definition": "研究由智能体驱动的代码生成与编程能力评测，涵盖多智能体协作与测试时扩展。"
+ },
+ "rl_decision-d01-s01": {
+  "name_zh": "多智能体协作与涌现通信",
+  "name_en": "Multi-Agent Coordination and Emergent Communication",
+  "definition": "研究多智能体在临时组队与交互中如何形成协作行为与通信协议。"
+ },
+ "rl_decision-d01-r": {
+  "name_zh": "序贯决策与自适应实验设计",
+  "name_en": "Sequential Decision and Adaptive Design",
+  "definition": "研究在交互反馈中序贯选择行动与实验以优化长期目标的决策问题。"
+ },
+ "agents-d04-s01": {
+  "name_zh": "数据科学智能体",
+  "name_en": "Data Science Agents",
+  "definition": "研究由智能体自主完成数据分析、建模与洞察生成等数据科学全流程任务。"
+ },
+ "agents-d04-s02": {
+  "name_zh": "学术文本自动生成",
+  "name_en": "Automated Academic Text Generation",
+  "definition": "研究由智能体自动生成论文、综述、演示与评审等学术文本的任务。"
+ },
+ "nlp-d02-r": {
+  "name_zh": "社会语义与意图识别",
+  "name_en": "Social Meaning and Intent Recognition",
+  "definition": "研究文本中社会感知、意图、立场与规范等隐含社会语义的识别与建模。"
+ },
+ "agents-d04-r": {
+  "name_zh": "科学智能体与工具推理",
+  "name_en": "Scientific Agents and Tool Reasoning",
+  "definition": "研究智能体在科学推理与科研任务中调用外部工具完成多步问题求解的能力。"
+ },
+ "nlp-d02-s01": {
+  "name_zh": "有害言论检测",
+  "name_en": "Harmful Content Detection",
+  "definition": "研究识别与解释网络文本中的仇恨、辱骂、讽刺等有害言论。"
+ },
+ "nlp-d02-s02": {
+  "name_zh": "虚假信息检测",
+  "name_en": "Misinformation Detection",
+  "definition": "研究识别新闻、社交媒体与视频文本中的虚假信息、偏见及误导性内容。"
+ },
+ "nlp-d02-s04": {
+  "name_zh": "细粒度情感识别",
+  "name_en": "Fine-grained Emotion Recognition",
+  "definition": "研究文本中细粒度情绪类别、强度与因果关系的识别与推理。"
+ },
+ "nlp-d06-r": {
+  "name_zh": "语言理解与推理",
+  "name_en": "Language Understanding and Reasoning",
+  "definition": "研究自然语言语义理解与推理任务，涵盖隐喻、句法语义解析及跨语言语言识别。"
+ },
+ "nlp-d06-s01": {
+  "name_zh": "语言结构认知建模",
+  "name_en": "Linguistic Structure Cognitive Modeling",
+  "definition": "研究人类语言加工与习得中的层级结构和语法泛化机制。"
+ },
+ "nlp-d02-s03": {
+  "name_zh": "细粒度情感与立场分析",
+  "name_en": "Aspect Sentiment and Stance Analysis",
+  "definition": "研究文本中针对特定方面或目标的情感倾向与立场表达。"
+ },
+ "nlp-d06-s03": {
+  "name_zh": "句法语义分析",
+  "name_en": "Syntactic and Semantic Parsing",
+  "definition": "研究自然语言句子的句法结构与语义表示自动解析，包括依存、成分及组合语义分析。"
+ },
+ "nlp-d06-s02": {
+  "name_zh": "词义与语义演变分析",
+  "name_en": "Word Sense and Semantic Change",
+  "definition": "研究词语义项的区分、表示及其随时间的演变规律。"
+ },
+ "nlp-d06-s04": {
+  "name_zh": "计算语言习得",
+  "name_en": "Computational Language Acquisition",
+  "definition": "研究机器与儿童如何从语言输入中习得词汇、形态与语法结构。"
+ },
+ "nlp-d06-s06": {
+  "name_zh": "子词分词与形态分析",
+  "name_en": "Subword Tokenization and Morphology",
+  "definition": "研究文本切分为子词单元及形态感知的分词方法与评估。"
+ },
+ "nlp-d06-s05": {
+  "name_zh": "语法纠错",
+  "name_en": "Grammatical Error Correction",
+  "definition": "研究识别并修正文本中语法、拼写及用字错误的任务。"
+ },
+ "nlp-d06-s07": {
+  "name_zh": "中文语义理解与歧义消解",
+  "name_en": "Chinese Semantic Understanding and Disambiguation",
+  "definition": "研究中文词汇、成语及文言文等语言单位的语义理解与歧义消解问题。"
+ },
+ "nlp-d12-r": {
+  "name_zh": "文本自动评估",
+  "name_en": "Automated Text Evaluation",
+  "definition": "研究对作文、论证、问答及生成文本的质量与多维属性进行自动评分与评价。"
+ },
+ "nlp-d12-s02": {
+  "name_zh": "事实核查与验证",
+  "name_en": "Fact Verification and Checking",
+  "definition": "研究如何判定文本陈述与证据是否一致，并识别或纠正事实错误。"
+ },
+ "nlp-d12-s01": {
+  "name_zh": "复杂问答推理",
+  "name_en": "Complex Question Answering",
+  "definition": "研究需要多步推理、外部知识或多源信息整合的复杂问题自动回答。"
+ },
+ "nlp-d12-s03": {
+  "name_zh": "文本摘要生成",
+  "name_en": "Text Summarization",
+  "definition": "研究将长文档或多文档压缩为保留核心信息的简短摘要。"
+ },
+ "data_mining-d02-r": {
+  "name_zh": "数据质量与实体匹配",
+  "name_en": "Data Quality and Entity Matching",
+  "definition": "研究异构数据中的实体消歧、数据清洗与质量校验问题。"
+ },
+ "nlp-d12-s04": {
+  "name_zh": "法律智能与司法预测",
+  "name_en": "Legal Intelligence and Judicial Prediction",
+  "definition": "研究法律文本理解与司法裁判结果自动预测，涵盖判决、案情与法律论证。"
+ },
+ "data_mining-d02-s03": {
+  "name_zh": "近似查询处理",
+  "name_en": "Approximate Query Processing",
+  "definition": "研究在大规模数据上以近似方式高效回答查询与图分析任务的方法与系统。"
+ },
+ "data_mining-d02-s02": {
+  "name_zh": "数据流草图估计",
+  "name_en": "Data Stream Sketch Estimation",
+  "definition": "研究数据流中频次、基数与重击者等统计量的近似估计问题。"
+ },
+ "data_mining-d02-s01": {
+  "name_zh": "频繁模式与规则挖掘",
+  "name_en": "Frequent Pattern and Rule Mining",
+  "definition": "研究从数据中提取频繁项集、序列模式及关联规则等结构化模式。"
+ },
+ "data_mining-d02-s04": {
+  "name_zh": "学习型数据索引",
+  "name_en": "Learned Data Indexing",
+  "definition": "研究面向空间、时序与多维数据的索引结构及其查询与更新机制。"
+ },
+ "data_mining-d02-s05": {
+  "name_zh": "关系数据库基础模型",
+  "name_en": "Relational Database Foundation Models",
+  "definition": "研究以关系数据库整体为对象的基础模型构建与学习。"
+ },
+ "data_mining-d04-s01": {
+  "name_zh": "特征选择与特征工程",
+  "name_en": "Feature Selection and Engineering",
+  "definition": "研究高维数据中特征子集的选择、生成与变换，以提升学习性能。"
+ },
+ "data_mining-d04-r": {
+  "name_zh": "传感器人体活动识别",
+  "name_en": "Sensor-based Human Activity Recognition",
+  "definition": "研究利用可穿戴与无线传感器信号识别人类活动类别及其泛化问题。"
+ },
+ "data_mining-d04-s02": {
+  "name_zh": "概念漂移数据流学习",
+  "name_en": "Concept Drift Stream Learning",
+  "definition": "研究分布随时间变化的数据流上的学习与适应问题。"
+ },
+ "data_mining-d04-s03": {
+  "name_zh": "张量分解与低秩恢复",
+  "name_en": "Tensor Decomposition and Low-Rank Recovery",
+  "definition": "研究高维张量数据的低秩分解、补全与动态流式建模。"
+ },
+ "data_mining-d05-r": {
+  "name_zh": "云网系统故障诊断",
+  "name_en": "Cloud Network Fault Diagnosis",
+  "definition": "研究云服务与网络系统中异常、故障及根因的识别与预测。"
+ },
+ "data_mining-d04-s04": {
+  "name_zh": "时序动力系统辨识",
+  "name_en": "Time-series dynamical system identification",
+  "definition": "研究从时序观测数据中辨识潜在动力系统结构与演化规律。"
+ },
+ "data_mining-d05-s02": {
+  "name_zh": "金融欺诈检测",
+  "name_en": "Financial Fraud Detection",
+  "definition": "研究金融交易与账户数据中的欺诈、洗钱及异常风险识别问题。"
+ },
+ "data_mining-d05-s01": {
+  "name_zh": "股票收益预测",
+  "name_en": "Stock Return Prediction",
+  "definition": "研究个股收益、价格走势与选股排序等金融市场预测问题。"
+ },
+ "data_mining-d05-s03": {
+  "name_zh": "社交信息流行度预测",
+  "name_en": "Social Information Popularity Prediction",
+  "definition": "研究社交媒体中信息级联的传播规模与流行度演化规律。"
+ },
+ "data_mining-d05-s04": {
+  "name_zh": "社交网络用户行为分析",
+  "name_en": "Social Network User Behavior Analysis",
+  "definition": "研究社交平台用户的行为模式、身份特征与群体结构及其社会影响。"
+ },
+ "data_mining-d05-s05": {
+  "name_zh": "社会主体行为预测",
+  "name_en": "Social Entity Behavior Prediction",
+  "definition": "研究学者、学生、员工等社会主体的行为轨迹与成效预测。"
+ },
+ "vision_3d_graphics-d13-r": {
+  "name_zh": "三维形状装配与可展开结构",
+  "name_en": "3D Shape Assembly and Deployable Structures",
+  "definition": "研究三维部件如何组合装配成整体形状，以及平面结构如何展开成三维形态。"
+ },
+ "vision_3d_graphics-d13-s01": {
+  "name_zh": "服装图案与织物建模",
+  "name_en": "Garment Pattern and Fabric Modeling",
+  "definition": "研究服装缝纫纸样、针织图与织物结构的数字化表示与生成。"
+ },
+ "vision_3d_graphics-d13-s04": {
+  "name_zh": "室内布局生成",
+  "name_en": "Indoor Layout Generation",
+  "definition": "研究室内空间与家具组件的布局自动生成与重建。"
+ },
+ "vision_3d_graphics-d13-s03": {
+  "name_zh": "建筑平面与三维重建",
+  "name_en": "Floorplan and Building Reconstruction",
+  "definition": "研究建筑室内平面图、三维结构及碎片化构件的重建与定位。"
+ },
+ "vision_3d_graphics-d13-s02": {
+  "name_zh": "图像矢量化与可编辑图形",
+  "name_en": "Image Vectorization and Editable Graphics",
+  "definition": "研究位图图像转换为可编辑矢量图形表示的方法与表示形式。"
+ },
+ "multimodal-d09-r": {
+  "name_zh": "多模态表征与跨模态对齐",
+  "name_en": "Multimodal Representation and Alignment",
+  "definition": "研究视觉、语言、热红外等异构模态的统一表征学习与跨模态语义对齐。"
+ },
+ "multimodal-d09-s01": {
+  "name_zh": "语言引导视觉识别与跟踪",
+  "name_en": "Language-Guided Visual Recognition and Tracking",
+  "definition": "研究以自然语言为引导的细粒度视觉识别与目标跟踪任务。"
+ },
+ "multimodal-d09-s02": {
+  "name_zh": "视觉语言模型测试时自适应",
+  "name_en": "VLM test-time adaptation",
+  "definition": "研究视觉语言模型在测试阶段面对分布偏移时的提示与特征自适应问题。"
+ },
+ "multimodal-d09-s04": {
+  "name_zh": "多视图学习与聚类",
+  "name_en": "Multi-view Learning and Clustering",
+  "definition": "研究多源视图数据的表示、融合与聚类划分。"
+ },
+ "multimodal-d09-s03": {
+  "name_zh": "手语翻译与表征",
+  "name_en": "Sign Language Translation",
+  "definition": "研究手语视频与口语文本之间的跨模态转换与语义表征。"
+ },
+ "trustworthy_ai-d14-r": {
+  "name_zh": "AI系统安全威胁检测",
+  "name_en": "AI System Threat Detection",
+  "definition": "研究针对AI系统及其数据与模型的攻击、滥用与违规行为的识别与检测。"
+ },
+ "trustworthy_ai-d14-s01": {
+  "name_zh": "恶意流量与入侵检测",
+  "name_en": "Malicious Traffic and Intrusion Detection",
+  "definition": "研究网络流量与软件样本中恶意行为及入侵攻击的识别与分类。"
+ },
+ "trustworthy_ai-d14-s02": {
+  "name_zh": "代码安全与漏洞检测",
+  "name_en": "Code Security and Vulnerability Detection",
+  "definition": "研究代码与二进制程序中安全漏洞的识别、生成与风险评估。"
+ },
+ "trustworthy_ai-d14-s03": {
+  "name_zh": "浏览器指纹与侧信道攻击",
+  "name_en": "Browser Fingerprinting and Side-Channel Attacks",
+  "definition": "研究浏览器指纹、网站指纹及侧信道对用户隐私的泄露与识别风险。"
+ },
+ "trustworthy_ai-d14-s04": {
+  "name_zh": "模型知识产权保护",
+  "name_en": "Model IP Protection",
+  "definition": "研究深度神经网络模型的所有权归属、指纹识别与防篡改防合并保护。"
+ },
+ "ai4science-d01-r": {
+  "name_zh": "医学三维重建",
+  "name_en": "Medical 3D Reconstruction",
+  "definition": "研究从医学影像与内窥镜等数据重建人体解剖结构的三维形态与体模型。"
+ },
+ "trustworthy_ai-d14-s05": {
+  "name_zh": "去中心化匿名身份与凭证",
+  "name_en": "Decentralized Anonymous Identity and Credentials",
+  "definition": "研究去中心化身份系统中匿名凭证与可追责身份认证的隐私保护机制。"
+ },
+ "ai4science-d01-s01": {
+  "name_zh": "断层成像重建",
+  "name_en": "Tomographic reconstruction",
+  "definition": "从稀疏或含噪的投影测量中重建物体内部结构图像的逆问题研究。"
+ },
+ "trustworthy_ai-d14-s06": {
+  "name_zh": "虚假信息与协同影响检测",
+  "name_en": "Misinformation and Coordinated Influence Detection",
+  "definition": "研究社交媒体上虚假信息、谣言及协同操纵账号的识别与归因。"
+ },
+ "ai4science-d01-s02": {
+  "name_zh": "医学影像重建",
+  "name_en": "Medical Image Reconstruction",
+  "definition": "研究从欠采样或含噪的医学成像数据中恢复高质量图像的方法。"
+ },
+ "ai4science-d01-s03": {
+  "name_zh": "科学影像超分辨重建",
+  "name_en": "Scientific Image Super-Resolution",
+  "definition": "研究显微、医学、天文等科学成像中低分辨率图像的复原与超分辨率重建。"
+ },
+ "ai4science-d01-s05": {
+  "name_zh": "增强现实手术导航与器械定位",
+  "name_en": "AR Surgical Navigation and Tracking",
+  "definition": "研究增强现实引导下手术器械位姿估计与术中导航定位。"
+ },
+ "ai4science-d02-r": {
+  "name_zh": "电子结构预测",
+  "name_en": "Electronic Structure Prediction",
+  "definition": "研究利用机器学习预测材料的电子密度、哈密顿量与交换关联泛函等电子结构性质。"
+ },
+ "ai4science-d01-s06": {
+  "name_zh": "医学图像形变配准",
+  "name_en": "Deformable Medical Image Registration",
+  "definition": "研究医学图像间空间对应关系的形变配准方法，涵盖多模态与4D动态影像。"
+ },
+ "ai4science-d01-s07": {
+  "name_zh": "三维牙齿建模与分割",
+  "name_en": "3D Dental Modeling and Segmentation",
+  "definition": "研究三维牙颌模型中的牙齿分割、重建与排列预测。"
+ },
+ "ai4science-d01-s04": {
+  "name_zh": "三维医学影像生成",
+  "name_en": "3D Medical Image Synthesis",
+  "definition": "研究以生成模型合成三维医学影像（CT/MRI）及衍生的解剖结构与剂量分布。"
+ },
+ "ai4science-d02-s01": {
+  "name_zh": "晶体结构生成与预测",
+  "name_en": "Crystal Structure Generation and Prediction",
+  "definition": "研究晶体原子排布与对称性结构的生成、预测及性质关联。"
+ },
+ "ai4science-d04-r": {
+  "name_zh": "地球观测基础模型",
+  "name_en": "Earth Observation Foundation Models",
+  "definition": "研究面向卫星与遥感对地观测数据的表征学习与基础模型构建。"
+ },
+ "ai4science-d02-s02": {
+  "name_zh": "原子间势与力场学习",
+  "name_en": "Interatomic Potentials and Force Fields",
+  "definition": "研究以机器学习构建原子间势函数与力场，实现原子尺度能量与力的高效精确预测。"
+ },
+ "ai4science-d02-s03": {
+  "name_zh": "机械超材料逆向设计",
+  "name_en": "Mechanical Metamaterial Inverse Design",
+  "definition": "研究具有定制力学性能的微结构超材料及其逆向设计问题。"
+ },
+ "ai4science-d02-s04": {
+  "name_zh": "生成式逆向设计",
+  "name_en": "Generative Inverse Design",
+  "definition": "研究由性能目标反向生成满足约束的工程结构与材料设计方案。"
+ },
+ "ai4science-d04-s01": {
+  "name_zh": "遥感多模态表征学习",
+  "name_en": "Remote Sensing Representation Learning",
+  "definition": "研究多模态、多尺度遥感观测数据的统一表征与跨场景迁移。"
+ },
+ "ai4science-d04-s03": {
+  "name_zh": "野生动物监测与分布估计",
+  "name_en": "Wildlife Monitoring and Distribution Estimation",
+  "definition": "研究野生动物种群与物种空间分布、栖息地范围及生物多样性保护规划。"
+ },
+ "ai4science-d04-s02": {
+  "name_zh": "生物多样性智能识别",
+  "name_en": "Biodiversity AI Recognition",
+  "definition": "研究利用图像与声音数据自动识别物种及其分布，服务生物多样性监测。"
+ },
+ "ai4science-d04-s04": {
+  "name_zh": "森林遥感与结构监测",
+  "name_en": "Forest Remote Sensing",
+  "definition": "利用遥感与点云数据研究森林冠层高度、生物量及单木结构等森林属性的监测与估算。"
+ },
+ "ai4science-d10-r": {
+  "name_zh": "物理系统仿真建模",
+  "name_en": "Physical System Simulation",
+  "definition": "研究借助神经网络对多物理场与连续介质动力学系统进行建模与仿真。"
+ },
+ "ai4science-d10-s02": {
+  "name_zh": "动力系统建模与辨识",
+  "name_en": "Dynamical System Modeling",
+  "definition": "研究从观测数据中重建、辨识与预测动力系统演化规律的方法与基准。"
+ },
+ "ai4science-d10-s01": {
+  "name_zh": "流体仿真与流场重建",
+  "name_en": "Fluid Simulation and Flow Reconstruction",
+  "definition": "研究流体运动的数值模拟与流场重建，包括湍流、不可压流与曲面流体。"
+ },
+ "ai4science-d10-s04": {
+  "name_zh": "物理动力学学习",
+  "name_en": "Physical Dynamics Learning",
+  "definition": "研究从观测数据中学习物理系统的动力学规律与守恒量。"
+ },
+ "ai4science-d10-s03": {
+  "name_zh": "物理系统建模与仿真",
+  "name_en": "Physical System Modeling and Simulation",
+  "definition": "研究如何从观测数据中学习物理系统的动力学规律并构建可仿真模型。"
+ },
+ "ai4science-d13-s01": {
+  "name_zh": "医疗大模型评测",
+  "name_en": "Medical LLM Evaluation",
+  "definition": "面向医疗场景的大语言模型知识、推理与决策能力的评测基准与方法。"
+ },
+ "ai4science-d13-r": {
+  "name_zh": "临床结局预测",
+  "name_en": "Clinical Outcome Prediction",
+  "definition": "基于电子健康记录与医学时序数据，预测患者临床结局与诊断的研究。"
+ },
+ "ai4science-d10-s05": {
+  "name_zh": "车辆气动设计与预测",
+  "name_en": "Vehicle Aerodynamics Design",
+  "definition": "研究车辆与飞行器几何外形与其气动性能之间的映射关系及优化设计。"
+ },
+ "ai4science-d13-s03": {
+  "name_zh": "动态治疗方案优化",
+  "name_en": "Dynamic Treatment Regime Optimization",
+  "definition": "研究纵向数据中随时间变化的个体化治疗方案选择与效果评估。"
+ },
+ "ai4science-d13-s02": {
+  "name_zh": "生物医学文本信息抽取",
+  "name_en": "Biomedical Text Mining",
+  "definition": "研究从生物医学文献与文本中识别实体、关系及证据等结构化信息。"
+ },
+ "ai4science-d13-s04": {
+  "name_zh": "癌症生存预测分析",
+  "name_en": "Cancer Survival Prediction",
+  "definition": "研究基于多模态临床与病理数据的癌症患者生存时间与风险预测。"
+ },
+ "ai4science-d13-s05": {
+  "name_zh": "药物推荐与相互作用预测",
+  "name_en": "Drug Recommendation and Interaction Prediction",
+  "definition": "研究面向患者的用药方案推荐及药物间相互作用与反应的预测。"
+ },
+ "ai4science-d13-s06": {
+  "name_zh": "流行病传播建模与干预",
+  "name_en": "Epidemic Modeling and Intervention",
+  "definition": "研究传染病在接触网络与社会系统中的传播过程、溯源推断及干预策略。"
+ },
+ "ai4science-d14-r": {
+  "name_zh": "科学能力评测基准",
+  "name_en": "Scientific Capability Benchmarks",
+  "definition": "面向大模型科学推理与发现能力的评测基准与数据集构建研究。"
+ },
+ "ai4science-d14-s01": {
+  "name_zh": "自主科学发现",
+  "name_en": "Autonomous Scientific Discovery",
+  "definition": "研究由AI系统自主提出并验证科学假设、发现新知识的过程。"
+ },
+ "ai4science-d14-s02": {
+  "name_zh": "科学因果推断",
+  "name_en": "Scientific Causal Inference",
+  "definition": "研究科学数据中变量间因果关系与干预效应的识别、估计与迁移。"
+ },
+ "ai4science-d14-s03": {
+  "name_zh": "科学模拟贝叶斯推断",
+  "name_en": "Simulation-Based Bayesian Inference",
+  "definition": "研究如何从科学模拟器生成的观测数据中推断模型参数与不确定性。"
+ },
+ "hci_visualization-d01-r": {
+  "name_zh": "人机协作与AI辅助交互",
+  "name_en": "Human-AI Collaboration and Assistance",
+  "definition": "研究用户与大语言模型等AI系统协作交互中的行为、偏好与辅助机制。"
+ },
+ "ai4science-d14-s04": {
+  "name_zh": "科学方程发现",
+  "name_en": "Scientific Equation Discovery",
+  "definition": "从观测数据中自动发现可解释的科学方程、公式与物理定律。"
+ },
+ "hci_visualization-d01-s01": {
+  "name_zh": "自适应人机协作决策",
+  "name_en": "Adaptive Human-AI Collaboration",
+  "definition": "研究人与AI在决策任务中动态分工与互补协作的机制。"
+ },
+ "hci_visualization-d01-s04": {
+  "name_zh": "众包标注质量控制",
+  "name_en": "Crowdsourced Label Quality",
+  "definition": "研究众包标注中标签的聚合、补全与质量控制问题。"
+ },
+ "hci_visualization-d01-s02": {
+  "name_zh": "知识追踪建模",
+  "name_en": "Knowledge Tracing Modeling",
+  "definition": "研究学习者知识状态的动态建模与掌握程度预测。"
+ },
+ "hci_visualization-d01-s03": {
+  "name_zh": "认知诊断与自适应测评",
+  "name_en": "Cognitive Diagnosis and Adaptive Testing",
+  "definition": "研究学习者知识掌握状态的建模、诊断与自适应测验选题方法。"
+ },
+ "hci_visualization-d04-r": {
+  "name_zh": "多模态感知与辅助交互",
+  "name_en": "Multimodal Perception and Assistive Interaction",
+  "definition": "研究人类多模态感知特性及其在辅助交互系统中的应用。"
+ },
+ "hci_visualization-d04-s01": {
+  "name_zh": "视觉注意与注视预测",
+  "name_en": "Visual Attention and Gaze Prediction",
+  "definition": "研究人类在各类视觉内容与场景中的注意分配与眼动模式规律。"
+ },
+ "hci_visualization-d04-s02": {
+  "name_zh": "肌电与手势交互识别",
+  "name_en": "EMG and Gesture Recognition",
+  "definition": "研究基于肌电信号与手势输入的人机交互识别方法。"
+ },
+ "hci_visualization-d04-s03": {
+  "name_zh": "虚拟现实重定向行走",
+  "name_en": "Redirected Walking in VR",
+  "definition": "研究虚拟现实中通过重定向技术使用户在有限物理空间内自然行走的方法。"
+ },
+ "hci_visualization-d04-s04": {
+  "name_zh": "无障碍导航与空间引导",
+  "name_en": "Accessible Navigation and Spatial Guidance",
+  "definition": "研究面向行人（含视障者）的空间导航引导与路径规划交互。"
+ },
+ "hci_visualization-d07-r": {
+  "name_zh": "AI辅助创意设计生成",
+  "name_en": "AI-Assisted Creative Design Generation",
+  "definition": "研究生成式AI如何辅助草图、界面与视觉叙事等创意设计产物的生成与迭代。"
+ },
+ "hci_visualization-d07-s01": {
+  "name_zh": "视觉美学与主观感知建模",
+  "name_en": "Visual Aesthetics and Subjective Perception",
+  "definition": "研究人类对图像美学、趣味性与主观印象的感知规律及其计算建模。"
+ },
+ "hci_visualization-d07-s02": {
+  "name_zh": "生成式AI交互创作",
+  "name_en": "Interactive Generative AI Creation",
+  "definition": "研究用户与生成模型协作完成文本、图像等创作内容的交互过程与评估。"
+ },
+ "hci_visualization-d08-r": {
+  "name_zh": "科学数据拓扑可视化",
+  "name_en": "Scientific Data Topology Visualization",
+  "definition": "研究大规模科学数据中拓扑结构的提取、比较与可视化表达。"
+ },
+ "hci_visualization-d07-s03": {
+  "name_zh": "沉浸式内容创作",
+  "name_en": "Immersive Content Authoring",
+  "definition": "研究沉浸式场景与动画等三维内容的生成与创作方法。"
+ },
+ "hci_visualization-d08-s01": {
+  "name_zh": "嵌入空间可视化分析",
+  "name_en": "Embedding Space Visualization",
+  "definition": "研究高维嵌入空间的结构、对齐与比较的可视化表示方法。"
+ },
+ "hci_visualization-d08-s02": {
+  "name_zh": "体数据可视化与渲染",
+  "name_en": "Volume Visualization and Rendering",
+  "definition": "研究大规模时变体数据的交互式可视化与高效渲染表示方法。"
+ },
+ "hci_visualization-d08-s03": {
+  "name_zh": "降维可视化",
+  "name_en": "Dimensionality Reduction Visualization",
+  "definition": "研究高维数据降维后的低维嵌入表示及其可视化方法。"
+ },
+ "ml_systems-d01-r": {
+  "name_zh": "分布式机器学习系统",
+  "name_en": "Distributed ML Systems",
+  "definition": "研究跨节点训练与推理的资源调度、通信与延迟优化等系统问题。"
+ },
+ "ml_systems-d01-s01": {
+  "name_zh": "自适应视频流传输",
+  "name_en": "Adaptive Video Streaming",
+  "definition": "研究在带宽波动下自适应调整视频与体积视频传输策略的流媒体系统。"
+ },
+ "ml_systems-d01-s02": {
+  "name_zh": "云边协同视频分析系统",
+  "name_en": "Cloud-Edge Video Analytics Systems",
+  "definition": "研究云边协同架构下实时视频分析任务的模型部署、调度与推理加速。"
+ },
+ "ml_systems-d01-s03": {
+  "name_zh": "分布式压缩与拆分计算",
+  "name_en": "Distributed Compression and Split Computing",
+  "definition": "研究分布式与拆分计算场景下特征与数据的压缩表示及通信效率问题。"
+ }
+}

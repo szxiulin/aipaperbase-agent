@@ -1,0 +1,39 @@
+{
+ "version": "topics-v1",
+ "topics": [
+  {
+   "query": "agent image restoration",
+   "definition": "用 LLM/Agent 做图像复原（去噪、去雨、超分、后处理等）的论文。",
+   "candidate_count": 11,
+   "sample_size": 11,
+   "relevant": 11,
+   "uncertain": 0,
+   "precision_percent": 100.0,
+   "ci95": [
+    74.1,
+    100
+   ],
+   "method": "fts5-and",
+   "model": "deepseek-v4-flash",
+   "reviewed_at": "2026-10-18T15:22:00+08:00",
+   "report": "data/analyses/topics/agent-image-restoration/verification.json"
+  },
+  {
+   "query": "diffusion language model",
+   "definition": "以扩散语言模型为研究对象的论文（离散/掩码扩散、并行解码、训练与推理效率等）。",
+   "candidate_count": 179,
+   "sample_size": 30,
+   "relevant": 29,
+   "uncertain": 1,
+   "precision_percent": 100.0,
+   "ci95": [
+    88.3,
+    100
+   ],
+   "method": "fts5-phrase",
+   "model": "deepseek-v4-flash",
+   "reviewed_at": "2026-10-18T15:25:00+08:00",
+   "report": "data/analyses/topics/diffusion-language-model/verification.json"
+  }
+ ]
+}

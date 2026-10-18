@@ -9,7 +9,7 @@ const formatNumber = (value) => new Intl.NumberFormat("zh-CN").format(value ?? 0
 const formatBytes = (bytes) => { if (!bytes) return "—"; const mb = bytes / (1024 * 1024); return mb >= 1 ? `${mb.toFixed(1)} MB` : `${Math.round(bytes / 1024)} KB`; };
 const escapeHtml = (value = "") => String(value).replace(/[&<>'"]/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" }[char]));
 // Venue wall palette (stably mapped by topic_overview family order)
-const FAMILY_PALETTE = ["#5470c6", "#3ba272", "#fac858", "#ee6666", "#73c0de", "#f28c4e", "#9a60b4", "#2f9e9f", "#ea7ccc", "#b8813f"];
+const FAMILY_PALETTE = ["#33415f", "#a56b3f", "#6b7a90", "#c98f5c", "#4a5872", "#8a6a4f", "#7d8fa8", "#b07c52", "#5c6b82", "#9b7b57"];
 const UNCLASSIFIED_COLOR = "#9aa3ab";
 
 async function api(path, options = {}) {
@@ -57,11 +57,12 @@ async function loadOverview() {
   $("#release-id").textContent = releaseId.includes("-") ? `catalog ${releaseId.split("-").pop().slice(0, 8)}` : releaseId;
   $("#release-id").title = releaseId;
   $("#summary-cards").classList.remove("skeleton-grid");
+  const abstractCoverage = summary.entity_count ? ((summary.abstract_count / summary.entity_count) * 100).toFixed(1) : "0";
   $("#summary-cards").innerHTML = [
-    statCard("论文清单记录", summary.record_count, `${formatNumber(summary.abstract_count)} 条已有摘要`),
-    statCard("统一论文实体", summary.entity_count, `${formatNumber(summary.merged_entity_count)} 个已归并实体`),
+    statCard("论文总数", summary.entity_count, `${summary.min_year}—${summary.max_year} · 每篇只计一次`),
+    statCard("领域 / 方向", "21 / 383", "areas-v1.5 · directions-v1.1"),
     statCard("会议 / 期刊", summary.venue_count, `${summary.conference_count} 个会议 · ${summary.journal_count} 个期刊`),
-    statCard("年度清单", summary.edition_count, `${summary.min_year}—${summary.max_year}`),
+    statCard("有摘要", summary.abstract_count, `${abstractCoverage}% 的论文有摘要`),
   ].join("");
   $("#year-chart").innerHTML = barRows(years.items.map((x) => ({ ...x, label: String(x.year) })), "label", "record_count");
   const errors = summary.issue_counts.error || 0;
@@ -73,6 +74,10 @@ async function loadOverview() {
     ["数据库完整性", summary.release.status === "ready" ? "ready" : summary.release.status],
     ["实体归并", `${formatNumber(summary.linked_record_count)} 条记录已建立关系`],
     ["清单状态", `${formatNumber(summary.final_count)} 最终 · ${formatNumber(summary.rolling_count)} 滚动`],
+    ...(summary.label && summary.label.release ? [
+      ["分类版本", `${summary.label.release.areas_version} / ${summary.label.release.directions_version}`],
+      ["领域准确率", summary.label.metrics && summary.label.metrics.area ? `${(summary.label.metrics.area.accuracy * 100).toFixed(1)}%（${String(summary.label.metrics.reviewer || "").includes("proxy") ? "代理复核" : "金标"} ${summary.label.metrics.n} 篇）` : "未评估"],
+    ] : []),
   ].map(([label, value]) => `<div class="detail"><span>${label}</span><strong>${escapeHtml(value)}</strong></div>`).join("");
   populateFilters();
   loadInsightHomeBlocks().catch(showError);
@@ -85,7 +90,7 @@ async function loadInsightHomeBlocks() {
   const wallEl = $("#venue-wall");
   if (!treeEl || !wallEl) return;
   if (treeEl.children.length && wallEl.children.length) return;
-  const [overview, venues] = await Promise.all([api("/api/topics"), api("/api/venue-overview")]);
+  const [overview, venues] = await Promise.all([api("/api/areas-overview"), api("/api/venue-overview")]);
   if (!treeEl.children.length) renderTopicTree(overview, treeEl, $("#topic-tree-meta"));
   if (!wallEl.children.length) renderVenueWall(venues, overview, wallEl, $("#venue-wall-meta"));
 }
@@ -117,13 +122,16 @@ function renderTopicTree(overview, container, meta) {
   }).join("");
   container.innerHTML = html || '<div class="empty">暂无主题数据</div>';
   if (meta) {
-    meta.textContent = `已分类 ${formatNumber(overview.classified_entity_count)}（${overview.classified_rate}%）· 多标签率 ${overview.multi_label_rate}% · ${overview.run ? overview.run.config_version : "未运行"}`;
+    const version = overview.label ? `${overview.label.areas_version} · ${overview.label.directions_version}` : (overview.run ? overview.run.config_version : "未运行");
+    meta.textContent = `已分类 ${formatNumber(overview.classified_entity_count)}（${overview.classified_rate}%）· ${overview.direction_count || 0} 个方向 · ${version}`;
   }
   if (!container.dataset.bound) {
     container.dataset.bound = "1";
     container.addEventListener("click", (event) => {
+      const chip = event.target.closest(".tt-chip");
+      if (chip) { event.stopPropagation(); goDirectionDetail(chip.dataset.direction); return; }
       const drill = event.target.closest(".tt-drill");
-      if (drill) { event.stopPropagation(); goTopicDetail(drill.dataset.drill); return; }
+      if (drill) { event.stopPropagation(); goAreaDetail(drill.dataset.drill); return; }
       const row = event.target.closest(".tt-row");
       if (!row) return;
       const sub = row.parentElement.querySelector(".tt-sub");
@@ -133,7 +141,7 @@ function renderTopicTree(overview, container, meta) {
 }
 
 function ttChip(leaf) {
-  return `<span class="tt-chip" title="${escapeHtml(leaf.description || "")}">${escapeHtml(leaf.name)} <b>${formatNumber(leaf.entity_count)}</b></span>`;
+  return `<span class="tt-chip" data-direction="${escapeHtml(leaf.topic_id)}" title="${escapeHtml(leaf.description || "")}">${escapeHtml(leaf.name)} <b>${formatNumber(leaf.entity_count)}</b></span>`;
 }
 
 // Jump to the "Direction trends" page and set this family as the filter
@@ -142,7 +150,8 @@ function goTopicFamily(topicId) {
     ? Promise.resolve()
     : (state.topicsPromise || (state.topicsPromise = loadTopics().catch((error) => { state.topicsPromise = null; throw error; })));
   ensure.then(() => {
-    activateSubTab("insights-view", "topics");
+    switchView("maintain");
+    activateSubTab("maintain-view", "topics");
     const select = $("#topic-filters select[name=topic_id]");
     if (select && [...select.options].some((option) => option.value === topicId)) select.value = topicId;
     loadTopicPapers().catch(showError);
@@ -154,19 +163,27 @@ function goTopicFamily(topicId) {
 function goTopicDetail(topicId) {
   state.detailTarget = { kind: "topic", id: topicId };
   state.detailPage = 1;
-  switchView("insights");
-  activateSubTab("insights-view", "details");
+  switchView("maintain");
+  activateSubTab("maintain-view", "details");
   const url = new URL(window.location.href);
   url.searchParams.set("topic", topicId);
   url.searchParams.delete("venue");
   history.replaceState({}, "", url.toString());
 }
 
+function goAreaDetail(areaId) {
+  navigate("map", [areaId]);
+}
+
+function goDirectionDetail(directionId) {
+  navigate("map", [directionId.split("-")[0], directionId]);
+}
+
 function goVenueDetail(venue) {
   state.detailTarget = { kind: "venue", id: venue };
   state.detailPage = 1;
-  switchView("insights");
-  activateSubTab("insights-view", "details");
+  switchView("maintain");
+  activateSubTab("maintain-view", "details");
   const url = new URL(window.location.href);
   url.searchParams.set("venue", venue);
   url.searchParams.delete("topic");
@@ -191,7 +208,15 @@ async function renderCurrentDetail() {
   $("#detail-empty").classList.add("hidden");
   $("#detail-content").classList.remove("hidden");
   try {
-    if (state.detailTarget.kind === "topic") {
+    if (state.detailTarget.kind === "area") {
+      const data = await api(`/api/area-detail?area_id=${encodeURIComponent(state.detailTarget.id)}`);
+      renderTopicDetail(data);
+      await loadDetailPapers();
+    } else if (state.detailTarget.kind === "direction") {
+      const data = await api(`/api/direction-detail?direction_id=${encodeURIComponent(state.detailTarget.id)}`);
+      renderTopicDetail(data);
+      await loadDetailPapers();
+    } else if (state.detailTarget.kind === "topic") {
       const data = await api(`/api/topic-detail?topic_id=${encodeURIComponent(state.detailTarget.id)}`);
       renderTopicDetail(data);
       await loadDetailPapers();
@@ -214,11 +239,21 @@ function topicFamilyColor(topicId) {
 function renderTopicDetail(d) {
   const t = d.topic;
   const m = d.metrics;
-  $("#detail-eyebrow").textContent = `TOPIC · ${(t.level || "—").toUpperCase()}`;
+  const nodeKind = t.node_type === "area" ? "AREA" : t.node_type === "direction" ? "DIRECTION" : "TOPIC";
+  const levelLabel = (t.level || "").toUpperCase();
+  $("#detail-eyebrow").textContent = levelLabel && levelLabel !== nodeKind ? `${nodeKind} · ${levelLabel}` : nodeKind;
   $("#detail-title").textContent = `${t.name}（${t.topic_id}）`;
   $("#detail-note").textContent = t.description || "";
-  $("#detail-meta").textContent = `分类精度 review_progress 见评估页 · ${t.topic_id}`;
-  $("#detail-stats").innerHTML = [
+  $("#detail-meta").textContent = t.area_name ? `${t.area_name} › ${t.topic_id}` : `${t.topic_id}`;
+  const isNodeDetail = t.node_type === "area" || t.node_type === "direction";
+  const statPairs = isNodeDetail ? [
+    ["论文数", m.entity_count],
+    ["涉及 venue", m.venue_count],
+    ["年份跨度", m.min_year && m.max_year ? `${m.min_year}—${m.max_year}` : "—"],
+    ["final 记录", m.final_records],
+    ["rolling 记录", m.rolling_records],
+    ["覆盖", `${m.coverage_rate}%`],
+  ] : [
     ["primary 实体", m.entity_count],
     ["primary 平均分", m.average_score ?? "—"],
     ["总 assignment", m.assignment_count],
@@ -228,7 +263,8 @@ function renderTopicDetail(d) {
     ["final 记录", m.final_records],
     ["rolling 记录", m.rolling_records],
     ["覆盖", `${m.coverage_rate}%`],
-  ].map(([label, value]) => `<div class="detail-stat"><span class="v">${typeof value === "number" ? formatNumber(value) : escapeHtml(String(value))}</span><span class="l">${escapeHtml(label)}</span></div>`).join("");
+  ];
+  $("#detail-stats").innerHTML = statPairs.map(([label, value]) => `<div class="detail-stat"><span class="v">${typeof value === "number" ? formatNumber(value) : escapeHtml(String(value))}</span><span class="l">${escapeHtml(label)}</span></div>`).join("");
 
   // Main word cloud: subtopics (leaf topics within a family)
   const subtopics = d.subtopics || [];
@@ -238,10 +274,12 @@ function renderTopicDetail(d) {
     subEl.innerHTML = ""; subEmpty.hidden = false;
   } else {
     subEmpty.hidden = true;
-    subEl.innerHTML = subtopics.map((s) => `<span class="cloud-chip" data-topic-id="${escapeHtml(s.topic_id)}" title="${escapeHtml(s.topic_id)} · ${s.share_rate}%"><span>${escapeHtml(s.name)}</span><span class="b">${formatNumber(s.entity_count)}</span><span class="muted">${s.share_rate}%</span></span>`).join("");
+    subEl.innerHTML = subtopics.map((s) => `<span class="cloud-chip" data-topic-id="${escapeHtml(s.topic_id)}" data-node-type="${escapeHtml(s.node_type || "topic")}" title="${escapeHtml(s.topic_id)} · ${s.share_rate}%"><span>${escapeHtml(s.name)}</span><span class="b">${formatNumber(s.entity_count)}</span><span class="muted">${s.share_rate}%</span></span>`).join("");
   }
   // Clicking a chip navigates to the topic detail (self-navigation back)
-  subEl.querySelectorAll("[data-topic-id]").forEach((el) => el.addEventListener("click", () => goTopicDetail(el.dataset.topicId)));
+  subEl.querySelectorAll("[data-topic-id]").forEach((el) => el.addEventListener("click", () => {
+    if (el.dataset.nodeType === "direction") goDirectionDetail(el.dataset.topicId); else goTopicDetail(el.dataset.topicId);
+  }));
 
   // Secondary word cloud: tech_tags
   const tags = d.tech_tags || [];
@@ -249,10 +287,18 @@ function renderTopicDetail(d) {
   const tagEmpty = $("#detail-techtags-empty");
   if (tags.length === 0) { tagEl.innerHTML = ""; tagEmpty.hidden = false; }
   else { tagEmpty.hidden = true; tagEl.innerHTML = tags.map((s) => `<span class="cloud-chip" title="tech_tag · ${s.share_rate}%"><span>${escapeHtml(s.tag)}</span><span class="b">${formatNumber(s.entity_count)}</span><span class="muted">${s.share_rate}%</span></span>`).join(""); }
+  if (isNodeDetail) {
+    const tagCard = tagEl.closest(".detail-card");
+    if (tagCard) tagCard.classList.toggle("hidden", tags.length === 0);
+    if (subtopics.length === 0) {
+      const subCard = subEl.closest(".detail-card");
+      if (subCard) subCard.classList.add("hidden");
+    }
+  }
 
   // Paradigm timeline
   renderTrend(d.trend, $("#detail-trend"), t.name);
-  $("#detail-trend-hint").textContent = `（${t.name} primary 实体逐年）`;
+  $("#detail-trend-hint").textContent = `（${t.name} ${isNodeDetail ? "论文" : "primary 实体"}逐年）`;
 
   // Composition table: top_venues (rows are clickable to jump to venue detail)
   $("#detail-cross-title").textContent = "top 会议 / 期刊（点行跳 venue 详情）";
@@ -331,7 +377,11 @@ async function loadDetailPapers() {
   const pagerEl = $("#detail-papers-pager");
   const metaEl = $("#detail-papers-meta");
   let payload;
-  if (state.detailTarget.kind === "topic") {
+  if (state.detailTarget.kind === "area") {
+    payload = await api(`/api/area-papers?area_id=${encodeURIComponent(state.detailTarget.id)}&page=${state.detailPage}&page_size=${state.detailPageSize}`);
+  } else if (state.detailTarget.kind === "direction") {
+    payload = await api(`/api/direction-papers?direction_id=${encodeURIComponent(state.detailTarget.id)}&page=${state.detailPage}&page_size=${state.detailPageSize}`);
+  } else if (state.detailTarget.kind === "topic") {
     payload = await api(`/api/topic-papers?topic_id=${encodeURIComponent(state.detailTarget.id)}&page=${state.detailPage}&page_size=${state.detailPageSize}`);
   } else {
     payload = await api(`/api/venue-papers?venue=${encodeURIComponent(state.detailTarget.id)}&page=${state.detailPage}&page_size=${state.detailPageSize}`);
@@ -343,13 +393,21 @@ async function loadDetailPapers() {
     pagerEl.classList.add("hidden");
     return;
   }
-  const header = state.detailTarget.kind === "topic"
-    ? `<tr><th>title</th><th>score</th><th>year</th><th>venues</th></tr>`
-    : `<tr><th>title</th><th>year</th><th>list_status</th><th>entity_id</th></tr>`;
+  const kind = state.detailTarget.kind;
+  const isVenue = kind === "venue";
+  const isOldTopic = kind === "topic";
+  const header = isVenue
+    ? `<tr><th>title</th><th>year</th><th>list_status</th><th>entity_id</th></tr>`
+    : isOldTopic
+      ? `<tr><th>title</th><th>score</th><th>year</th><th>venues</th></tr>`
+      : `<tr><th>title</th><th>year</th><th>venues</th><th>领域 / 方向</th></tr>`;
   const rows = payload.items.map((p) => {
-    if (state.detailTarget.kind === "topic") {
+    if (isOldTopic) {
       const venues = (p.appearances || []).map((a) => `${escapeHtml(a.venue)} ${a.year}`).slice(0, 3).join("、");
       return `<tr><td>${escapeHtml(p.title || "—")}</td><td>${(p.score ?? "—").toFixed ? Number(p.score).toFixed(2) : "—"}</td><td>${p.first_year ?? "—"}</td><td class="muted">${venues}</td></tr>`;
+    } else if (!isVenue) {
+      const venues = (p.appearances || []).map((a) => `${escapeHtml(a.venue)} ${a.year}`).slice(0, 3).join("、");
+      return `<tr><td>${escapeHtml(p.title || "—")}</td><td>${p.first_year ?? "—"}</td><td class="muted">${venues}</td><td class="muted">${escapeHtml(p.area_id || "")} / ${escapeHtml(p.direction_id || "")}</td></tr>`;
     } else {
       return `<tr><td>${escapeHtml(p.title || "—")}</td><td>${p.year ?? "—"}</td><td>${escapeHtml(p.list_status || "—")}</td><td class="muted">${escapeHtml((p.entity_id || "—").slice(0, 18))}</td></tr>`;
     }
@@ -379,8 +437,8 @@ function bindDetailCrossLinks() {
     empty.dataset.bound = "1";
     const back = document.createElement("button");
     back.className = "secondary-button";
-    back.textContent = "← 返回数据洞察概览";
-    back.addEventListener("click", () => { clearDetailTarget(); switchView("insights"); activateSubTab("insights-view", "overview"); });
+    back.textContent = "← 返回数据概况";
+    back.addEventListener("click", () => { clearDetailTarget(); switchView("maintain"); activateSubTab("maintain-view", "overview"); });
     empty.appendChild(back);
   }
   // Detail page top return link
@@ -388,7 +446,7 @@ function bindDetailCrossLinks() {
   if (meta && !meta.dataset.boundBack) {
     meta.dataset.boundBack = "1";
     meta.style.cursor = "pointer";
-    meta.addEventListener("click", () => { clearDetailTarget(); switchView("insights"); activateSubTab("insights-view", "overview"); });
+    meta.addEventListener("click", () => { clearDetailTarget(); switchView("maintain"); activateSubTab("maintain-view", "overview"); });
     meta.title = "点击返回概览";
   }
 }
@@ -553,20 +611,20 @@ function topicPaperQuery() {
 
 async function loadTopicPapers() {
   if (!state.topics.length) return;
-  const data = await api(`/api/topic-papers?${topicPaperQuery()}`);
+  const data = await api(`/api/area-papers?${topicPaperQuery()}`);
   const selected = state.topics.find((item) => item.topic_id === $("#topic-filters select[name=topic_id]").value);
   $("#topic-paper-title").textContent = selected ? `${selected.name}·构成论文` : "主题论文";
   $("#topic-paper-count").textContent = `共 ${formatNumber(data.total)} 篇`;
   $("#topic-page-info").textContent = `第 ${data.page} / ${Math.max(data.total_pages, 1)} 页`;
   $("#prev-topic-page").disabled = data.page <= 1;
   $("#next-topic-page").disabled = data.page >= data.total_pages;
-  $("#topic-papers-table").innerHTML = data.items.length ? `<table><thead><tr><th><input type="checkbox" class="select-all-page" title="全选本页" /></th><th>论文实体</th><th>Venue / 年份</th><th>弱标签得分</th><th>命中依据</th></tr></thead><tbody>${data.items.map((paper) => `<tr><td><input type="checkbox" class="select-entity" data-entity="${escapeHtml(paper.entity_id)}" /></td><td class="paper-title">${paper.paper_url ? `<a href="${escapeHtml(paper.paper_url)}" target="_blank" rel="noreferrer">${escapeHtml(paper.title)}</a>` : escapeHtml(paper.title)}<div class="muted">${escapeHtml(paper.authors || "作者未知")}</div>${paper.abstract ? `<details class="abstract-details"><summary>查看摘要</summary><p>${escapeHtml(paper.abstract)}</p></details>` : ""}</td><td>${paper.appearances.map((item) => `<div class="appearance"><strong>${escapeHtml(item.venue)}</strong> · ${item.year}<span class="badge ${item.list_status === "rolling" ? "warning" : "success"}">${item.list_status}</span></div>`).join("")}</td><td><span class="topic-score">${Number(paper.score).toFixed(1)}</span></td><td class="evidence-list">${paper.evidence.map((item) => `<span><strong>${escapeHtml(item.signal)}</strong><small>${escapeHtml(item.field)} · +${Number(item.points).toFixed(1)}</small></span>`).join("")}</td></tr>`).join("")}</tbody></table>` : `<div class="empty">当前筛选条件下没有主题论文</div>`;
+  $("#topic-papers-table").innerHTML = data.items.length ? `<table><thead><tr><th><input type="checkbox" class="select-all-page" title="全选本页" /></th><th>论文实体</th><th>Venue / 年份</th><th>领域 / 方向</th></tr></thead><tbody>${data.items.map((paper) => `<tr><td><input type="checkbox" class="select-entity" data-entity="${escapeHtml(paper.entity_id)}" /></td><td class="paper-title">${paper.paper_url ? `<a href="${escapeHtml(paper.paper_url)}" target="_blank" rel="noreferrer">${escapeHtml(paper.title)}</a>` : escapeHtml(paper.title)}<div class="muted">${escapeHtml(paper.authors || "作者未知")}</div>${paper.abstract ? `<details class="abstract-details"><summary>查看摘要</summary><p>${escapeHtml(paper.abstract)}</p></details>` : ""}</td><td>${paper.appearances.map((item) => `<div class="appearance"><strong>${escapeHtml(item.venue)}</strong> · ${item.year}<span class="badge ${item.list_status === "rolling" ? "warning" : "success"}">${item.list_status}</span></div>`).join("")}</td><td class="muted">${escapeHtml(paper.area_id || "")} / ${escapeHtml(paper.direction_id || "")}</td></tr>`).join("")}</tbody></table>` : `<div class="empty">当前筛选条件下没有主题论文</div>`;
   attachSelection();
   afterAbstractListRender("#topic-papers-table");
 }
 
 async function loadTopics() {
-  const [overview, trends] = await Promise.all([api("/api/topics"), api("/api/topic-trends")]);
+  const [overview, trends] = await Promise.all([api("/api/areas-overview"), api("/api/area-trends")]);
   state.topics = overview.topics;
   $("#topic-cards").innerHTML = overview.topics.map(renderTopicCard).join("");
   const trendMap = new Map(trends.items.map((item) => [`${item.year}:${item.topic_id}`, item]));
@@ -595,17 +653,30 @@ async function loadQuality() {
   $("#source-tier-list").innerHTML = `<h3>目录元数据</h3>${sourceRows(quality.source_tiers)}<h3>摘要元数据</h3>${sourceRows(quality.abstract_source_tiers)}`;
   $("#issue-table").innerHTML = quality.issue_groups.length ? `<table><thead><tr><th>等级</th><th>类型</th><th>数量</th><th>解释</th></tr></thead><tbody>${quality.issue_groups.map((item) => `<tr><td><span class="badge ${item.severity === "error" ? "error" : item.severity === "warning" ? "warning" : "success"}">${item.severity}</span></td><td>${escapeHtml(issueTypeLabel(item.issue_type))}</td><td>${formatNumber(item.count)}</td><td>${item.issue_type === "cross_venue_doi" ? "同一 DOI 出现在多个 venue，保留清单记录并单独识别" : "查看构建报告进一步核对"}</td></tr>`).join("")}</tbody></table>` : `<div class="empty">当前没有质量问题</div>`;
   // Classification calibration lives on this tab too (moved here from the directions page).
-  const [evaluation, evaluationSamples] = await Promise.all([
-    api("/api/topic-evaluation"), api("/api/topic-evaluation-samples?page_size=25"),
-  ]);
-  renderEvaluation(evaluation, evaluationSamples);
+  // The legacy topic-tree calibration sample is a local analysis file; hide the panel when it is absent.
+  const panel = document.querySelector(".evaluation-panel");
+  try {
+    const [evaluation, evaluationSamples] = await Promise.all([
+      api("/api/topic-evaluation"), api("/api/topic-evaluation-samples?page_size=25"),
+    ]);
+    if (panel) panel.hidden = false;
+    renderEvaluation(evaluation, evaluationSamples);
+  } catch (error) {
+    if (panel) panel.hidden = true;
+  }
 }
 
 function populateFilters() {
-  const venueSelect = $("select[name=venue]");
-  venueSelect.innerHTML = `<option value="">全部</option>${state.venues.map((x) => `<option value="${escapeHtml(x.venue)}">${escapeHtml(x.venue)}</option>`).join("")}`;
-  const yearSelect = $("select[name=year]");
-  yearSelect.innerHTML = `<option value="">全部</option>${[...state.years].reverse().map((x) => `<option value="${x.year}">${x.year}</option>`).join("")}`;
+  $$("#filters select[name=venue], #topic-filters select[name=venue]").forEach((venueSelect) => {
+    const current = venueSelect.value;
+    venueSelect.innerHTML = `<option value="">全部</option>${state.venues.map((x) => `<option value="${escapeHtml(x.venue)}">${escapeHtml(x.venue)}</option>`).join("")}`;
+    venueSelect.value = current;
+  });
+  $$("#filters select[name=year], #topic-filters select[name=year]").forEach((yearSelect) => {
+    const current = yearSelect.value;
+    yearSelect.innerHTML = `<option value="">全部</option>${[...state.years].reverse().map((x) => `<option value="${x.year}">${x.year}</option>`).join("")}`;
+    yearSelect.value = current;
+  });
 }
 
 function currentQuery() {
@@ -617,11 +688,11 @@ function currentQuery() {
 
 async function loadPapers() {
   const data = await api(`/api/papers?${currentQuery()}`);
-  $("#paper-count").textContent = `共 ${formatNumber(data.total)} 条`;
+  $("#paper-count").textContent = `共 ${formatNumber(data.total)} 条记录`;
   $("#page-info").textContent = `第 ${data.page} / ${Math.max(data.total_pages, 1)} 页`;
   $("#prev-page").disabled = data.page <= 1;
   $("#next-page").disabled = data.page >= data.total_pages;
-  $("#papers-table").innerHTML = data.items.length ? `<table><thead><tr><th><input type="checkbox" class="select-all-page" title="全选本页" /></th><th>论文</th><th>Venue</th><th>年份</th><th>状态</th><th>作者</th><th>标识</th></tr></thead><tbody>${data.items.map((paper) => `<tr><td><input type="checkbox" class="select-entity" data-entity="${escapeHtml(paper.entity_id)}" /></td><td class="paper-title">${paper.paper_url ? `<a href="${escapeHtml(paper.paper_url)}" target="_blank" rel="noreferrer">${escapeHtml(paper.title)}</a>` : escapeHtml(paper.title)}<div class="muted">${escapeHtml(paper.track)} · ${escapeHtml(paper.source_tier)}</div>${paper.abstract ? `<details class="abstract-details"><summary>查看摘要</summary><p>${escapeHtml(paper.abstract)}</p><small>来源：${paper.abstract_source_url ? `<a href="${escapeHtml(paper.abstract_source_url)}" target="_blank" rel="noreferrer">${escapeHtml(paper.abstract_source_name)}</a>` : escapeHtml(paper.abstract_source_name)}</small></details>` : `<div class="abstract-missing">暂未获得可追溯摘要</div>`}</td><td class="nowrap"><strong>${escapeHtml(paper.venue)}</strong><div class="muted">${paper.venue_type === "conference" ? "会议" : paper.venue_type === "preprint" ? "预印本" : "期刊"}</div></td><td>${paper.year}</td><td><span class="badge ${paper.list_status === "rolling" ? "warning" : "success"}">${paper.list_status}</span></td><td class="authors">${escapeHtml(paper.authors || "未知")}</td><td class="nowrap">${paper.doi ? `<div>DOI</div><div class="muted">${escapeHtml(paper.doi)}</div>` : paper.arxiv_id ? `<div>arXiv</div><div class="muted">${escapeHtml(paper.arxiv_id)}</div>` : `<span class="muted">—</span>`}</td></tr>`).join("")}</tbody></table>` : `<div class="empty">当前筛选条件下没有论文记录</div>`;
+  $("#papers-table").innerHTML = data.items.length ? `<table class="paper-table"><thead><tr><th><input type="checkbox" class="select-all-page" title="全选本页" aria-label="全选本页" /></th><th>论文</th><th>会议 / 年份</th></tr></thead><tbody>${data.items.map((paper) => `<tr><td><input type="checkbox" class="select-entity" data-entity="${escapeHtml(paper.entity_id)}" aria-label="选择这篇论文" /></td><td class="paper-title">${paper.paper_url ? `<a href="${escapeHtml(paper.paper_url)}" target="_blank" rel="noreferrer">${escapeHtml(paper.title)}</a>` : escapeHtml(paper.title)}<div class="paper-authors-line">${escapeHtml(paper.authors || "作者未知")}</div>${paper.abstract ? `<details class="abstract-details"><summary>摘要</summary><p>${escapeHtml(paper.abstract)}</p><small>来源：${paper.abstract_source_url ? `<a href="${escapeHtml(paper.abstract_source_url)}" target="_blank" rel="noreferrer">${escapeHtml(paper.abstract_source_name)}</a>` : escapeHtml(paper.abstract_source_name)}</small></details>` : `<div class="abstract-missing">没有摘要</div>`}</td><td class="nowrap"><strong>${escapeHtml(paper.venue)}</strong><div class="muted">${paper.year}${paper.list_status === "rolling" ? " · 收录中" : ""}</div></td></tr>`).join("")}</tbody></table>` : `<div class="empty">没有符合条件的论文</div>`;
   attachSelection();
   afterAbstractListRender("#papers-table");
 }
@@ -1036,7 +1107,7 @@ async function confirmPicker() {
 }
 
 /* ===== Research Q&A Chat ===== */
-const chatState = { current: null, pending: false, pendingTaskId: null, selected: new Set() };
+const chatState = { current: null, pending: false, pendingTaskId: null, selected: new Set(), webSearch: false };
 
 const fmtTime = (iso) => {
   if (!iso) return "";
@@ -1114,7 +1185,7 @@ function chatItemHtml(conv) {
   return `<div class="chat-item${activeCls}" data-cid="${conv.conversation_id}">
     <input type="checkbox" class="chat-select" data-cid="${conv.conversation_id}"${checked} />
     <div class="chat-item-body">
-      <div class="chat-item-title">${escapeHtml(conv.title || "新对话")}</div>
+      <div class="chat-item-title">${escapeHtml(chatTitle(conv.title))}</div>
       <div class="chat-item-time" title="${escapeHtml(conv.created_at || "")}">${escapeHtml(fmtDateTimeFull(conv.created_at))}</div>
     </div>
   </div>`;
@@ -1154,12 +1225,13 @@ async function openChat(conversationId) {
   const data = await api(`/api/chats/${conversationId}/messages`);
   chatState.current = data.conversation;
   $("#chat-header").classList.remove("hidden");
-  $("#chat-title").textContent = data.conversation.title || "新对话";
-  $("#chat-meta").textContent = data.messages.length ? `共 ${data.messages.length} 条消息` : "新对话";
+  $("#chat-title").textContent = chatTitle(data.conversation.title);
+  $("#chat-meta").textContent = data.messages.length ? L(`共 ${data.messages.length} 条消息`, `${data.messages.length} messages`) : "";
   renderChatMessages(data.messages);
   window.Research?.showScope(conversationId).catch(showError);
   restoreIngestTaskState(conversationId).catch(showError);
   updateArchiveLabel();
+  closeChatSidebar();
   $("#chat-input").focus();
   loadChats().catch(showError);
 }
@@ -1187,7 +1259,7 @@ function evidenceItemHtml(citation, index) {
   const citationIndex = citation.citation_index || index + 1;
   const score = citation.score != null ? `<span class="chat-score">${Number(citation.score).toFixed(2)}</span>` : "";
   const link = citation.url
-    ? ` <a class="evidence-link" href="${escapeHtml(citation.url)}" target="_blank" rel="noopener">↗ 原文</a>`
+    ? ` <a class="evidence-link" href="${escapeHtml(citation.url)}" target="_blank" rel="noopener noreferrer">↗ 打开</a>`
     : "";
   return `<div class="chat-evidence-item" data-evidence="${citationIndex}">
     <div class="chat-evidence-head"><span class="cite-badge">${citationIndex}</span>
@@ -1200,7 +1272,7 @@ function evidenceItemHtml(citation, index) {
 function evidenceBoxHtml(chunks) {
   if (!chunks || !chunks.length) return "";
   const first = chunks[0] || {};
-  const summary = `证据片段（${chunks.length}）· ${escapeHtml((first.title || first.entity_id || "").slice(0, 24))}…`;
+  const summary = `${L(`来源 ${chunks.length} 条`, `${chunks.length} sources`)} · ${escapeHtml((first.title || first.entity_id || "").slice(0, 32))}${(first.title || "").length > 32 ? "…" : ""}`;
   return `<details class="chat-evidence"><summary>${summary}</summary>
     <div class="chat-evidence-list">${chunks.map(evidenceItemHtml).join("")}</div></details>`;
 }
@@ -1210,7 +1282,7 @@ function rawToolMarkup(content) {
   return value.includes("DSML") && (value.includes("tool_calls") || value.includes("invoke"));
 }
 
-function messageHtml(message, lastUserContent) {
+function messageHtml(message, lastUserContent, isLast = false) {
   if (message.role === "user") {
     const editBtn = chatState.pending
       ? ""
@@ -1226,12 +1298,11 @@ function messageHtml(message, lastUserContent) {
       <div class="chat-meta-line"><button class="chat-retry secondary-button" data-query="${query}">重试</button></div>
     </div></div>`;
   }
-  const thinking = message.reasoning
-    ? `<details class="chat-thinking"><summary>思考过程</summary><div class="chat-md">${mdToHtml(message.reasoning)}</div></details>`
-    : "";
-  const trace = message.tool_trace && message.tool_trace.length
-    ? `<details class="chat-trace"><summary>工具轨迹（${message.tool_trace.length} 步）</summary>
-        <div class="chat-trace-list">${message.tool_trace.map(traceItemHtml).join("")}</div></details>`
+  const toolSteps = (message.tool_trace || []).filter((step) => step.tool);
+  const process = message.reasoning || toolSteps.length
+    ? `<details class="chat-process"><summary>${toolSteps.length ? L(`检索了 ${toolSteps.length} 次`, `${toolSteps.length} lookups`) : L("思考过程", "Reasoning")}${message.reasoning && toolSteps.length ? L(" · 含思考过程", " · with reasoning") : ""}</summary>
+        ${toolSteps.length ? `<ol class="process-steps">${toolSteps.map(stepHtml).join("")}</ol>` : ""}
+        ${message.reasoning ? `<div class="chat-thinking-text">${escapeHtml(message.reasoning)}</div>` : ""}</details>`
     : "";
   const content = rawToolMarkup(message.content)
     ? `<div class="chat-error">模型返回了未解析的工具调用协议，本轮没有生成可用回答。请重试。</div>`
@@ -1240,14 +1311,14 @@ function messageHtml(message, lastUserContent) {
     : `<div class="empty chat-degraded">未生成回答（未配置生成模型）。</div>`;
   const truncated = message.finish_reason === "length"
     ? `<span class="chat-truncated">回答被截断（max_tokens 不足）</span>` : "";
-  const hasFulltext = (message.chunks || []).some((chunk) => chunk.chunk_id);
-  const regen = message.content && hasFulltext
-    ? `<button class="chat-regen secondary-button" data-mid="${message.message_id}">重新生成</button>` : "";
-  const model = message.model ? ` · ${escapeHtml(message.model)}` : "";
-  const topk = message.top_k != null ? ` · top_k=${message.top_k}` : "";
-  return `<div class="chat-msg chat-msg-assistant"><div class="chat-bubble-assistant">
-    ${thinking}${trace}${content}<button class="text-button save-research-note" data-mid="${escapeHtml(message.message_id)}">保存回答与证据</button>${ingestCardHtml(message)}${organizationCardHtml(message)}${evidenceBoxHtml(message.chunks)}
-    <div class="chat-meta-line"><span class="muted">${escapeHtml(fmtDateTimeFull(message.created_at))}${model}${topk}</span>${truncated}${regen}</div>
+  const regen = message.content && isLast
+    ? `<button class="msg-action chat-regen" data-mid="${message.message_id}" type="button">${L("重新生成", "Regenerate")}</button>` : "";
+  const copy = message.content ? `<button class="msg-action chat-copy" type="button">${L("复制", "Copy")}</button>` : "";
+  const save = message.content ? `<button class="msg-action save-research-note" data-mid="${escapeHtml(message.message_id)}" type="button">${L("存为笔记", "Save as note")}</button>` : "";
+  const model = message.model ? escapeHtml(message.model) : "";
+  return `<div class="chat-msg chat-msg-assistant"><div class="chat-bubble-assistant" data-mid="${escapeHtml(message.message_id)}">
+    ${process}${content}${ingestCardHtml(message)}${organizationCardHtml(message)}${evidenceBoxHtml(message.chunks)}
+    <div class="chat-meta-line">${copy}${regen}${save}${truncated}<span class="flex-sp"></span><span class="muted">${model}</span></div>
   </div></div>`;
 }
 
@@ -1342,20 +1413,258 @@ function traceItemHtml(step) {
     <span class="trace-meta muted">${escapeHtml(step.finish_reason || "")} · ${step.duration_ms}ms</span></div>`;
 }
 
+// ---------- chat: live progress, empty state, settings ----------
+const L = (zh, en) => (window.I18N && window.I18N.isEn() ? en : zh);
+const TOOL_LABELS = {
+  search_papers: ["检索本地论文库", "Searched the local library"], get_paper: ["查看论文", "Opened a paper"],
+  list_facets: ["查看领域与方向", "Listed areas"], count_papers: ["统计论文数", "Counted papers"],
+  trend_papers: ["统计逐年趋势", "Computed yearly trend"], share_papers: ["统计占比", "Computed shares"],
+  top_values: ["统计分布", "Computed distribution"], arxiv_search: ["检索 arXiv", "Searched arXiv"],
+  arxiv_get_paper: ["查看 arXiv 论文", "Opened an arXiv paper"], arxiv_ingest: ["准备 arXiv 入库", "Prepared arXiv import"],
+  openalex_search: ["检索 OpenAlex", "Searched OpenAlex"], openalex_get_work: ["查询 OpenAlex 论文", "Looked up OpenAlex work"],
+  openalex_get_author: ["查询作者", "Looked up author"], web_search: ["联网搜索", "Searched the web"],
+  web_fetch: ["读取网页", "Read a web page"], browser_search: ["网页搜索", "Searched the web"],
+  browser_fetch_page: ["读取网页", "Read a web page"], search_evidence: ["检索全文片段", "Searched full text"],
+  get_evidence: ["查看论文章节", "Read paper sections"], local_fulltext_status: ["查看本地全文库", "Checked local full text"],
+  list_collections: ["查看集合", "Listed collections"], ingest_papers: ["生成入库计划", "Planned an import"],
+  propose_collection_membership: ["生成集合草稿", "Drafted collection changes"],
+  propose_collection_assignments: ["生成分类草稿", "Drafted classification"],
+  list_organizable_papers: ["查看可整理论文", "Listed organizable papers"],
+  propose_research_comparison: ["生成比较表草稿", "Drafted a comparison"],
+};
+const chatTitle = (title) => (!title || title === "新对话" ? L("新对话", "New chat") : title);
+const toolLabel = (name) => (TOOL_LABELS[name] ? L(...TOOL_LABELS[name]) : name);
+
+// Tool summaries come from the backend in Chinese; give the common shapes an English form.
+function stepSummary(text) {
+  if (!text || !(window.I18N && window.I18N.isEn())) return text || "";
+  return text
+    .replace(/命中\s*([\d,]+)\s*篇/g, "$1 hits")
+    .replace(/（已放宽：忽略\s*([^）]+)）/g, " (relaxed: ignored $1)")
+    .replace(/arXiv 检索：([\d,]+) 条结果/g, "arXiv: $1 results")
+    .replace(/OpenAlex 命中\s*([\d,]+)\s*条，返回\s*([\d,]+)\s*条/g, "OpenAlex: $1 hits, $2 shown")
+    .replace(/联网搜索：([\d,]+) 条结果/g, "Web: $1 results")
+    .replace(/读取网页：/g, "Read: ")
+    .replace(/论文：/g, "Paper: ")
+    .replace(/(\w+) 完成/g, "$1 done")
+    .replace(/(\w+) 失败/g, "$1 failed");
+}
+
+function stepHtml(step) {
+  const state = step.status || (step.ok === false ? "error" : "ok");
+  const icon = state === "running" ? '<span class="spinner"></span>' : state === "error" ? "✕" : "✓";
+  const args = typeof step.args === "string" ? step.args : step.args ? Object.values(step.args).filter((v) => typeof v === "string").join(" · ") : "";
+  return `<li class="process-step is-${state}"><span class="step-icon">${icon}</span><span class="step-label">${escapeHtml(toolLabel(step.tool))}</span>${args ? `<span class="step-args">${escapeHtml(args.slice(0, 80))}</span>` : ""}${step.summary ? `<span class="step-summary">${escapeHtml(stepSummary(step.summary))}</span>` : ""}</li>`;
+}
+
+function liveHtml(live) {
+  const steps = live.steps || [];
+  const running = steps.find((step) => step.status === "running");
+  const headline = live.phase === "answering" ? L("正在撰写回答", "Writing the answer") : running ? `${toolLabel(running.tool)}…` : steps.length ? L("正在分析结果", "Reading the results") : L("正在思考", "Thinking");
+  const reasoning = (live.reasoning || "").trim();
+  return `<div class="chat-bubble-assistant is-live">
+    <details class="chat-process" ${live.answer ? "" : "open"}><summary><span class="spinner"></span> ${escapeHtml(headline)}${steps.length ? L(` · 已检索 ${steps.filter((s) => s.status !== "running").length} 次`, ` · ${steps.filter((s) => s.status !== "running").length} lookups`) : ""}</summary>
+      ${steps.length ? `<ol class="process-steps">${steps.map(stepHtml).join("")}</ol>` : ""}
+      ${reasoning ? `<div class="chat-thinking-text">${escapeHtml(reasoning.length > 1200 ? "…" + reasoning.slice(-1200) : reasoning)}</div>` : ""}
+    </details>
+    ${live.answer ? `<div class="chat-md">${mdToHtml(live.answer)}</div>` : ""}
+  </div>`;
+}
+
+async function waitAsk(taskId) {
+  let lastRender = "";
+  while (true) {
+    await new Promise((resolve) => setTimeout(resolve, 450));
+    if (chatState.pendingTaskId !== taskId) throw new Error("已停止");
+    const state = await api(`/api/chats/ask/status?task_id=${taskId}`);
+    if (state.status === "done") return state;
+    if (state.status === "error") throw new Error(state.error || "任务失败");
+    if (state.status === "cancelled") throw new Error("任务已取消");
+    const pending = $("#chat-pending");
+    if (pending && state.live) {
+      const html = liveHtml(state.live);
+      if (html !== lastRender) {
+        const container = $("#chat-messages");
+        const atBottom = container.scrollHeight - container.scrollTop - container.clientHeight < 80;
+        const open = pending.querySelector(".chat-process")?.open;
+        pending.innerHTML = html;
+        if (open !== undefined && state.live.answer) pending.querySelector(".chat-process").open = open;
+        lastRender = html;
+        if (atBottom) scrollChat();
+      }
+    }
+  }
+}
+
+const CHAT_SUGGESTIONS = [
+  [["整理图像超分方向用 Agent 的论文", "本地库 + arXiv"], ["Survey papers that use agents for image super-resolution", "Library + arXiv"]],
+  [["智能体论文 2023 到 2025 年增长了多少？", "统计"], ["How much did agent papers grow from 2023 to 2025?", "Statistics"]],
+  [["CVPR 2025 里扩散模型做视频生成的代表作有哪些？", "找论文"], ["Key CVPR 2025 papers on diffusion video generation?", "Find papers"]],
+  [["最近一个月 LLM Agent 有什么新进展？", "需要联网搜索"], ["What's new in LLM agents this month?", "Needs web search"]],
+];
+
+function chatEmptyHtml() {
+  const setup = chatSettings.loaded && !chatSettings.configured
+    ? `<div class="setup-card"><div><strong>${L("先配置一个模型", "Set up a model first")}</strong><p>${L("对话需要大模型 API（推荐 DeepSeek，几分钱一次）。Key 只保存在本机。", "Chat needs an LLM API (DeepSeek recommended, a few cents per question). The key stays on this machine.")}</p></div><button type="button" class="primary-button" data-open-settings>${L("配置 API", "Set up API")}</button></div>`
+    : "";
+  return `<div class="chat-empty">
+    <h1>${L("想了解 AI 研究的哪个方面？", "What would you like to know about AI research?")}</h1>
+    <p class="chat-empty-sub">${L("我会在本地 12 万篇顶会顶刊论文里检索和统计，需要时查 arXiv 或联网，并给出处。", "I search and count across 120k papers from top venues, check arXiv or the web when needed, and cite sources.")}</p>
+    ${setup}
+    <div class="chat-suggest">${CHAT_SUGGESTIONS.map((pair) => { const [q, tag] = L(pair[0], pair[1]); return `<button type="button" data-suggest="${escapeHtml(q)}"><strong>${escapeHtml(q)}</strong><span>${escapeHtml(tag)}</span></button>`; }).join("")}</div>
+  </div>`;
+}
+
+function resizeChatInput() {
+  const input = $("#chat-input");
+  if (!input) return;
+  input.style.height = "auto";
+  input.style.height = `${Math.min(input.scrollHeight, 220)}px`;
+}
+
+function closeChatSidebar() { document.body.classList.remove("chat-sidebar-open"); }
+
+async function initChatPage() {
+  if (!chatSettings.loaded) await loadChatSettings();
+  if (!$("#chat-list").children.length) loadChats().catch(showError);
+  if (!chatState.current) {
+    $("#chat-header").classList.add("hidden");
+    if (!chatState.pending) renderChatMessages([]);
+  }
+  setTimeout(() => $("#chat-input")?.focus({ preventScroll: true }), 50);
+}
+
+const chatSettings = { loaded: false, configured: false };
+const WEB_KEY = "apex-web-search";
+
+function renderModelChip() {
+  const chip = $("#chat-model-chip");
+  if (chip) chip.textContent = chatSettings.configured
+    ? `${chatSettings.model}${chatSettings.thinking === "enabled" ? L(` · 思考 ${chatSettings.reasoning_effort}`, ` · thinking ${chatSettings.reasoning_effort}`) : ""}`
+    : L("未配置模型", "No model set up");
+  chip?.classList.toggle("is-missing", !chatSettings.configured);
+  const toggle = $("#chat-web-toggle");
+  if (toggle) {
+    toggle.setAttribute("aria-pressed", String(Boolean(chatState.webSearch)));
+    toggle.classList.toggle("is-on", Boolean(chatState.webSearch));
+  }
+  const status = $("#chat-config-status");
+  if (status) status.textContent = chatSettings.configured ? L("Enter 发送 · Shift+Enter 换行", "Enter to send · Shift+Enter for a new line") : "";
+}
+
+async function loadChatSettings() {
+  const data = await api("/api/settings");
+  Object.assign(chatSettings, data, { loaded: true });
+  let stored = null;
+  try { stored = localStorage.getItem(WEB_KEY); } catch (error) { stored = null; }
+  chatState.webSearch = stored === null ? Boolean(data.web_search) : stored === "1";
+  renderModelChip();
+  return data;
+}
+
+function fillSettingsForm() {
+  const form = $("#settings-form");
+  const deepseek = (chatSettings.base_url || "").includes("api.deepseek.com");
+  form.provider.value = deepseek ? "deepseek" : "custom";
+  form.base_url.value = chatSettings.base_url || "";
+  form.model.value = chatSettings.model || "deepseek-flash";
+  form.api_key.value = "";
+  form.api_key.placeholder = chatSettings.api_key_set ? L(`已保存（${chatSettings.api_key_hint}），留空保持不变`, `Saved (${chatSettings.api_key_hint}); leave empty to keep`) : "sk-…";
+  $("#settings-key-hint").textContent = chatSettings.api_key_set ? "" : L("在 platform.deepseek.com 的 API Keys 页面创建。", "Create one under API Keys at platform.deepseek.com.");
+  form.thinking.value = chatSettings.thinking || "enabled";
+  form.reasoning_effort.value = chatSettings.reasoning_effort || "high";
+  form.web_search.checked = Boolean(chatSettings.web_search);
+  form.web_search_api_key.value = "";
+  form.web_search_api_key.placeholder = chatSettings.web_search_key_source === "dedicated" ? L("已保存，留空保持不变", "Saved; leave empty to keep") : "";
+  form.max_tokens.value = chatSettings.max_tokens || 8192;
+  form.classList.toggle("is-custom", !deepseek);
+  $("#settings-status").textContent = "";
+}
+
+function settingsPayload() {
+  const form = $("#settings-form");
+  const payload = {
+    base_url: form.provider.value === "deepseek" ? "https://api.deepseek.com" : form.base_url.value.trim(),
+    model: form.model.value.trim(),
+    thinking: form.thinking.value,
+    reasoning_effort: form.reasoning_effort.value,
+    web_search: form.web_search.checked,
+    max_tokens: form.max_tokens.value,
+  };
+  if (form.api_key.value.trim()) payload.api_key = form.api_key.value.trim();
+  if (form.web_search_api_key.value.trim()) payload.web_search_api_key = form.web_search_api_key.value.trim();
+  return payload;
+}
+
+function openSettings() {
+  const show = () => { fillSettingsForm(); $("#settings-overlay").classList.remove("hidden"); $("#settings-form").model.focus(); };
+  if (chatSettings.loaded) show(); else loadChatSettings().then(show).catch(showError);
+}
+
+function closeSettings() { $("#settings-overlay").classList.add("hidden"); }
+
+function bindSettings() {
+  document.addEventListener("click", (event) => {
+    if (event.target.closest("[data-open-settings]")) { event.preventDefault(); openSettings(); }
+  });
+  $("#settings-close").addEventListener("click", closeSettings);
+  $("#settings-overlay").addEventListener("click", (event) => { if (event.target.id === "settings-overlay") closeSettings(); });
+  document.addEventListener("keydown", (event) => { if (event.key === "Escape") closeSettings(); });
+  const form = $("#settings-form");
+  form.provider.addEventListener("change", () => {
+    form.classList.toggle("is-custom", form.provider.value !== "deepseek");
+    if (form.provider.value === "deepseek" && !form.model.value) form.model.value = "deepseek-flash";
+  });
+  $("#settings-test").addEventListener("click", async () => {
+    const status = $("#settings-status");
+    status.className = "settings-status";
+    status.textContent = L("正在连接…", "Connecting…");
+    try {
+      const result = await postJson("/api/settings/test", settingsPayload());
+      status.classList.add(result.ok ? "is-ok" : "is-error");
+      status.textContent = result.ok ? L(`连接成功。可用模型：${(result.models || []).join("、") || "（服务未返回列表）"}`, `Connected. Models: ${(result.models || []).join(", ") || "(none listed)"}`) : result.error;
+    } catch (error) {
+      status.classList.add("is-error");
+      status.textContent = error.message;
+    }
+  });
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const status = $("#settings-status");
+    status.className = "settings-status";
+    try {
+      const data = await postJson("/api/settings", settingsPayload());
+      Object.assign(chatSettings, data, { loaded: true });
+      chatState.webSearch = Boolean(data.web_search);
+      try { localStorage.setItem(WEB_KEY, chatState.webSearch ? "1" : "0"); } catch (error) { /* ignore */ }
+      renderModelChip();
+      status.classList.add("is-ok");
+      status.textContent = data.configured ? L("已保存。", "Saved.") : L("已保存，但还缺少 API Key。", "Saved, but the API key is still missing.");
+      if (data.configured) setTimeout(closeSettings, 600);
+      if (!chatState.current && document.body.dataset.view === "ask") renderChatMessages([]);
+    } catch (error) {
+      status.classList.add("is-error");
+      status.textContent = error.message;
+    }
+  });
+}
+
 function renderChatMessages(messages) {
   const container = $("#chat-messages");
   let lastUser = "";
+  let lastAssistant = "";
+  messages.forEach((message) => { if (message.role === "assistant" && !message.error) lastAssistant = message.message_id; });
   const html = messages.map((message) => {
     if (message.role === "user") lastUser = message.content;
-    return messageHtml(message, lastUser);
+    return messageHtml(message, lastUser, message.message_id === lastAssistant);
   }).join("");
-  container.innerHTML = html || `<div class="empty chat-empty">新建或选择一个对话开始提问。</div>`;
+  container.innerHTML = html || chatEmptyHtml();
+  container.classList.toggle("is-empty", !html);
   container.querySelectorAll(".chat-md").forEach(renderMathInElementIfPresent);
   hydrateIngestCards();
   hydrateOrganizationCards();
   container.scrollTop = container.scrollHeight;
 }
-
 function scrollChat() {
   const container = $("#chat-messages");
   container.scrollTop = container.scrollHeight;
@@ -1363,22 +1672,21 @@ function scrollChat() {
 
 function appendUserBubble(query) {
   $("#chat-messages .chat-empty")?.remove();
+  $("#chat-messages").classList.remove("is-empty");
   $("#error-banner").classList.add("hidden");
   const div = document.createElement("div");
   div.className = "chat-msg chat-msg-user";
-  div.innerHTML = `<div class="chat-bubble-user">${escapeHtml(query)}</div>`;
+  div.innerHTML = `<div class="chat-bubble-user"><span class="chat-msg-content">${escapeHtml(query)}</span></div>`;
   $("#chat-messages").appendChild(div);
 }
-
 function appendPending() {
   const div = document.createElement("div");
   div.className = "chat-msg chat-msg-assistant";
   div.id = "chat-pending";
-  div.innerHTML = `<div class="chat-pending"><span class="spinner"></span> 检索并生成回答中…</div>`;
+  div.innerHTML = liveHtml({ phase: "thinking", steps: [], reasoning: "", answer: "" });
   $("#chat-messages").appendChild(div);
   scrollChat();
 }
-
 function replacePending(message, lastUserContent) {
   const el = $("#chat-pending");
   if (!el) return;
@@ -1403,11 +1711,9 @@ function replacePendingError(error, query) {
 async function sendChat(query, options = {}) {
   query = (query || "").trim();
   if (!query) return;
-  if (!chatState.current) {
-    showError(new Error("请先新建或选择一个对话"));
-    return;
-  }
   if (chatState.pending) return;
+  if (!chatSettings.configured) { openSettings(); return; }
+  if (!chatState.current) await newChat({ quiet: true });
   const cid = chatState.current.conversation_id;
   chatState.pending = true;
   chatState.pendingTaskId = null;
@@ -1417,17 +1723,17 @@ async function sendChat(query, options = {}) {
   if (!options.skipAppend) appendUserBubble(query);
   appendPending();
   try {
-    const { task_id } = await postJson(`/api/chats/${cid}/ask`, { query });
+    const { task_id } = await postJson(`/api/chats/${cid}/ask`, { query, web_search: chatState.webSearch });
     chatState.pendingTaskId = task_id;
-    const result = await waitTask(task_id, "/api/chats/ask/status");
+    const result = await waitAsk(task_id);
     if (chatState.pendingTaskId !== task_id) return; // Already stopped, ignore the late result
     replacePending(result.message, query);
     if (chatState.current?.conversation_id === cid) {
       const saved = await api(`/api/chats/${cid}/messages`);
       if (chatState.current?.conversation_id === cid && chatState.pendingTaskId === task_id) {
         chatState.current = saved.conversation;
-        $("#chat-title").textContent = saved.conversation.title;
-        $("#chat-meta").textContent = `共 ${saved.messages.length} 条消息`;
+        $("#chat-title").textContent = chatTitle(saved.conversation.title);
+        $("#chat-meta").textContent = L(`共 ${saved.messages.length} 条消息`, `${saved.messages.length} messages`);
         renderChatMessages(saved.messages);
       }
     }
@@ -1609,35 +1915,41 @@ function snapshotMessageHtml(message) {
   </div></div>`;
 }
 
+// Re-ask the question that produced this answer: replay the preceding user message (older answers
+// are archived as a history snapshot by the rewrite endpoint), so the agent searches again.
 async function regenerateChat(messageId) {
   if (chatState.pending || !chatState.current) return;
+  const bubbles = [...document.querySelectorAll("#chat-messages .chat-msg")];
+  const index = bubbles.findIndex((el) => el.querySelector(`[data-mid="${messageId}"]`));
+  const user = bubbles.slice(0, index).reverse().map((el) => el.querySelector(".chat-bubble-user[data-mid]")).find(Boolean);
+  if (!user) return;
+  const content = user.querySelector(".chat-msg-content").textContent;
   const cid = chatState.current.conversation_id;
-  chatState.pending = true;
-  try {
-    const { task_id } = await postJson(`/api/chats/${cid}/regenerate`, { message_id: messageId });
-    await waitTask(task_id, "/api/chats/ask/status");
-    const data = await api(`/api/chats/${cid}/messages`);
-    renderChatMessages(data.messages);
-  } catch (error) {
-    showError(error);
-  } finally {
-    chatState.pending = false;
-  }
+  await postJson(`/api/chats/${cid}/rewrite`, { message_id: user.dataset.mid, content });
+  const data = await api(`/api/chats/${cid}/messages`);
+  renderChatMessages(data.messages);
+  await sendChat(content, { skipAppend: true });
 }
-
-async function newChat() {
+async function newChat({ quiet = false } = {}) {
   if (chatState.pending) return;
+  if (!quiet) {
+    // Like other chat apps: show an empty chat; the conversation is saved when the first message is sent.
+    chatState.current = null;
+    $("#chat-header").classList.add("hidden");
+    renderChatMessages([]);
+    loadChats().catch(showError);
+    closeChatSidebar();
+    $("#chat-input").focus();
+    return;
+  }
   const conv = await postJson("/api/chats", {});
   chatState.current = conv;
   $("#chat-header").classList.remove("hidden");
-  $("#chat-title").textContent = conv.title;
-  $("#chat-meta").textContent = "新对话";
-  renderChatMessages([]);
+  $("#chat-title").textContent = chatTitle(conv.title);
+  $("#chat-meta").textContent = "";
   await window.Research?.showScope(conv.conversation_id);
   loadChats().catch(showError);
-  $("#chat-input").focus();
 }
-
 function bindRename() {
   const button = $("#chat-rename");
   button.addEventListener("click", () => {
@@ -1757,9 +2069,9 @@ function bindChatEvents() {
     const input = $("#chat-input");
     const text = input.value;
     if (!text.trim()) return;
-    if (!chatState.current) { showError(new Error("请先新建或选择一个对话")); return; }
     if (chatState.pending) return;
     input.value = "";  // Clear immediately so the user sees "sent", rather than waiting for the whole generation
+    resizeChatInput();
     sendChat(text);
   });
   $("#chat-input").addEventListener("keydown", (event) => {
@@ -1770,6 +2082,15 @@ function bindChatEvents() {
     }
   });
   $("#chat-stop").addEventListener("click", () => stopChat());
+  $("#chat-input").addEventListener("input", resizeChatInput);
+  $("#chat-web-toggle").addEventListener("click", () => {
+    if (!chatSettings.web_search_key_set) { openSettings(); return; }
+    chatState.webSearch = !chatState.webSearch;
+    try { localStorage.setItem(WEB_KEY, chatState.webSearch ? "1" : "0"); } catch (error) { /* ignore */ }
+    renderModelChip();
+  });
+  $("#chat-sidebar-toggle").addEventListener("click", () => document.body.classList.toggle("chat-sidebar-open"));
+  bindSettings();
   bindRename();
   $("#chat-snapshots-button").addEventListener("click", () => openSnapshots().catch(showError));
   $("#snapshots-close").addEventListener("click", () => $("#snapshots-overlay").classList.add("hidden"));
@@ -1809,6 +2130,14 @@ function bindChatEvents() {
         item.scrollIntoView({ behavior: "smooth", block: "center" });
         setTimeout(() => item.classList.remove("chat-evidence-flash"), 1800);
       }
+      return;
+    }
+    const suggest = event.target.closest("[data-suggest]");
+    if (suggest) { sendChat(suggest.dataset.suggest); return; }
+    const copy = event.target.closest(".chat-copy");
+    if (copy) {
+      const text = copy.closest(".chat-bubble-assistant")?.querySelector(".chat-md")?.innerText || "";
+      navigator.clipboard?.writeText(text).then(() => { copy.textContent = L("已复制", "Copied"); setTimeout(() => { copy.textContent = L("复制", "Copy"); }, 1500); });
       return;
     }
     const retry = event.target.closest(".chat-retry");
@@ -1942,19 +2271,19 @@ async function singleDelete(entityId, action) {
   await loadDownloadPlan();
 }
 
-const VIEW_TITLES = { rag: "科研助手", library: "论文库", insights: "数据洞察" };
-const VIEW_GROUPS = { research: ["research-view"], rag: ["rag-view"], library: ["library-view"], insights: ["insights-view"] };
-const INSIGHT_TABS = [["overview", "概览", "overview-view"], ["topics", "方向趋势", "topics-view"],
-  ["quality", "数据质量", "quality-view"], ["entities", "论文实体", "entities-view"], ["details", "分类/venue 详情", "details-view"]];
-const LIBRARY_TABS = [["catalog", "公共目录", "papers-view"], ["collections", "我的论文", "collections-view"]];
+const VIEW_TITLES = { ask: "问", map: "领域地图", papers: "论文", about: "关于数据", maintain: "维护工具" };
+const VIEW_GROUPS = { ask: ["rag-view"], map: ["map-view"], papers: ["library-view"], about: ["about-view"], maintain: ["maintain-view"] };
+const LIBRARY_TABS = [["catalog", "全部论文", "papers-view"], ["collections", "我的论文", "collections-view"]];
+const MAINTAIN_TABS = [["overview", "数据概况", "overview-view"], ["topics", "领域趋势表", "topics-view"], ["details", "详情", "details-view"],
+  ["quality", "数据质量", "quality-view"], ["entities", "论文合并", "entities-view"], ["research", "研究资料", "research-view"]];
 
 // English chrome used when I18N is set to "en" (default stays Chinese).
-const VIEW_TITLES_EN = { rag: "Research Assistant", library: "Paper Library", insights: "Data Insights" };
-const INSIGHT_TABS_EN = [["overview", "Overview", "overview-view"], ["topics", "Topics & trends", "topics-view"],
-  ["quality", "Data quality", "quality-view"], ["entities", "Paper entities", "entities-view"], ["details", "Topic / venue detail", "details-view"]];
-const LIBRARY_TABS_EN = [["catalog", "Catalog", "papers-view"], ["collections", "My papers", "collections-view"]];
-const _EN_LOOKUP = { "library-view": LIBRARY_TABS_EN, "insights-view": INSIGHT_TABS_EN };
-const _ZH_LOOKUP = { "library-view": LIBRARY_TABS, "insights-view": INSIGHT_TABS };
+const VIEW_TITLES_EN = { ask: "Ask", map: "Area map", papers: "Papers", about: "About the data", maintain: "Maintenance" };
+const LIBRARY_TABS_EN = [["catalog", "All papers", "papers-view"], ["collections", "My papers", "collections-view"]];
+const MAINTAIN_TABS_EN = [["overview", "Data overview", "overview-view"], ["topics", "Area trend table", "topics-view"], ["details", "Detail", "details-view"],
+  ["quality", "Data quality", "quality-view"], ["entities", "Paper merging", "entities-view"], ["research", "Research notes", "research-view"]];
+const _EN_LOOKUP = { "library-view": LIBRARY_TABS_EN, "maintain-view": MAINTAIN_TABS_EN };
+const _ZH_LOOKUP = { "library-view": LIBRARY_TABS, "maintain-view": MAINTAIN_TABS };
 
 function subTabLabel(group, key) {
   const zh = _ZH_LOOKUP[group].find((t) => t[0] === key) || [];
@@ -1964,17 +2293,19 @@ function subTabLabel(group, key) {
 }
 
 function viewTitle(view) {
-  if (view === "research") return "研究资料";
   const useEn = window.I18N && window.I18N.isEn();
-  const fallback = useEn ? "Research Assistant" : "科研助手";
-  return (useEn ? VIEW_TITLES_EN[view] : VIEW_TITLES[view]) || fallback;
+  return (useEn ? VIEW_TITLES_EN[view] : VIEW_TITLES[view]) || "";
 }
 
 // Called when the UI language changes: refresh JS-generated chrome (page title, sub-tab labels).
 function applyDynamicChrome() {
   if (!window.I18N) return;
-  const active = document.querySelector(".nav-item.active");
-  if (active && active.dataset.view) $("#page-title").textContent = viewTitle(active.dataset.view);
+  const view = document.body.dataset.view;
+  if (view && view !== "map") {
+    $("#page-title").textContent = viewTitle(view);
+    const subtitle = $("#page-subtitle");
+    if (subtitle) subtitle.textContent = pageSubtitle(view);
+  }
   $$(".sub-tab").forEach((button) => {
     button.textContent = subTabLabel(button.dataset.group, button.dataset.tab);
   });
@@ -1984,7 +2315,7 @@ function mountGroupedViews() {
   const main = document.querySelector("main");
   const groups = [
     { id: "library-view", tabs: LIBRARY_TABS, hasCollectionBar: true },
-    { id: "insights-view", tabs: INSIGHT_TABS, hasCollectionBar: false },
+    { id: "maintain-view", tabs: MAINTAIN_TABS, hasCollectionBar: false },
   ];
   groups.forEach((group) => {
     const shell = document.createElement("section");
@@ -2014,7 +2345,7 @@ function mountGroupedViews() {
       section.classList.replace("view", "subview");
       shell.appendChild(section);
     });
-    main.insertBefore(shell, document.getElementById("rag-view"));
+    main.insertBefore(shell, main.querySelector(".site-footer"));
   });
 }
 
@@ -2027,7 +2358,8 @@ function activateSubTab(group, tab) {
   shell.querySelectorAll(".subview").forEach((section) => section.classList.toggle("active", section.dataset.subtab === tab));
   updateSelectionBar();
   if (base === "library" && tab === "collections") { loadCollections().catch(showError); loadLocalLibrary().catch(showError); }
-  if (base === "insights") {
+  if (base === "maintain" && tab === "research") window.Research?.load().catch(showError);
+  if (base === "maintain") {
     if (tab === "overview" && !$("#summary-cards").children.length) loadOverview().catch(showError);
     if (tab === "topics" && !$("#topic-cards").children.length) loadTopics().catch(showError);
     if (tab === "quality" && !$("#quality-cards").children.length) loadQuality().catch(showError);
@@ -2040,33 +2372,92 @@ function bindSubTabs() {
   $$(".sub-tab").forEach((button) => button.addEventListener("click", () => activateSubTab(button.dataset.group, button.dataset.tab)));
 }
 
-function switchView(view) {
+const PAGE_SUBTITLES = {
+  papers: "按关键词、领域、会议和年份查找论文；勾选后可加入自己的集合。",
+  about: "数据从哪来、怎么整理、有哪些限制。",
+  maintain: "数据构建与核对用的页面，日常使用不需要。",
+};
+const PAGE_SUBTITLES_EN = {
+  papers: "Find papers by keyword, area, venue and year; tick them to add to a collection.",
+  about: "Where the data comes from, how it is organized, and its limits.",
+  maintain: "Pages for building and checking the data; not needed for everyday use.",
+};
+
+function pageSubtitle(view) {
+  const useEn = window.I18N && window.I18N.isEn();
+  return (useEn ? PAGE_SUBTITLES_EN : PAGE_SUBTITLES)[view] || "";
+}
+
+const VIEW_ALIASES = { home: "ask", explore: "map", analysis: "ask", library: "papers", rag: "ask", chat: "ask", research: "maintain" };
+
+function switchView(rawView) {
+  const view = VIEW_ALIASES[rawView] || rawView;
   $("#error-banner").classList.add("hidden");
   $$(".nav-item").forEach((item) => item.classList.toggle("active", item.dataset.view === view));
   $$(".view").forEach((item) => item.classList.toggle("active", (VIEW_GROUPS[view] || []).includes(item.id)));
-  $("#page-title").textContent = viewTitle(view);
-  if (view === "rag" && !$("#chat-list").children.length) loadChats().catch(showError);
-  if (view === "library") {
+  document.body.dataset.view = view;
+  if (view === "map") {
+    $("#page-title").textContent = viewTitle(view);
+  } else {
+    $("#map-crumbs").innerHTML = "";
+    $("#page-title").textContent = viewTitle(view);
+    const subtitle = $("#page-subtitle");
+    if (subtitle) subtitle.textContent = pageSubtitle(view);
+  }
+  if (view === "ask") initChatPage().catch(showError);
+  if (view === "papers") {
+    window.Atlas.fillAreaSelect($("#filters select[name=area]")).catch(() => {});
     loadPapers().catch(showError);
     loadCollections().catch(showError);
     activateSubTab("library-view", "catalog");
   }
-  if (view === "research") window.Research?.load().catch(showError);
-  if (view === "insights") activateSubTab("insights-view", "overview");
+  if (view === "maintain") activateSubTab("maintain-view", rawView === "research" ? "research" : "overview");
   updateSelectionBar();
+}
+
+// Hash routes: #/ask, #/map/<area>/<direction>, #/papers/<area>, #/about, #/maintain
+function navigate(view, parts = []) {
+  const hash = `#/${[view, ...parts].map(encodeURIComponent).join("/")}`;
+  if (location.hash === hash) applyRoute();
+  else location.hash = hash;
+}
+window.navigate = navigate;
+
+function applyRoute() {
+  const parts = location.hash.replace(/^#\/?/, "").split("/").filter(Boolean).map(decodeURIComponent);
+  const view = VIEW_GROUPS[parts[0]] ? parts[0] : "ask";
+  if (view === "papers" && parts[1]) {
+    const select = $("#filters select[name=area]");
+    window.Atlas.fillAreaSelect(select).then(() => {
+      $("#filters").reset();
+      select.value = parts[1];
+      state.page = 1;
+      switchView("papers");
+    }).catch(showError);
+    return;
+  }
+  switchView(view);
+  if (view === "map") window.Atlas.showMap(parts[1], parts[2]);
+  else window.scrollTo({ top: 0 });
 }
 
 function bindEvents() {
   mountGroupedViews();
   window.addEventListener("apex:langchange", applyDynamicChrome);
+  document.addEventListener("apex:langchange", () => {
+    renderModelChip();
+    applyTheme(document.documentElement.dataset.theme);
+    if (chatState.current) $("#chat-title").textContent = chatTitle(chatState.current.title);
+    if (document.body.dataset.view === "ask" && chatState.current && !chatState.pending) openChat(chatState.current.conversation_id).catch(showError);
+    else if (document.body.dataset.view === "ask" && !chatState.current) renderChatMessages([]);
+  });
   applyDynamicChrome(); // reflect a persisted language choice on first paint
   bindSubTabs();
   bindDetailCrossLinks();
   activateSubTab("library-view", "catalog");
-  activateSubTab("insights-view", "overview");
-  switchView("rag");
-  $$(".nav-item").forEach((item) => item.addEventListener("click", () => switchView(item.dataset.view)));
-  $$('[data-go="papers"]').forEach((item) => item.addEventListener("click", () => { switchView("library"); activateSubTab("library-view", "catalog"); }));
+  $$("[data-view]:not(body)").forEach((item) => item.addEventListener("click", () => navigate(item.dataset.view)));
+  window.addEventListener("hashchange", applyRoute);
+  applyRoute();
   $("#filters").addEventListener("submit", (event) => { event.preventDefault(); state.page = 1; loadPapers().catch(showError); });
   $("#local-library-refresh").addEventListener("click", () => loadLocalLibrary().catch(showError));
   $("#select-all-results").addEventListener("click", () => selectAllPaperResults().catch(showError));
@@ -2107,14 +2498,41 @@ function bindEvents() {
   $("#my-paper-search").oninput = renderMyPapers;
   $("#my-paper-status").onchange = renderMyPapers;
   bindChatEvents();
-  api("/api/rag/status").then(config => {
-    const node = document.querySelector("#chat-config-status");
-    if (node) node.textContent = config.error || "";
-  }).catch(() => {
-    const node = document.querySelector("#chat-config-status");
-    if (node) node.textContent = "配置状态读取失败";
-  });
 }
 
+initTheme();
 bindEvents();
 loadOverview().catch(showError);
+
+
+// ================= Theme =================
+
+const THEME_KEY = "apex-theme";
+
+function applyTheme(theme) {
+  const value = theme === "dark" ? "dark" : "light";
+  document.documentElement.dataset.theme = value;
+  try { localStorage.setItem(THEME_KEY, value); } catch (error) { /* storage may be unavailable */ }
+  const label = $("#theme-label");
+  const icon = $("#theme-icon");
+  if (label) label.textContent = value === "dark" ? L("浅色模式", "Light") : L("深色模式", "Dark");
+  if (icon) icon.textContent = value === "dark" ? "☀" : "◐";
+}
+
+function initTheme() {
+  let saved = "";
+  try { saved = localStorage.getItem(THEME_KEY) || ""; } catch (error) { saved = ""; }
+  const initial = saved || document.documentElement.dataset.theme ||
+    (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  applyTheme(initial);
+  const button = $("#theme-toggle");
+  if (button) button.addEventListener("click", () => {
+    applyTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
+  });
+  if (window.matchMedia) {
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change", (event) => {
+      try { if (localStorage.getItem(THEME_KEY)) return; } catch (error) { /* ignore */ }
+      applyTheme(event.matches ? "dark" : "light");
+    });
+  }
+}

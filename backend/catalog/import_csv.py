@@ -15,6 +15,7 @@ from urllib.parse import urlparse
 
 from .database import DEFAULT_DATABASE, ROOT, connect, initialize
 from .entities import build_entities
+from . import labels as label_import
 from backend.analytics.topics import build_topic_analysis
 from backend.analytics.evaluation import DEFAULT_REVIEWS, DEFAULT_SAMPLE, load_topic_evaluation
 from backend.catalog import search as search_mod
@@ -242,6 +243,7 @@ def build_database(target: Path = DEFAULT_DATABASE) -> dict[str, object]:
                 imported_at,
                 previous_database=target if target.exists() else None,
             )
+            label_stats = label_import.import_labels(connection, release_id, imported_at)
             topic_stats = build_topic_analysis(connection, release_id, imported_at)
             evaluation_stats = {}
             if DEFAULT_SAMPLE.exists() and DEFAULT_REVIEWS.exists():
@@ -284,6 +286,7 @@ def build_database(target: Path = DEFAULT_DATABASE) -> dict[str, object]:
             "blocking_errors": errors,
             "integrity": integrity,
             **entity_stats,
+            **label_stats,
             **topic_stats,
             **{f"evaluation_{key}": value for key, value in evaluation_stats.items()},
         }

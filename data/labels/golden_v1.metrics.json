@@ -1,0 +1,260 @@
+{
+ "n": 399,
+ "area": {
+  "correct": 387,
+  "accuracy": 0.9699,
+  "ci95": [
+   0.9482,
+   0.9827
+  ]
+ },
+ "direction": {
+  "strict_correct": 381,
+  "strict_accuracy": 0.9549,
+  "conditional_correct": 381,
+  "conditional_denominator": 387,
+  "conditional_accuracy": 0.9845,
+  "micro": {
+   "precision": 0.9549,
+   "recall": 0.9549,
+   "f1": 0.9549
+  },
+  "macro_support2": {
+   "precision": 0.9721,
+   "recall": 0.9485,
+   "f1": 0.9545
+  },
+  "macro_classes": 101
+ },
+ "prelabel": {
+  "area_correct": 361,
+  "area_accuracy": 0.9048,
+  "direction_strict_correct": 277,
+  "direction_strict_accuracy": 0.6942
+ },
+ "other_share": {
+  "gold": 0.0125,
+  "system": 0.0125
+ },
+ "missing_abstract": {
+  "n": 11,
+  "area_accuracy": 1.0
+ },
+ "supplemented_abstracts": {
+  "n": 16,
+  "area_accuracy": 1.0
+ },
+ "verdicts": {
+  "agree_system": 381,
+  "agree_prelabel": 18
+ },
+ "confusions": {
+  "area": [
+   {
+    "pair": {
+     "gold": "llm",
+     "pred": "nlp"
+    },
+    "count": 2,
+    "examples": [
+     "ape_1c517de09c8616e47728ae7f",
+     "ape_37b2299e32b9a5d43a9d95ba"
+    ]
+   },
+   {
+    "pair": {
+     "gold": "vision_3d_graphics",
+     "pred": "cv_lowlevel"
+    },
+    "count": 1,
+    "examples": [
+     "ape_cedb992bdb138529b936230c"
+    ]
+   },
+   {
+    "pair": {
+     "gold": "cv_understanding",
+     "pred": "ml_foundations"
+    },
+    "count": 1,
+    "examples": [
+     "ape_61358dd413a6c0ad3ecca910"
+    ]
+   },
+   {
+    "pair": {
+     "gold": "trustworthy_ai",
+     "pred": "knowledge_reasoning"
+    },
+    "count": 1,
+    "examples": [
+     "ape_735fed3ccc774dc4e404e193"
+    ]
+   },
+   {
+    "pair": {
+     "gold": "cv_lowlevel",
+     "pred": "ai4science"
+    },
+    "count": 1,
+    "examples": [
+     "ape_6c5673174559145a0ac3b3dc"
+    ]
+   },
+   {
+    "pair": {
+     "gold": "vision_3d_graphics",
+     "pred": "multimodal"
+    },
+    "count": 1,
+    "examples": [
+     "ape_47f06fec87d26faeb8167781"
+    ]
+   },
+   {
+    "pair": {
+     "gold": "ir_recsys",
+     "pred": "hci_visualization"
+    },
+    "count": 1,
+    "examples": [
+     "ape_06699175ded8b65cc15cc24a"
+    ]
+   },
+   {
+    "pair": {
+     "gold": "multimodal",
+     "pred": "ml_foundations"
+    },
+    "count": 1,
+    "examples": [
+     "ape_90dded964c7b4182b85b416d"
+    ]
+   },
+   {
+    "pair": {
+     "gold": "trustworthy_ai",
+     "pred": "nlp"
+    },
+    "count": 1,
+    "examples": [
+     "ape_902e08951bbb60af6e2823be"
+    ]
+   },
+   {
+    "pair": {
+     "gold": "knowledge_reasoning",
+     "pred": "nlp"
+    },
+    "count": 1,
+    "examples": [
+     "ape_e32307fd012f9c5c534a1043"
+    ]
+   }
+  ],
+  "direction": [
+   {
+    "pair": {
+     "gold": "knowledge_reasoning-d01",
+     "pred": "knowledge_reasoning-d07"
+    },
+    "count": 1,
+    "examples": [
+     "ape_457b88725075f2aad8727bd1"
+    ]
+   },
+   {
+    "pair": {
+     "gold": "vision_3d_graphics-d18",
+     "pred": "vision_3d_graphics-d17"
+    },
+    "count": 1,
+    "examples": [
+     "ape_8fb03192701bd631d808ca3d"
+    ]
+   },
+   {
+    "pair": {
+     "gold": "ml_foundations-d06",
+     "pred": "ml_foundations-d09"
+    },
+    "count": 1,
+    "examples": [
+     "ape_6e547318b8acd6c338d7c7cf"
+    ]
+   },
+   {
+    "pair": {
+     "gold": "visual_generation-d08",
+     "pred": "visual_generation-d10"
+    },
+    "count": 1,
+    "examples": [
+     "ape_3f31ada6b173b6a1281c0f8c"
+    ]
+   },
+   {
+    "pair": {
+     "gold": "rl_decision-d13",
+     "pred": "rl_decision-d10"
+    },
+    "count": 1,
+    "examples": [
+     "ape_ef242a08b00a4308acf594f8"
+    ]
+   },
+   {
+    "pair": {
+     "gold": "multimodal-d13",
+     "pred": "multimodal-d12"
+    },
+    "count": 1,
+    "examples": [
+     "ape_b0932b3c8b5d21e9b19b2ecb"
+    ]
+   },
+   {
+    "pair": {
+     "gold": "vision_3d_graphics-d06",
+     "pred": "cv_lowlevel-d09"
+    },
+    "count": 1,
+    "examples": [
+     "ape_cedb992bdb138529b936230c"
+    ]
+   },
+   {
+    "pair": {
+     "gold": "cv_understanding-d15",
+     "pred": "ml_foundations-d14"
+    },
+    "count": 1,
+    "examples": [
+     "ape_61358dd413a6c0ad3ecca910"
+    ]
+   },
+   {
+    "pair": {
+     "gold": "trustworthy_ai-d15",
+     "pred": "knowledge_reasoning-d04"
+    },
+    "count": 1,
+    "examples": [
+     "ape_735fed3ccc774dc4e404e193"
+    ]
+   },
+   {
+    "pair": {
+     "gold": "cv_lowlevel-d03",
+     "pred": "ai4science-d01-s03"
+    },
+    "count": 1,
+    "examples": [
+     "ape_6c5673174559145a0ac3b3dc"
+    ]
+   }
+  ]
+ },
+ "method": "gold = gold_v1.csv; system = imported areas-v1.5/directions-v1.1; prelabel = DeepSeek reference only",
+ "reviewer": "claude-proxy (author-delegated 2026-10-18)"
+}

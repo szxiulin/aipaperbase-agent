@@ -18,6 +18,7 @@ requests, otherwise cross-model/version 400s can occur; the final synthesis roun
 
 import json
 import time
+from datetime import date
 from dataclasses import dataclass, field
 from typing import Any, Callable
 
@@ -30,7 +31,7 @@ from backend.agent import session
 from backend.agent.tools import build_tools
 from backend.agent.tools.base import ToolRegistry
 
-TOOL_RESULT_LIMIT = 3000
+TOOL_RESULT_LIMIT = 16000  # characters of JSON per tool result handed to the model
 
 
 @dataclass
@@ -45,12 +46,47 @@ class AgentRun:
     model: str = ""
 
 
-def _trim(data: Any) -> Any:
-    """Tool result truncation: if it exceeds TOOL_RESULT_LIMIT, return only a preview to avoid context explosion."""
-    text = json.dumps(data, ensure_ascii=False)
-    if len(text) <= TOOL_RESULT_LIMIT:
+def _shorten(data: Any, max_chars: int) -> Any:
+    if isinstance(data, str):
+        return data if len(data) <= max_chars else data[:max_chars] + "…"
+    if isinstance(data, list):
+        return [_shorten(item, max_chars) for item in data]
+    if isinstance(data, dict):
+        return {key: _shorten(value, max_chars) for key, value in data.items()}
+    return data
+
+
+def _cap_lists(data: Any, keep: int) -> Any:
+    if isinstance(data, list):
+        return [_cap_lists(item, keep) for item in data[:keep]]
+    if isinstance(data, dict):
+        out: dict = {}
+        for key, value in data.items():
+            out[key] = _cap_lists(value, keep)
+            if isinstance(value, list) and len(value) > keep:
+                out[f"{key}_omitted"] = len(value) - keep
+        return out
+    return data
+
+
+def _trim(data: Any, limit: int = TOOL_RESULT_LIMIT) -> Any:
+    """Fit a tool result into the context budget without breaking its structure.
+
+    Slicing the serialized JSON (the old behaviour) left the model a few items and half a string.
+    Instead shorten long text fields first, then cap list lengths, and say how many items were omitted.
+    """
+    if len(json.dumps(data, ensure_ascii=False)) <= limit:
         return data
-    return {"truncated": True, "total_chars": len(text), "preview": text[: TOOL_RESULT_LIMIT // 2] + "…"}
+    for max_chars in (800, 400, 200):
+        shortened = _shorten(data, max_chars)
+        if len(json.dumps(shortened, ensure_ascii=False)) <= limit:
+            return shortened
+    for keep in (30, 20, 12, 8, 5, 3):
+        capped = _cap_lists(shortened, keep)
+        if len(json.dumps(capped, ensure_ascii=False)) <= limit:
+            return capped
+    text = json.dumps(capped, ensure_ascii=False)
+    return {"truncated": True, "total_chars": len(text), "preview": text[:limit] + "…"}
 
 
 def _evidence_key(item: dict) -> tuple:
@@ -85,21 +121,53 @@ def _record_evidence(ledger: list[dict], provenance: list[dict], data: Any) -> A
     return enriched
 
 
-def _final_synthesis(client, cfg: AgentConfig, messages: list[dict]) -> dict:
+def _final_synthesis(client, cfg: AgentConfig, messages: list[dict], on_delta=None) -> dict:
     """Tool-free final synthesis after rounds are exhausted: converge the collected evidence into an answer."""
-    data = llm_chat(
-        client,
+    kwargs = dict(
         base_url=cfg.base_url,
         api_key=cfg.api_key,
         model=cfg.model,
         messages=messages
-        + [{"role": "user", "content": "基于以上所有检索到的证据，用 [n] 引用给出最终中文回答；若证据不足，明确说明缺口。"}],
+        + [{"role": "user", "content": "基于以上所有检索到的证据，用 [n] 引用给出最终回答（用用户提问的语言）；若证据不足，明确说明缺口。"}],
         tools=[],
         thinking=cfg.thinking,
         reasoning_effort=cfg.reasoning_effort,
         max_tokens=cfg.max_tokens,
     )
-    return data
+    if on_delta is not None:
+        kwargs["on_delta"] = on_delta
+    return llm_chat(client, **kwargs)
+
+
+WEB_TOOL_NAMES = {"web_search", "web_fetch", "browser_search", "browser_fetch_page"}
+SCOPED_TOOL_NAMES = {"search_evidence", "get_evidence", "list_collections", "propose_collection_membership",
+                     "propose_collection_assignments", "propose_research_comparison"}
+
+
+def select_tools(ctx: dict | AgentContext, web_search: bool) -> list:
+    """Tools visible to the model for this run.
+
+    Web tools appear only when the user switched on web search for the message: DeepSeek Search/Fetch
+    when a key is available, otherwise the headless-browser fallback.
+    """
+    from backend.agent.tools import deepseek_web
+
+    tools = build_tools()
+    if ctx.get("allowed_entity_ids") is not None:
+        return [t for t in tools if t.name in SCOPED_TOOL_NAMES]
+    if not web_search:
+        return [t for t in tools if t.name not in WEB_TOOL_NAMES]
+    drop = {"browser_search", "browser_fetch_page"} if deepseek_web.available() else {"web_search", "web_fetch"}
+    return [t for t in tools if t.name not in drop]
+
+
+def _short_args(arguments: dict) -> str:
+    for key in ("query", "url", "entity_id", "arxiv_id", "type"):
+        if arguments.get(key):
+            return str(arguments[key])[:80]
+    filters = arguments.get("filters") or {}
+    parts = [str(v) for value in filters.values() for v in (value if isinstance(value, list) else [value])]
+    return " · ".join(parts)[:80]
 
 
 def _raw_tool_markup(content: object) -> bool:
@@ -116,6 +184,8 @@ def run_agent(
     ctx_builder: Callable[[], dict | AgentContext] | None = None,
     config: AgentConfig | Any | None = None,
     is_cancelled: Callable[[], bool] | None = None,
+    web_search: bool = False,
+    on_event: Callable[[dict], None] | None = None,
 ) -> AgentRun:
     """Run one agent Q&A round.
 
@@ -129,8 +199,10 @@ def run_agent(
     ctx: dict | AgentContext = build_default_context() if own_ctx else ctx_builder()
 
     try:
-        registry = ToolRegistry([t for t in build_tools() if ctx.get("allowed_entity_ids") is None or t.name in {"search_evidence", "get_evidence", "list_collections", "propose_collection_membership", "propose_collection_assignments", "propose_research_comparison"}])
-        instructions = cfg.instructions
+        registry = ToolRegistry(select_tools(ctx, web_search))
+        instructions = cfg.instructions + f"\n今天是 {date.today().isoformat()}。"
+        if not web_search:
+            instructions += "\n本轮没有开启联网搜索；如果确实需要网页信息，请在回答末尾提示用户打开“联网”开关。"
         if ctx.get("allowed_entity_ids") is not None:
             instructions += "\n当前研究只允许这些论文：" + json.dumps(ctx["allowed_entity_ids"], ensure_ascii=False) + "。不要扩大范围。没有足够证据时明确说明。"
         if ctx.get("research_progress"):
@@ -140,6 +212,22 @@ def run_agent(
         trace: list[dict] = []
         reasoning_all: list[str] = []
         client = httpx.Client()
+        live: dict = {"phase": "thinking", "reasoning": "", "answer": "", "steps": []}
+
+        def emit() -> None:
+            if on_event is not None:
+                on_event({**live, "steps": [dict(step) for step in live["steps"]]})
+
+        def on_delta(kind: str, text: str) -> None:
+            if kind == "reasoning":
+                live["reasoning"] += text
+                live["phase"] = "thinking"
+            else:
+                live["answer"] += text
+                live["phase"] = "answering"
+            emit()
+
+        stream = on_delta if on_event is not None else None
 
         for round_index in range(cfg.max_rounds):
             if is_cancelled is not None and is_cancelled():
@@ -152,8 +240,12 @@ def run_agent(
                     model=cfg.model,
                 )
             t0 = time.time()
-            data = llm_chat(
-                client,
+            live["answer"] = ""  # text before a tool call is a preamble, not the answer
+            if live["reasoning"]:
+                live["reasoning"] += "\n\n"
+            live["phase"] = "thinking"
+            emit()
+            llm_kwargs = dict(
                 base_url=cfg.base_url,
                 api_key=cfg.api_key,
                 model=cfg.model,
@@ -163,6 +255,9 @@ def run_agent(
                 reasoning_effort=cfg.reasoning_effort,
                 max_tokens=cfg.max_tokens,
             )
+            if stream is not None:
+                llm_kwargs["on_delta"] = stream
+            data = llm_chat(client, **llm_kwargs)
             elapsed_ms = int((time.time() - t0) * 1000)
             choice = (data.get("choices") or [{}])[0]
             msg = choice.get("message") or {}
@@ -207,8 +302,14 @@ def run_agent(
                 except json.JSONDecodeError:
                     arguments = {}
                 t1 = time.time()
+                step = {"tool": name, "args": _short_args(arguments), "status": "running", "summary": ""}
+                live["steps"].append(step)
+                live["phase"] = "tool"
+                emit()
                 result = registry.dispatch(name, arguments, ctx)
                 tool_ms = int((time.time() - t1) * 1000)
+                step.update(status="ok" if result.ok else "error", summary=result.summary)
+                emit()
                 tool_data = _record_evidence(ledger, result.provenance, result.data)
                 trace.append({
                     "tool": name,
@@ -231,7 +332,9 @@ def run_agent(
         # Rounds exhausted: tool-free final synthesis, ensuring the user always gets an answer
         final_reasoning: list[str] = []
         try:
-            data = _final_synthesis(client, cfg, messages)
+            live["answer"] = ""
+            emit()
+            data = _final_synthesis(client, cfg, messages, stream)
             choice = (data.get("choices") or [{}])[0]
             final_msg = choice.get("message") or {}
             if final_msg.get("reasoning_content"):

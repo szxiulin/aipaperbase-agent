@@ -1,0 +1,3 @@
+# Runtime dependency for chat (model calls, web search, arXiv/OpenAlex).
+# The paper library, area map and MCP server run on the Python standard library alone.
+httpx==0.28.1

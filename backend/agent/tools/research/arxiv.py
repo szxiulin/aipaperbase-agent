@@ -114,6 +114,33 @@ def _fetch_by_id(arxiv_id: str) -> list[dict[str, Any]]:
     return _parse_feed(payload)["entries"]
 
 
+_STOPWORDS = {"a", "an", "the", "of", "for", "and", "or", "on", "in", "with", "to", "via", "using", "based"}
+
+
+def build_search_query(query: str) -> str:
+    """Turn free text into an arXiv boolean query: every term must appear (AND).
+
+    Wrapping the whole string in quotes (the old behaviour) asks arXiv for the exact phrase, so
+    "training free super resolution" returned nothing. User-quoted phrases stay phrases; hyphenated
+    terms become two-word phrases because the arXiv tokenizer splits on hyphens.
+    """
+    parts: list[str] = []
+    for phrase, word in re.findall(r'"([^"]+)"|(\S+)', query):
+        if phrase:
+            cleaned = re.sub(r"[^\w\s-]", " ", phrase).replace("-", " ").split()
+            if cleaned:
+                parts.append('all:"' + " ".join(cleaned) + '"')
+            continue
+        word = re.sub(r"[^\w-]", "", word).strip("-")
+        if not word or word.lower() in _STOPWORDS:
+            continue
+        pieces = [p for p in word.split("-") if p]
+        parts.append(f'all:"{" ".join(pieces)}"' if len(pieces) > 1 else f"all:{pieces[0]}")
+    if not parts:
+        return f'all:"{query.strip()}"'
+    return " AND ".join(parts)
+
+
 def _arxiv_search(
     ctx: dict, query: str = "", category: str = "", year: int = 0,
     sort: str = "relevance", top_k: int = 5,
@@ -122,7 +149,7 @@ def _arxiv_search(
     query = (query or "").strip()
     if not query:
         return ToolResult(ok=False, data={"error": "query 必填（arXiv 不支持空检索）"})
-    search_query = f'all:"{query}"'
+    search_query = build_search_query(query)
     if category and re.fullmatch(r"[a-z\-]+(\.[A-Z]+)?", category):
         search_query += f' AND cat:{category}'
     if year > 0:

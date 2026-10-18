@@ -124,7 +124,7 @@ class SearchToolTests(_FreshCtxMixin):
         self.assertEqual(result.data["total"], 2)
         args = mocked.call_args[1] or {}
         params = mocked.call_args.args[0] if mocked.call_args.args else args
-        self.assertIn('all:"diffusion model"', params["search_query"])
+        self.assertIn("all:diffusion AND all:model", params["search_query"])
         self.assertIn("AND cat:cs.CV", params["search_query"])
         self.assertIn("submittedDate:[202401010000 TO 202412312359]", params["search_query"])
         self.assertEqual(params["sortBy"], "submittedDate")  # sort=date

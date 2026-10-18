@@ -2,125 +2,118 @@
 
 > English: [README.md](./README.md)
 
-> 在你搭建并研读的 AI 论文库之上，运行一个可核验的研究 Agent。
+一个在本机运行的 AI 论文研究助手，收录 **30 个顶会顶刊 2023–2026 年约 12 万篇论文**。可以直接提问、按领域地图浏览、搜索论文；每个回答都附上依据的论文。
 
-> **状态：个人项目，持续开发中。** 为个人使用而建，目录控制台已稳定；RAG/Agent 层已端到端可用、仍在演进。按你自己的节奏使用。
+> **状态：** 个人项目，持续开发中。
 
-![AIPaperbase Agent 数据洞察概览](screenshots/overview.png)
+![对话回答：检索过程与来源](screenshots/chat-answer-zh.png)
 
-## 这是什么、给谁用
+## 能做什么
 
-**如果你是经常读论文的 AI 方向研究者**，AIPaperbase Agent 让你在本地拥有一个关于你跟踪领域的**可信、可核验的索引**——而不是一堆 PDF 和零散清单。
+- **问。** 对话 Agent 会在本地论文库里检索、统计数量和趋势，查 arXiv 和 OpenAlex；打开“联网搜索”后还能搜网页。每一步检索实时可见，回答逐字生成并带编号引用，来源逐条列出。对话保存在本机，可重命名、归档、删除、恢复历史版本。
+- **看领域地图。** 21 个领域 → 383 个方向 → 论文。地图是按论文数排布的树状面积图；每个领域可以看 2023–2026 趋势、主要会议和最新论文。
+- **搜论文。** 按关键词、领域、会议、年份筛选，把论文存进自己的集合；可选下载 PDF、解析后做全文问答。
+- **接进你自己的 Agent。** 同样的检索和统计以 MCP 服务提供（11 个工具），可接入 Claude Code、Codex、Cursor 等。
 
-它把 **AI 顶会顶刊的元数据**变成真正能用的东西：
-
-- **一眼看到领域全貌。** 约 12.2 万条记录（20 会议 + 10 期刊，2023–2026）的按 venue、按方向地图：哪个方向热、在哪个会、逐年怎么变——每个数字都能下钻到可审计的论文清单。
-- **精确找到你要的。** 每篇论文挂在**两个永不打架的轴**上：**主题树**（研究*什么*，如"图像超分"、"RAG 与知识增强"）+ **方法标签**（怎么做，`diffusion`、`agentic`、`llm-based`…）。结果带**命中依据**（哪些词/benchmark 触发），不是黑箱打分。
-- **维护自己的库。** 建集合、下载 PDF（内容去重）、MinerU 解析成 Markdown——全部本地可复现。
-- **问有依据的问题。** 科研问答**只基于你放入的论文**作答，引用可点回原文 PDF/章节；Agent 工具还能代你查 arXiv / OpenAlex / 网页。
-- **把阅读变成研究资料。** 记录阅读进度、证据笔记、集合研究进展和可编辑比较表，刷新后继续使用。
-
-名字里的 *base* 是本地论文目录、集合与全文库；*agent* 是在明确论文范围内检索证据、提出整理草稿的研究助手。集合修改和模型建议都先展示草稿，由用户确认后写入。
-
-**一切本地优先**：数据与代码都在你的机器上。唯一外发的只有你主动开启的 API 调用（PDF 解析、向量化、LLM、可选的网页抓取）。
-
-## 它怎么工作（一张图）
-
-```text
-venue 年度 CSV（已入库，data/catalog）
-   → catalog.sqlite：校验 + 实体去重（arXiv/预印本 ↔ 正式发表）+ 完整性检查
-        → 分类：主题树（primary + ≤2 附加叶）+ 方法标签
-              → 控制台：主题地图、venue 墙、检索、下钻到论文
-然后，对你自己选的论文：
-   集合 → PDF 下载（内容去重）→ MinerU 转 Markdown
-        → 切块 → Embedding → Qdrant（向量库）
-              → 检索 → 重排 → LLM 带引用回答
-```
-
-两个词典刻意分开：**主题树**回答"研究什么"，**方法标签**回答"怎么做"——所以一篇"用 Agent 做的超分论文"算超分论文，而不是 Agent 论文。
-
-## 60 秒上手
-
-1. 在**论文库 → 公共目录**检索论文，勾选后加入集合。
-2. 在**我的论文**查看全文处理状态，记录待读、阅读中或已读。
-3. 选择几篇论文，开启固定范围对话或建立比较表。
-4. 核对助手给出的论文范围、理由和原文依据，再确认集合修改或保存研究资料。
-5. 在**研究资料**继续编辑笔记、比较表与集合研究进展。
+| 领域地图 | 设置 |
+|---|---|
+| ![领域地图](screenshots/area-map-zh.png) | ![模型与 API 设置](screenshots/settings-zh.png) |
 
 ## 快速开始
 
-前置：**Python 3.12+**，支持 macOS 和 Linux（Windows 建议使用 WSL）。只浏览目录和管理本地资料不需要 API key、Docker 或 Node.js。
+环境要求：**Python 3.12+**，macOS 或 Linux（Windows 请用 WSL）。
 
 ```bash
 git clone https://github.com/szxiulin/aipaperbase-agent.git
 cd aipaperbase-agent
-python3 -m venv .venv
 ./run.sh
 ```
 
-首次运行会自动从仓库自带的 CSV 构建公共目录，实测约 2–5 分钟，占用约 1 GB；以后启动会直接复用。打开 <http://127.0.0.1:8765> 即可浏览目录、创建集合和记录研究资料。
+首次运行会创建 `.venv`、安装一个小依赖（`httpx`），并用仓库里的 CSV 构建论文库，约 2–5 分钟、占用约 1 GB；之后启动只需几秒。然后打开 <http://127.0.0.1:8765>。
 
-### 让代码 Agent 一键安装
+领域地图和论文搜索无需任何 Key 即可使用。**要对话**，点右上角 **⚙ 设置**，粘贴 [DeepSeek API Key](https://platform.deepseek.com/api_keys)，点 **测试连接**，再点 **保存**。Key 只写入本机 `.env` 文件。
 
-把下面这段提示词直接交给 Codex、Claude Code、Cursor 等能够操作终端的代码 Agent：
+右上角可以切换中 / EN 和深浅色。
+
+### 让编程 Agent 帮你安装
+
+把下面这段交给 Claude Code、Codex、Cursor 等能操作终端的 Agent：
 
 ```text
-请帮我安装并启动 AIPaperbase Agent：https://github.com/szxiulin/aipaperbase-agent
+帮我安装并启动 AIPaperbase Agent：https://github.com/szxiulin/aipaperbase-agent
 
-要求：
-1. 在当前目录克隆仓库；如果目录已存在，先检查状态，不覆盖我的改动。
-2. 检查 Python 版本必须为 3.12 或更高，然后创建项目内的 .venv。
-3. 在可持续运行的终端会话中启动 ./run.sh。首次构建公共论文目录可能需要 2–5 分钟和约 1 GB 磁盘空间，请等待服务就绪。
-4. 访问 http://127.0.0.1:8765/api/summary 验证服务，再把可打开的页面地址和验证结果告诉我。
-5. 先不要创建或读取 .env，不安装可选 RAG 依赖，不启动 Qdrant，不调用任何模型、MinerU 或付费 API。
-6. 不要修改项目代码。如果失败，请保留现场并告诉我准确错误，不要删除已有文件或数据。
+1. 克隆到当前目录。如果目录已存在，先检查状态并保留我的改动。
+2. 确认有 Python 3.12+，在持续运行的终端里执行 ./run.sh。首次启动会构建论文库（2–5 分钟、约 1 GB），等服务打印出地址。
+3. 访问 http://127.0.0.1:8765/api/summary，告诉我页面地址和返回的 entity_count。
+4. 不要创建或读取 .env，不要填写任何 API Key，不要调用付费接口；Key 我会在设置里自己填。
+5. 不要修改项目代码。出错时保留现有文件，原样报告错误。
 ```
 
-这段提示词安装的是无需密钥的基础版。确认基础版正常后，再按下一节启用 PDF 解析、全文问答和 Agent 对话。
+## 模型与费用
 
-需要下载解析、全文问答和 Agent 时，再执行：
+- 对话支持任何 **OpenAI 兼容** 的模型。默认 DeepSeek `deepseek-flash`（V4.1 Flash，快、便宜）；`deepseek-v4-pro` 更强、更慢。在设置里选“其他 OpenAI 兼容服务”即可换服务商。
+- 简单问题只需几次工具调用；整理一个方向的文献可能调用 20 次以上、约 25 万 token。深度思考和思考强度在设置里调。
+- **联网搜索** 使用 [DeepSeek Search & Fetch API](https://api-docs.deepseek.com/guides/search/)，只有在某条消息打开开关时才会使用。2026-11-01（北京时间）前免费，之后每 1,000 次成功调用 0.75 美元。
+- `.env` 里的 `GENERATOR_TOKEN_BUDGET` 可以限制一个服务进程最多花多少 token。
+
+## 隐私
+
+- 论文库、统计和领域地图完全在本机运行。
+- 对话会把你的问题和检索到的论文信息发给你配置的模型服务；开启联网搜索时，搜索词还会发给 DeepSeek；arXiv、OpenAlex 检索会访问这两个公开 API。
+- API Key 只保存在 `.env`（已被 git 忽略）；页面只显示后 4 位，设置接口只接受本页面发出的请求。
+- 对话、集合、下载和笔记保存在 `data/user/` 等被忽略的目录里，不会被提交。
+
+## 数据
+
+- **覆盖：** 20 个会议、10 个期刊，2023–2026 年；122,571 条清单记录合并为 **121,742 篇论文**（预印本和正式发表只算一次）。251 条非论文记录（编委名单、目录、勘误等）不计入统计；8,316 篇没有摘要；2026 年还在收录中。
+- **领域：** 每篇论文属于 21 个领域之一，由大模型根据标题和摘要标注（`data/labels/areas-v1.5.csv`；约 82% 用 Codex/GPT，其余用 DeepSeek）。
+- **方向：** 在每个领域内对论文的研究任务做聚类，得到 383 个方向（`data/labels/directions-v1.1.csv`）。方向名由大模型起草，其中 25 个已人工确认。
+- **质量：** 分层抽样 399 篇，由 AI 代理以系统标签为参照复核：领域准确率 97.0%（95% 置信区间 94.8–98.3%）。这不是独立的人工评测，请当作估计值。
+- **来源：** 各会议/期刊公开论文列表，以及 Hugging Face ai-conferences、OpenAlex、ACL Anthology、OpenReview、Crossref 等公开元数据。不分发 PDF；再分发衍生数据前请查看各来源的使用条款。
+
+## 接进你的 Agent（MCP）
+
+MCP 服务只依赖 Python 标准库，读取同一个数据库：
+
+```json
+{
+  "mcpServers": {
+    "aipaperbase": {
+      "command": "/path/to/aipaperbase-agent/.venv/bin/python",
+      "args": ["-m", "backend.mcp_server"],
+      "env": { "PYTHONPATH": "/path/to/aipaperbase-agent" }
+    }
+  }
+}
+```
+
+工具：`search_papers`、`get_paper`、`sample_papers`、`count_papers`、`share`、`trend`、`compare`、`top_values`、`cooccurrence`、`recall_topic`、`list_taxonomy`。同样的能力也可以通过 HTTP `POST /api/cap/<name>` 调用。
+
+## 可选：对自己的 PDF 做全文问答
+
+要为集合下载 PDF、解析并做全文问答：
 
 ```bash
 .venv/bin/pip install -r requirements-rag.txt
-cp .env.example .env
-# 按需填写 .env；不要提交它
 docker run -d -p 6333:6333 qdrant/qdrant
-./run.sh
+# 然后在 .env 里填写 MINERU_TOKEN、EMBEDDING_*，以及可选的 RERANKER_*（见 .env.example）
 ```
 
-MinerU 只在解析 PDF 时需要；Embedding 用于向量入库与检索；生成模型用于对话；Reranker 可留空。完整配置见 [`.env.example`](./.env.example)。
+## 目录结构
 
-### 各功能需要什么
-
-| 你想… | 需要 |
+| 路径 | 内容 |
 |---|---|
-| 浏览 / 检索 / 洞察目录、集合与研究资料 | Python 3.12+，运行 `./run.sh` |
-| 下载并解析集合 PDF | 联网；解析需要 MinerU token |
-| **RAG 带引用问答** | Qdrant + `EMBEDDING_*`/`GENERATOR_*`（`RERANKER_*` 可选）+ 已下载解析的论文 |
-| 科研 Agent 对话（arXiv / OpenAlex / 网页） | 生成模型配置；全文工具另需 Embedding 与 Qdrant |
+| [`backend/`](./backend/README.md) | Python 后端：论文库导入与合并、能力层（网页 / HTTP / MCP 共用）、对话 Agent 与工具、集合、全文库、HTTP API |
+| [`frontend/`](./frontend/README.md) | 网页应用（原生 JS，无需构建） |
+| [`raglib/`](./raglib/) | 全文问答用的 RAG 核心库 |
+| [`data/catalog/`](./data/catalog/README.md) | 各会议/期刊论文列表（CSV），论文库的构建来源 |
+| `data/labels/` | 领域与方向标签、复核样本及指标 |
+| [`config/`](./config/README.md) | 领域与方向定义 |
+| [`scripts/`](./scripts/README.md) | 维护者工具：采集、标注、基准、验收 |
+| [`tests/`](./tests/README.md) | `unittest` 测试：`.venv/bin/python -m unittest discover -s tests -p 'test_*.py'` |
 
-进程级 `GENERATOR_TOKEN_BUDGET` 保护你的 API 花费。
+## 已知限制
 
-## 配置参考
-
-完整 key 列表见 [`.env.example`](./.env.example)。Embedding、Reranker 和生成模型使用 OpenAI 兼容接口，换供应商主要修改 `base_url` + `api_key` + `model`；MinerU 使用自己的 token。
-
-## 仓库结构
-
-| 路径 | 说明 |
-|---|---|
-| [`backend/`](./backend/README.md) | 模块化 Python 单体：目录导入/实体归并、分析、集合、文库、RAG 胶水层、控制台 HTTP API |
-| [`raglib/`](./raglib/) | 可复用、零业务依赖的 RAG 核心（切块→向量→检索→重排→生成） |
-| [`frontend/`](./frontend/README.md) | 本地控制台单页（原生 JS、无构建）——**中/EN 切换，默认中文** |
-| [`data/catalog/`](./data/catalog/README.md) | 年度 venue 元数据 CSV —— 可重建 catalog 的入库来源 |
-| [`config/`](./config/README.md) | `topics.json`（主题树）、`methods.json`（方法标签）、评估脚手架 |
-| [`scripts/`](./scripts/README.md) | 维护者工具：采集、摘要补全、校验器 |
-| [`tests/`](./tests/README.md) | `unittest` 测试集 |
-
-## 诚实说明
-
-- **目录范围**：20 个 AI 会议 + 10 个期刊，2023–2026（约 12.2 万条记录、去重后约 12.1 万实体）；2026 为滚动清单。元数据来自公开节目页/API——对外重分发衍生数据前请自行核对各来源条款。
-- **分类是本地、基于证据的基线**——不是官方学科分类，也不是逐篇人工审核。每条标签可复现、可下钻到命中依据。
-- **`topics.json` 主题词表当前为中文**；EN 模式经前端镜像词表显示英文（best-effort）。词表原生英文化是已知 TODO。
-- **本地优先**：生成的库、下载、解析全文与个人数据不入库；`data/catalog/` CSV 是例外、也是重建来源。
-- 真实模型、下载、MinerU 和生产 Qdrant 仍受各服务配置、额度与网络环境影响；发布前的自动化与浏览器验收使用隔离 fixture，不代表所有供应商组合都已验证。
+- 本地检索按标题和摘要里的英文关键词匹配，论文没用到的同义说法可能漏掉；Agent 会换几种说法检索来弥补。
+- 领域和方向标签来自大模型，有少量错分；约 30 条勘误仍计入统计。
+- 回答质量取决于你选的模型；重要结论请对照引用的论文核实。

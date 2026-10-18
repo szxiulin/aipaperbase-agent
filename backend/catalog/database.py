@@ -195,6 +195,85 @@ CREATE TABLE topic_evaluation_samples (
     UNIQUE (evaluation_version, topic_id, entity_id)
 );
 
+CREATE TABLE label_releases (
+    label_release_id TEXT PRIMARY KEY,
+    catalog_release_id TEXT NOT NULL REFERENCES data_releases(release_id),
+    areas_version TEXT NOT NULL,
+    directions_version TEXT NOT NULL,
+    areas_sha256 TEXT NOT NULL,
+    directions_sha256 TEXT NOT NULL,
+    golden_sha256 TEXT NOT NULL DEFAULT '',
+    entity_count INTEGER NOT NULL,
+    non_paper_count INTEGER NOT NULL,
+    metrics_json TEXT NOT NULL DEFAULT '{}',
+    created_at TEXT NOT NULL,
+    status TEXT NOT NULL CHECK (status IN ('building', 'ready', 'failed'))
+);
+
+CREATE TABLE area_definitions (
+    area_id TEXT PRIMARY KEY,
+    name_zh TEXT NOT NULL,
+    name_en TEXT NOT NULL,
+    scope TEXT NOT NULL,
+    sort_order INTEGER NOT NULL,
+    config_version TEXT NOT NULL
+);
+
+CREATE TABLE direction_definitions (
+    direction_id TEXT PRIMARY KEY,
+    area_id TEXT NOT NULL REFERENCES area_definitions(area_id),
+    parent_direction_id TEXT NOT NULL DEFAULT '',
+    name_zh TEXT NOT NULL,
+    name_en TEXT NOT NULL,
+    definition TEXT NOT NULL,
+    status TEXT NOT NULL,
+    sort_order INTEGER NOT NULL,
+    config_version TEXT NOT NULL
+);
+
+CREATE TABLE direction_aliases (
+    direction_id TEXT NOT NULL REFERENCES direction_definitions(direction_id),
+    alias TEXT NOT NULL,
+    PRIMARY KEY (direction_id, alias)
+);
+
+CREATE TABLE entity_area_assignments (
+    entity_id TEXT PRIMARY KEY REFERENCES paper_entities(entity_id),
+    area_id TEXT NOT NULL REFERENCES area_definitions(area_id),
+    area_secondary TEXT NOT NULL DEFAULT '',
+    confidence TEXT NOT NULL DEFAULT '',
+    model TEXT NOT NULL DEFAULT '',
+    prompt_version TEXT NOT NULL DEFAULT '',
+    labels_version TEXT NOT NULL,
+    is_non_paper INTEGER NOT NULL DEFAULT 0 CHECK (is_non_paper IN (0, 1)),
+    record_kind TEXT NOT NULL DEFAULT ''
+);
+
+CREATE TABLE entity_direction_assignments (
+    entity_id TEXT PRIMARY KEY REFERENCES paper_entities(entity_id),
+    direction_id TEXT NOT NULL REFERENCES direction_definitions(direction_id),
+    assigned_by TEXT NOT NULL,
+    cosine REAL,
+    margin REAL,
+    needs_review INTEGER NOT NULL DEFAULT 0 CHECK (needs_review IN (0, 1)),
+    directions_version TEXT NOT NULL
+);
+
+CREATE TABLE label_evaluation_samples (
+    label_release_id TEXT NOT NULL REFERENCES label_releases(label_release_id),
+    entity_id TEXT NOT NULL REFERENCES paper_entities(entity_id),
+    sample_order INTEGER NOT NULL,
+    system_area TEXT NOT NULL,
+    system_direction TEXT NOT NULL,
+    pred_area TEXT NOT NULL DEFAULT '',
+    pred_direction TEXT NOT NULL DEFAULT '',
+    gold_area TEXT NOT NULL,
+    gold_direction TEXT NOT NULL,
+    verdict TEXT NOT NULL,
+    notes TEXT NOT NULL DEFAULT '',
+    PRIMARY KEY (label_release_id, entity_id)
+);
+
 CREATE TABLE quality_issues (
     issue_id INTEGER PRIMARY KEY AUTOINCREMENT,
     release_id TEXT NOT NULL REFERENCES data_releases(release_id),
@@ -229,6 +308,11 @@ CREATE INDEX idx_tech_tags_entity ON entity_tech_tags(entity_id);
 CREATE INDEX idx_topic_eval_samples_topic ON topic_evaluation_samples(evaluation_version, topic_id, score_band);
 CREATE INDEX idx_topic_eval_samples_verdict ON topic_evaluation_samples(evaluation_version, verdict, error_type);
 CREATE INDEX idx_issues_type ON quality_issues(severity, issue_type);
+CREATE INDEX idx_area_assignments_area ON entity_area_assignments(area_id, is_non_paper);
+CREATE INDEX idx_direction_assignments_direction ON entity_direction_assignments(direction_id);
+CREATE INDEX idx_direction_definitions_area ON direction_definitions(area_id, sort_order);
+CREATE INDEX idx_direction_aliases_alias ON direction_aliases(alias);
+CREATE INDEX idx_label_eval_verdict ON label_evaluation_samples(label_release_id, verdict);
 """
 
 

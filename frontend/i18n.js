@@ -371,7 +371,8 @@
     ".chat-evidence-item", ".chat-evidence-list", ".chat-trace-list",
     ".abstract-details p", ".collection-name", ".chat-item-title",
     "button.collection-chip", "button.collection-open", ".paper-title",
-    "#research-editor", ".research-record strong", "#chat-research-scope", ".collection-nav", "#my-library-title", "#picker-existing", "#picker-papers", "#picker-feedback",
+    "#research-editor", ".research-record strong", "#chat-research-scope",
+    ".chat-thinking-text", ".step-args", ".chat-header-title", "#map-view", ".chat-empty", ".chat-process", ".settings-status", ".collection-nav", "#my-library-title", "#picker-existing", "#picker-papers", "#picker-feedback",
   ].join(", ");
 
   function isContent(el) {

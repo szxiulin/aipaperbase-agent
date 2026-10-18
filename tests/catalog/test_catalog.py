@@ -8,6 +8,7 @@ from pathlib import Path
 from backend.catalog import queries
 from backend.analytics import queries as analytics_queries
 from backend.analytics.topics import load_topics
+from backend.analytics.evaluation import DEFAULT_SAMPLE as TOPIC_EVALUATION_SAMPLE
 
 
 DATABASE = Path(__file__).resolve().parents[2] / "data" / "database" / "catalog.sqlite"
@@ -218,6 +219,7 @@ class CatalogDatabaseTest(unittest.TestCase):
         self.assertLess(by_leaf.get("multi_agent", 0), 300)
         self.assertLess(by_leaf.get("agent_mechanism", 0), 350)
 
+    @unittest.skipUnless(TOPIC_EVALUATION_SAMPLE.exists(), "legacy topic-evaluation sample is a local analysis file")
     def test_topic_evaluation_is_fixed_stratified_and_traceable(self) -> None:
         result = analytics_queries.topic_evaluation(self.connection)
         self.assertEqual(result["evaluation"]["evaluation_version"], "topic-audit-v2")
@@ -233,6 +235,7 @@ class CatalogDatabaseTest(unittest.TestCase):
                 {"high": 30, "middle": 30, "boundary": 40},
             )
 
+    @unittest.skipUnless(TOPIC_EVALUATION_SAMPLE.exists(), "legacy topic-evaluation sample is a local analysis file")
     def test_topic_evaluation_precision_is_reported_only_after_review(self) -> None:
         result = analytics_queries.topic_evaluation(self.connection)
         self.assertEqual(result["overall"]["reviewed_count"], 0)
@@ -256,6 +259,7 @@ class CatalogDatabaseTest(unittest.TestCase):
         ).fetchone()[0]
         self.assertEqual(invalid_entities, 0)
 
+    @unittest.skipUnless(TOPIC_EVALUATION_SAMPLE.exists(), "legacy topic-evaluation sample is a local analysis file")
     def test_topic_evaluation_reviews_can_be_drilled_down(self) -> None:
         result = analytics_queries.topic_evaluation_samples(
             self.connection, verdict="wrong_signal", page_size=100

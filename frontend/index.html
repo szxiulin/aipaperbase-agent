@@ -3,72 +3,84 @@
   <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2338c9a6'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Arial' font-size='36' font-weight='700' fill='%230b2922'%3EA%3C/text%3E%3C/svg%3E" />
-    <title>AIPaperbase Agent · 数据控制台</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>AIPaperbase Agent · AI 论文研究台</title>
     <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/theme.css?v=20261018-v08" />
+    <link rel="stylesheet" href="/palette.css?v=20261018-v11" />
+    <script>try{var t=localStorage.getItem('apex-theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=t;}catch(e){document.documentElement.dataset.theme='light';}</script>
     <link rel="stylesheet" href="/vendor/katex/katex.min.css" />
   </head>
   <body>
     <div class="shell">
-      <aside class="sidebar">
-        <div class="brand"><span class="brand-mark">A</span><div><strong>AIPaperbase Agent</strong><small data-i18n-en="Research catalog">Research catalog</small></div></div>
-        <nav>
-          <button class="nav-item active" data-view="rag" data-i18n-en="Research Assistant">科研助手</button>
-          <button class="nav-item" data-view="library" data-i18n-en="Paper Library">论文库</button>
-          <button class="nav-item" data-view="research">研究资料</button>
-          <button class="nav-item" data-view="insights" data-i18n-en="Data Insights">数据洞察</button>
+      <header class="site-nav">
+        <button class="brand-button" data-view="ask" aria-label="AIPaperbase Agent 首页">
+          <svg class="brand-logo" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="var(--logo-bg, #161412)"/><rect x="6" y="6" width="11" height="20" rx="1.5" fill="#c0341d"/><rect x="19" y="6" width="7" height="11" rx="1.5" fill="var(--logo-fg, #f4f1ea)"/><rect x="19" y="19" width="7" height="7" rx="1.5" fill="var(--logo-fg, #f4f1ea)" opacity=".55"/></svg>
+          <span class="brand-text"><strong>AIPaperbase Agent</strong><small data-i18n-en="AI paper atlas">AI 论文图谱</small></span>
+        </button>
+        <nav class="site-links" aria-label="主导航">
+          <button class="nav-item active" data-view="ask" data-i18n-en="Ask">问</button>
+          <button class="nav-item" data-view="map" data-i18n-en="Area map">领域地图</button>
+          <button class="nav-item" data-view="papers" data-i18n-en="Papers">论文</button>
         </nav>
-        <div class="sidebar-note">
-          <span class="status-dot"></span>
-          <div><strong data-i18n-en="Local-first mode">本地优先模式</strong><small data-i18n-en="Catalog read-only · collections saved locally">目录只读 · 集合本地保存</small></div>
+        <div class="site-actions">
+          <div id="lang-toggle" class="lang-toggle" role="group" aria-label="Language">
+            <button type="button" data-lang="zh" title="中文">中</button>
+            <button type="button" data-lang="en" title="English">EN</button>
+          </div>
+          <button id="theme-toggle" class="theme-toggle" type="button" aria-label="切换深色/浅色主题"><span id="theme-icon">◐</span><span id="theme-label">深色</span></button>
+          <button class="settings-button" type="button" data-open-settings aria-label="模型与 API 设置" title="模型与 API 设置" data-i18n-title-en="Model &amp; API settings"><span aria-hidden="true">⚙</span><span class="settings-label" data-i18n-en="Settings">设置</span></button>
         </div>
-      </aside>
+      </header>
 
       <main>
         <header class="topbar">
-          <div><p class="eyebrow">RESEARCH CONSOLE</p><h1 id="page-title">科研助手</h1></div>
+          <div><nav id="map-crumbs" class="crumbs" aria-label="位置"></nav><h1 id="page-title">领域地图</h1><p id="page-subtitle" class="page-subtitle"></p></div>
           <div class="release-chip"><span data-i18n-en="Data version">数据版本</span><strong id="release-id" data-i18n-en="Loading…">加载中…</strong></div>
         </header>
 
         <div id="error-banner" class="error-banner hidden"></div>
 
-        <section id="overview-view" class="view active">
+        <section id="map-view" class="view">
+          <div id="map-body"></div>
+        </section>
+
+        <section id="overview-view" class="view">
           <div id="summary-cards" class="stat-grid skeleton-grid"></div>
-          <p class="insights-lead muted" data-i18n-en="20 AI conferences + 10 journals, 2023–2026 (~122k records). This local console turns that metadata into one verifiable index: every paper is tagged on a research-direction tree and method tags, and every number below can be clicked down to an auditable paper list with its matching evidence.">这里以 20 个 AI 会议 + 10 个期刊（2023–2026，约 12.2 万条记录）的公开元数据，构建一个可核验的本地索引：每篇论文挂在"研究什么"的主题树与"怎么做"的方法标签上；下面每个数字都能点开下钻到具体论文与其命中依据。</p>
+          <p class="insights-lead muted" data-i18n-en="20 AI conferences + 10 journals, 2023–2026 (~122k records). This local console turns that metadata into one verifiable index: every paper is tagged on a research-direction tree and method tags, and every number below can be clicked down to an auditable paper list with its matching evidence.">12.2 万篇论文，来自 30 个顶会顶刊（2023–2026）。按 21 个领域、383 个方向整理，每个数字都能下钻到论文；分类质量用 399 篇复核样本衡量（代理复核，不是独立人工金标）。</p>
           <details class="insights-glossary">
-            <summary data-i18n-en="Glossary of the terms used on this page">名词速查（术语解释）</summary>
+            <summary data-i18n-en="Glossary of the terms used on this page">术语说明</summary>
             <dl>
-              <div><dt data-i18n-en="Weak-label baseline">弱标签基线</dt><dd data-i18n-en="Tags come from explicit signals in the title/abstract (rules), not human review — reproducible and drillable, but not an official taxonomy.">标签来自标题/摘要中的明确信号（规则判定），可复现、可下钻，但非官方学科分类、也未经逐篇人工审核。</dd></div>
-              <div><dt data-i18n-en="Primary vs. extra directions">主 / 附加方向</dt><dd data-i18n-en="Each paper maps to one primary direction plus up to 2 extra directions.">每篇论文归入一个主方向，另可带 ≤2 个附加方向。</dd></div>
-              <div><dt data-i18n-en="Method tags">方法标签</dt><dd data-i18n-en="Tags for “how” it is done (e.g. diffusion, agentic) — independent of the research-what axis.">标注"怎么做"（如 diffusion、agentic），与"研究什么"的主题轴相互独立。</dd></div>
+              <div><dt data-i18n-en="LLM labels + gold set">LLM 领域标签 + 金标</dt><dd data-i18n-en="Each paper gets one area and one direction from an LLM labeler; accuracy is measured on a 400-paper author-reviewed gold set, not on the prelabel.">每篇论文由大模型标注一个领域与一个方向；准确率来自 399 篇抽样的代理复核（AI 代理、以系统标签为参照），不是独立人工评测。</dd></div>
+              <div><dt data-i18n-en="Area vs. direction">领域 / 方向</dt><dd data-i18n-en="Area is the coarse 21-class layer; direction is the data-driven sub-topic inside it (383 in total).">领域是 21 类粗粒度层；方向是领域内由论文数据长出的细分主题（共 383 个）。</dd></div>
               <div><dt data-i18n-en="Paper record vs. unified entity">清单记录 vs 统一论文实体</dt><dd data-i18n-en="A record is one venue list entry; an entity is the deduplicated paper (arXiv/preprint + published merged), keeping every source record.">记录 = 某 venue 清单里的一条；实体 = 去重合并后的同一篇论文（预印本/正式发表等归并），原始记录全部保留。</dd></div>
-              <div><dt data-i18n-en="Multi-label rate">多标签率</dt><dd data-i18n-en="Share of classified papers carrying more than one direction.">已分类论文中带有多个方向的比例。</dd></div>
+              <div><dt data-i18n-en="Secondary area">次领域</dt><dd data-i18n-en="At most one secondary area for genuinely cross-area work; statistics count the primary area only.">真正跨领域的论文可带一个次领域；统计只按主领域计数。</dd></div>
               <div><dt data-i18n-en="Source tier">来源等级</dt><dd data-i18n-en="Where an abstract/field came from (official page &gt; publisher cross-checked &gt; third-party) — shown under provenance.">字段/摘要的来源可信层级（官方页 > 出版社核对 > 第三方），见"来源等级"。</dd></div>
-              <div><dt data-i18n-en="Confidence bands">置信档（高 / 中 / 边界）</dt><dd data-i18n-en="Review sampling bands used when auditing classification precision — precision is computed only on reviewed, non-uncertain samples.">抽审分类精度时使用的置信分层；精度只按已审且非 uncertain 的样本计算。</dd></div>
+              <div><dt data-i18n-en="Gold set">金标集</dt><dd data-i18n-en="400 papers stratified by area and reviewed by the author; the only basis for the accuracy numbers.">按领域分层抽 400 篇（剔除 1 条勘误后 399 篇），由 AI 代理复核；381 篇直接采纳系统标签。</dd></div>
             </dl>
           </details>
           <article class="panel">
-            <div class="panel-head"><div><p class="eyebrow">TIME</p><h2 data-i18n-en="Papers by year">年度论文记录</h2></div><span class="muted" data-i18n-en="Count of list records per year">每年清单记录数；2026 为滚动清单</span></div>
+            <div class="panel-head"><div><p class="eyebrow">时间</p><h2 data-i18n-en="Papers by year">每年论文量</h2></div><span class="muted" data-i18n-en="Count of list records per year">按 canonical 年份统计；2026 为滚动清单</span></div>
             <div id="year-chart" class="bar-chart"></div>
           </article>
           <article class="panel topic-tree-panel">
             <div class="panel-head">
-              <div><p class="eyebrow">TOPIC TREE · V2</p><h2 data-i18n-en="Research topics · 10-family tree">研究主题分类 · 10 族树形目录</h2></div>
+              <div><p class="eyebrow">领域树</p><h2 data-i18n-en="Research areas · 21 areas, 383 directions">研究领域与方向 · 21 个领域 + 其他</h2></div>
               <span id="topic-tree-meta" class="muted" data-i18n-en="Loading…">加载中…</span>
             </div>
-            <p class="muted panel-note" data-i18n-en="Directions are a weak-label baseline (primary view: each paper maps to one main direction, plus up to 2 extras); the tree expands to leaves — click a count to drill into its papers.">方向为弱标签基线（primary 口径，每篇论文归入唯一主方向，另可带 ≤2 附加方向）；树目录可展开到叶，点击计数可下钻查看构成论文。</p>
+            <p class="muted panel-note" data-i18n-en="Directions are a weak-label baseline (primary view: each paper maps to one main direction, plus up to 2 extras); the tree expands to leaves — click a count to drill into its papers.">领域为 21 类粗粒度层，方向为领域内数据驱动的细分主题；点击方向可下钻查看构成论文。251 条非论文记录（编委、目录、勘误）不计入统计。</p>
             <div id="topic-tree" class="topic-tree"></div>
           </article>
           <article class="panel venue-wall-panel">
             <div class="panel-head">
-              <div><p class="eyebrow">VENUE WALL</p><h2 data-i18n-en="Venues · collection size &amp; topic mix">会议 / 期刊 · 收录规模与主题构成</h2></div>
+              <div><p class="eyebrow">会议 / 期刊</p><h2 data-i18n-en="Venues · collection size &amp; topic mix">会议 / 期刊 · 收录规模与主题构成</h2></div>
               <span id="venue-wall-meta" class="muted" data-i18n-en="Loading…">加载中…</span>
             </div>
-            <p class="muted panel-note" data-i18n-en="Each color band is that venue’s share of deduplicated entities by primary direction; gray is unclassified (active directions outside the 10-family tree — see the data-trust report).">色块为该 venue 收录论文（去重实体）的主方向占比；灰色为未分类（不在 10 族树内但确有研究产出的方向，详见数据可信度报告）。</p>
+            <p class="muted panel-note" data-i18n-en="Each color band is that venue’s share of deduplicated entities by primary direction; gray is unclassified (active directions outside the 10-family tree — see the data-trust report).">色块为该 venue 收录论文（去重实体）的主领域构成；非论文记录已从分母排除。</p>
             <div id="venue-wall" class="venue-wall"></div>
           </article>
           <article class="panel status-panel">
-            <div class="panel-head"><div><p class="eyebrow">CURRENT RELEASE</p><h2 data-i18n-en="Current data status">当前数据状态</h2></div><span id="release-status" class="badge success" data-i18n-en="Checking…">检查中</span></div>
+            <div class="panel-head"><div><p class="eyebrow">当前版本</p><h2 data-i18n-en="Current data status">当前数据状态</h2></div><span id="release-status" class="badge success" data-i18n-en="Checking…">检查中</span></div>
             <div id="release-details" class="details-grid"></div>
           </article>
         </section>
@@ -77,20 +89,20 @@
           <div id="quality-cards" class="stat-grid compact"></div>
           <div class="grid-2">
             <article class="panel">
-              <div class="panel-head"><div><p class="eyebrow">COMPLETENESS</p><h2 data-i18n-en="Field completeness">字段完整率</h2></div></div>
+              <div class="panel-head"><div><p class="eyebrow">完整性</p><h2 data-i18n-en="Field completeness">字段完整率</h2></div></div>
               <div id="completeness-chart" class="bar-chart"></div>
             </article>
             <article class="panel">
-              <div class="panel-head"><div><p class="eyebrow">PROVENANCE</p><h2 data-i18n-en="Source tier">来源等级</h2></div></div>
+              <div class="panel-head"><div><p class="eyebrow">来源</p><h2 data-i18n-en="Source tier">来源等级</h2></div></div>
               <div id="source-tier-list" class="source-list"></div>
             </article>
           </div>
           <article class="panel">
-            <div class="panel-head"><div><p class="eyebrow">ISSUES</p><h2 data-i18n-en="Quality issues by type">质量问题分类</h2></div><span class="muted" data-i18n-en="info = explained relations, not blocking errors">info 为已解释关系，不是阻塞错误</span></div>
+            <div class="panel-head"><div><p class="eyebrow">问题</p><h2 data-i18n-en="Quality issues by type">质量问题分类</h2></div><span class="muted" data-i18n-en="info = explained relations, not blocking errors">info 为已解释关系，不是阻塞错误</span></div>
             <div id="issue-table" class="table-wrap"></div>
           </article>
           <article class="panel evaluation-panel">
-            <div class="panel-head"><div><p class="eyebrow">CALIBRATION</p><h2 data-i18n-en="Classification calibration">分类校准进度</h2></div><span class="muted" data-i18n-en="How trustworthy are the auto-labels? Audited on a fixed sample per topic.">自动标签有多可信？按每主题固定样本抽审。</span></div>
+            <div class="panel-head"><div><p class="eyebrow">校准</p><h2 data-i18n-en="Classification calibration">分类校准进度</h2></div><span class="muted" data-i18n-en="How trustworthy are the auto-labels? Audited on a fixed sample per topic.">自动标签有多可信？按每主题固定样本抽审。</span></div>
             <div id="evaluation-summary" class="evaluation-summary"></div>
             <div class="grid-2 evaluation-grid">
               <div><h3 data-i18n-en="Per-topic preliminary precision">分主题初步精度</h3><div id="evaluation-topic-table" class="table-wrap"></div></div>
@@ -103,8 +115,8 @@
 
         <section id="details-view" class="view">
           <article class="panel" id="detail-empty">
-            <div class="panel-head"><div><p class="eyebrow">DETAIL · V2</p><h2 data-i18n-en="Topic / venue detail">分类 / venue 详情</h2></div></div>
-            <p class="muted" data-i18n-en="Click “View papers →” in the home topic tree, or a venue card title. The detail page shows the topic/venue’s subtopics, method tags, yearly trend, top constituents and papers.">从首页主题树点"构成论文 →"，或点 venue 卡片名称进入。详情页展示该分类/venue 的研究子主题、怎么做、年变化、top 构成与论文列表。</p>
+            <div class="panel-head"><div><p class="eyebrow">详情</p><h2 data-i18n-en="Topic / venue detail">分类 / venue 详情</h2></div></div>
+            <p class="muted" data-i18n-en="Click “View papers →” in the home topic tree, or a venue card title. The detail page shows the topic/venue’s subtopics, method tags, yearly trend, top constituents and papers.">从首页领域树点"构成论文 →"或任意方向，或点 venue 卡片名称进入。详情页展示该领域/方向的下级方向、年变化、top venue 与论文列表。</p>
           </article>
           <article class="panel detail-panel hidden" id="detail-content">
             <div class="panel-head">
@@ -118,7 +130,7 @@
             <div class="detail-stats" id="detail-stats"></div>
             <div class="detail-grid">
               <div class="detail-card">
-                <h3><span data-i18n-en="Research subtopics">研究子主题</span> <span class="muted" id="detail-subtitle-hint" data-i18n-en="(leaf topics within the family)">（族内叶主题分布）</span></h3>
+                <h3><span data-i18n-en="Research subtopics">研究子主题</span> <span class="muted" id="detail-subtitle-hint" data-i18n-en="(leaf topics within the family)">（领域内方向分布）</span></h3>
                 <div id="detail-subtopics" class="subtopic-cloud"></div>
                 <p class="muted" id="detail-subtopics-empty" hidden data-i18n-en="No leaf topics for this node">该节点无叶主题</p>
               </div>
@@ -152,11 +164,11 @@
           <div id="entity-cards" class="stat-grid"></div>
           <div class="grid-2">
             <article class="panel">
-              <div class="panel-head"><div><p class="eyebrow">AUTO LINK</p><h2 data-i18n-en="Auto-merge evidence">自动归并依据</h2></div></div>
+              <div class="panel-head"><div><p class="eyebrow">自动关联</p><h2 data-i18n-en="Auto-merge evidence">自动归并依据</h2></div></div>
               <div id="entity-method-chart" class="bar-chart"></div>
             </article>
             <article class="panel entity-policy">
-              <div class="panel-head"><div><p class="eyebrow">SAFETY RULE</p><h2 data-i18n-en="Entity boundaries">实体识别边界</h2></div></div>
+              <div class="panel-head"><div><p class="eyebrow">安全规则</p><h2 data-i18n-en="Entity boundaries">实体识别边界</h2></div></div>
               <ol>
                 <li><strong data-i18n-en="Same DOI">DOI 相同</strong><span data-i18n-en="Auto-merged; all original venue records are kept.">自动归并，原始 venue 记录全部保留。</span></li>
                 <li><strong data-i18n-en="Same arXiv / OpenReview">arXiv / OpenReview 相同</strong><span data-i18n-en="Auto-merged only when title and authors match.">题名与作者一致才可自动归并。</span></li>
@@ -173,29 +185,29 @@
             </form>
           </article>
           <article class="panel">
-            <div class="panel-head"><div><p class="eyebrow">PAPER ENTITIES</p><h2 data-i18n-en="Entities and source records">实体与原始记录</h2></div><span id="entity-count" class="muted" data-i18n-en="Loading…">加载中…</span></div>
+            <div class="panel-head"><div><p class="eyebrow">论文实体</p><h2 data-i18n-en="Entities and source records">实体与原始记录</h2></div><span id="entity-count" class="muted" data-i18n-en="Loading…">加载中…</span></div>
             <div id="entities-table" class="table-wrap"></div>
             <div class="pagination"><button id="prev-entity-page" class="secondary-button" data-i18n-en="Previous">上一页</button><span id="entity-page-info">—</span><button id="next-entity-page" class="secondary-button" data-i18n-en="Next">下一页</button></div>
           </article>
           <article class="panel">
-            <div class="panel-head"><div><p class="eyebrow">REVIEW QUEUE</p><h2 data-i18n-en="Review queue">待人工复核关系</h2></div><span id="candidate-count" class="muted" data-i18n-en="Loading…">加载中…</span></div>
+            <div class="panel-head"><div><p class="eyebrow">复核队列</p><h2 data-i18n-en="Review queue">待人工复核关系</h2></div><span id="candidate-count" class="muted" data-i18n-en="Loading…">加载中…</span></div>
             <div id="candidate-table" class="table-wrap"></div>
           </article>
         </section>
 
         <section id="topics-view" class="view">
           <article class="panel analysis-boundary">
-            <div><p class="eyebrow">ANALYSIS BOUNDARY</p><h2 data-i18n-en="An auditable local weak-label baseline">当前是可审计的本地弱标签基线</h2></div>
-            <p data-i18n-en="Labels are derived from explicit signals in title and abstract — for discovery, filtering and trend observation; they are not an official taxonomy nor human-reviewed per paper. Every result can be drilled into to see the matching evidence.">标签根据标题与摘要中的明确信号生成，可用于发现、筛选和趋势观察，不等于官方学科分类或已经人工逐篇审核。每个结果都可下钻查看命中依据。</p>
+            <div><p class="eyebrow">口径说明</p><h2 data-i18n-en="An auditable local weak-label baseline">当前是经过代理复核的领域/方向分类</h2></div>
+            <p data-i18n-en="Labels are derived from explicit signals in title and abstract — for discovery, filtering and trend observation; they are not an official taxonomy nor human-reviewed per paper. Every result can be drilled into to see the matching evidence.">每篇论文由 LLM 标注一个领域与一个方向，并在 399 篇分层样本上做过代理复核（跨领域分歧逐篇改判）；不等于官方学科分类，也不是独立人工金标。每个结果都可下钻查看论文。</p>
           </article>
           <div id="topic-cards" class="topic-grid"></div>
           <article class="panel">
-            <div class="panel-head"><div><p class="eyebrow">TREND</p><h2 data-i18n-en="Topic size and share by year">按年份的主题规模与占比</h2></div><span class="muted" data-i18n-en="2026 is a rolling list — do not compare its absolute counts with full years">2026 为滚动清单，不与完整年份直接比较绝对量</span></div>
+            <div class="panel-head"><div><p class="eyebrow">趋势</p><h2 data-i18n-en="Topic size and share by year">按年份的领域规模与占比</h2></div><span class="muted" data-i18n-en="2026 is a rolling list — do not compare its absolute counts with full years">2026 为滚动清单，不与完整年份直接比较绝对量</span></div>
             <div id="topic-trend-table" class="table-wrap"></div>
           </article>
           <article class="panel filter-panel">
             <form id="topic-filters" class="topic-filters">
-              <label class="search-field"><span data-i18n-en="Search topic papers">检索主题论文</span><input name="search" placeholder="标题、作者或摘要" data-i18n-ph-en="Title, author or abstract" /></label>
+              <label class="search-field"><span data-i18n-en="Search topic papers">检索领域论文</span><input name="search" placeholder="标题、作者或摘要" data-i18n-ph-en="Title, author or abstract" /></label>
               <label><span data-i18n-en="Research direction">研究方向</span><select name="topic_id"></select></label>
               <label><span data-i18n-en="Year">年份</span><select name="year"><option value="" data-i18n-en="All">全部</option></select></label>
               <label><span>Venue</span><select name="venue"><option value="" data-i18n-en="All">全部</option></select></label>
@@ -205,7 +217,7 @@
             </form>
           </article>
           <article class="panel">
-            <div class="panel-head"><div><p class="eyebrow">DRILL DOWN</p><h2 id="topic-paper-title" data-i18n-en="Topic papers">主题论文</h2></div><div class="panel-meta"><span id="topic-paper-count" class="muted" data-i18n-en="Loading…">加载中…</span><span class="abstract-actions"><button type="button" class="text-button abstract-action hidden" data-action="expand" title="展开当前页全部摘要" data-i18n-en="Expand all abstracts" data-i18n-title-en="Expand all abstracts on this page">展开全部摘要</button><button type="button" class="text-button abstract-action hidden" data-action="collapse" title="收起当前页全部摘要" data-i18n-en="Collapse all abstracts" data-i18n-title-en="Collapse all abstracts on this page">收起全部摘要</button></span></div></div>
+            <div class="panel-head"><div><p class="eyebrow">下钻</p><h2 id="topic-paper-title" data-i18n-en="Area papers">领域论文</h2></div><div class="panel-meta"><span id="topic-paper-count" class="muted" data-i18n-en="Loading…">加载中…</span><span class="abstract-actions"><button type="button" class="text-button abstract-action hidden" data-action="expand" title="展开当前页全部摘要" data-i18n-en="Expand all abstracts" data-i18n-title-en="Expand all abstracts on this page">展开全部摘要</button><button type="button" class="text-button abstract-action hidden" data-action="collapse" title="收起当前页全部摘要" data-i18n-en="Collapse all abstracts" data-i18n-title-en="Collapse all abstracts on this page">收起全部摘要</button></span></div></div>
             <div id="topic-papers-table" class="table-wrap"></div>
             <div class="pagination"><button id="prev-topic-page" class="secondary-button" data-i18n-en="Previous">上一页</button><span id="topic-page-info">—</span><button id="next-topic-page" class="secondary-button" data-i18n-en="Next">下一页</button></div>
           </article>
@@ -214,19 +226,25 @@
         <section id="papers-view" class="view">
           <article class="panel filter-panel">
             <form id="filters" class="filters">
-              <label class="search-field"><span data-i18n-en="Search">检索</span><input name="search" placeholder="标题、作者、摘要、DOI 或 paper ID" data-i18n-ph-en="Title, author, abstract, DOI or paper ID" /></label>
-              <label><span>Venue</span><select name="venue"><option value="" data-i18n-en="All">全部</option></select></label>
-              <label><span>年份</span><select name="year"><option value="" data-i18n-en="All">全部</option></select></label>
-              <label><span data-i18n-en="Type">类型</span><select name="venue_type"><option value="" data-i18n-en="All">全部</option><option value="conference" data-i18n-en="Conference">会议</option><option value="journal" data-i18n-en="Journal">期刊</option></select></label>
-              <label><span data-i18n-en="Status">状态</span><select name="list_status"><option value="" data-i18n-en="All">全部</option><option value="final" data-i18n-en="Final">最终</option><option value="rolling" data-i18n-en="Rolling">滚动</option></select></label>
-              <label><span data-i18n-en="Abstract">摘要</span><select name="has_abstract"><option value="" data-i18n-en="All">全部</option><option value="yes" data-i18n-en="Has abstract">已有摘要</option><option value="no" data-i18n-en="No abstract">缺少摘要</option></select></label>
-              <button type="submit" class="primary-button">应用筛选</button>
-              <button type="button" id="select-all-results" class="secondary-button" data-i18n-en="Select all">全选结果</button>
-              <button type="button" id="reset-filters" class="secondary-button" data-i18n-en="Reset">重置</button>
+              <label class="search-field"><span data-i18n-en="Keywords">关键词</span><input name="search" placeholder="标题、作者、摘要、DOI" data-i18n-ph-en="Title, author, abstract, DOI" /></label>
+              <label><span data-i18n-en="Area">领域</span><select name="area"><option value="">全部领域</option></select></label>
+              <label><span data-i18n-en="Venue">会议 / 期刊</span><select name="venue"><option value="" data-i18n-en="All">全部</option></select></label>
+              <label><span data-i18n-en="Year">年份</span><select name="year"><option value="" data-i18n-en="All">全部</option></select></label>
+              <button type="submit" class="primary-button" data-i18n-en="Search">搜索</button>
+              <button type="button" id="reset-filters" class="secondary-button" data-i18n-en="Clear">清空</button>
+              <details class="more-filters">
+                <summary data-i18n-en="More filters">更多筛选</summary>
+                <div class="more-filters-body">
+                  <label><span data-i18n-en="Type">类型</span><select name="venue_type"><option value="" data-i18n-en="All">全部</option><option value="conference" data-i18n-en="Conference">会议</option><option value="journal" data-i18n-en="Journal">期刊</option></select></label>
+                  <label><span data-i18n-en="Status">收录状态</span><select name="list_status"><option value="" data-i18n-en="All">全部</option><option value="final" data-i18n-en="Final">已完结</option><option value="rolling" data-i18n-en="Rolling">收录中</option></select></label>
+                  <label><span data-i18n-en="Abstract">摘要</span><select name="has_abstract"><option value="" data-i18n-en="All">全部</option><option value="yes" data-i18n-en="Has abstract">有摘要</option><option value="no" data-i18n-en="No abstract">无摘要</option></select></label>
+                  <button type="button" id="select-all-results" class="secondary-button" data-i18n-en="Select all results">全选结果加入集合</button>
+                </div>
+              </details>
             </form>
           </article>
           <article class="panel">
-            <div class="panel-head"><div><p class="eyebrow">PAPER RECORDS</p><h2 id="paper-result-title" data-i18n-en="Paper catalog">论文目录</h2></div><div class="panel-meta"><span id="paper-count" class="muted" data-i18n-en="Loading…">加载中…</span><span class="abstract-actions"><button type="button" class="text-button abstract-action hidden" data-action="expand" title="展开当前页全部摘要" data-i18n-en="Expand all abstracts" data-i18n-title-en="Expand all abstracts on this page">展开全部摘要</button><button type="button" class="text-button abstract-action hidden" data-action="collapse" title="收起当前页全部摘要" data-i18n-en="Collapse all abstracts" data-i18n-title-en="Collapse all abstracts on this page">收起全部摘要</button></span></div></div>
+            <div class="panel-head"><div><h2 id="paper-result-title" data-i18n-en="Papers">论文</h2></div><div class="panel-meta"><span id="paper-count" class="muted" data-i18n-en="Loading…">加载中…</span><span class="abstract-actions"><button type="button" class="text-button abstract-action hidden" data-action="expand" title="展开当前页全部摘要" data-i18n-en="Expand all abstracts" data-i18n-title-en="Expand all abstracts on this page">展开全部摘要</button><button type="button" class="text-button abstract-action hidden" data-action="collapse" title="收起当前页全部摘要" data-i18n-en="Collapse all abstracts" data-i18n-title-en="Collapse all abstracts on this page">收起全部摘要</button></span></div></div>
             <div id="papers-table" class="table-wrap"></div>
             <div class="pagination"><button id="prev-page" class="secondary-button" data-i18n-en="Previous">上一页</button><span id="page-info">—</span><button id="next-page" class="secondary-button" data-i18n-en="Next">下一页</button></div>
           </article>
@@ -269,14 +287,14 @@
           <details class="panel advanced-library"><summary>集合设置、导出与高级处理</summary>
           <article class="panel">
             <div class="panel-head">
-              <div><p class="eyebrow">COLLECTION</p><h2 id="collection-detail-title" data-i18n-en="Collection detail">集合详情</h2></div>
+              <div><p class="eyebrow">集合</p><h2 id="collection-detail-title" data-i18n-en="Collection detail">集合详情</h2></div>
               <div id="collection-actions" class="collection-actions"></div>
             </div>
             <div id="collection-detail" class="table-wrap"><div class="empty" data-i18n-en="Select a collection above to see its members">从上方选择一个集合查看成员</div></div>
           </article>
           <article class="panel">
             <div class="panel-head">
-              <div><p class="eyebrow">PIPELINE</p><h2 data-i18n-en="Paper pipeline">论文处理</h2></div>
+              <div><p class="eyebrow">数据流程</p><h2 data-i18n-en="Paper pipeline">论文处理</h2></div>
               <button id="download-plan-button" class="secondary-button" data-i18n-en="Refresh status">刷新状态</button>
             </div>
             <div class="pipeline-toolbar">
@@ -300,10 +318,10 @@
           </details>
         </section>
 
-        <section id="rag-view" class="view">
+        <section id="rag-view" class="view active">
           <div class="chat-layout">
-            <aside class="chat-sidebar">
-              <button id="chat-new-button" class="primary-button chat-new-button" data-i18n-en="＋ New chat">＋ 新建对话</button>
+            <aside class="chat-sidebar" id="chat-sidebar" aria-label="对话列表" data-i18n-title-en="Conversations">
+              <button id="chat-new-button" class="chat-new" type="button"><span aria-hidden="true">＋</span> <span data-i18n-en="New chat">新对话</span></button>
               <div id="chat-batch-bar" class="chat-batch-bar hidden">
                 <span id="chat-batch-count" class="muted"></span>
                 <button id="chat-batch-archive" class="secondary-button chat-action" data-i18n-en="Archive">归档</button>
@@ -317,30 +335,74 @@
                   <div id="chat-archived-list" class="chat-list"></div>
                 </details>
               </div>
+              <button class="chat-settings-link" type="button" data-open-settings><span aria-hidden="true">⚙</span> <span data-i18n-en="Model &amp; API settings">模型与 API 设置</span></button>
             </aside>
             <div class="chat-main">
+              <button type="button" class="chat-sidebar-toggle" id="chat-sidebar-toggle" aria-label="显示对话列表" data-i18n-title-en="Show conversations">☰</button>
               <div id="chat-header" class="chat-header hidden">
                 <div class="chat-header-title">
                   <strong id="chat-title">新对话</strong>
                   <span id="chat-meta" class="muted"></span>
                 </div>
                 <span class="flex-sp"></span>
-                <button id="chat-snapshots-button" class="secondary-button chat-action" data-i18n-en="History">历史版本</button>
-                <button id="chat-rename" class="secondary-button chat-action" data-i18n-en="Rename">重命名</button>
-                <button id="chat-archive-toggle" class="secondary-button chat-action" data-i18n-en="Archive">归档</button>
-                <button id="chat-delete" class="secondary-button chat-action danger" data-i18n-en="Delete">删除</button>
+                <button id="chat-snapshots-button" class="chat-action" data-i18n-en="History">历史版本</button>
+                <button id="chat-rename" class="chat-action" data-i18n-en="Rename">重命名</button>
+                <button id="chat-archive-toggle" class="chat-action" data-i18n-en="Archive">归档</button>
+                <button id="chat-delete" class="chat-action danger" data-i18n-en="Delete">删除</button>
               </div>
-              <div id="chat-messages" class="chat-messages">
-                <div class="empty chat-empty" data-i18n-en="New or select a chat to start asking. Answers are grounded only in your local paper library; citations link back to the source.">新建或选择一个对话开始提问。回答只基于本地论文库，引用可点击回溯原文。</div>
-              </div>
-              <form id="chat-form" class="chat-form">
-                <p id="chat-config-status" class="muted"></p><textarea id="chat-input" rows="1" placeholder="提问…（Enter 发送，Shift+Enter 换行）" data-i18n-ph-en="Ask… (Enter to send, Shift+Enter for newline)"></textarea>
-                <button type="button" class="secondary-button hidden" id="chat-stop" data-i18n-en="Stop">停止</button>
-                <button type="submit" class="primary-button" id="chat-send" data-i18n-en="Send">发送</button>
+              <div id="chat-messages" class="chat-messages"></div>
+              <form id="chat-form" class="composer chat-composer">
+                <textarea id="chat-input" rows="1" placeholder="问任何关于 AI 论文的问题…" data-i18n-ph-en="Ask anything about AI papers…" aria-label="输入问题"></textarea>
+                <div class="composer-bar">
+                  <button type="button" id="chat-web-toggle" class="tool-toggle" aria-pressed="false" title="让模型可以联网搜索网页" data-i18n-title-en="Let the model search the web"><span aria-hidden="true">◎</span> <span data-i18n-en="Web search">联网搜索</span></button>
+                  <button type="button" id="chat-model-chip" class="model-chip" data-open-settings title="模型设置" data-i18n-title-en="Model settings"></button>
+                  <span id="chat-config-status" class="composer-hint"></span>
+                  <button type="button" class="stop-button hidden" id="chat-stop" aria-label="停止" data-i18n-title-en="Stop" title="停止">■</button>
+                  <button type="submit" class="send-button" id="chat-send" aria-label="发送" data-i18n-title-en="Send" title="发送">↑</button>
+                </div>
               </form>
             </div>
           </div>
         </section>
+        <section id="about-view" class="view">
+          <article class="panel about-panel">
+            <h2 class="block-title" data-i18n-en="What this is">这是什么</h2>
+            <p data-i18n-en="A local AI-paper index: about 120k papers from 30 top conferences and journals (2023–2026), organized into 21 areas and 383 directions. Ask questions, browse the area map, or search.">一个在本机运行的 AI 论文索引：收录 30 个顶会顶刊 2023–2026 年的约 12 万篇论文，按 21 个领域、383 个方向整理，可以提问、浏览和搜索。</p>
+          </article>
+          <article class="panel about-panel">
+            <h2 class="block-title" data-i18n-en="How the data is organized">数据怎么整理</h2>
+            <ol class="about-steps-plain">
+              <li data-i18n-en="Merge duplicates: a preprint and its published version become one paper, counted by the published venue and year.">合并重复：同一篇论文的预印本和正式发表合并为一条，按正式发表统计。</li>
+              <li data-i18n-en="Label areas: LLMs (about 82% Codex/GPT, the rest DeepSeek) pick one area per paper from its title and abstract.">标注领域：由大模型（约 82% 用 Codex/GPT，其余用 DeepSeek）根据标题和摘要给每篇论文选一个领域。</li>
+              <li data-i18n-en="Find directions: research tasks are embedded and clustered within each area; names were drafted by an LLM, 25 are confirmed by hand and the rest await review.">划分方向：把论文的研究任务做向量聚类，得到领域内的方向；方向名称由大模型起草，目前 25 个已人工确认，其余待复核。</li>
+              <li data-i18n-en="Sample review: 399 stratified papers were reviewed by an AI agent; area accuracy is about 97.0% (95% CI 94.8–98.3%). The review used the system labels as reference and is not an independent human evaluation.">抽样复核：分层抽 399 篇，由 AI 代理复核，领域准确率约 97.0%（95% 置信区间 94.8–98.3%）。复核以系统标签为参照，不是独立的人工评测。</li>
+            </ol>
+          </article>
+          <div class="grid-2 about-columns">
+            <article class="panel"><h2 class="block-title" data-i18n-en="Privacy">隐私</h2>
+              <ul class="about-limits">
+                <li data-i18n-en="The paper library, statistics and the area map run entirely on this machine.">论文库、统计和领域地图完全在本机运行。</li>
+                <li data-i18n-en="Chat sends your question and the retrieved paper metadata to the model service you configure; with web search on, search queries also go to DeepSeek Search.">对话会把你的问题和检索到的论文信息发给你配置的模型服务；开启联网搜索时，搜索词还会发给 DeepSeek 搜索。</li>
+                <li data-i18n-en="API keys are stored only in the local .env file.">API Key 只保存在本机 .env 文件里。</li>
+              </ul>
+            </article>
+            <article class="panel"><h2 class="block-title" data-i18n-en="Known limits">已知限制</h2>
+              <ul class="about-limits">
+                <li data-i18n-en="8,316 papers have no abstract and are classified from the title only.">8,316 篇论文没有摘要，只能按标题分类。</li>
+                <li data-i18n-en="About 30 correction notices are still counted and await cleanup.">约 30 条勘误（Correction）仍计入统计，待清理。</li>
+                <li data-i18n-en="Library search matches keywords, so a synonym the paper doesn't use can be missed.">本地检索按关键词匹配，论文没用到的同义说法可能漏掉。</li>
+                <li data-i18n-en="2026 is still being collected and is not compared with full years.">2026 年还在收录中，不和完整年份直接比较。</li>
+              </ul>
+            </article>
+          </div>
+          <article class="panel about-panel">
+            <h2 class="block-title" data-i18n-en="Use it from your agent">用在你的 Agent 里</h2>
+            <p class="muted" data-i18n-en="The same search and statistics are available as an MCP server for Claude Code, Codex, Cursor and others.">同样的检索和统计能力以 MCP 服务提供，可接入 Claude Code、Codex、Cursor 等。</p>
+            <pre class="analysis-code">.venv/bin/python -m backend.mcp_server --database data/database/catalog.sqlite</pre>
+          </article>
+          <p class="about-foot muted" data-i18n-en="Sources: public paper lists of the venues plus open metadata from Hugging Face ai-conferences, OpenAlex, ACL Anthology, OpenReview and Crossref. For personal research; PDFs are not redistributed.">数据来源：会议/期刊公开论文列表，以及 Hugging Face ai-conferences、OpenAlex、ACL Anthology、OpenReview、Crossref 等公开元数据；仅用于个人研究，不分发 PDF。</p>
+        </section>
+        <footer class="site-footer"><span data-i18n-en="AIPaperbase Agent · runs locally">AIPaperbase Agent · 本机运行</span><span><a href="#/about" data-i18n-en="About the data">关于数据</a> · <a href="#/maintain" data-i18n-en="Maintenance">维护工具</a></span></footer>
       </main>
     </div>
 
@@ -365,6 +427,41 @@
           <button id="picker-confirm" class="primary-button" data-i18n-en="Confirm addition">确认加入</button>
         </div>
       </div>
+    </div>
+
+    <div id="settings-overlay" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="settings-title">
+      <form id="settings-form" class="overlay-card settings-card" autocomplete="off">
+        <div class="settings-head"><h2 id="settings-title" data-i18n-en="Model &amp; API settings">模型与 API 设置</h2><button type="button" class="text-button" id="settings-close" aria-label="关闭">✕</button></div>
+        <p class="muted settings-lead" data-i18n-en="Chat needs an OpenAI-compatible model. Keys are saved only in this machine's .env file and are sent only to the provider you choose.">对话需要一个 OpenAI 兼容的大模型。Key 只保存在本机 .env 文件里，只会发给你选择的模型服务。</p>
+        <label class="settings-field"><span data-i18n-en="Provider">服务商</span>
+          <select name="provider"><option value="deepseek">DeepSeek</option><option value="custom" data-i18n-en="Other OpenAI-compatible">其他 OpenAI 兼容服务</option></select></label>
+        <label class="settings-field settings-custom"><span>Base URL</span><input name="base_url" placeholder="https://api.example.com/v1" /></label>
+        <label class="settings-field"><span data-i18n-en="Model">模型</span>
+          <input name="model" list="settings-models" placeholder="deepseek-flash" />
+          <datalist id="settings-models"><option value="deepseek-flash"></option><option value="deepseek-v4-pro"></option></datalist>
+          <small class="muted" data-i18n-en="deepseek-flash = latest V4.1 Flash (fast, cheap); deepseek-v4-pro = stronger, slower.">deepseek-flash 是最新的 V4.1 Flash（快、便宜）；deepseek-v4-pro 更强、更慢。</small></label>
+        <label class="settings-field"><span>API Key</span>
+          <input name="api_key" type="password" autocomplete="new-password" spellcheck="false" />
+          <small class="muted" id="settings-key-hint"></small></label>
+        <div class="settings-row">
+          <label class="settings-field"><span data-i18n-en="Thinking">深度思考</span>
+            <select name="thinking"><option value="enabled" data-i18n-en="On">开启</option><option value="disabled" data-i18n-en="Off">关闭</option></select></label>
+          <label class="settings-field"><span data-i18n-en="Effort">思考强度</span>
+            <select name="reasoning_effort"><option value="low">low</option><option value="high">high</option><option value="max">max</option></select></label>
+        </div>
+        <label class="settings-check"><input type="checkbox" name="web_search" /> <span data-i18n-en="Turn on web search by default (DeepSeek Search API, free until Nov 1 2026, then $0.75 / 1k searches)">默认开启联网搜索（DeepSeek 搜索 API；2026-11-01 前免费，之后每千次 $0.75）</span></label>
+        <details class="settings-advanced"><summary data-i18n-en="Advanced">高级</summary>
+          <label class="settings-field"><span data-i18n-en="Separate web-search key (optional)">单独的联网搜索 Key（可选）</span>
+            <input name="web_search_api_key" type="password" autocomplete="new-password" spellcheck="false" />
+            <small class="muted" data-i18n-en="Leave empty to reuse the DeepSeek chat key.">留空则复用 DeepSeek 对话 Key。</small></label>
+          <label class="settings-field"><span data-i18n-en="Max output tokens">最大输出 token</span><input name="max_tokens" type="number" min="256" max="65536" step="256" /></label>
+        </details>
+        <p id="settings-status" class="settings-status" role="status"></p>
+        <div class="overlay-actions">
+          <button type="button" class="secondary-button" id="settings-test" data-i18n-en="Test connection">测试连接</button>
+          <button type="submit" class="primary-button" data-i18n-en="Save">保存</button>
+        </div>
+      </form>
     </div>
 
     <script src="/vendor/marked.min.js"></script>
@@ -392,12 +489,9 @@
     </div>
 
     <script src="/i18n.js"></script>
-    <script src="/app.js?v=20260905-sprint-025"></script>
-    <script src="/research.js?v=20260905-sprint-025"></script>
+    <script src="/atlas.js?v=20261018-v11"></script>
+    <script src="/app.js?v=20261018-v11"></script>
+    <script src="/research.js?v=20261018-v11"></script>
   
-    <div id="lang-toggle" class="lang-toggle" role="group" aria-label="Language">
-      <button type="button" data-lang="zh" title="中文">中</button>
-      <button type="button" data-lang="en" title="English">EN</button>
-    </div>
   </body>
 </html>

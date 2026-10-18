@@ -1,0 +1,467 @@
+{
+  "version": "analysis-benchmark-v1",
+  "description": "30 analysis questions with independently written SQL ground truth. Each item calls one capability and compares its output with SQL over the same entity-level basis (canonical record, non-paper excluded).",
+  "questions": [
+    {
+      "id": "q01",
+      "question": "全库有多少篇论文？",
+      "capability": "count_papers",
+      "arguments": {},
+      "check": "scalar",
+      "sql": "SELECT COUNT(*) FROM base"
+    },
+    {
+      "id": "q02",
+      "question": "CVPR 2025 有多少篇？",
+      "capability": "count_papers",
+      "arguments": {
+        "filters": {
+          "venues": [
+            "CVPR"
+          ],
+          "years": [
+            2025
+          ]
+        }
+      },
+      "check": "scalar",
+      "sql": "SELECT COUNT(*) FROM base WHERE venue='CVPR' AND year=2025"
+    },
+    {
+      "id": "q03",
+      "question": "NeurIPS 2024 有多少篇？",
+      "capability": "count_papers",
+      "arguments": {
+        "filters": {
+          "venues": [
+            "NeurIPS"
+          ],
+          "years": [
+            2024
+          ]
+        }
+      },
+      "check": "scalar",
+      "sql": "SELECT COUNT(*) FROM base WHERE venue='NeurIPS' AND year=2024"
+    },
+    {
+      "id": "q04",
+      "question": "机器学习方法与理论领域有多少篇？",
+      "capability": "count_papers",
+      "arguments": {
+        "filters": {
+          "area_ids": [
+            "ml_foundations"
+          ]
+        }
+      },
+      "check": "scalar",
+      "sql": "SELECT COUNT(*) FROM base WHERE area_id='ml_foundations'"
+    },
+    {
+      "id": "q05",
+      "question": "大语言模型领域有多少篇？",
+      "capability": "count_papers",
+      "arguments": {
+        "filters": {
+          "area_ids": [
+            "llm"
+          ]
+        }
+      },
+      "check": "scalar",
+      "sql": "SELECT COUNT(*) FROM base WHERE area_id='llm'"
+    },
+    {
+      "id": "q06",
+      "question": "视频超分方向有多少篇？",
+      "capability": "count_papers",
+      "arguments": {
+        "filters": {
+          "direction_ids": [
+            "cv_lowlevel-d15-video"
+          ]
+        }
+      },
+      "check": "scalar",
+      "sql": "SELECT COUNT(*) FROM base WHERE direction_id='cv_lowlevel-d15-video'"
+    },
+    {
+      "id": "q07",
+      "question": "智能体领域有多少篇？",
+      "capability": "count_papers",
+      "arguments": {
+        "filters": {
+          "area_ids": [
+            "agents"
+          ]
+        }
+      },
+      "check": "scalar",
+      "sql": "SELECT COUNT(*) FROM base WHERE area_id='agents'"
+    },
+    {
+      "id": "q08",
+      "question": "AI 安全、隐私与公平领域有多少篇？",
+      "capability": "count_papers",
+      "arguments": {
+        "filters": {
+          "area_ids": [
+            "trustworthy_ai"
+          ]
+        }
+      },
+      "check": "scalar",
+      "sql": "SELECT COUNT(*) FROM base WHERE area_id='trustworthy_ai'"
+    },
+    {
+      "id": "q09",
+      "question": "智能体领域逐年论文数",
+      "capability": "trend",
+      "arguments": {
+        "filters": {
+          "area_ids": [
+            "agents"
+          ]
+        }
+      },
+      "check": "rows",
+      "sql": "SELECT year AS key, COUNT(*) AS count FROM base WHERE area_id='agents' GROUP BY year ORDER BY year"
+    },
+    {
+      "id": "q10",
+      "question": "大语言模型领域逐年论文数",
+      "capability": "trend",
+      "arguments": {
+        "filters": {
+          "area_ids": [
+            "llm"
+          ]
+        }
+      },
+      "check": "rows",
+      "sql": "SELECT year AS key, COUNT(*) AS count FROM base WHERE area_id='llm' GROUP BY year ORDER BY year"
+    },
+    {
+      "id": "q11",
+      "question": "多模态领域逐年论文数",
+      "capability": "trend",
+      "arguments": {
+        "filters": {
+          "area_ids": [
+            "multimodal"
+          ]
+        }
+      },
+      "check": "rows",
+      "sql": "SELECT year AS key, COUNT(*) AS count FROM base WHERE area_id='multimodal' GROUP BY year ORDER BY year"
+    },
+    {
+      "id": "q12",
+      "question": "智能体与大语言模型总量对比",
+      "capability": "compare",
+      "arguments": {
+        "groups": [
+          {
+            "label": "agents",
+            "filters": {
+              "area_ids": [
+                "agents"
+              ]
+            }
+          },
+          {
+            "label": "llm",
+            "filters": {
+              "area_ids": [
+                "llm"
+              ]
+            }
+          }
+        ]
+      },
+      "check": "compare_totals",
+      "sql": "SELECT 'agents' AS label, COUNT(*) AS count FROM base WHERE area_id='agents' UNION ALL SELECT 'llm', COUNT(*) FROM base WHERE area_id='llm'"
+    },
+    {
+      "id": "q13",
+      "question": "2024 年智能体与大语言模型数量对比",
+      "capability": "compare",
+      "arguments": {
+        "groups": [
+          {
+            "label": "agents",
+            "filters": {
+              "area_ids": [
+                "agents"
+              ]
+            }
+          },
+          {
+            "label": "llm",
+            "filters": {
+              "area_ids": [
+                "llm"
+              ]
+            }
+          }
+        ]
+      },
+      "check": "compare_year",
+      "year": 2024,
+      "sql": "SELECT 'agents' AS label, COUNT(*) AS count FROM base WHERE area_id='agents' AND year=2024 UNION ALL SELECT 'llm', COUNT(*) FROM base WHERE area_id='llm' AND year=2024"
+    },
+    {
+      "id": "q14",
+      "question": "全库论文最多的 5 个 venue",
+      "capability": "top_values",
+      "arguments": {
+        "field": "venue",
+        "limit": 5
+      },
+      "check": "rows",
+      "sql": "SELECT venue AS key, COUNT(*) AS count FROM base GROUP BY venue ORDER BY count DESC, key LIMIT 5"
+    },
+    {
+      "id": "q15",
+      "question": "底层视觉领域论文最多的 5 个方向",
+      "capability": "top_values",
+      "arguments": {
+        "filters": {
+          "area_ids": [
+            "cv_lowlevel"
+          ]
+        },
+        "field": "direction",
+        "limit": 5
+      },
+      "check": "rows",
+      "sql": "SELECT direction_id AS key, COUNT(*) AS count FROM base WHERE area_id='cv_lowlevel' GROUP BY direction_id ORDER BY count DESC, key LIMIT 5"
+    },
+    {
+      "id": "q16",
+      "question": "2025 年论文最多的 5 个领域",
+      "capability": "top_values",
+      "arguments": {
+        "filters": {
+          "years": [
+            2025
+          ]
+        },
+        "field": "area",
+        "limit": 5
+      },
+      "check": "rows",
+      "sql": "SELECT area_id AS key, COUNT(*) AS count FROM base WHERE year=2025 GROUP BY area_id ORDER BY count DESC, key LIMIT 5"
+    },
+    {
+      "id": "q17",
+      "question": "AI 安全领域论文最多的 5 个方向",
+      "capability": "top_values",
+      "arguments": {
+        "filters": {
+          "area_ids": [
+            "trustworthy_ai"
+          ]
+        },
+        "field": "direction",
+        "limit": 5
+      },
+      "check": "rows",
+      "sql": "SELECT direction_id AS key, COUNT(*) AS count FROM base WHERE area_id='trustworthy_ai' GROUP BY direction_id ORDER BY count DESC, key LIMIT 5"
+    },
+    {
+      "id": "q18",
+      "question": "大语言模型领域论文最多的 5 个 venue",
+      "capability": "top_values",
+      "arguments": {
+        "filters": {
+          "area_ids": [
+            "llm"
+          ]
+        },
+        "field": "venue",
+        "limit": 5
+      },
+      "check": "rows",
+      "sql": "SELECT venue AS key, COUNT(*) AS count FROM base WHERE area_id='llm' GROUP BY venue ORDER BY count DESC, key LIMIT 5"
+    },
+    {
+      "id": "q19",
+      "question": "领域 × 方向共现最多的 5 对",
+      "capability": "cooccurrence",
+      "arguments": {
+        "field_a": "area",
+        "field_b": "direction",
+        "limit": 5
+      },
+      "check": "pairs",
+      "sql": "SELECT area_id AS a, direction_id AS b, COUNT(*) AS count FROM base GROUP BY area_id, direction_id ORDER BY count DESC, a, b LIMIT 5"
+    },
+    {
+      "id": "q20",
+      "question": "智能体领域逐年 × 领域共现",
+      "capability": "cooccurrence",
+      "arguments": {
+        "filters": {
+          "area_ids": [
+            "agents"
+          ]
+        },
+        "field_a": "year",
+        "field_b": "area",
+        "limit": 10
+      },
+      "check": "pairs",
+      "sql": "SELECT year AS a, area_id AS b, COUNT(*) AS count FROM base WHERE area_id='agents' GROUP BY year, area_id ORDER BY count DESC, a, b LIMIT 10"
+    },
+    {
+      "id": "q21",
+      "question": "方向 × venue 共现最多的 5 对",
+      "capability": "cooccurrence",
+      "arguments": {
+        "field_a": "direction",
+        "field_b": "venue",
+        "limit": 5
+      },
+      "check": "pairs",
+      "sql": "SELECT direction_id AS a, venue AS b, COUNT(*) AS count FROM base GROUP BY direction_id, venue ORDER BY count DESC, a, b LIMIT 5"
+    },
+    {
+      "id": "q22",
+      "question": "CVPR 与 ICCV 2025 合计多少篇？",
+      "capability": "count_papers",
+      "arguments": {
+        "filters": {
+          "venues": [
+            "CVPR",
+            "ICCV"
+          ],
+          "years": [
+            2025
+          ]
+        }
+      },
+      "check": "scalar",
+      "sql": "SELECT COUNT(*) FROM base WHERE venue IN ('CVPR','ICCV') AND year=2025"
+    },
+    {
+      "id": "q23",
+      "question": "2023–2024 年机器学习系统领域多少篇？",
+      "capability": "count_papers",
+      "arguments": {
+        "filters": {
+          "area_ids": [
+            "ml_systems"
+          ],
+          "years": [
+            2023,
+            2024
+          ]
+        }
+      },
+      "check": "scalar",
+      "sql": "SELECT COUNT(*) FROM base WHERE area_id='ml_systems' AND year IN (2023,2024)"
+    },
+    {
+      "id": "q24",
+      "question": "视频超分方向在 CVPR 有多少篇？",
+      "capability": "count_papers",
+      "arguments": {
+        "filters": {
+          "direction_ids": [
+            "cv_lowlevel-d15-video"
+          ],
+          "venues": [
+            "CVPR"
+          ]
+        }
+      },
+      "check": "scalar",
+      "sql": "SELECT COUNT(*) FROM base WHERE direction_id='cv_lowlevel-d15-video' AND venue='CVPR'"
+    },
+    {
+      "id": "q25",
+      "question": "2024 年标题/摘要中包含 video super-resolution 的论文",
+      "capability": "count_papers",
+      "arguments": {
+        "filters": {
+          "years": [
+            2024
+          ],
+          "query": "video super-resolution"
+        }
+      },
+      "check": "scalar",
+      "sql": "SELECT COUNT(*) FROM base WHERE year=2024 AND (title LIKE '%video super-resolution%' OR abstract LIKE '%video super-resolution%' OR authors LIKE '%video super-resolution%')",
+      "allowed_capabilities": [
+        "search_papers",
+        "count_papers"
+      ]
+    },
+    {
+      "id": "q26",
+      "question": "视频表示、分割与异常检测方向（cv_understanding-d10）最近 5 篇论文",
+      "capability": "sample_papers",
+      "arguments": {
+        "filters": {
+          "direction_ids": [
+            "cv_understanding-d10"
+          ]
+        },
+        "limit": 5
+      },
+      "check": "scalar",
+      "sql": "SELECT COUNT(*) FROM base WHERE direction_id='cv_understanding-d10'"
+    },
+    {
+      "id": "q27",
+      "question": "论文 ape_4046b2a7c63e04d86b0a4ed7 的标题",
+      "capability": "get_paper",
+      "arguments": {
+        "entity_id": "ape_4046b2a7c63e04d86b0a4ed7"
+      },
+      "check": "field",
+      "field": "title",
+      "sql": "SELECT title FROM base WHERE entity_id='ape_4046b2a7c63e04d86b0a4ed7'"
+    },
+    {
+      "id": "q28",
+      "question": "分类体系包含多少领域与方向？",
+      "capability": "list_taxonomy",
+      "arguments": {},
+      "check": "taxonomy",
+      "sql": "SELECT (SELECT COUNT(*) FROM area_definitions) AS areas, (SELECT COUNT(*) FROM direction_definitions) AS directions"
+    },
+    {
+      "id": "q29",
+      "question": "大语言模型论文在各 venue 的分布",
+      "capability": "top_values",
+      "arguments": {
+        "filters": {
+          "area_names": [
+            "大语言模型"
+          ]
+        },
+        "field": "venue",
+        "limit": 20
+      },
+      "check": "rows",
+      "sql": "SELECT venue AS key, COUNT(*) AS count FROM base WHERE area_id='llm' GROUP BY venue ORDER BY count DESC, key LIMIT 20"
+    },
+    {
+      "id": "q30",
+      "question": "2026 年有多少篇论文？",
+      "capability": "count_papers",
+      "arguments": {
+        "filters": {
+          "years": [
+            2026
+          ]
+        }
+      },
+      "check": "scalar",
+      "sql": "SELECT COUNT(*) FROM base WHERE year=2026"
+    }
+  ]
+}

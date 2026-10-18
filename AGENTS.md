@@ -1,43 +1,40 @@
 # AGENTS.md
 
-Operational guide for AI coding agents (and humans) working in this repository.
+Guide for AI coding agents (and humans) working in this repository.
 
 ## What this is
 
-A **local-first tool for AI researchers**: an index + library over top AI conference/journal metadata, plus optional RAG/agent Q&A that answers only from papers you download and parse. The web console is a no-build vanilla-JS SPA with a Chinese-default / English-switchable UI (toggle is bottom-left). The metadata console runs on the Python standard library alone; only the RAG/agent features need extra dependencies, Qdrant, and API keys.
-
-Status: **personal project, work in progress.** The catalog console is solid; the RAG/agent layer is end-to-end but still evolving.
+A local research assistant over ~120k papers from 30 top AI venues (2023–2026): a chat agent with
+tools, an area map (21 areas → 383 directions), paper search and collections, and an MCP server.
+Backend: Python standard library (`http.server` + `sqlite3`); chat additionally needs `httpx`.
+Frontend: vanilla JS single page, no build step.
 
 ## Run it
 
-Requirements: **Python 3.12+**; **Docker** and OpenAI-compatible API keys are needed only for RAG/agent features.
-
 ```bash
-# 1) key-free base version; run.sh builds the catalog on first start
-#    (~2–5 minutes and ~1 GB), then opens http://127.0.0.1:8765
-python3 -m venv .venv
-./run.sh
-
-# 2) tests
+./run.sh            # creates .venv, installs requirements.txt, builds the catalog on first start
+                    # (2–5 min, ~1 GB), then serves http://127.0.0.1:8765
 .venv/bin/python -m unittest discover -s tests -p 'test_*.py'
+.venv/bin/python -m backend.mcp_server          # MCP over stdio
 ```
 
-Optional, for RAG/agent features only:
+Chat needs an OpenAI-compatible model: set it in the web UI (⚙ Settings) or in `.env`
+(see `.env.example`). Never read, print or commit `.env`.
 
-```bash
-.venv/bin/pip install -r requirements-rag.txt
-cp .env.example .env
-docker run -d -p 6333:6333 qdrant/qdrant   # vector store
-# then fill EMBEDDING_* / RERANKER_* / GENERATOR_* (OpenAI-compatible) and,
-# if parsing downloaded PDFs, MINERU_TOKEN in .env
-```
+## Layout
+
+- `backend/catalog/` — CSV import, paper merging, FTS search (`paper_search.py` is the agent's search).
+- `backend/capabilities/` — the single business entry for statistics/search; HTTP `/api/cap/*`, MCP and the agent all call it.
+- `backend/agent/` — agent runner (tool loop, streaming, live progress), tools in `tools/`, model calls in `llm.py`.
+- `backend/chats/` — conversation storage and the ask flow; `backend/common/settings.py` — model/web-search settings.
+- `frontend/app.js` (routing, chat, papers), `frontend/atlas.js` (area map), `frontend/palette.css` (design layer).
 
 ## Gotchas
 
-- **Always invoke project commands via `.venv/bin/python`.** Some system Python installations refuse package installs, and the project environment should stay isolated.
-- `data/catalog/` CSVs are the **committed, rebuildable source** of the catalog. Generated DBs, PDF downloads, parsed text and user data live under ignored paths (`data/database`, `data/papers`, …) and are never committed. Deleting any generated DB is safe — rebuild with `import_csv`.
-- `requirements-catalog.txt` (pandas/pyarrow/…) is for **maintainers re-collecting venue metadata**; it is not needed to install or run.
-- Qdrant point IDs are UUIDs derived from chunk ids; the collection default is `papers`.
-- Embedding, reranking, and generation endpoints are OpenAI-compatible: switching those providers means changing `base_url` + `model` + `api_key` in `.env`. MinerU uses its own token.
-- The frontend `frontend/i18n.js` keeps the UI Chinese-first; English chrome is a mirrored vocabulary (best-effort). `topics.json` taxonomy names are currently Chinese.
-- Report back failures verbatim; it is normal for a fresh setup to have no downloaded papers or collections — those start empty by design.
+- Always use `.venv/bin/python`.
+- `data/catalog/` CSVs and `data/labels/` are the committed sources; `data/database/` (the SQLite catalog) is generated and safe to delete — rebuild with `.venv/bin/python -m backend.catalog.import_csv`.
+- User data (`data/user/`: chats, collections, notes), downloads and parsed text are git-ignored and must stay that way.
+- The paper text is English: agent search queries must be English keywords.
+- Statistics count each paper once (canonical venue/year) and exclude non-paper records; 2026 is a partial year.
+- `requirements-catalog.txt` is only for maintainers re-collecting venue metadata; `requirements-rag.txt` is only for full-text Q&A.
+- Report failures verbatim; a fresh install has no conversations, collections or downloads by design.

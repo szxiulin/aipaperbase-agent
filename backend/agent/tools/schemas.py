@@ -2,7 +2,7 @@ from __future__ import annotations
 
 """Tool contract surface: JSON Schemas for all tools (the only contract exposed to the LLM).
 
-venue/topic use enum whitelists: invalid values are rejected at the schema layer, which also guards against injection.
+venues use an enum whitelist: invalid values are rejected at the schema layer, which also guards against injection.
 Local tool (catalog/fulltext) schemas live here; exec/web parameters are inlined in their own modules.
 
 Note: the venue enum comes from catalog's 20 conferences + 10 journals (the authoritative list in data/catalog);
@@ -14,32 +14,34 @@ _VENUES = [
     "IJCAI", "KDD", "MLSys", "NAACL", "NeurIPS", "SIGGRAPH", "SIGGRAPH Asia", "SIGIR", "WWW", "3DV",
     "AIJ", "IJCV", "JMLR", "TMLR", "TOG", "TIP", "TKDE", "TOIS", "TPAMI", "TVCG",
 ]
-_TOPICS = [
-    "大模型", "训练与对齐", "推理与规划", "VLM 与多模态", "高效微调与推理", "Agent 系统", "RAG",
-    "工具使用与执行", "多 Agent 协作", "评测与 Harness", "图像生成与恢复", "图像生成与编辑",
-    "超分辨率", "图像恢复",
-]
 
 SEARCH_PAPERS = {
     "type": "object",
     "properties": {
-        "query": {"type": "string", "description": "关键词，匹配标题/作者/摘要/DOI；可留空仅用过滤器"},
+        "query": {"type": "string",
+                  "description": "英文关键词（论文库的标题/摘要都是英文）。用 3–6 个核心词，如 'agentic image restoration'；"
+                                 "缩写会自动扩展（SR、LLM、NeRF…）。可留空只用过滤器。"},
         "filters": {
             "type": "object",
             "properties": {
+                "area_names": {"type": "array", "items": {"type": "string"},
+                               "description": "领域名（中文/英文，部分匹配），如 ['底层视觉'] ['智能体']"},
+                "area_ids": {"type": "array", "items": {"type": "string"}, "description": "领域 id，如 cv_lowlevel、llm、agents"},
+                "direction_names": {"type": "array", "items": {"type": "string"},
+                                    "description": "方向名（部分匹配），如 ['视频超分'] ['多智能体']"},
+                "direction_ids": {"type": "array", "items": {"type": "string"}},
                 "venues": {"type": "array", "items": {"type": "string", "enum": _VENUES}, "description": "限定会议/期刊，可多选"},
                 "years": {"type": "array", "items": {"type": "integer", "minimum": 2023, "maximum": 2026}},
-                "topics": {"type": "array", "items": {"type": "string", "enum": _TOPICS}},
-                "venue_type": {"type": "string", "enum": ["conference", "journal"]},
             },
+            "additionalProperties": False,
         },
         "sort": {"type": "string", "enum": ["relevance", "year_desc"],
-                 "description": "relevance=按相关度（找类似论文用）；year_desc=按年份倒序（列清单用）"},
+                 "description": "relevance=按相关度（默认）；year_desc=按年份倒序"},
         "page": {"type": "integer", "minimum": 1, "description": "页码，默认 1"},
-        "page_size": {"type": "integer", "minimum": 0, "maximum": 50,
-                      "description": "返回条数；0=只要统计不要条目（问'有多少/分布'时用，最省 token）"},
-        "aggregate": {"type": "array", "items": {"type": "string", "enum": ["venue", "year", "topic"]},
-                      "description": "要统计分布时传，如 ['venue','year']"},
+        "page_size": {"type": "integer", "minimum": 0, "maximum": 25,
+                      "description": "返回条数，默认 10；0=只要总数与分布"},
+        "aggregate": {"type": "array", "items": {"type": "string", "enum": ["venue", "year", "area", "direction"]},
+                      "description": "需要分布时传，如 ['year','venue']"},
     },
     "required": [],
 }
@@ -47,7 +49,7 @@ SEARCH_PAPERS = {
 LIST_FACETS = {
     "type": "object",
     "properties": {
-        "type": {"type": "string", "enum": ["venues", "topics", "years", "collections"],
+        "type": {"type": "string", "enum": ["venues", "areas", "years", "collections"],
                  "description": "要枚举什么"},
     },
     "required": ["type"],

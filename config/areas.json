@@ -1,0 +1,185 @@
+{
+  "version": "areas-v1.5",
+  "description": "Level-1 research areas. One primary area per paper (plus at most one secondary). Assigned by LLM from title+abstract; see docs/模块设计/19.",
+  "decision_rules": [
+    "Classify by the research OBJECT (what problem the paper studies), not by the tool it uses. A super-resolution paper that uses an LLM agent is cv_lowlevel, not agents.",
+    "Domain-specific science or medicine (molecules, proteins, physics, climate, clinical data, medical images) goes to ai4science, even when the technique is detection/segmentation/LLM.",
+    "trustworthy_ai is narrow: use it only for security, privacy, fairness/social bias and harm-avoidance safety (see its scope). Any paper whose core contribution is differential privacy or another privacy guarantee is trustworthy_ai, whatever the learning problem. Interpretability, explainability, uncertainty, calibration, OOD robustness, evaluation reliability and statistical debiasing are NOT trustworthy_ai by themselves: classify them by the object studied (LLM interpretability -> llm, uncertainty in NeRF -> vision_3d_graphics, recommendation debiasing -> ir_recsys, general calibration theory -> ml_foundations). Alignment that improves capability or helpfulness stays in llm. Out-of-distribution detection, open-set recognition, uncertainty estimation and calibration are never trustworthy_ai, even when motivated by safety or reliability.",
+    "Learning-paradigm papers (domain adaptation, domain generalization, test-time adaptation, continual/incremental learning, few-shot learning, semi-supervised and noisy-label learning) go to ml_foundations by default. Put them in a modality area only when the task itself is a concrete task of that modality, e.g. few-shot object detection, cross-domain semantic segmentation, person re-identification -> cv_understanding; cross-lingual NER -> nlp. Do not guess the experimental modality when the abstract does not name such a task.",
+    "Model compression (quantization, pruning, distillation, acceleration) is classified by the compressed model: general networks -> ml_foundations; LLMs -> llm; image/video diffusion or other visual generative models -> visual_generation; only system/hardware-level work goes to ml_systems.",
+    "Perception on driving or robot data (detection, segmentation, scene completion, point clouds) stays in its vision area (cv_understanding or vision_3d_graphics); use embodied_robotics only when the paper addresses control, planning, navigation, manipulation or the end-to-end driving/robot system.",
+    "Human motion, dance, avatar and talking-head animation go to vision_3d_graphics; 2D image or video synthesis without a body/3D model goes to visual_generation.",
+    "Retrieval of images or videos (composed image retrieval, image-text or text-video retrieval, cross-modal hashing) goes to multimodal; text search, ranking and recommender systems go to ir_recsys.",
+    "Face anti-spoofing and presentation-attack detection go to trustworthy_ai.",
+    "Fake news, rumor, misinformation, hateful or harmful content detection (text or multimodal) goes to trustworthy_ai.",
+    "LLM alignment whose goal is avoiding harmful outputs (safety alignment, refusal, jailbreak robustness) goes to trustworthy_ai; alignment for helpfulness, preferences or capability stays in llm.",
+    "Machine unlearning, including LLM unlearning, goes to trustworthy_ai; catastrophic forgetting in continual learning is not unlearning.",
+    "Knowledge graphs: embedding, completion and graph reasoning models -> graph_learning; question answering where an LLM is the main system -> llm; logical query languages and description logics -> knowledge_reasoning.",
+    "Knowledge tracing, cognitive diagnosis and other education/learner modeling go to hci_visualization.",
+    "Emotion recognition in conversation or sentiment: text only -> nlp; with speech or visual signals -> multimodal.",
+    "Anomaly detection follows the input data: images/video -> cv_understanding (industrial inspection included); time series, tabular or logs -> data_mining; graphs -> graph_learning.",
+    "Position, survey and community papers are classified by the AI topic they discuss; papers outside AI (blockchain, networking, storage, databases without learning) stay in other.",
+    "Papers whose research object is a vision-language or multimodal large model (VLM, MLLM, LVLM: hallucination, instruction tuning, evaluation, visual token compression, alignment) go to multimodal; llm is only for text-only language models.",
+    "Scene graph generation follows its input: images or video -> cv_understanding; 3D scenes or point clouds -> vision_3d_graphics.",
+    "When a vision-language or multimodal large model (VLM, MLLM, LVLM) is the research object and the contribution is a learning paradigm (domain adaptation, domain generalization, test-time adaptation, continual or incremental learning, few-shot or semi-supervised learning), the paper goes to multimodal: the object studied is the multimodal model, so this takes precedence over the learning-paradigm rule. Papers that only use a VLM as a backbone, teacher or feature extractor for a concrete task of another area (e.g. few-shot object detection, unsupervised domain adaptation, segmentation, image quality assessment) follow that task's area. Domain-specific science and medicine stay in ai4science even when a VLM is the model being studied or adapted.",
+    "Anomaly detection with 3D input (point clouds, depth maps, voxel grids, 3D scenes or meshes) goes to vision_3d_graphics, including 3D industrial inspection; RGB image or video anomaly detection stays in cv_understanding; time-series, tabular or log anomaly detection goes to data_mining; graph anomaly detection goes to graph_learning.",
+    "Use other only when no area fits; never use it for uncertainty."
+  ],
+  "areas": [
+    {
+      "id": "ml_foundations",
+      "zh": "机器学习方法与理论",
+      "en": "ML methods & theory",
+      "scope": "Learning paradigms (self-/semi-supervised, transfer, continual, meta, federated, active learning), representation learning, generative-model theory, probabilistic and Bayesian ML, causal inference, kernels, generalization and statistical learning theory, neural network architectures studied in general, model compression algorithms (quantization, pruning, distillation) for general networks, interpretability, uncertainty and calibration of general models."
+    },
+    {
+      "id": "optimization",
+      "zh": "优化",
+      "en": "Optimization",
+      "scope": "Optimization algorithms and theory: convex/non-convex, stochastic gradient methods, bilevel, minimax, distributed optimization, combinatorial optimization (including learning-based solvers)."
+    },
+    {
+      "id": "rl_decision",
+      "zh": "强化学习、决策与博弈",
+      "en": "RL, decision making & games",
+      "scope": "Reinforcement learning, bandits, online learning, imitation learning, planning and control as learning problems, game theory, mechanism design, multi-agent RL, social choice."
+    },
+    {
+      "id": "graph_learning",
+      "zh": "图学习",
+      "en": "Graph learning",
+      "scope": "Graph neural networks, graph representation learning, knowledge-graph embedding and reasoning, hypergraphs, network science, graph generation."
+    },
+    {
+      "id": "llm",
+      "zh": "大语言模型",
+      "en": "Large language models",
+      "scope": "Text-only LLMs as the research object: pretraining, scaling, instruction tuning, alignment/RLHF/DPO, reasoning and chain-of-thought, long context, LLM compression and efficiency (algorithmic), in-context learning, LLM evaluation, retrieval-augmented generation for LLMs, hallucination."
+    },
+    {
+      "id": "agents",
+      "zh": "智能体与工具使用",
+      "en": "Agents & tool use",
+      "scope": "LLM-based agents as the research object: planning, memory, tool use, web/GUI/computer-use agents, multi-agent LLM collaboration and simulation, agent benchmarks, environments and frameworks."
+    },
+    {
+      "id": "nlp",
+      "zh": "自然语言处理",
+      "en": "Natural language processing",
+      "scope": "Language tasks and linguistics: translation, multilinguality, summarization, dialogue, question answering, information extraction, sentiment, text classification, code generation as a language task, computational linguistics and psycholinguistics, computational social science on text."
+    },
+    {
+      "id": "ir_recsys",
+      "zh": "信息检索、推荐与 Web",
+      "en": "IR, recommendation & web",
+      "scope": "Search and ranking, dense retrieval, recommender systems, user modeling, click models, query understanding, web mining, online advertising, e-commerce."
+    },
+    {
+      "id": "data_mining",
+      "zh": "数据挖掘与时序分析",
+      "en": "Data mining & time series",
+      "scope": "Time series and spatio-temporal forecasting, anomaly/outlier detection, clustering, tabular data, data management with ML, urban computing, traffic, streaming data."
+    },
+    {
+      "id": "cv_lowlevel",
+      "zh": "底层视觉与计算成像",
+      "en": "Low-level vision & computational imaging",
+      "scope": "Image/video restoration (denoise, deblur, derain, dehaze, artifact removal, all-in-one), super-resolution, enhancement (low-light, HDR, color), computational photography and imaging, inverse problems, event cameras, image/video compression, image quality assessment."
+    },
+    {
+      "id": "cv_understanding",
+      "zh": "视觉理解",
+      "en": "Visual understanding",
+      "scope": "Classification, detection, segmentation, recognition and retrieval, re-identification, faces, pose and action, tracking, video understanding, scene text, remote sensing perception, open-vocabulary perception."
+    },
+    {
+      "id": "visual_generation",
+      "zh": "视觉生成与编辑",
+      "en": "Visual generation & editing",
+      "scope": "Image and video generation (diffusion, GAN, autoregressive), text-to-image/video, image and video editing, inpainting for content creation, style transfer, controllable and personalized generation."
+    },
+    {
+      "id": "vision_3d_graphics",
+      "zh": "三维视觉与图形学",
+      "en": "3D vision & graphics",
+      "scope": "Depth, stereo, multi-view and SLAM, point clouds, NeRF and Gaussian splatting, novel view synthesis, 3D/4D generation, avatars and humans, meshes and geometry processing, rendering, animation, simulation, fabrication."
+    },
+    {
+      "id": "multimodal",
+      "zh": "多模态学习",
+      "en": "Multimodal learning",
+      "scope": "Vision-language models and multimodal LLMs, image-text grounding and captioning, visual question answering, document/OCR understanding with MLLMs, audio-visual and other cross-modal learning, multimodal retrieval."
+    },
+    {
+      "id": "speech_audio",
+      "zh": "语音与音频",
+      "en": "Speech & audio",
+      "scope": "Speech recognition and synthesis, speaker tasks, speech enhancement, spoken language understanding, music and audio generation and analysis."
+    },
+    {
+      "id": "embodied_robotics",
+      "zh": "具身智能、机器人与自动驾驶",
+      "en": "Embodied AI, robotics & driving",
+      "scope": "Robot learning and manipulation, navigation, embodied agents, vision-language-action models, world models for control, autonomous driving perception/planning/simulation, drones."
+    },
+    {
+      "id": "trustworthy_ai",
+      "zh": "AI 安全、隐私与公平",
+      "en": "Security, privacy & fairness",
+      "scope": "Only when the core contribution is about harm, threats or protection: adversarial attacks and defenses, backdoors, data poisoning, jailbreaks, red teaming and safety alignment against harmful outputs, deepfake/forgery/misinformation and AI-generated content detection, watermarking, privacy (differential privacy, membership inference, machine unlearning), fairness and social bias against groups of people (including debiasing LLMs for gender, race or culture), AI governance and policy."
+    },
+    {
+      "id": "ai4science",
+      "zh": "科学与医疗 AI",
+      "en": "AI for science & healthcare",
+      "scope": "Molecules, drugs, proteins, materials, chemistry, physics and PDEs, climate and earth science, biology and genomics, medical imaging, clinical and health data, epidemiology."
+    },
+    {
+      "id": "hci_visualization",
+      "zh": "人机交互与可视化",
+      "en": "HCI & visualization",
+      "scope": "Visualization and visual analytics, VR/AR/MR experiences, user studies, human-AI interaction, crowdsourcing, education and accessibility."
+    },
+    {
+      "id": "ml_systems",
+      "zh": "机器学习系统与高效计算",
+      "en": "ML systems & efficient computing",
+      "scope": "Training and serving systems, distributed and parallel training, compilers, hardware accelerators, scheduling, memory management, system-level efficiency (including LLM serving infrastructure)."
+    },
+    {
+      "id": "knowledge_reasoning",
+      "zh": "知识表示与符号推理",
+      "en": "Knowledge representation & symbolic reasoning",
+      "scope": "Logic, knowledge representation, constraint satisfaction, SAT, classical planning and search, argumentation, automated theorem proving, neuro-symbolic reasoning, formal verification."
+    },
+    {
+      "id": "other",
+      "zh": "其他",
+      "en": "Other",
+      "scope": "Only when no area above fits."
+    }
+  ],
+  "contribution_types": [
+    "method",
+    "benchmark_dataset",
+    "survey",
+    "theory",
+    "empirical_analysis",
+    "system_tool",
+    "position"
+  ],
+  "modalities": [
+    "text",
+    "image",
+    "video",
+    "3d",
+    "audio",
+    "graph",
+    "tabular",
+    "time_series",
+    "code",
+    "molecule",
+    "multimodal",
+    "none"
+  ]
+}

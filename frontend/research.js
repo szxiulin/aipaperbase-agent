@@ -25,7 +25,8 @@ window.Research = (() => {
     let bar=$('#chat-research-scope');
     if(!bar){bar=document.createElement('div');bar.id='chat-research-scope';$('#chat-header').after(bar);}
     const scope=records.find(r=>r.kind==='chat_scope'&&r.data.conversation_id===cid)?.data;
-    bar.textContent=scope ? '本对话固定研究 '+scope.entity_ids.length+' 篇：'+scope.entity_ids.join('、')+'。需要改变范围时请重新选择论文开启对话。' : '本对话未限定论文范围';
+    bar.textContent=scope ? '本对话只研究选定的 '+scope.entity_ids.length+' 篇论文。需要改变范围时请重新选择论文开启对话。' : '';
+    bar.hidden=!scope;
   }
   async function load() {
     await sync(); await loadCollections();

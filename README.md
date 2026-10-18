@@ -2,125 +2,119 @@
 
 > 中文版：[README.zh-CN.md](./README.zh-CN.md)
 
-> Your agent over the AI-paper base you build and read.
+A local research assistant over about **120,000 papers from 30 top AI conferences and journals (2023–2026)**. Ask questions in plain language, explore the field as an area map, and search papers. Every answer shows the papers it is based on.
 
-> **Status — personal project, work in progress.** Built for one user, actively developed. The catalog console is solid; the RAG/agent layer works end-to-end but is still evolving. Use at your own pace.
+> **Status:** personal project, actively developed.
 
-![AIPaperbase Agent data-insights overview](screenshots/overview.png)
+![Chat answer with search steps and sources](screenshots/chat-answer.png)
 
-## What this is, for whom
+## What you can do
 
-**If you are an AI researcher who reads a lot of papers**, AIPaperbase Agent gives you one local, verifiable index over the field you track — instead of a pile of PDFs and scattered lists.
+- **Ask.** A chat agent searches the local library, counts papers and trends, looks up arXiv and OpenAlex, and can search the web when you switch it on. You watch each step live, the answer streams in with numbered citations, and every source is listed. Conversations stay on your machine: rename, archive, delete, restore earlier versions.
+- **Explore the area map.** 21 areas → 383 directions → papers. The map is a treemap sized by paper count; each area shows its 2023–2026 trend, top venues and newest papers.
+- **Search papers.** Keyword, area, venue and year filters; save papers into your own collections. Optionally download PDFs, parse them and ask questions over the full text.
+- **Use it from your own agent.** The same search and statistics are exposed as an MCP server (11 tools) for Claude Code, Codex, Cursor and others.
 
-It turns **metadata of top AI conferences and journals** into something you can actually *use*:
-
-- **See the field at a glance.** Per-venue and per-topic maps of ~122k records (20 conferences + 10 journals, 2023–2026): which directions are hot, in which venues, year by year — with an auditable paper list under every number.
-- **Find exactly what you mean.** Every paper is tagged on two independent axes that never fight each other: a **topic tree** (*what* it studies — “Image super-resolution”, “RAG & knowledge grounding”…) and **method tags** (*how* — `diffusion`, `agentic`, `llm-based`…). Results carry an evidence chain (which words/benchmarks fired), not a black-box score.
-- **Keep your own library.** Save collections, download PDFs (with content dedup), parse them to Markdown (MinerU) — all versioned locally.
-- **Ask grounded questions.** Research Q&A answers *only from the papers you’ve put in*, with citations you can click back to the source PDF/section. Agent tools can also query arXiv / OpenAlex / the web on your behalf.
-- **Turn reading into research material.** Keep reading progress, evidence notes, collection progress and editable comparison tables across restarts.
-
-The *base* is the local catalog, collections and full-text library. The *agent* retrieves evidence and proposes organization drafts within an explicit paper scope. Collection changes and model suggestions are shown before the user confirms a write.
-
-Everything is **local-first**: data and code run on your machine. The only things that ever leave it are the API calls you opt into (PDF parsing, embedding, an LLM, optional web lookups).
-
-## How it works (in one picture)
-
-```text
-venue CSVs (committed, data/catalog)
-   → catalog.sqlite: validation + entity dedup (arXiv/preprint ↔ published) + integrity checks
-        → classification: topic tree (primary + ≤2 extras)  +  method tags
-              → console: topic maps, venue wall, search, drill-down to papers
-then, for the papers YOU choose:
-   collection → PDF download (content dedup) → MinerU Markdown
-        → chunks → embeddings → Qdrant (vector store)
-              → retrieve → rerank → LLM answer with citations
-```
-
-Two vocabularies, deliberately separate: the **topic tree** answers “research *what*”, **method tags** answer “done *how*” — so a super-resolution paper that merely *uses* an agent is counted as super-resolution, not as an agent paper.
-
-## 60-second tour
-
-1. Search **Paper Library → Public Catalog** and add selected papers to a collection.
-2. Use **My Papers** to inspect full-text readiness and record reading progress.
-3. Select papers to start a scope-bound chat or an editable comparison table.
-4. Review paper scope, reasons and source evidence before confirming organization changes.
-5. Continue notes, comparisons and collection progress under **Research Material**.
+| Area map | Settings |
+|---|---|
+| ![Area map](screenshots/area-map.png) | ![Model and API settings](screenshots/settings.png) |
 
 ## Quick start
 
-Requirement: **Python 3.12+** on macOS or Linux (use WSL on Windows). Catalog browsing and local research organization need no API key, Docker or Node.js.
+Requirements: **Python 3.12+** on macOS or Linux (on Windows use WSL).
 
 ```bash
 git clone https://github.com/szxiulin/aipaperbase-agent.git
 cd aipaperbase-agent
-python3 -m venv .venv
 ./run.sh
 ```
 
-On first run, `run.sh` builds the public catalog from the committed CSV files. Expect roughly 2–5 minutes and about 1 GB of disk space. Later starts reuse it. Open <http://127.0.0.1:8765> to browse papers, create collections and keep research material.
+The first run creates `.venv`, installs one small dependency (`httpx`) and builds the paper library from the CSV files in the repository. Expect 2–5 minutes and about 1 GB of disk. Later starts take seconds. Then open <http://127.0.0.1:8765>.
 
-### One-prompt install with a coding agent
+The area map and paper search work right away, with no key. **To chat**, click **⚙ Settings** in the top-right corner, paste a [DeepSeek API key](https://platform.deepseek.com/api_keys), click **Test connection**, then **Save**. The key is written only to the local `.env` file.
 
-Paste this prompt into Codex, Claude Code, Cursor, or another coding agent that can use a terminal:
+Language (中 / EN) and light / dark mode are in the top-right corner.
+
+### Install with a coding agent
+
+Paste this into Claude Code, Codex, Cursor or another agent that can use a terminal:
 
 ```text
 Install and start AIPaperbase Agent for me: https://github.com/szxiulin/aipaperbase-agent
 
-Requirements:
-1. Clone it in the current directory. If the directory already exists, inspect its state first and preserve my changes.
-2. Require Python 3.12 or newer and create the repository-local .venv.
-3. Start ./run.sh in a persistent terminal session. The first catalog build may take 2–5 minutes and about 1 GB of disk; wait until the service is ready.
-4. Verify http://127.0.0.1:8765/api/summary, then report the page URL and verification result.
-5. Do not create or read .env, install optional RAG dependencies, start Qdrant, or call any model, MinerU, or paid API yet.
-6. Do not modify the project code. If anything fails, preserve the current files and data and report the exact error.
+1. Clone it into the current directory. If it already exists, check its state first and keep my changes.
+2. Make sure Python 3.12+ is available, then run ./run.sh in a persistent terminal. The first start builds
+   the paper library (2–5 minutes, about 1 GB); wait until the server prints its URL.
+3. Check http://127.0.0.1:8765/api/summary and tell me the page URL and the entity_count it reports.
+4. Do not create or read .env, do not enter any API key, and do not call paid APIs. I will add the key in Settings.
+5. Do not modify project code. If something fails, keep all files and report the exact error.
 ```
 
-This prompt installs the key-free base version. After it works, use the next section to enable PDF parsing, full-text Q&A, and agent chat.
+## Models and cost
 
-For PDF parsing, full-text RAG and agent chat, add the optional runtime:
+- Chat works with any **OpenAI-compatible** model. The default is DeepSeek `deepseek-flash` (V4.1 Flash: fast and cheap); `deepseek-v4-pro` is stronger and slower. Choose **Other OpenAI-compatible** in Settings to use another provider.
+- A simple question takes a few tool calls. A literature survey can take 20+ calls and about 250k tokens. Thinking mode and its effort level are set in Settings.
+- **Web search** uses the [DeepSeek Search & Fetch API](https://api-docs.deepseek.com/guides/search/) and is off unless you switch it on for a message. It is free until 2026-11-01 (Beijing time), then US$0.75 per 1,000 successful calls.
+- `GENERATOR_TOKEN_BUDGET` in `.env` caps the tokens one server process may spend.
+
+## Privacy
+
+- The paper library, statistics and area map run entirely on your machine.
+- Chat sends your question and the retrieved paper metadata to the model provider you configure. With web search on, search queries also go to DeepSeek. arXiv and OpenAlex lookups go to those public APIs.
+- API keys are stored only in `.env` (ignored by git). The page shows only the last four characters, and the settings endpoint accepts requests only from the app's own page.
+- Conversations, collections, downloads and notes live under `data/user/` and other ignored folders; they are never committed.
+
+## The data
+
+- **Coverage:** 20 conferences and 10 journals, 2023–2026; 122,571 list records merged into **121,742 papers** (a preprint and its published version count once). 251 non-paper records (committee lists, front matter, errata) are excluded from statistics. 8,316 papers have no abstract. 2026 is still being collected.
+- **Areas:** each paper has one of 21 areas, labeled by LLMs from its title and abstract (`data/labels/areas-v1.5.csv`; about 82% labeled with Codex/GPT, the rest with DeepSeek).
+- **Directions:** 383 sub-topics found by clustering the papers' research tasks inside each area (`data/labels/directions-v1.1.csv`). Names were drafted by an LLM; 25 have been confirmed by hand.
+- **Quality:** a stratified sample of 399 papers was reviewed by an AI agent with the system labels as reference: area accuracy 97.0% (95% CI 94.8–98.3%). This is not an independent human evaluation; treat it as an estimate.
+- **Sources:** public paper lists of each venue plus open metadata from Hugging Face ai-conferences, OpenAlex, ACL Anthology, OpenReview and Crossref. No PDFs are distributed. Check each source's terms before redistributing derived data.
+
+## Use it from your agent (MCP)
+
+The MCP server needs only the Python standard library and reads the same database:
+
+```json
+{
+  "mcpServers": {
+    "aipaperbase": {
+      "command": "/path/to/aipaperbase-agent/.venv/bin/python",
+      "args": ["-m", "backend.mcp_server"],
+      "env": { "PYTHONPATH": "/path/to/aipaperbase-agent" }
+    }
+  }
+}
+```
+
+Tools: `search_papers`, `get_paper`, `sample_papers`, `count_papers`, `share`, `trend`, `compare`, `top_values`, `cooccurrence`, `recall_topic`, `list_taxonomy`. The same capabilities are available over HTTP at `POST /api/cap/<name>`.
+
+## Optional: full-text Q&A over your own PDFs
+
+To download PDFs for a collection, parse them and ask questions over the full text:
 
 ```bash
 .venv/bin/pip install -r requirements-rag.txt
-cp .env.example .env
-# Fill only the services you use; never commit .env
 docker run -d -p 6333:6333 qdrant/qdrant
-./run.sh
+# then fill MINERU_TOKEN, EMBEDDING_* and (optionally) RERANKER_* in .env — see .env.example
 ```
-
-MinerU is needed only for PDF parsing; embeddings power indexing and retrieval; the generator powers chat; reranking is optional. See [`.env.example`](./.env.example).
-
-### What needs what
-
-| You want to… | You need |
-|---|---|
-| Browse/search/insights, collections and research material | Python 3.12+, then `./run.sh` |
-| Download & parse PDFs for a collection | network; MinerU token for parsing |
-| **RAG Q&A with citations** | Qdrant + `EMBEDDING_*`/`GENERATOR_*` (optional `RERANKER_*`) + downloaded and parsed papers |
-| Research-agent chat (arXiv / OpenAlex / web) | generator configuration; full-text tools also need embeddings and Qdrant |
-
-`GENERATOR_TOKEN_BUDGET` (process-wide) protects your API spend.
-
-## Configuration reference
-
-Full key list lives in [`.env.example`](./.env.example). Embedding, reranking, and generation use OpenAI-compatible interfaces, so switching those providers mainly means changing `base_url` + `api_key` + `model`; MinerU uses its own token.
 
 ## Repository layout
 
 | Path | What it is |
 |---|---|
-| [`backend/`](./backend/README.md) | Modular Python monolith: catalog import/entity merge, analytics, collections, library, RAG glue, console HTTP API |
-| [`raglib/`](./raglib/) | Reusable, business-free RAG core (chunk → embed → retrieve → rerank → generate) |
-| [`frontend/`](./frontend/README.md) | Local console SPA (vanilla JS, no build step) — **language switch 中文/EN, default 中文** |
-| [`data/catalog/`](./data/catalog/README.md) | Yearly venue metadata CSVs — the committed, rebuildable source of `catalog.sqlite` |
-| [`config/`](./config/README.md) | `topics.json` (topic tree), `methods.json` (method tags), evaluation scaffolding |
-| [`scripts/`](./scripts/README.md) | Maintainer tools: collectors, abstract enrichment, validators |
-| [`tests/`](./tests/README.md) | `unittest` suite |
+| [`backend/`](./backend/README.md) | Python backend: catalog import and paper merging, capabilities (shared by web, HTTP and MCP), chat agent and tools, collections, library, HTTP API |
+| [`frontend/`](./frontend/README.md) | Web app (vanilla JS, no build step) |
+| [`raglib/`](./raglib/) | Reusable RAG core for full-text Q&A |
+| [`data/catalog/`](./data/catalog/README.md) | Venue paper lists (CSV), the source the library is built from |
+| `data/labels/` | Area and direction labels, the review sample and its metrics |
+| [`config/`](./config/README.md) | Area and direction definitions |
+| [`scripts/`](./scripts/README.md) | Maintainer tools: collectors, labeling, benchmarks, acceptance checks |
+| [`tests/`](./tests/README.md) | `unittest` suite: `.venv/bin/python -m unittest discover -s tests -p 'test_*.py'` |
 
-## Honest notes
+## Known limits
 
-- **Scope of the catalog** is 20 AI conferences + 10 journals, 2023–2026 (~122k records, ~121k entities after dedup); 2026 is a rolling list. Metadata comes from public program pages/APIs — review each source’s terms before redistributing derived data.
-- **Classification is a local, evidence-based baseline** — not an official taxonomy, not human-reviewed per paper. Every label is reproducible and drillable to its evidence.
-- **Topic names in `topics.json` are currently Chinese**; EN mode shows English via a mirrored vocabulary (best-effort). Full native-English taxonomy is a known TODO.
-- **Local-first**: generated DBs, downloads, parsed text and user data are not committed. `data/catalog/` CSVs are the exception and are the rebuild source.
-- Real model, download, MinerU and production-Qdrant behavior depends on provider configuration, quota and network conditions. Release checks use isolated fixtures and do not claim every provider combination is verified.
+- Library search matches keywords in titles and abstracts (in English). A synonym the paper does not use can be missed; the agent searches several phrasings to compensate.
+- Area and direction labels come from LLMs; some papers are misfiled, and about 30 correction notices are still counted.
+- Answers depend on the model you choose. Check important claims against the cited papers.

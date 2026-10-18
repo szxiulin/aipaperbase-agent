@@ -271,10 +271,14 @@ def _paper_filters(
     has_abstract: str = "",
     search: str = "",
     fts_query: str | None = None,
+    area: str = "",
 ) -> tuple[str, str, list[Any]]:
     clauses: list[str] = []
     params: list[Any] = []
     fts_join = ""
+    if area:
+        clauses.append("m.entity_id IN (SELECT entity_id FROM entity_area_assignments WHERE area_id = ?)")
+        params.append(area)
     if venue:
         clauses.append("p.venue = ?")
         params.append(venue)
@@ -321,10 +325,11 @@ def papers_entity_ids(
     list_status: str = "",
     has_abstract: str = "",
     search: str = "",
+    area: str = "",
 ) -> dict[str, Any]:
     """All distinct entity ids matching the same filters as papers(), unpaginated."""
     fts_query = search_mod.resolve_fts_query(connection, search) if search else None
-    fts_join, where, params = _paper_filters(venue, year, venue_type, list_status, has_abstract, search, fts_query)
+    fts_join, where, params = _paper_filters(venue, year, venue_type, list_status, has_abstract, search, fts_query, area)
     rows = connection.execute(
         f"""SELECT DISTINCT m.entity_id
             FROM paper_records p
@@ -559,11 +564,12 @@ def papers(
     list_status: str = "",
     has_abstract: str = "",
     search: str = "",
+    area: str = "",
 ) -> dict[str, Any]:
     page = max(page, 1)
     page_size = min(max(page_size, 1), 100)
     fts_query = search_mod.resolve_fts_query(connection, search) if search else None
-    fts_join, where, params = _paper_filters(venue, year, venue_type, list_status, has_abstract, search, fts_query)
+    fts_join, where, params = _paper_filters(venue, year, venue_type, list_status, has_abstract, search, fts_query, area)
     total = connection.execute(
         f"""SELECT COUNT(*) FROM paper_records p
             JOIN entity_memberships m ON m.record_id = p.record_id{fts_join}{where}""",

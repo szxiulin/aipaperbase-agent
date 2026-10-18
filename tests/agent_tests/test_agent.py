@@ -43,6 +43,18 @@ def _catalog_conn() -> tuple[sqlite3.Connection, tempfile.TemporaryDirectory]:
             ('ape_a','t1','primary'),('ape_b','t1','primary'),('ape_c','t2','primary');
         -- topic_ancestors 含自身 depth=0（叶名过滤经 self 行命中；与真库 build_topic_analysis 语义一致）
         INSERT INTO topic_ancestors VALUES ('t1','t1',0),('t2','t2',0);
+        CREATE TABLE area_definitions (area_id TEXT PRIMARY KEY, name_zh TEXT, name_en TEXT, sort_order INTEGER);
+        CREATE TABLE direction_definitions (direction_id TEXT PRIMARY KEY, area_id TEXT, name_zh TEXT,
+            name_en TEXT, sort_order INTEGER);
+        CREATE TABLE entity_area_assignments (entity_id TEXT PRIMARY KEY, area_id TEXT, is_non_paper INTEGER);
+        CREATE TABLE entity_direction_assignments (entity_id TEXT PRIMARY KEY, direction_id TEXT);
+        INSERT INTO area_definitions VALUES ('cv_lowlevel','底层视觉与计算成像','Low-level vision',1);
+        INSERT INTO direction_definitions VALUES
+            ('cv_lowlevel-d01','cv_lowlevel','通用图像超分辨率','Image super-resolution',1),
+            ('cv_lowlevel-d02','cv_lowlevel','图像去噪','Image denoising',2);
+        INSERT INTO entity_area_assignments VALUES ('ape_a','cv_lowlevel',0),('ape_b','cv_lowlevel',0),('ape_c','cv_lowlevel',0);
+        INSERT INTO entity_direction_assignments VALUES
+            ('ape_a','cv_lowlevel-d01'),('ape_b','cv_lowlevel-d01'),('ape_c','cv_lowlevel-d02');
     """)
     conn.commit()
     return conn, tmp
@@ -115,9 +127,10 @@ class SearchCatalogTests(unittest.TestCase):
             self.assertEqual(result.provenance[0]["source"], "catalog")
             self.assertIn("section", result.provenance[0])
             # list mode goes through the handler
-            stats = tool.handler({"catalog_conn": conn}, filters={"topics": ["超分辨率"]}, page_size=0, aggregate=["year"])
+            self.assertEqual(result.data["items"][0]["direction"], "通用图像超分辨率")
+            stats = tool.handler({"catalog_conn": conn}, filters={"direction_names": ["超分"]}, page_size=0, aggregate=["year"])
             self.assertEqual(stats.data["total"], 2)
-            self.assertIn("year", stats.data["facets"])
+            self.assertEqual({row["key"] for row in stats.data["facets"]["year"]}, {2025, 2026})
         finally:
             conn.close()
             tmp.cleanup()
@@ -128,8 +141,9 @@ class SearchCatalogTests(unittest.TestCase):
             tools = {t.name: t for t in catalog_tools()}
             venues = tools["list_facets"].handler({"catalog_conn": conn}, type="venues")
             self.assertEqual(venues.data["items"], ["AAAI", "CVPR"])
-            topics = tools["list_facets"].handler({"catalog_conn": conn}, type="topics")
-            self.assertIn("超分辨率", topics.data["items"])
+            areas = tools["list_facets"].handler({"catalog_conn": conn}, type="areas")
+            self.assertEqual(areas.data["items"][0]["name"], "底层视觉与计算成像")
+            self.assertIn("图像去噪", areas.data["items"][0]["directions"])
         finally:
             conn.close()
             tmp.cleanup()

@@ -37,56 +37,35 @@ def _local_status(ctx: dict, entity_id: str) -> dict[str, bool]:
 
 def _search_papers(ctx: dict, query: str = "", filters: dict | None = None, sort: str = "relevance",
                    page: int = 1, page_size: int = 10, aggregate: list[str] | None = None) -> ToolResult:
-    from backend.catalog import queries
+    from backend.catalog import paper_search
 
-    filters = filters or {}
-    conn = ctx["catalog_conn"]
-    result = queries.search_papers(
-        conn,
-        query=query,
-        venues=filters.get("venues"),
-        years=filters.get("years"),
-        topics=filters.get("topics"),
-        venue_type=filters.get("venue_type", ""),
-        sort=sort,
-        page=page,
-        page_size=page_size,
-        aggregate=aggregate,
-    )
-    compact = [
-        {
-            "entity_id": item["entity_id"],
-            "title": item["title"],
-            "venue": item["venue"],
-            "year": item["year"],
-        }
-        for item in result["items"]
-    ]
+    try:
+        result = paper_search.search(ctx["catalog_conn"], query=query, filters=filters, sort=sort,
+                                     page=page, page_size=page_size, aggregate=aggregate)
+    except ValueError as exc:  # bad filter values from the model
+        return ToolResult(ok=False, data={"error": str(exc)}, summary="参数错误")
     provenance = [
         {
             "entity_id": item["entity_id"],
             "title": item["title"],
             "venue": item["venue"],
             "year": item["year"],
-            "text": f"{item['title']}（{item['venue']} {item['year']}）",
+            "text": f"{item['title']}（{item['venue']} {item['year']}）" + (f"：{item['snippet']}" if item.get("snippet") else ""),
             "section": f"{item['venue']} {item['year']}",
             "source": "catalog",
         }
         for item in result["items"]
     ]
-    data: dict = {
-        "total": result["total"],
-        "page": result["page"],
-        "page_size": result["page_size"],
-        "items": compact,
-    }
-    if result["facets"]:
+    data = {key: result[key] for key in ("total", "page", "page_size", "items") if key in result}
+    if result.get("facets"):
         data["facets"] = result["facets"]
+    if result.get("match"):
+        data["match"] = result["match"]
     summary = f"命中 {result['total']} 篇"
-    if result["facets"]:
-        first_key = next(iter(result["facets"]))
-        top = list(result["facets"][first_key].items())[:3]
-        summary += f"，按{first_key}分布前3: " + ", ".join(f"{k}={v}" for k, v in top)
+    if result.get("match", {}).get("dropped"):
+        summary += "（已放宽：忽略 " + " ".join(result["match"]["dropped"]) + "）"
+    elif result.get("match", {}).get("note"):
+        summary += "（" + result["match"]["note"] + "）"
     return ToolResult(ok=True, data=data, provenance=provenance, summary=summary)
 
 
@@ -126,9 +105,14 @@ def _list_facets(ctx: dict, type: str) -> ToolResult:
     if type == "years":
         rows = conn.execute("SELECT DISTINCT year FROM paper_records ORDER BY year DESC").fetchall()
         return ToolResult(ok=True, data={"items": [r["year"] for r in rows]}, summary=f"共 {len(rows)} 个年份")
-    if type == "topics":
-        rows = conn.execute("SELECT name FROM topic_definitions ORDER BY name").fetchall()
-        return ToolResult(ok=True, data={"items": [r["name"] for r in rows]}, summary=f"共 {len(rows)} 个主题")
+    if type in ("areas", "topics"):
+        areas = conn.execute("SELECT area_id, name_zh FROM area_definitions ORDER BY sort_order").fetchall()
+        dirs = conn.execute("SELECT direction_id, area_id, name_zh FROM direction_definitions ORDER BY sort_order").fetchall()
+        by_area: dict[str, list[str]] = {}
+        for d in dirs:
+            by_area.setdefault(d["area_id"], []).append(d["name_zh"])
+        items = [{"area_id": a["area_id"], "name": a["name_zh"], "directions": by_area.get(a["area_id"], [])} for a in areas]
+        return ToolResult(ok=True, data={"items": items}, summary=f"{len(areas)} 个领域、{len(dirs)} 个方向")
     if type == "collections":
         collections_conn = ctx.get("collections_conn")
         if collections_conn is None:
@@ -147,10 +131,9 @@ def catalog_tools() -> list[ToolDef]:
         ToolDef(
             name="search_papers",
             description=(
-                "在本地 AI 论文元数据库（20 会议 + 10 期刊，2023-2026，约 11.8 万条）中统一检索论文。"
-                "支持关键词+多值过滤（venues/years/topics/venue_type）+ 排序 + 分页 + 聚合分布。"
-                "用法提示：问'有多少/哪些期刊/趋势'时用 page_size=0 只看 total 与 aggregate 分布（最省 token）；"
-                "问'类似的论文'用 sort=relevance；列清单用 sort=year_desc 翻页。"
+                "在本地论文库（30 个顶会顶刊，2023–2026，约 12 万篇，每篇一条）检索论文，返回标题、会议年份、领域/方向和摘要片段。"
+                "关键词必须是英文；没有论文同时包含全部关键词时会自动放宽并在 match.note 说明忽略了哪些词。"
+                "可按领域/方向/会议/年份过滤，aggregate 可看分布。统计数量优先用 count_papers / trend_papers。"
             ),
             parameters=schemas.SEARCH_PAPERS,
             handler=_search_papers,
@@ -166,8 +149,8 @@ def catalog_tools() -> list[ToolDef]:
         ToolDef(
             name="list_facets",
             description=(
-                "枚举本地论文库的可筛选项：venues（会议/期刊）、topics（主题）、years（年份）、collections（集合）。"
-                "构造 search_papers 的 filters 之前先调用本工具确认候选值。"
+                "枚举本地论文库的可筛选项：venues（会议/期刊）、areas（21 个领域及其方向名）、years、collections（用户集合）。"
+                "不确定领域/方向叫什么时先调用 areas。"
             ),
             parameters=schemas.LIST_FACETS,
             handler=_list_facets,

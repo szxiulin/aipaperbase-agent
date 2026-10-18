@@ -11,6 +11,8 @@ from urllib.parse import parse_qs, unquote, urlparse
 
 from backend.catalog import queries
 from backend.analytics import queries as analytics_queries
+from backend.analytics import areas as area_queries
+from backend.capabilities import REGISTRY as CAPABILITIES
 from backend.catalog.database import DEFAULT_DATABASE, ROOT, connect
 from backend.chats import database as chats_db
 from backend.chats import service as chats_service
@@ -114,6 +116,12 @@ class Handler(BaseHTTPRequestHandler):
         if parsed.path == "/api/rag/query":
             self._handle_rag_query()
             return
+        if parsed.path in ("/api/settings", "/api/settings/test"):
+            self._handle_settings(parsed.path)
+            return
+        if parsed.path.startswith("/api/cap/"):
+            self._handle_capability(parsed.path[len("/api/cap/"):])
+            return
         if parsed.path == "/api/chats":
             self._handle_create_chat()
             return
@@ -200,6 +208,10 @@ class Handler(BaseHTTPRequestHandler):
         if path == "/api/parse/status":
             self._handle_task_status(params)
             return
+        if path == "/api/settings":
+            from backend.common import settings as app_settings
+            self.send_json(app_settings.public_settings())
+            return
         if path == "/api/rag/status":
             self._handle_rag_status()
             return
@@ -261,6 +273,7 @@ class Handler(BaseHTTPRequestHandler):
                     payload = {"status": "ok", "database": str(self.database_path)}
                 elif path == "/api/summary":
                     payload = queries.summary(connection)
+                    payload["label"] = area_queries.label_summary(connection)
                 elif path == "/api/venues":
                     payload = {"items": queries.venues(connection)}
                 elif path == "/api/years":
@@ -286,6 +299,36 @@ class Handler(BaseHTTPRequestHandler):
                     )
                 elif path == "/api/topics":
                     payload = analytics_queries.topic_overview(connection)
+                elif path == "/api/capabilities":
+                    payload = {"schema_version": "capabilities-v1", "capabilities": CAPABILITIES.list(),
+                               "meta": CAPABILITIES.meta(connection)}
+                elif path == "/api/label-release":
+                    payload = area_queries.label_summary(connection)
+                elif path == "/api/areas-overview":
+                    payload = area_queries.areas_overview(connection)
+                elif path == "/api/area-trends":
+                    payload = area_queries.area_trends(connection, area_id=self.param(params, "area_id"))
+                elif path == "/api/area-detail":
+                    payload = area_queries.area_detail(connection, area_id=self.param(params, "area_id"))
+                elif path == "/api/direction-detail":
+                    payload = area_queries.direction_detail(connection, direction_id=self.param(params, "direction_id"))
+                elif path == "/api/area-papers":
+                    year_value = self.param(params, "year")
+                    payload = area_queries.papers(
+                        connection, area_id=self.param(params, "area_id") or self.param(params, "topic_id"),
+                        direction_id=self.param(params, "direction_id"),
+                        page=self.int_param(params, "page", 1), page_size=self.int_param(params, "page_size", 25),
+                        year=int(year_value) if year_value else None,
+                        venue=self.param(params, "venue"), search=self.param(params, "search"))
+                elif path == "/api/direction-papers":
+                    year_value = self.param(params, "year")
+                    payload = area_queries.papers(
+                        connection, direction_id=self.param(params, "direction_id"),
+                        page=self.int_param(params, "page", 1), page_size=self.int_param(params, "page_size", 25),
+                        year=int(year_value) if year_value else None,
+                        venue=self.param(params, "venue"), search=self.param(params, "search"))
+                elif path == "/api/label-evaluation":
+                    payload = area_queries.label_evaluation(connection)
                 elif path == "/api/venue-overview":
                     payload = analytics_queries.venue_overview(connection)
                 elif path == "/api/topic-detail":
@@ -348,6 +391,7 @@ class Handler(BaseHTTPRequestHandler):
                         list_status=self.param(params, "list_status"),
                         has_abstract=self.param(params, "has_abstract"),
                         search=self.param(params, "search"),
+                        area=self.param(params, "area"),
                     )
                 elif path == "/api/papers/entity-ids":
                     year_value = self.param(params, "year")
@@ -359,6 +403,7 @@ class Handler(BaseHTTPRequestHandler):
                         list_status=self.param(params, "list_status"),
                         has_abstract=self.param(params, "has_abstract"),
                         search=self.param(params, "search"),
+                        area=self.param(params, "area"),
                     )
                 else:
                     self.send_error_json(HTTPStatus.NOT_FOUND, "API 不存在")
@@ -465,6 +510,20 @@ class Handler(BaseHTTPRequestHandler):
             conn.close()
         self.send_json({"items": items, "total": len(items)})
 
+    def _handle_capability(self, name: str) -> None:
+        if not self.database_path.exists():
+            self.send_error_json(HTTPStatus.SERVICE_UNAVAILABLE, "数据库尚未构建")
+            return
+        try:
+            body = self.read_json_body()
+        except ValueError as exc:
+            self.send_error_json(HTTPStatus.BAD_REQUEST, str(exc))
+            return
+        with connect(self.database_path, read_only=True) as connection:
+            result = CAPABILITIES.call(connection, name, body)
+        status = HTTPStatus.OK if result.ok else (HTTPStatus.NOT_FOUND if result.error.startswith("unknown capability") else HTTPStatus.BAD_REQUEST)
+        self.send_json(result.as_dict(), status)
+
     def _handle_create_chat(self) -> None:
         try:
             body = self.read_json_body()
@@ -543,6 +602,7 @@ class Handler(BaseHTTPRequestHandler):
                 self.send_error_json(HTTPStatus.BAD_REQUEST, "top_k 必须是整数")
                 return
         mode = (body or {}).get("mode") or "agent"
+        web_search = (body or {}).get("web_search") is True
         if not query:
             self.send_error_json(HTTPStatus.BAD_REQUEST, "问题不能为空")
             return
@@ -568,7 +628,8 @@ class Handler(BaseHTTPRequestHandler):
             try:
                 message = chats_service.ask(
                     conn, conversation_id=conversation_id, query=query, top_k=top_k, mode=mode,
-                    is_cancelled=is_cancelled, scope=scope,
+                    is_cancelled=is_cancelled, scope=scope, web_search=web_search,
+                    on_event=lambda live: update({"live": live}),
                 )
             finally:
                 conn.close()
@@ -1045,6 +1106,32 @@ class Handler(BaseHTTPRequestHandler):
         task_id = download_tasks.start_job(job)
         self.send_json({"task_id": task_id}, HTTPStatus.ACCEPTED)
 
+    def _same_origin(self) -> bool:
+        """Reject cross-site writes: a page on another site must not change local settings."""
+        site = self.headers.get("Sec-Fetch-Site")
+        if site and site not in ("same-origin", "none"):
+            return False
+        origin = self.headers.get("Origin")
+        return not origin or origin == f"http://{self.headers.get('Host', '')}"
+
+    def _handle_settings(self, path: str) -> None:
+        from backend.common import settings as app_settings
+        if not self._same_origin() or "application/json" not in (self.headers.get("Content-Type") or ""):
+            self.send_error_json(HTTPStatus.FORBIDDEN, "只接受本页面发出的 JSON 请求")
+            return
+        try:
+            body = self.read_json_body() or {}
+        except ValueError as exc:
+            self.send_error_json(HTTPStatus.BAD_REQUEST, str(exc))
+            return
+        try:
+            if path == "/api/settings/test":
+                self.send_json(app_settings.test_connection(body))
+            else:
+                self.send_json(app_settings.update(body))
+        except ValueError as exc:
+            self.send_error_json(HTTPStatus.BAD_REQUEST, str(exc))
+
     def _handle_task_status(self, params: dict[str, list[str]]) -> None:
         task_id = self.param(params, "task_id")
         if not task_id:
@@ -1411,6 +1498,8 @@ def main() -> None:
     parser.add_argument("--database", type=Path, default=DEFAULT_DATABASE)
     args = parser.parse_args()
     Handler.database_path = args.database.resolve()
+    from backend.common import settings as app_settings
+    app_settings.ensure_loaded()
 
     # Lazily build the FTS5 full-text index (auto-built on first start, skipped in seconds afterwards)
     from backend.catalog import search as fts_search

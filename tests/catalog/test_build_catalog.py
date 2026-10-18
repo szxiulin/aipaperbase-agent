@@ -17,14 +17,17 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from scripts.collect.build_catalog import (  # noqa: E402
-    CURRENT_YEAR,
-    VENUE_FINAL_EXCEPTIONS,
-    is_rolling,
-    normalize_authors,
-    text_content,
-)
-from lxml import etree  # noqa: E402
+try:  # maintainer-only collector: needs requirements-catalog.txt (lxml, numpy, pandas)
+    from scripts.collect.build_catalog import (  # noqa: E402
+        CURRENT_YEAR,
+        VENUE_FINAL_EXCEPTIONS,
+        is_rolling,
+        normalize_authors,
+        text_content,
+    )
+    from lxml import etree  # noqa: E402
+except ModuleNotFoundError as exc:
+    raise unittest.SkipTest(f"maintainer dependency not installed: {exc.name}")
 
 
 class IsRollingTest(unittest.TestCase):
