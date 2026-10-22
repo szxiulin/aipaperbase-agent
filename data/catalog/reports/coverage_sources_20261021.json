@@ -1,0 +1,688 @@
+[
+  {
+    "url": "https://proceedings.mlsys.org/paper_files/paper/2023",
+    "status": 200,
+    "sha256": "5392dd78d9d8b1c0ad5690bdb1daf5f405f35afd8245dbd05ab180db5773b09f",
+    "file": "sources/fe663bb0f76ce3f17a272970335af397d82b50268687e736277338c542dfa1d7.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://proceedings.mlr.press/v202/",
+    "status": 200,
+    "sha256": "fceaba96362eda584dccc6ca38ee5fa68e399efcbdc827f6f9db71af6667e2b0",
+    "file": "sources/44fbcabf1db082c66002734d796862769906b89a2a9de385b26ebf40f3e76bf8.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://openaccess.thecvf.com/CVPR2023?day=all",
+    "status": 200,
+    "sha256": "8284937abea6f8052da24f58802f619bb7b4261d80ee52305f31b428a2cfe4c5",
+    "file": "sources/940b6d416947331af5f94f06d2cb064c4d51731b2bb1603f1fb81d02091af8e7.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://www.jmlr.org/papers/v24/",
+    "status": 200,
+    "sha256": "6929eca1da11d8c5bf52d52b8fd8d4b1447e718bf340199e2d15785fe6a6cd69",
+    "file": "sources/b98c3a0476cf6ef28ad681135ff8fc79aa0602e952e609d6c98a19fd933b3cd2.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://www.ijcai.org/proceedings/2023/",
+    "status": 200,
+    "sha256": "01cde46a8bcc58ef0c743bd96dd91c86a5fbe21a2e363dbc0d7cba16a509d53e",
+    "file": "sources/59112cfc46226ad076855eeb5c249144bb74db55f909dfaa883aaa36370e132a.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://proceedings.neurips.cc/paper_files/paper/2023",
+    "status": 200,
+    "sha256": "7511a4e6456f30144e8ee4a2f94c93ec1f1f1375bd3b567a44bf0437ac54d721",
+    "file": "sources/40fd07a13e327770725b64087e2d3f1f31f9abb7d603efcb0d262fea4d2b0fc9.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://raw.githubusercontent.com/acl-org/acl-anthology/master/data/xml/2023.acl.xml",
+    "status": 200,
+    "sha256": "4a02e87cb81ec2cc192c6a3e3739246ebd3cfca696abb456e06dc9d2ee214ef6",
+    "file": "sources/6eaa3a72f8d69962d3672b517d657d336534167d83297f3a5d2f25b34076d2dc.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://raw.githubusercontent.com/acl-org/acl-anthology/master/data/xml/2023.emnlp.xml",
+    "status": 200,
+    "sha256": "fa6e4f1de0f178a9b1b4e2023036fb4335e6ad8c25f3bc1e89b7f912ac56fd80",
+    "file": "sources/daf674f385a2e3e51760c51498395f5e86cf73d8dd2a83e532e15d80783a5726.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://api.crossref.org/journals/0004-3702/works?filter=from-pub-date%3A2023-01-01%2Cuntil-pub-date%3A2023-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "c0f3d7363bac1a1c586a3fe0521304a72043e1d0c7f021fb1edea388b453377d",
+    "file": "sources/2d90773612a143d4f7d20eb19a0839fdf0211148e5b7aaced30a071c80520811.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://api.crossref.org/journals/0162-8828/works?filter=from-pub-date%3A2023-01-01%2Cuntil-pub-date%3A2023-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "4ff459c302c4ed0d2fc2b8563a72741729e3378061da354b580f620a0ffc2efb",
+    "file": "sources/760ecbf776df228c7d147dfe095f8eb1fd1cfff879ad57b941411d889195062d.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://api.crossref.org/journals/0920-5691/works?filter=from-pub-date%3A2023-01-01%2Cuntil-pub-date%3A2023-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "11de67f63b70f9814accb1700d6e483f054d2785a8c5de71fc9043464f1602b5",
+    "file": "sources/8c195b79fd24e91e8bb3309b0035cf0959fc065273e7b8b0713d265fee0d6740.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://api.crossref.org/journals/0730-0301/works?filter=from-pub-date%3A2023-01-01%2Cuntil-pub-date%3A2023-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "52f15498cff31b5a46d18bcb95a9a1ba11790840d05c158338a29416ca750dae",
+    "file": "sources/7d3e46126c712b401c4a0b8b0ba302efbc932e60b189e8bf163a93318d10361d.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://api.crossref.org/journals/1057-7149/works?filter=from-pub-date%3A2023-01-01%2Cuntil-pub-date%3A2023-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "e4067ff573196aa5c35ab0c2b9d01382ed3c79b45388e3b81cd1dded3994feca",
+    "file": "sources/dfcb2645f7ae234c854cacee18ad920a926164607dd8cd5142338a283c0a1926.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://dblp.org/db/conf/kdd/kdd2023.html",
+    "status": 202,
+    "sha256": "43993f3b5c835ba7223cbfc5e446ee5560098902403ca13d135c6de5bcbe1c02",
+    "file": "sources/a51b184ebf099d313289c6c2a8736d04cd18107a0bdc58feeb1166ccee2b4f07.txt",
+    "browser_verification": true
+  },
+  {
+    "url": "https://iclr.cc/virtual/2023/papers.html",
+    "status": 200,
+    "sha256": "2743f63564e783c988fd412bd2abaab77a406f2993cbf018e3afbc97b470d6d6",
+    "file": "sources/daf0082563159f562d966ca5bd73398aeabc4d4a896aa758f21b4f3f40ff3327.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://api.crossref.org/journals/1041-4347/works?filter=from-pub-date%3A2023-01-01%2Cuntil-pub-date%3A2023-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "2c19476ff6958ee2455fdb51a4aa5b276493eb7172d93b510295d72fa7bd8fa6",
+    "file": "sources/d6e1546f9c0c037686aa030d2c9d43906c994549b9fa3379b0d1cec340c996fd.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://proceedings.mlr.press/v235/",
+    "status": 200,
+    "sha256": "ab9400795dbdd1f63eb42499e69fddf9803ccdc2e055311c6bd8d7a49240beb6",
+    "file": "sources/e50f3037063dc47ed5ccc1ccf631ec97962b37ccdc0ac819c5ee70d76a9280f9.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://openaccess.thecvf.com/CVPR2024?day=all",
+    "status": 200,
+    "sha256": "720265923ad5cc65224d2ce1cd9cea868c6e4589ae51c05d1493f1f9d9aea03c",
+    "file": "sources/55382925aba53887a9d57c5e7b323fcbbc1834e254c66ca2a173ab8ef41b8eda.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://proceedings.mlsys.org/paper_files/paper/2024",
+    "status": 200,
+    "sha256": "ed065989d4cbb7a4bb59728d2d4307e5bce2cd58ee2b7ab667c2ba6bf0ebb74a",
+    "file": "sources/d9e37aa10011fc0279b8120f3aaa09045c44ab0eb2c76319133bc694b8f52941.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://api.crossref.org/journals/1046-8188/works?filter=from-pub-date%3A2023-01-01%2Cuntil-pub-date%3A2023-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "a2770b020d1e208944a80c6271a75c53ffaddc9855b035d3fe29bfd4aa3c7f06",
+    "file": "sources/58ade9a101e4aa272924ec27a9406c23e923271746375449cb4bffa4430aa587.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://www.jmlr.org/papers/v25/",
+    "status": 200,
+    "sha256": "14e15d49191a433461163b0044cdeb959c1c3864243c31eb816fde041790eaff",
+    "file": "sources/d36def1000f1e0964cdc6e5fffb068df690867994ffdbf31a2d0a1cc2025581f.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://www.ijcai.org/proceedings/2024/",
+    "status": 200,
+    "sha256": "22a49ffad63a05df7a82c93410d5c7a57a288a7d28c1fd1c81d69520117bb222",
+    "file": "sources/9faac3312bece64cd153c375b436d63b562e1129ddf24f76ff315695ee8c36bc.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://proceedings.neurips.cc/paper_files/paper/2024",
+    "status": 200,
+    "sha256": "0563caf8d9a661bfa9d26e3e8692cc352ce6a446ea922e27f73b37b87a4f7506",
+    "file": "sources/edfb78ddae6bb8e3d9399d7f364fcd5f4b8fc588f89e022eecda392ba70d4a3b.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://raw.githubusercontent.com/acl-org/acl-anthology/master/data/xml/2024.acl.xml",
+    "status": 200,
+    "sha256": "0775871eb0a0253c0b3e90e6c6921a32e98553f9b20afe873928783870f1ab6e",
+    "file": "sources/049f7a7f4064ba0a918cda60f9b172d6a2a7127fcc6cc7b23a761709569217b5.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://api.crossref.org/journals/1077-2626/works?filter=from-pub-date%3A2023-01-01%2Cuntil-pub-date%3A2023-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "326171816a33af82c340958cfad9b8bee192df4cc3f1ae9220d927d7c8c7c2fd",
+    "file": "sources/0d3c824aca8a7d078226988f816d2ebee0fe38fd197c14edabb8dae7497d5ddf.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://raw.githubusercontent.com/acl-org/acl-anthology/master/data/xml/2024.emnlp.xml",
+    "status": 200,
+    "sha256": "b2ee7d716a7a80c1c07d1913f31d53acfb246443a64432a6d41db7743c3bac8a",
+    "file": "sources/93aeb745d30b15b1fd6a00b07ba53647f0e27eb8f8fd28d152b545f99e311e93.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://api.crossref.org/journals/0004-3702/works?filter=from-pub-date%3A2024-01-01%2Cuntil-pub-date%3A2024-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "052b06c48049eda6afe05de758f1506cf67deb33b9b035c17a7bd1710f12d54a",
+    "file": "sources/50e9bd59f0bb1f886155a94a8503a4341cf872f8278e85a7169160531a31a74b.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://raw.githubusercontent.com/acl-org/acl-anthology/master/data/xml/2024.naacl.xml",
+    "status": 200,
+    "sha256": "963ea7c81fd0a9cf46b8059e47d2950dcba717e284fcbc98a813f8a5c01996f1",
+    "file": "sources/50014557e887baf2bb1662cbd7ae9b6f722d3636d2ab7d28c02bc1b530c6b3fa.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://api.crossref.org/journals/0162-8828/works?filter=from-pub-date%3A2024-01-01%2Cuntil-pub-date%3A2024-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "56a915253dd30d51c7181fc1bbcfbb12df4c20f4e9b4d1ea29dfe67a94d5a0f4",
+    "file": "sources/32eb52bf47acbe1a36d4bf0abc7c5fae6fabec316edff74898205a337355f935.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://api.crossref.org/journals/0920-5691/works?filter=from-pub-date%3A2024-01-01%2Cuntil-pub-date%3A2024-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "1dba9924eb308180b78f475ca936c9d59b3530810479c9e52e6679ec6c50c5e8",
+    "file": "sources/2d4853c997c20608724e42c9b35ccdbdbdc3fd88cfe7b95bfd558cc5f36ef710.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://api.crossref.org/journals/0730-0301/works?filter=from-pub-date%3A2024-01-01%2Cuntil-pub-date%3A2024-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "baa9a841b13d06eaa9806b6b4b111c764fedaab74ae8219acd60d93b0d741be2",
+    "file": "sources/c00f33c8dc8d3a4865cbd6cf002f3a7ee7add09298d1c020f453bcf3d6e5fbe9.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://api.crossref.org/journals/1057-7149/works?filter=from-pub-date%3A2024-01-01%2Cuntil-pub-date%3A2024-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "fbb67ffbe8ca8bc852eac5e159cd2d64c97b2c11e0d8884bcce03407e1e03722",
+    "file": "sources/7b266cf204e2c02b0a4e5c6225465ba1f57595fe00656fbcecfa1de9f7c5aeb3.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://iclr.cc/virtual/2024/papers.html",
+    "status": 200,
+    "sha256": "19c5f4cd14c2630285ccee360481ae6a76e543f59ced11de51234e5ff396180b",
+    "file": "sources/fff3b4bd1e291562e40a5c6b0b876a3efeb9accfc3a96c77769868375bba95d2.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://api.crossref.org/journals/1041-4347/works?filter=from-pub-date%3A2024-01-01%2Cuntil-pub-date%3A2024-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "efa0b8b376c6d8fb03d2b623b805f4de7a3ad8fcb4714f6a3d96f1d2c94b73de",
+    "file": "sources/20bfe17884c3c9b88a5621ec3e47df0d5cafe3f931deeb922e8ee3a2a49187c5.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://openaccess.thecvf.com/CVPR2025?day=all",
+    "status": 200,
+    "sha256": "2f08dc191b870530993ba6a5a79e8c8ae812f158b6a30b21a96f3b190af96bfa",
+    "file": "sources/920b1b6830b3858c91f12699bfabe3bf856cdba58788805cee0ef2774837c356.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://proceedings.neurips.cc/paper_files/paper/2025",
+    "status": 200,
+    "sha256": "d653a2ce6057507d84d68d82e77b0dd4e874d9c4748ff3e7424d50fac7379dac",
+    "file": "sources/08d5c258cad44b0aaabed7ea54df4ebdf9858edc07f0d738970c2d45eb454757.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://proceedings.mlr.press/v267/",
+    "status": 200,
+    "sha256": "9e17ee7ed7eda2727ad46178644225738ee1d8e3e319441ad4d1c11e4986288d",
+    "file": "sources/b345c39b68872deee01eb75e12ac2f4487efce17298622e2f60291e665bab6f1.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://proceedings.mlsys.org/paper_files/paper/2025",
+    "status": 200,
+    "sha256": "c1d83dbbb685e4d45404b433ff4f15a17d03a725d77a315932585f803f74007a",
+    "file": "sources/6252b7bcda78b49f2f776eba4bcdac764107e6313eb97645adbc60f7414a8daa.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://api.crossref.org/journals/1046-8188/works?filter=from-pub-date%3A2024-01-01%2Cuntil-pub-date%3A2024-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "f1ad08bca0fff61453a54b5a776bda87ffbd646a8d01a19e38936cd2fff1afda",
+    "file": "sources/113d5c063e13db698797d2b546043b63c700569834bde14b524176b7b84d8455.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://www.jmlr.org/papers/v26/",
+    "status": 200,
+    "sha256": "dcc2cba690b8ff009a321074d233a8554d1606637fcc9b8178f68030965ff467",
+    "file": "sources/66c10116962a300851459a0da62b6eb59d926442e16ddccff3296b9897fda90a.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://www.ijcai.org/proceedings/2025/",
+    "status": 200,
+    "sha256": "3ece319e350d5b02ce27753d72f4d8bde364cff34a8afcefe026395ddb2b2ca9",
+    "file": "sources/210815e78e9827f93b42a6f573de8e04dfd4790b0066d8f6c02e7a1e6aa58b8f.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://raw.githubusercontent.com/acl-org/acl-anthology/master/data/xml/2025.acl.xml",
+    "status": 200,
+    "sha256": "c33953c58ec4c15e43b30521d51072f9330b06a7680d099d4f5dbf51b905ccc1",
+    "file": "sources/b66bdfa7d6d5840368bffb88a45cf98b9e16485482d46869d03c48a3ce178178.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://api.crossref.org/journals/1077-2626/works?filter=from-pub-date%3A2024-01-01%2Cuntil-pub-date%3A2024-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "2f6d345b1b32a72cda19548ac342b8ccfe44fa3a488f55253d94b68d012b968a",
+    "file": "sources/d04cea83a45d29d5490081d9643046393ba1d8f126e72f4e3e659dd387cfe2a3.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://raw.githubusercontent.com/acl-org/acl-anthology/master/data/xml/2025.emnlp.xml",
+    "status": 200,
+    "sha256": "e0351476bf05fd4ad404ea7ef90e4596a537b445b996b059444f8263df5fd452",
+    "file": "sources/79c537ed57fbdfec7d39e997a877b86a256fa0218291c43e25053a736459c0c2.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://raw.githubusercontent.com/acl-org/acl-anthology/master/data/xml/2025.naacl.xml",
+    "status": 200,
+    "sha256": "7c05ff8dab2833e5384bbb07ebd40bcb766fe26e55521ea3c0a14379ecb0ff39",
+    "file": "sources/dc982ce038102b2dd3ece8436fa7d2b4d8e2ac5eeb232486d3df0dfed5f717a3.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://api.crossref.org/journals/0004-3702/works?filter=from-pub-date%3A2025-01-01%2Cuntil-pub-date%3A2025-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "b49c2cefe0652d742911b31a53ce83081788df43d2a7dc626a8b603b874590bf",
+    "file": "sources/4742ca912ac58f3ac71dfbc27ec0c42d6bfe8a8537b4dbd105c37018045b1dfd.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://api.crossref.org/journals/0162-8828/works?filter=from-pub-date%3A2025-01-01%2Cuntil-pub-date%3A2025-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "72536f74c9e28f8e928055b4918a86ffa372de3b41761f1a632e50df435f64b9",
+    "file": "sources/d1aa846b3648b02fdfd1ba6ea56230d06f52edf95e59ce8b01244ce530c0fcde.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://api.crossref.org/journals/0920-5691/works?filter=from-pub-date%3A2025-01-01%2Cuntil-pub-date%3A2025-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "3b2441927b49852969ab336e6176e68666925407c3ec092ec5cbea7c4ece7887",
+    "file": "sources/1f12ae22769054724f6bf6bb30761459bd4ec9ba2eb1910665ab5c2d3e788ebe.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://api.crossref.org/journals/0730-0301/works?filter=from-pub-date%3A2025-01-01%2Cuntil-pub-date%3A2025-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "b018f8518715d0af7d262c962461d97258d501dea83cb15c0a714bc62b826ffe",
+    "file": "sources/57ed8f406d6d08b693d26089002810a427524d638a904957ac263afc7f1acdca.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://api.crossref.org/journals/1057-7149/works?filter=from-pub-date%3A2025-01-01%2Cuntil-pub-date%3A2025-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "9e181ccac3ff1191039c3f7c10fc8a6401047f9558693092eab18f26b01084ec",
+    "file": "sources/bd320e50cc470d3d6fc7d07d8ca89afd41da15c974f9486748dbfa421145287f.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://iclr.cc/virtual/2025/papers.html",
+    "status": 200,
+    "sha256": "cb50958fd34f92ff0ba2fd32d5218fa22b5d62c778d81a722d76fa966136ff88",
+    "file": "sources/00789f8248e2bd48bf1b07cbdf581f0eb478e4ff83fa69296e45f0885c1ea6aa.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://openaccess.thecvf.com/CVPR2026?day=all",
+    "status": 200,
+    "sha256": "31f63227934062163d5bc57838d339c3c7a7e1e6e51f71a238022bff73f1b792",
+    "file": "sources/2b1991ff8fad866075c9cf3dee3c55182c4617000f0c078a778b6f4d731253df.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://api.crossref.org/journals/1041-4347/works?filter=from-pub-date%3A2025-01-01%2Cuntil-pub-date%3A2025-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "6a2fe4a9119d8d56f35ad7b677f0db59fb1c75ea9bb276c247a8c4ffe7f4063c",
+    "file": "sources/a51ec8ac18106619d915c4d2b486e41f9db3638bdbf98581bfe312e5f3095149.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://proceedings.neurips.cc/paper_files/paper/2026",
+    "status": 404,
+    "sha256": "b93488eca6e606b6a169db2c12d968d2d973b6f2e7db9fbb3d077565131c3f40",
+    "file": "sources/8f27931ded860c74907ae6a0131662e7d384a2ed3f8447181a11c74270652ff7.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://proceedings.mlr.press/v306/",
+    "status": 200,
+    "sha256": "36e4d82cfc94f5ae93a8697d517d39a04cf35cc9aedfb1cc2a66bbd6a3855d8e",
+    "file": "sources/701210428e9ea60040492a6789f7f6ae42df42a4e84fe4ef29e21cc0b6d65794.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://www.jmlr.org/papers/v27/",
+    "status": 200,
+    "sha256": "8dfe64e74d9a39b40f705243f1031eb65ccb2649e2c98b3f66e19852dc580bc8",
+    "file": "sources/f92afbf0582e01565b825509ad5a705c3255e17e595febb3d1b1905f9aa87a7c.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://api.crossref.org/journals/1046-8188/works?filter=from-pub-date%3A2025-01-01%2Cuntil-pub-date%3A2025-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "6bf00d4ad0d68f09d1726343149d141271ba32a79edc3956a4712239e7c5383f",
+    "file": "sources/aecd9d366505930ced71cfe284931112cd79a37df455693aa397af258dd71460.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://www.ijcai.org/proceedings/2026/",
+    "status": 200,
+    "sha256": "a31dac0fbd02fdec00bdef4de0f5287f6c48f7a99776784f41a031ec1ce0bbe6",
+    "file": "sources/1e2e5b2ed6c8309e3309a01340d208609fd4f0d5a98a58253fc0ed3f11f1b158.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://raw.githubusercontent.com/acl-org/acl-anthology/master/data/xml/2026.acl.xml",
+    "status": 200,
+    "sha256": "851417d54bc77ff766d3501e1a250bd6530784b04876478fc0b144c755555e05",
+    "file": "sources/0a4deea9511fdc076532105c794cb9218cc20112291d560de6a065ec118a2b64.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://raw.githubusercontent.com/acl-org/acl-anthology/master/data/xml/2026.emnlp.xml",
+    "status": 404,
+    "sha256": "d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed",
+    "file": "sources/b21155fc77cf4b554b0c0772e58b62d19a8bfc3693ce8c09c023d89bb32c55b8.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://api.crossref.org/journals/1077-2626/works?filter=from-pub-date%3A2025-01-01%2Cuntil-pub-date%3A2025-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "08b086fe95b797b1df90a13ba6c659f9d905216456ed2f61391f194519b1e1a0",
+    "file": "sources/8ba9299707df9cfa5cc3cb246852bb34bb030d08bdddce866b28a7d977b54dd5.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://raw.githubusercontent.com/acl-org/acl-anthology/master/data/xml/2026.naacl.xml",
+    "status": 404,
+    "sha256": "d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed",
+    "file": "sources/14f9d99b3ad6f53e7fda3393193017d1fc2f6a11a89eeff631b197d1b364374a.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://api.crossref.org/journals/0004-3702/works?filter=from-pub-date%3A2026-01-01%2Cuntil-pub-date%3A2026-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "5cd1cfa23ace23dbfb9954bf6ff8423d034cb1296b92eb8d893269941a60b9f4",
+    "file": "sources/69c10be0069ac77dd351d808cdd2b68e66a004e745e497653091cf6e6011faa5.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://api.crossref.org/journals/0162-8828/works?filter=from-pub-date%3A2026-01-01%2Cuntil-pub-date%3A2026-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "d7971ff8790af8d5b760de1e33993c582fae55d7e0d394a8d8dab6b2ca6a0104",
+    "file": "sources/af7da37a2478a72fcca2dd2932439345c55927160112f893aa7db269117d3283.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://api.crossref.org/journals/0920-5691/works?filter=from-pub-date%3A2026-01-01%2Cuntil-pub-date%3A2026-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "a230054008ab98214f6cb97c968e5a41a0d4f9c595e22704193f2c43b5344b87",
+    "file": "sources/ab0ef0f76942b4191d0232e913c23fb2ac9da5933fb3ccfcec193055fa1021c8.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://api.crossref.org/journals/0730-0301/works?filter=from-pub-date%3A2026-01-01%2Cuntil-pub-date%3A2026-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "9f644a2fe22ace9b15b8d80823323e6de4b6f17bb5a0bd6a86570b17d1453af5",
+    "file": "sources/2420617e22c4dc559eda74ebd480d15e5b881a05f9f6c19228f9f87c08a4b039.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://api.crossref.org/journals/0162-8828/works?filter=from-pub-date%3A2026-01-01%2Cuntil-pub-date%3A2026-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=MTc4NzI1Mjk4MTAwMCwxMC4xMTA5JTJGdHBhbWkuMjAyNi4zNzI1NTUx",
+    "status": 200,
+    "sha256": "6940b5fda199283283f647aed03d27c98a1b2ab5f70034a8a712429d2c782e93",
+    "file": "sources/75ae41f5293bae3f3d658f37769cf99f23053e0a4dedf4bd93fd16de25e9a257.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://api.crossref.org/journals/1057-7149/works?filter=from-pub-date%3A2026-01-01%2Cuntil-pub-date%3A2026-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "ef96a1e481dfeab359c0bbbf4d3add1f6bbc3ba6e07707044df56db3e96309cd",
+    "file": "sources/ccc9260db275a9f3e7af25de58e4a34a5a50021ff6dd5227737deeda1b02dc08.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://iclr.cc/virtual/2026/papers.html",
+    "status": 200,
+    "sha256": "b455775c0feab2fa39e724e576978ba731ee6860d62a0022f96cee82160e382c",
+    "file": "sources/c7ba5798ca5c836ba9ba1790651aea26dee4a5d3081b3cc4683bcb6c92c2af3a.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://api.crossref.org/journals/1041-4347/works?filter=from-pub-date%3A2026-01-01%2Cuntil-pub-date%3A2026-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "6a0a177df322505ed786895639834ae8d930a7821a8d89b84f8bf061ccef2718",
+    "file": "sources/f481da499f74202adabcb08139d469a2aad730434cbed303b89f6dc93e0a054d.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://api.crossref.org/journals/1046-8188/works?filter=from-pub-date%3A2026-01-01%2Cuntil-pub-date%3A2026-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "1f9589581de2995f29220e91f1737a2d66ae0572c1a8aa135edefd68fa6725d3",
+    "file": "sources/90a6e8a1903b4c90e23c8ff881393822c660142c7020e8a5adb00366b73f26f2.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://www.ecva.net/papers.php",
+    "status": 200,
+    "sha256": "bd1d0d3897a5f57f767b43c1bfdb874028adb14be06fde09ad299866663c1406",
+    "file": "sources/63731d98eca600658d6333f86764ef07a2b8efbe7754e98bf8cea9578eea6cc9.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://api.crossref.org/journals/1077-2626/works?filter=from-pub-date%3A2026-01-01%2Cuntil-pub-date%3A2026-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "9be5db24b681c4b7d1f286e0a4be63582988c1dedf952fe2392be30871e4b902",
+    "file": "sources/1719903d6592cf1eda144bb75f6511134b7fccfd7f1aa5f69790a1d1eea8e13e.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://colmweb.org/2024/AcceptedPapers.html",
+    "status": 200,
+    "sha256": "f879b4bc6f8a4ab24be5b0a18472a060f1f640ac8dfeefcbcb151d50e866f5b7",
+    "file": "sources/054c34994e122084f8c770bd7ce11d283673fa1919c5f3e11584647e9587aa49.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://colmweb.org/2025/AcceptedPapers.html",
+    "status": 200,
+    "sha256": "898c2b2797737207b56a9574405e57a83809a7be927ed8c0c447a13dd30e135f",
+    "file": "sources/7a0acb50e93e3767507077c63d6c77bedeac9674c78b95e777185a51b1d7b00b.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://colmweb.org/AcceptedPapers.html",
+    "status": 200,
+    "sha256": "3452eff87da9f42e39a6aef0b9e1a3c6ea45533afdd9fcbbbf5eba0668d2bfa5",
+    "file": "sources/57202de71e0891a5c30f9b842177936c2a26e61f34fc65a5b4d4495c9e7c5538.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://openaccess.thecvf.com/ICCV2025?day=all",
+    "status": 200,
+    "sha256": "e684fe760c417a35c2f1e9a5acb3015a192fce10e566086e2d4bf7f78cbb97fe",
+    "file": "sources/81feccd075b2a4028a42772a0fcd7caa4470e6a334da17c7b9bb6c2a97970551.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://jmlr.org/tmlr/papers/",
+    "status": 200,
+    "sha256": "60c005fb88337d23275f5f798a0ab14801bac5f5ee2814f274c601c4756a21be",
+    "file": "sources/c1f5db3ba7eed6d4f49f646bca9417468cec14e5a09eb84c2df8257c39d080a0.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://proceedings.neurips.cc/paper_files/paper/2025/vol38-main-conference",
+    "status": 200,
+    "sha256": "48c2de5e5acae991a8b88eaa00174387a7ce066efeb337e30593989bd5015c9a",
+    "file": "sources/a7e8546c29afbfd7715234c838e3fc56932ca26e9eeb239cdb7c2ed47b495284.txt",
+    "browser_verification": false
+  },
+  {
+    "url": "https://openaccess.thecvf.com/ICCV2023?day=all",
+    "status": 200,
+    "sha256": "ba112ee3d3bc0111322a32faa874aa9d9b74f7a074de99994cfb6a335f1c58ed",
+    "file": "sources/cec22e81d620ae527127fbe26b5be5ae464c0ed4e3e0de0780546478c15b3b3a.txt",
+    "browser_verification": false
+  },
+  {
+    "venue": "AAAI",
+    "year": 2023,
+    "url": "https://aaai.org/proceeding/aaai-37-2023/",
+    "status": 403,
+    "file": "sources/4ba0250964b5305c165930b494595a06eab0c17dfe79070570a7d06958f78629.txt",
+    "sha256": "dd1e8f634516db417c97d1bd8a1dbf933458708877029eeb803e1cbb60a2dad1"
+  },
+  {
+    "venue": "SIGGRAPH",
+    "year": 2023,
+    "url": "https://s2023.siggraph.org/program/technical-papers/",
+    "status": 200,
+    "file": "sources/81a2f0313fc34c8fb00a90526bb6cc5a5dee04c9d7e2d4b2d5823dea6e2c2ed4.txt",
+    "sha256": "129fd738be857ffddd34d7f9f66feafb7451021aa50ea0b6d28d4819ce101222"
+  },
+  {
+    "venue": "SIGGRAPH Asia",
+    "year": 2023,
+    "url": "https://asia.siggraph.org/2023/program/technical-papers/",
+    "status": 404,
+    "file": "sources/56d0feedfe1b81ce00e1cfdfbb74b358a32f8888cc84d944a2791f8a8553fc3b.txt",
+    "sha256": "80c3fe2ae1062abf56456f52518bd670f9ec3917b7f85e152b347ac6b6faf880"
+  },
+  {
+    "venue": "AAAI",
+    "year": 2024,
+    "url": "https://aaai.org/proceeding/aaai-38-2024/",
+    "status": 200,
+    "file": "sources/83a441235611f1fdf9e009472eec02de610ca5059c2007263782cfcda34a555d.txt",
+    "sha256": "210baa5dba256e29a0333d18303fe9809fd1c9d43a8e42f57e96fca462a770eb"
+  },
+  {
+    "venue": "SIGGRAPH",
+    "year": 2024,
+    "url": "https://s2024.siggraph.org/program/technical-papers/",
+    "status": 200,
+    "file": "sources/c555c33ce25209700ff834ee808225de48c9febefbe98b64fd06baba5f33cffb.txt",
+    "sha256": "89ad0729814f76c19017dd94f938c45c26332202edddd5ee4637caf336cceb0e"
+  },
+  {
+    "venue": "SIGGRAPH Asia",
+    "year": 2024,
+    "url": "https://asia.siggraph.org/2024/program/technical-papers/",
+    "status": 403,
+    "file": "sources/0092319c37aa207b12a12dbc7eeb572a30933a635cd14f0b453d9484a8528d59.txt",
+    "sha256": "c1f357a31f9bce442ea6ec585b67d6c2f2015c982e378acbbf9e555b57b89c25"
+  },
+  {
+    "venue": "3DV",
+    "year": 2024,
+    "url": "https://3dvconf.github.io/2024/accepted-papers/",
+    "status": 200,
+    "file": "sources/af2555d4c35a55bbf6d6405efee9297be123b8efb70b60f2df1fe9c5a0f47dd4.txt",
+    "sha256": "9aaf4b1a897f3d0d0310e50b064baff6eaa7f270b8c0f2eb7505279b96a4dfa7"
+  },
+  {
+    "venue": "AAAI",
+    "year": 2025,
+    "url": "https://aaai.org/proceeding/aaai-39-2025/",
+    "status": 200,
+    "file": "sources/2907f24a13b1cea40b22a24366d8a1fb0716ae1f473fdbfbcb619bf480307e98.txt",
+    "sha256": "1c1d493980fba615ef4a5af863034da74d1f14d8ce3a0af9b32f31cc0307202d"
+  },
+  {
+    "venue": "SIGGRAPH",
+    "year": 2025,
+    "url": "https://s2025.siggraph.org/program/technical-papers/",
+    "status": 200,
+    "file": "sources/52c3ed029dcc5187eee2d583851c16439a809cfd446b5019561f0bce39ea70e6.txt",
+    "sha256": "9bfeb73d4baa34467b1db15dd24ec4eba86da1f33a58cc6c8c9fbcc361c07f5d"
+  },
+  {
+    "venue": "SIGGRAPH Asia",
+    "year": 2025,
+    "url": "https://asia.siggraph.org/2025/program/technical-papers/",
+    "status": 403,
+    "file": "sources/d99213ecb3d1d2f441f2c3e8978cbbf30dbf79fdfeca38d24efb2db0d57c1960.txt",
+    "sha256": "7e05f574ced5c7db5e6e4dc3cce32c33cb99a4eefe283b89389cccb934068bdb"
+  },
+  {
+    "venue": "3DV",
+    "year": 2025,
+    "url": "https://3dvconf.github.io/2025/accepted-papers/",
+    "status": 200,
+    "file": "sources/d79800f5990a08c0c84a5317e1c754949046f2f52bf72206bd0b7065b8a486f8.txt",
+    "sha256": "251eaa4164cfc8d6ad062fd00bf5941fc1b939529d936b7b42a60e6eeece4fb6"
+  },
+  {
+    "venue": "AAAI",
+    "year": 2026,
+    "url": "https://aaai.org/proceeding/aaai-40-2026/",
+    "status": 200,
+    "file": "sources/7675d0bc51088a1e087565029919b3ff051383895e5fc50cd5d9cc1bbe839838.txt",
+    "sha256": "37d6a4e97998537baba88f79fdeec77fc4366d2847747e473d3c9e48f1a19324"
+  },
+  {
+    "venue": "SIGGRAPH",
+    "year": 2026,
+    "url": "https://s2026.siggraph.org/program/technical-papers/",
+    "error": "ReadTimeout"
+  },
+  {
+    "venue": "SIGGRAPH Asia",
+    "year": 2026,
+    "url": "https://asia.siggraph.org/2026/program/technical-papers/",
+    "status": 403,
+    "file": "sources/de9c63a641eb977365b07fbb146b0875f54148169c274c03f0d9ca0681645571.txt",
+    "sha256": "c7598a4e06d672fb5a514ec03aba8399026fcc07dde2d7aae8b30eba2033a5bb"
+  },
+  {
+    "venue": "3DV",
+    "year": 2026,
+    "url": "https://3dvconf.github.io/2026/accepted-papers/",
+    "status": 200,
+    "file": "sources/4c2220864243b36068eb4fab8093429d813cd46447a9e2fdb9158c71d9663e44.txt",
+    "sha256": "fb90993ea645424fd58281fa9fb56491e8bc2be6fa1ed41a4f3657246ad36669"
+  },
+  {
+    "venue": "3DV",
+    "year": 2026,
+    "url": "https://3dvconf.github.io/2026/schedule.csv",
+    "status": 200,
+    "file": "sources/a79c4c5b96340ab3b854373c8feb5ce381c181aa3a1e0e677ebc1e69e7e3def5.txt",
+    "sha256": "b5fa626bc32d4fe704159565ce1c715bfd6d4dde4d27b022cda0fe201c964800"
+  }
+]

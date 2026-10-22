@@ -4626,7 +4626,6 @@ ape_f03c8f9028fd4f2a8b2eaa86,ai4science,ai4science-d04-s04,kept,0.740172,0.08078
 ape_a92f85f53c74086c46d14c77,ai4science,ai4science-d04-r,kept,0.659275,0.002394,1
 ape_57dba7a9b1dd28e4116e64d6,ai4science,ai4science-d04-r,kept,0.710758,0.005416,1
 ape_5b667673b578bf65111cb8bb,ai4science,ai4science-d04-r,kept,0.764533,0.086708,0
-ape_0eb0b244a869242cbbd6f8e0,ai4science,ai4science-d04-r,kept,0.79854,0.064447,0
 ape_ebc388891796077cd2f9b8e4,ai4science,ai4science-d04-s03,kept,0.746337,0.028802,0
 ape_11073bb6af945beacd7a8ca1,ai4science,ai4science-d04-s02,kept,0.707991,0.029965,0
 ape_cadc15129b8fe94f60eff9df,ai4science,ai4science-d04-r,kept,0.794929,0.040413,0
@@ -5501,7 +5500,6 @@ ape_d6d2705e73a332afbcc17674,ai4science,ai4science-d06,kept,0.836238,0.059917,0
 ape_0755807e76d53e913cb65441,ai4science,ai4science-d06,kept,0.79273,0.006518,1
 ape_0498d48a9e80658a369c2317,ai4science,ai4science-d06,kept,0.88517,0.051483,0
 ape_82c74d67f0ef94501afb0fc6,ai4science,ai4science-d06,kept,0.753868,0.006231,1
-ape_1710a41bdb8f9dd2e4eaf669,ai4science,ai4science-d06,kept,0.778935,0.001762,1
 ape_9450d0d4c02f6f1abb964047,ai4science,ai4science-d06,kept,0.775778,-0.000251,1
 ape_316c15ecd1d4e3d9acbc0990,ai4science,ai4science-d06,kept,0.808452,0.03513,0
 ape_ca008a37bdfa4fb697a3c9eb,ai4science,ai4science-d06,kept,0.881009,0.078942,0
@@ -10879,7 +10877,6 @@ ape_2ce113bd74c91162589fc54d,cv_lowlevel,cv_lowlevel-d01,kept,0.732367,0.021539,
 ape_654f42cd0d8a5a5622e307bd,cv_lowlevel,cv_lowlevel-d01,kept,0.740553,0.041191,0
 ape_0fc20e36fc88000bd8a23154,cv_lowlevel,cv_lowlevel-d01,kept,0.809687,0.010005,1
 ape_4e3cc5749235d5087d46919f,cv_lowlevel,cv_lowlevel-d01,kept,0.845698,0.030145,0
-ape_d1ea7726f68888662352476c,cv_lowlevel,cv_lowlevel-d01,kept,0.819932,0.043925,0
 ape_c96fcebf65316a6aa42032df,cv_lowlevel,cv_lowlevel-d01,kept,0.717923,0.018977,1
 ape_ccbb1c0f78f9375dadf61236,cv_lowlevel,cv_lowlevel-d01,kept,0.812221,0.045332,0
 ape_59676d76e70a8f77154b423a,cv_lowlevel,cv_lowlevel-d01,kept,0.849799,0.079045,0
@@ -13961,7 +13958,6 @@ ape_346cf972de792d303c12aeb8,cv_lowlevel,cv_lowlevel-d15-special-imaging,kept,0.
 ape_55cbd8619cfecf7ae8392e0d,cv_lowlevel,cv_lowlevel-d15-special-imaging,kept,0.891243,0.087939,0
 ape_5fb6ac1e1296e9c00e6b12e0,cv_lowlevel,cv_lowlevel-d15-special-imaging,kept,0.897563,0.09277,0
 ape_b20d3a1cebca5dc0a16bf1a9,cv_lowlevel,cv_lowlevel-d15-arbitrary-scale,kept,0.891629,0.092212,0
-ape_96d9841545358b16157dbaab,cv_lowlevel,cv_lowlevel-d15-special-imaging,kept,0.925021,0.116408,0
 ape_de275e98d23f08290f5665b5,cv_lowlevel,cv_lowlevel-d15-special-imaging,kept,0.921646,0.119612,0
 ape_ef30cdc57b1371c8ab11f343,cv_lowlevel,cv_lowlevel-d15-special-imaging,kept,0.916968,0.132668,0
 ape_0b7bb76d7c70b8e8b77c093c,cv_lowlevel,cv_lowlevel-d15-generic,kept,0.901278,0.101103,0
@@ -14628,7 +14624,6 @@ ape_b2cb7b2e9b952b41373e33bc,cv_lowlevel,cv_lowlevel-d16,kept,0.878041,0.042708,
 ape_d6090347a6191928e530fe5a,cv_lowlevel,cv_lowlevel-d16,kept,0.81946,0.007058,1
 ape_a645a5e25d0ce32062067b02,cv_lowlevel,cv_lowlevel-d16,kept,0.903964,0.059496,0
 ape_4846a4d2203fb38088563548,cv_lowlevel,cv_lowlevel-d16,kept,0.836491,0.09551,0
-ape_a3f7d496e3bc11ac2502a007,cv_lowlevel,cv_lowlevel-d16,kept,0.731039,0.015904,1
 ape_6a68cbba53ab49e3ff2c3205,cv_lowlevel,cv_lowlevel-d16,kept,0.897178,0.107475,0
 ape_8a9a1c573728b799faf794a3,cv_lowlevel,cv_lowlevel-d16,kept,0.8965,0.097193,0
 ape_2462325910bc1c4e49931b18,cv_lowlevel,cv_lowlevel-d16,kept,0.959513,0.075278,0
@@ -14655,7 +14650,6 @@ ape_93a0b1e66d2b4d8e22cc28f8,cv_lowlevel,cv_lowlevel-d16,kept,0.840275,0.040836,
 ape_959f60234676d100e46ae327,cv_lowlevel,cv_lowlevel-d16,kept,0.842286,0.035955,0
 ape_97a7443cd7fd44b9b4611d6a,cv_lowlevel,cv_lowlevel-d16,kept,0.845207,0.042109,0
 ape_9bc0a1cf1b3f1a005ae111fa,cv_lowlevel,cv_lowlevel-d16,kept,0.839074,0.031446,0
-ape_a2ab0f2b092839926809b90d,cv_lowlevel,cv_lowlevel-d16,kept,0.867324,0.036037,0
 ape_ac41d33b3659ae379d1c8f38,cv_lowlevel,cv_lowlevel-d16,kept,0.84632,0.036277,0
 ape_b5a1581799fb7b48b1900a0e,cv_lowlevel,cv_lowlevel-d16,kept,0.839315,0.034146,0
 ape_bec47735a03456d93e9662b2,cv_lowlevel,cv_lowlevel-d16,kept,0.847845,0.035156,0
@@ -15829,7 +15823,6 @@ ape_3c23dc0e1552e11a6ec055c0,cv_understanding,cv_understanding-d01,kept,0.809485
 ape_594830af30ca2fbcb5ab8d93,cv_understanding,cv_understanding-d01,kept,0.801805,0.030815,0
 ape_8b78c0046215c095f3b26a02,cv_understanding,cv_understanding-d01,kept,0.846264,0.028757,0
 ape_8e545d835552111af68dc79d,cv_understanding,cv_understanding-d01,kept,0.803085,0.011672,1
-ape_c20874e115b6a777d9ac07db,cv_understanding,cv_understanding-d01,kept,0.833023,0.011306,1
 ape_afc1c6f8bda5451cdfd99722,cv_understanding,cv_understanding-d01,kept,0.709773,0.00781,1
 ape_4d63a654201785b6850e5b30,cv_understanding,cv_understanding-d01,kept,0.714964,0.017947,1
 ape_5d7e33942ba2a060f8cd7e0f,cv_understanding,cv_understanding-d01,kept,0.872462,0.075812,0
@@ -15990,7 +15983,6 @@ ape_ea9ba2e5ab329b6f57781ac6,cv_understanding,cv_understanding-d02,kept,0.860541
 ape_22307f2576633e20702174d8,cv_understanding,cv_understanding-d02,kept,0.867216,0.122803,0
 ape_a2ad1d400122921eb4e603fd,cv_understanding,cv_understanding-d02,kept,0.797393,0.036506,0
 ape_990e43c0c89747b500873968,cv_understanding,cv_understanding-d02,kept,0.740022,0.025681,0
-ape_6c6d002d0df3cdf3b7351d89,cv_understanding,cv_understanding-d02,kept,0.735345,0.038321,0
 ape_ee7b0705bf32729c6330ce05,cv_understanding,cv_understanding-d02,kept,0.732164,0.038448,0
 ape_fdf47fcf2a5744662e745415,cv_understanding,cv_understanding-d02,kept,0.748474,0.032281,0
 ape_c24effa012f89ee3abbba2c9,cv_understanding,cv_understanding-d02,kept,0.804859,0.02343,0
@@ -17703,7 +17695,6 @@ ape_e3818d88e45ff6a1262d35d2,cv_understanding,cv_understanding-d04,kept,0.733614
 ape_0b7a0468891e85800e115e0d,cv_understanding,cv_understanding-d04,kept,0.805524,0.021535,0
 ape_801248015e36020c1263efba,cv_understanding,cv_understanding-d04,kept,0.735599,0.01652,1
 ape_835e041d77e6abb82ba88a84,cv_understanding,cv_understanding-d04,kept,0.713049,0.008298,1
-ape_cdb0311986fde5b90d0241a2,cv_understanding,cv_understanding-d04,kept,0.792784,0.077875,0
 ape_640a3fdf7e2660718114b169,cv_understanding,cv_understanding-d04,kept,0.790633,0.01592,1
 ape_e8ed2446e0d388a16c0fecdf,cv_understanding,cv_understanding-d04,kept,0.855441,0.044782,0
 ape_610526587aec50a918d6b40b,cv_understanding,cv_understanding-d04,kept,0.856129,0.07075,0
@@ -19799,7 +19790,6 @@ ape_4335a32d5d66a7ba83578419,cv_understanding,cv_understanding-d08,kept,0.894443
 ape_43ff613130aac64730dbd3dc,cv_understanding,cv_understanding-d08,kept,0.891232,0.062306,0
 ape_4653a44b2b9b90897b6a24ed,cv_understanding,cv_understanding-d08,kept,0.909926,0.06249,0
 ape_4b6b882cec6d12ac08c8a50a,cv_understanding,cv_understanding-d08,kept,0.891641,0.061613,0
-ape_531589db1fd0bbd01992191c,cv_understanding,cv_understanding-d08,kept,0.910728,0.064408,0
 ape_576120aeb02614defd09917f,cv_understanding,cv_understanding-d08,kept,0.892991,0.045787,0
 ape_5b4032da29b6d0e7817c89f0,cv_understanding,cv_understanding-d08,kept,0.904058,0.066725,0
 ape_684e03489ad1a285b2801678,cv_understanding,cv_understanding-d08,kept,0.885716,0.066559,0
@@ -21642,7 +21632,6 @@ ape_39046922352ed26cff2e6519,cv_understanding,cv_understanding-d10,kept,0.899325
 ape_9b310f5d1cb8a07031a1fbb1,cv_understanding,cv_understanding-d10,kept,0.848833,0.054789,0
 ape_cbb08b4b5ee9bb6163ff3d4f,cv_understanding,cv_understanding-d10,kept,0.840694,0.060465,0
 ape_846ba4e24ca801baaedf9e21,cv_understanding,cv_understanding-d10,kept,0.866502,0.066995,0
-ape_539c2e53c4aecbe7e81546c0,cv_understanding,cv_understanding-d10,kept,0.859713,0.063958,0
 ape_f0568627909335b4ff94f600,cv_understanding,cv_understanding-d10,kept,0.854399,0.003045,1
 ape_a3869368fc97bab6506e8cba,cv_understanding,cv_understanding-d11,kept,0.807006,0.03048,0
 ape_2d45a3afe5bf27673ad230ff,cv_understanding,cv_understanding-d11,kept,0.787517,0.030943,0
@@ -21978,7 +21967,6 @@ ape_6368a4e52e14e11299069bb9,cv_understanding,cv_understanding-d11,kept,0.820284
 ape_680f0b06e13efa17c21b91a8,cv_understanding,cv_understanding-d11,kept,0.831824,0.047024,0
 ape_7858f1b962cd56d9f0400c36,cv_understanding,cv_understanding-d11,kept,0.83314,0.05504,0
 ape_7a326fdba0056fdd351a3ab2,cv_understanding,cv_understanding-d11,kept,0.835297,0.061486,0
-ape_8350c718c5256f9e57dc54ba,cv_understanding,cv_understanding-d11,kept,0.861181,0.05657,0
 ape_884a0a42873c38651211af2f,cv_understanding,cv_understanding-d11,kept,0.843017,0.060414,0
 ape_89ab188ba55c814b30428f91,cv_understanding,cv_understanding-d11,kept,0.863379,0.055516,0
 ape_931b0d12612bf578e080b638,cv_understanding,cv_understanding-d11,kept,0.828617,0.064441,0
@@ -22916,7 +22904,6 @@ ape_e304cda4b41ac9c3619246b5,ml_foundations,ml_foundations-d06,task_match,0.8485
 ape_f4c56ae8226d0a6c3ba0abc1,ml_foundations,ml_foundations-d06,task_match,0.86075,0.07802,0
 ape_432dd2cb78c2cc0366759930,cv_understanding,cv_understanding-d12,kept,0.892318,0.081021,0
 ape_b0a4139cbf46c84f6a3cc2bc,cv_understanding,cv_understanding-d12,kept,0.898218,0.067388,0
-ape_e7acfe497db4b05ef585e86d,cv_understanding,cv_understanding-d12,kept,0.907025,0.073158,0
 ape_9bae537aeea78a1002960ba7,cv_understanding,cv_understanding-d12,kept,0.901358,0.059151,0
 ape_5042e64d40648915f2d3f51b,cv_understanding,cv_understanding-d12,kept,0.904107,0.071798,0
 ape_6a22d0bdb66fa857e6748448,cv_understanding,cv_understanding-d12,kept,0.897035,0.073618,0
@@ -23417,7 +23404,6 @@ ape_70dda2f16a2472906f44ed1d,cv_understanding,cv_understanding-d14,kept,0.894778
 ape_86eff8e789a5b0307fc68b1c,cv_understanding,cv_understanding-d14,kept,0.851604,0.074898,0
 ape_51cc912f40147b9fc88a5a6a,cv_understanding,cv_understanding-d14,kept,0.886779,0.049887,0
 ape_8a73ed0641ef6d2a551a7fb8,cv_understanding,cv_understanding-d14,kept,0.880742,0.061178,0
-ape_949f6bfacaaebfd7dfda35a1,cv_understanding,cv_understanding-d14,kept,0.881976,0.061964,0
 ape_cef7c1f45387efcc2ce24ec2,cv_understanding,cv_understanding-d14,kept,0.819424,0.064921,0
 ape_2f9540ec25ba5e4a51c1f4cf,cv_understanding,cv_understanding-d14,kept,0.88986,0.086419,0
 ape_1afa0ad01c4e2a0cb3f393cf,cv_understanding,cv_understanding-d14,kept,0.905003,0.070832,0
@@ -23534,7 +23520,6 @@ ape_fcb33915bdc1103dd0fb865b,cv_understanding,cv_understanding-d14,kept,0.898139
 ape_4efd553ad42ef6d090f08d2e,cv_understanding,cv_understanding-d14,kept,0.913714,0.099514,0
 ape_907b9be8d0f631b9a9e7b266,cv_understanding,cv_understanding-d14,kept,0.915101,0.080664,0
 ape_db9a3689e346eb9baa698ecf,cv_understanding,cv_understanding-d14,kept,0.91262,0.099945,0
-ape_e5b31a2a91e46c7537992080,cv_understanding,cv_understanding-d14,kept,0.917379,0.080093,0
 ape_efb813a16605797e2aaaab7b,cv_understanding,cv_understanding-d14,kept,0.918035,0.078217,0
 ape_b573ad815892de8a02d83a17,cv_understanding,cv_understanding-d14,kept,0.822074,0.03113,0
 ape_5428ab8ee22ddab44251dd52,cv_understanding,cv_understanding-d14,kept,0.870714,0.044047,0
@@ -31218,7 +31203,6 @@ ape_f86bcc4de42b39591fb8d4ab,embodied_robotics,embodied_robotics-d07,kept,0.9314
 ape_5aa203a2e545f62d1ddaf571,embodied_robotics,embodied_robotics-d07,kept,0.879371,0.016745,1
 ape_4d835b765cfcbc554b2ed3bc,embodied_robotics,embodied_robotics-d07,kept,0.818208,0.000626,1
 ape_5ecaea982f4aac053e2a64e7,embodied_robotics,embodied_robotics-d07,kept,0.837109,0.027171,0
-ape_4520ea6ca31e72a5c2588de4,embodied_robotics,embodied_robotics-d07,kept,0.862835,0.054509,0
 ape_8ce122da022d4c141f99b64b,embodied_robotics,embodied_robotics-d07,kept,0.858248,0.055958,0
 ape_3b4b5d0feee71a81f50e33df,embodied_robotics,embodied_robotics-d07,kept,0.901642,0.040199,0
 ape_3b9938311cee7049786cc33f,embodied_robotics,embodied_robotics-d07,kept,0.935244,0.066014,0
@@ -38258,7 +38242,6 @@ ape_f3f9fd82db92022d5911ae97,hci_visualization,hci_visualization-d07-s01,kept,0.
 ape_3ed246b1d8af310e49c7fd19,hci_visualization,hci_visualization-d07-r,kept,0.84209,0.041139,0
 ape_dd3bb9a749f4e3585201864f,hci_visualization,hci_visualization-d07-s01,kept,0.825791,0.042827,0
 ape_a585688abc067fac7b3e9a94,hci_visualization,hci_visualization-d07-r,kept,0.698942,0.021623,0
-ape_247da129173a1f247442879f,hci_visualization,hci_visualization-d07-r,kept,0.781438,0.056556,0
 ape_214533ffe4c7ac4356c8c259,hci_visualization,hci_visualization-d07-s01,kept,0.727454,0.032669,0
 ape_7241b652173c61b77f8d9c0f,hci_visualization,hci_visualization-d07-s01,kept,0.765681,0.083376,0
 ape_505baf5d01d302b7925fab60,hci_visualization,hci_visualization-d07-s01,kept,0.811982,0.006008,1
@@ -63252,7 +63235,6 @@ ape_1a5554c74ebe8e0c77101f7e,ml_foundations,ml_foundations-d12,kept,0.802785,0.0
 ape_355d98a3a01d55efac0284d8,ml_foundations,ml_foundations-d12,kept,0.800897,0.026961,0
 ape_360c852c87a289160b67bbb0,ml_foundations,ml_foundations-d12,kept,0.82493,0.022132,0
 ape_36fab4d53f4a496adfb8c175,ml_foundations,ml_foundations-d12,kept,0.828958,0.023907,0
-ape_8e1a9592ae56d98d45683535,ml_foundations,ml_foundations-d12,kept,0.846405,0.017133,1
 ape_515a2190845b523dfb2f71df,ml_foundations,ml_foundations-d12,kept,0.812769,0.01107,1
 ape_34b8f57108a84752de33a854,ml_foundations,ml_foundations-d12,kept,0.832868,0.008164,1
 ape_e2bdb5f7c624c7d03372b520,ml_foundations,ml_foundations-d12,kept,0.869767,0.076274,0
@@ -63353,11 +63335,9 @@ ape_726695d561ad8a098cfd89d7,ml_foundations,ml_foundations-d12,kept,0.88101,0.08
 ape_7907b4e4cb1cf3b15fd8ac5d,ml_foundations,ml_foundations-d12,kept,0.893388,0.077611,0
 ape_790d0676cf5033ee3f11f740,ml_foundations,ml_foundations-d12,kept,0.892875,0.087554,0
 ape_79f0fc19f060a78c6b30e373,ml_foundations,ml_foundations-d12,kept,0.876147,0.081996,0
-ape_835331726a888cb2057f939e,ml_foundations,ml_foundations-d12,kept,0.903401,0.079384,0
 ape_8a1af4083c0a6f615a268657,ml_foundations,ml_foundations-d12,kept,0.896084,0.081711,0
 ape_8c37e15fc106989dfb1f83de,ml_foundations,ml_foundations-d12,kept,0.890258,0.084552,0
 ape_8d3bc832ce6ff6c84e63e240,ml_foundations,ml_foundations-d12,kept,0.876732,0.080106,0
-ape_8e79cf6814603f16abbed489,ml_foundations,ml_foundations-d12,kept,0.903489,0.079217,0
 ape_943e27f9959e657781398d95,ml_foundations,ml_foundations-d12,kept,0.880671,0.074515,0
 ape_955af49c7b84ce1059ad0dee,ml_foundations,ml_foundations-d12,kept,0.884583,0.072183,0
 ape_9a80e1ce12f40eb9763db3c5,ml_foundations,ml_foundations-d12,kept,0.870901,0.086179,0
@@ -64213,7 +64193,6 @@ ape_d1660d69ebd3b8e11e74dd75,ml_foundations,ml_foundations-d13,kept,0.806663,0.0
 ape_d3b3fee2b9c549e6b89f24eb,ml_foundations,ml_foundations-d13,kept,0.848999,0.069694,0
 ape_ed1ed4f115aa600fe6bc66ab,ml_foundations,ml_foundations-d13,kept,0.875191,0.079374,0
 ape_38c677a1f6eae49b2140ac71,ml_foundations,ml_foundations-d13,kept,0.779758,0.002303,1
-ape_c635e709aae05d8b86d57f3a,ml_foundations,ml_foundations-d13,kept,0.809641,5.1e-05,1
 ape_9520b2daad73dac53546ec2f,ml_foundations,ml_foundations-d13,kept,0.805346,0.032384,0
 ape_2763abaff30d6c1773021448,ml_foundations,ml_foundations-d13,kept,0.861795,0.055293,0
 ape_0d0b08c2c70fb09fc9c8611d,ml_foundations,ml_foundations-d13,kept,0.820458,0.007212,1
@@ -65985,7 +65964,6 @@ ape_5fd78460593482c7b33c27bc,ml_foundations,ml_foundations-d15,kept,0.74503,0.01
 ape_b0c3cd00989a787eadeece6c,ml_foundations,ml_foundations-d15,kept,0.8635,0.103583,0
 ape_3f7294663bb44117692bba2f,ml_foundations,ml_foundations-d15,kept,0.69194,0.008608,1
 ape_c78b6b778aca009881c990bf,ml_foundations,ml_foundations-d15,kept,0.782456,0.012489,1
-ape_8a8bffa0eb5cde6ab392b51e,ml_foundations,ml_foundations-d15,kept,0.903952,0.111698,0
 ape_44c8ec537eccc431b2b95424,ml_foundations,ml_foundations-d15,kept,0.857569,0.058772,0
 ape_7dbf17834f51e4fa664955f6,ml_foundations,ml_foundations-d15,kept,0.893759,0.129491,0
 ape_4293dd8745df834e6edb33dd,ml_foundations,ml_foundations-d15,kept,0.840318,0.079407,0
@@ -70665,7 +70643,6 @@ ape_ef9d6cf1ca618ba9453d31cd,multimodal,multimodal-d01,kept,0.911947,0.068,0
 ape_b62dbb12bd3d2bdbc0b87dff,multimodal,multimodal-d01,kept,0.906035,0.100156,0
 ape_afafc78251635ee947e5666c,multimodal,multimodal-d01,kept,0.823892,0.058512,0
 ape_03972b8cf2804dd212b10adf,multimodal,multimodal-d01,kept,0.924035,0.115732,0
-ape_3287ca96360b22be886403ff,multimodal,multimodal-d01,kept,0.917235,0.127138,0
 ape_50a85e55b5e2524482539485,multimodal,multimodal-d01,kept,0.922348,0.126536,0
 ape_d74bab162f3fd5f369c21a6f,multimodal,multimodal-d01,kept,0.925104,0.086413,0
 ape_7b4f66828d8b64528b025174,multimodal,multimodal-d01,kept,0.874736,0.003981,1
@@ -70933,7 +70910,6 @@ ape_adf58c72aa1d614dcc434d9b,multimodal,multimodal-d01,kept,0.792811,0.101372,0
 ape_bc25c092bbe1339f2ae9b665,multimodal,multimodal-d01,kept,0.80622,0.102183,0
 ape_c97d4271fcb21b68e0d92a17,multimodal,multimodal-d01,kept,0.803247,0.0992,0
 ape_e75002f11732222518a9f15f,multimodal,multimodal-d01,kept,0.799003,0.106418,0
-ape_d1709d6aef54c78454dcb839,multimodal,multimodal-d01,kept,0.766256,0.077552,0
 ape_fe325f00a60eaeca736a420d,multimodal,multimodal-d01,kept,0.708094,0.040178,0
 ape_5ec919400488e0d94794b951,multimodal,multimodal-d01,kept,0.728565,0.041774,0
 ape_de014ce2d32b799b6b31b837,multimodal,multimodal-d01,kept,0.777923,0.035306,0
@@ -97727,7 +97703,6 @@ ape_42509592bab033247e167a0d,trustworthy_ai,trustworthy_ai-d04-deepfake,kept,0.9
 ape_4457e8db35be1e930bbe9181,trustworthy_ai,trustworthy_ai-d04-deepfake,kept,0.904875,0.141876,0
 ape_4b8b7d27eaa521a07d28fedb,trustworthy_ai,trustworthy_ai-d04-deepfake,kept,0.912471,0.144783,0
 ape_4df9e71d135a0101a1e44d5b,trustworthy_ai,trustworthy_ai-d04-deepfake,kept,0.918893,0.140351,0
-ape_55f53c75ccb03aa7132aede6,trustworthy_ai,trustworthy_ai-d04-deepfake,kept,0.92257,0.146748,0
 ape_6d1b2864fb0ea42d0e3b6b0e,trustworthy_ai,trustworthy_ai-d04-deepfake,kept,0.906041,0.153221,0
 ape_726636eb8893623f58c390ed,trustworthy_ai,trustworthy_ai-d04-deepfake,kept,0.912828,0.160542,0
 ape_74e51312579be27b04cd702a,trustworthy_ai,trustworthy_ai-d04-deepfake,kept,0.91044,0.143976,0
@@ -109557,7 +109532,6 @@ ape_5276f5e733c8129be25481f8,vision_3d_graphics,vision_3d_graphics-d09,kept,0.86
 ape_5dd49e916614bc6f64fbf07f,vision_3d_graphics,vision_3d_graphics-d09,kept,0.886631,0.070863,0
 ape_5b243d70a5cbff2375cf42bf,vision_3d_graphics,vision_3d_graphics-d09,kept,0.836496,0.038642,0
 ape_1d747576ec05ae3326e6732b,vision_3d_graphics,vision_3d_graphics-d09,kept,0.906581,0.018153,1
-ape_ba51731ba71aef333e814df8,vision_3d_graphics,vision_3d_graphics-d09,kept,0.909151,0.017843,1
 ape_dd4bf3f19304e258fe217050,vision_3d_graphics,vision_3d_graphics-d09,kept,0.903779,0.043874,0
 ape_8d48a0f385b12a51784a702b,vision_3d_graphics,vision_3d_graphics-d09,kept,0.870593,0.063908,0
 ape_296f327765a4418701666e46,vision_3d_graphics,vision_3d_graphics-d09,kept,0.9087,0.074925,0
@@ -109694,7 +109668,6 @@ ape_45bb909cf851710884fbf230,vision_3d_graphics,vision_3d_graphics-d09,kept,0.88
 ape_72eab131d44085333af11240,vision_3d_graphics,vision_3d_graphics-d09,kept,0.893798,0.060109,0
 ape_b1dbb5f36b27ee571f05b924,vision_3d_graphics,vision_3d_graphics-d09,kept,0.822212,0.026505,0
 ape_fd7eb8bbd9e0d4882c7f1038,vision_3d_graphics,vision_3d_graphics-d09,kept,0.839989,0.013498,1
-ape_ec597929449e54408fad2fca,vision_3d_graphics,vision_3d_graphics-d09,kept,0.837819,0.045409,0
 ape_a697fa9ae7bc28fee38bfb9f,vision_3d_graphics,vision_3d_graphics-d09,kept,0.799775,0.000186,1
 ape_f6120e4c2a205adc14699c01,vision_3d_graphics,vision_3d_graphics-d09,kept,0.898399,0.043105,0
 ape_9238de46d204c2418e459779,vision_3d_graphics,vision_3d_graphics-d09,kept,0.892192,0.082489,0
@@ -113092,7 +113065,6 @@ ape_bb3fd5cff074ae57fc97cdf9,vision_3d_graphics,vision_3d_graphics-d16,kept,0.76
 ape_422ff07de75632141bdd4396,vision_3d_graphics,vision_3d_graphics-d16,kept,0.81119,0.018181,1
 ape_5339d1940ecbfe4d9f05c7ab,vision_3d_graphics,vision_3d_graphics-d16,kept,0.825459,0.058001,0
 ape_3025360cf6e32f60959eb2a0,vision_3d_graphics,vision_3d_graphics-d16,kept,0.808385,0.016229,1
-ape_214d59c20480b175d8d13c5f,vision_3d_graphics,vision_3d_graphics-d16,kept,0.911169,0.05701,0
 ape_60155ef6467452d46215d296,vision_3d_graphics,vision_3d_graphics-d16,kept,0.875633,0.021761,0
 ape_ab11c6aa9af766847b18ccee,vision_3d_graphics,vision_3d_graphics-d16,kept,0.704053,0.035661,0
 ape_1bfdc5ae9cf090ba622e3dca,vision_3d_graphics,vision_3d_graphics-d16,kept,0.793054,0.049846,0
@@ -113946,7 +113918,6 @@ ape_42bb53c2c513c7241892ec27,vision_3d_graphics,vision_3d_graphics-d16,kept,0.93
 ape_4486ccfccf9039bbf73cab49,vision_3d_graphics,vision_3d_graphics-d16,kept,0.94214,0.097866,0
 ape_46df1eeb399c4a874e730f7c,vision_3d_graphics,vision_3d_graphics-d16,kept,0.939367,0.109883,0
 ape_499e962e8e322c501623c83e,vision_3d_graphics,vision_3d_graphics-d16,kept,0.939754,0.105874,0
-ape_4c615f6b4d588991ed8bb196,vision_3d_graphics,vision_3d_graphics-d16,kept,0.941651,0.094312,0
 ape_4fc75142be1224d4a639f149,vision_3d_graphics,vision_3d_graphics-d16,kept,0.94495,0.098308,0
 ape_52f1e012ec65f109cc7d3bc5,vision_3d_graphics,vision_3d_graphics-d16,kept,0.938152,0.098869,0
 ape_53a073913471728b83247203,vision_3d_graphics,vision_3d_graphics-d16,kept,0.941801,0.095742,0
@@ -117261,7 +117232,6 @@ ape_58249d9c599ce2afa373b9e5,visual_generation,visual_generation-d02,kept,0.9310
 ape_a4baa04cd85e21f7a22df6bd,visual_generation,visual_generation-d02,kept,0.833256,0.005416,1
 ape_af884a52d63084b51fceedeb,visual_generation,visual_generation-d02,kept,0.861773,0.014094,1
 ape_b4aa6ace3e5b4c1e5e826363,visual_generation,visual_generation-d02,kept,0.90534,0.056722,0
-ape_d8278992891085b26a79ff94,visual_generation,visual_generation-d02,kept,0.909354,0.05746,0
 ape_00a94f06199b16cddeedb621,visual_generation,visual_generation-d02,kept,0.886154,0.023146,0
 ape_27fe44a31647bacd846ff555,visual_generation,visual_generation-d02,kept,0.8778,0.03297,0
 ape_cf5bebd5bf3b31f1a708075d,visual_generation,visual_generation-d02,kept,0.903961,0.043658,0
@@ -117750,7 +117720,6 @@ ape_cc918d0858407e0a60a262a1,visual_generation,visual_generation-d03,kept,0.7712
 ape_0f2645a6b94419c3fd159668,visual_generation,visual_generation-d03,kept,0.817812,0.069483,0
 ape_ee2af16135439d4c919512bd,visual_generation,visual_generation-d03,kept,0.846466,0.038032,0
 ape_9f47c333dccb4d6b575371c0,visual_generation,visual_generation-d03,kept,0.865502,0.001538,1
-ape_c58a0b468a6eab07226a7d6c,visual_generation,visual_generation-d03,kept,0.862895,0.023296,0
 ape_dc4b0323ae9636933aa5a634,visual_generation,visual_generation-d03,kept,0.863663,0.028103,0
 ape_cba064af43a503de866fbafb,visual_generation,visual_generation-d03,kept,0.819593,0.03495,0
 ape_a7e180e9528626d2e4bda0ff,visual_generation,visual_generation-d03,kept,0.712069,0.004325,1

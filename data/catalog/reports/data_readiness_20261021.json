@@ -1,0 +1,115 @@
+{
+  "cutoff": "2026-10-21",
+  "catalog_release_id": "catalog-20261021T091000Z-04ffa9eba273",
+  "checks": {
+    "integrity_check": "ok",
+    "foreign_key_violations": 0,
+    "records_without_membership": 0,
+    "entities_without_canonical_record": 0,
+    "entities_without_area_state": 0,
+    "pending_with_direction": 0,
+    "doi_split_across_entities": 0,
+    "blank_research_titles": 0
+  },
+  "critical_failures": [],
+  "corpus": {
+    "source_record_count": 138755,
+    "entity_count": 137831,
+    "non_paper_count": 284,
+    "merged_extra_record_count": 924,
+    "research_paper_count": 137547,
+    "missing_abstract_count": 3705,
+    "missing_author_count": 966,
+    "abstract_count": 133842,
+    "classified_count": 121460,
+    "pending_count": 16087,
+    "classification_coverage_rate": 88.3,
+    "count_unit": "canonical_research_entities",
+    "by_year": [
+      {
+        "year": 2023,
+        "total": 22425,
+        "classified": 22425,
+        "pending": 0,
+        "coverage_rate": 100.0,
+        "year_status": "complete_window"
+      },
+      {
+        "year": 2024,
+        "total": 28395,
+        "classified": 28395,
+        "pending": 0,
+        "coverage_rate": 100.0,
+        "year_status": "complete_window"
+      },
+      {
+        "year": 2025,
+        "total": 36358,
+        "classified": 36358,
+        "pending": 0,
+        "coverage_rate": 100.0,
+        "year_status": "complete_window"
+      },
+      {
+        "year": 2026,
+        "total": 50369,
+        "classified": 34282,
+        "pending": 16087,
+        "coverage_rate": 68.06,
+        "year_status": "collecting"
+      }
+    ],
+    "last_complete_year": 2025,
+    "note": "Counts describe the local corpus, not all published papers. Missing fields use canonical records."
+  },
+  "classification_groups": {
+    "with_abstract": 14028,
+    "title_only": 1961,
+    "review_first": 98
+  },
+  "pending_missing_abstract": 1962,
+  "pending_missing_authors": 960,
+  "pending_publication_evidence": {
+    "not_fully_verified": 15326,
+    "confirmed_in_saved_inventory": 761
+  },
+  "saved_inventory_confirmed_research_entities": 93379,
+  "missing_abstract_by_venue": {
+    "EMNLP": 969,
+    "KDD": 640,
+    "TMLR": 480,
+    "ACM MM": 266,
+    "WWW": 240,
+    "TKDE": 233,
+    "AIJ": 172,
+    "TPAMI": 163,
+    "TIP": 132,
+    "SIGIR": 125,
+    "SIGGRAPH": 108,
+    "SIGGRAPH Asia": 88,
+    "ICML": 60,
+    "ECCV": 8,
+    "NAACL": 7,
+    "IJCAI": 5,
+    "TVCG": 4,
+    "IJCV": 3,
+    "COLM": 1,
+    "NeurIPS": 1
+  },
+  "missing_authors_by_venue": {
+    "EMNLP": 956,
+    "TVCG": 5,
+    "TPAMI": 2,
+    "ACM MM": 2,
+    "AIJ": 1
+  },
+  "entity_review_candidates": 128,
+  "queue_file": "classification_queue_20261021.csv.gz",
+  "queue_sha256": "2dc8ead1c9f090ab99985d541113501186ff9d409370b941dc3c8ddb7b9bb6ce",
+  "limitations": [
+    "No semantic accuracy or independent human gold-label evaluation is implied.",
+    "Unverified publication coverage is not proof that a record is unpublished.",
+    "Publisher year may differ from first-online year; old IDs and catalog years are retained.",
+    "This is a metadata corpus; availability of metadata does not imply downloaded full text."
+  ]
+}

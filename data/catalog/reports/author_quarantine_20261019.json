@@ -1,0 +1,47 @@
+[
+  {
+    "venue": "NeurIPS",
+    "paper_id": "virtual-155956",
+    "raw_authors": "Senqiao Yang (The Chinese University of Hong Kong), Chengyao Wang (The Chinese University of Hong Kong), Yuxin Chen (The Hong Kong University of Science and Technology), Zixuan WANG (The Hong Kong University of Science and Technology), Longxiang Tang (Tsinghua University), Haokun GUI (The Hong Kong University of Science and Technology), Jinhui Ye (Hong Kong University of Science and Technology(Guangzhou))), Changsheng Lu (The Hong Kong University of Science and Technology), Xiaoyang Wu (the University of Hong Kong), Mingkang Zhu (Chinese University of Hong Kong), Pengguang Chen (SmartMore), Shu Liu (Chinese University of Hong Kong), Zhuotao Tian (The Chinese University of Hong Kong), Hengshuang Zhao (The University of Hong Kong), Bei Yu, Jiaya Jia (Department of Computer Science and Engineering, Hong Kong University of Science and Technology)"
+  },
+  {
+    "venue": "NeurIPS",
+    "paper_id": "virtual-151032",
+    "raw_authors": "Jiyoung Kim (Korea Advanced Institute of Science and Technology)), Youngjin Shin (Korea Advanced Institute of Science &amp; Technology), Siyoon Jin (KAIST), Dahyun Chung (Korea University), Jisu Nam (Korea Advanced Institute of Science &amp; Technology), Tongmin Kim (Korea University), JongJae Park (NC AI), Hyeonwoo Kang (NC AI), Seungryong Kim (Korea Advanced Institute of Science &amp; Technology)"
+  },
+  {
+    "venue": "NeurIPS",
+    "paper_id": "virtual-151586",
+    "raw_authors": "Yuan Xie (The Hong Kong University of Science and Technology (Guangzhou)), Tianshui Chen (Guangdong University of Technology), Deyu Zhou (The Hong Kong University of Science and Technology (Guangzhou)), Lionel Ni (The Hong Kong University of Science and Technology (Guangzhou)))"
+  },
+  {
+    "venue": "ICML",
+    "paper_id": "UhPwL6LYOc",
+    "raw_authors": "Yuan Xie (The Hong Kong University of Science and Technology(Guangzhou)), Tianshui Chen (Guangdong University of Technology), Zheng Ge (Stepfun), Lionel Ni (The Hong Kong University of Science and Technology (Guangzhou)))"
+  },
+  {
+    "venue": "ICML",
+    "paper_id": "Y8dBzpAdkt",
+    "raw_authors": "Haolun MA (The Hong Kong University of Science and Technology), Yanchen ZHU (The Hong Kong University of Science and Technology), Zizhuo Xu (Hong Kong University of Science and Technology), Weijie Shi (Hong Kong University of Science and Technology), Jiajie Xu (Soochow University), Lei Li (Hong Kong University of Science and Technology (Guangzhou)))"
+  },
+  {
+    "venue": "ICLR",
+    "paper_id": "IuWIzmMvKo",
+    "raw_authors": "Jiayu Yang (The Hong Kong University of Science and Technology (Guangzhou)), Yuxuan Fan (The Hong Kong University of Science and Technology (Guangzhou)), Songning Lai, Shengen Wu (The Hong Kong University of Science and Technology (Guangzhou))), Jiaqi Tang (The Hong Kong University of Science and Technology), Chun Kang (Beijing University of Aeronautics and Astronautics), Zhijiang Guo (HKUST (GZ)), Yutao Yue (The Hong Kong University of Science and Technology (Guangzhou))"
+  },
+  {
+    "venue": "ICLR",
+    "paper_id": "N1DfzTVuUY",
+    "raw_authors": "Zixin Yin (Hong Kong University of Science and Technology), Xili Dai (University of Electronic Science and Technology of China,), Ling-Hao Chen (Tsinghua University), Deyu Zhou (The Hong Kong University of Science and Technology (Guangzhou)), Jianan Wang (International Digital Economy Academy (IDEA)), Duomin Wang (NVIDIA), Gang Yu (Tencent), Lionel Ni (The Hong Kong University of Science and Technology (Guangzhou))), Lei Zhang (International Digital Economy Academy (IDEA)), Heung-Yeung Shum (Hong Kong University of Science and Technology)"
+  },
+  {
+    "venue": "ICLR",
+    "paper_id": "PHipCRoSyh",
+    "raw_authors": "Zixin Yin (Hong Kong University of Science and Technology), Xili Dai (University of Electronic Science and Technology of China,), Duomin Wang (NVIDIA), Xianfang Zeng (stepfun), Lionel Ni (The Hong Kong University of Science and Technology (Guangzhou))), Gang Yu (Tencent), Heung-Yeung Shum (Hong Kong University of Science and Technology)"
+  },
+  {
+    "venue": "ICLR",
+    "paper_id": "eKhOrQWAVJ",
+    "raw_authors": "Jinhui Ye (Hong Kong University of Science and Technology(Guangzhou))), Fangjing Wang (Southern University of Science and Technology), Ning Gao (Shanghai Artificial Intelligence Laboratory), Junqiu Yu (Fudan University), Yangkun Zhu (Southeast University), Bin Wang (Zhejiang University), Jinyu Zhang (Shanghai Institute of Artifitial Intelligence), Weiyang Jin (Westlake University), Yanwei Fu (Fudan University), Feng Zheng (Southern University of Science and Technology), Yilun Chen (Shanghai Artificial Intelligence Laboratory), Jiangmiao Pang (Shanghai AI Laboratory)"
+  }
+]

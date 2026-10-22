@@ -21,17 +21,20 @@ def normalize_filters(raw: Any) -> dict:
         return {}
     if not isinstance(raw, dict):
         raise ValueError("filters must be an object")
-    allowed = {"area_ids", "area_names", "direction_ids", "direction_names", "venues", "years", "query"}
+    allowed = {"area_ids", "area_names", "direction_ids", "direction_names", "venues", "years", "query", "pending_direction"}
     unknown = set(raw) - allowed
     if unknown:
         raise ValueError(f"unknown filter keys: {sorted(unknown)}")
+    if "pending_direction" in raw and type(raw["pending_direction"]) is not bool:
+        raise ValueError("pending_direction must be a boolean")
     out = {"area_ids": _list(raw.get("area_ids"), "area_ids"),
            "area_names": _list(raw.get("area_names"), "area_names"),
            "direction_ids": _list(raw.get("direction_ids"), "direction_ids"),
            "direction_names": _list(raw.get("direction_names"), "direction_names"),
            "venues": _list(raw.get("venues"), "venues"),
            "years": [int(y) for y in _list(raw.get("years"), "years")],
-           "query": str(raw.get("query") or "").strip()[:200]}
+           "query": str(raw.get("query") or "").strip()[:200],
+           "pending_direction": raw.get("pending_direction", False)}
     return out
 
 
@@ -39,6 +42,8 @@ def where_clause(filters: dict) -> tuple[str, list[Any]]:
     """Return (WHERE ..., params) for the canonical entity-level base join (aliases a/d/e/p)."""
     clauses = ["a.is_non_paper = 0"]
     params: list[Any] = []
+    if filters.get("pending_direction"):
+        clauses.extend(["a.area_id <> 'pending_classification'", "d.entity_id IS NULL"])
     if filters.get("area_ids"):
         clauses.append(f"a.area_id IN ({','.join('?' * len(filters['area_ids']))})")
         params.extend(filters["area_ids"])

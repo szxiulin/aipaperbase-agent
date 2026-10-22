@@ -128,5 +128,23 @@ class TextContentTest(unittest.TestCase):
         self.assertEqual(text_content(None), "")
 
 
+
+
+class TmlrAuthorTests(unittest.TestCase):
+    def test_only_terminal_date_is_removed(self):
+        from scripts.collect.build_catalog import strip_tmlr_publication_date
+        self.assertEqual(strip_tmlr_publication_date("Chao Wang; Alexandre H. Thiery; December 2023"), "Chao Wang; Alexandre H. Thiery")
+        self.assertEqual(strip_tmlr_publication_date("Alice May, Bob June"), "Alice May, Bob June")
+        self.assertEqual(strip_tmlr_publication_date("Alice; May 2024; Bob"), "Alice; May 2024; Bob")
+
+    def test_official_list_date_is_not_an_author(self):
+        from scripts.collect.build_catalog import scrape_tmlr
+        class Fetcher:
+            def get(self, url):
+                return '<ul><li class="item"><h4><a>Example</a></h4><p><i>Alice May, Bob Smith, December 2023</i> <a href="https://openreview.net/forum?id=fixture" >openreview</a></p></li></ul>'
+        result = scrape_tmlr(Fetcher())
+        self.assertEqual(result[2023][0].authors, "Alice May; Bob Smith")
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -6,7 +6,8 @@ the taxonomy. This module validates the pair before writing anything, then inser
 assignments and evaluation samples in one transaction.
 
 Invariants:
-  - every entity has exactly one area; exactly the non-paper entities have no direction;
+  - every entity has one area or explicit pending workflow state;
+  - non-paper and pending entities have no direction;
   - every direction belongs to the area stored on the paper;
   - a mismatch raises before any row is written.
 """
@@ -27,6 +28,9 @@ DEFAULT_GOLDEN = ROOT / "data/labels/golden_v1.csv"
 DEFAULT_METRICS = ROOT / "data/labels/golden_v1.metrics.json"
 DEFAULT_AREAS_CONFIG = ROOT / "config/areas.json"
 DEFAULT_DIRECTIONS_CONFIG = ROOT / "config/directions.json"
+DEFAULT_PENDING = ROOT / "data/labels/pending_classification.csv"
+DEFAULT_PENDING_DIRECTIONS = ROOT / "data/labels/pending_directions.csv"
+PENDING_AREA = "pending_classification"
 
 
 def sha256(path: Path) -> str:
@@ -45,7 +49,9 @@ def import_labels(connection: sqlite3.Connection, catalog_release_id: str, creat
                   golden: Path = DEFAULT_GOLDEN,
                   metrics: Path = DEFAULT_METRICS,
                   areas_config: Path = DEFAULT_AREAS_CONFIG,
-                  directions_config: Path = DEFAULT_DIRECTIONS_CONFIG) -> dict:
+                  directions_config: Path = DEFAULT_DIRECTIONS_CONFIG,
+                  pending_labels: Path | None = None,
+                  pending_direction_labels: Path | None = None) -> dict:
     cfg_areas = json.loads(areas_config.read_text(encoding="utf-8"))
     cfg_directions = json.loads(directions_config.read_text(encoding="utf-8"))
     area_ids = {a["id"]: a for a in cfg_areas["areas"]}
@@ -56,6 +62,24 @@ def import_labels(connection: sqlite3.Connection, catalog_release_id: str, creat
     area_rows = read_rows(areas_labels)
     direction_rows = read_rows(directions_labels)
     non_paper_rows = read_rows(non_paper_labels)
+    # Custom label fixtures must not silently pick up the production pending list.
+    if pending_labels is None and areas_labels == DEFAULT_AREAS_LABELS:
+        pending_labels = DEFAULT_PENDING
+    pending_rows = read_rows(pending_labels) if pending_labels and pending_labels.exists() else []
+    if pending_direction_labels is None and areas_labels == DEFAULT_AREAS_LABELS:
+        pending_direction_labels = DEFAULT_PENDING_DIRECTIONS
+    pending_direction_rows = (read_rows(pending_direction_labels)
+                              if pending_direction_labels and pending_direction_labels.exists() else [])
+    pending_direction_ids = {r["entity_id"] for r in pending_direction_rows}
+    if len(pending_direction_ids) != len(pending_direction_rows):
+        raise ValueError("duplicate entity_id in pending directions")
+    if any(r.get("status") != "pending" for r in pending_direction_rows):
+        raise ValueError("pending directions must explicitly have status=pending")
+    pending_ids = {r["entity_id"] for r in pending_rows}
+    if len(pending_ids) != len(pending_rows):
+        raise ValueError("duplicate entity_id in pending classification")
+    if any(r.get("status") != "pending" for r in pending_rows):
+        raise ValueError("pending classification must explicitly have status=pending")
     bad_status = [r["entity_id"] for r in area_rows if r.get("status") != "ok"]
     if bad_status:
         raise ValueError(f"{len(bad_status)} area label rows are not ok (e.g. {bad_status[:3]})")
@@ -67,7 +91,11 @@ def import_labels(connection: sqlite3.Connection, catalog_release_id: str, creat
     unknown = set(area_by_entity) - entity_ids
     if unknown:
         raise ValueError(f"{len(unknown)} area rows are not catalog entities (e.g. {sorted(unknown)[:3]})")
-    missing = entity_ids - set(area_by_entity)
+    if pending_ids & set(area_by_entity):
+        raise ValueError("pending entities already have area labels")
+    if pending_ids - entity_ids:
+        raise ValueError("pending rows are not catalog entities")
+    missing = entity_ids - set(area_by_entity) - pending_ids
     if missing:
         raise ValueError(f"{len(missing)} catalog entities have no area (e.g. {sorted(missing)[:3]})")
     invalid = {a for a in area_by_entity.values() if a not in area_ids}
@@ -81,9 +109,15 @@ def import_labels(connection: sqlite3.Connection, catalog_release_id: str, creat
     direction_by_entity = {r["entity_id"]: r["direction_id"] for r in direction_rows}
     if len(direction_by_entity) != len(direction_rows):
         raise ValueError("duplicate entity_id in direction labels")
-    expected_non_paper = set(area_by_entity) - set(direction_by_entity)
+    if pending_direction_ids - set(area_by_entity):
+        raise ValueError("pending directions require an assigned area")
+    if pending_direction_ids & (set(direction_by_entity) | set(non_paper) | pending_ids):
+        raise ValueError("pending directions must not overlap assigned directions, non-paper or pending areas")
+    expected_non_paper = set(area_by_entity) - set(direction_by_entity) - pending_direction_ids
     if expected_non_paper != set(non_paper):
         raise ValueError(f"non-paper mismatch: labels say {len(expected_non_paper)}, file has {len(non_paper)}")
+    if pending_ids & (set(non_paper) | set(direction_by_entity)):
+        raise ValueError("pending entities must not have direction or non-paper labels")
     direction_unknown = {d for d in direction_by_entity.values() if d not in direction_area}
     if direction_unknown:
         raise ValueError(f"unknown directions: {sorted(direction_unknown)[:5]}")
@@ -109,12 +143,17 @@ def import_labels(connection: sqlite3.Connection, catalog_release_id: str, creat
                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'building')""",
             (release_id, catalog_release_id, cfg_areas["version"], cfg_directions["version"],
              sha256(areas_labels), sha256(directions_labels), sha256(golden) if golden.exists() else "",
-             len(area_rows), len(non_paper), json.dumps(metrics_payload, ensure_ascii=False), created_at))
+             len(area_rows) + len(pending_rows), len(non_paper), json.dumps(metrics_payload, ensure_ascii=False), created_at))
 
         connection.executemany(
             "INSERT INTO area_definitions VALUES (?, ?, ?, ?, ?, ?)",
             [(a["id"], a["zh"], a["en"], a["scope"], i, cfg_areas["version"])
              for i, a in enumerate(cfg_areas["areas"])])
+        if pending_rows:
+            connection.execute("INSERT INTO area_definitions VALUES (?, ?, ?, ?, ?, ?)",
+                (PENDING_AREA, "待分类", "Pending classification",
+                 "新增论文尚未进行领域和方向标注；这是工作状态，不是研究领域。",
+                 len(cfg_areas["areas"]), cfg_areas["version"]))
         connection.executemany(
             "INSERT INTO direction_definitions VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
             [(d["direction_id"], d["area"], d["parent_direction_id"], d["name_zh"], d["name_en"],
@@ -131,6 +170,9 @@ def import_labels(connection: sqlite3.Connection, catalog_release_id: str, creat
               1 if r["entity_id"] in non_paper else 0, non_paper.get(r["entity_id"], ""))
              for r in area_rows])
         connection.executemany(
+            "INSERT INTO entity_area_assignments VALUES (?, ?, '', '', '', '', ?, 0, '')",
+            [(r["entity_id"], PENDING_AREA, cfg_areas["version"]) for r in pending_rows])
+        connection.executemany(
             "INSERT INTO entity_direction_assignments VALUES (?, ?, ?, ?, ?, ?, ?)",
             [(r["entity_id"], r["direction_id"], r.get("assigned_by", ""),
               float(r["cosine"]) if r.get("cosine") else None,
@@ -146,7 +188,9 @@ def import_labels(connection: sqlite3.Connection, catalog_release_id: str, creat
         connection.execute("UPDATE label_releases SET status = 'ready' WHERE label_release_id = ?", (release_id,))
 
     return {"label_release_id": release_id, "areas_version": cfg_areas["version"],
-            "directions_version": cfg_directions["version"], "area_assignments": len(area_rows),
+            "directions_version": cfg_directions["version"], "area_assignments": len(area_rows) + len(pending_rows),
             "direction_assignments": len(direction_rows), "non_paper": len(non_paper),
+            "pending_classification": len(pending_rows),
+            "pending_directions": len(pending_direction_rows),
             "directions": len(cfg_directions["directions"]), "golden_samples": len(golden_rows),
             "metrics_loaded": bool(metrics_payload)}

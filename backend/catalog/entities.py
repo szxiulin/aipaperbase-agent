@@ -1,7 +1,10 @@
 from __future__ import annotations
 
+import csv
+from backend.catalog.identity import load_aliases
 import hashlib
 import html
+import json
 import re
 import sqlite3
 import unicodedata
@@ -134,6 +137,9 @@ def build_entities(
     created_at: str,
     *,
     previous_database: Path | None = None,
+    identity_snapshot: Path | None = None,
+    alias_snapshot: Path | None = None,
+    publication_snapshot: Path | None = None,
 ) -> dict[str, int]:
     rows = connection.execute(
         """SELECT record_id, title, normalized_title, authors, abstract, doi, arxiv_id,
@@ -141,17 +147,66 @@ def build_entities(
            FROM paper_records ORDER BY record_id"""
     ).fetchall()
     records = [Record(**dict(row)) for row in rows]
+    previous = {}
+    if identity_snapshot is not None and identity_snapshot.exists():
+        with identity_snapshot.open(encoding="utf-8", newline="") as handle:
+            for row in csv.DictReader(handle):
+                rid, eid = row["record_id"], row["entity_id"]
+                if rid in previous or not rid or not eid:
+                    raise ValueError("Invalid stable entity identity snapshot")
+                previous[rid] = eid
+    # The local previous release can include records newer than the shipped snapshot.
+    previous.update(_previous_memberships(previous_database))
+    persisted_aliases = load_aliases(alias_snapshot) if alias_snapshot is not None else {}
+    previous = {rid: persisted_aliases.get(eid, eid) for rid, eid in previous.items()}
     by_id = {record.record_id: record for record in records}
     union = UnionFind(list(by_id))
+    component_identities = {
+        record.record_id: {previous[record.record_id]} if record.record_id in previous else set()
+        for record in records
+    }
     evidence_edges: dict[tuple[str, str], tuple[str, str]] = {}
     candidates: dict[tuple[str, str, str], tuple[str, str, str]] = {}
 
     def merge_group(items: list[Record], method: str, value: str) -> None:
         anchor = items[0].record_id
         for item in items[1:]:
-            union.union(anchor, item.record_id)
+            left_root, right_root = union.find(anchor), union.find(item.record_id)
             pair = tuple(sorted((anchor, item.record_id)))
+            left_ids, right_ids = component_identities[left_root], component_identities[right_root]
+            if left_ids and right_ids and left_ids != right_ids:
+                candidates[(pair[0], pair[1], f"{method}_identity_review")] = (
+                    value, "新证据涉及不同的已有实体，需核验后再迁移标签与用户引用", "high",
+                )
+                continue
+            union.union(anchor, item.record_id)
+            component_identities[union.find(anchor)] = left_ids | right_ids
             evidence_edges[pair] = (method, value)
+
+    # Explicitly reviewed conference presentations may differ in author formatting.
+    # The alias manifest must resolve existing identities before these edges can merge.
+    preferred_records: set[str] = set()
+    if publication_snapshot is not None and publication_snapshot.exists():
+        reviews = json.loads(publication_snapshot.read_text(encoding="utf-8"))
+        seen_sources = set()
+        for review in reviews:
+            source = review.get("source_record_id")
+            target = review.get("publication_record_id")
+            if not source and not target:
+                continue
+            if (review.get("status") != "verified_journal_presentation"
+                    or source not in by_id or target not in by_id or source == target
+                    or source in seen_sources):
+                raise ValueError("Invalid reviewed publication mapping")
+            seen_sources.add(source)
+            journal = by_id[target]
+            if (journal.venue != review.get("publication_venue")
+                    or journal.year != review.get("publication_year")):
+                raise ValueError("Reviewed publication venue/year mismatch")
+            if previous.get(source) and previous.get(target) and previous[source] != previous[target]:
+                raise ValueError("Reviewed publication requires an explicit legacy ID alias")
+            merge_group([by_id[source], journal], "reviewed_publication", target)
+            preferred_records.add(target)
 
     doi_groups: dict[str, list[Record]] = defaultdict(list)
     arxiv_groups: dict[str, list[Record]] = defaultdict(list)
@@ -212,7 +267,6 @@ def build_entities(
     for record in records:
         components[union.find(record.record_id)].append(record)
 
-    previous = _previous_memberships(previous_database)
     claimed_previous: set[str] = set()
     entity_rows = []
     membership_rows = []
@@ -233,7 +287,10 @@ def build_entities(
                 alias_rows.append((old_id, entity_id, "incremental_component_merge", created_at, release_id))
                 claimed_previous.add(old_id)
 
-        canonical = _canonical(items)
+        preferred = [item for item in items if item.record_id in preferred_records]
+        if len(preferred) > 1:
+            raise ValueError("Conflicting reviewed canonical publications")
+        canonical = preferred[0] if preferred else _canonical(items)
         component_entity[union.find(items[0].record_id)] = entity_id
         entity_rows.append((
             entity_id, canonical.record_id, canonical.title,
@@ -245,6 +302,8 @@ def build_entities(
         shared_openreview = sorted({_openreview_key(item.paper_url, item.pdf_url) for item in items if _openreview_key(item.paper_url, item.pdf_url)})
         if len(items) == 1:
             method, value, confidence = "singleton", "", "single"
+        elif preferred:
+            method, value, confidence = "reviewed_publication", canonical.record_id, "exact"
         elif shared_dois:
             method, value, confidence = "doi", shared_dois[0], "exact"
         elif shared_arxiv:
@@ -265,6 +324,15 @@ def build_entities(
             _candidate_id(left, right, method), left, right, method, value,
             reason, confidence, "pending", created_at, release_id,
         ))
+
+    current_ids = {row[0] for row in entity_rows}
+    for old_id, target in persisted_aliases.items():
+        if old_id in current_ids or target not in current_ids:
+            raise ValueError("Alias manifest does not match the rebuilt catalog")
+    alias_by_id = {row[0]: row for row in alias_rows}
+    alias_by_id.update({old: (old, target, "reviewed_same_work", created_at, release_id)
+                        for old, target in persisted_aliases.items()})
+    alias_rows = list(alias_by_id.values())
 
     connection.executemany("INSERT INTO paper_entities VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", entity_rows)
     connection.executemany("INSERT INTO entity_memberships VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", membership_rows)

@@ -370,3 +370,49 @@ if __name__ == "__main__":
         finally:
             conn.close()
             tmp.cleanup()
+
+
+class ConversationRecoveryTests(unittest.TestCase):
+    def test_delete_restore_preserves_raw_rows_and_late_task_results(self):
+        conn, tmp = _fresh_conn()
+        try:
+            conv = store.create_conversation(conn, 'recovery fixture'); cid=conv['conversation_id']
+            store.update_conversation(conn,cid,status='archived')
+            store.add_message(conn,cid,'assistant',content='answer',chunks=[{'entity_id':'legacy-id'}],reasoning='reason',tool_trace=[{'name':'fixture'}])
+            conn.execute("INSERT INTO message_snapshots VALUES ('snapshot', ?, 'history', NULL, '[]', 'time')",(cid,))
+            conn.commit();store.create_ingest_task(conn,'task',cid,['fixture'])
+            tables=['conversations','messages','message_snapshots','ingest_tasks']
+            before={t:[tuple(r) for r in conn.execute(f'SELECT rowid,* FROM {t}')] for t in tables}
+            store.delete_conversation(conn,cid)
+            self.assertIsNone(store.get_conversation(conn,cid)); self.assertEqual(store.list_messages(conn,cid),[])
+            self.assertEqual(store.list_deleted_conversations(conn)[0]['conversation_id'],cid)
+            after={t:[tuple(r) for r in conn.execute(f'SELECT rowid,* FROM {t}')] for t in tables}
+            self.assertEqual(before,after)
+            with self.assertRaises(KeyError):store.delete_conversation(conn,cid)
+            store.finish_ingest_task(conn,'task',status='done',result={'retained':True})
+            restored=store.restore_conversation(conn,cid)
+            self.assertEqual(restored['status'],'archived');self.assertEqual(len(store.list_messages(conn,cid)),1)
+            self.assertTrue(store.get_ingest_task(conn,'task')['result']['retained'])
+            with self.assertRaises(KeyError):store.restore_conversation(conn,cid)
+            store.delete_conversation(conn,cid);store.restore_conversation(conn,cid)
+            self.assertEqual(len(store.list_messages(conn,cid)),1)
+        finally:
+            conn.close();tmp.cleanup()
+
+    def test_legacy_schema_migration_and_failed_delete_preserve_rows(self):
+        from backend.chats import database
+        conn,tmp=_fresh_conn()
+        try:
+            conv=store.create_conversation(conn,'legacy');cid=conv['conversation_id']
+            store.add_message(conn,cid,'user',content='retain')
+            conn.execute('DROP TABLE conversation_deletions');conn.commit()
+            self.assertEqual(len(store.list_conversations(conn)),1)
+            self.assertEqual(store.list_deleted_conversations(conn),[])
+            before=[tuple(r) for r in conn.execute('SELECT rowid,* FROM messages')]
+            database.initialize(conn);database.initialize(conn)
+            self.assertEqual(before,[tuple(r) for r in conn.execute('SELECT rowid,* FROM messages')])
+            conn.execute("CREATE TRIGGER prevent_delete_marker BEFORE INSERT ON conversation_deletions BEGIN SELECT RAISE(ABORT,'fixture'); END")
+            with self.assertRaises(Exception):store.delete_conversation(conn,cid)
+            self.assertIsNotNone(store.get_conversation(conn,cid));self.assertEqual(len(store.list_messages(conn,cid)),1)
+        finally:
+            conn.close();tmp.cleanup()

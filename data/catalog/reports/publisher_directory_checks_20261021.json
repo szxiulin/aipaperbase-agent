@@ -1,0 +1,36 @@
+{
+  "cutoff": "2026-10-21",
+  "verified_cohorts": [
+    {
+      "venue": "TVCG",
+      "publisher_year": 2026,
+      "cutoff": "2026-10-21",
+      "query_url": "https://ieeexplore.ieee.org/search/searchresult.jsp?action=search&newsearch=true&matchBoolean=true&queryText=(%22Publication%20Number%22:2945)&ranges=2026_2026_Year",
+      "observed_result_count": 777,
+      "export_row_count": 777,
+      "export_sha256": "0d785d3291bb2e4cd6edb9d58eef818823f594535e49065155d12ba67f6ce816",
+      "matched": 777,
+      "unmatched": 0,
+      "research_entries": 751,
+      "excluded_nonresearch": 26,
+      "early_access": 85,
+      "first_online_year_differs": 212,
+      "first_online_year_complete": false,
+      "note": "Publisher publication-year cohort reconciled. Does not prove that all papers first published online in 2026 are present; some may already be assigned to later issue years. Existing catalog years retained to preserve identities."
+    }
+  ],
+  "remaining_unknowns": [
+    {
+      "publisher": "ACM",
+      "scope": "TOG/TOIS and ACM conference proceedings",
+      "reason": "Public issues endpoints returned HTTP 403; browser displayed a security verification page; institutional route did not load. No bypass attempted.",
+      "expected_count": null
+    },
+    {
+      "publisher": "IEEE",
+      "scope": "Other publication-year cohorts and complete first-online-year coverage",
+      "reason": "Institutional pages and one 777-row export were available. Further access was denied by the browser permission check; no alternate route used after denial.",
+      "expected_count": null
+    }
+  ]
+}

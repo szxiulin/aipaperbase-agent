@@ -20,6 +20,12 @@ CREATE TABLE IF NOT EXISTS conversations (
     updated_at      TEXT NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS conversation_deletions (
+    conversation_id TEXT PRIMARY KEY REFERENCES conversations(conversation_id) ON DELETE CASCADE,
+    deleted_at TEXT NOT NULL,
+    restored_at TEXT
+);
+
 CREATE TABLE IF NOT EXISTS messages (
     message_id      TEXT PRIMARY KEY,
     conversation_id TEXT NOT NULL REFERENCES conversations(conversation_id) ON DELETE CASCADE,

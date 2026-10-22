@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from backend.catalog import identity
 import json
 import secrets
 import sqlite3
@@ -44,12 +45,12 @@ def _message_dict(row: sqlite3.Row) -> dict:
         "conversation_id": row["conversation_id"],
         "role": row["role"],
         "content": row["content"],
-        "chunks": json.loads(chunks) if chunks else [],
+        "chunks": identity.references(json.loads(chunks)) if chunks else [],
         "top_k": row["top_k"],
         "model": row["model"],
         "finish_reason": row["finish_reason"],
         "reasoning": row["reasoning"],
-        "tool_trace": json.loads(tool_trace) if tool_trace else [],
+        "tool_trace": identity.references(json.loads(tool_trace)) if tool_trace else [],
         "error": row["error"],
         "created_at": row["created_at"],
     }
@@ -79,9 +80,19 @@ def create_conversation(connection: sqlite3.Connection, title: str = "") -> dict
     return conversation
 
 
+def _has_deletions(connection: sqlite3.Connection) -> bool:
+    return connection.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='conversation_deletions'").fetchone() is not None
+
+
+def _visible(connection: sqlite3.Connection) -> str:
+    if not _has_deletions(connection):
+        return "1=1"
+    return "conversation_id NOT IN (SELECT conversation_id FROM conversation_deletions WHERE restored_at IS NULL)"
+
+
 def get_conversation(connection: sqlite3.Connection, conversation_id: str) -> dict | None:
     row = connection.execute(
-        "SELECT * FROM conversations WHERE conversation_id = ?", (conversation_id,)
+        f"SELECT * FROM conversations WHERE conversation_id = ? AND {_visible(connection)}", (conversation_id,)
     ).fetchone()
     return _conversation_dict(row) if row else None
 
@@ -89,11 +100,11 @@ def get_conversation(connection: sqlite3.Connection, conversation_id: str) -> di
 def list_conversations(connection: sqlite3.Connection, status: str | None = None) -> list[dict]:
     if status:
         rows = connection.execute(
-            "SELECT * FROM conversations WHERE status = ? ORDER BY updated_at DESC", (status,)
+            f"SELECT * FROM conversations WHERE status = ? AND {_visible(connection)} ORDER BY updated_at DESC", (status,)
         ).fetchall()
     else:
         rows = connection.execute(
-            "SELECT * FROM conversations ORDER BY updated_at DESC"
+            f"SELECT * FROM conversations WHERE {_visible(connection)} ORDER BY updated_at DESC"
         ).fetchall()
     return [_conversation_dict(row) for row in rows]
 
@@ -121,12 +132,34 @@ def update_conversation(
 
 
 def delete_conversation(connection: sqlite3.Connection, conversation_id: str) -> None:
-    cursor = connection.execute(
-        "DELETE FROM conversations WHERE conversation_id = ?", (conversation_id,)
-    )
-    if cursor.rowcount == 0:
-        raise KeyError(conversation_id)
-    connection.commit()
+    # Keep original rows and rowids, including writes from already running tasks.
+    with connection:
+        cursor = connection.execute(
+            """INSERT INTO conversation_deletions (conversation_id, deleted_at, restored_at)
+               SELECT conversation_id, ?, NULL FROM conversations WHERE conversation_id = ?
+               AND conversation_id NOT IN (SELECT conversation_id FROM conversation_deletions WHERE restored_at IS NULL)
+               ON CONFLICT(conversation_id) DO UPDATE SET deleted_at=excluded.deleted_at, restored_at=NULL""",
+            (utc_now(), conversation_id))
+        if cursor.rowcount == 0:
+            raise KeyError(conversation_id)
+
+
+def list_deleted_conversations(connection: sqlite3.Connection) -> list[dict]:
+    if not _has_deletions(connection):
+        return []
+    return [dict(row) for row in connection.execute(
+        """SELECT c.*, d.deleted_at FROM conversations c JOIN conversation_deletions d USING(conversation_id)
+           WHERE d.restored_at IS NULL ORDER BY d.deleted_at DESC, c.conversation_id""")]
+
+
+def restore_conversation(connection: sqlite3.Connection, conversation_id: str) -> dict:
+    with connection:
+        cursor = connection.execute(
+            "UPDATE conversation_deletions SET restored_at=? WHERE conversation_id=? AND restored_at IS NULL",
+            (utc_now(), conversation_id))
+        if cursor.rowcount == 0:
+            raise KeyError(conversation_id)
+    return get_conversation(connection, conversation_id)
 
 
 def add_message(
@@ -181,6 +214,8 @@ def get_message(connection: sqlite3.Connection, message_id: str) -> dict | None:
 
 
 def list_messages(connection: sqlite3.Connection, conversation_id: str) -> list[dict]:
+    if get_conversation(connection, conversation_id) is None:
+        return []
     rows = connection.execute(
         "SELECT * FROM messages WHERE conversation_id = ? ORDER BY rowid", (conversation_id,)
     ).fetchall()
@@ -316,5 +351,5 @@ def get_snapshot(connection: sqlite3.Connection, snapshot_id: str) -> dict | Non
     if row is None:
         return None
     result = dict(row)
-    result["messages"] = json.loads(result.pop("messages_json"))
+    result["messages"] = identity.references(json.loads(result.pop("messages_json")))
     return result

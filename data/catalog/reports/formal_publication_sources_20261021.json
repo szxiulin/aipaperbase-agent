@@ -1,0 +1,1896 @@
+[
+  {
+    "url": "https://proceedings.mlsys.org/paper_files/paper/2023",
+    "status": 200,
+    "sha256": "5392dd78d9d8b1c0ad5690bdb1daf5f405f35afd8245dbd05ab180db5773b09f",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/fe663bb0f76ce3f17a272970335af397d82b50268687e736277338c542dfa1d7.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://proceedings.mlr.press/v202/",
+    "status": 200,
+    "sha256": "fceaba96362eda584dccc6ca38ee5fa68e399efcbdc827f6f9db71af6667e2b0",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/44fbcabf1db082c66002734d796862769906b89a2a9de385b26ebf40f3e76bf8.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://openaccess.thecvf.com/CVPR2023?day=all",
+    "status": 200,
+    "sha256": "8284937abea6f8052da24f58802f619bb7b4261d80ee52305f31b428a2cfe4c5",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/940b6d416947331af5f94f06d2cb064c4d51731b2bb1603f1fb81d02091af8e7.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://www.jmlr.org/papers/v24/",
+    "status": 200,
+    "sha256": "6929eca1da11d8c5bf52d52b8fd8d4b1447e718bf340199e2d15785fe6a6cd69",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/b98c3a0476cf6ef28ad681135ff8fc79aa0602e952e609d6c98a19fd933b3cd2.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://www.ijcai.org/proceedings/2023/",
+    "status": 200,
+    "sha256": "01cde46a8bcc58ef0c743bd96dd91c86a5fbe21a2e363dbc0d7cba16a509d53e",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/59112cfc46226ad076855eeb5c249144bb74db55f909dfaa883aaa36370e132a.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://proceedings.neurips.cc/paper_files/paper/2023",
+    "status": 200,
+    "sha256": "7511a4e6456f30144e8ee4a2f94c93ec1f1f1375bd3b567a44bf0437ac54d721",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/40fd07a13e327770725b64087e2d3f1f31f9abb7d603efcb0d262fea4d2b0fc9.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://raw.githubusercontent.com/acl-org/acl-anthology/master/data/xml/2023.acl.xml",
+    "status": 200,
+    "sha256": "4a02e87cb81ec2cc192c6a3e3739246ebd3cfca696abb456e06dc9d2ee214ef6",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/6eaa3a72f8d69962d3672b517d657d336534167d83297f3a5d2f25b34076d2dc.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://raw.githubusercontent.com/acl-org/acl-anthology/master/data/xml/2023.emnlp.xml",
+    "status": 200,
+    "sha256": "fa6e4f1de0f178a9b1b4e2023036fb4335e6ad8c25f3bc1e89b7f912ac56fd80",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/daf674f385a2e3e51760c51498395f5e86cf73d8dd2a83e532e15d80783a5726.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://api.crossref.org/journals/0004-3702/works?filter=from-pub-date%3A2023-01-01%2Cuntil-pub-date%3A2023-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "c0f3d7363bac1a1c586a3fe0521304a72043e1d0c7f021fb1edea388b453377d",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/2d90773612a143d4f7d20eb19a0839fdf0211148e5b7aaced30a071c80520811.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://api.crossref.org/journals/0162-8828/works?filter=from-pub-date%3A2023-01-01%2Cuntil-pub-date%3A2023-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "4ff459c302c4ed0d2fc2b8563a72741729e3378061da354b580f620a0ffc2efb",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/760ecbf776df228c7d147dfe095f8eb1fd1cfff879ad57b941411d889195062d.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://api.crossref.org/journals/0920-5691/works?filter=from-pub-date%3A2023-01-01%2Cuntil-pub-date%3A2023-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "11de67f63b70f9814accb1700d6e483f054d2785a8c5de71fc9043464f1602b5",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/8c195b79fd24e91e8bb3309b0035cf0959fc065273e7b8b0713d265fee0d6740.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://api.crossref.org/journals/0730-0301/works?filter=from-pub-date%3A2023-01-01%2Cuntil-pub-date%3A2023-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "52f15498cff31b5a46d18bcb95a9a1ba11790840d05c158338a29416ca750dae",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/7d3e46126c712b401c4a0b8b0ba302efbc932e60b189e8bf163a93318d10361d.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://api.crossref.org/journals/1057-7149/works?filter=from-pub-date%3A2023-01-01%2Cuntil-pub-date%3A2023-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "e4067ff573196aa5c35ab0c2b9d01382ed3c79b45388e3b81cd1dded3994feca",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/dfcb2645f7ae234c854cacee18ad920a926164607dd8cd5142338a283c0a1926.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://dblp.org/db/conf/kdd/kdd2023.html",
+    "status": 202,
+    "sha256": "43993f3b5c835ba7223cbfc5e446ee5560098902403ca13d135c6de5bcbe1c02",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/a51b184ebf099d313289c6c2a8736d04cd18107a0bdc58feeb1166ccee2b4f07.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://iclr.cc/virtual/2023/papers.html",
+    "status": 200,
+    "sha256": "2743f63564e783c988fd412bd2abaab77a406f2993cbf018e3afbc97b470d6d6",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/daf0082563159f562d966ca5bd73398aeabc4d4a896aa758f21b4f3f40ff3327.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://api.crossref.org/journals/1041-4347/works?filter=from-pub-date%3A2023-01-01%2Cuntil-pub-date%3A2023-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "2c19476ff6958ee2455fdb51a4aa5b276493eb7172d93b510295d72fa7bd8fa6",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/d6e1546f9c0c037686aa030d2c9d43906c994549b9fa3379b0d1cec340c996fd.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://proceedings.mlr.press/v235/",
+    "status": 200,
+    "sha256": "ab9400795dbdd1f63eb42499e69fddf9803ccdc2e055311c6bd8d7a49240beb6",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/e50f3037063dc47ed5ccc1ccf631ec97962b37ccdc0ac819c5ee70d76a9280f9.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://openaccess.thecvf.com/CVPR2024?day=all",
+    "status": 200,
+    "sha256": "720265923ad5cc65224d2ce1cd9cea868c6e4589ae51c05d1493f1f9d9aea03c",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/55382925aba53887a9d57c5e7b323fcbbc1834e254c66ca2a173ab8ef41b8eda.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://proceedings.mlsys.org/paper_files/paper/2024",
+    "status": 200,
+    "sha256": "ed065989d4cbb7a4bb59728d2d4307e5bce2cd58ee2b7ab667c2ba6bf0ebb74a",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/d9e37aa10011fc0279b8120f3aaa09045c44ab0eb2c76319133bc694b8f52941.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://api.crossref.org/journals/1046-8188/works?filter=from-pub-date%3A2023-01-01%2Cuntil-pub-date%3A2023-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "a2770b020d1e208944a80c6271a75c53ffaddc9855b035d3fe29bfd4aa3c7f06",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/58ade9a101e4aa272924ec27a9406c23e923271746375449cb4bffa4430aa587.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://www.jmlr.org/papers/v25/",
+    "status": 200,
+    "sha256": "14e15d49191a433461163b0044cdeb959c1c3864243c31eb816fde041790eaff",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/d36def1000f1e0964cdc6e5fffb068df690867994ffdbf31a2d0a1cc2025581f.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://www.ijcai.org/proceedings/2024/",
+    "status": 200,
+    "sha256": "22a49ffad63a05df7a82c93410d5c7a57a288a7d28c1fd1c81d69520117bb222",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/9faac3312bece64cd153c375b436d63b562e1129ddf24f76ff315695ee8c36bc.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://proceedings.neurips.cc/paper_files/paper/2024",
+    "status": 200,
+    "sha256": "0563caf8d9a661bfa9d26e3e8692cc352ce6a446ea922e27f73b37b87a4f7506",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/edfb78ddae6bb8e3d9399d7f364fcd5f4b8fc588f89e022eecda392ba70d4a3b.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://raw.githubusercontent.com/acl-org/acl-anthology/master/data/xml/2024.acl.xml",
+    "status": 200,
+    "sha256": "0775871eb0a0253c0b3e90e6c6921a32e98553f9b20afe873928783870f1ab6e",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/049f7a7f4064ba0a918cda60f9b172d6a2a7127fcc6cc7b23a761709569217b5.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://api.crossref.org/journals/1077-2626/works?filter=from-pub-date%3A2023-01-01%2Cuntil-pub-date%3A2023-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "326171816a33af82c340958cfad9b8bee192df4cc3f1ae9220d927d7c8c7c2fd",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/0d3c824aca8a7d078226988f816d2ebee0fe38fd197c14edabb8dae7497d5ddf.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://raw.githubusercontent.com/acl-org/acl-anthology/master/data/xml/2024.emnlp.xml",
+    "status": 200,
+    "sha256": "b2ee7d716a7a80c1c07d1913f31d53acfb246443a64432a6d41db7743c3bac8a",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/93aeb745d30b15b1fd6a00b07ba53647f0e27eb8f8fd28d152b545f99e311e93.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://api.crossref.org/journals/0004-3702/works?filter=from-pub-date%3A2024-01-01%2Cuntil-pub-date%3A2024-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "052b06c48049eda6afe05de758f1506cf67deb33b9b035c17a7bd1710f12d54a",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/50e9bd59f0bb1f886155a94a8503a4341cf872f8278e85a7169160531a31a74b.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://raw.githubusercontent.com/acl-org/acl-anthology/master/data/xml/2024.naacl.xml",
+    "status": 200,
+    "sha256": "963ea7c81fd0a9cf46b8059e47d2950dcba717e284fcbc98a813f8a5c01996f1",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/50014557e887baf2bb1662cbd7ae9b6f722d3636d2ab7d28c02bc1b530c6b3fa.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://api.crossref.org/journals/0162-8828/works?filter=from-pub-date%3A2024-01-01%2Cuntil-pub-date%3A2024-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "56a915253dd30d51c7181fc1bbcfbb12df4c20f4e9b4d1ea29dfe67a94d5a0f4",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/32eb52bf47acbe1a36d4bf0abc7c5fae6fabec316edff74898205a337355f935.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://api.crossref.org/journals/0920-5691/works?filter=from-pub-date%3A2024-01-01%2Cuntil-pub-date%3A2024-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "1dba9924eb308180b78f475ca936c9d59b3530810479c9e52e6679ec6c50c5e8",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/2d4853c997c20608724e42c9b35ccdbdbdc3fd88cfe7b95bfd558cc5f36ef710.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://api.crossref.org/journals/0730-0301/works?filter=from-pub-date%3A2024-01-01%2Cuntil-pub-date%3A2024-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "baa9a841b13d06eaa9806b6b4b111c764fedaab74ae8219acd60d93b0d741be2",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/c00f33c8dc8d3a4865cbd6cf002f3a7ee7add09298d1c020f453bcf3d6e5fbe9.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://api.crossref.org/journals/1057-7149/works?filter=from-pub-date%3A2024-01-01%2Cuntil-pub-date%3A2024-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "fbb67ffbe8ca8bc852eac5e159cd2d64c97b2c11e0d8884bcce03407e1e03722",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/7b266cf204e2c02b0a4e5c6225465ba1f57595fe00656fbcecfa1de9f7c5aeb3.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://iclr.cc/virtual/2024/papers.html",
+    "status": 200,
+    "sha256": "19c5f4cd14c2630285ccee360481ae6a76e543f59ced11de51234e5ff396180b",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/fff3b4bd1e291562e40a5c6b0b876a3efeb9accfc3a96c77769868375bba95d2.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://api.crossref.org/journals/1041-4347/works?filter=from-pub-date%3A2024-01-01%2Cuntil-pub-date%3A2024-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "efa0b8b376c6d8fb03d2b623b805f4de7a3ad8fcb4714f6a3d96f1d2c94b73de",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/20bfe17884c3c9b88a5621ec3e47df0d5cafe3f931deeb922e8ee3a2a49187c5.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://openaccess.thecvf.com/CVPR2025?day=all",
+    "status": 200,
+    "sha256": "2f08dc191b870530993ba6a5a79e8c8ae812f158b6a30b21a96f3b190af96bfa",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/920b1b6830b3858c91f12699bfabe3bf856cdba58788805cee0ef2774837c356.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://proceedings.neurips.cc/paper_files/paper/2025",
+    "status": 200,
+    "sha256": "d653a2ce6057507d84d68d82e77b0dd4e874d9c4748ff3e7424d50fac7379dac",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/08d5c258cad44b0aaabed7ea54df4ebdf9858edc07f0d738970c2d45eb454757.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://proceedings.mlr.press/v267/",
+    "status": 200,
+    "sha256": "9e17ee7ed7eda2727ad46178644225738ee1d8e3e319441ad4d1c11e4986288d",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/b345c39b68872deee01eb75e12ac2f4487efce17298622e2f60291e665bab6f1.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://proceedings.mlsys.org/paper_files/paper/2025",
+    "status": 200,
+    "sha256": "c1d83dbbb685e4d45404b433ff4f15a17d03a725d77a315932585f803f74007a",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/6252b7bcda78b49f2f776eba4bcdac764107e6313eb97645adbc60f7414a8daa.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://api.crossref.org/journals/1046-8188/works?filter=from-pub-date%3A2024-01-01%2Cuntil-pub-date%3A2024-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "f1ad08bca0fff61453a54b5a776bda87ffbd646a8d01a19e38936cd2fff1afda",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/113d5c063e13db698797d2b546043b63c700569834bde14b524176b7b84d8455.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://www.jmlr.org/papers/v26/",
+    "status": 200,
+    "sha256": "dcc2cba690b8ff009a321074d233a8554d1606637fcc9b8178f68030965ff467",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/66c10116962a300851459a0da62b6eb59d926442e16ddccff3296b9897fda90a.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://www.ijcai.org/proceedings/2025/",
+    "status": 200,
+    "sha256": "3ece319e350d5b02ce27753d72f4d8bde364cff34a8afcefe026395ddb2b2ca9",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/210815e78e9827f93b42a6f573de8e04dfd4790b0066d8f6c02e7a1e6aa58b8f.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://raw.githubusercontent.com/acl-org/acl-anthology/master/data/xml/2025.acl.xml",
+    "status": 200,
+    "sha256": "c33953c58ec4c15e43b30521d51072f9330b06a7680d099d4f5dbf51b905ccc1",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/b66bdfa7d6d5840368bffb88a45cf98b9e16485482d46869d03c48a3ce178178.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://api.crossref.org/journals/1077-2626/works?filter=from-pub-date%3A2024-01-01%2Cuntil-pub-date%3A2024-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "2f6d345b1b32a72cda19548ac342b8ccfe44fa3a488f55253d94b68d012b968a",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/d04cea83a45d29d5490081d9643046393ba1d8f126e72f4e3e659dd387cfe2a3.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://raw.githubusercontent.com/acl-org/acl-anthology/master/data/xml/2025.emnlp.xml",
+    "status": 200,
+    "sha256": "e0351476bf05fd4ad404ea7ef90e4596a537b445b996b059444f8263df5fd452",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/79c537ed57fbdfec7d39e997a877b86a256fa0218291c43e25053a736459c0c2.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://raw.githubusercontent.com/acl-org/acl-anthology/master/data/xml/2025.naacl.xml",
+    "status": 200,
+    "sha256": "7c05ff8dab2833e5384bbb07ebd40bcb766fe26e55521ea3c0a14379ecb0ff39",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/dc982ce038102b2dd3ece8436fa7d2b4d8e2ac5eeb232486d3df0dfed5f717a3.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://api.crossref.org/journals/0004-3702/works?filter=from-pub-date%3A2025-01-01%2Cuntil-pub-date%3A2025-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "b49c2cefe0652d742911b31a53ce83081788df43d2a7dc626a8b603b874590bf",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/4742ca912ac58f3ac71dfbc27ec0c42d6bfe8a8537b4dbd105c37018045b1dfd.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://api.crossref.org/journals/0162-8828/works?filter=from-pub-date%3A2025-01-01%2Cuntil-pub-date%3A2025-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "72536f74c9e28f8e928055b4918a86ffa372de3b41761f1a632e50df435f64b9",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/d1aa846b3648b02fdfd1ba6ea56230d06f52edf95e59ce8b01244ce530c0fcde.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://api.crossref.org/journals/0920-5691/works?filter=from-pub-date%3A2025-01-01%2Cuntil-pub-date%3A2025-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "3b2441927b49852969ab336e6176e68666925407c3ec092ec5cbea7c4ece7887",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/1f12ae22769054724f6bf6bb30761459bd4ec9ba2eb1910665ab5c2d3e788ebe.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://api.crossref.org/journals/0730-0301/works?filter=from-pub-date%3A2025-01-01%2Cuntil-pub-date%3A2025-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "b018f8518715d0af7d262c962461d97258d501dea83cb15c0a714bc62b826ffe",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/57ed8f406d6d08b693d26089002810a427524d638a904957ac263afc7f1acdca.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://api.crossref.org/journals/1057-7149/works?filter=from-pub-date%3A2025-01-01%2Cuntil-pub-date%3A2025-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "9e181ccac3ff1191039c3f7c10fc8a6401047f9558693092eab18f26b01084ec",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/bd320e50cc470d3d6fc7d07d8ca89afd41da15c974f9486748dbfa421145287f.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://iclr.cc/virtual/2025/papers.html",
+    "status": 200,
+    "sha256": "cb50958fd34f92ff0ba2fd32d5218fa22b5d62c778d81a722d76fa966136ff88",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/00789f8248e2bd48bf1b07cbdf581f0eb478e4ff83fa69296e45f0885c1ea6aa.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://openaccess.thecvf.com/CVPR2026?day=all",
+    "status": 200,
+    "sha256": "31f63227934062163d5bc57838d339c3c7a7e1e6e51f71a238022bff73f1b792",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/2b1991ff8fad866075c9cf3dee3c55182c4617000f0c078a778b6f4d731253df.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://api.crossref.org/journals/1041-4347/works?filter=from-pub-date%3A2025-01-01%2Cuntil-pub-date%3A2025-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "6a2fe4a9119d8d56f35ad7b677f0db59fb1c75ea9bb276c247a8c4ffe7f4063c",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/a51ec8ac18106619d915c4d2b486e41f9db3638bdbf98581bfe312e5f3095149.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://proceedings.neurips.cc/paper_files/paper/2026",
+    "status": 404,
+    "sha256": "b93488eca6e606b6a169db2c12d968d2d973b6f2e7db9fbb3d077565131c3f40",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/8f27931ded860c74907ae6a0131662e7d384a2ed3f8447181a11c74270652ff7.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://proceedings.mlr.press/v306/",
+    "status": 200,
+    "sha256": "36e4d82cfc94f5ae93a8697d517d39a04cf35cc9aedfb1cc2a66bbd6a3855d8e",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/701210428e9ea60040492a6789f7f6ae42df42a4e84fe4ef29e21cc0b6d65794.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://www.jmlr.org/papers/v27/",
+    "status": 200,
+    "sha256": "8dfe64e74d9a39b40f705243f1031eb65ccb2649e2c98b3f66e19852dc580bc8",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/f92afbf0582e01565b825509ad5a705c3255e17e595febb3d1b1905f9aa87a7c.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://api.crossref.org/journals/1046-8188/works?filter=from-pub-date%3A2025-01-01%2Cuntil-pub-date%3A2025-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "6bf00d4ad0d68f09d1726343149d141271ba32a79edc3956a4712239e7c5383f",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/aecd9d366505930ced71cfe284931112cd79a37df455693aa397af258dd71460.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://www.ijcai.org/proceedings/2026/",
+    "status": 200,
+    "sha256": "a31dac0fbd02fdec00bdef4de0f5287f6c48f7a99776784f41a031ec1ce0bbe6",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/1e2e5b2ed6c8309e3309a01340d208609fd4f0d5a98a58253fc0ed3f11f1b158.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://raw.githubusercontent.com/acl-org/acl-anthology/master/data/xml/2026.acl.xml",
+    "status": 200,
+    "sha256": "851417d54bc77ff766d3501e1a250bd6530784b04876478fc0b144c755555e05",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/0a4deea9511fdc076532105c794cb9218cc20112291d560de6a065ec118a2b64.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://raw.githubusercontent.com/acl-org/acl-anthology/master/data/xml/2026.emnlp.xml",
+    "status": 404,
+    "sha256": "d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/b21155fc77cf4b554b0c0772e58b62d19a8bfc3693ce8c09c023d89bb32c55b8.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://api.crossref.org/journals/1077-2626/works?filter=from-pub-date%3A2025-01-01%2Cuntil-pub-date%3A2025-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "08b086fe95b797b1df90a13ba6c659f9d905216456ed2f61391f194519b1e1a0",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/8ba9299707df9cfa5cc3cb246852bb34bb030d08bdddce866b28a7d977b54dd5.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://raw.githubusercontent.com/acl-org/acl-anthology/master/data/xml/2026.naacl.xml",
+    "status": 404,
+    "sha256": "d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/14f9d99b3ad6f53e7fda3393193017d1fc2f6a11a89eeff631b197d1b364374a.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://api.crossref.org/journals/0004-3702/works?filter=from-pub-date%3A2026-01-01%2Cuntil-pub-date%3A2026-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "5cd1cfa23ace23dbfb9954bf6ff8423d034cb1296b92eb8d893269941a60b9f4",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/69c10be0069ac77dd351d808cdd2b68e66a004e745e497653091cf6e6011faa5.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://api.crossref.org/journals/0162-8828/works?filter=from-pub-date%3A2026-01-01%2Cuntil-pub-date%3A2026-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "d7971ff8790af8d5b760de1e33993c582fae55d7e0d394a8d8dab6b2ca6a0104",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/af7da37a2478a72fcca2dd2932439345c55927160112f893aa7db269117d3283.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://api.crossref.org/journals/0920-5691/works?filter=from-pub-date%3A2026-01-01%2Cuntil-pub-date%3A2026-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "a230054008ab98214f6cb97c968e5a41a0d4f9c595e22704193f2c43b5344b87",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/ab0ef0f76942b4191d0232e913c23fb2ac9da5933fb3ccfcec193055fa1021c8.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://api.crossref.org/journals/0730-0301/works?filter=from-pub-date%3A2026-01-01%2Cuntil-pub-date%3A2026-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "9f644a2fe22ace9b15b8d80823323e6de4b6f17bb5a0bd6a86570b17d1453af5",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/2420617e22c4dc559eda74ebd480d15e5b881a05f9f6c19228f9f87c08a4b039.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://api.crossref.org/journals/0162-8828/works?filter=from-pub-date%3A2026-01-01%2Cuntil-pub-date%3A2026-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=MTc4NzI1Mjk4MTAwMCwxMC4xMTA5JTJGdHBhbWkuMjAyNi4zNzI1NTUx",
+    "status": 200,
+    "sha256": "6940b5fda199283283f647aed03d27c98a1b2ab5f70034a8a712429d2c782e93",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/75ae41f5293bae3f3d658f37769cf99f23053e0a4dedf4bd93fd16de25e9a257.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://api.crossref.org/journals/1057-7149/works?filter=from-pub-date%3A2026-01-01%2Cuntil-pub-date%3A2026-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "ef96a1e481dfeab359c0bbbf4d3add1f6bbc3ba6e07707044df56db3e96309cd",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/ccc9260db275a9f3e7af25de58e4a34a5a50021ff6dd5227737deeda1b02dc08.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://iclr.cc/virtual/2026/papers.html",
+    "status": 200,
+    "sha256": "b455775c0feab2fa39e724e576978ba731ee6860d62a0022f96cee82160e382c",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/c7ba5798ca5c836ba9ba1790651aea26dee4a5d3081b3cc4683bcb6c92c2af3a.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://api.crossref.org/journals/1041-4347/works?filter=from-pub-date%3A2026-01-01%2Cuntil-pub-date%3A2026-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "6a0a177df322505ed786895639834ae8d930a7821a8d89b84f8bf061ccef2718",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/f481da499f74202adabcb08139d469a2aad730434cbed303b89f6dc93e0a054d.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://api.crossref.org/journals/1046-8188/works?filter=from-pub-date%3A2026-01-01%2Cuntil-pub-date%3A2026-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "1f9589581de2995f29220e91f1737a2d66ae0572c1a8aa135edefd68fa6725d3",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/90a6e8a1903b4c90e23c8ff881393822c660142c7020e8a5adb00366b73f26f2.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://www.ecva.net/papers.php",
+    "status": 200,
+    "sha256": "bd1d0d3897a5f57f767b43c1bfdb874028adb14be06fde09ad299866663c1406",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/63731d98eca600658d6333f86764ef07a2b8efbe7754e98bf8cea9578eea6cc9.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://api.crossref.org/journals/1077-2626/works?filter=from-pub-date%3A2026-01-01%2Cuntil-pub-date%3A2026-12-31%2Ctype%3Ajournal-article&rows=1000&cursor=%2A",
+    "status": 200,
+    "sha256": "9be5db24b681c4b7d1f286e0a4be63582988c1dedf952fe2392be30871e4b902",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/1719903d6592cf1eda144bb75f6511134b7fccfd7f1aa5f69790a1d1eea8e13e.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://colmweb.org/2024/AcceptedPapers.html",
+    "status": 200,
+    "sha256": "f879b4bc6f8a4ab24be5b0a18472a060f1f640ac8dfeefcbcb151d50e866f5b7",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/054c34994e122084f8c770bd7ce11d283673fa1919c5f3e11584647e9587aa49.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://colmweb.org/2025/AcceptedPapers.html",
+    "status": 200,
+    "sha256": "898c2b2797737207b56a9574405e57a83809a7be927ed8c0c447a13dd30e135f",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/7a0acb50e93e3767507077c63d6c77bedeac9674c78b95e777185a51b1d7b00b.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://colmweb.org/AcceptedPapers.html",
+    "status": 200,
+    "sha256": "3452eff87da9f42e39a6aef0b9e1a3c6ea45533afdd9fcbbbf5eba0668d2bfa5",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/57202de71e0891a5c30f9b842177936c2a26e61f34fc65a5b4d4495c9e7c5538.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://openaccess.thecvf.com/ICCV2025?day=all",
+    "status": 200,
+    "sha256": "e684fe760c417a35c2f1e9a5acb3015a192fce10e566086e2d4bf7f78cbb97fe",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/81feccd075b2a4028a42772a0fcd7caa4470e6a334da17c7b9bb6c2a97970551.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://jmlr.org/tmlr/papers/",
+    "status": 200,
+    "sha256": "60c005fb88337d23275f5f798a0ab14801bac5f5ee2814f274c601c4756a21be",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/c1f5db3ba7eed6d4f49f646bca9417468cec14e5a09eb84c2df8257c39d080a0.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://proceedings.neurips.cc/paper_files/paper/2025/vol38-main-conference",
+    "status": 200,
+    "sha256": "48c2de5e5acae991a8b88eaa00174387a7ce066efeb337e30593989bd5015c9a",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/a7e8546c29afbfd7715234c838e3fc56932ca26e9eeb239cdb7c2ed47b495284.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://openaccess.thecvf.com/ICCV2023?day=all",
+    "status": 200,
+    "sha256": "ba112ee3d3bc0111322a32faa874aa9d9b74f7a074de99994cfb6a335f1c58ed",
+    "local_snapshot": "data/analyses/coverage_20261021/sources/cec22e81d620ae527127fbe26b5be5ae464c0ed4e3e0de0780546478c15b3b3a.txt",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/archive",
+    "status": 200,
+    "sha256": "cc37e20ff03a890dc6ec5d04933ab2ac7ba778516a3111f67fc8cea743716af0",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/578637c56197a3c1553413a8048be16340a2911f7741ba86c75634798218bd75.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://openaccess.thecvf.com/menu",
+    "status": 200,
+    "sha256": null,
+    "local_snapshot": null
+  },
+  {
+    "url": "https://proceedings.mlsys.org/paper_files/paper/2026",
+    "status": 200,
+    "sha256": "fcbb2e0bbdc2ec225813176b8ee5cd46c2584b977b7333d84420f812dcee1337",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/3ef8df6038e8de54fd510c01d6dad1cc5eb9f5338f82e3c3241d2560e6c47b66.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://proceedings.neurips.cc/paper_files/paper/2026",
+    "status": 404,
+    "sha256": "b93488eca6e606b6a169db2c12d968d2d973b6f2e7db9fbb3d077565131c3f40",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/8f27931ded860c74907ae6a0131662e7d384a2ed3f8447181a11c74270652ff7.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://proceedings.iclr.cc/",
+    "status": 200,
+    "sha256": null,
+    "local_snapshot": null
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues",
+    "status": 200,
+    "sha256": "7e4e52c8880240b509e510311d12ce2aa2e030629428168415c824b92fe09309",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/c4e61581f2b5edb8b3db0850602656ea1ed152e7d30d51b0eb08252ad5887e9f.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://www.sciencedirect.com/journal/artificial-intelligence/issues",
+    "status": 403,
+    "sha256": "60bb569d5652f8d97f0284f85475b5b8b0a1d97ae8f1ba94ffd7f8c46e00f4da",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/c0a2389f1b313c2d01c39ea18fc12a3a8d2ddd5c6f68eef8c55e1ac2da6774dc.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://dl.acm.org/journal/tois/issues",
+    "status": 403,
+    "sha256": "e1643ecc3c746da4bf4e3bad9d6727bdfde2573548a03f620d4dac0f56f4648e",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/f429f365f047e43493a47fb9e274708aa6b676e67093dd6cc08a233565ec3ebb.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://dl.acm.org/journal/tog/issues",
+    "status": 403,
+    "sha256": "c5258b1afb90d67cccdeefb2707030bb16799c1b017668fd4aab23fa04d026c1",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/9b6d23533452214afd732b22919e82ec10a2e4fb01e992ce441731ba6d19145a.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://proceedings.mlr.press/",
+    "status": 200,
+    "sha256": "80226770a55a24090aa13b5922c13e60f6a8cae6ce4a7c629d9c974a347bebbd",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/7b96cb46ab602b59f8bcc5ed851c7bd38f657ab18de4316f58a5687ef437a87d.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://openreview.net/group?id=COLM.cc/2026/Conference",
+    "status": 200,
+    "sha256": "d3cc5e2664d652e74fe27514dd882dfa54bd553c9f84a42699f5f94787a83678",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/d0735dc4a0785f300c93c63362f0e18503b1c85221687649fb4704bc1caf0faa.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/archive",
+    "status": 200,
+    "sha256": "cc37e20ff03a890dc6ec5d04933ab2ac7ba778516a3111f67fc8cea743716af0",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/578637c56197a3c1553413a8048be16340a2911f7741ba86c75634798218bd75.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/archive/2",
+    "status": 200,
+    "sha256": "04d181c1014013325bf3ebbab39f769ce82803297feb87d1dccf520ad5d0bc28",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/a7693f06474094727e4e0ffcd700f1b5fd3914b34966ebcd060e41e570be0501.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/archive/3",
+    "status": 200,
+    "sha256": "7ce53d298b2541d986dd1633d5cdc0229fe9c832045a69613603f2be281deeaa",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/9794a45d2a10e6a5ea2777a8c12560b433e182c8caff95834660492436c8442c.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/archive/4",
+    "status": 200,
+    "sha256": "28dcbf72a7309fba1b923861d8cef0378f773f7bd6a6f1f65a0b3b516cac09f2",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/9ae60a2029b879c7dc17841dfb65d1c6f19e48fdd1ad78911767954785176b20.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/archive/5",
+    "status": 200,
+    "sha256": "b685d3120e4ad3ff34f4aa8da28069edd10f16678ddf9402f7568ee6cff55ca3",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/a1c9f4c701e34616bfd97860f5bcd35d95535a9516b13c13d92051f32d3902a2.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/683",
+    "status": 200,
+    "sha256": "9bcfbf61528ecdcea864f6f44cc2ac5378d64eee937755a95badfd32b64314d4",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/70d473806fe8c7a8c0281348f841adbe6f4e83582e8150724eaa2d8793b6932b.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/684",
+    "status": 200,
+    "sha256": "d3b7912a361f6b4e20f150bddc8f171f782ca913306ac1cfc0527a7cd833b5d6",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/0e4de30b92d61943410424fa182a77bba78ffd2a9519ea29a1f5c3a65c7e1cf0.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/685",
+    "status": 200,
+    "sha256": "ec6153294ad543476aeda4ce1701bd40a24c5bc448cc9c2dee972eecedfee028",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/1614028d5414535785a160479845738be74e2f25915730188ff9a0a9342fea29.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/686",
+    "status": 200,
+    "sha256": "0b23b10de3734f672bc3c41ee08c17a6e742a53c74d09f8323ba536774907515",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/8a4f44e85f73c074e24b83bb7c4fb735a32764239b9dd373d8f2691fc8ef1073.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/687",
+    "status": 200,
+    "sha256": "4cf05cdbac7dd744d591aa15d8ee1c4d70748fb75854f24afb44cc2677bbd167",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/16c034d7d4830669cd6b84f41d8c33010de3527611e3c938910185f1285b0b48.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/733",
+    "status": 200,
+    "sha256": "d56840ff076052c3f7bc425fee7b58c98ebce2f7e889a2465098a2c7986f7a6b",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/ed0664aff22e86e28666b9c6568b229f4b08a87472bb77e6adbe47006cd7657c.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/689",
+    "status": 200,
+    "sha256": "c6a390ee59801f852e48ebba284c5531c6331bd869ae1677734af37cf2f281c1",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/7c04c9f12f034c60a340cfaaa51bd5b069495a29720ce32617e1d84ce465f98b.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/688",
+    "status": 200,
+    "sha256": "63f9451a61f43e0c5e9e666802304ab04521cbccc6305d2f8dbcd42bb414a28b",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/124c5873561687e8920ccfeda385cf3790d81f7c3149bfe90391fc2095ee9573.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/690",
+    "status": 200,
+    "sha256": "3fa2d83a4829dffe996391e0fec346022adc4ab5c2bf145c55189f6a8129a5ab",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/f26a8dcfce023e02d54b5277e1e927a4dfb3899ac390e304bddf167a0e03751d.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/691",
+    "status": 200,
+    "sha256": "1719e93eeb054e96c85d1aa238895a9d2c996b4fd1f823a3fb52662af5b437cc",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/a0858b5ee9e11790b4897c83c101f1a70f66d08bea04fba1b91dfcccfb9caa96.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/692",
+    "status": 200,
+    "sha256": "913c2b0819a2fbda9377015870780519d71fbc7a429aa4a2583872dc4252de92",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/b587af07408aa86f13259460ed2234cf07f89f8ae47a1f68958bc6090046513b.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/693",
+    "status": 200,
+    "sha256": "95861f18448e51d91c4967fb754f0e6d0d692b36ef0173c548fc24bb205eca33",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/5a789dc017bd92fd61b9722fdb4fcd2ffd6a9c8974f17bb4be1a031f6c71685b.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/695",
+    "status": 200,
+    "sha256": "6292bbbcabe2cff75ad1235f1568ac170e65e2df55fc91780fb9d1d6622b0238",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/4d367eef5ed93f2fd00a3dda614775d447be67926c79f86ebd11248f0b57cd16.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/696",
+    "status": 200,
+    "sha256": "3ff62587179b51097ac4720d9f4c3ba0e3482b6d79aa7f51d52ae888afffaac9",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/7fa4a0846446ade8426cd2969d4704293f52fb168e13ce258a1aa1ab34b89cc6.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/697",
+    "status": 200,
+    "sha256": "a28a684c4551e51619ec532d241b7fa973145a3f247e3578ac41c4521b8d6aae",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/1c007ba1e02c95a84b44143ebe1922e16b3795d5e159516abd6318e8a5914d8d.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/694",
+    "status": 200,
+    "sha256": "58fb363074311917558dd8a23ab7fc5049de6fcb15546ff1c29226adf6b80500",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/0e5fea9dd1d2c6084696c4ad594187fa282975ddae6ab72913793d072c26ec27.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/698",
+    "status": 200,
+    "sha256": "9cc1a7254e26e08f2a67a10d557a8dacd3322b051d07ed6365e17be17b359a29",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/cb2532df8d5a8b237a0c3ced26c55350f6c50bb123754b05e718f48f3d17ed50.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/699",
+    "status": 200,
+    "sha256": "bdddaa688516f3db1d99f114d91f921cd550ac20ea7da22f86a9b74570f7e662",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/eafbef793becc1017721b5c39e3f77166b60357d0ce1b1a6aae559cdfde5d1b8.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/700",
+    "status": 200,
+    "sha256": "8e4bdf0fbe5e73b8f287239b5f50a164de56be605a5ab4299edf76d125d08637",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/134c942cc534372f9a08a0c65db760004168597abdec19c9ce0fa603bae3f1f0.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/702",
+    "status": 200,
+    "sha256": "50011df84c9efd53c50994c4d79f97619f340330f0b42df0ff9559e7c7abafb3",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/6a51f06b183369ad6d280f791468a883f2e41156849d9eee7709509cbc38804d.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/703",
+    "status": 200,
+    "sha256": "079b1540b653314046c4bf7ab2a49a7d5793ebd29e5ff59d930786d6c94de9fb",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/c06ff75957cfba08470eadfd1aff011bb7d37178ec271c12cacda3e6e62b1e24.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/701",
+    "status": 200,
+    "sha256": "f89bf74584966125348cd8aa7398040ec9b9cc4287adc66922361970ad34d58c",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/48c6fdfeff4f14475c2d770ab0471aba8331f5b647d57b84b79b620bba765aae.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/704",
+    "status": 200,
+    "sha256": "f2424df8bb3b322adaba2b526b88aae993866ae7f5f4029bee2d9b626c0ea3be",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/b0e51056c6de25e5573fe861b3b101761d697699997ac7b00c41e615976b6c67.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/705",
+    "status": 200,
+    "sha256": "a1cc086454a7c8555b9acbac1319902506f12207bb880a2ddda6cf0ad221ac9a",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/42deea1a95d6c07d62913a4379c24370e0fa4205bfb6e9048a99774178ae02d5.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/707",
+    "status": 200,
+    "sha256": "28d5cfe3cbe7dcb244b91aada6fb6359d8d1dfeefe4ef37721c5f0a404217823",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/ace4dc8f2adaf6fd5213b92ef587236d6eac0b22f3b53ca34fdba2694993b963.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/709",
+    "status": 200,
+    "sha256": "8ddd1a16565af67a0d87260b230c9d01b661ea2da93d7c57af8a5f174e490b80",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/bf6d878868ba50173b0f76e9e4c25e2f54e3d7f5c9c01b7ee9e99687054ed5e1.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/708",
+    "status": 200,
+    "sha256": "2f7bd67bd944d4c55db9f171198e80d452510e11a1f443a5a404310ed9bd7b5d",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/14b3e2b56023e072852f020b0dad62dd2a5987fce45b8684da08b3fe63c7361e.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/710",
+    "status": 200,
+    "sha256": "2ed96b399857b27969512a489c18ba5c8eb7a0a765ed1063db06060739a75821",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/6f7f3becdf3ff1dde34ecf234d189f9d84d8eeaa08a4bb76714b816eaac2e3ac.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/711",
+    "status": 200,
+    "sha256": "ef9655aa07ff3b35810c5f1282e25b24b43105e665dd8b70675e45fe2f1c5b86",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/2acd2385bcac6b83614fc8942775e5bde4bb9f41975b1897bd658569b94ea586.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/713",
+    "status": 200,
+    "sha256": "32eebeb464312710d5b88482570e05bb311584bb03c487d673c55a619fd0b08e",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/7b75bc647dff0562a6decab6ccf2c056eefc0216ce82a8995bccedc593a0a6eb.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/712",
+    "status": 200,
+    "sha256": "2c3fff04ab5381ea1d84b630857312d4541ec452402094c25bf29898a91f9616",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/4f6c462901f8af9957e3d2b47d689045b2b4584d9766c4476960d78fa4b0ea7e.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/714",
+    "status": 200,
+    "sha256": "60744fa9307cdde4e37a1d8cab559f5c692608df2413788cd5148b6fe67855e6",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/e02d1da0c9e6e54c34133cea6d5575e7c32eaefdbdd13c6b687ec46c7ed6b978.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/715",
+    "status": 200,
+    "sha256": "fbe05e58872ef000412ae0aee4a72da2df6d46d225e8b6ffbe27b91e7aa789ab",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/1f6a10f437bca2b4fd193e7e5c620d23613c7e3dd0720d5e1f1afb5b717ccceb.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/717",
+    "status": 200,
+    "sha256": "f3f7e9b3e23e25304501ff0a7c86bb01472cac211ad4f024ab2b2c32b18efa48",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/feaccc34154f0b6aee6a7e1d6c67c54cb8b6bf13a484bcd40543dd5662de7827.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/716",
+    "status": 200,
+    "sha256": "f9a0223099aa21faf843d478e021b2ee56805f4d115e3fb7cf52320e50db7176",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/462feedd72ab22ffea3767815bbbc91f2b219a1ace23a4487293d5f01725ac84.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/718",
+    "status": 200,
+    "sha256": "7003853322b598525cbdf3ddde9fd8e3be55b4ea37826e9f344a90e80d11280b",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/8fbdcdaf2f2d7248b4b8e8aeb9564e884237b4009cb285e2655b802eed2b7408.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/719",
+    "status": 200,
+    "sha256": "92398cde972365b3522c6cdbed87aa7051d4087f2fe0de524a3173ba082e5431",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/34d3663dc43a2fb204b0306de60e9a4fe7e3449795e1a85449d7dfba8ab9140e.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/721",
+    "status": 503,
+    "sha256": "b429e25e7813a9e2b90dcec11d9cb5287751246128dd6c76a7349774829c5554",
+    "local_snapshot": null,
+    "snapshot_matches_response": false,
+    "snapshot_note": "Earlier response replaced by a later fetch of this URL; old response body not retained."
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/720",
+    "status": 200,
+    "sha256": "53ee596195fa86e67064a47cb3b08212080f5ec00a99bce9bba278bd92d1ddcd",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/c7e7036545974bed75ef1ce7a2ef8301ed92555d59425d447f5142d676d834ba.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/723",
+    "status": 200,
+    "sha256": "e649a1ac13bd88001a6178de848b1a937a5eebe4d2fa27d7be6f94e574ec1366",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/7e6d0daeb8f463152a7257533d350429ba40b8240879284e393e4b94daa59c01.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/722",
+    "status": 200,
+    "sha256": "f271d4af4205694ebd321e3dd6ff7f100f95fa21a5f7f561b044d3a6a80568c9",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/0230fa32024d5e25904f9180f8e93a02f3becf9bc853b847f76804d1f9848b60.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/724",
+    "status": 200,
+    "sha256": "b4302fb9ccf82355573d4e2da0d70f3a3345c3d6d7a9f9784b56ed706de88ebc",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/c219f1f6abc8d3cabfbf93c49fd4bb294db0663649f4dbadc0f631b4eb817405.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/725",
+    "status": 200,
+    "sha256": "449bece7889cf2477c8530e34a97de4c5ca68641a8a2cf874d7632dab092d29a",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/3ba69903b0163b5ba3b029f7a76d2e094a4baac036e68487dcccc78d489e2e3d.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/624",
+    "status": 200,
+    "sha256": "16f567af2479a51a99d65e8a75028aab9d9152a2454bfdbcf6072d3d5c461482",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/46d0758fb02e847202b3a109076569243c16a51b254618fc5a706773cd61c195.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/625",
+    "status": 200,
+    "sha256": "8eda66451b4576f7a054939932a226cbd33fb5627d4d2a8b56b2d502ebd653f0",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/b2d9446c0bb3fb84298740224cc191601ed57273a9abf91f8c272eac9fcd031c.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/626",
+    "status": 200,
+    "sha256": "af1e64941120a06e803aab27ea81248d614f742ec1ce5714d8e12634e507932a",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/9cbf286047538fb937201ef5ebf84142b1fe97f1219dd086e27e010c3415f903.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/627",
+    "status": 200,
+    "sha256": "df1b0345e1835c91622dc22348266441a88898df41531887f460ed8af69cf57f",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/f33f1cc97b65cd50c3fad775cce3f2420a0628bfd77f3f8dbcd471596bbd729b.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/628",
+    "status": 200,
+    "sha256": "e69f61d443e95cebdb07f5eca826505cf20fe1541d36a77dc3ed82eb23916749",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/e96330ca7238e49f4f521856b929ea3dd511a652646fb192af4208c136a8c760.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/629",
+    "status": 200,
+    "sha256": "391b8aba0eb3ec9950eb53506517d42e0b245fc3a9e8de1776d31a6c6e02c4b2",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/a1d64f15a39f3a501bc58dc571bcc81dc0d87b504e1a45c617cea7bb8395bbdf.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/630",
+    "status": 200,
+    "sha256": "6c2ce25cf5abffc5dc515dc5593065ee21915388682b424ecaab8f61ff6267eb",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/a7ac46c1a6b8628a4fbb68b1700b3ec6d8672da99fcd3254c7192f0f3695c5a1.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/631",
+    "status": 200,
+    "sha256": "e514a683aef60379686359aef096ee7e228a0a2c851c77b4267134cc70ece551",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/98eb8125998e9c5f658145dd689d159289dc7c2607b2d6b381d21dedd6b39985.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/632",
+    "status": 200,
+    "sha256": "116ee3cd06ce58284c50e5d7d1b3f2d36790d50d95e206de9d0ea8aa010b0ef6",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/b98ae024b1df5dcecdd177a14fe0d9af77e3509b1f13a2db8430b27ab727fcb4.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/633",
+    "status": 200,
+    "sha256": "90308e897d93a53be8cfa43050cb582ba104e505e3a533e48b739f70608b1de6",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/fb901b9eec4c76c792f806f83fd21689df4efe903944949a7082ef1545ec3ef9.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/634",
+    "status": 200,
+    "sha256": "4471ebfc473326778bfbbefb468a50bb033ac09e1e560267b1d1dab1ea23a51a",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/50e35dde96a8c36f59027a7120cc8477222fc736b12881ffd0b28bac12b46269.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/635",
+    "status": 200,
+    "sha256": "e38a4fc0a5c25f443955c85e96ba035a24834d60aef15727b06c0a624f0a655d",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/b9f5de88f8ffea245cafe2d0ff80f5a2a41a2f18fb6120c36cbe71bdeda7f90c.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/636",
+    "status": 200,
+    "sha256": "4a34f6193caf8ddd780ab5fd761507e4225fc3f6171a8c17064dc11e24f96cdb",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/b98ddc123e7fbfa23e1e27c8f2dce4ea196d1742eff28e6682a28c9d3483e009.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/637",
+    "status": 200,
+    "sha256": "9e7fcc03a729c45ac55daa731658a314780391ce02ff546c6a082c3201ffdcca",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/c2dc6be747a5407f0111d338754ae7e689362602dbde8d6ee8f282a34484ff93.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/638",
+    "status": 200,
+    "sha256": "5144a476760c523a374bb66acebb5d00abec3249ef59ed0f772f2cba1aeb387f",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/5ead1defdc101f9fcf220f8e8e864099b01a271391e62de9f329504fc2c9d520.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/639",
+    "status": 200,
+    "sha256": "8152de58683eb5e5bec522c6e79f601383d8491e6ae575862bd32f99ddf259d4",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/0cc3d0039fff8fca751d3f2e762cb088a3d06cfa7f3719ecf55ca3710d802ffb.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/640",
+    "status": 200,
+    "sha256": "2060ea133b2b01662eca24b1b3c31534353516f5c9612cbe7f2e19c29224e951",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/2d1527bb23fc84a4bd486a86b7eb9a5a2dbf74a0460b7de1a0c701be2946d55b.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/641",
+    "status": 200,
+    "sha256": "6e435b39f0a3ad31010f095e722610c288369b22db78c6d9f23167dcca5433aa",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/3a9bea7a13ca2b4f8183b89b209f5e88834cbb8af34190ced2bd6c9d0b0550dc.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/642",
+    "status": 200,
+    "sha256": "2286386ee2b5b731d3e4195ad73bef0be95bb44145d19c75af791cc2e7ea239f",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/6c63e70ae7643058192ebf2d7aca5cb4a2f0b33b7afb4f54afb04a24f8c6cace.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/652",
+    "status": 200,
+    "sha256": "d59a43203ce7349aa837fa490ee0b58414d13fab5f6d83c93b01bdd0fc6dac96",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/5f6fc78cc9c9e530d2fc3e4cc9e11a5d4b99ca847651b9e8e4df28d6d5676b4d.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/644",
+    "status": 200,
+    "sha256": "5f6e6a6876b9832fb623f2469745f7e783eb7dbad7491b0b5a07c16e599af380",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/fa57163b7e82b310d49e187e84359bf3a3a0284cfd3a801078f884c2087aa572.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/645",
+    "status": 200,
+    "sha256": "f7c558546b14d793a526d1b62ef5dbbb38424748f659a0e2d9d6f5ce7242f0e6",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/ba3cd1eb6863c4b9d714fae8318338cdc9769d6f45ac784152d628ff7b7fe1e3.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/646",
+    "status": 200,
+    "sha256": "ae2e018b4ba09da72c610bc5f5fe6f5ce2c01752c6d58ecc1da54c99c3f6aded",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/dc12fe9d1e23f2559fd218999f3e38fc5b1a22a375fff48699e5039cc59fbde0.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/647",
+    "status": 200,
+    "sha256": "9483dd3a8e897f8f96dd6935cf33a18a3e9166ded217ebffdc2bace1c9171673",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/fb43427a5cac86144d12a500cb961e27cbc0561d85533e936c2ccdaff243f0b0.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/648",
+    "status": 200,
+    "sha256": "7bcfbc1e23941d4bfb68f38c20b271d5adecbd836168dc580ad5b9b5c3617851",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/306b0fd74c26487b85f0c5c312b768efc91485629a63bb5cbfae519c4ea5bd40.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/576",
+    "status": 200,
+    "sha256": "ab1ed8599d8234428d371dc474bdb3143247a597d27251e6d81351ceb600032f",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/4fb07384adc3e84e935d6fc4dbe85f63999ddaf2f8c1df8e73840b514f23c98f.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/577",
+    "status": 200,
+    "sha256": "c5eff08d39d1955a5d9f20b58823c0c0d56e98a09e07d1d849d74529007f35c8",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/8cf710b72698aa81ee3d7eeeda64bd7fe5742624eda3bfe58a6f20aef7caddfd.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/578",
+    "status": 200,
+    "sha256": "0e5ad32f00be566b3f8f0a5827046b565354d28c3b7c3b3bab1879388335f5a9",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/0cda13ccf8e64a1bd44be2b401a613586fbfd7949aa7d66b8d83c0583013711b.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/579",
+    "status": 200,
+    "sha256": "5846fe556bc054a27a79492fbd9f8251b62b07190fd30f9ded929345d71c8497",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/693d285f10c5efb5de0bcb229afd15efa5d2d6fa26be9e9ffc39eb513d155def.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/580",
+    "status": 200,
+    "sha256": "ea43928f6b9a09fdd849e48532ad1a91e588594d52508dca94ca35952db18a4b",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/a518454f11d235f7f1d03ce30637ad721009807a7d69145ae7e47428f3c5b673.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/581",
+    "status": 200,
+    "sha256": "e25cc86d7986e4d74f5b05781578d6e2ef355b4c548c1a71e0e0f2281d3ceb32",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/53d81d0f39b0baf1c9e6fa6f3cecaf1eb947e9414e146143bd3333c2eb0e1ea0.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/582",
+    "status": 200,
+    "sha256": "0680bd6a9e02e2a32e5903f02d28e7794b9a48ed9161dc75a303a4c22a1a9cd7",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/d0a69c0d265253a5562d2889ceb6194506e7e32c02bd192f2e18f66361c48358.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/583",
+    "status": 200,
+    "sha256": "24944259de77acd0dd9ab53e9c88131915f2cb18ea670c7d19ad50bbe1d723eb",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/d99d71bfd8e8fe3ba7b213511a4f0d79167f5b83fcfc4cb8f5329d454b5b0ba1.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/584",
+    "status": 200,
+    "sha256": "6899ec19993b6e92a70053bf3d706ef43ba3805cbdc9eca9c9aa5b642ed78733",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/d8c10320450f72f76b6be1b99ee2cbe3c6167be9a97026fd457c236d31c2ff6c.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/585",
+    "status": 200,
+    "sha256": "e0e41b7d82ffda320ce1ea57f29aa2a6f2f09b6cd79a82568cef50499506e902",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/e13533be40c19289a34b8c4af1b4c5ebf0a8fa982cddf85c1ae755292e356c34.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/586",
+    "status": 200,
+    "sha256": "0611680d8d7724f1edde1d14baa812c460d18f59d910ca3cef0bb7ba896925f5",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/4c8a7dcd85f7beaa7fb22be74306f908377e80d803a2baf01f3fd6519d3c514c.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/587",
+    "status": 200,
+    "sha256": "9acfe633134c06bd11d8bef9664a33c65a5ebeb0e157470f072b33ac6e3230bd",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/48a03aca4fdeb96e7101bf39db48b89885e3d1783b32bd6d0e9dfafff90d5b3b.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/588",
+    "status": 200,
+    "sha256": "39fad5bedda7db454fa63ae2593e73d918fe26931df6f19e2f2766f9dacf3514",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/78b7e7a9dfe13463a8dac4be03b38f6f231f116dc117378a856a51dc73a199f8.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/589",
+    "status": 200,
+    "sha256": "e502496dbc01a87804aecc0d003609863937b760ceaca0ec4cca22bd28bfc229",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/95a55175e9336b133b1399e98c5bf41343e5ab60b1863f48d9f8d5492da20f9e.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/590",
+    "status": 200,
+    "sha256": "dadd522b29be9a544cdbf9a287300191c1b0a4d0dce47d05e7c7650884f1b47a",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/3095d92b61aeeaedae5d9cd9da94c398b02d62e9753ea48f0e6ed91406c64343.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/591",
+    "status": 200,
+    "sha256": "60bcb8187350f84d4b795f11fe3a62b22fafe4da9dd1f8ce1c9228a058819f72",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/a286d8ec84671afaafe73b522577edc6c6e18b6fb0d11b7e8b89d9f796c02471.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/593",
+    "status": 200,
+    "sha256": "02f52955c1077f9f5f6edcbb607a0902118cdb1a87ca3c73d6a26af145aa037f",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/184c8c636da705d82a5168e19807a180928311d676350c013d4f07116250838c.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/548",
+    "status": 200,
+    "sha256": "ad0126f61210a5672f1705ec7e9d03a54e4a64019cbb2a2a0f03aac7aab5a860",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/a33916a35762fcd0d2720c7a9f9f6c2e693a3938f20a8e48d158bd241ddbe32f.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/549",
+    "status": 200,
+    "sha256": "69d60542ce4c76278f711820c31069462b7962f695834be68fea986b12dd4eed",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/996e03add033d617ffbf438383c804904a69fe986f4acfd71eb6f6293ba260b0.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/550",
+    "status": 200,
+    "sha256": "4bef207c8e06f0cf5e5d99c3e2aef8f9a8174b80aa4ba08054a8cefc403c4c7f",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/a0e6e86816b208d70768d72e94be4a7fefeaed72d67dab791ebd9134b5a1391b.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/551",
+    "status": 200,
+    "sha256": "05219849547e16ce310fa7e6545752f7d7118244f15f209753b4b6c61a1d4a0a",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/b7948e0e7979b4e0f9a1f7540a29ad3ad0f5c1e52beef8939088127537688a5c.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/552",
+    "status": 200,
+    "sha256": "54daae83d56947ae128939d4513be683fccf1022d299ebb5da1dfabb96a5d044",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/c8b54bf4e4014df9acf401d7f08891d19f0abad53d21d16e28b4dc069fc879cc.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/553",
+    "status": 200,
+    "sha256": "0d7a42d31b2afcf6ca07adb1d02cba3160c79ddf4b626bfbf47617b3e606e140",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/5f0f6d4594d0ef6f0c82914d892e8f459fb8009d306e708cb493a38aef931973.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/554",
+    "status": 200,
+    "sha256": "905fb4b41a92ede9367a0dd20f8f5ba0f7dfe607effa1feac029062c945ee33a",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/a8fefde2d86834ba38e37f3b4c6fa7621e9b558d51436f65442aaa3f05a3b92a.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/555",
+    "status": 200,
+    "sha256": "3a14cd12b8a2f964a2573a3c1c3c594a5c69c720f15fdf329c59ac709a9640e6",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/c583aeb51bf126181017d131b2d39f729f6c888e84c6ac3f4a04ef30b33032c7.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/592",
+    "status": 200,
+    "sha256": "967bc70b4200e9ba1d312ec475b871045c2e8048fae4a56ee00ac5c3de753ab6",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/8ed6965872fc5adcafe53c301665e5ea4c539c23de5d9930385356cf31844641.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/556",
+    "status": 200,
+    "sha256": "557d3460d7d3b50d37b989a14da55e069c3fad30ca506f26c6725f5396f321fb",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/2d91919cb54832af4f906b39c00accdb176787fd412c5dfaf90a1e93fdee75c2.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/557",
+    "status": 200,
+    "sha256": "8a23040e6bb4d3a21e94196b1636767bb7c71a88f827f78a4f6fdae3942daf63",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/2157e3061d0a6c77a6883ca7559504f7b4383d3c2ccbf25da625a8da67fe7768.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/558",
+    "status": 200,
+    "sha256": "85dd68763695e041254d33a87bb39709a1f0f7ed43d7e79640d52fded1008bba",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/dc0a20ae0373f01be27bc3ea26864f91310880e3ab20e685d94df8a41da68452.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ojs.aaai.org/index.php/AAAI/issue/view/721",
+    "status": 200,
+    "sha256": "c1ab94c519b7ed17b3312a82983da76e9e6a4bfe4c9545e4974ce0b63ef74cdf",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/dff3ba3495c53931ec46075ed37a1805d4b77d0740a6a4bfd318787b7b30059c.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://proceedings.iclr.cc/papers/",
+    "status": 200,
+    "sha256": "31acd9b42bd178b3d777a8b746199a17b12305b0fec53cc9f0fe8e6460465f7c",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/e32aceeacc6629ed754158975a54b41224a70ad9276d0f8142ee16988b0fa315.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://proceedings.iclr.cc/paper_files/paper/2026",
+    "status": 200,
+    "sha256": "2e233e9120602a93230f1e81b01bd295ee69b5c93f4eaa5b1988166fa3983fe5",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/344d18597161c6190c65e3cd7233352029e056e9319c06db7056c4819c212819.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://proceedings.iclr.cc/paper_files/paper/2025",
+    "status": 200,
+    "sha256": "5bbd1d59f6ab87b53fcdd42060a5631f625b38d6fc68c4581aea1e4ad50173c6",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/7861eef6d7e3b42697eb3d00cc5e9f0d8735f3b39162f52a71cca8fcc269e309.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://proceedings.iclr.cc/paper_files/paper/2024",
+    "status": 200,
+    "sha256": "8e7f1951ec66a102cf2fa827f7527ba8ec55cb56d527e7b28db4a239d2c46eaa",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/5221b76ad033d60bf8f141e56ebaa722571b98d7f28fb17a19cfa3bf27cd08bc.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://proceedings.colm.cc/",
+    "status": 200,
+    "sha256": "8ec46defefbf997268a985acb4ea9f7b06aa8f5a6a608ae35c95e05a74a175a7",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/0eb8fc79518b05d8d8688f19647fd564e2b9dcb6e581a6c5319076c85bdfe541.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://proceedings.iclr.cc/paper_files/paper/2025/hash/69f98acf161316ed896047e45da3bc0c-Abstract-Conference.html",
+    "status": 200,
+    "sha256": "acda7e8aa40fafcc7b8444903131807a268d3ed2c97dde75f20e633389f4d992",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/d2aef3675f5d9c40d4799452648f7c948acba83acfc7077588c5ddb8cdbcbc12.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://proceedings.iclr.cc/paper_files/paper/2025/hash/906c860f1b7515a8ffec02dcdac74048-Abstract-Conference.html",
+    "status": 200,
+    "sha256": "5d128928c69275867c5a4540b96140e77bc5c75657ea7ebdc153f2a9838410af",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/ccc2a2ba23dd2eaf0fc2e3ce93f115cc863c11a9a1cdfbd07f95bc21cad87ce9.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://proceedings.iclr.cc/paper_files/paper/2025/hash/94a1fa3346407b2318ae7f8891d9f550-Abstract-Conference.html",
+    "status": 200,
+    "sha256": "2fa5d4c2fcdd0e672d6208785a73473acdd431dde75c12f9f2730faa3607fbee",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/993b30f1746c00324333d73d48d7cc0ce18c789de67383d5f3daaf9318243404.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://proceedings.iclr.cc/paper_files/paper/2025/hash/e0ccda3cb17b084a6f43c62cfac4784b-Abstract-Conference.html",
+    "status": 200,
+    "sha256": "412a6de379006c778184f50602f0a86e22241589f0aeb3124d3e5a40dac3bc26",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/6a091116b682a61d2a124ebf4258a6e6a0ae896334bd5b685b366342741a0705.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://proceedings.iclr.cc/paper_files/paper/2025/hash/e0e0add93c95b5f81db075472c5cbbd9-Abstract-Conference.html",
+    "status": 200,
+    "sha256": "f77c41e305b6accb5e03799f281495377af0a72db29d8580061233f3150cf56c",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/53bd7624a08cf254c25fd1755ede598cf2568b83dea2f7cb6a9452ae210c7d45.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://proceedings.iclr.cc/paper_files/paper/2025/hash/f12c9da400fec2594a05e37b0507fd00-Abstract-Conference.html",
+    "status": 200,
+    "sha256": "113189d1ce09b4ec010f1a0bf894d570d53043346ecb1181e8f9b502f8992222",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/36d91a9e99db1dd5e5530ab52d97551d439e9c406ab82debbf7a71af93fa908f.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://proceedings.iclr.cc/paper_files/paper/2025/hash/fee20f7ca858e3acfb8e5ae641ee69a3-Abstract-Conference.html",
+    "status": 200,
+    "sha256": "99d059c003b43783ed62a376733c3677b6517c92dfc54f8725b8083616cee87c",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/b71f1888b96b58efcea65e96a9ff88410ec2dd5be9bbdd8c174343596d9c2b13.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://iclr.cc/virtual/2025/poster/29973",
+    "status": 200,
+    "sha256": "c34047208acb79695931d3716178858bdb05e0e136f7a78280ca1c0091c2a508",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/74766c5e9a0e39332233a2abe11f4d43fe44c3a627bc9276b826ddb5c17a30fd.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://iclr.cc/virtual/2025/poster/28955",
+    "status": 200,
+    "sha256": "316b83cbe58b6629c1c24553da13c557fb06e6674cc236400a3f8a543fecb29f",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/88f8496065b7e5bb902f48a90bd7ea971b9dd7b68dd33916fdf3254e55bfa8c8.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://iclr.cc/virtual/2025/poster/29352",
+    "status": 200,
+    "sha256": "90b4f13e1531502ea84850cb261c9969bb65d29dc463b2b0b4630fe3cfadec05",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/c2c2f497e90197d8adddd2c412b10d442fb689f2cb9896c1ec9168c414b8ea91.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://iclr.cc/virtual/2025/poster/30609",
+    "status": 200,
+    "sha256": "252177354d10857a174063315bc12975339403444b9c2ed17f953ed63f2443ef",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/a850e4ae3fe84923ea72a8205e5720161b5d33853fa98d6bd5f3c6626a0ac858.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://iclr.cc/virtual/2025/poster/29087",
+    "status": 200,
+    "sha256": "636c92d798dad2f63c072500398098e74ef32454a8f22c3b8d5011f1214787d6",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/5b6324defa8411493c9aa2f0796923efd63fbc6dffc279880476c7019ad0dd3d.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://iclr.cc/virtual/2025/poster/29595",
+    "status": 200,
+    "sha256": "a521f9e3ee960aa1e84cc27a4ec0b95bbc845d27b2070e746b1854a678f83e55",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/9ba764589bda7a8d772c6eb5b0b9ad02651a39ff34ada07b4eba526e3ab9c037.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://iclr.cc/virtual/2025/poster/29575",
+    "status": 200,
+    "sha256": "61f3dbd54dc48ae4f4512761729df488b5e2a5afb73b2f5fea613f72e8887f87",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/ed287df0eaafd01ab24de0635975ba31f467e0a9154773a2b36fa6ffa42f94ee.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/131-1",
+    "status": 200,
+    "sha256": "e80b1bbecbcfb44f52977bc39be362569f8a51feb166079ef497e39bbd7c1499",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/901506e207b1adb3bdc1ed8a64ef0d3d0edfcaa079480a3ba7632e8a8e27b0a7.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/131-10",
+    "status": 200,
+    "sha256": "52901ca9a4287b5fb32a29ec3a830f70edf6ab869094309d6720bcd02402a978",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/808c394525db60b3e19a666f42288ef6b289e4de3fde0c381f77a7d0d9f6d3f1.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/131-11",
+    "status": 200,
+    "sha256": "12ea1d06b28de35b2099bf4bd86885c4e455057ea04ae1b8d7c8bad39143db79",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/b5be573f7f4427924fd7cd8d440f5d6b9ca6e442d8d2ac0905e04fe5bc164009.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/131-12",
+    "status": 200,
+    "sha256": "a28aed2e0258765b5309a09e4525fdb59ef5064778eb50683e3a0d1ab95557fd",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/f3423faf73eada3f5bc3585857bbb347ba9d16d237745792941fcbafc4f475c0.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/131-2",
+    "status": 200,
+    "sha256": "97335eb2b0b1f9f852f0671fb5c6cd37a808068e68a00c0daecb423c3687b1c7",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/d9300bccde45872bb83272f0c6159e885df39eec8b1d1ae891919c128fa5a3bd.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/131-3",
+    "status": 200,
+    "sha256": "6d99c7f23d47260730b7d1105f415b46e5496f840a07e91d205b99f0c7b2a0e1",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/b7dc37a11efe62fd5300b349081f047ab9c38ed8919bfd55523e214b1e6bab51.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/131-4",
+    "status": 200,
+    "sha256": "55ec8a188466a7edbe36aee36be3a856c9e8fbc48ea4b072aaedffd81b67bdeb",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/dfba79b85b2efa5da379990c405a6bb55750f9ceb24aaef010c9acb49ec8109e.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/131-5",
+    "status": 200,
+    "sha256": "baab693b1d7b95f90b317696a8b1f8f3e947b9285cfb6801fcf30f0bd67e3633",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/6db5b3c42f1c77bdd605d88d594234166d344bc90c0978084e52a2907232bf25.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/131-6",
+    "status": 200,
+    "sha256": "247c3d6600b828f96e90f8b7763be7670f75fe47b3100519c4de93f795424c0e",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/f8b2d55e43ac112f9da8c66c560ff73dd9dc3b63dc72dcb627e59be2106fbbac.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/131-7",
+    "status": 200,
+    "sha256": "1214b5ff6beaa4f6c0219026395128e0573e9f8f0c47bceecb55d6e41fbc3bd0",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/79b53c552e931757fe2f72a4937179d69c5987bcec7d81d244e4f228af7ac8c3.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/131-8",
+    "status": 200,
+    "sha256": "18af28b59d8ee6d41ed0a977859b89d126942422ec33e94001d4e92fb374fe02",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/d8a7f6b6b6ecb9383c7ba0062066a31ba60e8086f63856647be87c78b94a1a9b.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/131-9",
+    "status": 200,
+    "sha256": "e8781ab772c1b53abb707bc97fc97e909ccd163374004f1093b38e447d16a921",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/3d693fa3bcec8ff495d90dd47678e4aa1b359ad7369f7c809f2587bfa3458653.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/132-1",
+    "status": 200,
+    "sha256": "ed4c5a08e70f7612815da0532722b0c08a79d706129bcb9952f1dc697c2b9b37",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/6ce0d9c0f96fe4af345cc682e02ffe4311d88d580f86408b45cec93f2773caf1.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/132-10",
+    "status": 200,
+    "sha256": "08e74fae27c7896374d5f85e26015d5f07f9d7424d4b0dc798c713e15ef8f68f",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/8a6d41d8ad5bde513c18e9bd45a647be8c4e91e4fb1036dcbee06e9d57fce091.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/132-11",
+    "status": 200,
+    "sha256": "83a749e4184b8803be77396f1cfd8b2cc2b319129242191233fb3ff9e7fcf8b3",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/194b483eda19c54dc150f5d44ad51a69484f733d12d0c34c80b984e041a4644c.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/132-12",
+    "status": 200,
+    "sha256": "3b95a00325dc57dbf381fbb7a91c44eb6bb67e54967eb7f4e8f4d991872fc7fb",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/bfd972b1c28f74de64c4817b6029e6b2d3351f96a62be966acd1646ce72c9a31.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/132-2",
+    "status": 200,
+    "sha256": "23d59c7fd849fed4bc837440114c53592db917076acbad287dbc99c9259daaed",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/f80de3f8675371197ef044a5dc5a7e5ddbe0b49b6b867bb9af16c28a512c77d0.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/132-3",
+    "status": 200,
+    "sha256": "93f675a143eee0feb224b78cd9b7f8152aa53158ccdf76478a6d8cd54070eaca",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/8244cac2214145ae7975dbe194bc240d553373aafac6e0abd30cd8565a6ac035.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/132-4",
+    "status": 200,
+    "sha256": "8e7e47904f8faf2fdebac11837e9a840369ad99c8eedfb64fed4aaa71c7a6a2d",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/eb9d84dbebfdeb9060824c0e6e6b21692024bb8be444c9f604d87546b422ced2.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/132-5",
+    "status": 200,
+    "sha256": "37698edca0744060d9740610b1584010d03a37239b7e19ca1cca6925bb0a993c",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/8394210acc9e8aedfab0afbb5e8db02ef6faa17f45adee2f5257ce96b887e5a3.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/132-6",
+    "status": 200,
+    "sha256": "0e7e241137e75777a265501b97adf88e06bd62e91902f4952fda3a28ac318fe5",
+    "local_snapshot": null,
+    "snapshot_matches_response": false,
+    "snapshot_note": "Earlier response replaced by a later fetch of this URL; old response body not retained."
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/132-7",
+    "status": 200,
+    "sha256": "09548e25f0a60e254f1919e391c6b64cf6852c8cdb0907bdf30614dc7bf1a7aa",
+    "local_snapshot": null,
+    "snapshot_matches_response": false,
+    "snapshot_note": "Earlier response replaced by a later fetch of this URL; old response body not retained."
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/132-8",
+    "status": 200,
+    "sha256": "a1fd0995c16d9cc2e4829b77e17703b92330ed8ac58db79973ddffdae233f5e3",
+    "local_snapshot": null,
+    "snapshot_matches_response": false,
+    "snapshot_note": "Earlier response replaced by a later fetch of this URL; old response body not retained."
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/132-9",
+    "status": 200,
+    "sha256": "e4084914f7b2ba3df2f4cf04675a611ce7a04768dd660e4ecbc7a5b4d12ef682",
+    "local_snapshot": null,
+    "snapshot_matches_response": false,
+    "snapshot_note": "Earlier response replaced by a later fetch of this URL; old response body not retained."
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/133-1",
+    "status": 200,
+    "sha256": "4695220ddbdfdbeabd6db8ff8a7049a3226ceb8580cbe109b61141cf222d36d1",
+    "local_snapshot": null,
+    "snapshot_matches_response": false,
+    "snapshot_note": "Earlier response replaced by a later fetch of this URL; old response body not retained."
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/133-10",
+    "status": 200,
+    "sha256": "8706df10a68ec8ea490845ac25effdaa5aa3deed3f5bd32b1a30c84717d02c48",
+    "local_snapshot": null,
+    "snapshot_matches_response": false,
+    "snapshot_note": "Earlier response replaced by a later fetch of this URL; old response body not retained."
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/133-11",
+    "status": 200,
+    "sha256": "4b586e493304577650048751a91cf3c1c8368dedcd12890c2265ae02d19ee6e2",
+    "local_snapshot": null,
+    "snapshot_matches_response": false,
+    "snapshot_note": "Earlier response replaced by a later fetch of this URL; old response body not retained."
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/133-12",
+    "status": 200,
+    "sha256": "3f8eeff2925fe591670815c04350e8f3ba21d12c39d93dd46e642b1010772e4b",
+    "local_snapshot": null,
+    "snapshot_matches_response": false,
+    "snapshot_note": "Earlier response replaced by a later fetch of this URL; old response body not retained."
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/133-2",
+    "status": 200,
+    "sha256": "5afd2979432ea2cd026a3853ed9cc311f0cb0e8c113794393e8b7e3b7bf4eceb",
+    "local_snapshot": null,
+    "snapshot_matches_response": false,
+    "snapshot_note": "Earlier response replaced by a later fetch of this URL; old response body not retained."
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/133-3",
+    "status": 200,
+    "sha256": "43b6609cfa11998182eab3a7f0a1852349fb9fccac69ef20328309dc7d173021",
+    "local_snapshot": null,
+    "snapshot_matches_response": false,
+    "snapshot_note": "Earlier response replaced by a later fetch of this URL; old response body not retained."
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/133-4",
+    "status": 200,
+    "sha256": "4528c50241d6645e1c98de5a0ea06b133756b6e508f8807c59a149a21a7ffec6",
+    "local_snapshot": null,
+    "snapshot_matches_response": false,
+    "snapshot_note": "Earlier response replaced by a later fetch of this URL; old response body not retained."
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/133-5",
+    "status": 200,
+    "sha256": "a12a48ff848d55d060646ead3d80767d058d7bbf30dedf7e5d9b9c5413dcb8af",
+    "local_snapshot": null,
+    "snapshot_matches_response": false,
+    "snapshot_note": "Earlier response replaced by a later fetch of this URL; old response body not retained."
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/133-6",
+    "status": 200,
+    "sha256": "38273c5e5b48093dec9cfb2fe54bc2b6db9fad59b3517ad883ddcd3f9725c0d0",
+    "local_snapshot": null,
+    "snapshot_matches_response": false,
+    "snapshot_note": "Earlier response replaced by a later fetch of this URL; old response body not retained."
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/133-7",
+    "status": 200,
+    "sha256": "2a2a043fc877d47e0c608ab09d4179400fd9a3cf2f5818271288112308eba79f",
+    "local_snapshot": null,
+    "snapshot_matches_response": false,
+    "snapshot_note": "Earlier response replaced by a later fetch of this URL; old response body not retained."
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/133-7?filter-by-volume=133&filterOpenAccess=false&page=2",
+    "status": 200,
+    "sha256": "e2163bada56bd124922fd9c4c1fdafa7177203bddc16782277ff58291bd52a63",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/53305f0f4bd81d27b00ad33aaf3a04f573a07a73f45b137c2f9cc970d25036ce.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/133-8",
+    "status": 200,
+    "sha256": "d2ad29363fc596895bd12bfaf06c6f96db258bd70497cbcf2d9f1ee8ad5217d1",
+    "local_snapshot": null,
+    "snapshot_matches_response": false,
+    "snapshot_note": "Earlier response replaced by a later fetch of this URL; old response body not retained."
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/133-9",
+    "status": 200,
+    "sha256": "1d1a6653cf2678b6cfd063951ee8b3af8ffff1940deaf9a413b4f1289c1adc5c",
+    "local_snapshot": null,
+    "snapshot_matches_response": false,
+    "snapshot_note": "Earlier response replaced by a later fetch of this URL; old response body not retained."
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/134-1",
+    "status": 200,
+    "sha256": "e3cbf0cfc4737c8a01c76a372c6f318c2ca63d072378df54b4437aa1f93eed3f",
+    "local_snapshot": null,
+    "snapshot_matches_response": false,
+    "snapshot_note": "Earlier response replaced by a later fetch of this URL; old response body not retained."
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/134-10",
+    "status": 200,
+    "sha256": "8756a4ac085aa39e6178a0013e9a4cd885233bab7dbf8d76361df047e84c7be3",
+    "local_snapshot": null,
+    "snapshot_matches_response": false,
+    "snapshot_note": "Earlier response replaced by a later fetch of this URL; old response body not retained."
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/134-11",
+    "status": 200,
+    "sha256": "4b93ce71ee0118bf81354aef1c9a4b9ff92ea3f09809a24a023a47ec474a32f4",
+    "local_snapshot": null,
+    "snapshot_matches_response": false,
+    "snapshot_note": "Earlier response replaced by a later fetch of this URL; old response body not retained."
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/134-2",
+    "status": 200,
+    "sha256": "e14f6a989d69050e7d4a1ba8242c52226a8daca34abb51f54c65e869c10f9df7",
+    "local_snapshot": null,
+    "snapshot_matches_response": false,
+    "snapshot_note": "Earlier response replaced by a later fetch of this URL; old response body not retained."
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/134-3",
+    "status": 200,
+    "sha256": "ee3b8a1f77aeb0c223567790406d42a0729785b2bf021980e49d677a63f5bf57",
+    "local_snapshot": null,
+    "snapshot_matches_response": false,
+    "snapshot_note": "Earlier response replaced by a later fetch of this URL; old response body not retained."
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/134-3?filter-by-volume=134&filterOpenAccess=false&page=2",
+    "status": 200,
+    "sha256": "90d5ffb83f83205e4962d9ee77742931ff2c1962dce220e1eb75e0809fac96c0",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/0be06d94c79b55629eb48790b41e5fe28fb18a7109c8a93d5306f0a62a4be008.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/134-4",
+    "status": 200,
+    "sha256": "e7018a7cd1b4dc0db52f780f6abe25512890cdab2aab890d122c3027bef88fcd",
+    "local_snapshot": null,
+    "snapshot_matches_response": false,
+    "snapshot_note": "Earlier response replaced by a later fetch of this URL; old response body not retained."
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/134-4?filter-by-volume=134&filterOpenAccess=false&page=2",
+    "status": 200,
+    "sha256": "d0bbea625fc05cf7045afc35a76e6fb4c7e2d28a57d27e4fc37ebd4c54d62184",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/abf944add6eba33a940984cf9b38c71f3d7c8505fa0f1c418ab47676c8997b7b.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/134-5",
+    "status": 200,
+    "sha256": "2e4d96ba2e9e2805250b182eb1c862837fa5263ebafb5afdfb1add2fefc6c7e5",
+    "local_snapshot": null,
+    "snapshot_matches_response": false,
+    "snapshot_note": "Earlier response replaced by a later fetch of this URL; old response body not retained."
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/134-5?filter-by-volume=134&filterOpenAccess=false&page=2",
+    "status": 200,
+    "sha256": "cd74cf5236cdfa8ed0cabaf326549fcd5df559cd90e23d60cbcd6f1a61a2bc9f",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/0f5d7dd17942d9167cbddeec2a8e913977ef8dbbb93abe444f8f415a1946cc5a.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/134-6",
+    "status": 200,
+    "sha256": "2d497f6ad3f1d8e7a016e1120e6a2ddd8a4f215653d3fad6e6744509023e4580",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/897150262529cf81ea2c3962154eff62513451c42d4fed980ecdac228ac820be.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/134-6?filter-by-volume=134&filterOpenAccess=false&page=2",
+    "status": 200,
+    "sha256": "31e135ba81c2bd7a3d1335e5beafb3290a06b8e5b8418951204987926d0f5ce7",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/4c8463f30441c4aae833b7ad6311ccf392c22ebd28423bb7fb7ddacb99920f74.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/134-7",
+    "status": 200,
+    "sha256": "5bbbcb51dda8f0d2228b47d124a2effb0475b87e183d1a648b81a8db3a88b6b8",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/71a18c32db1058640d47e5134fec413b70f8589e9076fc336ae4323182a13fb0.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/134-8",
+    "status": 200,
+    "sha256": "4b1212f31b1ca9b31edb501cb57e33c7ce71bd2338251ab624a164c5161ace1f",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/156ca18dfcc703a5e2d44493d41109706fe7d7046c22aee14ae58331525bbcc9.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/volumes-and-issues/134-9",
+    "status": 200,
+    "sha256": "1d093951ed314262e0f3fff6b1b3dbc4faf2a612fffd8107830bff8356d6d27c",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/8365a276e8589fdff3ef442ae3f9e2a9db0e174bcb7e1ec2b5145a143455a88e.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://link.springer.com/journal/11263/online-first",
+    "status": 200,
+    "sha256": "44414914bae06c99e9b6461b675701b2167cccaef6ea04a7edeaad109035f518",
+    "local_snapshot": "data/analyses/publication_base_20261021/sources/ac987d3fa6e3b9fcd623b3631020a2144efdabbf489437d75004fbfde1dc31cd.html",
+    "snapshot_matches_response": true
+  },
+  {
+    "url": "https://ieeexplore.ieee.org/search/searchresult.jsp?action=search&newsearch=true&matchBoolean=true&queryText=(%22Publication%20Number%22:2945)&ranges=2026_2026_Year",
+    "status": 200,
+    "sha256": "0d785d3291bb2e4cd6edb9d58eef818823f594535e49065155d12ba67f6ce816",
+    "local_snapshot": "data/analyses/publisher_directories_20261021/exports/tvcg-2026.csv",
+    "evidence_kind": "official_publisher_csv_export",
+    "snapshot_matches_response": true,
+    "observed_result_count": 777,
+    "export_row_count": 777
+  }
+]

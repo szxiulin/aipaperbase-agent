@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from backend.catalog import identity
 import secrets
 import sqlite3
 from datetime import datetime, timezone
@@ -312,7 +313,7 @@ def remove_members(
     user_conn: sqlite3.Connection, collection_id: str, entity_ids: list[str]
 ) -> dict[str, int]:
     _require_collection(user_conn, collection_id)
-    ids = list(dict.fromkeys(entity_ids))
+    ids = identity.expand(entity_ids)
     removed = 0
     if ids:
         placeholders = ",".join("?" for _ in ids)

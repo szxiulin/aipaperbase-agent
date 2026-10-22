@@ -438,6 +438,9 @@ def scrape_acl(fetcher: Fetcher, venue: str, year: int, collection: str) -> list
             continue
         for node in volume.findall("paper"):
             official_id = xml_text(node, "url")
+            # Recent Anthology XML derives the URL from collection/volume/paper IDs.
+            if not official_id and node.get("id"):
+                official_id = f"{collection}-{volume_id}.{node.get('id')}"
             if not official_id or official_id.endswith(".report"):
                 continue
             author_names = []
@@ -584,6 +587,16 @@ def scrape_jmlr(fetcher: Fetcher, year: int, volume: int) -> list[Paper]:
     return papers
 
 
+TMLR_DATE_SUFFIX = re.compile(
+    r"[,;]\s*(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+20\d{2}\s*$"
+)
+
+
+def strip_tmlr_publication_date(authors: str) -> str:
+    """Remove only the trailing publication date from the official author line."""
+    return TMLR_DATE_SUFFIX.sub("", authors).strip()
+
+
 def scrape_tmlr(fetcher: Fetcher) -> dict[int, list[Paper]]:
     url = "https://jmlr.org/tmlr/papers/"
     tree = html.fromstring(fetcher.get(url))
@@ -603,7 +616,7 @@ def scrape_tmlr(fetcher: Fetcher) -> dict[int, list[Paper]]:
         forum_url = first(details.xpath('.//a[normalize-space()="openreview"]/@href'))
         pdf_url = first(details.xpath('.//a[normalize-space()="pdf"]/@href'))
         paper_id = forum_url.split("id=")[-1] if "id=" in forum_url else Path(urlparse(pdf_url).path).stem
-        authors = text_content(first_node(details.xpath(".//i"))).replace(",", ";")
+        authors = strip_tmlr_publication_date(text_content(first_node(details.xpath(".//i")))).replace(",", ";")
         grouped.setdefault(year, []).append(Paper(
             paper_id=paper_id, venue="TMLR", venue_type="journal", year=year,
             track="continuous publication", title=text_content(title_node), authors=authors,

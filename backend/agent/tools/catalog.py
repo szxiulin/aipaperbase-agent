@@ -1,4 +1,5 @@
 from __future__ import annotations
+from backend.catalog import identity
 
 """Catalog tools: search_papers (unified search: filter+sort+pagination+aggregation), get_paper (per-paper detail), list_facets (enumerate the catalog).
 
@@ -70,6 +71,7 @@ def _search_papers(ctx: dict, query: str = "", filters: dict | None = None, sort
 
 
 def _get_paper(ctx: dict, entity_id: str) -> ToolResult:
+    entity_id = identity.canonical(entity_id)
     conn = ctx["catalog_conn"]
     row = conn.execute(
         """SELECT e.entity_id, e.canonical_title AS title, e.first_year, e.last_year,

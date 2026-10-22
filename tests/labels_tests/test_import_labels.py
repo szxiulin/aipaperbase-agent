@@ -117,3 +117,26 @@ class LabelImportTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+class PendingLabelsTest(unittest.TestCase):
+    def test_pending_is_searchable_and_not_counted_as_classified(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            con, a, d, n, g, m = make_db(Path(tmp))
+            # Reuse an existing fixture entity as a genuinely unclassified paper.
+            for path in (a, d):
+                with path.open(newline='') as f:
+                    rows = list(csv.reader(f))
+                with path.open('w', newline='') as f:
+                    csv.writer(f).writerows([r for r in rows if r[0] != 'e3'])
+            pending = Path(tmp) / 'pending.csv'
+            pending.write_text('entity_id,status\ne3,pending\n')
+            stats = label_import.import_labels(con, 'rel', CREATED, areas_labels=a, directions_labels=d,
+                non_paper_labels=n, golden=g, metrics=m, pending_labels=pending)
+            self.assertEqual(stats['pending_classification'], 1)
+            overview = areas.areas_overview(con)
+            self.assertEqual(overview['area_count'], sum(a['id'] not in {'other', 'pending_classification'} for a in json.loads(label_import.DEFAULT_AREAS_CONFIG.read_text())['areas']))
+            self.assertEqual(overview['classified_entity_count'], 2)
+            self.assertEqual(overview['pending_classification_count'], 1)
+            self.assertEqual(overview['classified_rate'], 66.7)
+            found = areas.papers(con, area_id='pending_classification')
+            self.assertEqual(found['items'][0]['entity_id'], 'e3')

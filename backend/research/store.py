@@ -4,6 +4,7 @@ import json
 import secrets
 import sqlite3
 from backend.collections import service
+from backend.catalog import identity
 
 SCHEMA = '''CREATE TABLE IF NOT EXISTS research_records (
  record_id TEXT PRIMARY KEY, kind TEXT NOT NULL, data_json TEXT NOT NULL,
@@ -15,9 +16,19 @@ KINDS = {'reading', 'note', 'progress', 'comparison', 'watch', 'chat_scope'}
 def list_records(conn):
     if not conn.execute("SELECT 1 FROM sqlite_master WHERE name='research_records'").fetchone():
         return []
-    return [dict(record_id=r['record_id'], kind=r['kind'], data=json.loads(r['data_json']),
+    records = [dict(record_id=r['record_id'], kind=r['kind'], data=json.loads(r['data_json']),
                  created_at=r['created_at'], updated_at=r['updated_at'])
             for r in conn.execute('SELECT * FROM research_records ORDER BY updated_at DESC, rowid DESC')]
+    result = []; reading_seen = set()
+    for record in records:
+        record = identity.references(record)
+        if record['kind'] == 'reading':
+            eid = record['data'].get('entity_id')
+            if eid in reading_seen:
+                continue
+            reading_seen.add(eid)
+        result.append(record)
+    return result
 
 
 def save(conn, kind, data, record_id=''):
@@ -25,10 +36,16 @@ def save(conn, kind, data, record_id=''):
         raise ValueError('研究资料类型或内容无效')
     if len(json.dumps(data, ensure_ascii=False)) > 200000:
         raise ValueError('单份研究资料过大，请拆分保存')
+    data = identity.references(data)
     if kind == 'reading':
         if data.get('status') not in ('unread', 'reading', 'read') or not data.get('entity_id'):
             raise ValueError('请选择论文及阅读进度')
         record_id = 'reading:' + data['entity_id']
+        if conn.execute("SELECT 1 FROM sqlite_master WHERE name='research_records'").fetchone():
+            keys = ['reading:' + eid for eid in identity.variants(data['entity_id'])]
+            row = conn.execute("SELECT record_id FROM research_records WHERE kind='reading' AND record_id IN (" + ','.join('?' for _ in keys) + ') ORDER BY updated_at DESC,rowid DESC LIMIT 1', keys).fetchone()
+            if row:
+                record_id = row['record_id']
     if kind == 'progress':
         if not data.get('collection_id'): raise ValueError('请先选择一个集合')
         record_id = 'progress:' + data['collection_id']

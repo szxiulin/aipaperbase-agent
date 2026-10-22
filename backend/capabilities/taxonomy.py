@@ -18,6 +18,7 @@ def list_taxonomy(connection: sqlite3.Connection, args: dict) -> dict:
         areas.append({
             "area_id": area["topic_id"], "name_zh": area["name"], "name_en": area["name_en"],
             "entity_count": area["entity_count"],
+            "pending_direction_count": area.get("pending_direction_count", 0),
             "directions": [{"direction_id": d["topic_id"], "name_zh": d["name"],
                             "name_en": d["name_en"], "entity_count": d["entity_count"],
                             "status": d.get("status", "")}
@@ -25,5 +26,6 @@ def list_taxonomy(connection: sqlite3.Connection, args: dict) -> dict:
         })
     if only and not areas:
         raise ValueError("unknown area_id")
-    return {"label": overview["label"], "area_count": len(areas),
+    return {"label": overview["label"], "area_count": sum(a["area_id"] not in {"pending_classification", "other"} for a in areas),
+            "pending_classification_count": overview.get("pending_classification_count", 0),
             "direction_count": sum(len(a["directions"]) for a in areas), "areas": areas}

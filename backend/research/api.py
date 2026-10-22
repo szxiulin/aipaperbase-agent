@@ -7,7 +7,7 @@ from pathlib import Path
 from urllib.parse import unquote
 from backend.research import store
 from backend.collections import service as collections
-from backend.catalog import queries
+from backend.catalog import queries, identity
 from backend.catalog.database import connect as catalog_connect
 from backend.library import store as downloads, tasks
 from backend.chats import store as chats
@@ -55,7 +55,7 @@ def handle(handler, path, params=None, *, write=False):
             result={'items':[dict(r) for r in exact],'total':len(exact)} if exact else queries.papers(catalog, search=query, page=1, page_size=20)
             handler.send_json(result);return
         if write and action=='save':
-            kind=body.get('kind');data=body.get('data',{})
+            kind=body.get('kind');data=identity.references(body.get('data',{}))
             if kind in {'reading','chat_scope','comparison'}:
                 ids=[data.get('entity_id')] if kind=='reading' else data.get('entity_ids',[])
                 ids=canonical(catalog,ids)

@@ -68,7 +68,8 @@ class CapabilityRegistry:
                 "label_release_id": release["label_release_id"] if release else "",
                 "areas_version": release["areas_version"] if release else "",
                 "directions_version": release["directions_version"] if release else "",
-                "denominator": "papers with area assignments, excluding non-paper records"}
+                "denominator": "canonical research entities with area assignments, excluding non-paper entities",
+                "classification_note": "Area and direction coverage differ. Papers can have an area while their direction remains pending; full pending classification is included in totals but not named areas."}
         if release:
             try:
                 metrics = json.loads(release["metrics_json"] or "{}")
@@ -77,6 +78,7 @@ class CapabilityRegistry:
             if metrics.get("area"):
                 meta["area_accuracy"] = metrics["area"].get("accuracy")
                 meta["reviewer"] = metrics.get("reviewer", "")
+                meta["accuracy_scope"] = "Historical 399-paper AI-agent review; not independent human accuracy and not an evaluation of the new area-only cohort."
         return meta
 
     def call(self, connection: sqlite3.Connection, name: str, arguments: dict | None) -> CapabilityResult:

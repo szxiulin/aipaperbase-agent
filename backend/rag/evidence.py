@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from raglib import Chunk
+from backend.catalog import identity
 
 
 def chunk_citation(chunk: Chunk, score: float | None = None) -> dict:
@@ -8,7 +9,7 @@ def chunk_citation(chunk: Chunk, score: float | None = None) -> dict:
     metadata = chunk.metadata
     citation = {
         "chunk_id": chunk.id,
-        "entity_id": metadata.get("entity_id", chunk.document_id),
+        "entity_id": identity.canonical(metadata.get("entity_id", chunk.document_id)),
         "title": metadata.get("title", ""),
         "section": metadata.get("section", ""),
         "text": chunk.text,

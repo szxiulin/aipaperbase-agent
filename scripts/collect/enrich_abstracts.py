@@ -470,6 +470,22 @@ def extract_official_page_abstract(content: bytes, expected_title: str) -> str:
         if len(text) >= 50 and normalize_title(text) != "abstract":
             return re.sub(r"^abstract\s*", "", text, flags=re.IGNORECASE)
 
+    # IJCAI proceedings put the abstract in a plain Bootstrap row immediately
+    # following the horizontal rule. The title gate above still applies.
+    if tree.xpath('//meta[@name="citation_conference_title" and contains(@content,"Joint Conference on Artificial Intelligence")]'):
+        nodes = tree.xpath('//hr/following-sibling::div[1][contains(concat(" ",normalize-space(@class)," ")," row ")]/div[contains(concat(" ",normalize-space(@class)," ")," col-md-12 ")][1]')
+        if len(nodes) == 1:
+            # Keywords are in a separate row on the official proceedings pages.
+            text = clean_abstract(" ".join(nodes[0].itertext()))
+            if len(text) >= 50:
+                return text
+
+    # Springer chapter/article pages label the abstract section explicitly.
+    for node in tree.xpath('//section[@data-title="Abstract"]//div[contains(@class,"c-article-section__content")]'):
+        text = clean_abstract(" ".join(node.itertext()))
+        if len(text) >= 50:
+            return text
+
     headings = tree.xpath(
         "//*[self::h1 or self::h2 or self::h3 or self::h4]"
         "[translate(normalize-space(string(.)), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', "

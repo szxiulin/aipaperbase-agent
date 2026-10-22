@@ -1,0 +1,4032 @@
+{
+  "version": "coverage-20261021-round3",
+  "cutoff": "2026-10-21",
+  "cutoff_timezone": "Asia/Shanghai",
+  "frozen_at": "2026-10-21T15:23:39+08:00",
+  "catalog_release_id": "catalog-20261021T071939Z-c4b45fee4b4e",
+  "scope": {
+    "primary_conferences": 20,
+    "primary_journals": 10,
+    "years": [
+      2023,
+      2024,
+      2025,
+      2026
+    ],
+    "supplementary_venues": [
+      "The Annals of Statistics"
+    ],
+    "policy": "冻结现有目录的来源和轨道边界；会议不自动扩展 workshops、Findings、demo 等未列轨道。已存非论文/展示记录保留溯源，不计作新研究论文。期刊按年度元数据清单核验。截止日期是本版检查边界，不承诺所有来源都更新到当天。"
+  },
+  "corpus": {
+    "source_record_count": 138755,
+    "entity_count": 137831,
+    "non_paper_count": 284,
+    "merged_extra_record_count": 924,
+    "research_paper_count": 137547,
+    "missing_abstract_count": 3769,
+    "missing_author_count": 966,
+    "abstract_count": 133778,
+    "classified_count": 121460,
+    "pending_count": 16087,
+    "classification_coverage_rate": 88.3,
+    "count_unit": "canonical_research_entities",
+    "by_year": [
+      {
+        "year": 2023,
+        "total": 22425,
+        "classified": 22425,
+        "pending": 0,
+        "coverage_rate": 100.0,
+        "year_status": "complete_window"
+      },
+      {
+        "year": 2024,
+        "total": 28395,
+        "classified": 28395,
+        "pending": 0,
+        "coverage_rate": 100.0,
+        "year_status": "complete_window"
+      },
+      {
+        "year": 2025,
+        "total": 36358,
+        "classified": 36358,
+        "pending": 0,
+        "coverage_rate": 100.0,
+        "year_status": "complete_window"
+      },
+      {
+        "year": 2026,
+        "total": 50369,
+        "classified": 34282,
+        "pending": 16087,
+        "coverage_rate": 68.06,
+        "year_status": "collecting"
+      }
+    ],
+    "last_complete_year": 2025,
+    "note": "Counts describe the local corpus, not all published papers. Missing fields use canonical records."
+  },
+  "identity_review_candidates": 128,
+  "publication_pending": 3,
+  "status_counts": {
+    "not_applicable": 8,
+    "unverified": 35,
+    "aligned": 37,
+    "differences": 10,
+    "registry_aligned": 30,
+    "out_of_scope": 3,
+    "supplement": 1
+  },
+  "rows": [
+    {
+      "venue": "3DV",
+      "venue_type": "conference",
+      "year": 2023,
+      "scope": "primary",
+      "local_record_count": 0,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [],
+      "status": "not_applicable",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://3dvconf.github.io/2024/"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "2023 届移至 2024 年。"
+    },
+    {
+      "venue": "3DV",
+      "venue_type": "conference",
+      "year": 2024,
+      "scope": "primary",
+      "local_record_count": 154,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "main"
+      ],
+      "status": "unverified",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://3dvconf.github.io/2024/accepted-papers/"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "尚未取得可完整枚举并逐条对账的同口径清单；不能由 final 标签推定完整。 官方索引检查结果：200；未取得经过验证的完整条目集合。"
+    },
+    {
+      "venue": "3DV",
+      "venue_type": "conference",
+      "year": 2025,
+      "scope": "primary",
+      "local_record_count": 142,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "main"
+      ],
+      "status": "unverified",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://3dvconf.github.io/2025/accepted-papers/"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "尚未取得可完整枚举并逐条对账的同口径清单；不能由 final 标签推定完整。 官方索引检查结果：200；未取得经过验证的完整条目集合。"
+    },
+    {
+      "venue": "3DV",
+      "venue_type": "conference",
+      "year": 2026,
+      "scope": "primary",
+      "local_record_count": 177,
+      "reference_count": 177,
+      "matched_reference_count": 177,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "main"
+      ],
+      "status": "aligned",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://3dvconf.github.io/2026/schedule.csv"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 2026 为截至检查日的快照，不代表全年完整。",
+      "match_methods": {
+        "identifier": 177
+      }
+    },
+    {
+      "venue": "AAAI",
+      "venue_type": "conference",
+      "year": 2023,
+      "scope": "primary",
+      "local_record_count": 1578,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "No. 10: AAAI-23 Technical Tracks 10",
+        "No. 11: AAAI-23 Technical Tracks 11",
+        "No. 1: AAAI-23 Technical Tracks 1",
+        "No. 2: AAAI-23 Technical Tracks 2",
+        "No. 3: AAAI-23 Technical Tracks 3",
+        "No. 4: AAAI-23 Technical Tracks 4",
+        "No. 5: AAAI-23 Technical Tracks 5",
+        "No. 6: AAAI-23 Technical Tracks 6",
+        "No. 7: AAAI-23 Technical Tracks 7",
+        "No. 8: AAAI-23 Technical Tracks 8",
+        "No. 9: AAAI-23 Technical Tracks 9"
+      ],
+      "status": "unverified",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://aaai.org/proceeding/aaai-37-2023/"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "尚未取得可完整枚举并逐条对账的同口径清单；不能由 final 标签推定完整。 官方索引检查结果：403；未取得经过验证的完整条目集合。"
+    },
+    {
+      "venue": "AAAI",
+      "venue_type": "conference",
+      "year": 2024,
+      "scope": "primary",
+      "local_record_count": 2331,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "No. 10: AAAI-24 Technical Tracks 10",
+        "No. 11: AAAI-24 Technical Tracks 11",
+        "No. 12: AAAI-24 Technical Tracks 12",
+        "No. 13: AAAI-24 Technical Tracks 13",
+        "No. 14: AAAI-24 Technical Tracks 14",
+        "No. 15: AAAI-24 Technical Tracks 15",
+        "No. 16: AAAI-24 Technical Tracks 16",
+        "No. 17: AAAI-24 Technical Tracks 17",
+        "No. 18: AAAI-24 Technical Tracks 18",
+        "No. 1: AAAI-24 Technical Tracks 1",
+        "No. 2: AAAI-24 Technical Tracks 2",
+        "No. 3: AAAI-24 Technical Tracks 3",
+        "No. 4: AAAI-24 Technical Tracks 4",
+        "No. 5: AAAI-24 Technical Tracks 5",
+        "No. 6: AAAI-24 Technical Tracks 6",
+        "No. 7: AAAI-24 Technical Tracks 7",
+        "No. 8: AAAI-24 Technical Tracks 8",
+        "No. 9: AAAI-24 Technical Tracks 9"
+      ],
+      "status": "unverified",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://aaai.org/proceeding/aaai-38-2024/"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "尚未取得可完整枚举并逐条对账的同口径清单；不能由 final 标签推定完整。 官方索引检查结果：200；未取得经过验证的完整条目集合。"
+    },
+    {
+      "venue": "AAAI",
+      "venue_type": "conference",
+      "year": 2025,
+      "scope": "primary",
+      "local_record_count": 3028,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "No. 10: AAAI-25 Technical Tracks 10",
+        "No. 11: AAAI-25 Technical Tracks 11",
+        "No. 12: AAAI-25 Technical Tracks 12",
+        "No. 13: AAAI-25 Technical Tracks 13",
+        "No. 14: AAAI-25 Technical Tracks 14",
+        "No. 15: AAAI-25 Technical Tracks 15",
+        "No. 16: AAAI-25 Technical Tracks 16",
+        "No. 17: AAAI-25 Technical Tracks 17",
+        "No. 18: AAAI-25 Technical Tracks 18",
+        "No. 19: AAAI-25 Technical Tracks 19",
+        "No. 1: AAAI-25 Technical Tracks 1",
+        "No. 20: AAAI-25 Technical Tracks 20",
+        "No. 21: AAAI-25 Technical Tracks 21",
+        "No. 22: AAAI-25 Technical Tracks 22",
+        "No. 23: AAAI-25 Technical Tracks 23",
+        "No. 24: AAAI-25 Technical Tracks 24",
+        "No. 25: AAAI-25 Technical Tracks 25",
+        "No. 2: AAAI-25 Technical Tracks 2",
+        "No. 3: AAAI-25 Technical Tracks 3",
+        "No. 4: AAAI-25 Technical Tracks 4",
+        "No. 5: AAAI-25 Technical Tracks 5",
+        "No. 6: AAAI-25 Technical Tracks 6",
+        "No. 7: AAAI-25 Technical Tracks 7",
+        "No. 8: AAAI-25 Technical Tracks 8",
+        "No. 9: AAAI-25 Technical Tracks 9"
+      ],
+      "status": "unverified",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://aaai.org/proceeding/aaai-39-2025/"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "尚未取得可完整枚举并逐条对账的同口径清单；不能由 final 标签推定完整。 官方索引检查结果：200；未取得经过验证的完整条目集合。"
+    },
+    {
+      "venue": "AAAI",
+      "venue_type": "conference",
+      "year": 2026,
+      "scope": "primary",
+      "local_record_count": 4149,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "Vol 40 No. 10: AAAI-26 Technical Tracks 10",
+        "Vol 40 No. 11: AAAI-26 Technical Tracks 11",
+        "Vol 40 No. 12: AAAI-26 Technical Tracks 12",
+        "Vol 40 No. 13: AAAI-26 Technical Tracks 13",
+        "Vol 40 No. 14: AAAI-26 Technical Tracks 14",
+        "Vol 40 No. 15: AAAI-26 Technical Tracks 15",
+        "Vol 40 No. 16: AAAI-26 Technical Tracks 16",
+        "Vol 40 No. 17: AAAI-26 Technical Tracks 17",
+        "Vol 40 No. 18: AAAI-26 Technical Tracks 18",
+        "Vol 40 No. 19: AAAI-26 Technical Tracks 19",
+        "Vol 40 No. 1: AAAI-26 Technical Tracks 1",
+        "Vol 40 No. 20: AAAI-26 Technical Tracks 20",
+        "Vol 40 No. 21: AAAI-26 Technical Tracks 21",
+        "Vol 40 No. 22: AAAI-26 Technical Tracks 22",
+        "Vol 40 No. 23: AAAI-26 Technical Tracks 23",
+        "Vol 40 No. 24: AAAI-26 Technical Tracks 24",
+        "Vol 40 No. 25: AAAI-26 Technical Tracks 25",
+        "Vol 40 No. 26: AAAI-26 Technical Tracks 26",
+        "Vol 40 No. 27: AAAI-26 Technical Tracks 27",
+        "Vol 40 No. 28: AAAI-26 Technical Tracks 28",
+        "Vol 40 No. 29: AAAI-26 Technical Tracks 29",
+        "Vol 40 No. 2: AAAI-26 Technical Tracks 2",
+        "Vol 40 No. 30: AAAI-26 Technical Tracks 30",
+        "Vol 40 No. 31: AAAI-26 Technical Tracks 31",
+        "Vol 40 No. 32: AAAI-26 Technical Tracks 32",
+        "Vol 40 No. 33: AAAI-26 Technical Tracks 33",
+        "Vol 40 No. 34: AAAI-26 Technical Tracks 34",
+        "Vol 40 No. 35: AAAI-26 Technical Tracks 35",
+        "Vol 40 No. 36: AAAI-26 Technical Tracks 36",
+        "Vol 40 No. 37: AAAI-26 Technical Tracks 37",
+        "Vol 40 No. 38: AAAI-26 Technical Tracks 38",
+        "Vol 40 No. 39: AAAI-26 Technical Tracks 39",
+        "Vol 40 No. 3: AAAI-26 Technical Tracks 3",
+        "Vol 40 No. 40: AAAI-26 Technical Tracks 40",
+        "Vol 40 No. 41: AAAI-26 Technical Tracks 41",
+        "Vol 40 No. 42: AAAI-26 Technical Tracks 42",
+        "Vol 40 No. 43: AAAI-26 Technical Tracks 43",
+        "Vol 40 No. 4: AAAI-26 Technical Tracks 4",
+        "Vol 40 No. 5: AAAI-26 Technical Tracks 5",
+        "Vol 40 No. 6: AAAI-26 Technical Tracks 6",
+        "Vol 40 No. 7: AAAI-26 Technical Tracks 7",
+        "Vol 40 No. 8: AAAI-26 Technical Tracks 8",
+        "Vol 40 No. 9: AAAI-26 Technical Tracks 9"
+      ],
+      "status": "unverified",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://aaai.org/proceeding/aaai-40-2026/"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "尚未取得可完整枚举并逐条对账的同口径清单；不能由 final 标签推定完整。 官方索引检查结果：200；未取得经过验证的完整条目集合。 2026 为截至检查日的快照，不代表全年完整。"
+    },
+    {
+      "venue": "ACL",
+      "venue_type": "conference",
+      "year": 2023,
+      "scope": "primary",
+      "local_record_count": 1074,
+      "reference_count": 1075,
+      "matched_reference_count": 1074,
+      "unmatched_reference_count": 1,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "long",
+        "short"
+      ],
+      "status": "differences",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://raw.githubusercontent.com/acl-org/acl-anthology/master/data/xml/2023.acl.xml"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。",
+      "match_methods": {
+        "identifier": 1074
+      }
+    },
+    {
+      "venue": "ACL",
+      "venue_type": "conference",
+      "year": 2024,
+      "scope": "primary",
+      "local_record_count": 940,
+      "reference_count": 940,
+      "matched_reference_count": 940,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "long",
+        "short"
+      ],
+      "status": "aligned",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://raw.githubusercontent.com/acl-org/acl-anthology/master/data/xml/2024.acl.xml"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。",
+      "match_methods": {
+        "identifier": 940
+      }
+    },
+    {
+      "venue": "ACL",
+      "venue_type": "conference",
+      "year": 2025,
+      "scope": "primary",
+      "local_record_count": 1699,
+      "reference_count": 1699,
+      "matched_reference_count": 1699,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "long",
+        "short"
+      ],
+      "status": "aligned",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://raw.githubusercontent.com/acl-org/acl-anthology/master/data/xml/2025.acl.xml"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。",
+      "match_methods": {
+        "identifier": 1699
+      }
+    },
+    {
+      "venue": "ACL",
+      "venue_type": "conference",
+      "year": 2026,
+      "scope": "primary",
+      "local_record_count": 2296,
+      "reference_count": 2296,
+      "matched_reference_count": 2296,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "long",
+        "short"
+      ],
+      "status": "aligned",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://raw.githubusercontent.com/acl-org/acl-anthology/master/data/xml/2026.acl.xml"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 2026 为截至检查日的快照，不代表全年完整。",
+      "match_methods": {
+        "identifier": 2296
+      }
+    },
+    {
+      "venue": "ACM MM",
+      "venue_type": "conference",
+      "year": 2023,
+      "scope": "primary",
+      "local_record_count": 909,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 1,
+      "tracks": [
+        "Brave New Ideas Session",
+        "Oral Session I: Understanding Multimedia Content -- Media Interpretation",
+        "Oral Session II: Understanding Multimedia Content -- Multimodal Fusion and Embedding",
+        "Oral Session III: Understanding Multimedia Content -- Vision and Language",
+        "Oral Session IV: Engaging Users with Multimedia -- Emotional and Social Signals",
+        "Oral Session IX: Engaging Users with Multimedia -- Social-good, Fairness and Transparency",
+        "Oral Session V: Engaging Users with Multimedia -- Multimedia Search and Recommendation",
+        "Oral Session VI: Engaging Users with Multimedia -- Interactions and Quality of Experience",
+        "Oral Session VII: Engaging Users with Multimedia -- Metaverse, Art and Culture",
+        "Oral Session VIII: Engaging Users with Multimedia -- Multimedia Applications",
+        "Oral Session X: Multimedia systems -- Data Systems Management and Indexing",
+        "Oral Session XI: Multimedia systems -- Systems and Middleware, Transport and Delivery",
+        "Poster Session I: Understanding Multimedia Content -- Media Interpretation",
+        "Poster Session II: Understanding Multimedia Content -- Multimodal Fusion and Embedding",
+        "Poster Session III: Understanding Multimedia Content -- Vision and Language",
+        "Poster Session IV: Engaging Users with Multimedia -- Emotional and Social Signals",
+        "Poster Session IX: Engaging Users with Multimedia -- Social-good, Fairness and Transparency",
+        "Poster Session V: Engaging Users with Multimedia -- Multimedia Search and Recommendation",
+        "Poster Session V: Engaging Users with Multimedia -- Summarization, Analytics, and Storytelling",
+        "Poster Session VI: Engaging Users with Multimedia -- Interactions and Quality of Experience",
+        "Poster Session VII: Engaging Users with Multimedia -- Metaverse, Art and Culture",
+        "Poster Session VIII: Engaging Users with Multimedia -- Multimedia Applications",
+        "Poster Session X: Multimedia systems -- Data Systems Management and Indexing",
+        "Poster Session XI: Multimedia systems -- Systems and Middleware",
+        "Poster Session XII: Multimedia systems -- Transport and Delivery"
+      ],
+      "status": "unverified",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://dblp.org/db/conf/mm/mm2023.html"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "未取得可用于对账的完整清单：RuntimeError: Host rate limited or browser verification; requests stopped；预期数量留空。"
+    },
+    {
+      "venue": "ACM MM",
+      "venue_type": "conference",
+      "year": 2024,
+      "scope": "primary",
+      "local_record_count": 1172,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 116,
+      "tracks": [
+        "Brave New Ideas",
+        "Industry Session",
+        "Open-Source",
+        "Oral Session 10: Speech and Audio in Multimedia Processing",
+        "Oral Session 11: Emotion & Sentiment",
+        "Oral Session 12: Human-centric and Interactive Multimedia",
+        "Oral Session 13: Machine Learning for Multimedia",
+        "Oral Session 14: Multimodal Datasets, Models & Analytics",
+        "Oral Session 15: Video Applications",
+        "Oral Session 16: Biological and Health Applications",
+        "Oral Session 17: Person Modeling and Tracking",
+        "Oral Session 18: Fairness, Trust, Explainability & Inperpretability in Multimedia",
+        "Oral Session 19: Multimodal Applications",
+        "Oral Session 1: Large Language Models & Applications 1",
+        "Oral Session 20: Datasets & Algorithms for Multimedia Analysis",
+        "Oral Session 21: Image Enhancement and Super-Resolution",
+        "Oral Session 22: Audio-visual Datasets and Applications",
+        "Oral Session 23: Multimodal Learning and Recommendation Systems",
+        "Oral Session 24: Novel Multimedia Applications 2",
+        "Oral Session 25: Media and Communication Technologies",
+        "Oral Session 26: Cultural Heritage & Media Analysis",
+        "Oral Session 27: Security & Quality in Multimedia Systems",
+        "Oral Session 28: Complex Scene Processing",
+        "Oral Session 29: Enhancements in Video Streaming and Compression",
+        "Oral Session 2: Large Language Models & Applications 2",
+        "Oral Session 3: Novel Multimedia Applications 1",
+        "Oral Session 4: Graph and Diffusion Models",
+        "Oral Session 5: Multimodal Models and Applications",
+        "Oral Session 6: Innovations in Medical Imaging and Physiological Measurement",
+        "Oral Session 7: Imaging, Computer Vision & Graphics",
+        "Oral Session 8: Multimodal Reasoning & Inference",
+        "Oral Session 9: Image, Video, and Multimedia Processing",
+        "Poster Session 1",
+        "Poster Session 2",
+        "Poster Session 3",
+        "Reproducibility"
+      ],
+      "status": "unverified",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://dblp.org/db/conf/mm/mm2024.html"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "未取得可用于对账的完整清单：RuntimeError: Host rate limited or browser verification; requests stopped；预期数量留空。"
+    },
+    {
+      "venue": "ACM MM",
+      "venue_type": "conference",
+      "year": 2025,
+      "scope": "primary",
+      "local_record_count": 1416,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 147,
+      "tracks": [
+        "Brave New Ideas",
+        "Content: Media Interpretation",
+        "Content: Multimodal Fusion",
+        "Content: Vision and Language",
+        "Datasets",
+        "Engagement: Emotional and Social Signals",
+        "Engagement: Multimedia Search and Recommendation",
+        "Engagement: Summarization, Analytics, and Storytelling",
+        "Experience: Art and Culture",
+        "Experience: Interactions and Quality of Experience",
+        "Experience: Multimedia Applications",
+        "Generative AI: Generative Multimedia",
+        "Generative AI: Multimedia Foundation Models",
+        "Generative AI: Social Aspects of Generative AI",
+        "Systems: Systems and Middleware",
+        "Systems: Transport and Delivery"
+      ],
+      "status": "unverified",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://dblp.org/db/conf/mm/mm2025.html"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "未取得可用于对账的完整清单：RuntimeError: Host rate limited or browser verification; requests stopped；预期数量留空。"
+    },
+    {
+      "venue": "ACM MM",
+      "venue_type": "conference",
+      "year": 2026,
+      "scope": "primary",
+      "local_record_count": 1703,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 2,
+      "missing_abstract_count": 2,
+      "tracks": [
+        "main"
+      ],
+      "status": "unverified",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://2026.acmmm.org/site/program-data.json"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "未取得可用于对账的完整清单：RuntimeError: Host rate limited or browser verification; requests stopped；预期数量留空。 2026 为截至检查日的快照，不代表全年完整。"
+    },
+    {
+      "venue": "COLM",
+      "venue_type": "conference",
+      "year": 2023,
+      "scope": "primary",
+      "local_record_count": 0,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [],
+      "status": "not_applicable",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://colmweb.org/2024/cfp.html"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "首届为 2024 年。"
+    },
+    {
+      "venue": "COLM",
+      "venue_type": "conference",
+      "year": 2024,
+      "scope": "primary",
+      "local_record_count": 299,
+      "reference_count": 299,
+      "matched_reference_count": 299,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "main"
+      ],
+      "status": "aligned",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://colmweb.org/2024/AcceptedPapers.html"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。",
+      "match_methods": {
+        "identifier": 299
+      }
+    },
+    {
+      "venue": "COLM",
+      "venue_type": "conference",
+      "year": 2025,
+      "scope": "primary",
+      "local_record_count": 418,
+      "reference_count": 418,
+      "matched_reference_count": 418,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 1,
+      "tracks": [
+        "main"
+      ],
+      "status": "aligned",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://colmweb.org/2025/AcceptedPapers.html"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。",
+      "match_methods": {
+        "identifier": 418
+      }
+    },
+    {
+      "venue": "COLM",
+      "venue_type": "conference",
+      "year": 2026,
+      "scope": "primary",
+      "local_record_count": 856,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "main"
+      ],
+      "status": "unverified",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://colm.cc/virtual/2026/poster/1694",
+        "https://colm.cc/virtual/2026/poster/1711",
+        "https://colm.cc/virtual/2026/poster/1715",
+        "https://colm.cc/virtual/2026/poster/1720"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "未取得可用于对账的完整清单：No enumerated rows; not evidence of an empty edition；预期数量留空。 2026 为截至检查日的快照，不代表全年完整。"
+    },
+    {
+      "venue": "CVPR",
+      "venue_type": "conference",
+      "year": 2023,
+      "scope": "primary",
+      "local_record_count": 2353,
+      "reference_count": 2353,
+      "matched_reference_count": 2353,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "main"
+      ],
+      "status": "aligned",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://openaccess.thecvf.com/CVPR2023?day=all"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。",
+      "match_methods": {
+        "identifier": 2353
+      }
+    },
+    {
+      "venue": "CVPR",
+      "venue_type": "conference",
+      "year": 2024,
+      "scope": "primary",
+      "local_record_count": 2716,
+      "reference_count": 2716,
+      "matched_reference_count": 2716,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "main"
+      ],
+      "status": "aligned",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://openaccess.thecvf.com/CVPR2024?day=all"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。",
+      "match_methods": {
+        "identifier": 2716
+      }
+    },
+    {
+      "venue": "CVPR",
+      "venue_type": "conference",
+      "year": 2025,
+      "scope": "primary",
+      "local_record_count": 2871,
+      "reference_count": 2871,
+      "matched_reference_count": 2871,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "main"
+      ],
+      "status": "aligned",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://openaccess.thecvf.com/CVPR2025?day=all"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。",
+      "match_methods": {
+        "identifier": 2871
+      }
+    },
+    {
+      "venue": "CVPR",
+      "venue_type": "conference",
+      "year": 2026,
+      "scope": "primary",
+      "local_record_count": 4068,
+      "reference_count": 4042,
+      "matched_reference_count": 4042,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 26,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "main"
+      ],
+      "status": "differences",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://openaccess.thecvf.com/CVPR2026?day=all"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 2026 为截至检查日的快照，不代表全年完整。",
+      "match_methods": {
+        "identifier": 4042
+      }
+    },
+    {
+      "venue": "ECCV",
+      "venue_type": "conference",
+      "year": 2023,
+      "scope": "primary",
+      "local_record_count": 0,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [],
+      "status": "not_applicable",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://www.thecvf.com/?page_id=413"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "双年会议，无该年度届次。"
+    },
+    {
+      "venue": "ECCV",
+      "venue_type": "conference",
+      "year": 2024,
+      "scope": "primary",
+      "local_record_count": 2387,
+      "reference_count": 2387,
+      "matched_reference_count": 2387,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "main"
+      ],
+      "status": "aligned",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://www.ecva.net/papers.php"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。",
+      "match_methods": {
+        "identifier": 2387
+      }
+    },
+    {
+      "venue": "ECCV",
+      "venue_type": "conference",
+      "year": 2025,
+      "scope": "primary",
+      "local_record_count": 0,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [],
+      "status": "not_applicable",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://www.thecvf.com/?page_id=413"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "双年会议，无该年度届次。"
+    },
+    {
+      "venue": "ECCV",
+      "venue_type": "conference",
+      "year": 2026,
+      "scope": "primary",
+      "local_record_count": 2865,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 8,
+      "tracks": [
+        "accepted paper: poster",
+        "oral",
+        "poster"
+      ],
+      "status": "unverified",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://eccv.ecva.net/Downloads/2026",
+        "https://eccv.ecva.net/virtual/2026/events/oral",
+        "https://eccv.ecva.net/virtual/2026/papers.html"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "未取得可用于对账的完整清单：No enumerated rows; not evidence of an empty edition；预期数量留空。 2026 为截至检查日的快照，不代表全年完整。"
+    },
+    {
+      "venue": "EMNLP",
+      "venue_type": "conference",
+      "year": 2023,
+      "scope": "primary",
+      "local_record_count": 1047,
+      "reference_count": 1047,
+      "matched_reference_count": 1047,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "main"
+      ],
+      "status": "aligned",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://raw.githubusercontent.com/acl-org/acl-anthology/master/data/xml/2023.emnlp.xml"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。",
+      "match_methods": {
+        "identifier": 1047
+      }
+    },
+    {
+      "venue": "EMNLP",
+      "venue_type": "conference",
+      "year": 2024,
+      "scope": "primary",
+      "local_record_count": 1268,
+      "reference_count": 1268,
+      "matched_reference_count": 1268,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 10,
+      "tracks": [
+        "main"
+      ],
+      "status": "aligned",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://raw.githubusercontent.com/acl-org/acl-anthology/master/data/xml/2024.emnlp.xml"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。",
+      "match_methods": {
+        "identifier": 1268
+      }
+    },
+    {
+      "venue": "EMNLP",
+      "venue_type": "conference",
+      "year": 2025,
+      "scope": "primary",
+      "local_record_count": 1809,
+      "reference_count": 1809,
+      "matched_reference_count": 1809,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "main"
+      ],
+      "status": "aligned",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://raw.githubusercontent.com/acl-org/acl-anthology/master/data/xml/2025.emnlp.xml"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。",
+      "match_methods": {
+        "identifier": 1809
+      }
+    },
+    {
+      "venue": "EMNLP",
+      "venue_type": "conference",
+      "year": 2026,
+      "scope": "primary",
+      "local_record_count": 2710,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 956,
+      "missing_abstract_count": 959,
+      "tracks": [
+        "main"
+      ],
+      "status": "unverified",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://docs.google.com/spreadsheets/d/1aXGTy_7Xeh-OXIs3iJSbDpUsZ6YhbfA76b17kBZH0Yk/edit?gid=943432490"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "未取得可用于对账的完整清单：HTTPError: 404 Client Error: Not Found for url: https://raw.githubusercontent.com/acl-org/acl-anthology/master/data/xml/2026.emnlp.xml；预期数量留空。 2026 为截至检查日的快照，不代表全年完整。 本批 980 篇缺作者记录经 DataCite 完整查询，补齐 24，剩余 956 留空；补入作者来自预印本注册元数据，正式作者待论文集复核。"
+    },
+    {
+      "venue": "ICCV",
+      "venue_type": "conference",
+      "year": 2023,
+      "scope": "primary",
+      "local_record_count": 2156,
+      "reference_count": 2156,
+      "matched_reference_count": 2156,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "main"
+      ],
+      "status": "aligned",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://openaccess.thecvf.com/ICCV2023?day=all"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。",
+      "match_methods": {
+        "identifier": 2156
+      }
+    },
+    {
+      "venue": "ICCV",
+      "venue_type": "conference",
+      "year": 2024,
+      "scope": "primary",
+      "local_record_count": 0,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [],
+      "status": "not_applicable",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://www.thecvf.com/?page_id=413"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "双年会议，无该年度届次。"
+    },
+    {
+      "venue": "ICCV",
+      "venue_type": "conference",
+      "year": 2025,
+      "scope": "primary",
+      "local_record_count": 2701,
+      "reference_count": 2701,
+      "matched_reference_count": 2701,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "main"
+      ],
+      "status": "aligned",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://openaccess.thecvf.com/ICCV2025?day=all"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。",
+      "match_methods": {
+        "identifier": 2701
+      }
+    },
+    {
+      "venue": "ICCV",
+      "venue_type": "conference",
+      "year": 2026,
+      "scope": "primary",
+      "local_record_count": 0,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [],
+      "status": "not_applicable",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://www.thecvf.com/?page_id=413"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "双年会议，无该年度届次。 2026 为截至检查日的快照，不代表全年完整。"
+    },
+    {
+      "venue": "ICLR",
+      "venue_type": "conference",
+      "year": 2023,
+      "scope": "primary",
+      "local_record_count": 1573,
+      "reference_count": 1585,
+      "matched_reference_count": 1573,
+      "unmatched_reference_count": 12,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "notable-top-25%",
+        "notable-top-5%",
+        "poster"
+      ],
+      "status": "differences",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://iclr.cc/virtual/2023/papers.html"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 对照会议展示名单，含非主会展示可能；不作为正式发表证明。",
+      "match_methods": {
+        "unique_exact_title": 1573
+      }
+    },
+    {
+      "venue": "ICLR",
+      "venue_type": "conference",
+      "year": 2024,
+      "scope": "primary",
+      "local_record_count": 2260,
+      "reference_count": 2296,
+      "matched_reference_count": 2260,
+      "unmatched_reference_count": 36,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "oral",
+        "poster",
+        "spotlight"
+      ],
+      "status": "differences",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://iclr.cc/virtual/2024/papers.html"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 对照会议展示名单，含非主会展示可能；不作为正式发表证明。",
+      "match_methods": {
+        "unique_exact_title": 2260
+      }
+    },
+    {
+      "venue": "ICLR",
+      "venue_type": "conference",
+      "year": 2025,
+      "scope": "primary",
+      "local_record_count": 3703,
+      "reference_count": 3827,
+      "matched_reference_count": 3696,
+      "unmatched_reference_count": 131,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 7,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "oral",
+        "poster",
+        "spotlight"
+      ],
+      "status": "differences",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://iclr.cc/virtual/2025/papers.html"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 对照会议展示名单，含非主会展示可能；不作为正式发表证明。",
+      "match_methods": {
+        "unique_exact_title": 3696
+      }
+    },
+    {
+      "venue": "ICLR",
+      "venue_type": "conference",
+      "year": 2026,
+      "scope": "primary",
+      "local_record_count": 5467,
+      "reference_count": 5468,
+      "matched_reference_count": 5467,
+      "unmatched_reference_count": 1,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "accepted paper: poster",
+        "oral",
+        "poster"
+      ],
+      "status": "differences",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://iclr.cc/virtual/2026/papers.html"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 对照会议展示名单，含非主会展示可能；不作为正式发表证明。 2026 为截至检查日的快照，不代表全年完整。",
+      "match_methods": {
+        "unique_exact_title": 5461,
+        "identifier": 6
+      }
+    },
+    {
+      "venue": "ICML",
+      "venue_type": "conference",
+      "year": 2023,
+      "scope": "primary",
+      "local_record_count": 1828,
+      "reference_count": 1828,
+      "matched_reference_count": 1828,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 1,
+      "tracks": [
+        "main"
+      ],
+      "status": "aligned",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://proceedings.mlr.press/v202/"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。",
+      "match_methods": {
+        "identifier": 1828
+      }
+    },
+    {
+      "venue": "ICML",
+      "venue_type": "conference",
+      "year": 2024,
+      "scope": "primary",
+      "local_record_count": 2610,
+      "reference_count": 2610,
+      "matched_reference_count": 2610,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 4,
+      "tracks": [
+        "main"
+      ],
+      "status": "aligned",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://proceedings.mlr.press/v235/"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。",
+      "match_methods": {
+        "identifier": 2610
+      }
+    },
+    {
+      "venue": "ICML",
+      "venue_type": "conference",
+      "year": 2025,
+      "scope": "primary",
+      "local_record_count": 3330,
+      "reference_count": 3330,
+      "matched_reference_count": 3330,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 55,
+      "tracks": [
+        "main"
+      ],
+      "status": "aligned",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://proceedings.mlr.press/v267/"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。",
+      "match_methods": {
+        "identifier": 3330
+      }
+    },
+    {
+      "venue": "ICML",
+      "venue_type": "conference",
+      "year": 2026,
+      "scope": "primary",
+      "local_record_count": 6628,
+      "reference_count": 6552,
+      "matched_reference_count": 6552,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 76,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "accepted paper: poster",
+        "poster",
+        "spotlight"
+      ],
+      "status": "differences",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://proceedings.mlr.press/v306/"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 本地额外 76 条中 73 条为已核验期刊展示，3 条出版身份待核验。 2026 为截至检查日的快照，不代表全年完整。",
+      "match_methods": {
+        "unique_exact_title": 6365,
+        "identifier": 187
+      }
+    },
+    {
+      "venue": "IJCAI",
+      "venue_type": "conference",
+      "year": 2023,
+      "scope": "primary",
+      "local_record_count": 759,
+      "reference_count": 759,
+      "matched_reference_count": 759,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 4,
+      "tracks": [
+        "AI and Arts",
+        "AI for Good",
+        "AI for Good - Projects",
+        "Early Career",
+        "Late Papers",
+        "Main Track",
+        "Survey Track"
+      ],
+      "status": "aligned",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://www.ijcai.org/proceedings/2023/"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。",
+      "match_methods": {
+        "identifier": 759
+      }
+    },
+    {
+      "venue": "IJCAI",
+      "venue_type": "conference",
+      "year": 2024,
+      "scope": "primary",
+      "local_record_count": 936,
+      "reference_count": 936,
+      "matched_reference_count": 936,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "AI for Good",
+        "AI, Arts & Creativity",
+        "Early Career",
+        "Human-Centred AI",
+        "Main Track",
+        "Survey Track"
+      ],
+      "status": "aligned",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://www.ijcai.org/proceedings/2024/"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。",
+      "match_methods": {
+        "identifier": 936
+      }
+    },
+    {
+      "venue": "IJCAI",
+      "venue_type": "conference",
+      "year": 2025,
+      "scope": "primary",
+      "local_record_count": 1202,
+      "reference_count": 1202,
+      "matched_reference_count": 1202,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 1,
+      "tracks": [
+        "AI and Social Good",
+        "AI, Arts & Creativity",
+        "AI4Tech: AI Enabling Technologies",
+        "Human-Centred AI",
+        "Main Track",
+        "Survey Track"
+      ],
+      "status": "aligned",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://www.ijcai.org/proceedings/2025/"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。",
+      "match_methods": {
+        "identifier": 1202
+      }
+    },
+    {
+      "venue": "IJCAI",
+      "venue_type": "conference",
+      "year": 2026,
+      "scope": "primary",
+      "local_record_count": 989,
+      "reference_count": 891,
+      "matched_reference_count": 891,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 98,
+      "missing_author_count": 0,
+      "missing_abstract_count": 1,
+      "tracks": [
+        "AI",
+        "AI and Health",
+        "AI and Robotics",
+        "AI and Social Good",
+        "AI4Tech: AI Enabling Technologies",
+        "AIR",
+        "DM",
+        "EC",
+        "Early Career Spotlight",
+        "HC",
+        "Human-Centred AI",
+        "Journal Track",
+        "Main Track",
+        "ST",
+        "SV",
+        "Survey Track",
+        "main"
+      ],
+      "status": "differences",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://www.ijcai.org/proceedings/2026/"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 2026 为截至检查日的快照，不代表全年完整。",
+      "match_methods": {
+        "identifier": 891
+      }
+    },
+    {
+      "venue": "KDD",
+      "venue_type": "conference",
+      "year": 2023,
+      "scope": "primary",
+      "local_record_count": 496,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 4,
+      "tracks": [
+        "Applied Data Track Full Papers",
+        "Research Track Full Papers"
+      ],
+      "status": "unverified",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://dblp.org/db/conf/kdd/kdd2023.html"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "未取得可用于对账的完整清单：RuntimeError: Browser verification page；预期数量留空。"
+    },
+    {
+      "venue": "KDD",
+      "venue_type": "conference",
+      "year": 2024,
+      "scope": "primary",
+      "local_record_count": 562,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 4,
+      "tracks": [
+        "Applied Data Papers",
+        "Research Track Papers"
+      ],
+      "status": "unverified",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://dblp.org/db/conf/kdd/kdd2024.html"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "未取得可用于对账的完整清单：RuntimeError: Host rate limited or browser verification; requests stopped；预期数量留空。"
+    },
+    {
+      "venue": "KDD",
+      "venue_type": "conference",
+      "year": 2025,
+      "scope": "primary",
+      "local_record_count": 771,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 44,
+      "tracks": [
+        "Applied Data Science Track",
+        "Applied Data Track",
+        "Dataset/Benchmark Track",
+        "Research Track"
+      ],
+      "status": "unverified",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://dblp.org/db/conf/kdd/kdd2025-1.html",
+        "https://dblp.org/db/conf/kdd/kdd2025-2.html"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "未取得可用于对账的完整清单：RuntimeError: Host rate limited or browser verification; requests stopped；预期数量留空。"
+    },
+    {
+      "venue": "KDD",
+      "venue_type": "conference",
+      "year": 2026,
+      "scope": "primary",
+      "local_record_count": 1408,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 588,
+      "tracks": [
+        "ADS Track",
+        "AI for Sciences",
+        "Applied Data Science",
+        "Blue Sky Ideas",
+        "Data & Benchmark Track",
+        "Datasets and Benchmarks",
+        "Research",
+        "Research Track"
+      ],
+      "status": "unverified",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://dblp.org/db/conf/kdd/kdd2026-1.html",
+        "https://kdd2026.kdd.org/papers/"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "未取得可用于对账的完整清单：RuntimeError: Host rate limited or browser verification; requests stopped；预期数量留空。 2026 为截至检查日的快照，不代表全年完整。"
+    },
+    {
+      "venue": "MLSys",
+      "venue_type": "conference",
+      "year": 2023,
+      "scope": "primary",
+      "local_record_count": 46,
+      "reference_count": 46,
+      "matched_reference_count": 46,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "mlsys2023"
+      ],
+      "status": "aligned",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://proceedings.mlsys.org/paper_files/paper/2023"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。",
+      "match_methods": {
+        "identifier": 46
+      }
+    },
+    {
+      "venue": "MLSys",
+      "venue_type": "conference",
+      "year": 2024,
+      "scope": "primary",
+      "local_record_count": 37,
+      "reference_count": 37,
+      "matched_reference_count": 37,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "Conference"
+      ],
+      "status": "aligned",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://proceedings.mlsys.org/paper_files/paper/2024"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。",
+      "match_methods": {
+        "identifier": 37
+      }
+    },
+    {
+      "venue": "MLSys",
+      "venue_type": "conference",
+      "year": 2025,
+      "scope": "primary",
+      "local_record_count": 61,
+      "reference_count": 61,
+      "matched_reference_count": 61,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "Conference"
+      ],
+      "status": "aligned",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://proceedings.mlsys.org/paper_files/paper/2025"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。",
+      "match_methods": {
+        "identifier": 61
+      }
+    },
+    {
+      "venue": "MLSys",
+      "venue_type": "conference",
+      "year": 2026,
+      "scope": "primary",
+      "local_record_count": 135,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "Conference"
+      ],
+      "status": "unverified",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://proceedings.mlsys.org/paper_files/paper/2026"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "未取得可用于对账的完整清单：ReadTimeout: HTTPSConnectionPool(host='proceedings.mlsys.org', port=443): Read timed out. (read timeout=25)；预期数量留空。 2026 为截至检查日的快照，不代表全年完整。"
+    },
+    {
+      "venue": "NAACL",
+      "venue_type": "conference",
+      "year": 2023,
+      "scope": "primary",
+      "local_record_count": 0,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [],
+      "status": "not_applicable",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://naacl.org/conferences/index.html"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "官方届次列表无 2023 届。"
+    },
+    {
+      "venue": "NAACL",
+      "venue_type": "conference",
+      "year": 2024,
+      "scope": "primary",
+      "local_record_count": 562,
+      "reference_count": 562,
+      "matched_reference_count": 562,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "long",
+        "short"
+      ],
+      "status": "aligned",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://raw.githubusercontent.com/acl-org/acl-anthology/master/data/xml/2024.naacl.xml"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。",
+      "match_methods": {
+        "identifier": 562
+      }
+    },
+    {
+      "venue": "NAACL",
+      "venue_type": "conference",
+      "year": 2025,
+      "scope": "primary",
+      "local_record_count": 718,
+      "reference_count": 718,
+      "matched_reference_count": 718,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 7,
+      "tracks": [
+        "long",
+        "short"
+      ],
+      "status": "aligned",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://raw.githubusercontent.com/acl-org/acl-anthology/master/data/xml/2025.naacl.xml"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。",
+      "match_methods": {
+        "identifier": 718
+      }
+    },
+    {
+      "venue": "NAACL",
+      "venue_type": "conference",
+      "year": 2026,
+      "scope": "primary",
+      "local_record_count": 0,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [],
+      "status": "not_applicable",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://2027.naacl.org/"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "官方下一届为 2027；不把 ACL 2026 算作 NAACL。 2026 为截至检查日的快照，不代表全年完整。"
+    },
+    {
+      "venue": "NeurIPS",
+      "venue_type": "conference",
+      "year": 2023,
+      "scope": "primary",
+      "local_record_count": 3540,
+      "reference_count": 3540,
+      "matched_reference_count": 3540,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "Datasets and Benchmarks Track",
+        "Main Conference Track"
+      ],
+      "status": "aligned",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://proceedings.neurips.cc/paper_files/paper/2023"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。",
+      "match_methods": {
+        "identifier": 3540
+      }
+    },
+    {
+      "venue": "NeurIPS",
+      "venue_type": "conference",
+      "year": 2024,
+      "scope": "primary",
+      "local_record_count": 4493,
+      "reference_count": 4493,
+      "matched_reference_count": 4493,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "Datasets and Benchmarks Track",
+        "Main Conference Track"
+      ],
+      "status": "aligned",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://proceedings.neurips.cc/paper_files/paper/2024"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。",
+      "match_methods": {
+        "identifier": 4493
+      }
+    },
+    {
+      "venue": "NeurIPS",
+      "venue_type": "conference",
+      "year": 2025,
+      "scope": "primary",
+      "local_record_count": 5823,
+      "reference_count": 5823,
+      "matched_reference_count": 5823,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 1,
+      "tracks": [
+        "Datasets and Benchmarks Track",
+        "Main Conference Track",
+        "Position Paper Track"
+      ],
+      "status": "aligned",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://proceedings.neurips.cc/paper_files/paper/2025/vol38-main-conference"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。",
+      "match_methods": {
+        "identifier": 5823
+      }
+    },
+    {
+      "venue": "NeurIPS",
+      "venue_type": "conference",
+      "year": 2026,
+      "scope": "primary",
+      "local_record_count": 9095,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "accepted paper: poster"
+      ],
+      "status": "unverified",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://neurips.cc/Downloads/2026"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "未取得可用于对账的完整清单：HTTPError: 404 Client Error: Not Found for url: https://proceedings.neurips.cc/paper_files/paper/2026；预期数量留空。 2026 为截至检查日的快照，不代表全年完整。"
+    },
+    {
+      "venue": "SIGGRAPH",
+      "venue_type": "conference",
+      "year": 2023,
+      "scope": "primary",
+      "local_record_count": 212,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "main"
+      ],
+      "status": "unverified",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://s2023.siggraph.org/program/technical-papers/"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "尚未取得可完整枚举并逐条对账的同口径清单；不能由 final 标签推定完整。 官方索引检查结果：200；未取得经过验证的完整条目集合。"
+    },
+    {
+      "venue": "SIGGRAPH",
+      "venue_type": "conference",
+      "year": 2024,
+      "scope": "primary",
+      "local_record_count": 252,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "main"
+      ],
+      "status": "unverified",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://s2024.siggraph.org/program/technical-papers/"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "尚未取得可完整枚举并逐条对账的同口径清单；不能由 final 标签推定完整。 官方索引检查结果：200；未取得经过验证的完整条目集合。"
+    },
+    {
+      "venue": "SIGGRAPH",
+      "venue_type": "conference",
+      "year": 2025,
+      "scope": "primary",
+      "local_record_count": 306,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 96,
+      "tracks": [
+        "main"
+      ],
+      "status": "unverified",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://s2025.siggraph.org/program/technical-papers/"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "尚未取得可完整枚举并逐条对账的同口径清单；不能由 final 标签推定完整。 官方索引检查结果：200；未取得经过验证的完整条目集合。"
+    },
+    {
+      "venue": "SIGGRAPH",
+      "venue_type": "conference",
+      "year": 2026,
+      "scope": "primary",
+      "local_record_count": 327,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 12,
+      "tracks": [
+        "main"
+      ],
+      "status": "unverified",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://s2026.siggraph.org/program/technical-papers/"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "尚未取得可完整枚举并逐条对账的同口径清单；不能由 final 标签推定完整。 官方索引检查结果：ReadTimeout；未取得经过验证的完整条目集合。 2026 为截至检查日的快照，不代表全年完整。"
+    },
+    {
+      "venue": "SIGGRAPH Asia",
+      "venue_type": "conference",
+      "year": 2023,
+      "scope": "primary",
+      "local_record_count": 224,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "main"
+      ],
+      "status": "unverified",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://asia.siggraph.org/2023/program/technical-papers/"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "尚未取得可完整枚举并逐条对账的同口径清单；不能由 final 标签推定完整。 官方索引检查结果：404；未取得经过验证的完整条目集合。"
+    },
+    {
+      "venue": "SIGGRAPH Asia",
+      "venue_type": "conference",
+      "year": 2024,
+      "scope": "primary",
+      "local_record_count": 265,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 85,
+      "tracks": [
+        "main"
+      ],
+      "status": "unverified",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://asia.siggraph.org/2024/program/technical-papers/"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "尚未取得可完整枚举并逐条对账的同口径清单；不能由 final 标签推定完整。 官方索引检查结果：403；未取得经过验证的完整条目集合。"
+    },
+    {
+      "venue": "SIGGRAPH Asia",
+      "venue_type": "conference",
+      "year": 2025,
+      "scope": "primary",
+      "local_record_count": 301,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 3,
+      "tracks": [
+        "main"
+      ],
+      "status": "unverified",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://asia.siggraph.org/2025/program/technical-papers/"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "尚未取得可完整枚举并逐条对账的同口径清单；不能由 final 标签推定完整。 官方索引检查结果：403；未取得经过验证的完整条目集合。"
+    },
+    {
+      "venue": "SIGGRAPH Asia",
+      "venue_type": "conference",
+      "year": 2026,
+      "scope": "primary",
+      "local_record_count": 0,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [],
+      "status": "unverified",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://asia.siggraph.org/2026/program/technical-papers/"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "尚未取得可完整枚举并逐条对账的同口径清单；不能由 final 标签推定完整。 官方索引检查结果：403；未取得经过验证的完整条目集合。 2026 为截至检查日的快照，不代表全年完整。"
+    },
+    {
+      "venue": "SIGIR",
+      "venue_type": "conference",
+      "year": 2023,
+      "scope": "primary",
+      "local_record_count": 412,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 3,
+      "tracks": [
+        "Perspective Papers",
+        "Reproducibility Papers",
+        "Resource Papers",
+        "SIRIP Papers",
+        "Session 1 - Unbiased and Fairness",
+        "Session 10 - Sparsity Problem",
+        "Session 11 - Evaluation",
+        "Session 12 - Knowledge Graphs - Part 1",
+        "Session 13 - Conversational Search and Recommendation",
+        "Session 14 - Efficiency",
+        "Session 15 - Crowdsourced and Annotation",
+        "Session 16 - Question Answering",
+        "Session 17 - Temporal & Dynamic - Part 1",
+        "Session 18 - Knowledge Graphs - Part 2",
+        "Session 19 - Implicit Feedback and Sessions",
+        "Session 2 - Sequential Recommendation - Part 1",
+        "Session 20 - Personalized Models",
+        "Session 21 - Legal, Medicine & Health",
+        "Session 22 - Collaborative Filtering",
+        "Session 23 - Cold-start Recommendation and Users' Preferences & Interests",
+        "Session 24 - Cross-modal, Cross-lingual, Multi-modal",
+        "Session 25 - E-commerce & Other Applications",
+        "Session 26 - Query Performance and CTR Prediction",
+        "Session 27 - Summarisation & Text Generation",
+        "Session 28 - Cross-domain Recommendation",
+        "Session 29 - Multimodal & Multimedia",
+        "Session 3 - Dense Retrieval",
+        "Session 30 - Temporal & Dynamic - Part 2",
+        "Session 31 - Implicit Feedback and Sessions",
+        "Session 32 - Collaborative Filtering & Graph Neural Approaches",
+        "Session 33 - Attacks and Other Recommender Systems",
+        "Session 4 - Language Models",
+        "Session 5 - Exposure and Popularity Bias",
+        "Session 6 - Sequential Recommendation - Part 2",
+        "Session 7 - Knowledge Graphs for Recommendation",
+        "Session 8 - POI Recommendation",
+        "Session 9 - Music, video, Social Media",
+        "Short Research Papers"
+      ],
+      "status": "unverified",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://dblp.org/db/conf/sigir/sigir2023.html"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "未取得可用于对账的完整清单：RuntimeError: Host rate limited or browser verification; requests stopped；预期数量留空。"
+    },
+    {
+      "venue": "SIGIR",
+      "venue_type": "conference",
+      "year": 2024,
+      "scope": "primary",
+      "local_record_count": 332,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 19,
+      "tracks": [
+        "CTR, Ads and Click Models",
+        "Domain Specific",
+        "Session: Conversational IR and Recommendation",
+        "Session: Cross-Domain Recommendation",
+        "Session: Dense Retrieval 1",
+        "Session: Dense Retrieval 2",
+        "Session: Diffusion in RecSys",
+        "Session: Domain Specific RecSys",
+        "Session: Efficiency for Search",
+        "Session: Evaluation",
+        "Session: Evaluation with and for LLMs",
+        "Session: Explanability in Search and Recommendation",
+        "Session: Fairness",
+        "Session: Fairness in RecSys",
+        "Session: GenIR and The Future of Search with LLMs",
+        "Session: Graphs and LLMs",
+        "Session: Graphs and RecSys 1",
+        "Session: Graphs and RecSys 2",
+        "Session: LLMs and Search",
+        "Session: Legal",
+        "Session: Long-term and Session Recommendation",
+        "Session: Multilingual Retrieval",
+        "Session: Multimedia 1",
+        "Session: Multimedia 2",
+        "Session: Multimodal",
+        "Session: Multimodal RecSys",
+        "Session: NLP",
+        "Session: Networks and Graphs",
+        "Session: Neural IR",
+        "Session: Point-of-Interest Recommendation",
+        "Session: Privacy, Security and Federated Learning",
+        "Session: Prompts, Instructions and LLMs in Recommender Systems",
+        "Session: Question Answering and Summarisation",
+        "Session: Reasoning and Knowledge Graphs",
+        "Session: RecSys and LLMs",
+        "Session: Recommendation Systems",
+        "Session: Retrieval Augmented Generation",
+        "Session: SIRIP: Domain-Specific 1",
+        "Session: SIRIP: Domain-Specific 2",
+        "Session: SIRIP: E-commerce",
+        "Session: SIRIP: LLMs 1",
+        "Session: SIRIP: LLMs 2",
+        "Session: SIRIP: Recsys and Social Media",
+        "Session: SIRIP: Search Assistance",
+        "Session: Sequential Recommendation",
+        "Session: Short Research Papers",
+        "Session: Users and Simulations"
+      ],
+      "status": "unverified",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://dblp.org/db/conf/sigir/sigir2024.html"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "未取得可用于对账的完整清单：RuntimeError: Host rate limited or browser verification; requests stopped；预期数量留空。"
+    },
+    {
+      "venue": "SIGIR",
+      "venue_type": "conference",
+      "year": 2025,
+      "scope": "primary",
+      "local_record_count": 470,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 6,
+      "tracks": [
+        "Benchmarks and Datasets",
+        "Biomedical and Health",
+        "Conversational IR and Intelligent Agents",
+        "Domain-specific Applications 1",
+        "Domain-specific Applications 2",
+        "Efficiency",
+        "Evaluation",
+        "FATE 1",
+        "FATE 2",
+        "FATE 3",
+        "Humans and Interfaces",
+        "Image Retrieval",
+        "Knowledge and Knowledge Graphs",
+        "Low Resource Environment Papers",
+        "Machine Learning 1",
+        "Machine Learning 2",
+        "Multi-modal Retrieval",
+        "Natural Language Processing 1",
+        "Natural Language Processing 2",
+        "Natural Language Processing 3",
+        "Perspective Papers",
+        "Question Answering",
+        "RecSys: Collaborative Filtering",
+        "RecSys: Domain-specific",
+        "RecSys: FATE",
+        "RecSys: Graphs",
+        "RecSys: LLMs",
+        "RecSys: Multimodal",
+        "RecSys: Ranking and Adaptivity",
+        "RecSys: Scalability, Embeddings and Training",
+        "RecSys: Sequential 1",
+        "RecSys: Sequential 2",
+        "RecSys: Sequential 3",
+        "Reproducibility Papers",
+        "Reranking",
+        "Resource Papers",
+        "SIRIP",
+        "Search and Ranking 1",
+        "Search and Ranking 2",
+        "Short Research Papers",
+        "Video Retrieval"
+      ],
+      "status": "unverified",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://dblp.org/db/conf/sigir/sigir2025.html"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "未取得可用于对账的完整清单：RuntimeError: Host rate limited or browser verification; requests stopped；预期数量留空。"
+    },
+    {
+      "venue": "SIGIR",
+      "venue_type": "conference",
+      "year": 2026,
+      "scope": "primary",
+      "local_record_count": 625,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 97,
+      "tracks": [
+        "Full Papers",
+        "Industry Papers",
+        "Low Resource Environments Papers",
+        "Perspective Papers",
+        "Reproducibility Papers",
+        "Resources Papers",
+        "Short Papers"
+      ],
+      "status": "unverified",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://dblp.org/db/conf/sigir/sigir2026.html"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "未取得可用于对账的完整清单：RuntimeError: Host rate limited or browser verification; requests stopped；预期数量留空。 2026 为截至检查日的快照，不代表全年完整。"
+    },
+    {
+      "venue": "WWW",
+      "venue_type": "conference",
+      "year": 2023,
+      "scope": "primary",
+      "local_record_count": 402,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 2,
+      "tracks": [
+        "Crowdsourcing and Human Computation",
+        "Economics, Monetization, and Online Markets",
+        "Fairness, Accountability, Transparency and Ethics on the Web",
+        "Search",
+        "Security, Privacy & Trust",
+        "Semantics and Knowledge",
+        "Social Network Analysis and Graph Algorithms",
+        "Systems and Infrastructure for Web, Mobile Web, and Web of Things",
+        "The Creative Web",
+        "User Modeling and Personalization",
+        "Web & Society",
+        "Web Mining and Content Analysis",
+        "Web4Good"
+      ],
+      "status": "unverified",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://dblp.org/db/conf/www/www2023.html"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "未取得可用于对账的完整清单：RuntimeError: Host rate limited or browser verification; requests stopped；预期数量留空。"
+    },
+    {
+      "venue": "WWW",
+      "venue_type": "conference",
+      "year": 2024,
+      "scope": "primary",
+      "local_record_count": 428,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 14,
+      "tracks": [
+        "Research Track: Economics, Online Markets, and Human Computation",
+        "Research Track: Graph Algorithms and Learning for the Web",
+        "Research Track: Responsible Web",
+        "Research Track: Search",
+        "Research Track: Security",
+        "Research Track: Semantics and Knowledge",
+        "Research Track: Social Networks, Social Media, and Society",
+        "Research Track: Systems and Infrastructure for Web, Mobile, and WoT",
+        "Research Track: User Modeling and Recommendation",
+        "Research Track: Web Mining and Content Analysis",
+        "Special Track: Web4Good"
+      ],
+      "status": "unverified",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://dblp.org/db/conf/www/www2024.html"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "未取得可用于对账的完整清单：RuntimeError: Host rate limited or browser verification; requests stopped；预期数量留空。"
+    },
+    {
+      "venue": "WWW",
+      "venue_type": "conference",
+      "year": 2025,
+      "scope": "primary",
+      "local_record_count": 442,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 14,
+      "tracks": [
+        "Poster Session 1",
+        "Poster Session 2",
+        "Poster Session 3",
+        "Poster Session 4",
+        "Poster Session 5",
+        "Poster Session 6",
+        "Poster Session 7",
+        "Poster Session 8",
+        "Poster Session 9",
+        "Session 10: Online Behavior, Sentiment, and Influence",
+        "Session 11: Multimodal and Thematic Content Analysis",
+        "Session 12: Blockchain and Web Interoperability",
+        "Session 13: Web Acceleration and Optimization",
+        "Session 14: AI for Web Systems",
+        "Session 15: Machine Learning Security and Adversarial Attacks",
+        "Session 16: Federated Learning and Privacy",
+        "Session 17: Phishing, Deception, and Consumer Risks",
+        "Session 18: Blockchain and System Security",
+        "Session 19: Website Fingerprinting, Browser Security, and Web Authentication",
+        "Session 1: Knowledge Representation and Query",
+        "Session 20: Graph Foundation Models",
+        "Session 21: Trustworthy Graph Learning",
+        "Session 22: Complex Graph Learning",
+        "Session 23: Classical Graph Learning",
+        "Session 24: Auctions and Games",
+        "Session 25: Data, Incentives and Applications",
+        "Session 26: Ecosystems",
+        "Session 27: Responsible Web: Methods and Applications",
+        "Session 28: Retrieval Methods",
+        "Session 29: Post Retrieval and Search-based Text Generation",
+        "Session 2: Knowledge and Learning",
+        "Session 30: Scalable and Secure Data Processing",
+        "Session 31: Generative AI for the Web",
+        "Session 32: People, Platforms, and Personalization",
+        "Session 3: Data and Semantics",
+        "Session 4: Large Language Models in Recommendation",
+        "Session 5: Visual and Multimodal Systems",
+        "Session 6: Graph and Social Network Based Approaches",
+        "Session 7: Reinforcement Learning and Sequential Methods",
+        "Session 8: Optimization and Learning Methods",
+        "Session 9: Graph-Based Social Network Analysis & Community Detection",
+        "Web4Good Track Papers"
+      ],
+      "status": "unverified",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://dblp.org/db/conf/www/www2025.html"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "未取得可用于对账的完整清单：RuntimeError: Host rate limited or browser verification; requests stopped；预期数量留空。"
+    },
+    {
+      "venue": "WWW",
+      "venue_type": "conference",
+      "year": 2026,
+      "scope": "primary",
+      "local_record_count": 950,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 210,
+      "tracks": [
+        "Industry Track",
+        "Short Papers",
+        "Special Track: Web4Good",
+        "Track 10: Web Mining and Content Analysis",
+        "Track 1: Economics, Online Markets and Human Computation",
+        "Track 2: Graph Algorithms and Modeling for the Web",
+        "Track 3: Responsible Web",
+        "Track 4: Search and Retrieval-Augmented AI",
+        "Track 5: Security and Privacy",
+        "Track 6: Semantics and Knowledge",
+        "Track 7: Social Networks and Social Media",
+        "Track 8: Systems and Infrastructure for Web, Mobile, and Web of Things",
+        "Track 9: User Modeling, Personalization and Recommendation"
+      ],
+      "status": "unverified",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://dblp.org/db/conf/www/www2026.html"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "未取得可用于对账的完整清单：RuntimeError: Host rate limited or browser verification; requests stopped；预期数量留空。 2026 为截至检查日的快照，不代表全年完整。"
+    },
+    {
+      "venue": "AIJ",
+      "venue_type": "journal",
+      "year": 2023,
+      "scope": "primary",
+      "local_record_count": 156,
+      "reference_count": 156,
+      "matched_reference_count": 156,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 12,
+      "missing_abstract_count": 71,
+      "tracks": [
+        "volume 314",
+        "volume 315",
+        "volume 316",
+        "volume 317",
+        "volume 318",
+        "volume 319",
+        "volume 320",
+        "volume 321",
+        "volume 322",
+        "volume 323",
+        "volume 324",
+        "volume 325"
+      ],
+      "status": "registry_aligned",
+      "reference_kind": "publisher_registry",
+      "sources": [
+        "https://api.crossref.org/journals/0004-3702/works?filter=from-pub-date:2023-01-01,until-pub-date:2023-12-31,type:journal-article&rows=0",
+        "https://www.sciencedirect.com/journal/artificial-intelligence"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 对照出版社登记的 Crossref journal-article 元数据，未独立核齐出版社全部卷期；登记日期不等同正式发表日期。",
+      "match_methods": {
+        "identifier": 156
+      }
+    },
+    {
+      "venue": "AIJ",
+      "venue_type": "journal",
+      "year": 2024,
+      "scope": "primary",
+      "local_record_count": 124,
+      "reference_count": 124,
+      "matched_reference_count": 124,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 12,
+      "missing_abstract_count": 48,
+      "tracks": [
+        "volume 326",
+        "volume 327",
+        "volume 328",
+        "volume 329",
+        "volume 330",
+        "volume 331",
+        "volume 332",
+        "volume 333",
+        "volume 334",
+        "volume 335",
+        "volume 336",
+        "volume 337"
+      ],
+      "status": "registry_aligned",
+      "reference_kind": "publisher_registry",
+      "sources": [
+        "https://api.crossref.org/journals/0004-3702/works?filter=from-pub-date:2024-01-01,until-pub-date:2024-12-31,type:journal-article&rows=0",
+        "https://www.sciencedirect.com/journal/artificial-intelligence"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 对照出版社登记的 Crossref journal-article 元数据，未独立核齐出版社全部卷期；登记日期不等同正式发表日期。",
+      "match_methods": {
+        "identifier": 124
+      }
+    },
+    {
+      "venue": "AIJ",
+      "venue_type": "journal",
+      "year": 2025,
+      "scope": "primary",
+      "local_record_count": 116,
+      "reference_count": 116,
+      "matched_reference_count": 116,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 12,
+      "missing_abstract_count": 42,
+      "tracks": [
+        "volume 338",
+        "volume 339",
+        "volume 340",
+        "volume 341",
+        "volume 342",
+        "volume 343",
+        "volume 344",
+        "volume 345",
+        "volume 346",
+        "volume 347",
+        "volume 348",
+        "volume 349"
+      ],
+      "status": "registry_aligned",
+      "reference_kind": "publisher_registry",
+      "sources": [
+        "https://api.crossref.org/journals/0004-3702/works?filter=from-pub-date:2025-01-01,until-pub-date:2025-12-31,type:journal-article&rows=0",
+        "https://www.sciencedirect.com/journal/artificial-intelligence"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 对照出版社登记的 Crossref journal-article 元数据，未独立核齐出版社全部卷期；登记日期不等同正式发表日期。",
+      "match_methods": {
+        "identifier": 116
+      }
+    },
+    {
+      "venue": "AIJ",
+      "venue_type": "journal",
+      "year": 2026,
+      "scope": "primary",
+      "local_record_count": 112,
+      "reference_count": 112,
+      "matched_reference_count": 112,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 11,
+      "missing_abstract_count": 62,
+      "tracks": [
+        "continuous publication",
+        "volume 350",
+        "volume 351",
+        "volume 352",
+        "volume 353",
+        "volume 354",
+        "volume 355",
+        "volume 356",
+        "volume 357",
+        "volume 358",
+        "volume 359",
+        "volume 360",
+        "volume 361"
+      ],
+      "status": "registry_aligned",
+      "reference_kind": "publisher_registry",
+      "sources": [
+        "https://api.crossref.org/journals/0004-3702/works?filter=from-pub-date:2026-01-01,until-pub-date:2026-12-31,type:journal-article&rows=0",
+        "https://www.sciencedirect.com/journal/artificial-intelligence"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 对照出版社登记的 Crossref journal-article 元数据，未独立核齐出版社全部卷期；登记日期不等同正式发表日期。 2026 为截至检查日的快照，不代表全年完整。 本批新增记录保持待分类；未取得摘要的保留空值。",
+      "match_methods": {
+        "identifier": 112
+      }
+    },
+    {
+      "venue": "IJCV",
+      "venue_type": "journal",
+      "year": 2023,
+      "scope": "primary",
+      "local_record_count": 229,
+      "reference_count": 229,
+      "matched_reference_count": 229,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 4,
+      "missing_abstract_count": 13,
+      "tracks": [
+        "volume 131, issue 10",
+        "volume 131, issue 11",
+        "volume 131, issue 12",
+        "volume 131, issue 4",
+        "volume 131, issue 5",
+        "volume 131, issue 6",
+        "volume 131, issue 7",
+        "volume 131, issue 8",
+        "volume 131, issue 9",
+        "volume 132, issue 1",
+        "volume 132, issue 2",
+        "volume 132, issue 3",
+        "volume 132, issue 4",
+        "volume 132, issue 5",
+        "volume 132, issue 6",
+        "volume 133, issue 11"
+      ],
+      "status": "registry_aligned",
+      "reference_kind": "publisher_registry",
+      "sources": [
+        "https://api.crossref.org/journals/0920-5691/works?filter=from-pub-date:2023-01-01,until-pub-date:2023-12-31,type:journal-article&rows=0",
+        "https://link.springer.com/journal/11263"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 对照出版社登记的 Crossref journal-article 元数据，未独立核齐出版社全部卷期；登记日期不等同正式发表日期。",
+      "match_methods": {
+        "identifier": 229
+      }
+    },
+    {
+      "venue": "IJCV",
+      "venue_type": "journal",
+      "year": 2024,
+      "scope": "primary",
+      "local_record_count": 356,
+      "reference_count": 356,
+      "matched_reference_count": 356,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 3,
+      "missing_abstract_count": 16,
+      "tracks": [
+        "volume 132, issue 10",
+        "volume 132, issue 11",
+        "volume 132, issue 12",
+        "volume 132, issue 6",
+        "volume 132, issue 7",
+        "volume 132, issue 8",
+        "volume 132, issue 9",
+        "volume 133, issue 1",
+        "volume 133, issue 2",
+        "volume 133, issue 3",
+        "volume 133, issue 4",
+        "volume 133, issue 5",
+        "volume 133, issue 6"
+      ],
+      "status": "registry_aligned",
+      "reference_kind": "publisher_registry",
+      "sources": [
+        "https://api.crossref.org/journals/0920-5691/works?filter=from-pub-date:2024-01-01,until-pub-date:2024-12-31,type:journal-article&rows=0",
+        "https://link.springer.com/journal/11263"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 对照出版社登记的 Crossref journal-article 元数据，未独立核齐出版社全部卷期；登记日期不等同正式发表日期。",
+      "match_methods": {
+        "identifier": 356
+      }
+    },
+    {
+      "venue": "IJCV",
+      "venue_type": "journal",
+      "year": 2025,
+      "scope": "primary",
+      "local_record_count": 284,
+      "reference_count": 284,
+      "matched_reference_count": 284,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 1,
+      "missing_abstract_count": 15,
+      "tracks": [
+        "volume 133, issue 10",
+        "volume 133, issue 11",
+        "volume 133, issue 12",
+        "volume 133, issue 4",
+        "volume 133, issue 6",
+        "volume 133, issue 7",
+        "volume 133, issue 8",
+        "volume 133, issue 9",
+        "volume 134, issue 1"
+      ],
+      "status": "registry_aligned",
+      "reference_kind": "publisher_registry",
+      "sources": [
+        "https://api.crossref.org/journals/0920-5691/works?filter=from-pub-date:2025-01-01,until-pub-date:2025-12-31,type:journal-article&rows=0",
+        "https://link.springer.com/journal/11263"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 对照出版社登记的 Crossref journal-article 元数据，未独立核齐出版社全部卷期；登记日期不等同正式发表日期。",
+      "match_methods": {
+        "identifier": 284
+      }
+    },
+    {
+      "venue": "IJCV",
+      "venue_type": "journal",
+      "year": 2026,
+      "scope": "primary",
+      "local_record_count": 459,
+      "reference_count": 459,
+      "matched_reference_count": 459,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 1,
+      "missing_abstract_count": 9,
+      "tracks": [
+        "volume 134, issue 1",
+        "volume 134, issue 10",
+        "volume 134, issue 11",
+        "volume 134, issue 2",
+        "volume 134, issue 3",
+        "volume 134, issue 4",
+        "volume 134, issue 5",
+        "volume 134, issue 6",
+        "volume 134, issue 7",
+        "volume 134, issue 8",
+        "volume 134, issue 9"
+      ],
+      "status": "registry_aligned",
+      "reference_kind": "publisher_registry",
+      "sources": [
+        "https://api.crossref.org/journals/0920-5691/works?filter=from-pub-date:2026-01-01,until-pub-date:2026-12-31,type:journal-article&rows=0",
+        "https://link.springer.com/journal/11263"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 对照出版社登记的 Crossref journal-article 元数据，未独立核齐出版社全部卷期；登记日期不等同正式发表日期。 2026 为截至检查日的快照，不代表全年完整。 本批新增记录保持待分类；未取得摘要的保留空值。",
+      "match_methods": {
+        "identifier": 459
+      }
+    },
+    {
+      "venue": "JMLR",
+      "venue_type": "journal",
+      "year": 2023,
+      "scope": "primary",
+      "local_record_count": 401,
+      "reference_count": 401,
+      "matched_reference_count": 401,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "volume 24"
+      ],
+      "status": "aligned",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://www.jmlr.org/papers/v24/"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。",
+      "match_methods": {
+        "identifier": 401
+      }
+    },
+    {
+      "venue": "JMLR",
+      "venue_type": "journal",
+      "year": 2024,
+      "scope": "primary",
+      "local_record_count": 422,
+      "reference_count": 422,
+      "matched_reference_count": 422,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "volume 25"
+      ],
+      "status": "aligned",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://www.jmlr.org/papers/v25/"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。",
+      "match_methods": {
+        "identifier": 422
+      }
+    },
+    {
+      "venue": "JMLR",
+      "venue_type": "journal",
+      "year": 2025,
+      "scope": "primary",
+      "local_record_count": 309,
+      "reference_count": 309,
+      "matched_reference_count": 309,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "volume 26"
+      ],
+      "status": "aligned",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://www.jmlr.org/papers/v26/"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。",
+      "match_methods": {
+        "identifier": 309
+      }
+    },
+    {
+      "venue": "JMLR",
+      "venue_type": "journal",
+      "year": 2026,
+      "scope": "primary",
+      "local_record_count": 205,
+      "reference_count": 205,
+      "matched_reference_count": 205,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "volume 27"
+      ],
+      "status": "aligned",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://www.jmlr.org/papers/v27/"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 2026 为截至检查日的快照，不代表全年完整。",
+      "match_methods": {
+        "identifier": 205
+      }
+    },
+    {
+      "venue": "TIP",
+      "venue_type": "journal",
+      "year": 2023,
+      "scope": "primary",
+      "local_record_count": 481,
+      "reference_count": 481,
+      "matched_reference_count": 481,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 2,
+      "missing_abstract_count": 1,
+      "tracks": [
+        "volume 32"
+      ],
+      "status": "registry_aligned",
+      "reference_kind": "publisher_registry",
+      "sources": [
+        "https://api.crossref.org/journals/1057-7149/works?filter=from-pub-date:2023-01-01,until-pub-date:2023-12-31,type:journal-article&rows=0",
+        "https://signalprocessingsociety.org/publications-resources/ieee-transactions-image-processing"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 对照出版社登记的 Crossref journal-article 元数据，未独立核齐出版社全部卷期；登记日期不等同正式发表日期。",
+      "match_methods": {
+        "identifier": 481
+      }
+    },
+    {
+      "venue": "TIP",
+      "venue_type": "journal",
+      "year": 2024,
+      "scope": "primary",
+      "local_record_count": 504,
+      "reference_count": 504,
+      "matched_reference_count": 504,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 2,
+      "missing_abstract_count": 2,
+      "tracks": [
+        "continuous publication",
+        "volume 33"
+      ],
+      "status": "registry_aligned",
+      "reference_kind": "publisher_registry",
+      "sources": [
+        "https://api.crossref.org/journals/1057-7149/works?filter=from-pub-date:2024-01-01,until-pub-date:2024-12-31,type:journal-article&rows=0",
+        "https://signalprocessingsociety.org/publications-resources/ieee-transactions-image-processing"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 对照出版社登记的 Crossref journal-article 元数据，未独立核齐出版社全部卷期；登记日期不等同正式发表日期。",
+      "match_methods": {
+        "identifier": 504
+      }
+    },
+    {
+      "venue": "TIP",
+      "venue_type": "journal",
+      "year": 2025,
+      "scope": "primary",
+      "local_record_count": 625,
+      "reference_count": 624,
+      "matched_reference_count": 624,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 1,
+      "missing_author_count": 2,
+      "missing_abstract_count": 2,
+      "tracks": [
+        "continuous publication",
+        "volume 34"
+      ],
+      "status": "differences",
+      "reference_kind": "publisher_registry",
+      "sources": [
+        "https://api.crossref.org/journals/1057-7149/works?filter=from-pub-date:2025-01-01,until-pub-date:2025-12-31,type:journal-article&rows=0",
+        "https://signalprocessingsociety.org/publications-resources/ieee-transactions-image-processing"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 对照出版社登记的 Crossref journal-article 元数据，未独立核齐出版社全部卷期；登记日期不等同正式发表日期。",
+      "match_methods": {
+        "identifier": 624
+      }
+    },
+    {
+      "venue": "TIP",
+      "venue_type": "journal",
+      "year": 2026,
+      "scope": "primary",
+      "local_record_count": 791,
+      "reference_count": 791,
+      "matched_reference_count": 791,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 133,
+      "tracks": [
+        "Early Access",
+        "continuous publication",
+        "volume 35"
+      ],
+      "status": "registry_aligned",
+      "reference_kind": "publisher_registry",
+      "sources": [
+        "https://api.crossref.org/journals/1057-7149/works?filter=from-pub-date:2026-01-01,until-pub-date:2026-12-31,type:journal-article&rows=0",
+        "https://signalprocessingsociety.org/publications-resources/ieee-transactions-image-processing"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 对照出版社登记的 Crossref journal-article 元数据，未独立核齐出版社全部卷期；登记日期不等同正式发表日期。 2026 为截至检查日的快照，不代表全年完整。 本批新增记录保持待分类；未取得摘要的保留空值。 本批 IEEE 网页核验：TIP 10 篇、TKDE 1 篇、TPAMI 5 篇确认 Early Access 并补摘要；TPAMI 2 篇及 TVCG 2 篇页面被拦截，具体日期和 Early Access 状态留空，保留登记年份。",
+      "match_methods": {
+        "identifier": 791
+      }
+    },
+    {
+      "venue": "TKDE",
+      "venue_type": "journal",
+      "year": 2023,
+      "scope": "primary",
+      "local_record_count": 478,
+      "reference_count": 478,
+      "matched_reference_count": 478,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 1,
+      "tracks": [
+        "continuous publication",
+        "volume 35, issue 1",
+        "volume 35, issue 10",
+        "volume 35, issue 11",
+        "volume 35, issue 12",
+        "volume 35, issue 2",
+        "volume 35, issue 3",
+        "volume 35, issue 4",
+        "volume 35, issue 5",
+        "volume 35, issue 6",
+        "volume 35, issue 7",
+        "volume 35, issue 8",
+        "volume 35, issue 9"
+      ],
+      "status": "registry_aligned",
+      "reference_kind": "publisher_registry",
+      "sources": [
+        "https://api.crossref.org/journals/1041-4347/works?filter=from-pub-date:2023-01-01,until-pub-date:2023-12-31,type:journal-article&rows=0",
+        "https://www.computer.org/csdl/journal/tk"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 对照出版社登记的 Crossref journal-article 元数据，未独立核齐出版社全部卷期；登记日期不等同正式发表日期。",
+      "match_methods": {
+        "identifier": 478
+      }
+    },
+    {
+      "venue": "TKDE",
+      "venue_type": "journal",
+      "year": 2024,
+      "scope": "primary",
+      "local_record_count": 641,
+      "reference_count": 641,
+      "matched_reference_count": 641,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "continuous publication",
+        "volume 36, issue 1",
+        "volume 36, issue 10",
+        "volume 36, issue 11",
+        "volume 36, issue 12",
+        "volume 36, issue 2",
+        "volume 36, issue 3",
+        "volume 36, issue 4",
+        "volume 36, issue 5",
+        "volume 36, issue 6",
+        "volume 36, issue 7",
+        "volume 36, issue 8",
+        "volume 36, issue 9"
+      ],
+      "status": "registry_aligned",
+      "reference_kind": "publisher_registry",
+      "sources": [
+        "https://api.crossref.org/journals/1041-4347/works?filter=from-pub-date:2024-01-01,until-pub-date:2024-12-31,type:journal-article&rows=0",
+        "https://www.computer.org/csdl/journal/tk"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 对照出版社登记的 Crossref journal-article 元数据，未独立核齐出版社全部卷期；登记日期不等同正式发表日期。",
+      "match_methods": {
+        "identifier": 641
+      }
+    },
+    {
+      "venue": "TKDE",
+      "venue_type": "journal",
+      "year": 2025,
+      "scope": "primary",
+      "local_record_count": 514,
+      "reference_count": 514,
+      "matched_reference_count": 514,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 1,
+      "missing_abstract_count": 14,
+      "tracks": [
+        "continuous publication",
+        "volume 37, issue 1",
+        "volume 37, issue 10",
+        "volume 37, issue 11",
+        "volume 37, issue 12",
+        "volume 37, issue 2",
+        "volume 37, issue 3",
+        "volume 37, issue 4",
+        "volume 37, issue 5",
+        "volume 37, issue 6",
+        "volume 37, issue 7",
+        "volume 37, issue 8",
+        "volume 37, issue 9"
+      ],
+      "status": "registry_aligned",
+      "reference_kind": "publisher_registry",
+      "sources": [
+        "https://api.crossref.org/journals/1041-4347/works?filter=from-pub-date:2025-01-01,until-pub-date:2025-12-31,type:journal-article&rows=0",
+        "https://www.computer.org/csdl/journal/tk"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 对照出版社登记的 Crossref journal-article 元数据，未独立核齐出版社全部卷期；登记日期不等同正式发表日期。",
+      "match_methods": {
+        "identifier": 514
+      }
+    },
+    {
+      "venue": "TKDE",
+      "venue_type": "journal",
+      "year": 2026,
+      "scope": "primary",
+      "local_record_count": 608,
+      "reference_count": 608,
+      "matched_reference_count": 608,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 1,
+      "missing_abstract_count": 220,
+      "tracks": [
+        "Early Access",
+        "continuous publication",
+        "volume 38, issue 1",
+        "volume 38, issue 11",
+        "volume 38, issue 2",
+        "volume 38, issue 3",
+        "volume 38, issue 4",
+        "volume 38, issue 5",
+        "volume 38, issue 6",
+        "volume 38, issue 7",
+        "volume 38, issue 8",
+        "volume 38, issue 9"
+      ],
+      "status": "registry_aligned",
+      "reference_kind": "publisher_registry",
+      "sources": [
+        "https://api.crossref.org/journals/1041-4347/works?filter=from-pub-date:2026-01-01,until-pub-date:2026-12-31,type:journal-article&rows=0",
+        "https://www.computer.org/csdl/journal/tk"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 对照出版社登记的 Crossref journal-article 元数据，未独立核齐出版社全部卷期；登记日期不等同正式发表日期。 2026 为截至检查日的快照，不代表全年完整。 本批新增记录保持待分类；未取得摘要的保留空值。 本批 IEEE 网页核验：TIP 10 篇、TKDE 1 篇、TPAMI 5 篇确认 Early Access 并补摘要；TPAMI 2 篇及 TVCG 2 篇页面被拦截，具体日期和 Early Access 状态留空，保留登记年份。",
+      "match_methods": {
+        "identifier": 608
+      }
+    },
+    {
+      "venue": "TMLR",
+      "venue_type": "journal",
+      "year": 2023,
+      "scope": "primary",
+      "local_record_count": 611,
+      "reference_count": 611,
+      "matched_reference_count": 611,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "continuous publication"
+      ],
+      "status": "aligned",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://jmlr.org/tmlr/papers/"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。",
+      "match_methods": {
+        "identifier": 611
+      }
+    },
+    {
+      "venue": "TMLR",
+      "venue_type": "journal",
+      "year": 2024,
+      "scope": "primary",
+      "local_record_count": 955,
+      "reference_count": 955,
+      "matched_reference_count": 955,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "continuous publication"
+      ],
+      "status": "aligned",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://jmlr.org/tmlr/papers/"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。",
+      "match_methods": {
+        "identifier": 955
+      }
+    },
+    {
+      "venue": "TMLR",
+      "venue_type": "journal",
+      "year": 2025,
+      "scope": "primary",
+      "local_record_count": 1432,
+      "reference_count": 1432,
+      "matched_reference_count": 1432,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "continuous publication"
+      ],
+      "status": "aligned",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://jmlr.org/tmlr/papers/"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。",
+      "match_methods": {
+        "identifier": 1432
+      }
+    },
+    {
+      "venue": "TMLR",
+      "venue_type": "journal",
+      "year": 2026,
+      "scope": "primary",
+      "local_record_count": 1724,
+      "reference_count": 1724,
+      "matched_reference_count": 1724,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 481,
+      "tracks": [
+        "continuous publication"
+      ],
+      "status": "aligned",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://jmlr.org/tmlr/papers/"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 2026 为截至检查日的快照，不代表全年完整。 本批新增记录保持待分类；未取得摘要的保留空值。",
+      "match_methods": {
+        "identifier": 1724
+      }
+    },
+    {
+      "venue": "TOG",
+      "venue_type": "journal",
+      "year": 2023,
+      "scope": "primary",
+      "local_record_count": 268,
+      "reference_count": 268,
+      "matched_reference_count": 268,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "volume 42, issue 1",
+        "volume 42, issue 2",
+        "volume 42, issue 3",
+        "volume 42, issue 4",
+        "volume 42, issue 5",
+        "volume 42, issue 6",
+        "volume 43, issue 1"
+      ],
+      "status": "registry_aligned",
+      "reference_kind": "publisher_registry",
+      "sources": [
+        "https://api.crossref.org/journals/0730-0301/works?filter=from-pub-date:2023-01-01,until-pub-date:2023-12-31,type:journal-article&rows=0",
+        "https://dl.acm.org/journal/tog"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 对照出版社登记的 Crossref journal-article 元数据，未独立核齐出版社全部卷期；登记日期不等同正式发表日期。",
+      "match_methods": {
+        "identifier": 268
+      }
+    },
+    {
+      "venue": "TOG",
+      "venue_type": "journal",
+      "year": 2024,
+      "scope": "primary",
+      "local_record_count": 279,
+      "reference_count": 279,
+      "matched_reference_count": 279,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "volume 43, issue 1",
+        "volume 43, issue 2",
+        "volume 43, issue 3",
+        "volume 43, issue 4",
+        "volume 43, issue 5",
+        "volume 43, issue 6",
+        "volume 44, issue 1"
+      ],
+      "status": "registry_aligned",
+      "reference_kind": "publisher_registry",
+      "sources": [
+        "https://api.crossref.org/journals/0730-0301/works?filter=from-pub-date:2024-01-01,until-pub-date:2024-12-31,type:journal-article&rows=0",
+        "https://dl.acm.org/journal/tog"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 对照出版社登记的 Crossref journal-article 元数据，未独立核齐出版社全部卷期；登记日期不等同正式发表日期。",
+      "match_methods": {
+        "identifier": 279
+      }
+    },
+    {
+      "venue": "TOG",
+      "venue_type": "journal",
+      "year": 2025,
+      "scope": "primary",
+      "local_record_count": 284,
+      "reference_count": 284,
+      "matched_reference_count": 284,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "volume 44, issue 1",
+        "volume 44, issue 2",
+        "volume 44, issue 3",
+        "volume 44, issue 4",
+        "volume 44, issue 5",
+        "volume 44, issue 6",
+        "volume 45, issue 1",
+        "volume 45, issue 2"
+      ],
+      "status": "registry_aligned",
+      "reference_kind": "publisher_registry",
+      "sources": [
+        "https://api.crossref.org/journals/0730-0301/works?filter=from-pub-date:2025-01-01,until-pub-date:2025-12-31,type:journal-article&rows=0",
+        "https://dl.acm.org/journal/tog"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 对照出版社登记的 Crossref journal-article 元数据，未独立核齐出版社全部卷期；登记日期不等同正式发表日期。",
+      "match_methods": {
+        "identifier": 284
+      }
+    },
+    {
+      "venue": "TOG",
+      "venue_type": "journal",
+      "year": 2026,
+      "scope": "primary",
+      "local_record_count": 195,
+      "reference_count": 195,
+      "matched_reference_count": 195,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "continuous publication",
+        "volume 45, issue 2",
+        "volume 45, issue 3",
+        "volume 45, issue 4",
+        "volume 45, issue 5"
+      ],
+      "status": "registry_aligned",
+      "reference_kind": "publisher_registry",
+      "sources": [
+        "https://api.crossref.org/journals/0730-0301/works?filter=from-pub-date:2026-01-01,until-pub-date:2026-12-31,type:journal-article&rows=0",
+        "https://dl.acm.org/journal/tog"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 对照出版社登记的 Crossref journal-article 元数据，未独立核齐出版社全部卷期；登记日期不等同正式发表日期。 2026 为截至检查日的快照，不代表全年完整。",
+      "match_methods": {
+        "identifier": 195
+      }
+    },
+    {
+      "venue": "TOIS",
+      "venue_type": "journal",
+      "year": 2023,
+      "scope": "primary",
+      "local_record_count": 173,
+      "reference_count": 173,
+      "matched_reference_count": 173,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "continuous publication",
+        "volume 41, issue 1",
+        "volume 41, issue 2",
+        "volume 41, issue 3",
+        "volume 41, issue 4",
+        "volume 42, issue 1",
+        "volume 42, issue 2",
+        "volume 42, issue 3"
+      ],
+      "status": "registry_aligned",
+      "reference_kind": "publisher_registry",
+      "sources": [
+        "https://api.crossref.org/journals/1046-8188/works?filter=from-pub-date:2023-01-01,until-pub-date:2023-12-31,type:journal-article&rows=0",
+        "https://dl.acm.org/journal/tois"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 对照出版社登记的 Crossref journal-article 元数据，未独立核齐出版社全部卷期；登记日期不等同正式发表日期。",
+      "match_methods": {
+        "identifier": 173
+      }
+    },
+    {
+      "venue": "TOIS",
+      "venue_type": "journal",
+      "year": 2024,
+      "scope": "primary",
+      "local_record_count": 116,
+      "reference_count": 116,
+      "matched_reference_count": 116,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "volume 42, issue 3",
+        "volume 42, issue 4",
+        "volume 42, issue 5",
+        "volume 42, issue 6",
+        "volume 43, issue 1"
+      ],
+      "status": "registry_aligned",
+      "reference_kind": "publisher_registry",
+      "sources": [
+        "https://api.crossref.org/journals/1046-8188/works?filter=from-pub-date:2024-01-01,until-pub-date:2024-12-31,type:journal-article&rows=0",
+        "https://dl.acm.org/journal/tois"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 对照出版社登记的 Crossref journal-article 元数据，未独立核齐出版社全部卷期；登记日期不等同正式发表日期。",
+      "match_methods": {
+        "identifier": 116
+      }
+    },
+    {
+      "venue": "TOIS",
+      "venue_type": "journal",
+      "year": 2025,
+      "scope": "primary",
+      "local_record_count": 184,
+      "reference_count": 184,
+      "matched_reference_count": 184,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 2,
+      "tracks": [
+        "volume 43, issue 2",
+        "volume 43, issue 3",
+        "volume 43, issue 4",
+        "volume 43, issue 5",
+        "volume 43, issue 6",
+        "volume 44, issue 1",
+        "volume 44, issue 2"
+      ],
+      "status": "registry_aligned",
+      "reference_kind": "publisher_registry",
+      "sources": [
+        "https://api.crossref.org/journals/1046-8188/works?filter=from-pub-date:2025-01-01,until-pub-date:2025-12-31,type:journal-article&rows=0",
+        "https://dl.acm.org/journal/tois"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 对照出版社登记的 Crossref journal-article 元数据，未独立核齐出版社全部卷期；登记日期不等同正式发表日期。",
+      "match_methods": {
+        "identifier": 184
+      }
+    },
+    {
+      "venue": "TOIS",
+      "venue_type": "journal",
+      "year": 2026,
+      "scope": "primary",
+      "local_record_count": 161,
+      "reference_count": 161,
+      "matched_reference_count": 161,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "continuous publication",
+        "volume 44, issue 1",
+        "volume 44, issue 2",
+        "volume 44, issue 3",
+        "volume 44, issue 4",
+        "volume 44, issue 5",
+        "volume 44, issue 6",
+        "volume 44, issue 7"
+      ],
+      "status": "registry_aligned",
+      "reference_kind": "publisher_registry",
+      "sources": [
+        "https://api.crossref.org/journals/1046-8188/works?filter=from-pub-date:2026-01-01,until-pub-date:2026-12-31,type:journal-article&rows=0",
+        "https://dl.acm.org/journal/tois"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 对照出版社登记的 Crossref journal-article 元数据，未独立核齐出版社全部卷期；登记日期不等同正式发表日期。 2026 为截至检查日的快照，不代表全年完整。",
+      "match_methods": {
+        "identifier": 161
+      }
+    },
+    {
+      "venue": "TPAMI",
+      "venue_type": "journal",
+      "year": 2023,
+      "scope": "primary",
+      "local_record_count": 846,
+      "reference_count": 846,
+      "matched_reference_count": 846,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 4,
+      "missing_abstract_count": 4,
+      "tracks": [
+        "continuous publication",
+        "volume 45, issue 1",
+        "volume 45, issue 10",
+        "volume 45, issue 11",
+        "volume 45, issue 12",
+        "volume 45, issue 2",
+        "volume 45, issue 3",
+        "volume 45, issue 4",
+        "volume 45, issue 5",
+        "volume 45, issue 6",
+        "volume 45, issue 7",
+        "volume 45, issue 8",
+        "volume 45, issue 9"
+      ],
+      "status": "registry_aligned",
+      "reference_kind": "publisher_registry",
+      "sources": [
+        "https://api.crossref.org/journals/0162-8828/works?filter=from-pub-date:2023-01-01,until-pub-date:2023-12-31,type:journal-article&rows=0",
+        "https://www.computer.org/csdl/journal/tp"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 对照出版社登记的 Crossref journal-article 元数据，未独立核齐出版社全部卷期；登记日期不等同正式发表日期。",
+      "match_methods": {
+        "identifier": 846
+      }
+    },
+    {
+      "venue": "TPAMI",
+      "venue_type": "journal",
+      "year": 2024,
+      "scope": "primary",
+      "local_record_count": 739,
+      "reference_count": 739,
+      "matched_reference_count": 739,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        "continuous publication",
+        "volume 46, issue 1",
+        "volume 46, issue 10",
+        "volume 46, issue 11",
+        "volume 46, issue 12",
+        "volume 46, issue 2",
+        "volume 46, issue 3",
+        "volume 46, issue 4",
+        "volume 46, issue 5",
+        "volume 46, issue 6",
+        "volume 46, issue 7",
+        "volume 46, issue 8",
+        "volume 46, issue 9"
+      ],
+      "status": "registry_aligned",
+      "reference_kind": "publisher_registry",
+      "sources": [
+        "https://api.crossref.org/journals/0162-8828/works?filter=from-pub-date:2024-01-01,until-pub-date:2024-12-31,type:journal-article&rows=0",
+        "https://www.computer.org/csdl/journal/tp"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 对照出版社登记的 Crossref journal-article 元数据，未独立核齐出版社全部卷期；登记日期不等同正式发表日期。",
+      "match_methods": {
+        "identifier": 739
+      }
+    },
+    {
+      "venue": "TPAMI",
+      "venue_type": "journal",
+      "year": 2025,
+      "scope": "primary",
+      "local_record_count": 832,
+      "reference_count": 822,
+      "matched_reference_count": 822,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 10,
+      "missing_author_count": 1,
+      "missing_abstract_count": 5,
+      "tracks": [
+        "continuous publication",
+        "volume 47, issue 1",
+        "volume 47, issue 10",
+        "volume 47, issue 11",
+        "volume 47, issue 12",
+        "volume 47, issue 2",
+        "volume 47, issue 3",
+        "volume 47, issue 4",
+        "volume 47, issue 5",
+        "volume 47, issue 6",
+        "volume 47, issue 7",
+        "volume 47, issue 8",
+        "volume 47, issue 9"
+      ],
+      "status": "differences",
+      "reference_kind": "publisher_registry",
+      "sources": [
+        "https://api.crossref.org/journals/0162-8828/works?filter=from-pub-date:2025-01-01,until-pub-date:2025-12-31,type:journal-article&rows=0",
+        "https://www.computer.org/csdl/journal/tp"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 对照出版社登记的 Crossref journal-article 元数据，未独立核齐出版社全部卷期；登记日期不等同正式发表日期。",
+      "match_methods": {
+        "identifier": 822
+      }
+    },
+    {
+      "venue": "TPAMI",
+      "venue_type": "journal",
+      "year": 2026,
+      "scope": "primary",
+      "local_record_count": 1180,
+      "reference_count": 1180,
+      "matched_reference_count": 1180,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 2,
+      "missing_abstract_count": 166,
+      "tracks": [
+        "Early Access",
+        "continuous publication",
+        "volume 48, issue 1",
+        "volume 48, issue 10",
+        "volume 48, issue 11",
+        "volume 48, issue 2",
+        "volume 48, issue 3",
+        "volume 48, issue 4",
+        "volume 48, issue 5",
+        "volume 48, issue 6",
+        "volume 48, issue 7",
+        "volume 48, issue 8",
+        "volume 48, issue 9"
+      ],
+      "status": "registry_aligned",
+      "reference_kind": "publisher_registry",
+      "sources": [
+        "https://api.crossref.org/journals/0162-8828/works?filter=from-pub-date:2026-01-01,until-pub-date:2026-12-31,type:journal-article&rows=0",
+        "https://www.computer.org/csdl/journal/tp"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 对照出版社登记的 Crossref journal-article 元数据，未独立核齐出版社全部卷期；登记日期不等同正式发表日期。 2026 为截至检查日的快照，不代表全年完整。 本批新增记录保持待分类；未取得摘要的保留空值。 本批 IEEE 网页核验：TIP 10 篇、TKDE 1 篇、TPAMI 5 篇确认 Early Access 并补摘要；TPAMI 2 篇及 TVCG 2 篇页面被拦截，具体日期和 Early Access 状态留空，保留登记年份。",
+      "match_methods": {
+        "identifier": 1180
+      }
+    },
+    {
+      "venue": "TVCG",
+      "venue_type": "journal",
+      "year": 2023,
+      "scope": "primary",
+      "local_record_count": 477,
+      "reference_count": 477,
+      "matched_reference_count": 477,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 27,
+      "missing_abstract_count": 24,
+      "tracks": [
+        "continuous publication",
+        "volume 29, issue 1",
+        "volume 29, issue 10",
+        "volume 29, issue 11",
+        "volume 29, issue 12",
+        "volume 29, issue 2",
+        "volume 29, issue 3",
+        "volume 29, issue 4",
+        "volume 29, issue 5",
+        "volume 29, issue 6",
+        "volume 29, issue 7",
+        "volume 29, issue 8",
+        "volume 29, issue 9"
+      ],
+      "status": "registry_aligned",
+      "reference_kind": "publisher_registry",
+      "sources": [
+        "https://api.crossref.org/journals/1077-2626/works?filter=from-pub-date:2023-01-01,until-pub-date:2023-12-31,type:journal-article&rows=0",
+        "https://www.computer.org/csdl/journal/tg"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 对照出版社登记的 Crossref journal-article 元数据，未独立核齐出版社全部卷期；登记日期不等同正式发表日期。",
+      "match_methods": {
+        "identifier": 477
+      }
+    },
+    {
+      "venue": "TVCG",
+      "venue_type": "journal",
+      "year": 2024,
+      "scope": "primary",
+      "local_record_count": 549,
+      "reference_count": 549,
+      "matched_reference_count": 549,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 18,
+      "missing_abstract_count": 17,
+      "tracks": [
+        "continuous publication",
+        "volume 30, issue 1",
+        "volume 30, issue 10",
+        "volume 30, issue 11",
+        "volume 30, issue 12",
+        "volume 30, issue 2",
+        "volume 30, issue 3",
+        "volume 30, issue 4",
+        "volume 30, issue 5",
+        "volume 30, issue 6",
+        "volume 30, issue 7",
+        "volume 30, issue 8",
+        "volume 30, issue 9"
+      ],
+      "status": "registry_aligned",
+      "reference_kind": "publisher_registry",
+      "sources": [
+        "https://api.crossref.org/journals/1077-2626/works?filter=from-pub-date:2024-01-01,until-pub-date:2024-12-31,type:journal-article&rows=0",
+        "https://www.computer.org/csdl/journal/tg"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 对照出版社登记的 Crossref journal-article 元数据，未独立核齐出版社全部卷期；登记日期不等同正式发表日期。",
+      "match_methods": {
+        "identifier": 549
+      }
+    },
+    {
+      "venue": "TVCG",
+      "venue_type": "journal",
+      "year": 2025,
+      "scope": "primary",
+      "local_record_count": 881,
+      "reference_count": 881,
+      "matched_reference_count": 881,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 24,
+      "missing_abstract_count": 27,
+      "tracks": [
+        "continuous publication",
+        "volume 31, issue 1",
+        "volume 31, issue 10",
+        "volume 31, issue 11",
+        "volume 31, issue 12",
+        "volume 31, issue 2",
+        "volume 31, issue 3",
+        "volume 31, issue 4",
+        "volume 31, issue 5",
+        "volume 31, issue 6",
+        "volume 31, issue 7",
+        "volume 31, issue 8",
+        "volume 31, issue 9"
+      ],
+      "status": "registry_aligned",
+      "reference_kind": "publisher_registry",
+      "sources": [
+        "https://api.crossref.org/journals/1077-2626/works?filter=from-pub-date:2025-01-01,until-pub-date:2025-12-31,type:journal-article&rows=0",
+        "https://www.computer.org/csdl/journal/tg"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 对照出版社登记的 Crossref journal-article 元数据，未独立核齐出版社全部卷期；登记日期不等同正式发表日期。",
+      "match_methods": {
+        "identifier": 881
+      }
+    },
+    {
+      "venue": "TVCG",
+      "venue_type": "journal",
+      "year": 2026,
+      "scope": "primary",
+      "local_record_count": 777,
+      "reference_count": 777,
+      "matched_reference_count": 777,
+      "unmatched_reference_count": 0,
+      "ambiguous_reference_count": 0,
+      "local_only_count": 0,
+      "missing_author_count": 20,
+      "missing_abstract_count": 80,
+      "tracks": [
+        "continuous publication",
+        "volume 32, issue 1",
+        "volume 32, issue 10",
+        "volume 32, issue 2",
+        "volume 32, issue 3",
+        "volume 32, issue 4",
+        "volume 32, issue 5",
+        "volume 32, issue 6",
+        "volume 32, issue 7",
+        "volume 32, issue 8",
+        "volume 32, issue 9"
+      ],
+      "status": "registry_aligned",
+      "reference_kind": "publisher_registry",
+      "sources": [
+        "https://api.crossref.org/journals/1077-2626/works?filter=from-pub-date:2026-01-01,until-pub-date:2026-12-31,type:journal-article&rows=0",
+        "https://www.computer.org/csdl/journal/tg"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "指定清单逐条对账；未匹配条目可能为漏收、改名或年份/轨道差异，不能直接导入或删除。 对照出版社登记的 Crossref journal-article 元数据，未独立核齐出版社全部卷期；登记日期不等同正式发表日期。 2026 为截至检查日的快照，不代表全年完整。 本批新增记录保持待分类；未取得摘要的保留空值。 本批 IEEE 网页核验：TIP 10 篇、TKDE 1 篇、TPAMI 5 篇确认 Early Access 并补摘要；TPAMI 2 篇及 TVCG 2 篇页面被拦截，具体日期和 Early Access 状态留空，保留登记年份。",
+      "match_methods": {
+        "identifier": 777
+      }
+    },
+    {
+      "venue": "The Annals of Statistics",
+      "venue_type": "journal",
+      "year": 2023,
+      "scope": "supplement",
+      "local_record_count": 0,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [],
+      "status": "out_of_scope",
+      "reference_kind": "official_list",
+      "sources": [],
+      "checked_at": "2026-10-21",
+      "notes": "仅收录 5 篇 ICML 期刊展示对应的正式论文；不采集整刊。"
+    },
+    {
+      "venue": "The Annals of Statistics",
+      "venue_type": "journal",
+      "year": 2024,
+      "scope": "supplement",
+      "local_record_count": 0,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [],
+      "status": "out_of_scope",
+      "reference_kind": "official_list",
+      "sources": [],
+      "checked_at": "2026-10-21",
+      "notes": "仅收录 5 篇 ICML 期刊展示对应的正式论文；不采集整刊。"
+    },
+    {
+      "venue": "The Annals of Statistics",
+      "venue_type": "journal",
+      "year": 2025,
+      "scope": "supplement",
+      "local_record_count": 0,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [],
+      "status": "out_of_scope",
+      "reference_kind": "official_list",
+      "sources": [],
+      "checked_at": "2026-10-21",
+      "notes": "仅收录 5 篇 ICML 期刊展示对应的正式论文；不采集整刊。"
+    },
+    {
+      "venue": "The Annals of Statistics",
+      "venue_type": "journal",
+      "year": 2026,
+      "scope": "supplement",
+      "local_record_count": 5,
+      "reference_count": null,
+      "matched_reference_count": null,
+      "unmatched_reference_count": null,
+      "ambiguous_reference_count": null,
+      "local_only_count": null,
+      "missing_author_count": 0,
+      "missing_abstract_count": 0,
+      "tracks": [
+        ""
+      ],
+      "status": "supplement",
+      "reference_kind": "official_list",
+      "sources": [
+        "https://api.crossref.org/works/10.1214/25-aos2588",
+        "https://api.crossref.org/works/10.1214/25-aos2590",
+        "https://api.crossref.org/works/10.1214/25-aos2603",
+        "https://api.crossref.org/works/10.1214/26-aos2618"
+      ],
+      "checked_at": "2026-10-21",
+      "notes": "仅收录 5 篇 ICML 期刊展示对应的正式论文；不采集整刊。 2026 为截至检查日的快照，不代表全年完整。"
+    }
+  ],
+  "enrichment": {
+    "summary_zh": "本批仅使用 IEEE 正式网页，未下载 PDF。20 篇中 16 篇确认 Early Access，补齐 16 篇摘要和具体在线发表日期（2026-10-19 或 2026-10-20）。作者字段全部保留；其中 5 篇页首作者截断，仅核对了显示部分，完整登记名单保留，余下作者待展开官方名单复核。4 篇被 Chrome ERR_BLOCKED_BY_CLIENT 拦截，摘要、具体发表日期和 Early Access 状态保持未确认。此前 EMNLP 补齐 24 篇作者，仍有 956 篇缺作者。",
+    "summary_en": "IEEE official pages only; no PDFs downloaded. Of 20 papers, 16 were confirmed as Early Access, with 16 abstracts and exact online publication dates added (2026-10-19 or 2026-10-20). All existing authors were retained; 5 official header bylines were truncated, so only visible authors were checked and full registered lists preserved. Chrome blocked 4 pages with ERR_BLOCKED_BY_CLIENT; their abstracts, exact dates and Early Access status remain unconfirmed. The earlier EMNLP batch filled 24 author lists; 956 remain missing.",
+    "ieee_verified": 16,
+    "ieee_unverified": 4,
+    "ieee_abstracts_filled": 16,
+    "emnlp_authors_remaining": 956
+  }
+}

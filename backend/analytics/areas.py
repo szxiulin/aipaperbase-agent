@@ -55,15 +55,20 @@ def areas_overview(connection: sqlite3.Connection) -> dict[str, Any]:
            FROM entity_direction_assignments GROUP BY direction_id""")}
 
     total = connection.execute("SELECT COUNT(*) FROM paper_entities").fetchone()[0]
-    classified = connection.execute(
+    direction_classified = connection.execute(
         "SELECT COUNT(*) FROM entity_direction_assignments").fetchone()[0]
+    classified = sum(n for area_id, n in area_counts.items() if area_id != "pending_classification")
+    pending_directions = {r[0]: r[1] for r in connection.execute("""SELECT a.area_id, COUNT(*)
+        FROM entity_area_assignments a LEFT JOIN entity_direction_assignments d USING(entity_id)
+        WHERE a.is_non_paper=0 AND a.area_id!='pending_classification' AND d.entity_id IS NULL
+        GROUP BY a.area_id""")}
     non_paper = connection.execute(
         "SELECT COUNT(*) FROM entity_area_assignments WHERE is_non_paper = 1").fetchone()[0]
 
     venue_rows = _dicts(connection.execute(
         """SELECT a.area_id, p.venue, COUNT(DISTINCT a.entity_id) AS entity_count
            FROM entity_area_assignments a
-           JOIN entity_memberships m ON m.entity_id = a.entity_id
+           JOIN entity_memberships m ON m.entity_id = a.entity_id AND m.is_canonical = 1
            JOIN paper_records p ON p.record_id = m.record_id
            WHERE a.is_non_paper = 0
            GROUP BY a.area_id, p.venue ORDER BY a.area_id, entity_count DESC""").fetchall())
@@ -92,8 +97,9 @@ def areas_overview(connection: sqlite3.Connection) -> dict[str, Any]:
             "node_type": "area", "topic_id": area["area_id"], "parent_topic_id": "",
             "name": area["name_zh"], "name_en": area["name_en"], "description": area["scope"],
             "sort_order": area["sort_order"], "entity_count": n,
-            "coverage_rate": round(100 * n / classified, 1) if classified else 0,
+            "coverage_rate": round(100 * n / (total - non_paper), 1) if total - non_paper else 0,
             "direction_count": len(subs), "top_venues": top_venues.get(area["area_id"], []),
+            "pending_direction_count": pending_directions.get(area["area_id"], 0),
             "subtopics": subs,
         })
     return {
@@ -102,8 +108,11 @@ def areas_overview(connection: sqlite3.Connection) -> dict[str, Any]:
                   "metrics": _metrics(release)},
         "entity_count": total, "non_paper_count": non_paper,
         "classified_entity_count": classified,
+        "direction_classified_entity_count": direction_classified,
+        "pending_direction_count": sum(pending_directions.values()),
+        "pending_classification_count": area_counts.get("pending_classification", 0),
         "classified_rate": round(100 * classified / (total - non_paper), 1) if total - non_paper else 0,
-        "area_count": len(area_defs), "direction_count": len(direction_defs),
+        "area_count": sum(a["area_id"] not in {"pending_classification", "other"} for a in area_defs), "direction_count": len(direction_defs),
         "topics": topics,
     }
 
@@ -123,13 +132,13 @@ def _year_series(connection: sqlite3.Connection, area_id: str = "", direction_id
                    SUM(p.list_status = 'final') AS final_records,
                    SUM(p.list_status = 'rolling') AS rolling_records
             FROM entity_area_assignments a{join}
-            JOIN entity_memberships m ON m.entity_id = a.entity_id
+            JOIN entity_memberships m ON m.entity_id = a.entity_id AND m.is_canonical = 1
             JOIN paper_records p ON p.record_id = m.record_id
             WHERE {where} GROUP BY p.year ORDER BY p.year""", params).fetchall())
     rows = _dicts(connection.execute(
         f"""SELECT p.year, a.area_id, COUNT(DISTINCT a.entity_id) AS entity_count
             FROM entity_area_assignments a{join}
-            JOIN entity_memberships m ON m.entity_id = a.entity_id
+            JOIN entity_memberships m ON m.entity_id = a.entity_id AND m.is_canonical = 1
             JOIN paper_records p ON p.record_id = m.record_id
             WHERE {where} GROUP BY p.year, a.area_id ORDER BY p.year""", params).fetchall())
     denominator = {r["year"]: r["total_entities"] for r in totals}
@@ -163,7 +172,7 @@ def _top_venues(connection: sqlite3.Connection, *, area_id: str = "", direction_
         f"""SELECT p.venue, p.venue_type, COUNT(DISTINCT a.entity_id) AS entity_count,
                    COUNT(DISTINCT m.record_id) AS record_count
             FROM entity_area_assignments a{join}
-            JOIN entity_memberships m ON m.entity_id = a.entity_id
+            JOIN entity_memberships m ON m.entity_id = a.entity_id AND m.is_canonical = 1
             JOIN paper_records p ON p.record_id = m.record_id
             WHERE {' AND '.join(clauses)}
             GROUP BY p.venue, p.venue_type ORDER BY entity_count DESC, p.venue LIMIT ?""",
@@ -187,7 +196,7 @@ def _node_stats(connection: sqlite3.Connection, *, area_id: str = "", direction_
                    SUM(p.list_status = 'final') AS final_records,
                    SUM(p.list_status = 'rolling') AS rolling_records
             FROM entity_area_assignments a{join}
-            JOIN entity_memberships m ON m.entity_id = a.entity_id
+            JOIN entity_memberships m ON m.entity_id = a.entity_id AND m.is_canonical = 1
             JOIN paper_records p ON p.record_id = m.record_id
             WHERE {' AND '.join(clauses)}""", params).fetchone()
     total_papers = connection.execute(
@@ -264,11 +273,11 @@ def _paper_where(area_id: str, direction_id: str, year: int | None, venue: str, 
         params.append(direction_id)
     if year is not None:
         clauses.append("EXISTS (SELECT 1 FROM entity_memberships ym JOIN paper_records yp ON yp.record_id = ym.record_id "
-                       "WHERE ym.entity_id = a.entity_id AND yp.year = ?)")
+                       "WHERE ym.entity_id = a.entity_id AND ym.is_canonical = 1 AND yp.year = ?)")
         params.append(year)
     if venue:
         clauses.append("EXISTS (SELECT 1 FROM entity_memberships vm JOIN paper_records vp ON vp.record_id = vm.record_id "
-                       "WHERE vm.entity_id = a.entity_id AND vp.venue = ?)")
+                       "WHERE vm.entity_id = a.entity_id AND vm.is_canonical = 1 AND vp.venue = ?)")
         params.append(venue)
     if search:
         clauses.append("(e.canonical_title LIKE ? OR p.authors LIKE ? OR p.abstract LIKE ?)")

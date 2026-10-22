@@ -5,6 +5,8 @@ from collections import defaultdict
 from typing import Any
 
 from backend.catalog import search as search_mod
+from backend.catalog.metrics import corpus_summary
+from backend.catalog.milestone import current_milestone
 
 
 def _dicts(rows: list[sqlite3.Row]) -> list[dict[str, Any]]:
@@ -43,6 +45,8 @@ def summary(connection: sqlite3.Connection) -> dict[str, Any]:
         **dict(counts),
         **dict(entity_counts),
         "issue_counts": {row["severity"]: row["count"] for row in issue_counts},
+        "corpus": corpus_summary(connection),
+        "local_milestone": current_milestone(connection),
     }
 
 
@@ -595,8 +599,15 @@ def papers(
             LIMIT ? OFFSET ?""",
         [*params, page_size, (page - 1) * page_size],
     ).fetchall()
+    from backend.catalog.publication import review
+    items = _dicts(rows)
+    for item in items:
+        item["publication_review"] = review(item["venue"], item["year"], item["paper_id"])
     return {
-        "items": _dicts(rows),
+        "items": items,
+        "count_unit": "source_records",
+        "includes_non_papers": True,
+        "match": search_mod.match_metadata(connection, search, fts_query),
         "total": total,
         "page": page,
         "page_size": page_size,

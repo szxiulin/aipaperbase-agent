@@ -20,15 +20,15 @@
   let taxonomyPromise = null;
   function taxonomy() {
     if (!taxonomyPromise) {
-      taxonomyPromise = Promise.all([cap("list_taxonomy", {}), cap("cooccurrence", { field_a: "area", field_b: "year", limit: 500 }), fetch("/api/venues").then((r) => r.json())])
-        .then(([tax, years, venues]) => {
+      taxonomyPromise = Promise.all([cap("list_taxonomy", {}), cap("cooccurrence", { field_a: "area", field_b: "year", limit: 500 }), fetch("/api/venues").then((r) => r.json()), fetch("/api/summary").then((r) => r.json())])
+        .then(([tax, years, venues, summary]) => {
           const areas = tax.data.areas.map((area) => ({ ...area, years: {} }));
           const byId = Object.fromEntries(areas.map((a) => [a.area_id, a]));
           const dirs = {};
           areas.forEach((area) => area.directions.forEach((d) => { dirs[d.direction_id] = { ...d, area_id: area.area_id }; }));
           years.data.items.forEach((row) => { if (byId[row.a]) byId[row.a].years[row.b] = row.count; });
           const total = areas.reduce((sum, a) => sum + a.entity_count, 0);
-          return { areas, byId, dirs, total, meta: tax.meta, venues: (venues.items || []).map((v) => v.venue) };
+          return { corpus: summary.corpus, areaCount: tax.data.areas.filter(a => !["other", "pending_classification"].includes(a.area_id)).length, areas, byId, dirs, total, meta: tax.meta, venues: (venues.items || []).map((v) => v.venue) };
         })
         .catch((error) => { taxonomyPromise = null; throw error; });
     }
@@ -74,8 +74,8 @@
     const lines = [
       ...extra,
       L("每篇论文只计一次：同一论文的预印本和正式发表已合并，按正式发表的会议与年份统计。", "Each paper counts once: preprints and published versions are merged and counted by the published venue and year."),
-      L("编委名单、目录、勘误等 251 条非论文记录不计入。", "251 non-paper records (committee lists, front matter, errata) are excluded."),
-      L(`领域与方向由大模型标注；在 399 篇抽样上做过复核，领域准确率约 ${acc}。复核由 AI 代理完成并以系统标签为参照，不是独立的人工评测。`, `Areas and directions are labeled by LLMs. A 399-paper sample was reviewed; area accuracy is about ${acc}. The review was done by an AI agent against the system labels, not by independent human annotators.`),
+      L("编委名单、目录、勘误等已标记的非论文记录不计入。", "Marked non-paper records (committee lists, front matter, errata) are excluded."),
+      L(`领域与方向由大模型标注。历史版本的 399 篇样本由 AI 代理复核，领域一致率约 ${acc}，以系统标签为参照；不是独立人工评测，也不代表本次新增领域标签的准确率。领域已分类的论文可能仍在等待方向分类。`, `Areas and directions are labeled by LLMs. An AI agent reviewed 399 papers in a historical release, with about ${acc} area agreement against the system labels. This is not independent human accuracy and does not evaluate the new area-only cohort. Papers may have an area while their direction is pending.`),
       L(`数据版本：${esc(meta?.areas_version || "")} / ${esc(meta?.directions_version || "")}。`, `Data version: ${esc(meta?.areas_version || "")} / ${esc(meta?.directions_version || "")}.`),
     ];
     return `<details class="data-note"><summary>ⓘ ${L("数据说明", "About this data")}</summary><ul>${lines.map((l) => `<li>${l}</li>`).join("")}</ul></details>`;
@@ -125,7 +125,7 @@
         more.innerHTML = `<p class="paper-authors">${esc(data.authors || L("作者未知", "Unknown authors"))}</p>
           ${data.abstract ? `<p>${esc(data.abstract)}</p>` : `<p class="muted">${L("没有找到可追溯的摘要。", "No traceable abstract.")}</p>`}
           <p class="paper-links">${link ? `<a href="${esc(link)}" target="_blank" rel="noreferrer">${L("打开原文", "Open paper")} ↗</a>` : ""}
-          ${data.labels ? `<span class="muted">${L("领域", "Area")}: ${esc(data.labels.area_name || "")}${data.labels.direction_name ? ` · ${L("方向", "Direction")}: ${esc(data.labels.direction_name)}` : ""}</span>` : ""}</p>`;
+          ${data.labels ? `<span class="muted">${L("领域", "Area")}: ${esc(data.labels.area_name || "")}${data.labels.direction_name ? ` · ${L("方向", "Direction")}: ${esc(data.labels.direction_name)}` : data.labels.area_id !== "pending_classification" ? ` · ${L("方向待分类", "Direction pending")}` : ""}</span>` : ""}</p>`;
       } catch (error) {
         more.innerHTML = `<p class="muted">${L("读取失败", "Failed to load")}: ${esc(error.message)}</p>`;
       }
@@ -176,10 +176,11 @@
     const other = tax.byId.other;
     body.innerHTML = `
       <div class="map-legend">
-        <span><b>${L("领域", "Area")}</b> ${L(`大类，共 ${areas.length} 个`, `broad field, ${areas.length} in total`)}</span>
+        <span><b>${L("领域", "Area")}</b> ${L(`${tax.areaCount} 个领域 + 待分类`, `${tax.areaCount} areas + pending classification`)}</span>
         <span><b>${L("方向", "Direction")}</b> ${L(`领域里的细分主题，共 ${fmt(Object.keys(tax.dirs).length)} 个`, `sub-topic within an area, ${fmt(Object.keys(tax.dirs).length)} in total`)}</span>
         <span class="legend-treemap">${L("方块面积 = 论文数 · 每个领域有固定颜色", "Tile area = paper count · each area keeps its own color")}</span>
       </div>
+      <p class="fine-print">${L(`去重研究论文 ${fmt(tax.corpus.research_paper_count)} 篇，排除非论文；领域已分类 ${fmt(tax.corpus.classified_count)} 篇，领域待分类 ${fmt(tax.corpus.pending_count)} 篇，领域覆盖率 ${tax.corpus.classification_coverage_rate}%。方向覆盖率 ${tax.corpus.direction_coverage_rate ?? "—"}%，另有 ${fmt(tax.corpus.pending_direction_count)} 篇已分领域、方向待分类。2026 年领域覆盖率 ${tax.corpus.by_year.find(y => y.year === 2026)?.coverage_rate ?? "—"}%。`, `${fmt(tax.corpus.research_paper_count)} deduplicated research papers, excluding non-paper records; ${fmt(tax.corpus.classified_count)} area-classified, ${fmt(tax.corpus.pending_count)} area-pending (${tax.corpus.classification_coverage_rate}% area coverage). Direction coverage: ${tax.corpus.direction_coverage_rate ?? "—"}%; ${fmt(tax.corpus.pending_direction_count)} area-classified papers await directions. 2026 area coverage: ${tax.corpus.by_year.find(y => y.year === 2026)?.coverage_rate ?? "—"}%.`)}</p>
       <div class="treemap" id="treemap" role="list"></div>
       <div class="area-list" role="list">${areas.map((a) => {
         const g = growth(a.years);
@@ -313,18 +314,19 @@
           ${spark(years[d.direction_id] || {})}
           <span class="growth ${growthClass(dg)}">${growthText(dg)}</span>
         </a>`;
-      }).join("")}</div>`;
+      }).join("")}${area.pending_direction_count ? `<a role="listitem" class="dir-row" href="#/map/${encodeURIComponent(areaId)}/pending"><span class="dir-name">${L("方向待分类", "Direction pending")}</span><span class="dir-bar"></span><span class="dir-count">${fmt(area.pending_direction_count)}</span><span></span><span></span></a>` : ""}</div>`;
     }).catch(showFailure($("#area-directions")));
     pagedPapers($("#area-papers"), filters, names).catch(showFailure($("#area-papers")));
   }
 
   async function renderDirection(body, areaId, directionId) {
     const tax = await taxonomy();
-    const dir = tax.dirs[directionId];
+    const pending = directionId === "pending";
+    const dir = pending ? { name_zh: "方向待分类", name_en: "Direction pending", area_id: areaId, entity_count: tax.byId[areaId]?.pending_direction_count || 0 } : tax.dirs[directionId];
     const area = tax.byId[areaId] || (dir && tax.byId[dir.area_id]);
     if (!dir || !area) { body.innerHTML = `<p class="muted">${L("没有这个方向。", "No such direction.")}</p>`; return; }
     const names = nameMap(tax);
-    setHeading(nm(dir), L(`${nm(area)} 领域下的方向 · ${fmt(dir.entity_count)} 篇论文`, `Direction in ${nm(area)} · ${fmt(dir.entity_count)} papers`));
+    setHeading(nm(dir), pending ? L(`${nm(area)} · ${fmt(dir.entity_count)} 篇已分领域、方向待分类的论文`, `${nm(area)} · ${fmt(dir.entity_count)} area-classified papers awaiting directions`) : L(`${nm(area)} 领域下的方向 · ${fmt(dir.entity_count)} 篇论文`, `Direction in ${nm(area)} · ${fmt(dir.entity_count)} papers`));
     body.style.setProperty("--area", areaColor(tax, area));
     crumbs([{ label: L("全部领域", "All areas"), href: "#/map" }, { label: nm(area), href: `#/map/${encodeURIComponent(area.area_id)}` }, { label: nm(dir) }]);
     const siblings = area.directions.filter((d) => d.direction_id !== directionId).sort((a, b) => b.entity_count - a.entity_count).slice(0, 8);
@@ -339,7 +341,7 @@
       </article>
       ${siblings.length ? `<div class="sibling-chips"><span class="muted">${L("同领域的其他方向：", "Other directions in this area:")}</span>${siblings.map((d) => `<a class="chip" href="#/map/${encodeURIComponent(area.area_id)}/${encodeURIComponent(d.direction_id)}">${esc(nm(d))} <b>${fmt(d.entity_count)}</b></a>`).join("")}</div>` : ""}
       ${dataNote(tax.meta)}`;
-    const filters = { direction_ids: [directionId] };
+    const filters = pending ? { area_ids: [area.area_id], pending_direction: true } : { direction_ids: [directionId] };
     cap("trend", { filters }).then(({ data }) => {
       const years = Object.fromEntries((data.items || []).map((x) => [x.key, x.count]));
       const g = growth(years);

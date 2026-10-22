@@ -9,7 +9,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import parse_qs, unquote, urlparse
 
-from backend.catalog import queries
+from backend.catalog import queries, identity
 from backend.analytics import queries as analytics_queries
 from backend.analytics import areas as area_queries
 from backend.capabilities import REGISTRY as CAPABILITIES
@@ -91,7 +91,44 @@ class Handler(BaseHTTPRequestHandler):
         except Exception:
             self.send_error_json(HTTPStatus.INTERNAL_SERVER_ERROR, "操作失败，未完成写入，请重试")
 
+    def _request_allowed(self, *, write: bool = False) -> bool:
+        """Validate the local authority before dispatching any request."""
+        hosts = self.headers.get_all("Host", [])
+        host = hosts[0] if len(hosts) == 1 else ""
+        try:
+            authority = urlparse("http://" + host)
+            allowed = {"localhost", "127.0.0.1", "::1"}
+            bound_host, bound_port = self.server.server_address[:2]
+            if bound_host not in ("0.0.0.0", "::", ""):
+                allowed.add(bound_host.lower())
+            valid_host = (
+                bool(host) and not any(c.isspace() for c in host)
+                and authority.hostname in allowed
+                and (authority.port if authority.port is not None else 80) == bound_port
+                and not authority.username and not authority.password
+                and not authority.path and not authority.query and not authority.fragment
+            )
+        except ValueError:
+            valid_host = False
+        if not valid_host:
+            self.send_error_json(HTTPStatus.FORBIDDEN, "请求地址不受信任")
+            return False
+        if write:
+            if any(len(self.headers.get_all(name, [])) > 1 for name in ("Origin", "Sec-Fetch-Site", "Content-Type", "Content-Length")) or self.headers.get("Transfer-Encoding"):
+                self.send_error_json(HTTPStatus.BAD_REQUEST, "请求头格式不受支持")
+                return False
+            if not self._same_origin():
+                self.send_error_json(HTTPStatus.FORBIDDEN, "不允许跨站写入请求")
+                return False
+            bodyless_delete = self.command == "DELETE" and self.headers.get("Content-Length", "0") == "0"
+            if not bodyless_delete and self.headers.get_content_type() != "application/json":
+                self.send_error_json(HTTPStatus.UNSUPPORTED_MEDIA_TYPE, "请求必须使用 application/json")
+                return False
+        return True
+
     def do_GET(self) -> None:  # noqa: N802
+        if not self._request_allowed(write=False):
+            return
         parsed = urlparse(self.path)
         if parsed.path.startswith("/api/"):
             self.handle_api(parsed.path, parse_qs(parsed.query))
@@ -99,6 +136,8 @@ class Handler(BaseHTTPRequestHandler):
             self.handle_static(parsed.path)
 
     def do_POST(self) -> None:  # noqa: N802
+        if not self._request_allowed(write=True):
+            return
         parsed = urlparse(self.path)
         if parsed.path.startswith("/api/research"):
             from backend.research.api import handle
@@ -130,6 +169,9 @@ class Handler(BaseHTTPRequestHandler):
             return
         parts = [part for part in parsed.path.split("/") if part]
         if len(parts) == 4 and parts[0] == "api" and parts[1] == "chats":
+            if parts[3] == "restore":
+                self._handle_restore_chat(parts[2])
+                return
             if parts[3] == "ask":
                 self._handle_chat_ask(parts[2])
                 return
@@ -161,6 +203,8 @@ class Handler(BaseHTTPRequestHandler):
         self._handle_collection_method("POST")
 
     def do_PATCH(self) -> None:  # noqa: N802
+        if not self._request_allowed(write=True):
+            return
         parsed = urlparse(self.path)
         parts = [part for part in parsed.path.split("/") if part]
         if len(parts) == 3 and parts[0] == "api" and parts[1] == "chats":
@@ -169,6 +213,8 @@ class Handler(BaseHTTPRequestHandler):
         self._handle_collection_method("PATCH")
 
     def do_DELETE(self) -> None:  # noqa: N802
+        if not self._request_allowed(write=True):
+            return
         parsed = urlparse(self.path)
         parts = [part for part in parsed.path.split("/") if part]
         if len(parts) == 3 and parts[0] == "api" and parts[1] == "chats":
@@ -274,6 +320,9 @@ class Handler(BaseHTTPRequestHandler):
                 elif path == "/api/summary":
                     payload = queries.summary(connection)
                     payload["label"] = area_queries.label_summary(connection)
+                elif path == "/api/coverage":
+                    from backend.catalog.coverage import coverage_report
+                    payload = coverage_report(connection)
                 elif path == "/api/venues":
                     payload = {"items": queries.venues(connection)}
                 elif path == "/api/years":
@@ -497,7 +546,7 @@ class Handler(BaseHTTPRequestHandler):
 
     def _handle_list_chats(self, params: dict[str, list[str]]) -> None:
         status = self.param(params, "status")
-        if status not in (None, "", "active", "archived"):
+        if status not in (None, "", "active", "archived", "deleted"):
             self.send_error_json(HTTPStatus.BAD_REQUEST, f"未知会话状态: {status}")
             return
         if not self.chats_path.exists():
@@ -505,7 +554,7 @@ class Handler(BaseHTTPRequestHandler):
             return
         conn = self._open_chats_connection(read_only=True)
         try:
-            items = chats_store.list_conversations(conn, status or None)
+            items = chats_store.list_deleted_conversations(conn) if status == "deleted" else chats_store.list_conversations(conn, status or None)
         finally:
             conn.close()
         self.send_json({"items": items, "total": len(items)})
@@ -557,6 +606,17 @@ class Handler(BaseHTTPRequestHandler):
             return
         self.send_json(conversation)
 
+    def _handle_restore_chat(self, conversation_id: str) -> None:
+        conn = self._open_chats_connection()
+        try:
+            result = chats_store.restore_conversation(conn, conversation_id)
+        except KeyError:
+            self.send_error_json(HTTPStatus.NOT_FOUND, "Deleted conversation not found")
+            return
+        finally:
+            conn.close()
+        self.send_json(result)
+
     def _handle_delete_chat(self, conversation_id: str) -> None:
         conn = self._open_chats_connection()
         try:
@@ -567,7 +627,7 @@ class Handler(BaseHTTPRequestHandler):
             return
         finally:
             conn.close()
-        self.send_json({"deleted": conversation_id})
+        self.send_json({"deleted": conversation_id, "recoverable": True})
 
     def _handle_chat_messages(self, conversation_id: str) -> None:
         if not self.chats_path.exists():
@@ -1107,7 +1167,7 @@ class Handler(BaseHTTPRequestHandler):
         self.send_json({"task_id": task_id}, HTTPStatus.ACCEPTED)
 
     def _same_origin(self) -> bool:
-        """Reject cross-site writes: a page on another site must not change local settings."""
+        """Reject cross-site writes: a page on another site must not mutate local data."""
         site = self.headers.get("Sec-Fetch-Site")
         if site and site not in ("same-origin", "none"):
             return False
@@ -1296,6 +1356,12 @@ class Handler(BaseHTTPRequestHandler):
         payload["summary"]["ingested_count"] = ingested_count
 
     def _handle_view_markdown(self, entity_id: str) -> None:
+        if rag_store.DEFAULT_DATABASE.exists():
+            conn = rag_store.connect(read_only=True)
+            try:
+                entity_id = identity.storage_id(conn, "parsed_documents", entity_id)
+            finally:
+                conn.close()
         path = rag_store.parsed_path(entity_id)
         if not path.exists():
             legacy = rag_store.PARSED_ROOT / f"{entity_id}.md"
@@ -1312,6 +1378,7 @@ class Handler(BaseHTTPRequestHandler):
             return
         conn = download_store.connect(read_only=True)
         try:
+            entity_id = identity.storage_id(conn, "downloads", entity_id)
             row = conn.execute(
                 "SELECT file_path, status FROM downloads WHERE entity_id = ?", (entity_id,)
             ).fetchone()
@@ -1422,7 +1489,7 @@ class Handler(BaseHTTPRequestHandler):
 
         def job(update, is_cancelled):
             catalog_conn = connect(self.database_path, read_only=True)
-            parse_conn = rag_store.connect(read_only=True)
+            parse_conn = rag_store.connect()
             try:
                 return rag_service.ingest_parsed(
                     catalog_conn, parse_conn, entity_ids,

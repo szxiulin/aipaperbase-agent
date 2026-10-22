@@ -2,7 +2,7 @@
 
 > 中文版：[README.zh-CN.md](./README.zh-CN.md)
 
-A local research assistant over about **120,000 papers from 30 top AI conferences and journals (2023–2026)**. Ask questions in plain language, explore the field as an area map, and search papers. Every answer shows the papers it is based on.
+A local research assistant over about **138,000 deduplicated research papers from 30 top AI conferences and journals (2023–2026)**. Ask questions in plain language, explore the field as an area map, and search papers. Every answer shows the papers it is based on.
 
 > **Status:** personal project, actively developed.
 
@@ -10,7 +10,7 @@ A local research assistant over about **120,000 papers from 30 top AI conference
 
 ## What you can do
 
-- **Ask.** A chat agent searches the local library, counts papers and trends, looks up arXiv and OpenAlex, and can search the web when you switch it on. You watch each step live, the answer streams in with numbered citations, and every source is listed. Conversations stay on your machine: rename, archive, delete, restore earlier versions.
+- **Ask.** A chat agent searches the local library, counts papers and trends, looks up arXiv and OpenAlex, and can search the web when you switch it on. You watch each step live, the answer streams in with numbered citations, and every source is listed. Conversations stay on your machine: rename, archive, move to Deleted and restore, or restore earlier versions.
 - **Explore the area map.** 21 areas → 383 directions → papers. The map is a treemap sized by paper count; each area shows its 2023–2026 trend, top venues and newest papers.
 - **Search papers.** Keyword, area, venue and year filters; save papers into your own collections. Optionally download PDFs, parse them and ask questions over the full text.
 - **Use it from your own agent.** The same search and statistics are exposed as an MCP server (11 tools) for Claude Code, Codex, Cursor and others.
@@ -66,10 +66,12 @@ Install and start AIPaperbase Agent for me: https://github.com/szxiulin/aipaperb
 
 ## The data
 
-- **Coverage:** 20 conferences and 10 journals, 2023–2026; 122,571 list records merged into **121,742 papers** (a preprint and its published version count once). 251 non-paper records (committee lists, front matter, errata) are excluded from statistics. 8,316 papers have no abstract. 2026 is still being collected.
-- **Areas:** each paper has one of 21 areas, labeled by LLMs from its title and abstract (`data/labels/areas-v1.5.csv`; about 82% labeled with Codex/GPT, the rest with DeepSeek).
+- **Version and scope:** `local-20261022-M1`; publication audit cutoff 2026-10-21, classification updated 2026-10-22. Mainly 20 conferences and 10 journals, 2023–2026. 138,755 source records form 137,831 entities, or **137,547 deduplicated research papers** after excluding 284 non-paper entities. Canonical records lack 2,909 abstracts and 966 author lists; unknown fields remain empty.
+- **Completeness:** of 120 venue-year combinations, 50 specified formal inventories are reconciled, 62 remain incomplete and 8 are not applicable. This does not establish complete publisher coverage. The 2026 collection is ongoing. Annals of Statistics contributes only 5 conference-linked journal presentations, not the whole journal.
+- **Areas:** 135,122 papers have area labels (98.24%); 2,425 remain pending. The taxonomy uses 21 areas plus Other (`data/labels/areas-v1.5.csv`). The new 13,662 assignments were model-reviewed against titles, abstracts and locatable evidence; uncertain cases remain pending.
+- **Direction coverage:** 121,460 papers have directions (88.3%); 13,662 have an area but await a direction, accessible from each area's page.
 - **Directions:** 383 sub-topics found by clustering the papers' research tasks inside each area (`data/labels/directions-v1.1.csv`). Names were drafted by an LLM; 25 have been confirmed by hand.
-- **Quality:** a stratified sample of 399 papers was reviewed by an AI agent with the system labels as reference: area accuracy 97.0% (95% CI 94.8–98.3%). This is not an independent human evaluation; treat it as an estimate.
+- **Quality:** a stratified sample of 399 papers was reviewed by an AI agent with the system labels as reference: area accuracy 97.0% (95% CI 94.8–98.3%). This is an AI-agent review estimate, not human gold; it does not evaluate the new increment.
 - **Sources:** public paper lists of each venue plus open metadata from Hugging Face ai-conferences, OpenAlex, ACL Anthology, OpenReview and Crossref. No PDFs are distributed. Check each source's terms before redistributing derived data.
 
 ## Use it from your agent (MCP)
@@ -116,7 +118,7 @@ docker run -d -p 6333:6333 qdrant/qdrant
 ## Known limits
 
 - Library search matches keywords in titles and abstracts (in English). A synonym the paper does not use can be missed; the agent searches several phrasings to compensate.
-- Area and direction labels come from LLMs; some papers are misfiled, and about 30 correction notices are still counted.
+- Area and direction labels come from LLMs; some papers are misfiled, and there is no independent human gold evaluation of the new assignments, and review agreement is not accuracy.
 - Answers depend on the model you choose. Check important claims against the cited papers.
 
 ## License

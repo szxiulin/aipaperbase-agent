@@ -1,0 +1,535 @@
+{
+  "checked_at": "2026-10-21T07:17:19.326Z",
+  "requested": 20,
+  "verified": 16,
+  "unverified": 4,
+  "abstracts_filled": 16,
+  "authors_corrected": 0,
+  "entries": [
+    {
+      "venue": "TIP",
+      "year": 2026,
+      "paper_id": "10.1109/tip.2026.3743079",
+      "status": "verified_early_access",
+      "publication_status": "early_access",
+      "publication_date": "2026-10-19",
+      "date_precision": "day",
+      "title": "SAR2Struct: Extracting 3D Semantic Structural Representation of Aircraft Targets from Single-View SAR Image",
+      "authors": [
+        "Ziyu Yue",
+        "Ruixi You",
+        "Feng Xu"
+      ],
+      "source_url": "https://ieeexplore.ieee.org/document/11740852",
+      "checked_at": "2026-10-21T07:17:19.326Z",
+      "basis": "IEEE official page: DOI, title, authors, journal, full abstract, Early Access and Date of Publication checked; no PDF downloaded",
+      "authors_changed": false,
+      "authors_verification": "header_matches_registered_list",
+      "registered_authors": [
+        "Ziyu Yue",
+        "Ruixi You",
+        "Feng Xu"
+      ]
+    },
+    {
+      "venue": "TIP",
+      "year": 2026,
+      "paper_id": "10.1109/tip.2026.3737046",
+      "status": "verified_early_access",
+      "publication_status": "early_access",
+      "publication_date": "2026-10-19",
+      "date_precision": "day",
+      "title": "Crowded Video Individual Counting Informed by Social Grouping and Spatial-Temporal Displacement Priors",
+      "authors": [
+        "Hao Lu",
+        "Xuhui Zhu",
+        "Wenjing Zhang",
+        "Yanan Li",
+        "Xiang Bai"
+      ],
+      "source_url": "https://ieeexplore.ieee.org/document/11739646",
+      "checked_at": "2026-10-21T07:17:19.326Z",
+      "basis": "IEEE official page: DOI, title, authors, journal, full abstract, Early Access and Date of Publication checked; no PDF downloaded",
+      "authors_changed": false,
+      "authors_verification": "header_matches_registered_list",
+      "registered_authors": [
+        "Hao Lu",
+        "Xuhui Zhu",
+        "Wenjing Zhang",
+        "Yanan Li",
+        "Xiang Bai"
+      ]
+    },
+    {
+      "venue": "TIP",
+      "year": 2026,
+      "paper_id": "10.1109/tip.2026.3742663",
+      "status": "verified_early_access",
+      "publication_status": "early_access",
+      "publication_date": "2026-10-19",
+      "date_precision": "day",
+      "title": "Recurrent Prompting With MambaFormer for Domain Generalized Few-Shot Hyperspectral Image Classification",
+      "authors": [
+        "Bobo Xi",
+        "Yun Zhang",
+        "Jiaojiao Li",
+        "Yunsong Li",
+        "Zan Li",
+        "Jocelyn Chanussot"
+      ],
+      "source_url": "https://ieeexplore.ieee.org/document/11739622",
+      "checked_at": "2026-10-21T07:17:19.326Z",
+      "basis": "IEEE official page: DOI, title, authors, journal, full abstract, Early Access and Date of Publication checked; no PDF downloaded",
+      "authors_changed": false,
+      "authors_verification": "header_matches_registered_list",
+      "registered_authors": [
+        "Bobo Xi",
+        "Yun Zhang",
+        "Jiaojiao Li",
+        "Yunsong Li",
+        "Zan Li",
+        "Jocelyn Chanussot"
+      ]
+    },
+    {
+      "venue": "TIP",
+      "year": 2026,
+      "paper_id": "10.1109/tip.2026.3739612",
+      "status": "verified_early_access",
+      "publication_status": "early_access",
+      "publication_date": "2026-10-20",
+      "date_precision": "day",
+      "title": "Event-to-Video Controllable Generation and Evaluation",
+      "authors": [
+        "Yaping Zhao",
+        "Edmund Y. Lam"
+      ],
+      "source_url": "https://ieeexplore.ieee.org/document/11743333",
+      "checked_at": "2026-10-21T07:17:19.326Z",
+      "basis": "IEEE official page: DOI, title, authors, journal, full abstract, Early Access and Date of Publication checked; no PDF downloaded",
+      "authors_changed": false,
+      "authors_verification": "header_matches_registered_list",
+      "registered_authors": [
+        "Yaping Zhao",
+        "Edmund Y. Lam"
+      ]
+    },
+    {
+      "venue": "TIP",
+      "year": 2026,
+      "paper_id": "10.1109/tip.2026.3743754",
+      "status": "verified_early_access",
+      "publication_status": "early_access",
+      "publication_date": "2026-10-20",
+      "date_precision": "day",
+      "title": "TOPSAC for Fast and Accurate Geometric Estimation",
+      "authors": [
+        "Yifan Lu",
+        "Jiajun Le",
+        "Zizhuo Li",
+        "Hao Zhang",
+        "Jiayi Ma"
+      ],
+      "source_url": "https://ieeexplore.ieee.org/document/11743329",
+      "checked_at": "2026-10-21T07:17:19.326Z",
+      "basis": "IEEE official page: DOI, title, authors, journal, full abstract, Early Access and Date of Publication checked; no PDF downloaded",
+      "authors_changed": false,
+      "authors_verification": "header_matches_registered_list",
+      "registered_authors": [
+        "Yifan Lu",
+        "Jiajun Le",
+        "Zizhuo Li",
+        "Hao Zhang",
+        "Jiayi Ma"
+      ]
+    },
+    {
+      "venue": "TIP",
+      "year": 2026,
+      "paper_id": "10.1109/tip.2026.3743733",
+      "status": "verified_early_access",
+      "publication_status": "early_access",
+      "publication_date": "2026-10-20",
+      "date_precision": "day",
+      "title": "HVLCSR: Heuristic Visual Localization and Causal Semantic Reasoning for Multi-Label Remote Sensing Scene Classification",
+      "authors": [
+        "Ruiqi Du",
+        "Xu Tang",
+        "Jingjing Ma",
+        "Xiangrong Zhang"
+      ],
+      "source_url": "https://ieeexplore.ieee.org/document/11743327",
+      "checked_at": "2026-10-21T07:17:19.326Z",
+      "basis": "IEEE official page: DOI, title, authors, journal, full abstract, Early Access and Date of Publication checked; no PDF downloaded",
+      "authors_changed": false,
+      "authors_verification": "header_matches_registered_list",
+      "registered_authors": [
+        "Ruiqi Du",
+        "Xu Tang",
+        "Jingjing Ma",
+        "Xiangrong Zhang"
+      ]
+    },
+    {
+      "venue": "TIP",
+      "year": 2026,
+      "paper_id": "10.1109/tip.2026.3743775",
+      "status": "verified_early_access",
+      "publication_status": "early_access",
+      "publication_date": "2026-10-20",
+      "date_precision": "day",
+      "title": "Learning Flow-Guided Registration for RGB-Event Semantic Segmentation",
+      "authors": [
+        "Zhen Yao",
+        "Xiaowen Ying",
+        "Zhiyu Zhu",
+        "Mooi Choo Chuah"
+      ],
+      "source_url": "https://ieeexplore.ieee.org/document/11743326",
+      "checked_at": "2026-10-21T07:17:19.326Z",
+      "basis": "IEEE official page: DOI, title, authors, journal, full abstract, Early Access and Date of Publication checked; no PDF downloaded",
+      "authors_changed": false,
+      "authors_verification": "header_matches_registered_list",
+      "registered_authors": [
+        "Zhen Yao",
+        "Xiaowen Ying",
+        "Zhiyu Zhu",
+        "Mooi Choo Chuah"
+      ]
+    },
+    {
+      "venue": "TIP",
+      "year": 2026,
+      "paper_id": "10.1109/tip.2026.3743793",
+      "status": "verified_early_access",
+      "publication_status": "early_access",
+      "publication_date": "2026-10-20",
+      "date_precision": "day",
+      "title": "MTADUN: Multi-Stage Transmission Augmented Deep Unfolding Network for Task-Adaptable Image Restoration",
+      "authors": [
+        "Kai Han",
+        "Jin Wang",
+        "HanQin Cai",
+        "Yunhui Shi",
+        "Nam Ling",
+        "Qingming Huang"
+      ],
+      "source_url": "https://ieeexplore.ieee.org/document/11743328",
+      "checked_at": "2026-10-21T07:17:19.326Z",
+      "basis": "IEEE official page: DOI, title, authors, journal, full abstract, Early Access and Date of Publication checked; no PDF downloaded; header author list is truncated, preserve full registered authors",
+      "authors_changed": false,
+      "authors_verification": "header_prefix_only",
+      "registered_authors": [
+        "Kai Han",
+        "Jin Wang",
+        "HanQin Cai",
+        "Yunhui Shi",
+        "Nam Ling",
+        "Qingming Huang",
+        "Baocai Yin"
+      ]
+    },
+    {
+      "venue": "TIP",
+      "year": 2026,
+      "paper_id": "10.1109/tip.2026.3743794",
+      "status": "verified_early_access",
+      "publication_status": "early_access",
+      "publication_date": "2026-10-20",
+      "date_precision": "day",
+      "title": "RSReason: Remote Sensing Reasoning Segmentation via Rotation-aware Large Vision-Language Model",
+      "authors": [
+        "Changli Wu",
+        "Yonghan Zheng",
+        "Jiayi Ji",
+        "Xiaoshuai Sun",
+        "Tat-Seng Chua",
+        "Liujuan Cao"
+      ],
+      "source_url": "https://ieeexplore.ieee.org/document/11743338",
+      "checked_at": "2026-10-21T07:17:19.326Z",
+      "basis": "IEEE official page: DOI, title, authors, journal, full abstract, Early Access and Date of Publication checked; no PDF downloaded",
+      "authors_changed": false,
+      "authors_verification": "header_matches_registered_list",
+      "registered_authors": [
+        "Changli Wu",
+        "Yonghan Zheng",
+        "Jiayi Ji",
+        "Xiaoshuai Sun",
+        "Tat-Seng Chua",
+        "Liujuan Cao"
+      ]
+    },
+    {
+      "venue": "TIP",
+      "year": 2026,
+      "paper_id": "10.1109/tip.2026.3743796",
+      "status": "verified_early_access",
+      "publication_status": "early_access",
+      "publication_date": "2026-10-20",
+      "date_precision": "day",
+      "title": "Collaborative Boundary Enhancement with Difficulty Awareness for Semi-Supervised Medical Image Segmentation",
+      "authors": [
+        "Qiuchi He",
+        "Tao Zhou",
+        "Tianyang Xu",
+        "Rui Wang",
+        "Xiao-Jun Wu"
+      ],
+      "source_url": "https://ieeexplore.ieee.org/document/11743331",
+      "checked_at": "2026-10-21T07:17:19.326Z",
+      "basis": "IEEE official page: DOI, title, authors, journal, full abstract, Early Access and Date of Publication checked; no PDF downloaded",
+      "authors_changed": false,
+      "authors_verification": "header_matches_registered_list",
+      "registered_authors": [
+        "Qiuchi He",
+        "Tao Zhou",
+        "Tianyang Xu",
+        "Rui Wang",
+        "Xiao-Jun Wu"
+      ]
+    },
+    {
+      "venue": "TKDE",
+      "year": 2026,
+      "paper_id": "10.1109/tkde.2026.3745591",
+      "status": "verified_early_access",
+      "publication_status": "early_access",
+      "publication_date": "2026-10-20",
+      "date_precision": "day",
+      "title": "Thinking Fast and Slow: A Dual-System Framework for Multimodal Fake News Detection Via Dynamic Scheduling",
+      "authors": [
+        "Xuejian Huang",
+        "Tinghuai Ma",
+        "Hao Tang",
+        "Yuming Su",
+        "Huan Rong",
+        "Huayang Li"
+      ],
+      "source_url": "https://ieeexplore.ieee.org/document/11743115",
+      "checked_at": "2026-10-21T07:17:19.326Z",
+      "basis": "IEEE official page: DOI, title, authors, journal, full abstract, Early Access and Date of Publication checked; no PDF downloaded; header author list is truncated, preserve full registered authors",
+      "authors_changed": false,
+      "authors_verification": "header_prefix_only",
+      "registered_authors": [
+        "Xuejian Huang",
+        "Tinghuai Ma",
+        "Hao Tang",
+        "Yuming Su",
+        "Huan Rong",
+        "Huayang Li",
+        "Dexi Liu"
+      ]
+    },
+    {
+      "venue": "TPAMI",
+      "year": 2026,
+      "paper_id": "10.1109/tpami.2026.3745142",
+      "status": "verified_early_access",
+      "publication_status": "early_access",
+      "publication_date": "2026-10-19",
+      "date_precision": "day",
+      "title": "Referring Multi-Object Tracking with Diverse Dynamic Expressions",
+      "authors": [
+        "Yani Zhang",
+        "Dongming Wu",
+        "Wencheng Han",
+        "Xingping Dong",
+        "Shengcai Liao",
+        "Bo Du"
+      ],
+      "source_url": "https://ieeexplore.ieee.org/document/11741324",
+      "checked_at": "2026-10-21T07:17:19.326Z",
+      "basis": "IEEE official page: DOI, title, authors, journal, full abstract, Early Access and Date of Publication checked; no PDF downloaded",
+      "authors_changed": false,
+      "authors_verification": "header_matches_registered_list",
+      "registered_authors": [
+        "Yani Zhang",
+        "Dongming Wu",
+        "Wencheng Han",
+        "Xingping Dong",
+        "Shengcai Liao",
+        "Bo Du"
+      ]
+    },
+    {
+      "venue": "TPAMI",
+      "year": 2026,
+      "paper_id": "10.1109/tpami.2026.3744888",
+      "status": "verified_early_access",
+      "publication_status": "early_access",
+      "publication_date": "2026-10-19",
+      "date_precision": "day",
+      "title": "Inter- and Intra-Domain Priors Guided Mosaic-Based Spectral Imaging",
+      "authors": [
+        "Jinyang Liu",
+        "Fangjin Lei",
+        "Heng Yang",
+        "Shutao Li",
+        "Renwei Dian",
+        "Nan Wang"
+      ],
+      "source_url": "https://ieeexplore.ieee.org/document/11740807",
+      "checked_at": "2026-10-21T07:17:19.326Z",
+      "basis": "IEEE official page: DOI, title, authors, journal, full abstract, Early Access and Date of Publication checked; no PDF downloaded",
+      "authors_changed": false,
+      "authors_verification": "header_matches_registered_list",
+      "registered_authors": [
+        "Jinyang Liu",
+        "Fangjin Lei",
+        "Heng Yang",
+        "Shutao Li",
+        "Renwei Dian",
+        "Nan Wang"
+      ]
+    },
+    {
+      "venue": "TPAMI",
+      "year": 2026,
+      "paper_id": "10.1109/tpami.2026.3744952",
+      "status": "verified_early_access",
+      "publication_status": "early_access",
+      "publication_date": "2026-10-19",
+      "date_precision": "day",
+      "title": "HOIAnimator++: Towards a Unified Semantic-Contact Paradigm for Human-Object Interaction Generation",
+      "authors": [
+        "Shuai Li",
+        "Jinghao Li",
+        "Xinyu Zhang",
+        "Wenfeng Song",
+        "Yang Gao",
+        "Aimin Hao"
+      ],
+      "source_url": "https://ieeexplore.ieee.org/document/11740810",
+      "checked_at": "2026-10-21T07:17:19.326Z",
+      "basis": "IEEE official page: DOI, title, authors, journal, full abstract, Early Access and Date of Publication checked; no PDF downloaded; header author list is truncated, preserve full registered authors",
+      "authors_changed": false,
+      "authors_verification": "header_prefix_only",
+      "registered_authors": [
+        "Shuai Li",
+        "Jinghao Li",
+        "Xinyu Zhang",
+        "Wenfeng Song",
+        "Yang Gao",
+        "Aimin Hao",
+        "Xia Hou",
+        "Chenglizhao Chen",
+        "Ning Li",
+        "Hong Qin"
+      ]
+    },
+    {
+      "venue": "TPAMI",
+      "year": 2026,
+      "paper_id": "10.1109/tpami.2026.3745073",
+      "status": "verified_early_access",
+      "publication_status": "early_access",
+      "publication_date": "2026-10-19",
+      "date_precision": "day",
+      "title": "Redefining 360° Video Navigation: A Novel Benchmark for Enhanced Immersive and Automated Exploration",
+      "authors": [
+        "Xinyu Liu",
+        "Mengke Song",
+        "Ziming Wang",
+        "Chenglizhao Chen",
+        "Aimin Hao",
+        "Shuai Li"
+      ],
+      "source_url": "https://ieeexplore.ieee.org/document/11741318",
+      "checked_at": "2026-10-21T07:17:19.326Z",
+      "basis": "IEEE official page: DOI, title, authors, journal, full abstract, Early Access and Date of Publication checked; no PDF downloaded; header author list is truncated, preserve full registered authors",
+      "authors_changed": false,
+      "authors_verification": "header_prefix_only",
+      "registered_authors": [
+        "Xinyu Liu",
+        "Mengke Song",
+        "Ziming Wang",
+        "Chenglizhao Chen",
+        "Aimin Hao",
+        "Shuai Li",
+        "Hong Qin"
+      ]
+    },
+    {
+      "venue": "TPAMI",
+      "year": 2026,
+      "paper_id": "10.1109/tpami.2026.3744834",
+      "status": "verified_early_access",
+      "publication_status": "early_access",
+      "publication_date": "2026-10-19",
+      "date_precision": "day",
+      "title": "Rectifying GAN Gradient Supervision Via Score Functions",
+      "authors": [
+        "Mengfei Xia",
+        "Ran Yi",
+        "Nan Xue",
+        "Yujun Shen",
+        "Kairui Wen",
+        "Wenping Wang"
+      ],
+      "source_url": "https://ieeexplore.ieee.org/document/11740811",
+      "checked_at": "2026-10-21T07:17:19.326Z",
+      "basis": "IEEE official page: DOI, title, authors, journal, full abstract, Early Access and Date of Publication checked; no PDF downloaded; header author list is truncated, preserve full registered authors",
+      "authors_changed": false,
+      "authors_verification": "header_prefix_only",
+      "registered_authors": [
+        "Mengfei Xia",
+        "Ran Yi",
+        "Nan Xue",
+        "Yujun Shen",
+        "Kairui Wen",
+        "Wenping Wang",
+        "Yong-Jin Liu"
+      ]
+    },
+    {
+      "venue": "TPAMI",
+      "year": 2026,
+      "paper_id": "10.1109/tpami.2026.3744812",
+      "status": "official_page_unavailable",
+      "publication_status": "",
+      "publication_date": "",
+      "date_precision": "",
+      "source_url": "https://ieeexplore.ieee.org/document/11740777",
+      "checked_at": "2026-10-21T07:17:19.326Z",
+      "basis": "Chrome ERR_BLOCKED_BY_CLIENT; existing registered metadata preserved; abstract and exact date remain blank"
+    },
+    {
+      "venue": "TPAMI",
+      "year": 2026,
+      "paper_id": "10.1109/tpami.2026.3745357",
+      "status": "official_page_unavailable",
+      "publication_status": "",
+      "publication_date": "",
+      "date_precision": "",
+      "source_url": "https://ieeexplore.ieee.org/document/11743112",
+      "checked_at": "2026-10-21T07:17:19.326Z",
+      "basis": "Chrome ERR_BLOCKED_BY_CLIENT; existing registered metadata preserved; abstract and exact date remain blank"
+    },
+    {
+      "venue": "TVCG",
+      "year": 2026,
+      "paper_id": "10.1109/tvcg.2026.3744785",
+      "status": "official_page_unavailable",
+      "publication_status": "",
+      "publication_date": "",
+      "date_precision": "",
+      "source_url": "https://ieeexplore.ieee.org/document/11740815",
+      "checked_at": "2026-10-21T07:17:19.326Z",
+      "basis": "Chrome ERR_BLOCKED_BY_CLIENT; existing registered metadata preserved; abstract and exact date remain blank"
+    },
+    {
+      "venue": "TVCG",
+      "year": 2026,
+      "paper_id": "10.1109/tvcg.2026.3745621",
+      "status": "official_page_unavailable",
+      "publication_status": "",
+      "publication_date": "",
+      "date_precision": "",
+      "source_url": "https://ieeexplore.ieee.org/document/11743106",
+      "checked_at": "2026-10-21T07:17:19.326Z",
+      "basis": "Chrome ERR_BLOCKED_BY_CLIENT; existing registered metadata preserved; abstract and exact date remain blank"
+    }
+  ],
+  "authors_header_truncated": 5
+}

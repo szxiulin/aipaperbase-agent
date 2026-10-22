@@ -1,4 +1,5 @@
 from __future__ import annotations
+from backend.catalog import identity
 
 """Full-text tools: search_evidence (full-text evidence retrieval), get_evidence (deep dive into one paper), list_collections (collections).
 
@@ -10,13 +11,13 @@ from backend.agent.tools.base import ToolDef, ToolResult
 
 
 def _resolve_entity_ids(ctx: dict, entity_ids: list[str] | None, collection_id: str | None) -> list[str]:
-    ids = list(dict.fromkeys(entity_ids or []))
+    ids = list(dict.fromkeys(identity.canonical(eid) for eid in entity_ids or []))
     if collection_id:
         conn = ctx.get("collections_conn")
-        members = [r["entity_id"] for r in conn.execute("SELECT entity_id FROM collection_members WHERE collection_id=?", (collection_id,))] if conn is not None else []
+        members = [identity.canonical(r["entity_id"]) for r in conn.execute("SELECT entity_id FROM collection_members WHERE collection_id=?", (collection_id,))] if conn is not None else []
         ids = [eid for eid in ids if eid in members] if entity_ids is not None else members
     if ctx.get("allowed_entity_ids") is not None:
-        allowed = ctx["allowed_entity_ids"]
+        allowed = [identity.canonical(eid) for eid in ctx["allowed_entity_ids"]]
         ids = [eid for eid in ids if eid in allowed] if entity_ids is not None or collection_id else list(allowed)
     return list(dict.fromkeys(ids))
 
@@ -50,7 +51,7 @@ def _search_evidence(ctx: dict, query: str, entity_ids: list[str] | None = None,
         return ToolResult(ok=False, data={"error": f"全文库暂不可用：{exc}"}, summary="全文库暂不可用")
     filters = None
     if scope_requested:
-        filters = {"document_id": resolved}
+        filters = {"document_id": identity.expand(resolved)}
     try:
         hits = pipeline.retriever.retrieve_scored(query, top_k, filters)
     except Exception as exc:
@@ -67,7 +68,7 @@ def _search_evidence(ctx: dict, query: str, entity_ids: list[str] | None = None,
         metadata = chunk.metadata
         compact.append({
             "chunk_id": chunk.id,
-            "entity_id": metadata.get("entity_id", chunk.document_id),
+            "entity_id": identity.canonical(metadata.get("entity_id", chunk.document_id)),
             "title": metadata.get("title", ""),
             "section": metadata.get("section", ""),
             "text": chunk.text[:400],
@@ -75,7 +76,7 @@ def _search_evidence(ctx: dict, query: str, entity_ids: list[str] | None = None,
         })
         provenance.append({
             "chunk_id": chunk.id,
-            "entity_id": metadata.get("entity_id", chunk.document_id),
+            "entity_id": identity.canonical(metadata.get("entity_id", chunk.document_id)),
             "title": metadata.get("title", ""),
             "section": metadata.get("section", ""),
             "text": chunk.text[:600],
@@ -92,14 +93,15 @@ def _search_evidence(ctx: dict, query: str, entity_ids: list[str] | None = None,
 
 def _get_evidence(ctx: dict, entity_id: str) -> ToolResult:
     """Section structure map: list all ingested sections of this paper + the first snippet of each section (to survey the structure before deep diving)."""
-    if ctx.get("allowed_entity_ids") is not None and entity_id not in ctx["allowed_entity_ids"]:
+    entity_id = identity.canonical(entity_id)
+    if ctx.get("allowed_entity_ids") is not None and entity_id not in [identity.canonical(eid) for eid in ctx["allowed_entity_ids"]]:
         return ToolResult(False, {"error":"该论文不在当前研究范围内"})
     try:
         pipeline = _ensure_pipeline(ctx)
     except Exception as exc:
         return ToolResult(ok=False, data={"error": f"全文库暂不可用：{exc}", "hint": "请先启动 Qdrant"}, summary="全文库暂不可用")
     try:
-        chunks = pipeline.store.list_by_document(entity_id)
+        chunks = [chunk for eid in identity.variants(entity_id) for chunk in pipeline.store.list_by_document(eid)]
     except Exception as exc:
         return ToolResult(ok=False, data={"error": f"章节读取失败：{exc}"}, summary="章节读取失败")
     if not chunks:

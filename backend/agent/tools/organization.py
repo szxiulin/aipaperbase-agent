@@ -6,6 +6,7 @@ import re
 from backend.agent.tools.base import ToolDef, ToolResult
 from backend.collections import organization
 from backend.library import local_status
+from backend.catalog import identity
 
 
 def _check_scope(ctx, allow_all):
@@ -32,8 +33,9 @@ def _list(ctx: dict) -> ToolResult:
 def _propose(ctx: dict, collection_ids: list[str], entity_ids: list[str] | None = None,
              allow_all: bool = False, rules: dict | None = None, decisions: list[dict] | None = None) -> ToolResult:
     _check_scope(ctx, allow_all)
+    entity_ids = [identity.canonical(eid) for eid in entity_ids] if entity_ids is not None else None
     if ctx.get("allowed_entity_ids") is not None:
-        allowed = ctx["allowed_entity_ids"]
+        allowed = [identity.canonical(eid) for eid in ctx["allowed_entity_ids"]]
         if entity_ids is not None and set(entity_ids)-set(allowed): raise ValueError("论文超出当前研究范围")
         entity_ids = entity_ids if entity_ids is not None else allowed
         allow_all = False
@@ -51,11 +53,11 @@ def _propose(ctx: dict, collection_ids: list[str], entity_ids: list[str] | None 
     # fabricated citations from becoming an automatic inclusion rationale.
     verified: dict[str, list[dict]] = {}
     store = getattr(ctx.get("pipeline"), "store", None)
-    for decision in decisions or []:
+    for decision in identity.references(decisions or []):
         entity_id = str(decision.get("entity_id", ""))
         if not entity_id:
             continue
-        known = {chunk.id: chunk for chunk in store.list_by_document(entity_id)} if store is not None else {}
+        known = {chunk.id: chunk for variant in identity.variants(entity_id) for chunk in store.list_by_document(variant)} if store is not None else {}
         evidence = [{"entity_id": entity_id, "chunk_id": item["chunk_id"],
                      "text_preview": known[item["chunk_id"]].text[:500]}
                     for item in decision.get("evidence", [])
@@ -71,8 +73,9 @@ def _propose(ctx: dict, collection_ids: list[str], entity_ids: list[str] | None 
 
 def _assign(ctx, collection_ids=None, entity_ids=None, allow_all=False, target_name=""):
     _check_scope(ctx, allow_all)
+    entity_ids = [identity.canonical(eid) for eid in entity_ids] if entity_ids is not None else None
     if ctx.get("allowed_entity_ids") is not None:
-        allowed = ctx["allowed_entity_ids"]
+        allowed = [identity.canonical(eid) for eid in ctx["allowed_entity_ids"]]
         if entity_ids is not None and set(entity_ids)-set(allowed): raise ValueError("论文超出当前研究范围")
         entity_ids = entity_ids if entity_ids is not None else allowed
         allow_all = False

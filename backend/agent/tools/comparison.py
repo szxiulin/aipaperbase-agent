@@ -1,17 +1,20 @@
 """Propose a comparison artifact; never mark model output as user reviewed."""
 from backend.agent.tools.base import ToolDef, ToolResult
 from backend.research import store
+from backend.catalog import identity
 
 
 def propose(ctx, title, fields, rows):
     allowed=ctx.get('allowed_entity_ids')
+    allowed=[identity.canonical(eid) for eid in allowed] if allowed is not None else None
+    rows=identity.references(rows)
     if allowed is None or not allowed:raise ValueError('请从我的论文选择明确范围后开启研究对话')
     if not isinstance(fields,list) or not 1<=len(fields)<=8 or any(not isinstance(f,str) or not f for f in fields):raise ValueError('请给出 1 至 8 个比较字段')
     if not isinstance(rows,list) or not rows or {r.get('entity_id') for r in rows}-set(allowed):raise ValueError('比较内容超出研究范围')
     pipeline=ctx.get('pipeline');checked=[]
     for row in rows:
         eid=row['entity_id']
-        chunks={c.id:c for c in pipeline.store.list_by_document(eid)} if pipeline else {}
+        chunks={c.id:c for variant in identity.variants(eid) for c in pipeline.store.list_by_document(variant)} if pipeline else {}
         cells={}
         for f in fields:
             cell=row.get('cells',{}).get(f,{})

@@ -155,3 +155,15 @@ class WorkflowHTTPTest(unittest.TestCase):
         self.assertEqual(self.request('/api/research/save',draft)[0],201)
         saved=next(r for r in self.request('/api/research')[1]['items'] if r['record_id']==draft['record_id'])
         self.assertEqual(saved['data']['rows'][0]['cells']['方法']['value'],'User reviewed method')
+
+    def test_chat_recoverable_delete_http(self):
+        _,chat=self.request('/api/chats',{'title':'recoverable fixture'});cid=chat['conversation_id']
+        conn=http.client.HTTPConnection('127.0.0.1',self.server.server_port)
+        conn.request('DELETE',f'/api/chats/{cid}');response=conn.getresponse()
+        self.assertEqual(response.status,200);self.assertTrue(json.loads(response.read())['recoverable']);conn.close()
+        self.assertEqual(self.request(f'/api/chats/{cid}/messages')[0],404)
+        self.assertEqual(self.request('/api/chats?status=deleted')[1]['items'][0]['conversation_id'],cid)
+        self.assertEqual(self.request(f'/api/chats/{cid}/restore',{})[0],200)
+        self.assertEqual(self.request(f'/api/chats/{cid}/messages')[0],200)
+        self.assertEqual(self.request('/api/chats?status=deleted')[1]['items'],[])
+        self.assertEqual(self.request(f'/api/chats/{cid}/restore',{})[0],404)

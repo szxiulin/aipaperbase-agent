@@ -1,1 +1,37 @@
-[]
+[
+  {
+    "venue": "COLM",
+    "year": 2026,
+    "issue": "96 changed-title candidates lack a verifiable link to the stored provisional identity; quarantined, not added."
+  },
+  {
+    "venue": "NeurIPS",
+    "year": 2026,
+    "issue": "16 download entries have no paper-level URL; retained in source snapshot only."
+  },
+  {
+    "venue": "EMNLP",
+    "year": 2026,
+    "issue": "No validated complete paper list: Anthology XML unavailable; linked program sheet does not supply a reliable title/author mapping."
+  },
+  {
+    "venue": "ACM MM",
+    "year": 2026,
+    "issue": "No verified complete 2026 list collected; official landing page provides no paper list; DBLP returned a challenge page."
+  },
+  {
+    "venue": "SIGGRAPH Asia",
+    "year": 2026,
+    "issue": "Official page still announces further program details; conditional acceptance is not treated as a final published paper list."
+  },
+  {
+    "venue": "SIGIR / WWW",
+    "year": 2026,
+    "issue": "DBLP enumeration blocked by challenge page; existing records retained, incremental completeness unverified."
+  },
+  {
+    "venue": "TMLR / OpenReview",
+    "year": 2026,
+    "issue": "Public API challenge prevents abstract backfill; a forum page does not embed the abstract."
+  }
+]

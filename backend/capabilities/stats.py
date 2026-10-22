@@ -1,7 +1,7 @@
 """Statistical capabilities: count / share / trend / compare / top_values / cooccurrence.
 
 All counts are entity-level with one canonical year/venue per paper (paper_entities.canonical_record_id).
-The denominator excludes the 251 non-paper records unless stated otherwise.
+The denominator excludes non-paper entities unless stated otherwise.
 """
 from __future__ import annotations
 
@@ -9,6 +9,7 @@ import sqlite3
 from typing import Any
 
 from backend.capabilities.filters import BASE, group_expr, normalize_filters, where_clause
+from backend.catalog.metrics import coverage, LAST_COMPLETE_YEAR
 
 
 def _rows(connection: sqlite3.Connection, sql: str, params: list[Any]) -> list[dict]:
@@ -38,7 +39,9 @@ def count_papers(connection: sqlite3.Connection, args: dict) -> dict:
     filters = normalize_filters(args.get("filters"))
     group_by = args.get("group_by") or ""
     total = _total(connection, filters)
-    data = {"total": total, "filters": filters}
+    data = {"total": total, "filters": filters, "count_unit": "canonical_research_entities",
+            "classification_coverage": coverage(connection),
+            "coverage_scope": "whole corpus by year; not the filtered topic"}
     if group_by:
         data["group_by"] = group_by
         data["items"] = _group_counts(connection, filters, group_by)
@@ -57,27 +60,34 @@ def share(connection: sqlite3.Connection, args: dict) -> dict:
     if by == "year":
         items.sort(key=lambda r: r["key"] or 0)
     return {"by": by, "numerator_total": sum(r["count"] for r in numerator),
-            "denominator_total": sum(denominator.values()), "items": items}
+            "denominator_total": sum(denominator.values()), "items": items,
+            "classification_coverage": coverage(connection),
+            "coverage_scope": "whole corpus by year; not the filtered topic"}
 
 
 def trend(connection: sqlite3.Connection, args: dict) -> dict:
     filters = normalize_filters(args.get("filters"))
     rows = _group_counts(connection, filters, "year")
     denominator = _denominator_by(connection, "year")
-    items = []
-    for row in sorted(rows, key=lambda r: r["key"] or 0):
-        base = denominator.get(row["key"], 0)
-        items.append({**row, "total": base, "share_rate": round(100 * row["count"] / base, 2) if base else 0})
+    # Include zero-count years from the corpus, so absent endpoint hits cannot shorten the window.
+    counts = {r["key"]: r["count"] for r in rows}
+    years = sorted(y for y in denominator if not filters.get("years") or y in filters["years"])
+    items = [{"key": y, "count": counts.get(y, 0), "total": denominator[y],
+              "share_rate": round(100 * counts.get(y, 0) / denominator[y], 2) if denominator[y] else 0,
+              "year_status": "complete_window" if y <= LAST_COMPLETE_YEAR else "collecting"} for y in years]
+    selected = items if filters.get("years") else [r for r in items if r["key"] <= LAST_COMPLETE_YEAR]
     growth = None
-    if len(items) >= 2:
-        first, last = items[0], items[-1]
-        if first["count"]:
-            growth = {"first_year": first["key"], "last_year": last["key"],
-                      "first": first["count"], "last": last["count"],
-                      "change_rate": round((last["count"] - first["count"]) / first["count"], 4),
-                      "note": "yearly counts are entity first-canonical-record years; 2026 is a rolling list"}
-    return {"items": items, "growth": growth,
-            "note": "2026 is a rolling list; absolute counts are not comparable with full years"}
+    if len(selected) >= 2:
+        first, last = selected[0], selected[-1]
+        comparable = last["key"] <= LAST_COMPLETE_YEAR
+        growth = {"first_year": first["key"], "last_year": last["key"],
+                  "first": first["count"], "last": last["count"], "comparable": comparable,
+                  "change_rate": round((last["count"]-first["count"])/first["count"], 4)
+                                 if comparable and first["count"] else None,
+                  "reason": "incomplete_year" if not comparable else "zero_baseline" if not first["count"] else "complete_window"}
+    return {"items": items, "growth": growth, "classification_coverage": coverage(connection),
+            "last_complete_year": LAST_COMPLETE_YEAR,
+            "note": "Canonical research entities by canonical publication year. Growth excludes collecting years by default; classification coverage is for the entire corpus in each year, not the filtered topic. Complete window does not guarantee exhaustive collection."}
 
 
 def compare(connection: sqlite3.Connection, args: dict) -> dict:

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import sqlite3
+from backend.catalog import identity
 import hashlib
 import json
 import threading
@@ -113,11 +114,11 @@ def ingest_parsed(
         if not parse_store.is_parsed(parse_conn, entity_id):
             skipped += 1
             continue
-        path = parse_store.parsed_path(entity_id)
+        path = parse_store.parsed_path(identity.storage_id(parse_conn, "parsed_documents", entity_id))
         if not path.exists():
             skipped += 1
             continue
-        canonical_id = canonical_ids.get(entity_id, entity_id)
+        canonical_id = identity.canonical(canonical_ids.get(entity_id, entity_id))
         text = path.read_text(encoding="utf-8")
         parsed_sha256 = hashlib.sha256(text.encode("utf-8")).hexdigest()
         documents.append((entity_id, canonical_id, Document(
@@ -136,7 +137,9 @@ def ingest_parsed(
             break
         requested_id, canonical_id, document, parsed_sha256 = documents[processed]
         with _lock_for(canonical_id):
-            old_chunks = pipeline.store.list_by_document(canonical_id)
+            artifact_id = identity.storage_id(parse_conn, "parsed_documents", requested_id)
+            vector_id = artifact_id if identity.canonical(artifact_id) != artifact_id else canonical_id
+            old_chunks = pipeline.store.list_by_document(vector_id)
             state = parse_store.index_state(parse_conn, requested_id)
             current = (state["parsed_sha256"] == parsed_sha256
                        and state["indexed_parsed_sha256"] == parsed_sha256
@@ -149,6 +152,7 @@ def ingest_parsed(
             else:
                 if state["indexed_pipeline_fingerprint"] or state["indexed_parsed_sha256"]:
                     stale_ids.append(canonical_id)
+                document.id = vector_id
                 written = pipeline.ingest([document])
                 chunk_count += written
                 chunk_counts[canonical_id] = written
@@ -170,6 +174,8 @@ def ingest_parsed(
 
 
 def query(text: str, top_k: int = 5, filters: dict | None = None, history: list[dict] | None = None) -> dict[str, Any]:
+    if filters and isinstance(filters.get("document_id"), list):
+        filters = {**filters, "document_id": identity.expand(filters["document_id"])}
     result = get_pipeline().query(text, top_k, filters, history=history)
     return {
         "answer": result["answer"],
@@ -239,7 +245,7 @@ def delete_ingested(entity_id: str) -> dict[str, Any]:
 def ingested_document_ids() -> set[str]:
     """The set of document_ids already ingested into the vector store (for showing ingest status)."""
     counts, _ = index_reconcile_snapshot()
-    return {key for key, count in (counts or {}).items() if count > 0}
+    return {identity.canonical(key) for key, count in (counts or {}).items() if count > 0}
 
 
 def index_reconcile_snapshot() -> tuple[dict[str, int] | None, str]:

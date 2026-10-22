@@ -50,9 +50,10 @@ class TopicDetailTest(unittest.TestCase):
             self.assertGreaterEqual(item["entity_count"], 0)
             if total:
                 self.assertAlmostEqual(item["share_rate"], round(100 * item["entity_count"] / total, 1), places=1)
-        # the sum of entity_count over the 4-year trend should equal metrics.entity_count
+        # A paper appearing in multiple years contributes once in each year.
         trend_total = sum(item["entity_count"] for item in d["trend"]["items"])
-        self.assertEqual(trend_total, total)
+        self.assertGreaterEqual(trend_total, total)
+        self.assertTrue(all(item["entity_count"] <= total for item in d["trend"]["items"]))
 
     def test_unknown_topic_raises(self) -> None:
         with self.assertRaises(ValueError):
@@ -124,7 +125,10 @@ class VenueDetailTest(unittest.TestCase):
 
     def test_venue_papers_basic(self) -> None:
         vp = analytics_queries.venue_papers(self.connection, venue="ICML", page=1, page_size=5)
-        self.assertEqual(vp["total"], 14109)
+        self.assertEqual(vp["total"], self.connection.execute(
+            "SELECT COUNT(DISTINCT m.entity_id) FROM entity_memberships m "
+            "JOIN paper_records p ON p.record_id = m.record_id WHERE p.venue = 'ICML'"
+        ).fetchone()[0])
         self.assertEqual(len(vp["items"]), 5)
         self.assertEqual(vp["page"], 1)
         # each has an entity_id (dedup logic)

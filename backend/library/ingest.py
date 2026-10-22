@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from typing import Any, Callable
+from backend.catalog import identity
 
 
 def new_result(items: list[dict[str, Any]]) -> dict[str, Any]:
@@ -35,9 +36,9 @@ def parseable_ids_after_pdf_dedup(download_conn, items: list[dict[str, Any]]) ->
     for item in items:
         entity_id = item["canonical_entity_id"]
         row = download_conn.execute(
-            "SELECT status, duplicate_of FROM downloads WHERE entity_id=?", (entity_id,)
+            "SELECT status, duplicate_of FROM downloads WHERE entity_id=?", (identity.storage_id(download_conn, "downloads", entity_id),)
         ).fetchone()
-        if row and row["status"] == "duplicate" and row["duplicate_of"]:
+        if row and row["status"] == "duplicate" and row["duplicate_of"] and identity.canonical(row["duplicate_of"]) != identity.canonical(entity_id):
             item.update(downloadable=False, status="ambiguous_duplicate", stage="pdf",
                         reason_code="duplicate_entity", message="PDF 与另一论文实体相同，未自动合并或重复向量化。")
         else:

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import sqlite3
+from backend.catalog import identity
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -51,7 +52,11 @@ def parsed_dir(entity_id: str) -> Path:
 
 
 def parsed_path(entity_id: str) -> Path:
-    return parsed_dir(entity_id) / f"{entity_id}.md"
+    for eid in identity.variants(entity_id):
+        for path in (PARSED_ROOT / eid / f"{eid}.md", PARSED_ROOT / f"{eid}.md"):
+            if path.is_file():
+                return path
+    return parsed_dir(identity.canonical(entity_id)) / f"{identity.canonical(entity_id)}.md"
 
 
 def _file_exists(entity_id: str) -> bool:
@@ -107,6 +112,7 @@ def mark(
 
 def set_index_state(connection: sqlite3.Connection, entity_id: str, *, parsed_sha256: str,
                     pipeline_fingerprint: str, chunk_count: int) -> None:
+    entity_id = identity.storage_id(connection, "parsed_documents", entity_id)
     with connection:
         connection.execute(
             "UPDATE parsed_documents SET parsed_sha256=CASE WHEN parsed_sha256='' THEN ? ELSE parsed_sha256 END, "
@@ -116,6 +122,7 @@ def set_index_state(connection: sqlite3.Connection, entity_id: str, *, parsed_sh
 
 
 def index_state(connection: sqlite3.Connection, entity_id: str) -> dict[str, Any]:
+    entity_id = identity.storage_id(connection, "parsed_documents", entity_id)
     row = connection.execute(
         "SELECT parsed_sha256, indexed_parsed_sha256, indexed_pipeline_fingerprint, indexed_chunk_count "
         "FROM parsed_documents WHERE entity_id=?", (entity_id,)
@@ -125,6 +132,7 @@ def index_state(connection: sqlite3.Connection, entity_id: str) -> dict[str, Any
 
 
 def is_parsed(connection: sqlite3.Connection, entity_id: str) -> bool:
+    entity_id = identity.storage_id(connection, "parsed_documents", entity_id)
     row = connection.execute(
         "SELECT status FROM parsed_documents WHERE entity_id = ?", (entity_id,)
     ).fetchone()
@@ -150,7 +158,8 @@ def remove(connection: sqlite3.Connection, entity_id: str) -> dict[str, Any]:
 
 
 def status_map(connection: sqlite3.Connection, entity_ids: list[str]) -> dict[str, str]:
-    ids = list(dict.fromkeys(entity_ids))
+    requested = list(dict.fromkeys(entity_ids))
+    ids = identity.expand(requested)
     if not ids:
         return {}
     result: dict[str, str] = {}
@@ -165,4 +174,4 @@ def status_map(connection: sqlite3.Connection, entity_ids: list[str]) -> dict[st
             if status == "success" and not _file_exists(row["entity_id"]):
                 status = ""  # File was deleted; treat as not parsed
             result[row["entity_id"]] = status
-    return result
+    return {eid: result.get(identity.storage_id(connection, "parsed_documents", eid), "") for eid in requested if identity.storage_id(connection, "parsed_documents", eid) in result}

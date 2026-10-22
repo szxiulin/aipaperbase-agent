@@ -1,0 +1,31 @@
+{
+  "version": "local-20261022-M1",
+  "catalog_release_id": "catalog-20261022T144212Z-e3cb0a8dce70",
+  "source_cutoff": "2026-10-21",
+  "classification_date": "2026-10-22",
+  "new_area_count": 13662,
+  "abstracts_added": 796,
+  "area_pending": 2425,
+  "direction_pending": 13662,
+  "area_coverage_rate": 98.24,
+  "direction_coverage_rate": 88.3,
+  "human_accuracy": null,
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "classification_queue": "classification_queue_20261022.csv.gz",
+  "classification_queue_sha256": "465b6dd29799c8d9ea1336555805a5cf92e098172b82fdea8e1e21ece86b777e",
+  "direction_queue": "direction_classification_queue_20261022.csv.gz",
+  "direction_queue_sha256": "ae4e828e6f0199b8f6480c70942db4b28f8ee9f2178eb9cf03efa6b7316f5f2b",
+  "known_insufficient_abstracts_excluded": 10,
+  "limitations": [
+    "AI-reviewed area assignments; not an independent human evaluation.",
+    "Directions for the new area cohort remain pending.",
+    "Publication completeness remains limited by the frozen source-year audit.",
+    "Historical 399-paper review metrics do not evaluate this new cohort."
+  ],
+  "content_identity": {
+    "source_digest": "e3cb0a8dce70447013abe33938a19a6303c8ebcf29e6bf5647a677fffd897b0e",
+    "areas_sha256": "f4dfb3994d4aab26a97914ad24b025ebc61619fec7bab4bd9572807317ebd9b6",
+    "directions_sha256": "996dbc8773cc421719d15881b0d17f5b4588665c5ffccc06fcb118fc8972b3e2"
+  }
+}

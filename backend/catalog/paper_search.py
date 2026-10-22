@@ -73,6 +73,7 @@ def search(connection: sqlite3.Connection, *, query: str = "", filters: dict | N
     page_size = max(0, min(int(page_size if page_size is not None else 10), MAX_PAGE_SIZE))
     match = {"fts": "", "terms": [], "dropped": []}
     query = (query or "").strip()
+    original_query = query
 
     select = """a.entity_id, e.canonical_title AS title, p.venue, p.year, a.area_id, d.direction_id,
                 ad.name_zh AS area_name, dd.name_zh AS direction_name,
@@ -90,10 +91,12 @@ def search(connection: sqlite3.Connection, *, query: str = "", filters: dict | N
     if query:
         match = relaxed_match(connection, query)
         if not match["fts"]:
-            note = ("论文库的标题和摘要都是英文，请改用英文关键词检索。" if any("一" <= ch <= "鿿" for ch in query)
+            note = ("当前关键词索引不支持中文分词，请尝试英文关键词检索。" if any("一" <= ch <= "鿿" for ch in query)
                     else "关键词在论文库中没有命中。")
-            return {"total": 0, "page": page, "page_size": page_size, "items": [], "facets": {},
-                    "match": {"terms": [], "dropped": match["dropped"], "note": note}}
+            return {"count_unit": "canonical_research_entities", "total": 0, "page": page, "page_size": page_size, "items": [], "facets": {},
+                    "match": {"query": original_query, "terms": [], "dropped": match["dropped"], "note": note,
+                              "mode": "no_searchable_tokens" if not search_mod.build_fts_query(original_query)[1] else "no_matches",
+                              "relaxed": False, "count_kind": "matches"}}
         grouped = f"""(WITH hit AS (
                 SELECT fm.record_id, fts_papers.rank AS rank
                 FROM fts_papers JOIN fts_map fm ON fm.rowid = fts_papers.rowid
@@ -135,9 +138,11 @@ def search(connection: sqlite3.Connection, *, query: str = "", filters: dict | N
                 "authors": _authors(row["authors"]),
                 "snippet": snippet[:SNIPPET_CHARS] + ("…" if len(snippet) > SNIPPET_CHARS else ""),
             })
-    result = {"total": total, "page": page, "page_size": page_size, "items": items, "facets": facets}
+    result = {"count_unit": "canonical_research_entities", "total": total, "page": page, "page_size": page_size, "items": items, "facets": facets}
     if match["terms"] or match["dropped"]:
-        result["match"] = {"terms": match["terms"], "dropped": match["dropped"]}
+        result["match"] = {"terms": match["terms"], "dropped": match["dropped"],
+                           "query": original_query, "relaxed": bool(match["dropped"]),
+                           "count_kind": "candidates" if match["dropped"] else "matches"}
         if match["dropped"]:
             result["match"]["note"] = ("没有论文同时包含全部关键词，已放宽为只要求：" + " ".join(match["terms"])
                                        + "；被忽略：" + " ".join(match["dropped"]) + "。结果可能偏宽，请看摘要判断相关性。")

@@ -1,0 +1,854 @@
+{
+  "as_of": "2026-10-19",
+  "baseline_commit": "cff15c0",
+  "records": 134290,
+  "entities": 133450,
+  "research_papers": 133167,
+  "pending_research_papers": 11706,
+  "added_records": 0,
+  "filled_abstracts": 80,
+  "missing_abstracts": 6151,
+  "colm_titles_reviewed": 96,
+  "author_fields_repaired": 632,
+  "unchanged_identity_mappings": 134290,
+  "changed_fields": {
+    "abstract": 80,
+    "abstract_source_name": 80,
+    "abstract_source_url": 80,
+    "abstract_source_tier": 80,
+    "abstract_fetched_at": 80,
+    "authors": 632,
+    "title": 96,
+    "paper_url": 96,
+    "source_name": 96,
+    "source_url": 96,
+    "fetched_at": 96
+  },
+  "abstract_fills": [
+    {
+      "venue": "3DV",
+      "year": "2025",
+      "paper_id": "conf/3dim/GuzovJHPNLYM25",
+      "title": "HMD2: Environment-Aware Motion Generation from Single Egocentric Head-Mounted Device",
+      "abstract_source_name": "Hugging Face ai-conferences (openreview)",
+      "abstract_source_url": "https://huggingface.co/datasets/ai-conferences/all-papers",
+      "abstract_source_tier": "third_party_crosschecked"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-01a6d9dd038fd223",
+      "title": "From RLVR to RLSVR: Task Transformation Induces Self-Verifiable Rewards for Open-Ended LLM Self-Improvement",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/1694",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-09c54cd3f790c753",
+      "title": "RewardHarness: Learning Human Preferences for Image Editing with Only 100 Demonstrations",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/1785",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-0d5bb1890f297390",
+      "title": "How Humans and LLMs Read Gender into “Gender-Neutral” Physical Descriptions",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/1825",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-144d5e166d8f8051",
+      "title": "Cycle-Consistent Search: Question Reconstructability as a Proxy Reward for Search Agent Training",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2276",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-14a85ff072ab0a3f",
+      "title": "How social context shapes value-related content in Large Language Model outputs",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2236",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-1d2b91c86c4eb3dd",
+      "title": "Large language models reorganize representational geometry during in-context learning",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2218",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-1f61aabf1d21f3c8",
+      "title": "Should We be Pedantic About Reasoning Errors in Machine Translation?",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2184",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-248382077ae2bca4",
+      "title": "Can LLMs Introspect? A Reality Check",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2391",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-279944a951d0e7e6",
+      "title": "Token-Level Off-Policy Learning for Faithful Generation Under Distribution Shift",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2214",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-315aa3a53abf1d9a",
+      "title": "Loop, Think, & Generalize: Implicit Reasoning in Recurrent-Depth Transformers",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2419",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-34a140d23b18c536",
+      "title": "Can Coding Agents Reproduce Findings in Computational Materials Science?",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2136",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-358fd9410aa1cf1c",
+      "title": "Grammatical ``grandmother neurons'' are rare in LLMs",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/1813",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-38199e2126a50e20",
+      "title": "MET: Theory-Grounded and Culture-Aware Multilingual Moral Reasoning",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/1851",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-3ce75015c608620b",
+      "title": "DreamProver: Evolving Transferable Lemma Libraries via a Wake-Sleep Theorem-Proving Agent",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2294",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-431f99784dfd3d8f",
+      "title": "LF²AR: Accounting for Layerwise Dynamics to Improve Multimodal Adaptation of Language Models",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/1954",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-50bd3ce92064dc61",
+      "title": "Manifold Steering Reveals the Shared Geometry of Neural Network Representation and Behavior",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/1852",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-527465728ba96b6b",
+      "title": "Why Fine-Tuning Encourages Hallucinations and How to Fix It",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/1720",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-53a6301d4074b350",
+      "title": "RetroAgent: Harnessing LLMs to Search Over Structured Memory for Agentic Retrosynthesis Planning",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2386",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-641424d2e8c5bee5",
+      "title": "CreativityNeuro: Steering Language Model Weights to Improve Divergent Thinking and Reduce Mode Collapse",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/1711",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-6c80da552592d561",
+      "title": "The Format Tax: Separating the Cost of Requesting Structure from the Cost of Enforcing It",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2477",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-6cc83c03d27e9916",
+      "title": "Legibility is Not Interpretability: Comparing Judged and Actual Importance in Chain-Of-Thought Reasoning",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2158",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-6e3a29afd79c4694",
+      "title": "The Profit Alignment Problem: How Profit Mandates Induce Alignment Failures in LLMs",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2308",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-72c30067c7cafed1",
+      "title": "Optical Context Compression Is Just (Bad) Autoencoding",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2109",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-7475cdedb63e9ca6",
+      "title": "$p1$: Better Prompt Optimization with Fewer Prompts",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2138",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-74a280f3642889c8",
+      "title": "Discovering Hierarchical Latent Capabilities of Language Models via Causal Representation Learning",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2360",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-753db72f88fc1e68",
+      "title": "Most current model organisms are leaky: Perplexity differencing often reveals finetuning objectives",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2239",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-77bd7f75ededf4ff",
+      "title": "Lower-Resource, Higher Scores: Language Bias in LLM Evaluators",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2222",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-7c604eebf7b63df9",
+      "title": "Beyond expert users: agents should help users construct preferences, not just elicit them",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2459",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-82cfcd5a26a56a3a",
+      "title": "CHASE: How Content Ecosystems Are Reshaped When Ranking Is the Only Target",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/1903",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-8963b03dd40b1e87",
+      "title": "Hyperloop Transformers",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2082",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-99da33ca7cc119f7",
+      "title": "RELISH: LLM REgression with a Latent Iterative State Head",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2282",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-9e35ccbf25d66b96",
+      "title": "Reward Hacking in Language Model Agents: Revisiting AI Safety Gridworlds",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2065",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-9ffcaa6cb525cde5",
+      "title": "Rethinking Reward Supervision: Rubric-Conditioned Self-Distillation",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2168",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-a0a96f266536b65d",
+      "title": "EvoSkill: Automated Skill Discovery for Multi-Agent Systems",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/1790",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-a42b451c9fda6a0f",
+      "title": "SoftmaxGRPO: Learning to Reason using Softmax Advantage Group Estimation",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2357",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-a510690d97c327dc",
+      "title": "CooperBench: Why coding agents cannot be your teammates yet",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/1839",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-a99bd2b04a4d37e2",
+      "title": "Olmo Hybrid: From Theory to Practice and Back",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2238",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-ab72563de7da6c42",
+      "title": "SatIR: Scalable High-Recall Constraint-Satisfaction-Based Information Retrieval for Clinical Trials Matching",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2028",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-ac1734110498ac76",
+      "title": "When RAG Fails to Equalize: Geo-bias in Factual Question Answering over Public Companies",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2322",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-b74bf8c35ec7ea6d",
+      "title": "Train Separately, Merge Together: Modular Post-Training with Mixture-of-Experts",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2255",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-ba2be9c985a56526",
+      "title": "SWE-Bench ProMax: Benchmarking Agents on Large-Scale Multilingual Code Refactoring",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2534",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-baa0789d41b4d5cd",
+      "title": "Extracting Arguments, Not Just Classifying Them: Instruction-Tuned LLMs for Generative Component Detection",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/1861",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-bca0a2ae23df5f43",
+      "title": "All-Weather VLM: Enhancing Vision Language Models' Robustness Under Adverse Imaging Conditions",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/1869",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-bea3510ad24f61d7",
+      "title": "Actions Speak Louder than Words: Measuring Cross-Lingual Policy Retention in Tool-Using Agents",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2417",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-c1ce35d8b3b005ed",
+      "title": "CeRA: Breaking the Linear Ceiling of Low-Rank Adaptation with Non-linearity Retained at Inference",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2372",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-c24cc33cd2142e4d",
+      "title": "Whose Standpoint do LLMs Reflect? Surfacing and Mitigating Epistemic Blindspots",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/1877",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-c39ef30acf6acbc0",
+      "title": "ATBench: A Diverse and Realistic Agent Trajectory Benchmark for Safety Evaluation and Diagnosis",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2159",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-c3cfef532ce7fe96",
+      "title": "Recovering Wasted Compute in Autoresearch Agents",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2333",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-c659b42b746da7b2",
+      "title": "RationalRewards: Reasoning Rewards Scale Visual Generation Both Training and Test Time",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2195",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-c84484fee54d20a6",
+      "title": "Sememe: Causal Modeling for Task-Aware Depth Pruning of Large Language Models",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2110",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-c8ea7542421d3fb7",
+      "title": "From Geometry to Behavior: How Instruction Exposure Unlocks Latent Rhetorical Directions in LLMs",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2527",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-c99f7fdeca7a05eb",
+      "title": "Amplified Does Not Mean Predictive: Reasoning Behaviors in Thinking Models",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2002",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-d15054be5a8bbe34",
+      "title": "Verb-ICL: Rethinking In-Context Learning for Structured Prediction",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/1793",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-d2c8cce753ab806a",
+      "title": "EgoMemReason: A Memory-Driven Reasoning Benchmark for Long-Horizon Egocentric Video Understanding",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/1715",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-d3a4dbc8cf366583",
+      "title": "CoEvoSkills: Self-Evolving Agent Skills via Co-Evolutionary Verification",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/1960",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-db3cc162f42d34f7",
+      "title": "ACTOR-CURATOR: Online Curriculum Learning via Policy Improvement Bandits for RL Post-Training",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/1993",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-e337891c07b82371",
+      "title": "ClawsBench: Evaluating Capability and Safety of LLM Productivity Agents in Simulated Workspaces",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2301",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-e7a92e92a5a963f4",
+      "title": "CABLE: Extending the Reach of Memory Retrieval via Complementary Antecedent-Based Linking and Expansion",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2059",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-e9d552584dbe75aa",
+      "title": "GLiGuard: Schema-Conditioned Classification for LLM Safeguard",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2122",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-ec402d4947610c89",
+      "title": "Improved Robustness against Indirect Prompt Injection Can Be Built into LLMs",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2501",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-ed5e9c2f6a041fb1",
+      "title": "It’s How You Ask: Gender-Associated Linguistic Bias in LLMs",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2272",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-eec86b060e454afc",
+      "title": "Muon^p: Muon with Fractional Spectral Powers",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/1964",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-ef6198438a7b46b0",
+      "title": "Talk is Cheap, Communication is Hard: Dynamic Grounding Failures and Repair in Multi-Agent Negotiation",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/1949",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-f3f83e1a84fef318",
+      "title": "Pinocchio: Fast Uncertainty Estimates for Black-Box Language Models",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/1772",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-f4971876e2b41f06",
+      "title": "INSIDE the Student’s Mind: Jointly Modeling Latent Reasoning and Action in LLM Student Simulators",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2486",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-f60c2a83a6e2f9f2",
+      "title": "Early Data Exposure Improves Robustness to Subsequent Fine-Tuning",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2521",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-f7d320983feacd6b",
+      "title": "Judge, Retrieve, or Abstain: Uncertainty-Guarded LLM Judging with Provable Risk Guarantees",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2182",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-f8645fd56fe96f13",
+      "title": "NIRVANA: Structured Pruning Reimagined for Large Language Model Compression",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/2156",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "paper_id": "provisional-title-fcdf7d1e3f907e39",
+      "title": "Sci-VBench: Evaluating Knowledge- and Reasoning- Intensive Video Generation in Science Domains",
+      "abstract_source_name": "COLM official paper page",
+      "abstract_source_url": "https://colm.cc/virtual/2026/poster/1899",
+      "abstract_source_tier": "official"
+    },
+    {
+      "venue": "KDD",
+      "year": "2026",
+      "paper_id": "10.1145/3770854.3783920",
+      "title": "KBest: Efficient Vector Search on Kunpeng CPU.",
+      "abstract_source_name": "Semantic Scholar exact identifier and title",
+      "abstract_source_url": "https://www.semanticscholar.org/paper/c98b45c24389949ab0f95df49475fb7bb6167e2d",
+      "abstract_source_tier": "third_party_crosschecked"
+    },
+    {
+      "venue": "KDD",
+      "year": "2026",
+      "paper_id": "10.1145/3770854.3783921",
+      "title": "GenHAR: Generalizing Cross-domain Human Activity Recognition for Last-mile Delivery.",
+      "abstract_source_name": "Semantic Scholar exact identifier and title",
+      "abstract_source_url": "https://www.semanticscholar.org/paper/2d1e5b1d7593e99b9ee9c9c645fb2f130e51f278",
+      "abstract_source_tier": "third_party_crosschecked"
+    },
+    {
+      "venue": "KDD",
+      "year": "2026",
+      "paper_id": "10.1145/3770854.3783924",
+      "title": "Merchant Category Identification in Weixin Pay.",
+      "abstract_source_name": "Semantic Scholar exact identifier and title",
+      "abstract_source_url": "https://www.semanticscholar.org/paper/7739f5442965814f09f186c4583f3b19e039fe19",
+      "abstract_source_tier": "third_party_crosschecked"
+    },
+    {
+      "venue": "KDD",
+      "year": "2026",
+      "paper_id": "10.1145/3770854.3783929",
+      "title": "KAN-FIF: Spline-Parameterized Lightweight Physics-based Tropical Cyclone Estimation on Meteorological Satellite.",
+      "abstract_source_name": "Semantic Scholar exact identifier and title",
+      "abstract_source_url": "https://www.semanticscholar.org/paper/00a198ba73b3dadd86037a50f4eb62c86a40d33a",
+      "abstract_source_tier": "third_party_crosschecked"
+    },
+    {
+      "venue": "KDD",
+      "year": "2026",
+      "paper_id": "10.1145/3770854.3783934",
+      "title": "Towards Trustworthy Multimodal Moderation via Policy-Aligned Reasoning and Hierarchical Labeling.",
+      "abstract_source_name": "Semantic Scholar exact identifier and title",
+      "abstract_source_url": "https://www.semanticscholar.org/paper/31e5c667c016637717f7ce189989806d2c5b106f",
+      "abstract_source_tier": "third_party_crosschecked"
+    },
+    {
+      "venue": "KDD",
+      "year": "2026",
+      "paper_id": "10.1145/3770854.3783942",
+      "title": "TREASURE: A Transformer-Based Foundation Model for High-Volume Transaction Understanding.",
+      "abstract_source_name": "Semantic Scholar exact identifier and title",
+      "abstract_source_url": "https://www.semanticscholar.org/paper/a2ce89d679a4071b2995b1c339e6601fc7966fc5",
+      "abstract_source_tier": "third_party_crosschecked"
+    },
+    {
+      "venue": "KDD",
+      "year": "2026",
+      "paper_id": "10.1145/3770854.3783945",
+      "title": "AHA: Scalable Alternative History Analysis for Operational Timeseries Applications.",
+      "abstract_source_name": "Semantic Scholar exact identifier and title",
+      "abstract_source_url": "https://www.semanticscholar.org/paper/e0247eb674fc9a122bad555da10d07899f665482",
+      "abstract_source_tier": "third_party_crosschecked"
+    },
+    {
+      "venue": "KDD",
+      "year": "2026",
+      "paper_id": "10.1145/3770854.3783948",
+      "title": "ACT: An Adaptive Combinatorial Testing Framework at Scale.",
+      "abstract_source_name": "Semantic Scholar exact identifier and title",
+      "abstract_source_url": "https://www.semanticscholar.org/paper/47e13f26417554f4f45ca581b06599ca389df82c",
+      "abstract_source_tier": "third_party_crosschecked"
+    },
+    {
+      "venue": "KDD",
+      "year": "2026",
+      "paper_id": "10.1145/3770854.3783954",
+      "title": "MCGrad: Multicalibration at Web Scale.",
+      "abstract_source_name": "Semantic Scholar exact identifier and title",
+      "abstract_source_url": "https://www.semanticscholar.org/paper/6a6b00684511c39ba4247e8f9c4b98df45362251",
+      "abstract_source_tier": "third_party_crosschecked"
+    },
+    {
+      "venue": "KDD",
+      "year": "2026",
+      "paper_id": "10.1145/3770854.3785680",
+      "title": "Automated Annotation of Privacy Information in User Interactions with Large Language Models.",
+      "abstract_source_name": "Semantic Scholar exact identifier and title",
+      "abstract_source_url": "https://www.semanticscholar.org/paper/3c6c5ce49ab320fabf9b516b51c1acfb42c86f5d",
+      "abstract_source_tier": "third_party_crosschecked"
+    }
+  ],
+  "author_source_quarantine_count": 9,
+  "limitations": [
+    "COLM identity mappings are AI-assisted author/title/content review, without shared permanent identifier or human gold labels.",
+    "Semantic Scholar initial 10 DOI responses accepted; later batch 429 persisted after backoff and stopped.",
+    "Hugging Face snapshot supplied only 1 additional exact-match abstract.",
+    "Two CVPR 2026 third-party candidates have official URLs returning 404; not added. VGGT-ohm matches existing VGGT-Ω by identical official URL.",
+    "Crossref fuzzy container-title queries for ACM MM, EMNLP and SIGGRAPH Asia returned no verified target proceedings among their first 1000 results each; this does not establish absence or completeness.",
+    "Nine malformed official author strings remain unchanged for further review."
+  ],
+  "missing_by_source_year": {
+    "KDD 2026": 1185,
+    "TMLR 2026": 1167,
+    "IJCV 2026": 343,
+    "WWW 2026": 340,
+    "IJCV 2024": 292,
+    "ACM MM 2025": 277,
+    "TKDE 2026": 256,
+    "TPAMI 2026": 246,
+    "IJCV 2025": 224,
+    "ACM MM 2024": 202,
+    "IJCV 2023": 171,
+    "TIP 2026": 161,
+    "SIGIR 2026": 149,
+    "AIJ 2023": 100,
+    "KDD 2025": 99,
+    "SIGGRAPH 2025": 96,
+    "TVCG 2026": 92,
+    "SIGGRAPH Asia 2024": 85,
+    "ICML 2025": 84,
+    "AIJ 2026": 83,
+    "AIJ 2024": 68,
+    "AIJ 2025": 62,
+    "ECCV 2026": 31,
+    "EMNLP 2024": 31,
+    "TVCG 2025": 27,
+    "WWW 2025": 26,
+    "WWW 2024": 25,
+    "SIGIR 2024": 25,
+    "TVCG 2023": 24,
+    "NAACL 2025": 23,
+    "TKDE 2025": 18,
+    "SIGIR 2025": 18,
+    "TVCG 2024": 17,
+    "KDD 2024": 16,
+    "SIGGRAPH 2026": 12,
+    "IJCAI 2023": 9,
+    "TPAMI 2025": 7,
+    "TPAMI 2023": 7,
+    "KDD 2023": 7,
+    "ICML 2024": 5,
+    "SIGIR 2023": 5,
+    "ACM MM 2023": 4,
+    "TIP 2025": 3,
+    "IJCAI 2025": 3,
+    "WWW 2023": 3,
+    "ICML 2023": 3,
+    "SIGGRAPH Asia 2025": 3,
+    "TIP 2024": 2,
+    "TOIS 2025": 2,
+    "IJCAI 2026": 2,
+    "NeurIPS 2025": 2,
+    "NeurIPS 2024": 2,
+    "CVPR 2024": 2,
+    "TKDE 2023": 1,
+    "TIP 2023": 1,
+    "COLM 2025": 1,
+    "ACL 2026": 1,
+    "ACL 2024": 1
+  },
+  "checks": {
+    "existing_records_preserved": true,
+    "existing_abstracts_preserved": true,
+    "entity_ids_preserved": true
+  },
+  "validation": {
+    "unit_tests": 425,
+    "unit_tests_passed": true,
+    "ui_smoke_passed": true,
+    "database_integrity": "ok",
+    "blocking_errors": 0,
+    "nonblocking_quality_issues": 829,
+    "colm_database_rows_verified": 96,
+    "source_digest_verified": true
+  },
+  "cvpr_2026_candidates": [
+    {
+      "title": "Structural-Semantic Perception for Diffusion-Guided Temporal Forgery Localization",
+      "official_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Cao_Structural-Semantic_Perception_for_Diffusion-Guided_Temporal_Forgery_Localization_CVPR_2026_paper.html",
+      "http_status": 404,
+      "decision": "not_added_pending_evidence"
+    },
+    {
+      "title": "OVSegDT: Segmenting Transformer for Open-Vocabulary Object Goal Navigation",
+      "official_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Zemskova_OVSegDT_Segmenting_Transformer_for_Open-Vocabulary_Object_Goal_Navigation_CVPR_2026_paper.html",
+      "http_status": 404,
+      "decision": "not_added_pending_evidence"
+    },
+    {
+      "title": "VGGT-ohm",
+      "official_title": "VGGT-Ω",
+      "official_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Wang_VGGT-ohm_CVPR_2026_paper.html",
+      "http_status": 200,
+      "decision": "already_in_catalog_same_paper_id_and_url"
+    }
+  ]
+}

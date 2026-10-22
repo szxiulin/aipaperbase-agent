@@ -1,0 +1,3593 @@
+[
+  {
+    "venue": "ACL",
+    "year": 2023,
+    "difference": "reference_unmatched",
+    "paper_id": "2023.acl-long.911",
+    "title": "Program Chairs’ Report on Peer Review at ACL 2023",
+    "doi": "",
+    "paper_url": "https://aclanthology.org/2023.acl-long.911/"
+  },
+  {
+    "venue": "CVPR",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "Ahmed_Boundary-Responsive_Differentiable_Gating_for_Superpixel-Based_Segmentation_CVPR_2026_paper",
+    "title": "Boundary-Responsive Differentiable Gating for Superpixel-Based Segmentation",
+    "doi": "",
+    "paper_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Ahmed_Boundary-Responsive_Differentiable_Gating_for_Superpixel-Based_Segmentation_CVPR_2026_paper.html"
+  },
+  {
+    "venue": "CVPR",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "Bae_Align_While_Search_Belief-Guided_Exploratory_Inference_for_World-Grounded_Embodied_Agents_CVPR_2026_paper",
+    "title": "Align While Search: Belief-Guided Exploratory Inference for World-Grounded Embodied Agents",
+    "doi": "",
+    "paper_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Bae_Align_While_Search_Belief-Guided_Exploratory_Inference_for_World-Grounded_Embodied_Agents_CVPR_2026_paper.html"
+  },
+  {
+    "venue": "CVPR",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "Berman_Scene-VLM_Multimodal_Video_Scene_Segmentation_via_Vision-Language_Models_CVPR_2026_paper",
+    "title": "Scene-VLM: Multimodal Video Scene Segmentation via Vision-Language Models",
+    "doi": "",
+    "paper_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Berman_Scene-VLM_Multimodal_Video_Scene_Segmentation_via_Vision-Language_Models_CVPR_2026_paper.html"
+  },
+  {
+    "venue": "CVPR",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "Cai_AutoDebias_An_Automated_Framework_for_Detecting_and_Mitigating_Backdoor_Biases_CVPR_2026_paper",
+    "title": "AutoDebias: An Automated Framework for Detecting and Mitigating Backdoor Biases in Text-to-Image Models",
+    "doi": "",
+    "paper_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Cai_AutoDebias_An_Automated_Framework_for_Detecting_and_Mitigating_Backdoor_Biases_CVPR_2026_paper.html"
+  },
+  {
+    "venue": "CVPR",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "Chai_RECS4R_Bridging_Semantics_and_Geometry_for_Referring_Remote_Sensing_Interpretation_CVPR_2026_paper",
+    "title": "RECS4R: Bridging Semantics and Geometry for Referring Remote Sensing Interpretation",
+    "doi": "",
+    "paper_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Chai_RECS4R_Bridging_Semantics_and_Geometry_for_Referring_Remote_Sensing_Interpretation_CVPR_2026_paper.html"
+  },
+  {
+    "venue": "CVPR",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "Chen_UniT_Unified_Multimodal_Chain-of-Thought_Test-time_Scaling_CVPR_2026_paper",
+    "title": "UniT: Unified Multimodal Chain-of-Thought Test-time Scaling",
+    "doi": "",
+    "paper_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Chen_UniT_Unified_Multimodal_Chain-of-Thought_Test-time_Scaling_CVPR_2026_paper.html"
+  },
+  {
+    "venue": "CVPR",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "Chowdhury_AMusE_Audio-Visual_Benchmark_and_Alignment_Framework_for_Agentic_Multi-Speaker_Understanding_CVPR_2026_paper",
+    "title": "AMusE: Audio-Visual Benchmark and Alignment Framework for Agentic Multi-Speaker Understanding",
+    "doi": "",
+    "paper_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Chowdhury_AMusE_Audio-Visual_Benchmark_and_Alignment_Framework_for_Agentic_Multi-Speaker_Understanding_CVPR_2026_paper.html"
+  },
+  {
+    "venue": "CVPR",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "Fan_ExMesh_EXplicit_Mesh_Reconstruction_with_Topology_Adaptation_CVPR_2026_paper",
+    "title": "ExMesh: EXplicit Mesh Reconstruction with Topology Adaptation",
+    "doi": "",
+    "paper_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Fan_ExMesh_EXplicit_Mesh_Reconstruction_with_Topology_Adaptation_CVPR_2026_paper.html"
+  },
+  {
+    "venue": "CVPR",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "Guan_Beyond_Endpoints_Path-Centric_Reasoning_for_Vectorized_Off-Road_Network_Extraction_CVPR_2026_paper",
+    "title": "Beyond Endpoints: Path-Centric Reasoning for Vectorized Off-Road Network Extraction",
+    "doi": "",
+    "paper_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Guan_Beyond_Endpoints_Path-Centric_Reasoning_for_Vectorized_Off-Road_Network_Extraction_CVPR_2026_paper.html"
+  },
+  {
+    "venue": "CVPR",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "Gudavalli_WRIVINDER_Towards_Spatial_Intelligence_for_Geo-locating_Ground_Images_onto_Satellite_CVPR_2026_paper",
+    "title": "WRIVINDER: Towards Spatial Intelligence for Geo-locating Ground Images onto Satellite Imagery",
+    "doi": "",
+    "paper_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Gudavalli_WRIVINDER_Towards_Spatial_Intelligence_for_Geo-locating_Ground_Images_onto_Satellite_CVPR_2026_paper.html"
+  },
+  {
+    "venue": "CVPR",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "Jeong_Draft_and_Refine_with_Visual_Experts_CVPR_2026_paper",
+    "title": "Draft and Refine with Visual Experts",
+    "doi": "",
+    "paper_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Jeong_Draft_and_Refine_with_Visual_Experts_CVPR_2026_paper.html"
+  },
+  {
+    "venue": "CVPR",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "Jia_Evaluating_Generative_Models_via_One-Dimensional_Code_Distributions_CVPR_2026_paper",
+    "title": "Evaluating Generative Models via One-Dimensional Code Distributions",
+    "doi": "",
+    "paper_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Jia_Evaluating_Generative_Models_via_One-Dimensional_Code_Distributions_CVPR_2026_paper.html"
+  },
+  {
+    "venue": "CVPR",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "Lassoued_ORCA_Orchestrated_Reasoning_with_Collaborative_Agents_for_Document_Visual_Question_CVPR_2026_paper",
+    "title": "ORCA: Orchestrated Reasoning with Collaborative Agents for Document Visual Question Answering",
+    "doi": "",
+    "paper_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Lassoued_ORCA_Orchestrated_Reasoning_with_Collaborative_Agents_for_Document_Visual_Question_CVPR_2026_paper.html"
+  },
+  {
+    "venue": "CVPR",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "Li_Exploring_the_Underwater_World_Segmentation_without_Extra_Training_CVPR_2026_paper",
+    "title": "Exploring the Underwater World Segmentation without Extra Training",
+    "doi": "",
+    "paper_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Li_Exploring_the_Underwater_World_Segmentation_without_Extra_Training_CVPR_2026_paper.html"
+  },
+  {
+    "venue": "CVPR",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "Omama_AsymLoc_Towards_Asymmetric_Feature_Matching_for_Efficient_Visual_Localization_CVPR_2026_paper",
+    "title": "AsymLoc: Towards Asymmetric Feature Matching for Efficient Visual Localization",
+    "doi": "",
+    "paper_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Omama_AsymLoc_Towards_Asymmetric_Feature_Matching_for_Efficient_Visual_Localization_CVPR_2026_paper.html"
+  },
+  {
+    "venue": "CVPR",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "Papais_SToRe3D_Sparse_Token_Relevance_in_ViTs_for_Efficient_Multi-View_3D_CVPR_2026_paper",
+    "title": "SToRe3D: Sparse Token Relevance in ViTs for Efficient Multi-View 3D Object Detection",
+    "doi": "",
+    "paper_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Papais_SToRe3D_Sparse_Token_Relevance_in_ViTs_for_Efficient_Multi-View_3D_CVPR_2026_paper.html"
+  },
+  {
+    "venue": "CVPR",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "Patwari_Composite-Attribute_Person_Re-Identification_via_Pose-Guided_Disentanglement_CVPR_2026_paper",
+    "title": "Composite-Attribute Person Re-Identification via Pose-Guided Disentanglement",
+    "doi": "",
+    "paper_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Patwari_Composite-Attribute_Person_Re-Identification_via_Pose-Guided_Disentanglement_CVPR_2026_paper.html"
+  },
+  {
+    "venue": "CVPR",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "Paul_Point_Cloud_as_a_Foreign_Language_for_Multi-modal_Large_Language_CVPR_2026_paper",
+    "title": "Point Cloud as a Foreign Language for Multi-modal Large Language Model",
+    "doi": "",
+    "paper_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Paul_Point_Cloud_as_a_Foreign_Language_for_Multi-modal_Large_Language_CVPR_2026_paper.html"
+  },
+  {
+    "venue": "CVPR",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "Truong_SIGMA_A_Physics-Based_Benchmark_for_Gas_Chimney_Understanding_in_Seismic_CVPR_2026_paper",
+    "title": "SIGMA: A Physics-Based Benchmark for Gas Chimney Understanding in Seismic Images",
+    "doi": "",
+    "paper_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Truong_SIGMA_A_Physics-Based_Benchmark_for_Gas_Chimney_Understanding_in_Seismic_CVPR_2026_paper.html"
+  },
+  {
+    "venue": "CVPR",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "Wang_FVBench_Benchmarking_Deepfake_Video_Detection_Capability_of_Large_Multimodal_Models_CVPR_2026_paper",
+    "title": "FVBench: Benchmarking Deepfake Video Detection Capability of Large Multimodal Models",
+    "doi": "",
+    "paper_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Wang_FVBench_Benchmarking_Deepfake_Video_Detection_Capability_of_Large_Multimodal_Models_CVPR_2026_paper.html"
+  },
+  {
+    "venue": "CVPR",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "Xie_Similarity-as-Evidence_Calibrating_Overconfident_VLMs_for_Interpretable_and_Label-Efficient_Medical_Active_CVPR_2026_paper",
+    "title": "Similarity-as-Evidence: Calibrating Overconfident VLMs for Interpretable and Label-Efficient Medical Active Learning",
+    "doi": "",
+    "paper_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Xie_Similarity-as-Evidence_Calibrating_Overconfident_VLMs_for_Interpretable_and_Label-Efficient_Medical_Active_CVPR_2026_paper.html"
+  },
+  {
+    "venue": "CVPR",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "Yang_Factorize_Reconstruct_Enhance_A_Unified_Framework_for_Multimodal_Sentiment_Analysis_CVPR_2026_paper",
+    "title": "Factorize, Reconstruct, Enhance: A Unified Framework for Multimodal Sentiment Analysis",
+    "doi": "",
+    "paper_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Yang_Factorize_Reconstruct_Enhance_A_Unified_Framework_for_Multimodal_Sentiment_Analysis_CVPR_2026_paper.html"
+  },
+  {
+    "venue": "CVPR",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "Zhang_SAM2Text_Towards_Prompt-Free_and_Multi-Resolution_Video_Scene_Text_Segmentation_CVPR_2026_paper",
+    "title": "SAM2Text: Towards Prompt-Free and Multi-Resolution Video Scene Text Segmentation",
+    "doi": "",
+    "paper_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Zhang_SAM2Text_Towards_Prompt-Free_and_Multi-Resolution_Video_Scene_Text_Segmentation_CVPR_2026_paper.html"
+  },
+  {
+    "venue": "CVPR",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "Zhao_FLOW_Optimal_Transport-Driven_Feature_Warping_for_Generalized_Remote_Physiological_Measurement_CVPR_2026_paper",
+    "title": "FLOW: Optimal Transport-Driven Feature Warping for Generalized Remote Physiological Measurement",
+    "doi": "",
+    "paper_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Zhao_FLOW_Optimal_Transport-Driven_Feature_Warping_for_Generalized_Remote_Physiological_Measurement_CVPR_2026_paper.html"
+  },
+  {
+    "venue": "CVPR",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "Zheng_TrajTok_Learning_Trajectory_Tokens_Enhances_Video_Understanding_CVPR_2026_paper",
+    "title": "TrajTok: Learning Trajectory Tokens Enhances Video Understanding",
+    "doi": "",
+    "paper_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Zheng_TrajTok_Learning_Trajectory_Tokens_Enhances_Video_Understanding_CVPR_2026_paper.html"
+  },
+  {
+    "venue": "CVPR",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "Zhu_Personalized_Longitudinal_Medical_Report_Generation_via_Temporally-Aware_Federated_Adaptation_CVPR_2026_paper",
+    "title": "Personalized Longitudinal Medical Report Generation via Temporally-Aware Federated Adaptation",
+    "doi": "",
+    "paper_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Zhu_Personalized_Longitudinal_Medical_Report_Generation_via_Temporally-Aware_Federated_Adaptation_CVPR_2026_paper.html"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2023,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Login",
+    "doi": "",
+    "paper_url": "https://iclr.cc/accounts/login?nextp=/virtual/2023/poster/10682 "
+  },
+  {
+    "venue": "ICLR",
+    "year": 2023,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Universal Approximation Theorems for Differentiable Geometric Deep Learning",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2023/poster/12790"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2023,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Information-Theoretic Characterization of the Generalization Error for Iterative Semi-Supervised Learning",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2023/poster/12791"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2023,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "EV-GAN: Simulation of extreme events with ReLU neural networks",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2023/poster/12788"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2023,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Learning Rates as a Function of Batch Size: A Random Matrix Theory Approach to Neural Network Training",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2023/poster/12786"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2023,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Topologically penalized regression on manifolds",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2023/poster/12789"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2023,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Principal Components Bias in Over-parameterized Linear Models, and its Manifestation in Deep Neural Networks",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2023/poster/12793"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2023,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Globally Injective ReLU Networks",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2023/poster/12792"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2023,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Greedification Operators for Policy Optimization: Investigating Forward and Reverse KL Divergences",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2023/poster/12795"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2023,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Bidirectional Propagation for Cross-Modal 3D Object Detection",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2023/poster/11974"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2023,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "A Generalized Projected Bellman Error for Off-policy Value Estimation in Reinforcement Learning",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2023/poster/12794"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2023,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "On the Robustness to Misspecification of α-posteriors and Their Variational Approximations",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2023/poster/12787"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2024,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "WOODS: Benchmarks for Out-of-Distribution Generalization in Time Series",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2024/poster/21771"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2024,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Understanding the robustness difference between stochastic gradient descent and adaptive gradient methods",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2024/poster/21770"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2024,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Scaling Autoregressive Models for Content-Rich Text-to-Image Generation",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2024/poster/21767"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2024,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Numerical Accounting in the Shuffle Model of Differential Privacy",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2024/poster/21762"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2024,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Inversion by Direct Iteration: An Alternative to Denoising Diffusion for Image Restoration",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2024/poster/21756"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2024,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "LEAD: Min-Max Optimization from a Physical Perspective",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2024/poster/21757"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2024,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Attacking Perceptual Similarity Metrics",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2024/poster/21750"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2024,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Learning to reconstruct signals from binary measurements alone",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2024/poster/21758"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2024,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Quantifying Network Similarity using Graph Cumulants",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2024/poster/20664"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2024,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "DIG In: Evaluating Disparities in Image Generations with Indicators for Geographic Diversity",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2024/poster/21751"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2024,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "SPADE: Semi-supervised Anomaly Detection under Distribution Mismatch",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2024/poster/21769"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2024,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Pathologies of Predictive Diversity in Deep Ensembles",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2024/poster/21766"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2024,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Holistic Evaluation of Language Models",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2024/poster/21754"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2024,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Workflow Discovery from Dialogues in the Low Data Regime",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2024/poster/21772"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2024,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Neural Monge Map estimation and its applications",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2024/poster/21760"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2024,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "On the Sample Complexity of Lipschitz Constant Estimation",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2024/poster/21764"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2024,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Patches Are All You Need?",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2024/poster/21765"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2024,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Analytically Tractable Hidden-States Inference in Bayesian Neural Networks",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2024/poster/20657"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2024,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Random Feature Amplification: Feature Learning and Generalization in Neural Networks",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2024/poster/20660"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2024,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "A Unified Experiment Design Approach for Cyclic and Acyclic Causal Models",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2024/poster/20661"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2024,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "A Framework and Benchmark for Deep Batch Active Learning for Regression",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2024/poster/20667"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2024,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Improved baselines for vision-language pre-training",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2024/poster/21755"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2024,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "ModuLoRA: Finetuning 2-Bit LLMs on Consumer GPUs by Integrating with Modular Quantizers",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2024/poster/21759"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2024,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Achieving the Pareto Frontier of Regret Minimization and Best Arm Identification in Multi-Armed Bandits",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2024/poster/21749"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2024,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Generalizability of Adversarial Robustness Under Distribution Shifts",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2024/poster/21752"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2024,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Nevis'22: A Stream of 100 Tasks Sampled from 30 Years of Computer Vision Research",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2024/poster/20663"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2024,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Outlier-Robust Subsampling Techniques for Persistent Homology",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2024/poster/20666"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2024,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "On Characterizing the Trade-off in Invariant Representation Learning",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2024/poster/21763"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2024,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Adapting and Evaluating Influence-Estimation Methods for Gradient-Boosted Decision Trees",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2024/poster/20659"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2024,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Neural Ordinary Differential Equations for Modeling Epidemic Spreading",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2024/poster/21761"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2024,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "SolidGen: An Autoregressive Model for Direct B-rep Synthesis",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2024/poster/21768"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2024,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "High Fidelity Neural Audio Compression",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2024/poster/21753"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2024,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "A Generalist Agent",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2024/poster/21748"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2024,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Scalable Real-Time Recurrent Learning Using Columnar-Constructive Networks",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2024/poster/20658"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2024,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Be More Active! Understanding the Differences Between Mean and Sampled Representations of Variational Autoencoders",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2024/poster/20662"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2024,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Hard-Constrained Deep Learning for Climate Downscaling",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2024/poster/20665"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Repurposing in AI: A Distinct Approach or an Extension of Creative Problem Solving?",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31336"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Manifold Learning by Mixture Models of VAEs for Inverse Problems",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31386"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Regularized Proportional Fairness Mechanism for Resource Allocation Without Money",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31454"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Lost in Prediction: Why Social Media Narratives Don't Help Macroeconomic Forecasting?",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31323"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Inverse Scaling: When Bigger Isn't Better",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31511"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "An Illustrated Guide to Automatic Sparse Differentiation",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31324"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Intricacies of Feature Geometry in Large Language Models",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31349"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Optimization with Access to Auxiliary Information",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31502"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Grid Cell-Inspired Fragmentation and Recall for Efficient Map Building",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31475"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "On the Convergence of Adaptive Gradient Methods for Nonconvex Optimization",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31499"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Learning Regularized Graphon Mean-Field Games with Unknown Graphons",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31383"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "LR0.FM: LOW-RESOLUTION ZERO-SHOT CLASSIFICATION BENCHMARK FOR FOUNDATION MODELS",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/30609"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Adaptive backtracking for faster optimization",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/29575"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "A primer on analytical learning dynamics of nonlinear neural networks",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31338"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "As large as it gets – Studying Infinitely Large Convolutions via Neural Implicit Frequency Filters",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31487"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "LLMs' Potential Influences on Our Democracy: Challenges and Opportunities",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31347"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Beyond the Imitation Game: Quantifying and extrapolating the capabilities of language models",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31514"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Re-Thinking Inverse Graphics With Large Language Models",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31472"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Hessian Free Efficient Single Loop Iterative Differentiation Methods for Bi-Level Optimization Problems",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31463"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Understanding Model Calibration - A gentle introduction and visual exploration of calibration and the expected calibration error (ECE)",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31360"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Improved Regret Bounds for Linear Adversarial MDPs via Linear Optimization",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31509"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "A Large-Scale 3D Face Mesh Video Dataset via Neural Re-parameterized Optimization",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31483"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Steering LLMs' Behavior with Concept Activation Vectors",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/37630"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "MOCA: Self-supervised Representation Learning by Predicting Masked Online Codebook Assignments",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31503"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Rethinking Graph Prompts: Unraveling the Power of Data Manipulation in Graph Neural Networks",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31337"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Exploiting Hankel-Toeplitz Structures for Fast Computation of Kernel Precision Matrices",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31467"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "The Loss Landscape of Deep Linear Neural Networks: a Second-order Analysis",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31378"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Extreme Risk Mitigation in Reinforcement Learning using Extreme Value Theory",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31490"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "CLOVER: Cross-Layer Orthogonal Vectors Pruning and Fine-Tuning",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31331"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Mentored Learning: Improving Generalization and Convergence of Student Learner",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31385"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Soft Merging of Experts with Adaptive Routing",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31491"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Generative Adversarial Ranking Nets",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31380"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "MaskBit: Embedding-free Image Generation via Bit Tokens",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31452"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Improving Text-to-Image Consistency via Automatic Prompt Optimization",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31459"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Generating Less Certain Adversarial Examples Improves Robust Generalization",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31455"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Towards more rigorous evaluations of language models",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31354"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "From Complexity to Clarity: Analytical Expressions of Deep Neural Network Weights via Clifford Algebra and Convexity",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31470"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Building Blocks of Differentially Private Training",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31339"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Risk-Controlling Model Selection via Guided Bayesian Optimization",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31460"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Interpreting Global Perturbation Robustness of Image Models using Axiomatic Spectral Importance Decomposition",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31471"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Solving Inverse Problems with Model Mismatch using Untrained Neural Networks within Model-based Architectures",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31484"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Mechanistic Interpretability Meets Vision Language Models: Insights and Limitations",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31330"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Training LLMs over Neurally Compressed Text",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31457"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Controlling the Fidelity and Diversity of Deep Generative Models via Pseudo Density",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31480"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Factual Context Validation and Simplification: A Scalable Method to Enhance GPT Trustworthiness and Efficiency",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31367"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Open Problems and Fundamental Limitations of Reinforcement Learning from Human Feedback",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31506"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "E-Valuating Classifier Two-Sample Tests",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31497"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Linear Recurrences Accessible to Everyone",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31368"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Non-Stationary Dueling Bandits Under a Weighted Borda Criterion",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31451"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "AutoCLIP: Auto-tuning Zero-Shot Classifiers for Vision-Language Models",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31476"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "MMD-Regularized Unbalanced Optimal Transport",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31505"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Do vision models perceive objects like toddlers ?",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31352"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Plug, Play, and Generalize: Length Extrapolation with Pointer-Augmented Neural Memory",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31462"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Towards Unbiased Calibration using Meta-Regularization",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31481"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Self-Improvement for Neural Combinatorial Optimization: Sample Without Replacement, but Improvement",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31479"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "A Curious Case of the Missing Measure: Better Scores and Worse Generation",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31366"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Revisiting Energy Based Models as Policies: Ranking Noise Contrastive Estimation and Interpolating Energy Models",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31478"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "How do we interpret the outputs of a neural network trained on classification?",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31365"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "“I Am the One and Only, Your Cyber BFF”: Understanding the Impact of GenAI Requires Understanding the Impact of Anthropomorphic AI",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31358"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Multi-modal Learning: A Look Back and the Road Ahead",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31355"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Do not write that jailbreak paper",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31351"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Sensitivity-Aware Amortized Bayesian Inference",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31469"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Denoising Levy Probabilistic Models",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/29595"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "The Illustrated AlphaFold",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31362"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "SpikeGPT: Generative Pre-trained Language Model with Spiking Neural Networks",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31473"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "How to visualize training dynamics in neural networks",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31343"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Federated Residual Low-Rank Adaption of Large Language Models",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/28955"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "PCNN: Probable-Class Nearest-Neighbor Explanations Improve Fine-Grained Image Classification Accuracy for AIs and Humans",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31474"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Straightness of Rectified Flow: A Theoretical Insight into Wasserstein Convergence",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/29078"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "RAFT: Reward rAnked FineTuning for Generative Foundation Model Alignment",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31508"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Noise Stability Optimization for Finding Flat Minima: A Hessian-based Regularization Approach",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31468"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Three-in-One: Fast and Accurate Transducer for Hybrid-Autoregressive ASR",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/29973"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Diffusion Models and Gaussian Flow Matching: Two Sides of the Same Coin",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31359"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Finding and Only Finding Differential Nash Equilibria by Both Pretending to be a Follower",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31513"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "On the Inherent Privacy Properties of Discrete Denoising Diffusion Models",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31493"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Pitfalls of Evidence-Based AI Policy",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31363"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "In Search of the Engram in LLMs: A Neuroscience Perspective on the Memory Functions in AI Models",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31329"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "RoboCat: A Self-Improving Generalist Agent for Robotic Manipulation",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31507"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Learning multi-modal generative models with permutation-invariant encoders and tighter variational objectives",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31466"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Exposing and Addressing Cross-Task Inconsistency in Unified Vision-Language Models",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31504"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Peeking Behind Closed Doors: Risks of LLM Evaluation by Private Data Curators",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31326"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Reassessing EMNLP 2024’s Best Paper: Does Divergence-Based Calibration for MIAs Hold Up?",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31327"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "TSVD: Bridging Theory and Practice in Continual Learning with Pre-trained Models",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/29087"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Analysing The Spectral Biases in Generative Models",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31344"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Boundary constrained Gaussian processes for robust physics-informed machine learning of linear partial differential equations",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31382"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Open-Source vs Close-Source: The Context Utilization Challenge",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/37629"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Normed Spaces for Graph Embedding",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31496"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Equivariant Symmetry Breaking Sets",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31458"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Flow With What You Know",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31364"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "A Rainbow in Deep Network Black Boxes",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31381"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "GOPlan: Goal-conditioned Offline Reinforcement Learning by Planning with Learned Models",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31488"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "LeanVec: Searching vectors faster by making them fit",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31495"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Policy Gradient with Kernel Quadrature",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31498"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Fine-Tuning Token-Based Large Multimodal Models: What Works, What Doesn’t and What's Next",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31328"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Revisiting Feature Prediction for Learning Visual Representations from Video",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31477"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "LoRA Learns Less and Forgets Less",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31465"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Pre-training of Foundation Adapters for LLM Fine-tuning",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31361"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Flaws of ImageNet, Computer Vision's Favourite Dataset",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31342"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Models trained with unnormalized density functions: A need for a course correction",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31333"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Understanding Methods for Scalable MCTS",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31350"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Causal Reasoning and Large Language Models: Opening a New Frontier for Causality",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31482"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "On the Optimization and Generalization of Multi-head Attention",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31501"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Fine-tuning can cripple your foundation model; preserving features may be the solution",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31485"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "On the Computation of the Fisher Information in Continual Learning",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31332"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Does Editing Provide Evidence for Localization?",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31325"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "A Visual Dive into Conditional Flow Matching",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31356"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Enhancing Vision-Language Model with Unmasked Token Alignment",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31500"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Generating with Confidence: Uncertainty Quantification for Black-box Large Language Models",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31486"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "A Unifying Framework for Representation Learning",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/29352"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Restating the Proof of Linear Convergence for Linear GNNs",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31357"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "How Two-Layer Neural Networks Learn, One (Giant) Step at a Time",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31384"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Understanding Fairness Surrogate Functions in Algorithmic Fairness",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31494"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "DINOv2: Learning Robust Visual Features without Supervision",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31510"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "What Has Been Overlooked in Contrastive Source-Free Domain Adaptation: Leveraging Source-Informed Latent Augmentation within Neighborhood Context",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31489"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Reward Guided Latent Consistency Distillation",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31456"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Positional Embeddings in Transformer Models: Evolution from Text to Vision Domains",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31345"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "BBCaL: Black-box Backdoor Detection under the Causality Lens",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31453"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "SPD Attack - Prevention of AI Powered Image Editing by Image Immunization",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/37631"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Multi-Accurate CATE is Robust to Unknown Covariate Shifts",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31461"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "VideoGLUE: Video General Understanding Evaluation of Foundation Models",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31464"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Avoid Overclaims: Summary of Complexity Bounds for Algorithms in Minimization and Minimax Optimization",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31341"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "On LLM Knowledge Distillation - A Comparison between Forward KL and Reverse KL",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31335"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Efficient Reward Poisoning Attacks on Online Deep Reinforcement Learning",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31512"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "The adaptive complexity of parallelized log-concave sampling",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/30393"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "The Lottery LLM Hypothesis, Rethinking What Abilities Should LLM Compression Preserve?",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31348"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Why RoPE Struggles to Maintain Long-Term Decay in Long Sequences?",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31353"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Linear Bandits with Memory",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31492"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Reexamining the Aleatoric and Epistemic Uncertainty Dichotomy",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31334"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Euler Characteristic Tools for Topological Data Analysis",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31379"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Multi-LLM-Agents Debate - Performance, Efficiency, and Scaling Challenges",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31346"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Can LLM Simulations Truly Reflect Humanity? A Deep Dive",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2025/poster/31340"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "local_only",
+    "paper_id": "AsFxRSLtqR",
+    "title": "LR0.FM: Low-Res Benchmark and Improving robustness for Zero-Shot Classification in Foundation Models",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=AsFxRSLtqR"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "local_only",
+    "paper_id": "LrmPGtnros",
+    "title": "HAINAN: Fast and Accurate Transducer for Hybrid-Autoregressive ASR",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=LrmPGtnros"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "local_only",
+    "paper_id": "SYmUS6qRub",
+    "title": "Heavy-Tailed Diffusion with Denoising Levy Probabilistic Models",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=SYmUS6qRub"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "local_only",
+    "paper_id": "SrGP0RQbYH",
+    "title": "Adaptive backtracking line search",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=SrGP0RQbYH"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "local_only",
+    "paper_id": "WfaQrKCr4X",
+    "title": "I-Con: A Unifying Framework for Representation Learning",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=WfaQrKCr4X"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "local_only",
+    "paper_id": "bqv7M0wc4x",
+    "title": "LoRanPAC: Low-rank Random Features and Pre-trained Models for Bridging Theory and Practice in Continual Learning",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=bqv7M0wc4x"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2025,
+    "difference": "local_only",
+    "paper_id": "e0rQRMUhs7",
+    "title": "Federated Residual Low-Rank Adaptation of Large Language Models",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=e0rQRMUhs7"
+  },
+  {
+    "venue": "ICLR",
+    "year": 2026,
+    "difference": "reference_unmatched",
+    "paper_id": "",
+    "title": "Can LLMs Move Beyond Short Exchanges to Realistic Therapy Conversations?",
+    "doi": "",
+    "paper_url": "https://iclr.cc/virtual/2026/poster/10011665"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "XOEVxte7Nn",
+    "title": "Rethinking Personalization in Large Language Models at the Token Level",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=XOEVxte7Nn"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "virtual-71800",
+    "title": "A novel statistical approach to analyze image classification",
+    "doi": "",
+    "paper_url": "https://ICML.cc/virtual/2026/poster/71800"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "E7HDtLCoT6",
+    "title": "Beyond Accuracy: What Matters in Designing Well-Behaved Image Classification Models?",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=E7HDtLCoT6"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "GQAGlqOpyA",
+    "title": "BiSSL: Enhancing the Alignment Between Self-Supervised Pretraining and Downstream Fine-Tuning via Bilevel Optimization",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=GQAGlqOpyA"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "fqkq1MgONB",
+    "title": "BM^2: Coupled Schrödinger Bridge Matching",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=fqkq1MgONB"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "virtual-68704",
+    "title": "Collaborative likelihood-ratio estimation over graphs",
+    "doi": "",
+    "paper_url": "https://ICML.cc/virtual/2026/poster/68704"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "qS9pPu8ODt",
+    "title": "Comparing Deterministic and Soft Policy Gradients for Optimizing Gaussian Mixture Actors",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=qS9pPu8ODt"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "vx6qrM7VB5",
+    "title": "Decoding Safety Feedback from Diverse Raters: A Data-driven Lens on Responsiveness to Severity",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=vx6qrM7VB5"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "mKlW68i2Ig",
+    "title": "Demystifying MaskGIT Sampler and Beyond: Adaptive Order Selection in Masked Diffusion",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=mKlW68i2Ig"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "virtual-68702",
+    "title": "(De)-regularized Maximum Mean Discrepancy Gradient Flow",
+    "doi": "",
+    "paper_url": "https://ICML.cc/virtual/2026/poster/68702"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "Teh9Bq4giF",
+    "title": "Designing a Conditional Prior Distribution for Flow-Based Generative Models",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=Teh9Bq4giF"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "V0BjWbrAYC",
+    "title": "Differentially Private and Scalable Estimation of the Network Principal Component",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=V0BjWbrAYC"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "cdhfoS6Gyo",
+    "title": "Diffusion posterior sampling for simulation-based inference in tall data settings",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=cdhfoS6Gyo"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "2wAZjAtK16",
+    "title": "DuFal: Dual-Frequency-Aware Learning for High-Fidelity Extremely Sparse-view CBCT Reconstruction",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=2wAZjAtK16"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "VNM6V1gi3k",
+    "title": "Early Directional Convergence in Deep Homogeneous Neural Networks for Small Initializations",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=VNM6V1gi3k"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "Jq2dcMCS5R",
+    "title": "Efficient and Unbiased Sampling from Boltzmann Distributions via Variance-Tuned Diffusion Models",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=Jq2dcMCS5R"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "QdQVfdXnsG",
+    "title": "Expert Routing with Synthetic Data for Domain Incremental Learning",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=QdQVfdXnsG"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "s9ylaDLvdO",
+    "title": "Exploiting Hankel-Toeplitz Structures for Fast Computation of Kernel Precision Matrices",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=s9ylaDLvdO"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "virtual-68706",
+    "title": "Extending Mean-Field Variational Inference via Entropic Regularization: Theory and Computation",
+    "doi": "",
+    "paper_url": "https://ICML.cc/virtual/2026/poster/68706"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "7Hwk0bvvKn",
+    "title": "FedLog: Personalized Federated Classification with Less Communication and More Flexibility",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=7Hwk0bvvKn"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "fj23qnVifX",
+    "title": "G2D2: Gradient-Guided Discrete Diffusion for Inverse Problem Solving",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=fj23qnVifX"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "7MXra1JSh8",
+    "title": "Hierarchical Filtering and Refinement Classification for Few-Shot Class-Incremental Learning",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=7MXra1JSh8"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "0zKvH7YiAq",
+    "title": "Improved Convergence of Score-Based Diffusion Models via Prediction-Correction",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=0zKvH7YiAq"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "aKjJoEVKgO",
+    "title": "Investigating Continual Pretraining in Large Language Models: Insights and Implications",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=aKjJoEVKgO"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "lM4nHnxGfL",
+    "title": "Learning multi-modal generative models with permutation-invariant encoders and tighter variational objectives",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=lM4nHnxGfL"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "loWISTqGwW",
+    "title": "LO-BCQ: Locally Optimal Block Clustered Quantization for 4-bit (W4A4) LLM Inference",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=loWISTqGwW"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "9CWU8Oi86d",
+    "title": "Localize-and-Stitch: Efficient Model Merging via Sparse Task Arithmetic",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=9CWU8Oi86d"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "3rU1lp9w2l",
+    "title": "LumiNet: Perception-Driven Knowledge Distillation via Statistical Logit Calibration",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=3rU1lp9w2l"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "virtual-71804",
+    "title": "Meta-Learning with Generalized Ridge Regression: High-dimensional Asymptotics, Optimality and Hyper-covariance Estimation",
+    "doi": "",
+    "paper_url": "https://ICML.cc/virtual/2026/poster/71804"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "tmfdqtFUqO",
+    "title": "Mirror Descent Policy Optimisation for Robust Constrained Markov Decision Processes",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=tmfdqtFUqO"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "SyCcUNUUMf",
+    "title": "MixtureVitae: Open Web-Scale Pretraining Dataset With High Quality Instruction and Reasoning Data Built from Permissive-First Text Sources",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=SyCcUNUUMf"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "T1qXIDn9my",
+    "title": "MoFO: Momentum-Filtered Optimizer for Mitigating Forgetting in LLM Fine-Tuning",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=T1qXIDn9my"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "H7eYL4yFZS",
+    "title": "mSOP-765k: A Benchmark For Multi-Modal Structured Output Predictions",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=H7eYL4yFZS"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "VOGlTb27ob",
+    "title": "Multi-Accurate CATE is Robust to Unknown Covariate Shifts",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=VOGlTb27ob"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "MfHOmgqVXM",
+    "title": "Not All Rollouts are Useful: Down-Sampling Rollouts in LLM Reinforcement Learning",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=MfHOmgqVXM"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "virtual-71803",
+    "title": "Online Tensor Learning: Computational and Statistical Trade-offs, Adaptivity and Optimal Regret",
+    "doi": "",
+    "paper_url": "https://ICML.cc/virtual/2026/poster/71803"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "Gh0cxhbz3c",
+    "title": "On the Convergence of Adaptive Gradient Methods for Nonconvex Optimization",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=Gh0cxhbz3c"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "PTTa3U29NR",
+    "title": "Optimization Dynamics of Equivariant and Augmented Neural Networks",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=PTTa3U29NR"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "kxYqgSkH8I",
+    "title": "Optimization with Access to Auxiliary Information",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=kxYqgSkH8I"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "virtual-68705",
+    "title": "Optimizing Return Distributions with Distributional Dynamic Programming",
+    "doi": "",
+    "paper_url": "https://ICML.cc/virtual/2026/poster/68705"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "n3yrVzPcNa",
+    "title": "Physics-Aware Spatiotemporal Causal Graph Network for Forecasting with Limited Data",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=n3yrVzPcNa"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "Pwt0TeGUE6",
+    "title": "Position: The Age of AI Agents Demands A New Scientific Paradigm To Sustain Trustworthy Science",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=Pwt0TeGUE6"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "virtual-71802",
+    "title": "Precise Asymptotics of Bagging Regularized M-estimators",
+    "doi": "",
+    "paper_url": "https://ICML.cc/virtual/2026/poster/71802"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "2bj0eVgCdO",
+    "title": "Preserving Expert-Level Privacy in Offline Reinforcement Learning",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=2bj0eVgCdO"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "F6BTATGXaf",
+    "title": "Probabilistic Pretraining for Improved Neural Regression",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=F6BTATGXaf"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "FPVCb0WMuN",
+    "title": "Process Reward Models That Think",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=FPVCb0WMuN"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "gO1CpPRj6A",
+    "title": "Prompt Estimation from Prototypes for Federated Prompt Tuning of Vision Transformers",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=gO1CpPRj6A"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "BvnxenZwqY",
+    "title": "PruneFuse: Efficient Data Selection via Weight Pruning and Network Fusion",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=BvnxenZwqY"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "virtual-68701",
+    "title": "PyPop7: A Pure-Python Library for Population-Based Black-Box Optimization",
+    "doi": "",
+    "paper_url": "https://ICML.cc/virtual/2026/poster/68701"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "S9CwKnPHaO",
+    "title": "Random Erasing vs. Model Inversion: A Promising Defense or a False Hope?",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=S9CwKnPHaO"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "NALsdGEPhB",
+    "title": "Reasoning-Driven Synthetic Data Generation and Evaluation",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=NALsdGEPhB"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "bXUipBbZDA",
+    "title": "Reinforcement Learning from Bagged Reward",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=bXUipBbZDA"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "EScatQaRxz",
+    "title": "Reinforcement Learning from Human Feedback with Active Queries",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=EScatQaRxz"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "orHH4fCtR8",
+    "title": "Repositioning the Subject within Image",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=orHH4fCtR8"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "wgjVUIYyOD",
+    "title": "Rethinking Memory in Continual Learning: Beyond a Monolithic Store of the Past",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=wgjVUIYyOD"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "9NnhVME4Q6",
+    "title": "Retrospective Feature Estimation for Continual Learning",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=9NnhVME4Q6"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "lTt2cTW8h1",
+    "title": "Return-Aligned Decision Transformer",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=lTt2cTW8h1"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "vuPMXg1FDT",
+    "title": "Riemannian Generative Decoder",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=vuPMXg1FDT"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "iij6nLYLjF",
+    "title": "Robust Reinforcement Learning in a Sample-Efficient Setting",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=iij6nLYLjF"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "QzGLoaOPiY",
+    "title": "RouteFinder: Towards Foundation Models for Vehicle Routing Problems",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=QzGLoaOPiY"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "muWEt1TOyo",
+    "title": "SE3Set: Harnessing Equivariant Hypergraph Neural Networks for Molecular Representation Learning",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=muWEt1TOyo"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "a5lAwubXro",
+    "title": "Segmentation From Attention: Training-Free Layer Selection and One-Shot Tuning for Segmentation in VLMs",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=a5lAwubXro"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "PMO30TLI4l",
+    "title": "Selective Concept Bottleneck Models Without Predefined Concepts",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=PMO30TLI4l"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "ICUHKhOISN",
+    "title": "SEM-CTRL: Semantically Controlled Decoding",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=ICUHKhOISN"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "virtual-71801",
+    "title": "Statistical-Computational Trade-offs for Recursive Adaptive Partitioning Estimators",
+    "doi": "",
+    "paper_url": "https://ICML.cc/virtual/2026/poster/71801"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "virtual-71805",
+    "title": "Statistical Impossibility and Possibility of Aligning LLMs with Human Preferences: From Condorcet Paradox to Nash Equilibrium",
+    "doi": "",
+    "paper_url": "https://ICML.cc/virtual/2026/poster/71805"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "i9RuUH9Jyj",
+    "title": "StethoLM: Audio Language Model for Cardiopulmonary Analysis Across Clinical Tasks",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=i9RuUH9Jyj"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "m9V4JHLJrD",
+    "title": "Synthesizing world models for bilevel planning",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=m9V4JHLJrD"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "dltUedmUVT",
+    "title": "Temporal Difference Learning with Compressed Updates: Error-Feedback meets Reinforcement Learning",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=dltUedmUVT"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "6xKyDBIwQ5",
+    "title": "The Choice of Normalization Influences Shrinkage in Regularized Regression",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=6xKyDBIwQ5"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "bkUd1Dg46c",
+    "title": "TimeAutoDiff: A Unified Framework for Generation, Imputation, Forecasting, and Time-Varying Metadata Conditioning of Heterogeneous Time Series Tabular Data",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=bkUd1Dg46c"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "RFHq46pjb6",
+    "title": "ToMoE: Converting Dense Large Language Models to Mixture-of-Experts through Dynamic Structural Pruning",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=RFHq46pjb6"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "BqSi73krYd",
+    "title": "UCB Exploration for Fixed-Budget Bayesian Best Arm Identification",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=BqSi73krYd"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "virtual-68703",
+    "title": "Understanding Deep Representation Learning via Layerwise Feature Compression and Discrimination",
+    "doi": "",
+    "paper_url": "https://ICML.cc/virtual/2026/poster/68703"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "ahVmnYkVLt",
+    "title": "Wikipedia in the Era of LLMs: Evolution and Risks",
+    "doi": "",
+    "paper_url": "https://openreview.net/forum?id=ahVmnYkVLt"
+  },
+  {
+    "venue": "ICML",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "virtual-68707",
+    "title": "Zono-Conformal Prediction: Zonotope-Based Uncertainty Quantification for Regression and Classification Tasks",
+    "doi": "",
+    "paper_url": "https://ICML.cc/virtual/2026/poster/68707"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "AI4G225",
+    "title": "STELLAR: Spatio-Temporal Environmental Learning with Latent Alignment and Refinement for Long-Tailed Species Distribution Modeling",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/AI4G225"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "AI4H272",
+    "title": "ST-BiT: Spatio-Temporal Bipartite Transformer Network for Interaction-Preserving EEG-Based Dementia Subtyping",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/AI4H272"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "AI4H68",
+    "title": "CardioBench: Do Echocardiography Foundation Models Generalize Beyond the Lab?",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/AI4H68"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "AI4T240",
+    "title": "Structured Discrete Graph Generation Model for Fragmented Image Recovery",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/AI4T240"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "AIR44",
+    "title": "RepSAM: Bridging Foundation Models to Robotic Vision via Representation-Guided Adaptation",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/AIR44"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM100",
+    "title": "Anti-Slavery Intelligence (ASI): An AI-Powered Tool for Modern Slavery Compliance Analysis and Remediation",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM100"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM105",
+    "title": "Visualizing Deep Agents in Long-Horizon Tasks: Towards Explainable and Trustworthy Agentic AI",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM105"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM110",
+    "title": "DeepMed Search: An Open-Source Agentic Platform for Medical Deep Research with Introspective Verification",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM110"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM113",
+    "title": "Intent Hub: A Self-Healing Semantic Agent Routing System for Resolving Overlap in Agentic Systems",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM113"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM114",
+    "title": "A Scalable Cross-Domain Event Extraction System via a Unified Generative Training Framework",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM114"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM118",
+    "title": "RoboVineSim: A Simulation Tool for Human-Robot Collaboration in Vineyard Harvesting",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM118"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM121",
+    "title": "ADP-MA: An Interactive System for Autonomous Data Processing using Meta-Agents",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM121"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM122",
+    "title": "Making Weak Supervision Interactive: Exploring Transfer from Sound Libraries to Passive Acoustic Monitoring Data",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM122"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM124",
+    "title": "AwakeForest: An Interactive Geospatial Platform for Large-Scale Forest Imagery",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM124"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM125",
+    "title": "Low-Latency Real-Time Audio Game Commentary System via LLM-Based Parallel Text Generation",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM125"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM130",
+    "title": "DataCube: A Video Retrieval Platform via Natural Language Semantic Profiling",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM130"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM134",
+    "title": "Visualizing and Interacting with Model Representation Space for Human-Centric Active Learning",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM134"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM137",
+    "title": "PEACE 2.0: Grounded Explanations and Counter-Speech for Combating Hate Expressions",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM137"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM138",
+    "title": "DeepLog: A Software Framework for Modular Neurosymbolic AI",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM138"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM143",
+    "title": "A Privacy-Preserving Intelligent Assistant for Clinical Psychology Practice",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM143"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM149",
+    "title": "Looking at Your Photo, What Comes to Mind? Personalized Memory Internalization for Dementia Reminiscence",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM149"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM159",
+    "title": "TraceBrain: An Open-Source Framework for Agentic Trace Management",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM159"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM165",
+    "title": "ORBIT: Optimal Recommendation Framework for Boarding with Interpretable Timelines",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM165"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM170",
+    "title": "Interactive Open-Set Semantic Mapping with a 3D Scene Graph Backend",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM170"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM171",
+    "title": "SparseDR: Differentiable Rendering of Sparse Signed Distance Fields",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM171"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM173",
+    "title": "GRAIL: An Agentic AI Architecture for Interactive Grant Proposal Writing",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM173"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM183",
+    "title": "Optimizing Spectrogram Resolution and Training Strategies for Real-Time Killer Whale Call Type Classification",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM183"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM191",
+    "title": "RareDASH: A Dynamic Multi-Agent System for Holistic Rare Disease Care",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM191"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM194",
+    "title": "LLM-to-Map: Transparent Conversational Tool Orchestration for Real-Time Multi-Domain Simulation",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM194"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM195",
+    "title": "UrbanMix: LLM-Guided Simulation of Mixed Autonomy Traffic with Heterogeneous Behavioral Profiles",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM195"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM196",
+    "title": "ElderMTL: Multi-Task Affect Monitoring for Elderly Care",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM196"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM201",
+    "title": "Secure Coding Unleashed: Boosting Productivity With On-Premise LLM-Powered IDE Plugins",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM201"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM205",
+    "title": "Interactive System for Reducing Error Propagation in Multi-Stage Ancient Egyptian Text Analysis",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM205"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM209",
+    "title": "Double Bounded Neural Ray Queries",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM209"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM210",
+    "title": "CrossRefine: A Microservice for Cross-Domain Spatial Super-Resolution",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM210"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM211",
+    "title": "LELA: An End-to-end LLM-based Entity Linking Framework with Zero-shot Domain Adaptation",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM211"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM216",
+    "title": "Sparse ProtoPatient: Interactive Multi-Prototype Explanations for Clinical Diagnosis Prediction",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM216"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM218",
+    "title": "DeepL Voice: Real-Time Speech-to-Speech Translation",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM218"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM220",
+    "title": "SteelAgent: An LLM-Orchestrated System for Physics-Informed Steel Property Prediction and Generalization Auditing",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM220"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM223",
+    "title": "Lucyde: A Demonstrator for Explainable Artificial Intelligence and Interactive Machine Learning",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM223"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM230",
+    "title": "From Surface Learning to Deep Understanding: A Grounded AI Tutoring System for Moodle",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM230"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM231",
+    "title": "[COMP25] The Automated Negotiating Agents Competition (ANAC) 2025 Challenges and Results",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM231"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM234",
+    "title": "LLARS: Enabling Domain Expert &amp; Developer Collaboration for LLM Prompting, Generation and Evaluation",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM234"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM237",
+    "title": "PERELMAN: Pipeline for Scientific Literature Meta-Analysis",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM237"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM239",
+    "title": "An Automated Maintenance Plant for Highways",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM239"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM249",
+    "title": "GEV: Statically Correct and Programmable Knowledge Graph Updates",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM249"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM33",
+    "title": "Wavelength.AI: Extending the Collaborative Game Wavelength as a Testbed for Studying Shared Understanding in Human–Agent Collaboration",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM33"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM67",
+    "title": "SoilNet App: AI-Assisted Expert-level Annotations of Soil Horizons",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM67"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM68",
+    "title": "A Resilient Solution for Sewer Overflow Monitoring Across Cloud and Edge",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM68"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM76",
+    "title": "Neuro-Symbolic Logical Reasoning with Textual Entailment",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM76"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM80",
+    "title": "RUVA: Personalized Transparent On-Device Graph Reasoning",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM80"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM81",
+    "title": "MC-RAG System: A Structure-Driven RAG System for Multi-Constraint Queries",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM81"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM84",
+    "title": "vSpeedUI: Turning Past GUI Experience into Fast Executable Plans",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM84"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM87",
+    "title": "eNNcode: Optimization-Based Analysis of Neural Networks",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM87"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "DM99",
+    "title": "AI-Powered Interactive Multimodal Digital Book &amp; Online Shop For Blind and Visually Impaired Users",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/DM99"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "EC11",
+    "title": "Beyond Forgetting: Toward Mechanistically Grounded Continual Learning",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/EC11"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "EC13",
+    "title": "Human-Aware AI: Asking What AI can do for you?",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/EC13"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "EC14",
+    "title": "Title TBD",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/EC14"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "HC136",
+    "title": "Human-Centric Behavior-Aware Adaptive Off-Policy Selection",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/HC136"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "ST1",
+    "title": "Attributed Hypergraph Generation with Realistic Interplay Between Structure and Attributes (Extended Abstract)",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/ST1"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "ST10",
+    "title": "Parallelizing Multi-Objective A* Search (Extended Abstract)",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/ST10"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "ST11",
+    "title": "Every Bit Helps: Achieving the Optimal Distortion with a Few Queries (Extended Abstract)",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/ST11"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "ST12",
+    "title": "Finite Axiomatizability by Disjunctive Existential Rules (Extended Abstract)",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/ST12"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "ST13",
+    "title": "Beyond Top-1: Addressing Inconsistencies in Evaluating Counterfactual Explanations for Recommender Systems (Extended Abstract)",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/ST13"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "ST14",
+    "title": "Soft Condorcet Optimization for Ranking of General Agents (Extended Abstract)",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/ST14"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "ST15",
+    "title": "CollabLLM: From Passive Responders to Active Collaborators (Extended Abstract)",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/ST15"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "ST16",
+    "title": "A Theory of Response Sampling in LLMs: Part Descriptive and Part Prescriptive (Extended Abstract)",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/ST16"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "ST17",
+    "title": "What Makes Treatment Effects Identifiable? Characterizations and Estimators Beyond Unconfoundedness (Extended Abstract)",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/ST17"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "ST2",
+    "title": "LiSA: Leveraging Link Recommender to Attack Graph Neural Networks via Subgraph Injection (Extended Abstract)",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/ST2"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "ST3",
+    "title": "Revelations: A Decidable Class of POMDPs with Omega-Regular Objectives (Extended Abstract)",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/ST3"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "ST4",
+    "title": "FAIRGAME: A Framework for AI Agents Bias Recognition Using Game Theory (Extended abstract)",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/ST4"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "ST5",
+    "title": "PAR-AdvGAN: Improving Adversarial Attack Capability with Progressive Auto-Regression AdvGAN (Extended Abstract)",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/ST5"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "ST6",
+    "title": "You Don&#039;t Bring Me Flowers: Mitigating Unwanted Recommendations Through Conformal Risk Control (Extended Abstract)",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/ST6"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "ST7",
+    "title": "Modeling and Explaining an Industrial Workforce Allocation Problem (Extended Abstract)",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/ST7"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "ST8",
+    "title": "Improving Group Robustness on Spurious Correlation via Evidential Alignment (Extended Abstract)",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/ST8"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "ST9",
+    "title": "Analysing Temporal Reasoning in Description Logics Using Formal Grammars (IJCAI Extended Abstract)",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/ST9"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "SV208",
+    "title": "Machine Learning Methods for Studying Latent Neural Activity Dynamics",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/SV208"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "SV77",
+    "title": "A Survey of Personalized Federated Foundation Models for Privacy-Preserving Recommendation",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/SV77"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "SV82",
+    "title": "AI-Enhanced Vein Biometrics: A Comprehensive Survey",
+    "doi": "",
+    "paper_url": "https://www.ijcai.org/proceedings/2026/SV82"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "1253",
+    "title": "Mutually Reinforced Fair Multi-View Clustering",
+    "doi": "",
+    "paper_url": "https://2026.ijcai.org/accepted-papers"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "2065",
+    "title": "From Standard to Robust: A Universal Framework for Continual Adversarial Defense",
+    "doi": "",
+    "paper_url": "https://2026.ijcai.org/accepted-papers"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "2081",
+    "title": "Feature Selection via Information Decomposition and Orthogonality Constraint for Partial Multi-Label Data",
+    "doi": "",
+    "paper_url": "https://2026.ijcai.org/accepted-papers"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "2111",
+    "title": "Uncertainty-Aware Spatial-Frequency Registration and Fusion for Infrared and Visible Images",
+    "doi": "",
+    "paper_url": "https://2026.ijcai.org/accepted-papers"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "2199",
+    "title": "Joint Medical Image Enhancement and Segmentation with Diffusion-based Symbiotic Information Interaction",
+    "doi": "",
+    "paper_url": "https://2026.ijcai.org/accepted-papers"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "221",
+    "title": "Distilling and Scaling Hierarchical Vision Transformer to 30B Parameters",
+    "doi": "",
+    "paper_url": "https://2026.ijcai.org/accepted-papers"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "3603",
+    "title": "Scale-Invariant Conditional VAE for Coarse-Grained Economic Time-Series Forecasting",
+    "doi": "",
+    "paper_url": "https://2026.ijcai.org/accepted-papers"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "3980",
+    "title": "Empowering Self-Balance of Deep Information Bottleneck for Multimodal Clustering",
+    "doi": "",
+    "paper_url": "https://2026.ijcai.org/accepted-papers"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "4185",
+    "title": "MVRNet: A Multi-View Refinement Network for Accurate Recognition of Challenging Intracranial Aneurysms in Enhanced 3D CTA Images",
+    "doi": "",
+    "paper_url": "https://2026.ijcai.org/accepted-papers"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "5288",
+    "title": "One-stop Multi-modality Image Dehazing-Registration-Fusion Framework via Progressive Task Cooperation",
+    "doi": "",
+    "paper_url": "https://2026.ijcai.org/accepted-papers"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "5647",
+    "title": "MV-FAC: Mean–Variance Value Function Factorization for Multi-Robot Mean–Standard Deviation Moving Target Search",
+    "doi": "",
+    "paper_url": "https://2026.ijcai.org/accepted-papers"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "617",
+    "title": "CDO-GIA: A Robust Textual Gradient Inversion Attack Against Federated Language Models via Continuous-Discrete Optimization",
+    "doi": "",
+    "paper_url": "https://2026.ijcai.org/accepted-papers"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "623",
+    "title": "Multi-Scale Residual Graph Learning with Contextual Memory for Sleep Staging",
+    "doi": "",
+    "paper_url": "https://2026.ijcai.org/accepted-papers"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "6256",
+    "title": "“The Whole Is Greater than the Sum of Its Parts”: A Compatibility-Aware Multi-Teacher CoT Distillation Framework",
+    "doi": "",
+    "paper_url": "https://2026.ijcai.org/accepted-papers"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "6694",
+    "title": "A New Framework for Convex Clustering in Kernel Spaces: Finite Sample Bounds, Consistency and Performance Insights",
+    "doi": "",
+    "paper_url": "https://2026.ijcai.org/accepted-papers"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "6744",
+    "title": "Segment Any 3D-Part in a Scene from a Sentence",
+    "doi": "",
+    "paper_url": "https://2026.ijcai.org/accepted-papers"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "7111",
+    "title": "SeesawNet: Towards Non-stationary Time Series Forecasting with Balanced Modeling of Common and Specific Dependencies",
+    "doi": "",
+    "paper_url": "https://2026.ijcai.org/accepted-papers"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "7118",
+    "title": "OneVoice: One Model, Triple Scenarios—Towards Unified Zero-shot Voice Conversion",
+    "doi": "",
+    "paper_url": "https://2026.ijcai.org/accepted-papers"
+  },
+  {
+    "venue": "IJCAI",
+    "year": 2026,
+    "difference": "local_only",
+    "paper_id": "964",
+    "title": "Revealing Modular Gradient Noise Imbalance in LLMs: Calibrating Adam via Signal-to-Noise Ratio",
+    "doi": "",
+    "paper_url": "https://2026.ijcai.org/accepted-papers"
+  },
+  {
+    "venue": "TIP",
+    "year": 2025,
+    "difference": "local_only",
+    "paper_id": "10.1109/tip.2025.3618408",
+    "title": "Hierarchical Multimodal Knowledge Matching for Training-Free Open-Vocabulary Object Detection",
+    "doi": "10.1109/tip.2025.3618408",
+    "paper_url": "https://doi.org/10.1109/tip.2025.3618408"
+  },
+  {
+    "venue": "TPAMI",
+    "year": 2025,
+    "difference": "local_only",
+    "paper_id": "10.1109/tpami.2025.3598330",
+    "title": "Dark Noise Diffusion: Noise Synthesis for Low-Light Image Denoising",
+    "doi": "10.1109/tpami.2025.3598330",
+    "paper_url": "https://doi.org/10.1109/tpami.2025.3598330"
+  },
+  {
+    "venue": "TPAMI",
+    "year": 2025,
+    "difference": "local_only",
+    "paper_id": "10.1109/tpami.2025.3598340",
+    "title": "Learned off-aperture Encoding for Wide Field-of-view RGBD Imaging",
+    "doi": "10.1109/tpami.2025.3598340",
+    "paper_url": "https://doi.org/10.1109/tpami.2025.3598340"
+  },
+  {
+    "venue": "TPAMI",
+    "year": 2025,
+    "difference": "local_only",
+    "paper_id": "10.1109/tpami.2025.3598593",
+    "title": "Depth Dynamics via One-Bit Frequency Probing in Embedded Direct Time-of-Flight Sensing",
+    "doi": "10.1109/tpami.2025.3598593",
+    "paper_url": "https://doi.org/10.1109/tpami.2025.3598593"
+  },
+  {
+    "venue": "TPAMI",
+    "year": 2025,
+    "difference": "local_only",
+    "paper_id": "10.1109/tpami.2025.3598767",
+    "title": "Predicting Important Photons for Energy-Efficient Single-Photon Videography",
+    "doi": "10.1109/tpami.2025.3598767",
+    "paper_url": "https://doi.org/10.1109/tpami.2025.3598767"
+  },
+  {
+    "venue": "TPAMI",
+    "year": 2025,
+    "difference": "local_only",
+    "paper_id": "10.1109/tpami.2025.3599073",
+    "title": "Hardware-aware Coding Function Design for Compressive Single-photon 3D Cameras",
+    "doi": "10.1109/tpami.2025.3599073",
+    "paper_url": "https://doi.org/10.1109/tpami.2025.3599073"
+  },
+  {
+    "venue": "TPAMI",
+    "year": 2025,
+    "difference": "local_only",
+    "paper_id": "10.1109/tpami.2025.3599143",
+    "title": "Structured light with a million light planes per second",
+    "doi": "10.1109/tpami.2025.3599143",
+    "paper_url": "https://doi.org/10.1109/tpami.2025.3599143"
+  },
+  {
+    "venue": "TPAMI",
+    "year": 2025,
+    "difference": "local_only",
+    "paper_id": "10.1109/tpami.2025.3599775",
+    "title": "Single-Step Latent Diffusion for Underwater Image Restoration",
+    "doi": "10.1109/tpami.2025.3599775",
+    "paper_url": "https://doi.org/10.1109/tpami.2025.3599775"
+  },
+  {
+    "venue": "TPAMI",
+    "year": 2025,
+    "difference": "local_only",
+    "paper_id": "10.1109/tpami.2025.3599949",
+    "title": "Reconstructing Satellites in 3D from Amateur Telescope Images",
+    "doi": "10.1109/tpami.2025.3599949",
+    "paper_url": "https://doi.org/10.1109/tpami.2025.3599949"
+  },
+  {
+    "venue": "TPAMI",
+    "year": 2025,
+    "difference": "local_only",
+    "paper_id": "10.1109/tpami.2025.3600072",
+    "title": "Tomographic Sparse View Selection Using the View Covariance Loss",
+    "doi": "10.1109/tpami.2025.3600072",
+    "paper_url": "https://doi.org/10.1109/tpami.2025.3600072"
+  },
+  {
+    "venue": "TPAMI",
+    "year": 2025,
+    "difference": "local_only",
+    "paper_id": "10.1109/tpami.2025.3604385",
+    "title": "Centroiding Point-Objects With Event Cameras",
+    "doi": "10.1109/tpami.2025.3604385",
+    "paper_url": "https://doi.org/10.1109/tpami.2025.3604385"
+  }
+]

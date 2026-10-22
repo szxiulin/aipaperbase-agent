@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import sqlite3
+from backend.catalog import identity
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -38,7 +39,11 @@ def utc_now() -> str:
 
 
 def paper_path(entity_id: str) -> Path:
-    return PAPERS_ROOT / f"{entity_id}.pdf"
+    for eid in identity.variants(entity_id):
+        path = PAPERS_ROOT / f"{eid}.pdf"
+        if path.is_file():
+            return path
+    return PAPERS_ROOT / f"{identity.canonical(entity_id)}.pdf"
 
 
 def connect(path: Path | None = None, *, read_only: bool = False) -> sqlite3.Connection:
@@ -87,6 +92,7 @@ def mark(
 
 
 def is_success(connection: sqlite3.Connection, entity_id: str) -> bool:
+    entity_id = identity.storage_id(connection, "downloads", entity_id)
     row = connection.execute(
         "SELECT status, duplicate_of FROM downloads WHERE entity_id = ?", (entity_id,)
     ).fetchone()
@@ -132,7 +138,8 @@ def list_all(connection: sqlite3.Connection) -> list[dict[str, Any]]:
 
 
 def status_map(connection: sqlite3.Connection, entity_ids: list[str]) -> dict[str, str]:
-    ids = list(dict.fromkeys(entity_ids))
+    requested = list(dict.fromkeys(entity_ids))
+    ids = identity.expand(requested)
     if not ids:
         return {}
     result: dict[str, str] = {}
@@ -147,7 +154,7 @@ def status_map(connection: sqlite3.Connection, entity_ids: list[str]) -> dict[st
             if status == "success" and not paper_path(row["entity_id"]).exists():
                 status = ""  # PDF was deleted; treat as not downloaded
             result[row["entity_id"]] = status
-    return result
+    return {eid: result.get(identity.storage_id(connection, "downloads", eid), "") for eid in requested if identity.storage_id(connection, "downloads", eid) in result}
 
 
 def remove(connection: sqlite3.Connection, entity_id: str) -> dict[str, Any]:
@@ -159,7 +166,7 @@ def remove(connection: sqlite3.Connection, entity_id: str) -> dict[str, Any]:
         return {"entity_id": entity_id, "removed": False}
     with connection:
         if row["status"] == "success":
-            paper_path(entity_id).unlink(missing_ok=True)
+            (PAPERS_ROOT / f"{entity_id}.pdf").unlink(missing_ok=True)
             dup_ids = [
                 r["entity_id"]
                 for r in connection.execute(
@@ -167,7 +174,7 @@ def remove(connection: sqlite3.Connection, entity_id: str) -> dict[str, Any]:
                 )
             ]
             for dup_id in dup_ids:
-                paper_path(dup_id).unlink(missing_ok=True)
+                (PAPERS_ROOT / f"{dup_id}.pdf").unlink(missing_ok=True)
             connection.execute(
                 "DELETE FROM downloads WHERE duplicate_of = ?", (entity_id,)
             )

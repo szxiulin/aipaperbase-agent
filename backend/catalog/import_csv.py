@@ -59,11 +59,12 @@ def discover_csv_files() -> list[Path]:
     return sorted(path for root in CSV_ROOTS for path in root.rglob("*.csv"))
 
 
-def source_digest(files: list[Path]) -> tuple[str, dict[Path, str]]:
+def source_digest(files: list[Path], catalog_root: Path | None = None) -> tuple[str, dict[Path, str]]:
     hashes = {path: file_sha256(path) for path in files}
     digest = hashlib.sha256()
     for path in files:
-        relative = path.relative_to(ROOT).as_posix()
+        relative = ((CATALOG_ROOT / path.relative_to(catalog_root)).relative_to(ROOT).as_posix()
+                    if catalog_root is not None else path.relative_to(ROOT).as_posix())
         digest.update(relative.encode("utf-8"))
         digest.update(hashes[path].encode("ascii"))
     return digest.hexdigest(), hashes
@@ -148,8 +149,9 @@ def import_file(
     release_id: str,
     imported_at: str,
     sha256: str,
+    source_file: str | None = None,
 ) -> int:
-    relative = path.relative_to(ROOT).as_posix()
+    relative = source_file or path.relative_to(ROOT).as_posix()
     with path.open("r", encoding="utf-8-sig", newline="") as handle:
         reader = csv.DictReader(handle)
         if tuple(reader.fieldnames or ()) != EXPECTED_FIELDS:
@@ -213,11 +215,15 @@ def add_set_level_issues(connection: sqlite3.Connection, release_id: str) -> Non
         add_issue(connection, release_id, "info", "cross_venue_doi", "", "", "doi", f"{item['doi']} 出现在 {item['venue_count']} 个 venue、{item['record_count']} 条记录中")
 
 
-def build_database(target: Path = DEFAULT_DATABASE) -> dict[str, object]:
-    files = discover_csv_files()
+def build_database(target: Path = DEFAULT_DATABASE, *, catalog_root: Path | None = None,
+                   previous_database: Path | None = None,
+                   label_paths: dict[str, Path] | None = None) -> dict[str, object]:
+    files = (sorted(path for kind in ("conferences", "journals")
+                    for path in (catalog_root / kind).rglob("*.csv"))
+             if catalog_root is not None else discover_csv_files())
     if not files:
         raise RuntimeError("没有发现年度 CSV")
-    digest, hashes = source_digest(files)
+    digest, hashes = source_digest(files, catalog_root)
     release_id = f"catalog-{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')}-{digest[:12]}"
     imported_at = utc_now()
     target = target.resolve()
@@ -235,15 +241,21 @@ def build_database(target: Path = DEFAULT_DATABASE) -> dict[str, object]:
         total = 0
         with connection:
             for path in files:
-                total += import_file(connection, path, release_id, imported_at, hashes[path])
+                relative = ((CATALOG_ROOT / path.relative_to(catalog_root)).relative_to(ROOT).as_posix()
+                            if catalog_root is not None else None)
+                total += import_file(connection, path, release_id, imported_at, hashes[path], relative)
             add_set_level_issues(connection, release_id)
             entity_stats = build_entities(
                 connection,
                 release_id,
                 imported_at,
-                previous_database=target if target.exists() else None,
+                previous_database=previous_database or (target if target.exists() else None),
+                identity_snapshot=ROOT / "data/labels/entity_ids.csv",
+                alias_snapshot=ROOT / "data/labels/entity_aliases.csv",
+                publication_snapshot=(ROOT / "data/labels/publication_review.json"
+                                      if catalog_root is None or previous_database is not None else None),
             )
-            label_stats = label_import.import_labels(connection, release_id, imported_at)
+            label_stats = label_import.import_labels(connection, release_id, imported_at, **(label_paths or {}))
             topic_stats = build_topic_analysis(connection, release_id, imported_at)
             evaluation_stats = {}
             if DEFAULT_SAMPLE.exists() and DEFAULT_REVIEWS.exists():
@@ -276,7 +288,7 @@ def build_database(target: Path = DEFAULT_DATABASE) -> dict[str, object]:
             backup = target.with_name(f"catalog.{datetime.now().strftime('%Y%m%d-%H%M%S')}.sqlite")
             shutil.move(target, backup)
         os.replace(temporary_database, target)
-        shutil.rmtree(temporary_dir, ignore_errors=True)  # success: drop this build's scratch dir
+        # Retain the empty scratch directory; callers may move it to Trash.
         return {
             "database": str(target),
             "release_id": release_id,

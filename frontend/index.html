@@ -51,7 +51,7 @@
           <details class="insights-glossary">
             <summary data-i18n-en="Glossary of the terms used on this page">术语说明</summary>
             <dl>
-              <div><dt data-i18n-en="LLM labels + gold set">LLM 领域标签 + 金标</dt><dd data-i18n-en="Each paper gets one area and one direction from an LLM labeler; accuracy is measured on a 400-paper author-reviewed gold set, not on the prelabel.">每篇论文由大模型标注一个领域与一个方向；准确率来自 399 篇抽样的代理复核（AI 代理、以系统标签为参照），不是独立人工评测。</dd></div>
+              <div><dt data-i18n-en="LLM labels + agent review">LLM 领域标签 + 代理复核</dt><dd data-i18n-en="Classified papers have LLM area and direction labels. A historical sample of 399 papers was reviewed by AI agents using system labels as reference, not an independent human gold set; it does not evaluate newly added pending papers.">已分类论文由大模型标注领域与方向；准确率来自 399 篇抽样的代理复核（AI 代理、以系统标签为参照），不是独立人工评测。</dd></div>
               <div><dt data-i18n-en="Area vs. direction">领域 / 方向</dt><dd data-i18n-en="Area is the coarse 21-class layer; direction is the data-driven sub-topic inside it (383 in total).">领域是 21 类粗粒度层；方向是领域内由论文数据长出的细分主题（共 383 个）。</dd></div>
               <div><dt data-i18n-en="Paper record vs. unified entity">清单记录 vs 统一论文实体</dt><dd data-i18n-en="A record is one venue list entry; an entity is the deduplicated paper (arXiv/preprint + published merged), keeping every source record.">记录 = 某 venue 清单里的一条；实体 = 去重合并后的同一篇论文（预印本/正式发表等归并），原始记录全部保留。</dd></div>
               <div><dt data-i18n-en="Secondary area">次领域</dt><dd data-i18n-en="At most one secondary area for genuinely cross-area work; statistics count the primary area only.">真正跨领域的论文可带一个次领域；统计只按主领域计数。</dd></div>
@@ -68,7 +68,7 @@
               <div><p class="eyebrow">领域树</p><h2 data-i18n-en="Research areas · 21 areas, 383 directions">研究领域与方向 · 21 个领域 + 其他</h2></div>
               <span id="topic-tree-meta" class="muted" data-i18n-en="Loading…">加载中…</span>
             </div>
-            <p class="muted panel-note" data-i18n-en="Directions are a weak-label baseline (primary view: each paper maps to one main direction, plus up to 2 extras); the tree expands to leaves — click a count to drill into its papers.">领域为 21 类粗粒度层，方向为领域内数据驱动的细分主题；点击方向可下钻查看构成论文。251 条非论文记录（编委、目录、勘误）不计入统计。</p>
+            <p class="muted panel-note" data-i18n-en="Directions are a weak-label baseline (primary view: each paper maps to one main direction, plus up to 2 extras); the tree expands to leaves — click a count to drill into its papers.">领域为 21 类粗粒度层，方向为领域内数据驱动的细分主题；点击方向可下钻查看构成论文。已标记的非论文记录（编委、目录、勘误）不计入统计。</p>
             <div id="topic-tree" class="topic-tree"></div>
           </article>
           <article class="panel venue-wall-panel">
@@ -198,7 +198,7 @@
         <section id="topics-view" class="view">
           <article class="panel analysis-boundary">
             <div><p class="eyebrow">口径说明</p><h2 data-i18n-en="An auditable local weak-label baseline">当前是经过代理复核的领域/方向分类</h2></div>
-            <p data-i18n-en="Labels are derived from explicit signals in title and abstract — for discovery, filtering and trend observation; they are not an official taxonomy nor human-reviewed per paper. Every result can be drilled into to see the matching evidence.">每篇论文由 LLM 标注一个领域与一个方向，并在 399 篇分层样本上做过代理复核（跨领域分歧逐篇改判）；不等于官方学科分类，也不是独立人工金标。每个结果都可下钻查看论文。</p>
+            <p data-i18n-en="Labels are derived from explicit signals in title and abstract — for discovery, filtering and trend observation; they are not an official taxonomy nor human-reviewed per paper. Every result can be drilled into to see the matching evidence.">已分类论文由 LLM 标注领域与方向，并在 399 篇分层样本上做过代理复核（跨领域分歧逐篇改判）；不等于官方学科分类，也不是独立人工金标。每个结果都可下钻查看论文。</p>
           </article>
           <div id="topic-cards" class="topic-grid"></div>
           <article class="panel">
@@ -236,7 +236,7 @@
                 <summary data-i18n-en="More filters">更多筛选</summary>
                 <div class="more-filters-body">
                   <label><span data-i18n-en="Type">类型</span><select name="venue_type"><option value="" data-i18n-en="All">全部</option><option value="conference" data-i18n-en="Conference">会议</option><option value="journal" data-i18n-en="Journal">期刊</option></select></label>
-                  <label><span data-i18n-en="Status">收录状态</span><select name="list_status"><option value="" data-i18n-en="All">全部</option><option value="final" data-i18n-en="Final">已完结</option><option value="rolling" data-i18n-en="Rolling">收录中</option></select></label>
+                  <label><span data-i18n-en="Status">收录状态</span><select name="list_status"><option value="" data-i18n-en="All">全部</option><option value="final" data-i18n-en="Source list finalized">来源清单已定稿</option><option value="rolling" data-i18n-en="Rolling">收录中</option></select></label>
                   <label><span data-i18n-en="Abstract">摘要</span><select name="has_abstract"><option value="" data-i18n-en="All">全部</option><option value="yes" data-i18n-en="Has abstract">有摘要</option><option value="no" data-i18n-en="No abstract">无摘要</option></select></label>
                   <button type="button" id="select-all-results" class="secondary-button" data-i18n-en="Select all results">全选结果加入集合</button>
                 </div>
@@ -245,6 +245,7 @@
           </article>
           <article class="panel">
             <div class="panel-head"><div><h2 id="paper-result-title" data-i18n-en="Papers">论文</h2></div><div class="panel-meta"><span id="paper-count" class="muted" data-i18n-en="Loading…">加载中…</span><span class="abstract-actions"><button type="button" class="text-button abstract-action hidden" data-action="expand" title="展开当前页全部摘要" data-i18n-en="Expand all abstracts" data-i18n-title-en="Expand all abstracts on this page">展开全部摘要</button><button type="button" class="text-button abstract-action hidden" data-action="collapse" title="收起当前页全部摘要" data-i18n-en="Collapse all abstracts" data-i18n-title-en="Collapse all abstracts on this page">收起全部摘要</button></span></div></div>
+            <p id="paper-search-feedback" class="fine-print" role="status" aria-live="polite"></p>
             <div id="papers-table" class="table-wrap"></div>
             <div class="pagination"><button id="prev-page" class="secondary-button" data-i18n-en="Previous">上一页</button><span id="page-info">—</span><button id="next-page" class="secondary-button" data-i18n-en="Next">下一页</button></div>
           </article>
@@ -334,6 +335,10 @@
                   <summary id="chat-archived-summary" data-i18n-en="Archived">已归档</summary>
                   <div id="chat-archived-list" class="chat-list"></div>
                 </details>
+                <details id="chat-deleted-box" class="chat-archived-box hidden">
+                  <summary id="chat-deleted-summary">已删除</summary>
+                  <div id="chat-deleted-list" class="chat-list"></div>
+                </details>
               </div>
               <button class="chat-settings-link" type="button" data-open-settings><span aria-hidden="true">⚙</span> <span data-i18n-en="Model &amp; API settings">模型与 API 设置</span></button>
             </aside>
@@ -354,12 +359,13 @@
               <form id="chat-form" class="composer chat-composer">
                 <textarea id="chat-input" rows="1" placeholder="问任何关于 AI 论文的问题…" data-i18n-ph-en="Ask anything about AI papers…" aria-label="输入问题"></textarea>
                 <div class="composer-bar">
-                  <button type="button" id="chat-web-toggle" class="tool-toggle" aria-pressed="false" title="让模型可以联网搜索网页" data-i18n-title-en="Let the model search the web"><span aria-hidden="true">◎</span> <span data-i18n-en="Web search">联网搜索</span></button>
+                  <button type="button" id="chat-web-toggle" class="tool-toggle" aria-pressed="false" title="关闭网页搜索后仍可能访问 arXiv/OpenAlex" data-i18n-title-en="arXiv/OpenAlex may still be accessed when web search is off"><span aria-hidden="true">◎</span> <span data-i18n-en="Web search">网页搜索</span></button>
                   <button type="button" id="chat-model-chip" class="model-chip" data-open-settings title="模型设置" data-i18n-title-en="Model settings"></button>
                   <span id="chat-config-status" class="composer-hint"></span>
                   <button type="button" class="stop-button hidden" id="chat-stop" aria-label="停止" data-i18n-title-en="Stop" title="停止">■</button>
                   <button type="submit" class="send-button" id="chat-send" aria-label="发送" data-i18n-title-en="Send" title="发送">↑</button>
                 </div>
+                <p class="fine-print" data-i18n-en="Turning off web search does not disable arXiv/OpenAlex access.">关闭网页搜索后，仍可能访问 arXiv/OpenAlex 学术接口。</p>
               </form>
             </div>
           </div>
@@ -367,29 +373,39 @@
         <section id="about-view" class="view">
           <article class="panel about-panel">
             <h2 class="block-title" data-i18n-en="What this is">这是什么</h2>
-            <p data-i18n-en="A local AI-paper index: about 120k papers from 30 top conferences and journals (2023–2026), organized into 21 areas and 383 directions. Ask questions, browse the area map, or search.">一个在本机运行的 AI 论文索引：收录 30 个顶会顶刊 2023–2026 年的约 12 万篇论文，按 21 个领域、383 个方向整理，可以提问、浏览和搜索。</p>
+            <p id="about-corpus">正在读取本地论文统计…</p>
+            <p id="about-milestone"></p>
           </article>
           <article class="panel about-panel">
             <h2 class="block-title" data-i18n-en="How the data is organized">数据怎么整理</h2>
             <ol class="about-steps-plain">
               <li data-i18n-en="Merge duplicates: a preprint and its published version become one paper, counted by the published venue and year.">合并重复：同一篇论文的预印本和正式发表合并为一条，按正式发表统计。</li>
-              <li data-i18n-en="Label areas: LLMs (about 82% Codex/GPT, the rest DeepSeek) pick one area per paper from its title and abstract.">标注领域：由大模型（约 82% 用 Codex/GPT，其余用 DeepSeek）根据标题和摘要给每篇论文选一个领域。</li>
+              <li data-i18n-en="Label areas: LLMs (Codex/GPT and DeepSeek) label areas from titles and abstracts; uncertain papers remain pending and directions are tracked separately.">标注领域：由大模型（Codex/GPT、DeepSeek）根据标题和摘要选择领域；无法确认的保留待分类，方向分类另行跟踪。</li>
               <li data-i18n-en="Find directions: research tasks are embedded and clustered within each area; names were drafted by an LLM, 25 are confirmed by hand and the rest await review.">划分方向：把论文的研究任务做向量聚类，得到领域内的方向；方向名称由大模型起草，目前 25 个已人工确认，其余待复核。</li>
-              <li data-i18n-en="Sample review: 399 stratified papers were reviewed by an AI agent; area accuracy is about 97.0% (95% CI 94.8–98.3%). The review used the system labels as reference and is not an independent human evaluation.">抽样复核：分层抽 399 篇，由 AI 代理复核，领域准确率约 97.0%（95% 置信区间 94.8–98.3%）。复核以系统标签为参照，不是独立的人工评测。</li>
+              <li data-i18n-en="Historical classification review: 399 stratified papers were reviewed by an AI agent; area accuracy is about 97.0% (95% CI 94.8–98.3%). The review used the system labels as reference and is not an independent human evaluation and does not evaluate the new area-only cohort.">历史分类版本复核：分层抽 399 篇，由 AI 代理复核，领域准确率约 97.0%（95% 置信区间 94.8–98.3%）。复核以系统标签为参照，不是独立的人工评测，且不代表本次新增领域标签的准确率。</li>
             </ol>
+          </article>
+          <article class="panel about-panel" id="coverage-report">
+            <h2 class="block-title" data-i18n-en="Collection scope and reconciliation">收录范围与年度对账</h2>
+            <p id="coverage-summary" aria-live="polite">正在读取收录报告…</p>
+            <p id="coverage-enrichment"></p>
+            <p data-i18n-en="30 primary venues, 2023–2026. Annals of Statistics is a supplementary source for 5 verified ICML journal presentations, not a whole-journal collection. Its scope includes statistical aspects of AI and machine learning.">主要范围为原有 30 个会议和期刊、2023—2026 年。Annals of Statistics 仅补充 5 篇经核验的 ICML 期刊展示论文，不按整刊收录；它研究统计学，也涉及 AI 和机器学习的统计理论。</p>
+            <p class="muted" data-i18n-en="Aligned means matched against the specified list at the check time, not complete worldwide coverage or complete metadata. A dash means unknown or not applicable, never zero. Unmatched entries are candidates for review, not confirmed missing papers. Source records include presentations and non-paper entries; research counts exclude them and use canonical publications.">正式出版底表只纳入正式论文集、官方已发表文章目录及已核验出版社页面。录用表、会议日程和预印本不直接作为正式出版证明。“核齐”仅指检查时与指定清单逐条对应，不代表所有已发表论文或全部字段完整。“—”表示未知或不适用，不代表零篇。“未匹配”是待核对差异，不直接等于漏收。表中本地数按来源记录计，包含会议展示与非论文条目；研究论文统计另按主记录去重并排除非论文。</p>
+            <p><label><span data-i18n-en="Show: ">显示：</span><select id="coverage-filter"><option value="all" data-i18n-en="All venue-years">全部来源年份</option><option value="issues" data-i18n-en="Gaps and unverified">差异与待核验</option></select></label> <button type="button" id="coverage-download" data-i18n-en="Download reconciliation CSV">下载对账 CSV</button></p>
+            <div id="coverage-table" class="table-wrap"></div>
           </article>
           <div class="grid-2 about-columns">
             <article class="panel"><h2 class="block-title" data-i18n-en="Privacy">隐私</h2>
               <ul class="about-limits">
                 <li data-i18n-en="The paper library, statistics and the area map run entirely on this machine.">论文库、统计和领域地图完全在本机运行。</li>
-                <li data-i18n-en="Chat sends your question and the retrieved paper metadata to the model service you configure; with web search on, search queries also go to DeepSeek Search.">对话会把你的问题和检索到的论文信息发给你配置的模型服务；开启联网搜索时，搜索词还会发给 DeepSeek 搜索。</li>
+                <li data-i18n-en="Chat sends your question and the retrieved paper metadata to the model service you configure; with web search on, search queries also go to DeepSeek Search. arXiv/OpenAlex may still be accessed with web search off.">对话会把你的问题和检索到的论文信息发给你配置的模型服务；开启网页搜索时，搜索词还会发给 DeepSeek 搜索；关闭网页搜索后仍可能访问 arXiv/OpenAlex。</li>
                 <li data-i18n-en="API keys are stored only in the local .env file.">API Key 只保存在本机 .env 文件里。</li>
               </ul>
             </article>
             <article class="panel"><h2 class="block-title" data-i18n-en="Known limits">已知限制</h2>
               <ul class="about-limits">
-                <li data-i18n-en="8,316 papers have no abstract and are classified from the title only.">8,316 篇论文没有摘要，只能按标题分类。</li>
-                <li data-i18n-en="About 30 correction notices are still counted and await cleanup.">约 30 条勘误（Correction）仍计入统计，待清理。</li>
+                <li id="about-missing">正在读取摘要与分类覆盖情况…</li>
+                <li id="about-audit-issues">正在读取身份核验和非论文统计…</li>
                 <li data-i18n-en="Library search matches keywords, so a synonym the paper doesn't use can be missed.">本地检索按关键词匹配，论文没用到的同义说法可能漏掉。</li>
                 <li data-i18n-en="2026 is still being collected and is not compared with full years.">2026 年还在收录中，不和完整年份直接比较。</li>
               </ul>
@@ -449,9 +465,9 @@
           <label class="settings-field"><span data-i18n-en="Effort">思考强度</span>
             <select name="reasoning_effort"><option value="low">low</option><option value="high">high</option><option value="max">max</option></select></label>
         </div>
-        <label class="settings-check"><input type="checkbox" name="web_search" /> <span data-i18n-en="Turn on web search by default (DeepSeek Search API, free until Nov 1 2026, then $0.75 / 1k searches)">默认开启联网搜索（DeepSeek 搜索 API；2026-11-01 前免费，之后每千次 $0.75）</span></label>
+        <label class="settings-check"><input type="checkbox" name="web_search" /> <span data-i18n-en="Turn on web search by default (DeepSeek Search API, free until Nov 1 2026, then $0.75 / 1k searches)">默认开启网页搜索（DeepSeek 搜索 API；2026-11-01 前免费，之后每千次 $0.75）</span></label>
         <details class="settings-advanced"><summary data-i18n-en="Advanced">高级</summary>
-          <label class="settings-field"><span data-i18n-en="Separate web-search key (optional)">单独的联网搜索 Key（可选）</span>
+          <label class="settings-field"><span data-i18n-en="Separate web-search key (optional)">单独的网页搜索 Key（可选）</span>
             <input name="web_search_api_key" type="password" autocomplete="new-password" spellcheck="false" />
             <small class="muted" data-i18n-en="Leave empty to reuse the DeepSeek chat key.">留空则复用 DeepSeek 对话 Key。</small></label>
           <label class="settings-field"><span data-i18n-en="Max output tokens">最大输出 token</span><input name="max_tokens" type="number" min="256" max="65536" step="256" /></label>

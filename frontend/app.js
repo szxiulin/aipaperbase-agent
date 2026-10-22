@@ -49,20 +49,102 @@ function barRows(items, labelKey, valueKey, maxItems = items.length, rate = fals
   }).join("");
 }
 
+
+function corpusIntro() {
+  const c = state.corpus;
+  return c ? L(`在本地 ${formatNumber(c.research_paper_count)} 篇研究论文中检索和统计（去重，排除非论文），需要时查 arXiv 或联网，并给出处。`, `Search and count across ${formatNumber(c.research_paper_count)} local research papers (deduplicated, non-paper records excluded), check arXiv or the web when needed, and cite sources.`)
+    : L("本地论文规模加载中；可检索、统计并查看来源。", "Loading local corpus counts; search, statistics and sources are available.");
+}
+
+function renderCorpusText() {
+  const c = state.corpus, summary = state.catalogSummary;
+  if (!c || !summary) return;
+  const set = (id, text) => { const el = $(id); if (el) el.textContent = text; };
+  set("#about-corpus", L(`主要收录范围为 20 个会议和 10 个期刊，另有 Annals of Statistics 关联论文补充。本地数据覆盖 ${summary.min_year}—${summary.max_year} 年的 ${formatNumber(c.research_paper_count)} 篇研究论文（去重，排除非论文），对应 ${formatNumber(c.source_record_count)} 条来源记录。可提问、浏览领域地图和搜索。`, `The local corpus contains ${formatNumber(c.research_paper_count)} research papers across 20 primary conferences and 10 primary journals, plus related Annals of Statistics papers (${summary.min_year}–${summary.max_year}), deduplicated with non-paper records excluded, from ${formatNumber(c.source_record_count)} source records. Ask, browse the area map or search.`));
+  set("#about-missing", L(`${formatNumber(c.missing_abstract_count)} 篇研究论文的主记录缺少摘要；${formatNumber(c.pending_count)} 篇领域待分类，领域覆盖率 ${c.classification_coverage_rate}%。另有 ${formatNumber(c.pending_direction_count)} 篇已分领域、方向待分类，方向覆盖率 ${c.direction_coverage_rate ?? "—"}%。这些数字描述本地库，不代表所有已发表论文的完整收录。`, `${formatNumber(c.missing_abstract_count)} research papers lack abstracts; ${formatNumber(c.pending_count)} await areas (${c.classification_coverage_rate}% area coverage). Another ${formatNumber(c.pending_direction_count)} have areas but await directions (${c.direction_coverage_rate ?? "—"}% direction coverage). These counts describe the local corpus, not exhaustive publication coverage.`));
+  const milestone = summary.local_milestone;
+  set("#about-milestone", milestone ? L(`本地里程碑 ${milestone.version}：新增 ${formatNumber(milestone.new_area_count)} 篇领域标签、补入 ${formatNumber(milestone.abstracts_added)} 篇摘要。新增领域由 gpt-6.1-sol 轻思考审核，未完成方向分类，也没有独立人工准确率；无法确认的继续留空。收录与出版对账范围仍截至 ${milestone.source_cutoff}，ACM、IEEE 等未核齐目录的限制保留。`, `Local milestone ${milestone.version}: ${formatNumber(milestone.new_area_count)} new area labels and ${formatNumber(milestone.abstracts_added)} added abstracts. New areas were reviewed with gpt-6.1-sol at low reasoning effort; directions and independent human evaluation remain incomplete. Unresolved fields stay blank. Collection and publication reconciliation remain scoped through ${milestone.source_cutoff}; incomplete ACM/IEEE inventories remain documented.`) : "");
+  set("#chat-messages .chat-empty-sub", corpusIntro());
+}
+
+function publicationStatus(paper) {
+  const status = paper.publication_review?.status;
+  const text = status === "verified_publisher_index" ? L("已核验：出版社正式目录", "Verified: official publisher index")
+    : status === "verified_formal_publication" ? L("已核验：正式论文集", "Verified: formal proceedings")
+    : status === "verified_early_access" ? L("已核验：Early Access（提前在线发表）", "Verified: Early Access")
+    : status === "official_page_unavailable" ? L("正式页面暂无法核验", "Official page currently unavailable")
+    : status === "verified_journal_presentation" ? L("已核验：期刊论文会议展示", "Verified: journal paper presented at conference")
+    : status === "pending_publication_verification" ? L("出版身份待核验", "Publication identity pending verification")
+    : L("未登记逐篇出版核验", "No individual publication review recorded");
+  const list = paper.list_status === "final" ? L("来源清单已定稿", "Source list finalized") : L("收录中", "Still collecting");
+  return `<div class="muted" style="white-space:normal">${escapeHtml(L("清单状态：", "List status: ") + list)}</div><div class="muted" style="white-space:normal">${escapeHtml(L("出版核验：", "Publication review: ") + text)}</div>${paper.publication_review?.publication_date ? `<div class="muted">${escapeHtml(L("在线发表：", "Published online: ") + paper.publication_review.publication_date)}</div>` : ""}${paper.publication_review?.authors_verification === "header_prefix_only" ? `<div class="muted" style="white-space:normal">${escapeHtml(L("页首作者不完整，保留完整登记名单", "Header byline truncated; full registered authors retained"))}</div>` : ""}`;
+}
+
+function renderSearchFeedback() {
+  const data = state.paperResults;
+  if (!data) return;
+  const m = data.match || {};
+  $("#paper-count").textContent = L(`${formatNumber(data.total)} 条${m.relaxed ? "候选" : "来源"}记录`, `${formatNumber(data.total)} ${m.relaxed ? "candidate" : "source"} records`);
+  let note = L("来源记录（未去重，含非论文记录）；统计和地图按去重研究论文计数，排除非论文。", "Source records (not deduplicated; includes non-paper records). Statistics and the map count deduplicated research papers, excluding non-paper records.");
+  if (m.relaxed) note += L(" 全部关键词同时匹配无结果，以下为放宽后的候选结果：匹配任一关键词，请核对相关性。", " No results matched all keywords. These are relaxed candidates matching any keyword; check relevance.");
+  if (m.mode === "unsupported_tokens") note += L(" 当前关键词索引不支持该输入的分词，请尝试英文关键词，如 super resolution。", " The keyword index cannot tokenize this input. Try English keywords, such as super resolution.");
+  else if (m.ignored_fragments?.length) note += L(` 未参与匹配：${m.ignored_fragments.join("、")}。`, ` Not used for matching: ${m.ignored_fragments.join(", ")}.`);
+  $("#paper-search-feedback").textContent = note;
+}
+
+async function loadCoverage() {
+  state.coverage = await api('/api/coverage');
+  renderCoverage();
+}
+function renderCoverage() {
+  const report = state.coverage, box = $('#coverage-table');
+  if (!report || !box) return;
+  if (!report.available) { $('#coverage-summary').textContent = L('收录报告暂不可用，不能据此判断完整性。', 'Coverage report unavailable; completeness is unknown.'); return; }
+  const baseline = report.publication_baseline;
+  const counts = baseline?.status_counts || report.status_counts;
+  const enrichment = report.enrichment;
+  $('#coverage-enrichment').textContent = enrichment ? L(enrichment.summary_zh, enrichment.summary_en) : '';
+
+  $('#coverage-summary').textContent = baseline ? L(
+    `正式出版底表截止：${baseline.cutoff}。30 个主要来源、120 个来源年份；指定正式出版目录核齐 ${counts.aligned || 0}，存在待核对差异 ${counts.differences || 0}，尚未核齐 ${counts.unverified || 0}，不适用 ${counts.not_applicable || 0}。已取得 ${formatNumber(baseline.publication_items)} 条正式出版来源条目，不能当作全库去重论文数。${report.stale ? '当前库已变化，需重新对账。' : '报告与当前数据库版本一致。'}`,
+    `Formal publication baseline through ${baseline.cutoff}: 30 sources, 120 source-years; ${counts.aligned || 0} official inventories reconciled, ${counts.differences || 0} with differences, ${counts.unverified || 0} incomplete, ${counts.not_applicable || 0} not applicable. ${formatNumber(baseline.publication_items)} publication entries collected, not a deduplicated corpus total. ${report.stale ? 'Database changed: reconciliation is stale.' : 'Report matches the current catalog.'}`
+  ) : L(
+    `本版检查截止：${report.cutoff}（${report.cutoff_timezone}）。${report.rows.length} 个来源年份；官方清单核齐 ${counts.aligned || 0}，登记清单核齐 ${counts.registry_aligned || 0}，存在差异 ${counts.differences || 0}，暂无法核验 ${counts.unverified || 0}。${report.stale ? '注意：当前数据库已变化，此报告是旧快照，需重新对账。' : '报告与当前数据库版本一致。'}`,
+    `Checked through ${report.cutoff} (${report.cutoff_timezone}). ${report.rows.length} venue-years: ${counts.aligned || 0} official-list aligned, ${counts.registry_aligned || 0} registry aligned, ${counts.differences || 0} with differences, ${counts.unverified || 0} unverified. ${report.stale ? 'Database changed: this report is an older snapshot.' : 'Report matches the current catalog release.'}`);
+  $('#about-audit-issues').textContent = L(`本版已排除 ${report.corpus.non_paper_count} 条已标注非论文记录；仍有 ${report.identity_review_candidates} 对实体候选待核对、特定 ICML 异常批次中 ${report.publication_pending} 条出版身份待核验。候选不等于确认重复。`, `This snapshot excludes ${report.corpus.non_paper_count} labelled non-paper entities. ${report.identity_review_candidates} entity pairs await review; ${report.publication_pending} items in the flagged ICML batch await publication verification. Candidates are not confirmed duplicates.`);
+  const labels = {aligned:baseline ? L('正式出版目录核齐','Publication inventory reconciled') : L('官方清单核齐','Official list aligned'), registry_aligned:L('登记清单核齐','Registry aligned'), differences:L('存在差异','Differences'),unverified:L('暂无法核验','Unverified'),not_applicable:L('不适用','Not applicable'),supplement:L('关联补充','Supplement'),out_of_scope:L('范围外','Out of scope')};
+  const rows = (baseline?.rows || report.rows).filter(r => $('#coverage-filter').value !== 'issues' || ['differences','unverified'].includes(r.status));
+  const n = v => v == null ? '—' : formatNumber(v);
+  const heads = [L('来源 / 年份','Venue / year'),L('对账状态','Status'),L('本地记录','Local records'),L('参考条目','Reference entries'),L('参考未匹配','Unmatched reference'),L('缺作者 / 摘要','Missing authors / abstracts'),L('说明与来源','Notes and sources')];
+  box.innerHTML = `<table><thead><tr>${heads.map(h=>`<th>${escapeHtml(h)}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr><td>${escapeHtml(r.venue)}<br>${r.year}</td><td>${escapeHtml(labels[r.status])}</td><td>${n(r.local_record_count)}</td><td>${n(r.reference_count)}</td><td>${n(r.unmatched_reference_count)}</td><td>${n(r.missing_author_count)} / ${n(r.missing_abstract_count)}</td><td style="white-space:normal;min-width:240px;max-width:480px"><details><summary>${escapeHtml(L('查看依据和限制','Evidence and limits'))}</summary><p>${escapeHtml(r.notes)}</p><p>${escapeHtml(L('本地未对应参考条目：','Local entries outside reference: '))}${n(r.local_only_count)}${escapeHtml(L('；匹配有歧义：','; ambiguous matches: '))}${n(r.ambiguous_reference_count)}</p><p>${escapeHtml(L('收录轨道：','Collected tracks: '))}${escapeHtml(r.tracks.join(' / ') || '—')}</p>${r.sources.filter(u=>/^https?:\/\//.test(u)).map((u,i)=>`<a target="_blank" rel="noreferrer" href="${escapeHtml(u)}">${escapeHtml(L('参考来源','Reference'))} ${i+1}</a>`).join(' · ')}</details></td></tr>`).join('')}</tbody></table>`;
+}
+function downloadCoverage() {
+  if (!state.coverage?.available) return;
+  const fields = ['venue','year','scope','status','local_record_count','reference_count','matched_reference_count','unmatched_reference_count','ambiguous_reference_count','local_only_count','missing_author_count','missing_abstract_count','checked_at','notes','sources'];
+  const quote = value => { let s = Array.isArray(value) ? value.join(' | ') : String(value ?? ''); if (/^[=+@-]/.test(s)) s = "'" + s; return '"'+s.replaceAll('"','""')+'"'; };
+  const csv = '\ufeff'+[fields, ...(state.coverage.publication_baseline?.rows || state.coverage.rows).map(r=>fields.map(k=>r[k]))].map(row=>row.map(quote).join(',')).join('\r\n');
+  const url = URL.createObjectURL(new Blob([csv], {type:'text/csv;charset=utf-8'}));
+  const a = document.createElement('a'); a.href=url; a.download=state.coverage.version+'.csv'; a.click(); setTimeout(()=>URL.revokeObjectURL(url), 1000);
+}
+
 async function loadOverview() {
   const [summary, venues, years] = await Promise.all([api("/api/summary"), api("/api/venues"), api("/api/years")]);
+  state.corpus = summary.corpus;
+  state.catalogSummary = summary;
+  loadCoverage().catch(() => { $("#coverage-summary").textContent = L("收录报告暂不可用。", "Coverage report unavailable."); });
+  renderCorpusText();
   state.venues = venues.items;
   state.years = years.items;
   const releaseId = summary.release.release_id || "";
   $("#release-id").textContent = releaseId.includes("-") ? `catalog ${releaseId.split("-").pop().slice(0, 8)}` : releaseId;
   $("#release-id").title = releaseId;
   $("#summary-cards").classList.remove("skeleton-grid");
-  const abstractCoverage = summary.entity_count ? ((summary.abstract_count / summary.entity_count) * 100).toFixed(1) : "0";
+  const abstractCoverage = summary.corpus.research_paper_count ? ((summary.corpus.abstract_count / summary.corpus.research_paper_count) * 100).toFixed(1) : "0";
   $("#summary-cards").innerHTML = [
-    statCard("论文总数", summary.entity_count, `${summary.min_year}—${summary.max_year} · 每篇只计一次`),
+    statCard("研究论文", summary.corpus.research_paper_count, `${summary.min_year}—${summary.max_year} · 去重，排除非论文`),
     statCard("领域 / 方向", "21 / 383", "areas-v1.5 · directions-v1.1"),
     statCard("会议 / 期刊", summary.venue_count, `${summary.conference_count} 个会议 · ${summary.journal_count} 个期刊`),
-    statCard("有摘要", summary.abstract_count, `${abstractCoverage}% 的论文有摘要`),
+    statCard("有摘要", summary.corpus.abstract_count, `${abstractCoverage}% 的论文有摘要`),
   ].join("");
   $("#year-chart").innerHTML = barRows(years.items.map((x) => ({ ...x, label: String(x.year) })), "label", "record_count");
   const errors = summary.issue_counts.error || 0;
@@ -688,11 +770,12 @@ function currentQuery() {
 
 async function loadPapers() {
   const data = await api(`/api/papers?${currentQuery()}`);
-  $("#paper-count").textContent = `共 ${formatNumber(data.total)} 条记录`;
+  state.paperResults = data;
+  renderSearchFeedback();
   $("#page-info").textContent = `第 ${data.page} / ${Math.max(data.total_pages, 1)} 页`;
   $("#prev-page").disabled = data.page <= 1;
   $("#next-page").disabled = data.page >= data.total_pages;
-  $("#papers-table").innerHTML = data.items.length ? `<table class="paper-table"><thead><tr><th><input type="checkbox" class="select-all-page" title="全选本页" aria-label="全选本页" /></th><th>论文</th><th>会议 / 年份</th></tr></thead><tbody>${data.items.map((paper) => `<tr><td><input type="checkbox" class="select-entity" data-entity="${escapeHtml(paper.entity_id)}" aria-label="选择这篇论文" /></td><td class="paper-title">${paper.paper_url ? `<a href="${escapeHtml(paper.paper_url)}" target="_blank" rel="noreferrer">${escapeHtml(paper.title)}</a>` : escapeHtml(paper.title)}<div class="paper-authors-line">${escapeHtml(paper.authors || "作者未知")}</div>${paper.abstract ? `<details class="abstract-details"><summary>摘要</summary><p>${escapeHtml(paper.abstract)}</p><small>来源：${paper.abstract_source_url ? `<a href="${escapeHtml(paper.abstract_source_url)}" target="_blank" rel="noreferrer">${escapeHtml(paper.abstract_source_name)}</a>` : escapeHtml(paper.abstract_source_name)}</small></details>` : `<div class="abstract-missing">没有摘要</div>`}</td><td class="nowrap"><strong>${escapeHtml(paper.venue)}</strong><div class="muted">${paper.year}${paper.list_status === "rolling" ? " · 收录中" : ""}</div></td></tr>`).join("")}</tbody></table>` : `<div class="empty">没有符合条件的论文</div>`;
+  $("#papers-table").innerHTML = data.items.length ? `<table class="paper-table"><thead><tr><th><input type="checkbox" class="select-all-page" title="全选本页" aria-label="全选本页" /></th><th>论文</th><th>会议 / 年份</th></tr></thead><tbody>${data.items.map((paper) => `<tr><td><input type="checkbox" class="select-entity" data-entity="${escapeHtml(paper.entity_id)}" aria-label="选择这篇论文" /></td><td class="paper-title">${paper.paper_url ? `<a href="${escapeHtml(paper.paper_url)}" target="_blank" rel="noreferrer">${escapeHtml(paper.title)}</a>` : escapeHtml(paper.title)}<div class="paper-authors-line">${escapeHtml(paper.authors || "作者未知")}</div>${paper.abstract ? `<details class="abstract-details"><summary>摘要</summary><p>${escapeHtml(paper.abstract)}</p><small>来源：${paper.abstract_source_url ? `<a href="${escapeHtml(paper.abstract_source_url)}" target="_blank" rel="noreferrer">${escapeHtml(paper.abstract_source_name)}</a>` : escapeHtml(paper.abstract_source_name)}</small></details>` : `<div class="abstract-missing">没有摘要</div>`}</td><td class="nowrap"><strong>${escapeHtml(paper.venue)}</strong><div class="muted">${paper.year}</div>${publicationStatus(paper)}</td></tr>`).join("")}</tbody></table>` : `<div class="empty">${escapeHtml(data.match?.mode === "unsupported_tokens" ? L("该输入未形成可检索词，请参见上方提示。", "This input produced no searchable tokens. See the guidance above.") : L("没有符合条件的来源记录", "No matching source records"))}</div>`;
   attachSelection();
   afterAbstractListRender("#papers-table");
 }
@@ -1172,11 +1255,16 @@ function renderMathInElementIfPresent(el) {
 }
 
 async function loadChats() {
-  const [active, archived] = await Promise.all([
+  const [active, archived, deleted] = await Promise.all([
     api("/api/chats?status=active"),
     api("/api/chats?status=archived"),
+    api("/api/chats?status=deleted"),
   ]);
   renderChatList(active.items || [], archived.items || []);
+  const items = deleted.items || [];
+  $("#chat-deleted-box").classList.toggle("hidden", !items.length);
+  $("#chat-deleted-summary").textContent = L(`已删除（${items.length}）`, `Deleted (${items.length})`);
+  $("#chat-deleted-list").innerHTML = items.map(c => `<div class="chat-item"><div class="chat-item-body"><div class="chat-item-title">${escapeHtml(chatTitle(c.title))}</div><small>${escapeHtml(L("保留内容，可恢复", "Contents retained; recoverable"))}</small><button type="button" class="chat-action" data-restore-chat="${escapeHtml(c.conversation_id)}">${L("恢复", "Restore")}</button></div></div>`).join("");
 }
 
 function chatItemHtml(conv) {
@@ -1422,7 +1510,7 @@ const TOOL_LABELS = {
   top_values: ["统计分布", "Computed distribution"], arxiv_search: ["检索 arXiv", "Searched arXiv"],
   arxiv_get_paper: ["查看 arXiv 论文", "Opened an arXiv paper"], arxiv_ingest: ["准备 arXiv 入库", "Prepared arXiv import"],
   openalex_search: ["检索 OpenAlex", "Searched OpenAlex"], openalex_get_work: ["查询 OpenAlex 论文", "Looked up OpenAlex work"],
-  openalex_get_author: ["查询作者", "Looked up author"], web_search: ["联网搜索", "Searched the web"],
+  openalex_get_author: ["查询作者", "Looked up author"], web_search: ["网页搜索", "Searched the web"],
   web_fetch: ["读取网页", "Read a web page"], browser_search: ["网页搜索", "Searched the web"],
   browser_fetch_page: ["读取网页", "Read a web page"], search_evidence: ["检索全文片段", "Searched full text"],
   get_evidence: ["查看论文章节", "Read paper sections"], local_fulltext_status: ["查看本地全文库", "Checked local full text"],
@@ -1500,7 +1588,7 @@ const CHAT_SUGGESTIONS = [
   [["整理图像超分方向用 Agent 的论文", "本地库 + arXiv"], ["Survey papers that use agents for image super-resolution", "Library + arXiv"]],
   [["智能体论文 2023 到 2025 年增长了多少？", "统计"], ["How much did agent papers grow from 2023 to 2025?", "Statistics"]],
   [["CVPR 2025 里扩散模型做视频生成的代表作有哪些？", "找论文"], ["Key CVPR 2025 papers on diffusion video generation?", "Find papers"]],
-  [["最近一个月 LLM Agent 有什么新进展？", "需要联网搜索"], ["What's new in LLM agents this month?", "Needs web search"]],
+  [["最近一个月 LLM Agent 有什么新进展？", "需要网页搜索"], ["What's new in LLM agents this month?", "Needs web search"]],
 ];
 
 function chatEmptyHtml() {
@@ -1509,7 +1597,7 @@ function chatEmptyHtml() {
     : "";
   return `<div class="chat-empty">
     <h1>${L("想了解 AI 研究的哪个方面？", "What would you like to know about AI research?")}</h1>
-    <p class="chat-empty-sub">${L("我会在本地 12 万篇顶会顶刊论文里检索和统计，需要时查 arXiv 或联网，并给出处。", "I search and count across 120k papers from top venues, check arXiv or the web when needed, and cite sources.")}</p>
+    <p class="chat-empty-sub">${escapeHtml(corpusIntro())}</p>
     ${setup}
     <div class="chat-suggest">${CHAT_SUGGESTIONS.map((pair) => { const [q, tag] = L(pair[0], pair[1]); return `<button type="button" data-suggest="${escapeHtml(q)}"><strong>${escapeHtml(q)}</strong><span>${escapeHtml(tag)}</span></button>`; }).join("")}</div>
   </div>`;
@@ -2063,6 +2151,13 @@ async function batchDeleteChats() {
 }
 
 function bindChatEvents() {
+  $("#chat-deleted-list").addEventListener("click", async event => {
+    const button = event.target.closest("[data-restore-chat]");
+    if (!button) return;
+    button.disabled = true;
+    try { await postJson(`/api/chats/${encodeURIComponent(button.dataset.restoreChat)}/restore`, {}); await loadChats(); }
+    catch (error) { button.disabled = false; showError(error); }
+  });
   $("#chat-new-button").addEventListener("click", () => newChat().catch(showError));
   $("#chat-form").addEventListener("submit", (event) => {
     event.preventDefault();
@@ -2096,8 +2191,8 @@ function bindChatEvents() {
   $("#snapshots-close").addEventListener("click", () => $("#snapshots-overlay").classList.add("hidden"));
   $("#chat-archive-toggle").addEventListener("click", () => archiveToggleChat().catch(showError));
   // Delete: in-page two-stage confirmation (window.confirm is blocked and unusable inside the sandbox iframe)
-  armDangerButton($("#chat-delete"), "确认删除？", () => deleteChat().catch(showError));
-  armDangerButton($("#chat-batch-delete"), () => `确认删除 ${chatState.selected.size} 个对话？`, () => batchDeleteChats().catch(showError));
+  armDangerButton($("#chat-delete"), () => L("移入已删除，可恢复", "Move to Deleted; recoverable"), () => deleteChat().catch(showError));
+  armDangerButton($("#chat-batch-delete"), () => L(`移入已删除 ${chatState.selected.size} 个，可恢复`, `Move ${chatState.selected.size} to Deleted; recoverable`), () => batchDeleteChats().catch(showError));
   $("#chat-batch-archive").addEventListener("click", () => batchArchiveChats("archived").catch(showError));
   $("#chat-batch-clear").addEventListener("click", () => { chatState.selected.clear(); renderChatBatchBar(); loadChats().catch(showError); });
   // Delegated click/check handling for the chat list (chat-item lives in #chat-list; #chat-messages is the message area)
@@ -2442,9 +2537,16 @@ function applyRoute() {
 }
 
 function bindEvents() {
+  $("#coverage-filter").addEventListener("change", renderCoverage);
+  $("#coverage-download").addEventListener("click", downloadCoverage);
   mountGroupedViews();
   window.addEventListener("apex:langchange", applyDynamicChrome);
   document.addEventListener("apex:langchange", () => {
+    renderCorpusText();
+    renderCoverage();
+    loadChats().catch(showError);
+    renderSearchFeedback();
+    if (state.paperResults) loadPapers().catch(showError);
     renderModelChip();
     applyTheme(document.documentElement.dataset.theme);
     if (chatState.current) $("#chat-title").textContent = chatTitle(chatState.current.title);

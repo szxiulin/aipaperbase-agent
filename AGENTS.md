@@ -4,7 +4,7 @@ Guide for AI coding agents (and humans) working in this repository.
 
 ## What this is
 
-A local research assistant over ~120k papers from 30 top AI venues (2023–2026): a chat agent with
+A local research assistant over ~138k deduplicated research papers from 30 top AI venues (2023–2026): a chat agent with
 tools, an area map (21 areas → 383 directions), paper search and collections, and an MCP server.
 Backend: Python standard library (`http.server` + `sqlite3`); chat additionally needs `httpx`.
 Frontend: vanilla JS single page, no build step.
@@ -32,7 +32,7 @@ Chat needs an OpenAI-compatible model: set it in the web UI (⚙ Settings) or in
 ## Gotchas
 
 - Always use `.venv/bin/python`.
-- `data/catalog/` CSVs and `data/labels/` are the committed sources; `data/database/` (the SQLite catalog) is generated and safe to delete — rebuild with `.venv/bin/python -m backend.catalog.import_csv`.
+- `data/catalog/` CSVs and `data/labels/` are the committed sources; `data/database/` (the SQLite catalog) is generated and rebuildable (move old files to macOS Trash rather than permanently deleting them) — rebuild with `.venv/bin/python -m backend.catalog.import_csv`.
 - User data (`data/user/`: chats, collections, notes), downloads and parsed text are git-ignored and must stay that way.
 - The paper text is English: agent search queries must be English keywords.
 - Statistics count each paper once (canonical venue/year) and exclude non-paper records; 2026 is a partial year.

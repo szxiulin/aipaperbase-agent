@@ -294,3 +294,21 @@ def order_case(ids: list[str]) -> str:
         + " ".join(f"WHEN ? THEN {i}" for i in range(len(ids)))
         + " ELSE 9999 END"
     )
+
+
+def match_metadata(connection: sqlite3.Connection, query: str, effective: str | None) -> dict:
+    """Describe legacy FTS fallback without presenting OR candidates as strict hits."""
+    strict, tokens = build_fts_query(query)
+    mode = ("browse" if not query.strip() else "literal" if effective is None else
+            "unsupported_tokens" if not strict else "relaxed_any" if effective != strict else "all_terms")
+    note = ""
+    if mode == "unsupported_tokens":
+        note = "当前关键词索引不支持该输入的分词，请尝试英文关键词，如 super resolution。"
+    elif mode == "relaxed_any":
+        note = "全部关键词同时匹配无结果，以下为匹配任一关键词的候选结果，请核对相关性。"
+    ignored = re.findall(r"[\u3400-\u9fff]+", query) if effective is not None else []
+    if ignored and tokens:
+        note += " 中文部分未参与关键词匹配：" + "、".join(ignored) + "。"
+    return {"query": query, "mode": mode, "terms": tokens, "ignored_fragments": ignored,
+            "relaxed": mode == "relaxed_any", "note": note,
+            "count_kind": "candidates" if mode == "relaxed_any" else "matches"}

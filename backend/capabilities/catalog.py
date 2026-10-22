@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import sqlite3
+from backend.catalog import identity
 from typing import Any
 
 from backend.capabilities.filters import BASE, normalize_filters, where_clause
@@ -43,7 +44,7 @@ def sample_papers(connection: sqlite3.Connection, args: dict) -> dict:
 
 
 def get_paper(connection: sqlite3.Connection, args: dict) -> dict:
-    entity_id = str(args.get("entity_id") or "").strip()
+    entity_id = identity.canonical(str(args.get("entity_id") or "").strip())
     if not entity_id:
         raise ValueError("entity_id is required")
     row = connection.execute(
@@ -66,7 +67,10 @@ def get_paper(connection: sqlite3.Connection, args: dict) -> dict:
            WHERE a.entity_id = ?""", (entity_id,)).fetchone()
     paper["labels"] = dict(labels) if labels else None
     paper["appearances"] = _rows(connection,
-                                 """SELECT p.venue, p.year, p.list_status, p.paper_url, p.source_name
+                                 """SELECT p.paper_id, p.venue, p.year, p.list_status, p.paper_url, p.source_name
                                     FROM entity_memberships m JOIN paper_records p ON p.record_id = m.record_id
                                     WHERE m.entity_id = ? ORDER BY p.year, p.venue""", (entity_id,))
+    from backend.catalog.publication import review
+    for item in paper["appearances"]:
+        item["publication_review"] = review(item["venue"], item["year"], item["paper_id"])
     return paper

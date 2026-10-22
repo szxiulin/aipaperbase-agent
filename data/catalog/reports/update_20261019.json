@@ -1,0 +1,521 @@
+{
+  "date": "2026-10-19",
+  "records_before": 122571,
+  "records_after": 134290,
+  "added_records": 11719,
+  "existing_abstracts_filled": 4022,
+  "new_records_with_abstract": 9782,
+  "missing_abstract_records": 6231,
+  "source_files": 109,
+  "final_records": 112585,
+  "rolling_records": 21705,
+  "source_rows_removed": 0,
+  "existing_abstracts_overwritten": 0,
+  "entities": 133450,
+  "research_entities_excluding_nonpaper": 133167,
+  "nonpaper_entities": 283,
+  "pending_research_entities": 11706,
+  "classified_research_entities": 121461,
+  "preserved_existing_entity_ids": 121742,
+  "correction_notices_newly_excluded": 32,
+  "source_year_checks": [
+    {
+      "venue": "IJCV",
+      "year": "2024",
+      "old_rows": 356,
+      "source_rows": 356,
+      "merged_rows": 356,
+      "added_records": 0,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 0
+    },
+    {
+      "venue": "TOG",
+      "year": "2026",
+      "old_rows": 191,
+      "source_rows": 195,
+      "merged_rows": 195,
+      "added_records": 4,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 0
+    },
+    {
+      "venue": "COLM",
+      "year": "2026",
+      "old_rows": 856,
+      "source_rows": 760,
+      "merged_rows": 856,
+      "added_records": 0,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 96
+    },
+    {
+      "venue": "AIJ",
+      "year": "2023",
+      "old_rows": 156,
+      "source_rows": 156,
+      "merged_rows": 156,
+      "added_records": 0,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 0
+    },
+    {
+      "venue": "JMLR",
+      "year": "2026",
+      "old_rows": 137,
+      "source_rows": 205,
+      "merged_rows": 205,
+      "added_records": 68,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 0
+    },
+    {
+      "venue": "KDD",
+      "year": "2026",
+      "old_rows": 256,
+      "source_rows": 1408,
+      "merged_rows": 1408,
+      "added_records": 1152,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 0
+    },
+    {
+      "venue": "TVCG",
+      "year": "2025",
+      "old_rows": 881,
+      "source_rows": 881,
+      "merged_rows": 881,
+      "added_records": 0,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 0
+    },
+    {
+      "venue": "TKDE",
+      "year": "2024",
+      "old_rows": 641,
+      "source_rows": 641,
+      "merged_rows": 641,
+      "added_records": 0,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 0
+    },
+    {
+      "venue": "TPAMI",
+      "year": "2024",
+      "old_rows": 739,
+      "source_rows": 739,
+      "merged_rows": 739,
+      "added_records": 0,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 0
+    },
+    {
+      "venue": "NeurIPS",
+      "year": "2026",
+      "old_rows": 0,
+      "source_rows": 9095,
+      "merged_rows": 9095,
+      "added_records": 9095,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 0
+    },
+    {
+      "venue": "ICLR",
+      "year": "2026",
+      "old_rows": 5352,
+      "source_rows": 5466,
+      "merged_rows": 5467,
+      "added_records": 115,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 1
+    },
+    {
+      "venue": "TPAMI",
+      "year": "2025",
+      "old_rows": 832,
+      "source_rows": 822,
+      "merged_rows": 832,
+      "added_records": 0,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 10
+    },
+    {
+      "venue": "TOIS",
+      "year": "2023",
+      "old_rows": 173,
+      "source_rows": 173,
+      "merged_rows": 173,
+      "added_records": 0,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 0
+    },
+    {
+      "venue": "TKDE",
+      "year": "2025",
+      "old_rows": 514,
+      "source_rows": 514,
+      "merged_rows": 514,
+      "added_records": 0,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 0
+    },
+    {
+      "venue": "TVCG",
+      "year": "2024",
+      "old_rows": 549,
+      "source_rows": 549,
+      "merged_rows": 549,
+      "added_records": 0,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 0
+    },
+    {
+      "venue": "TMLR",
+      "year": "2026",
+      "old_rows": 1387,
+      "source_rows": 1701,
+      "merged_rows": 1701,
+      "added_records": 314,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 0
+    },
+    {
+      "venue": "IJCV",
+      "year": "2025",
+      "old_rows": 284,
+      "source_rows": 284,
+      "merged_rows": 284,
+      "added_records": 0,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 0
+    },
+    {
+      "venue": "TVCG",
+      "year": "2023",
+      "old_rows": 477,
+      "source_rows": 477,
+      "merged_rows": 477,
+      "added_records": 0,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 0
+    },
+    {
+      "venue": "TOIS",
+      "year": "2024",
+      "old_rows": 116,
+      "source_rows": 116,
+      "merged_rows": 116,
+      "added_records": 0,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 0
+    },
+    {
+      "venue": "AIJ",
+      "year": "2025",
+      "old_rows": 116,
+      "source_rows": 116,
+      "merged_rows": 116,
+      "added_records": 0,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 0
+    },
+    {
+      "venue": "TIP",
+      "year": "2026",
+      "old_rows": 663,
+      "source_rows": 781,
+      "merged_rows": 781,
+      "added_records": 118,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 0
+    },
+    {
+      "venue": "3DV",
+      "year": "2026",
+      "old_rows": 0,
+      "source_rows": 177,
+      "merged_rows": 177,
+      "added_records": 177,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 0
+    },
+    {
+      "venue": "AIJ",
+      "year": "2024",
+      "old_rows": 124,
+      "source_rows": 124,
+      "merged_rows": 124,
+      "added_records": 0,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 0
+    },
+    {
+      "venue": "IJCV",
+      "year": "2023",
+      "old_rows": 229,
+      "source_rows": 229,
+      "merged_rows": 229,
+      "added_records": 0,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 0
+    },
+    {
+      "venue": "TPAMI",
+      "year": "2023",
+      "old_rows": 846,
+      "source_rows": 846,
+      "merged_rows": 846,
+      "added_records": 0,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 0
+    },
+    {
+      "venue": "TOIS",
+      "year": "2025",
+      "old_rows": 184,
+      "source_rows": 184,
+      "merged_rows": 184,
+      "added_records": 0,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 0
+    },
+    {
+      "venue": "TKDE",
+      "year": "2023",
+      "old_rows": 478,
+      "source_rows": 478,
+      "merged_rows": 478,
+      "added_records": 0,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 0
+    },
+    {
+      "venue": "CVPR",
+      "year": "2026",
+      "old_rows": 4068,
+      "source_rows": 4042,
+      "merged_rows": 4068,
+      "added_records": 0,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 26
+    },
+    {
+      "venue": "TOIS",
+      "year": "2026",
+      "old_rows": 140,
+      "source_rows": 161,
+      "merged_rows": 161,
+      "added_records": 21,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 0
+    },
+    {
+      "venue": "ECCV",
+      "year": "2026",
+      "old_rows": 2864,
+      "source_rows": 2834,
+      "merged_rows": 2865,
+      "added_records": 1,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 31
+    },
+    {
+      "venue": "TIP",
+      "year": "2024",
+      "old_rows": 504,
+      "source_rows": 504,
+      "merged_rows": 504,
+      "added_records": 0,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 0
+    },
+    {
+      "venue": "TOG",
+      "year": "2023",
+      "old_rows": 268,
+      "source_rows": 268,
+      "merged_rows": 268,
+      "added_records": 0,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 0
+    },
+    {
+      "venue": "AIJ",
+      "year": "2026",
+      "old_rows": 90,
+      "source_rows": 111,
+      "merged_rows": 111,
+      "added_records": 21,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 0
+    },
+    {
+      "venue": "TIP",
+      "year": "2025",
+      "old_rows": 625,
+      "source_rows": 624,
+      "merged_rows": 625,
+      "added_records": 0,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 1
+    },
+    {
+      "venue": "ICML",
+      "year": "2026",
+      "old_rows": 6341,
+      "source_rows": 6628,
+      "merged_rows": 6628,
+      "added_records": 287,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 0
+    },
+    {
+      "venue": "TOG",
+      "year": "2024",
+      "old_rows": 279,
+      "source_rows": 279,
+      "merged_rows": 279,
+      "added_records": 0,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 0
+    },
+    {
+      "venue": "IJCV",
+      "year": "2026",
+      "old_rows": 388,
+      "source_rows": 456,
+      "merged_rows": 456,
+      "added_records": 68,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 0
+    },
+    {
+      "venue": "TPAMI",
+      "year": "2026",
+      "old_rows": 1033,
+      "source_rows": 1173,
+      "merged_rows": 1173,
+      "added_records": 140,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 0
+    },
+    {
+      "venue": "MLSys",
+      "year": "2026",
+      "old_rows": 135,
+      "source_rows": 135,
+      "merged_rows": 135,
+      "added_records": 0,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 0
+    },
+    {
+      "venue": "TKDE",
+      "year": "2026",
+      "old_rows": 525,
+      "source_rows": 607,
+      "merged_rows": 607,
+      "added_records": 82,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 0
+    },
+    {
+      "venue": "TVCG",
+      "year": "2026",
+      "old_rows": 719,
+      "source_rows": 775,
+      "merged_rows": 775,
+      "added_records": 56,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 0
+    },
+    {
+      "venue": "ACL",
+      "year": "2026",
+      "old_rows": 2296,
+      "source_rows": 2296,
+      "merged_rows": 2296,
+      "added_records": 0,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 0
+    },
+    {
+      "venue": "IJCAI",
+      "year": "2026",
+      "old_rows": 989,
+      "source_rows": 891,
+      "merged_rows": 989,
+      "added_records": 0,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 98
+    },
+    {
+      "venue": "TOG",
+      "year": "2025",
+      "old_rows": 284,
+      "source_rows": 284,
+      "merged_rows": 284,
+      "added_records": 0,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 0
+    },
+    {
+      "venue": "TIP",
+      "year": "2023",
+      "old_rows": 481,
+      "source_rows": 481,
+      "merged_rows": 481,
+      "added_records": 0,
+      "conflicts": 0,
+      "existing_not_seen_in_source": 0
+    }
+  ],
+  "limitations": [
+    {
+      "venue": "COLM",
+      "year": 2026,
+      "issue": "96 changed-title candidates lack a verifiable link to the stored provisional identity; quarantined, not added."
+    },
+    {
+      "venue": "NeurIPS",
+      "year": 2026,
+      "issue": "16 download entries have no paper-level URL; retained in source snapshot only."
+    },
+    {
+      "venue": "EMNLP",
+      "year": 2026,
+      "issue": "No validated complete paper list: Anthology XML unavailable; linked program sheet does not supply a reliable title/author mapping."
+    },
+    {
+      "venue": "ACM MM",
+      "year": 2026,
+      "issue": "No verified complete 2026 list collected; official landing page provides no paper list; DBLP returned a challenge page."
+    },
+    {
+      "venue": "SIGGRAPH Asia",
+      "year": 2026,
+      "issue": "Official page still announces further program details; conditional acceptance is not treated as a final published paper list."
+    },
+    {
+      "venue": "SIGIR / WWW",
+      "year": 2026,
+      "issue": "DBLP enumeration blocked by challenge page; existing records retained, incremental completeness unverified."
+    },
+    {
+      "venue": "TMLR / OpenReview",
+      "year": 2026,
+      "issue": "Public API challenge prevents abstract backfill; a forum page does not embed the abstract."
+    }
+  ],
+  "evaluation_scope": "The 97.0% area accuracy estimate is from the existing 399-paper AI-agent review, not human gold and not an evaluation of this increment.",
+  "validation": {
+    "unit_tests_passed": 419,
+    "browser_smoke_passed": true,
+    "browser_errors": 0,
+    "browser_overflow_cases": 0,
+    "sqlite_integrity": "ok",
+    "blocking_issues": 0,
+    "preserved_record_entity_mappings": 122571,
+    "new_paper_search_verified": true
+  }
+}

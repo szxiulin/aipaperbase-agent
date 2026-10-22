@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any
 
 from backend.rag import parse_store
+from backend.catalog import identity
 
 
 def _markdown_path(row: dict[str, Any], entity_id: str) -> Path:
@@ -35,9 +36,10 @@ def snapshot(
     actual_counts = document_chunk_counts or {}
     download_map = {row["entity_id"]: row for row in downloads}
     ids = list(dict.fromkeys([row["entity_id"] for row in downloads] + list(parsed) + list(actual_counts)))
+    canonical_ids = list(dict.fromkeys(identity.canonical(eid) for eid in ids))
     titles: dict[str, str] = {}
-    for start in range(0, len(ids), 500):
-        chunk = ids[start:start + 500]
+    for start in range(0, len(canonical_ids), 500):
+        chunk = canonical_ids[start:start + 500]
         if not chunk:
             continue
         placeholders = ",".join("?" for _ in chunk)
@@ -81,7 +83,8 @@ def snapshot(
             index_status, failure = "indexed_current", ""
 
         items.append({
-            "entity_id": entity_id, "title": titles.get(entity_id, entity_id),
+            "entity_id": identity.canonical(entity_id), "storage_entity_id": entity_id,
+            "title": titles.get(identity.canonical(entity_id), entity_id),
             "pdf_status": downloaded.get("status", ""), "pdf_source": downloaded.get("source", ""),
             "pdf_file_status": "present" if pdf_file_exists else ("unverified" if pdf_registered else "missing"),
             "parse_status": parsed_row.get("status", ""), "index_status": index_status,
@@ -94,6 +97,24 @@ def snapshot(
             "updated_at": max(downloaded.get("updated_at", ""), parsed_row.get("updated_at", "")),
             "failure": failure,
         })
+    grouped = {}
+    for item in items:
+        grouped.setdefault(item["entity_id"], []).append(item)
+    items = []
+    for eid, artifacts in grouped.items():
+        selected = max(artifacts, key=lambda item: (
+            item["index_status"] == "indexed_current", item["markdown_exists"],
+            item["pdf_file_status"] == "present", item["updated_at"], item["storage_entity_id"]))
+        item = dict(selected)
+        if len(artifacts) > 1:
+            item["chunk_count"] = sum(a["chunk_count"] for a in artifacts)
+            item["actual_chunk_count"] = sum(a["actual_chunk_count"] or 0 for a in artifacts) if qdrant_available else None
+            unsafe = next((a for a in artifacts if a["index_status"] in {"index_stale", "registry_missing"}), None)
+            if unsafe:
+                item["index_status"], item["failure"] = unsafe["index_status"], unsafe["failure"]
+        item["artifacts"] = artifacts
+        item["storage_entity_ids"] = [a["storage_entity_id"] for a in artifacts]
+        items.append(item)
     summary = {
         "registered_pdfs": sum(row["pdf_status"] in {"success", "duplicate"} for row in items),
         "pdf_files_present": sum(row["pdf_file_status"] == "present" for row in items),

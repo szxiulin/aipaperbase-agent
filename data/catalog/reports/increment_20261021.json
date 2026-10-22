@@ -1,0 +1,1686 @@
+{
+  "checked_at": "2026-10-21T14:21:55+08:00",
+  "cutoff": "2026-10-21",
+  "summary": {
+    "summary_zh": "本批核验并新增 47 篇期刊论文，全部待分类，47 篇摘要仍为空。23 篇依据 TMLR 官方已发表目录；24 篇依据出版社 DOI 登记元数据，其中 3 篇另有出版社页面佐证。日期精度保留来源原状：20 篇仅年份、24 篇到月份、3 篇到日。EMNLP 原缺作者的 980 篇已完成 DataCite 查询，补齐 24 篇作者及摘要，剩余 956 篇作者留空；预印本作者仍待正式论文集复核。OpenAlex 补查至 400/983 条缺字段记录后连续连接超时，唯一匹配没有可新增字段，未计入补全。",
+    "summary_en": "This batch added 47 journal papers, all pending classification and still missing abstracts: 23 from the official TMLR publication list and 24 from publisher DOI registrations (3 also checked on publisher pages). Source date precision is retained: 20 year-only, 24 month-level, 3 day-level. DataCite checked all 980 EMNLP records missing authors and filled 24 author lists and abstracts; 956 author lists remain blank. Preprint authors await final proceedings verification. OpenAlex stopped after 400/983 missing-field records due to repeated connection timeouts; its sole match added no fields.",
+    "journal_added": 47,
+    "emnlp_authors_filled": 24,
+    "emnlp_abstracts_filled": 24,
+    "emnlp_authors_remaining": 956,
+    "new_missing_abstracts": 47
+  },
+  "validation": {
+    "old_record_ids_preserved": 138708,
+    "old_memberships_preserved": true,
+    "aliases_preserved": 79,
+    "existing_labels_preserved": true,
+    "new_pending_entities": 47,
+    "existing_records_enriched": 24,
+    "authors_filled": 24,
+    "abstracts_filled": 24,
+    "previous_sha256": "16414701813f43d3ad288684d447cd6f0cb1d76e643c7a351e0dba77af76d56f",
+    "candidate_sha256": "d5ae7e42854818832c43a5950be624f7cbf7622fc471614c983d70d3cd290432"
+  },
+  "entries": [
+    {
+      "kind": "journal_added",
+      "paper_id": "10.1016/j.artint.2026.104644",
+      "venue": "AIJ",
+      "decision": "verified_registry",
+      "date_precision": "month",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "source_url": "https://api.crossref.org/works/10.1016/j.artint.2026.104644",
+      "title": "Central Description Length (CDL) Clustering Validation Index"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "10.1007/s11263-026-03057-x",
+      "venue": "IJCV",
+      "decision": "verified_registry",
+      "date_precision": "day",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "source_url": "https://api.crossref.org/works/10.1007/s11263-026-03057-x",
+      "title": "Event-Guided Decomposition from a Long-Exposure Nighttime Snapshot into Video Sequence"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "10.1007/s11263-026-03100-x",
+      "venue": "IJCV",
+      "decision": "verified_registry",
+      "date_precision": "day",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "source_url": "https://api.crossref.org/works/10.1007/s11263-026-03100-x",
+      "title": "Test-Time Computing for Referring Multimodal Large Language Models"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "10.1007/s11263-026-03093-7",
+      "venue": "IJCV",
+      "decision": "verified_registry",
+      "date_precision": "day",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "source_url": "https://api.crossref.org/works/10.1007/s11263-026-03093-7",
+      "title": "Multi-View Optimal Transport for Multi-View Crowd Localization and Tracking"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "10.1109/tip.2026.3743079",
+      "venue": "TIP",
+      "decision": "verified_registry",
+      "date_precision": "year",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "source_url": "https://api.crossref.org/works/10.1109/tip.2026.3743079",
+      "title": "SAR2Struct: Extracting 3D Semantic Structural Representation of Aircraft Targets from Single-View SAR Image"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "10.1109/tip.2026.3737046",
+      "venue": "TIP",
+      "decision": "verified_registry",
+      "date_precision": "year",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "source_url": "https://api.crossref.org/works/10.1109/tip.2026.3737046",
+      "title": "Crowded Video Individual Counting Informed by Social Grouping and Spatial-Temporal Displacement Priors"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "10.1109/tip.2026.3742663",
+      "venue": "TIP",
+      "decision": "verified_registry",
+      "date_precision": "year",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "source_url": "https://api.crossref.org/works/10.1109/tip.2026.3742663",
+      "title": "Recurrent Prompting With MambaFormer for Domain Generalized Few-Shot Hyperspectral Image Classification"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "10.1109/tip.2026.3739612",
+      "venue": "TIP",
+      "decision": "verified_registry",
+      "date_precision": "year",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "source_url": "https://api.crossref.org/works/10.1109/tip.2026.3739612",
+      "title": "Event-to-Video Controllable Generation and Evaluation"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "10.1109/tip.2026.3743754",
+      "venue": "TIP",
+      "decision": "verified_registry",
+      "date_precision": "year",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "source_url": "https://api.crossref.org/works/10.1109/tip.2026.3743754",
+      "title": "TOPSAC for Fast and Accurate Geometric Estimation"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "10.1109/tip.2026.3743733",
+      "venue": "TIP",
+      "decision": "verified_registry",
+      "date_precision": "year",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "source_url": "https://api.crossref.org/works/10.1109/tip.2026.3743733",
+      "title": "HVLCSR: Heuristic Visual Localization and Causal Semantic Reasoning for Multi-Label Remote Sensing Scene Classification"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "10.1109/tip.2026.3743775",
+      "venue": "TIP",
+      "decision": "verified_registry",
+      "date_precision": "year",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "source_url": "https://api.crossref.org/works/10.1109/tip.2026.3743775",
+      "title": "Learning Flow-Guided Registration for RGB-Event Semantic Segmentation"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "10.1109/tip.2026.3743793",
+      "venue": "TIP",
+      "decision": "verified_registry",
+      "date_precision": "year",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "source_url": "https://api.crossref.org/works/10.1109/tip.2026.3743793",
+      "title": "MTADUN: Multi-Stage Transmission Augmented Deep Unfolding Network for Task-Adaptable Image Restoration"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "10.1109/tip.2026.3743794",
+      "venue": "TIP",
+      "decision": "verified_registry",
+      "date_precision": "year",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "source_url": "https://api.crossref.org/works/10.1109/tip.2026.3743794",
+      "title": "RSReason: Remote Sensing Reasoning Segmentation via Rotation-aware Large Vision-Language Model"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "10.1109/tip.2026.3743796",
+      "venue": "TIP",
+      "decision": "verified_registry",
+      "date_precision": "year",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "source_url": "https://api.crossref.org/works/10.1109/tip.2026.3743796",
+      "title": "Collaborative Boundary Enhancement with Difficulty Awareness for Semi-Supervised Medical Image Segmentation"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "10.1109/tkde.2026.3745591",
+      "venue": "TKDE",
+      "decision": "verified_registry",
+      "date_precision": "year",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "source_url": "https://api.crossref.org/works/10.1109/tkde.2026.3745591",
+      "title": "Thinking Fast and Slow: A Dual-System Framework for Multimodal Fake News Detection Via Dynamic Scheduling"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "2aZPFrKYYb",
+      "venue": "TMLR",
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "source_url": "https://jmlr.org/tmlr/papers/",
+      "title": "MeGA-MP: Metric Graph Advection Message Passing"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "HoQBaPXhKk",
+      "venue": "TMLR",
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "source_url": "https://jmlr.org/tmlr/papers/",
+      "title": "Test-Time Scaling of Text-to-Image Flow Matching Models with Noise-Rejuvenated Sequential Monte Carlo"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "B7a0IAIEXZ",
+      "venue": "TMLR",
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "source_url": "https://jmlr.org/tmlr/papers/",
+      "title": "DiCoDe: Diffusion-Compressed Deep Tokens for Autoregressive Video Generation with Language Models"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "rdCPIjY3Dr",
+      "venue": "TMLR",
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "source_url": "https://jmlr.org/tmlr/papers/",
+      "title": "Mathematical Theory of Collinearity Effects on Machine Learning Variable Importance Measures"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "9R6EBFTzuy",
+      "venue": "TMLR",
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "source_url": "https://jmlr.org/tmlr/papers/",
+      "title": "MIDAS: Mosaic Input-Specific Differentiable Architecture Search"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "4pwRl2G6je",
+      "venue": "TMLR",
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "source_url": "https://jmlr.org/tmlr/papers/",
+      "title": "The Landscape of Medical Agents: A Survey"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "Y70lnNnA6T",
+      "venue": "TMLR",
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "source_url": "https://jmlr.org/tmlr/papers/",
+      "title": "Model-Agnostic Association Rule Learning with Tabular Foundation Models"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "dDEDwFnnoA",
+      "venue": "TMLR",
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "source_url": "https://jmlr.org/tmlr/papers/",
+      "title": "Deterministic Prediction as Global Velocity: Flow Matching for Probabilistic Time-Series Forecast"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "R1g1Z4yX57",
+      "venue": "TMLR",
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "source_url": "https://jmlr.org/tmlr/papers/",
+      "title": "Public Profile Matters: A Scalable Integrated Approach to Recommend Citations in the Wild"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "eAMLpW74rV",
+      "venue": "TMLR",
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "source_url": "https://jmlr.org/tmlr/papers/",
+      "title": "What Survives Eviction? Information Recall Locality in Transformer KV Caches"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "MXSAMrmktX",
+      "venue": "TMLR",
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "source_url": "https://jmlr.org/tmlr/papers/",
+      "title": "Communication-Efficient Federated Low-Rank Update Algorithm and its Connection to Implicit Regularization"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "qKM72YmSSw",
+      "venue": "TMLR",
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "source_url": "https://jmlr.org/tmlr/papers/",
+      "title": "A Likely Geometry of Generative Models"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "l0qZkSk2aH",
+      "venue": "TMLR",
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "source_url": "https://jmlr.org/tmlr/papers/",
+      "title": "Opening Up a New Layer: A Deeper Look into \"Interpreting CLIP with Hierarchical Sparse Autoencoders\""
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "13ThuknGwY",
+      "venue": "TMLR",
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "source_url": "https://jmlr.org/tmlr/papers/",
+      "title": "Estimating the Adoption of Software Engineering Best Practices in Machine Learning Research"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "Mx0ZcLznPS",
+      "venue": "TMLR",
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "source_url": "https://jmlr.org/tmlr/papers/",
+      "title": "Learning without training: The implicit dynamics of in-context learning"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "mZXoOgBxX2",
+      "venue": "TMLR",
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "source_url": "https://jmlr.org/tmlr/papers/",
+      "title": "CausalEmbed: Auto-Regressive Multi-Vector Generation in Latent Space for Visual Document Embedding"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "5ChJTFLi5r",
+      "venue": "TMLR",
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "source_url": "https://jmlr.org/tmlr/papers/",
+      "title": "Retrieval-Augmented Multimodal Language Model with Heterogeneous Evidence Integration for Clinical Prognosis"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "ppOrbSsMM0",
+      "venue": "TMLR",
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "source_url": "https://jmlr.org/tmlr/papers/",
+      "title": "SafeExplorer: An Unbiased Mixed-Policy Gradient for Reinforcement Learning with Recovery Interventions"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "S2SdvYaPKm",
+      "venue": "TMLR",
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "source_url": "https://jmlr.org/tmlr/papers/",
+      "title": "To Trust Or Not To Trust Your Vision-Language Model's Prediction"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "xFFYq6NFQT",
+      "venue": "TMLR",
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "source_url": "https://jmlr.org/tmlr/papers/",
+      "title": "Learning to Partially Defer for Sequences"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "UibXoy4h3u",
+      "venue": "TMLR",
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "source_url": "https://jmlr.org/tmlr/papers/",
+      "title": "Symbolic feature construction with false discovery rate control"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "AKQ2b7VLA4",
+      "venue": "TMLR",
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "source_url": "https://jmlr.org/tmlr/papers/",
+      "title": "The Argmax Gap in Human Chess Move Prediction"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "S98skK3FfD",
+      "venue": "TMLR",
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "source_url": "https://jmlr.org/tmlr/papers/",
+      "title": "Conflict-Averse IL-RL: Resolving Gradient Conflicts for Stable Imitation-to-Reinforcement Learning Transfer"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "10.1109/tpami.2026.3745142",
+      "venue": "TPAMI",
+      "decision": "verified_registry",
+      "date_precision": "year",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "source_url": "https://api.crossref.org/works/10.1109/tpami.2026.3745142",
+      "title": "Referring Multi-Object Tracking with Diverse Dynamic Expressions"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "10.1109/tpami.2026.3744888",
+      "venue": "TPAMI",
+      "decision": "verified_registry",
+      "date_precision": "year",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "source_url": "https://api.crossref.org/works/10.1109/tpami.2026.3744888",
+      "title": "Inter- and Intra-Domain Priors Guided Mosaic-Based Spectral Imaging"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "10.1109/tpami.2026.3744952",
+      "venue": "TPAMI",
+      "decision": "verified_registry",
+      "date_precision": "year",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "source_url": "https://api.crossref.org/works/10.1109/tpami.2026.3744952",
+      "title": "HOIAnimator++: Towards a Unified Semantic-Contact Paradigm for Human-Object Interaction Generation"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "10.1109/tpami.2026.3745073",
+      "venue": "TPAMI",
+      "decision": "verified_registry",
+      "date_precision": "year",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "source_url": "https://api.crossref.org/works/10.1109/tpami.2026.3745073",
+      "title": "Redefining 360° Video Navigation: A Novel Benchmark for Enhanced Immersive and Automated Exploration"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "10.1109/tpami.2026.3744834",
+      "venue": "TPAMI",
+      "decision": "verified_registry",
+      "date_precision": "year",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "source_url": "https://api.crossref.org/works/10.1109/tpami.2026.3744834",
+      "title": "Rectifying GAN Gradient Supervision Via Score Functions"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "10.1109/tpami.2026.3744812",
+      "venue": "TPAMI",
+      "decision": "verified_registry",
+      "date_precision": "year",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "source_url": "https://api.crossref.org/works/10.1109/tpami.2026.3744812",
+      "title": "Learned Image Coding With Generative Reference of Conditional Latents"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "10.1109/tpami.2026.3745357",
+      "venue": "TPAMI",
+      "decision": "verified_registry",
+      "date_precision": "year",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "source_url": "https://api.crossref.org/works/10.1109/tpami.2026.3745357",
+      "title": "ParaDeco: Frame-Level Parallel Generative Decoding for Large-Scale Surveillance Video Analytics"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "10.1109/tvcg.2026.3744785",
+      "venue": "TVCG",
+      "decision": "verified_registry",
+      "date_precision": "year",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "source_url": "https://api.crossref.org/works/10.1109/tvcg.2026.3744785",
+      "title": "Error-Bounded Adaptive Generalized Winding Number Evaluation for B-Reps"
+    },
+    {
+      "kind": "journal_added",
+      "paper_id": "10.1109/tvcg.2026.3745621",
+      "venue": "TVCG",
+      "decision": "verified_registry",
+      "date_precision": "year",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "source_url": "https://api.crossref.org/works/10.1109/tvcg.2026.3745621",
+      "title": "The Rheology Gap: A Component-Level Benchmark for VR-to-Reality Motor Skill Transfer under Linear Haptic Simulation"
+    },
+    {
+      "kind": "authors_filled",
+      "paper_id": "program-2-MAIN",
+      "venue": "EMNLP",
+      "title": "DeepSEA: A Multilingual Evaluation Benchmark for Southeast Asia",
+      "authors": [
+        "Jiuzhou Han",
+        "Abhishek Bijay Mishra",
+        "Trevor Cohn",
+        "Shubham Mittal"
+      ],
+      "source_url": "https://doi.org/10.48550/arxiv.2610.26155",
+      "source_name": "DataCite registered preprint metadata",
+      "presenter": "Shubham Mittal",
+      "abstract_filled": true,
+      "limitation": "预印本或索引作者已通过题名和报告人核对，最终出版作者仍待正式论文集复核。"
+    },
+    {
+      "kind": "authors_filled",
+      "paper_id": "program-126-MAIN",
+      "venue": "EMNLP",
+      "title": "MEMORA: A Memory-Enhanced Multimodal Committee Reranking Agent for Reasoning-Intensive Retrieval",
+      "authors": [
+        "Mohamed Mahmoud",
+        "Mostafa Farouk Senussi",
+        "Mahmoud Abdalla",
+        "Mahmoud SalahEldin Kasem",
+        "Abdelrahman Abdallah",
+        "Hyun Soo Kang"
+      ],
+      "source_url": "https://doi.org/10.48550/arxiv.2610.25282",
+      "source_name": "DataCite registered preprint metadata",
+      "presenter": "Mohamed Mahmoud",
+      "abstract_filled": true,
+      "limitation": "预印本或索引作者已通过题名和报告人核对，最终出版作者仍待正式论文集复核。"
+    },
+    {
+      "kind": "authors_filled",
+      "paper_id": "program-548-MAIN",
+      "venue": "EMNLP",
+      "title": "Mitigating Model Merging Conflicts via Knowledge-Aware Task Vector Purification",
+      "authors": [
+        "Bang An",
+        "Yibo Yang",
+        "Philip Torr",
+        "Bernard Ghanem"
+      ],
+      "source_url": "https://doi.org/10.48550/arxiv.2510.14697",
+      "source_name": "DataCite registered preprint metadata",
+      "presenter": "Bang An",
+      "abstract_filled": true,
+      "limitation": "预印本或索引作者已通过题名和报告人核对，最终出版作者仍待正式论文集复核。"
+    },
+    {
+      "kind": "authors_filled",
+      "paper_id": "program-928-MAIN",
+      "venue": "EMNLP",
+      "title": "Aligning Cultural Behaviors in Arabic Language Models via Preferences",
+      "authors": [
+        "Junhong Liang",
+        "Daniil Orel",
+        "Saeed Almheiri",
+        "Bilal Elbouardi",
+        "Younes Samih",
+        "Abed Alhakim Freihat",
+        "Zhuohan Xie",
+        "Momina Ahsan",
+        "Muhammad Dehan Al Kautsar",
+        "Sarfraz Ahmad",
+        "Omar El Herraoui",
+        "Mohamed Anwar",
+        "Preslav Nakov",
+        "Fajri Koto"
+      ],
+      "source_url": "https://doi.org/10.48550/arxiv.2610.25362",
+      "source_name": "DataCite registered preprint metadata",
+      "presenter": "Junhong Liang",
+      "abstract_filled": true,
+      "limitation": "预印本或索引作者已通过题名和报告人核对，最终出版作者仍待正式论文集复核。"
+    },
+    {
+      "kind": "authors_filled",
+      "paper_id": "program-1283-MAIN",
+      "venue": "EMNLP",
+      "title": "Measuring Data Diversity with Embeddings: A Taxonomy and Benchmark for Diversity Measures",
+      "authors": [
+        "Cantao Su",
+        "Anna Wegmann",
+        "Esther Ploeger",
+        "Dong Nguyen"
+      ],
+      "source_url": "https://doi.org/10.48550/arxiv.2610.24888",
+      "source_name": "DataCite registered preprint metadata",
+      "presenter": "Cantao Su",
+      "abstract_filled": true,
+      "limitation": "预印本或索引作者已通过题名和报告人核对，最终出版作者仍待正式论文集复核。"
+    },
+    {
+      "kind": "authors_filled",
+      "paper_id": "program-1696-MAIN",
+      "venue": "EMNLP",
+      "title": "SciFigBench: A Benchmark for Scientific Method Figure Understanding",
+      "authors": [
+        "Lijia Wu",
+        "Zheng Li",
+        "Yuxuan Liu",
+        "Jingwen Zhang",
+        "Penghai Zhao",
+        "Xiang Li"
+      ],
+      "source_url": "https://doi.org/10.48550/arxiv.2610.27087",
+      "source_name": "DataCite registered preprint metadata",
+      "presenter": "Lijia Wu",
+      "abstract_filled": true,
+      "limitation": "预印本或索引作者已通过题名和报告人核对，最终出版作者仍待正式论文集复核。"
+    },
+    {
+      "kind": "authors_filled",
+      "paper_id": "program-2089-MAIN",
+      "venue": "EMNLP",
+      "title": "Diagnostic Analysis for Large Language Model Reasoning",
+      "authors": [
+        "Xinyu Liu",
+        "Dongqi Fu",
+        "Jun Wu"
+      ],
+      "source_url": "https://doi.org/10.48550/arxiv.2610.27245",
+      "source_name": "DataCite registered preprint metadata",
+      "presenter": "Xinyu Liu",
+      "abstract_filled": true,
+      "limitation": "预印本或索引作者已通过题名和报告人核对，最终出版作者仍待正式论文集复核。"
+    },
+    {
+      "kind": "authors_filled",
+      "paper_id": "program-2269-MAIN",
+      "venue": "EMNLP",
+      "title": "ABench: Adversarily Benchmarking Large Language Models across Taxonomized Values",
+      "authors": [
+        "Liping Yang",
+        "Yongqi Leng",
+        "Jingting Zheng",
+        "Yuqi Ren",
+        "Shaolin Zhu",
+        "Deyi Xiong"
+      ],
+      "source_url": "https://doi.org/10.48550/arxiv.2610.27611",
+      "source_name": "DataCite registered preprint metadata",
+      "presenter": "Liping Yang",
+      "abstract_filled": true,
+      "limitation": "预印本或索引作者已通过题名和报告人核对，最终出版作者仍待正式论文集复核。"
+    },
+    {
+      "kind": "authors_filled",
+      "paper_id": "program-2339-MAIN",
+      "venue": "EMNLP",
+      "title": "Value-Rich, Differently Organized: Measuring Value Expression and Organization in AI-Generated Debates",
+      "authors": [
+        "Maoyuan Li",
+        "Haoyuan Li",
+        "Zhongsheng Wang",
+        "Jiamou Liu"
+      ],
+      "source_url": "https://doi.org/10.48550/arxiv.2610.28604",
+      "source_name": "DataCite registered preprint metadata",
+      "presenter": "Maoyuan Li",
+      "abstract_filled": true,
+      "limitation": "预印本或索引作者已通过题名和报告人核对，最终出版作者仍待正式论文集复核。"
+    },
+    {
+      "kind": "authors_filled",
+      "paper_id": "program-2457-MAIN",
+      "venue": "EMNLP",
+      "title": "Cognitively Decoupled Meta-Induction for Out-of-Distribution Generalization",
+      "authors": [
+        "Yuqian Wang",
+        "Yuanzheng Wang",
+        "Chaojun Xiao",
+        "Ke Xu",
+        "Bingxiang He",
+        "Jinghan Tan",
+        "Zijun Chen",
+        "Lu Chen",
+        "Yi-Xin Huo",
+        "Maosong Sun"
+      ],
+      "source_url": "https://doi.org/10.48550/arxiv.2610.25749",
+      "source_name": "DataCite registered preprint metadata",
+      "presenter": "Bingxiang He",
+      "abstract_filled": true,
+      "limitation": "预印本或索引作者已通过题名和报告人核对，最终出版作者仍待正式论文集复核。"
+    },
+    {
+      "kind": "authors_filled",
+      "paper_id": "program-3493-MAIN",
+      "venue": "EMNLP",
+      "title": "Reading Time Modeling with Pixel-Based Language Models",
+      "authors": [
+        "Junlin Li",
+        "Sara Alhajeri",
+        "Tatsuki Kuribayashi"
+      ],
+      "source_url": "https://doi.org/10.48550/arxiv.2610.26181",
+      "source_name": "DataCite registered preprint metadata",
+      "presenter": "Junlin Li",
+      "abstract_filled": true,
+      "limitation": "预印本或索引作者已通过题名和报告人核对，最终出版作者仍待正式论文集复核。"
+    },
+    {
+      "kind": "authors_filled",
+      "paper_id": "program-4051-MAIN",
+      "venue": "EMNLP",
+      "title": "From Unverifiable Domain Text to Cross-Lingual RLVR via Code-Switched Task Synthesis",
+      "authors": [
+        "Cheonbok Park",
+        "Jihwan Kim",
+        "Shinyoung Joo",
+        "Joosung Lee",
+        "Hwiyeol Jo",
+        "Jeonghoon Kim",
+        "Jaegul Choo"
+      ],
+      "source_url": "https://doi.org/10.48550/arxiv.2610.25399",
+      "source_name": "DataCite registered preprint metadata",
+      "presenter": "Cheonbok Park",
+      "abstract_filled": true,
+      "limitation": "预印本或索引作者已通过题名和报告人核对，最终出版作者仍待正式论文集复核。"
+    },
+    {
+      "kind": "authors_filled",
+      "paper_id": "program-4243-MAIN",
+      "venue": "EMNLP",
+      "title": "NLP Meets the World: Toward Improving Conversations With News Media About Natural Language Processing Research",
+      "authors": [
+        "Shomir Wilson"
+      ],
+      "source_url": "https://doi.org/10.48550/arxiv.2507.10559",
+      "source_name": "DataCite registered preprint metadata",
+      "presenter": "Shomir Wilson",
+      "abstract_filled": true,
+      "limitation": "预印本或索引作者已通过题名和报告人核对，最终出版作者仍待正式论文集复核。"
+    },
+    {
+      "kind": "authors_filled",
+      "paper_id": "program-4432-MAIN",
+      "venue": "EMNLP",
+      "title": "When Does Hate Transfer? A Large-Scale Study of Cross-Lingual Hate Speech Detection",
+      "authors": [
+        "Zahra Bokaei",
+        "Walid Magdy",
+        "Bonnie Webber"
+      ],
+      "source_url": "https://doi.org/10.48550/arxiv.2610.27285",
+      "source_name": "DataCite registered preprint metadata",
+      "presenter": "Zahra Bokaei",
+      "abstract_filled": true,
+      "limitation": "预印本或索引作者已通过题名和报告人核对，最终出版作者仍待正式论文集复核。"
+    },
+    {
+      "kind": "authors_filled",
+      "paper_id": "program-5583-MAIN",
+      "venue": "EMNLP",
+      "title": "Zero-Shot Tabular Learning via Hypergraph Reasoning with LLMs",
+      "authors": [
+        "Geon Lee",
+        "Kyungho Kim",
+        "Dongwon Choi",
+        "Juyeon Kim",
+        "Shinhwan Kang",
+        "Kijung Shin"
+      ],
+      "source_url": "https://doi.org/10.48550/arxiv.2610.23923",
+      "source_name": "DataCite registered preprint metadata",
+      "presenter": "Geon Lee",
+      "abstract_filled": true,
+      "limitation": "预印本或索引作者已通过题名和报告人核对，最终出版作者仍待正式论文集复核。"
+    },
+    {
+      "kind": "authors_filled",
+      "paper_id": "program-6269-MAIN",
+      "venue": "EMNLP",
+      "title": "After the Attacker Leaves: Benchmarking Carryover Attacks on LLM Agents",
+      "authors": [
+        "Zhiyue Xu",
+        "Xukai Wang",
+        "Zhiyuan Huang",
+        "Mingjie Zhan",
+        "Jian Zhao",
+        "Xu-Yao Zhang"
+      ],
+      "source_url": "https://doi.org/10.48550/arxiv.2610.28425",
+      "source_name": "DataCite registered preprint metadata",
+      "presenter": "Zhiyue Xu",
+      "abstract_filled": true,
+      "limitation": "预印本或索引作者已通过题名和报告人核对，最终出版作者仍待正式论文集复核。"
+    },
+    {
+      "kind": "authors_filled",
+      "paper_id": "program-7064-MAIN",
+      "venue": "EMNLP",
+      "title": "Negation Without Confusion: Decomposing Bias and Recomposing Style in Text Embeddings for Negation-Aware Image Generation",
+      "authors": [
+        "Sooyeon Park",
+        "Hemraj Singh",
+        "Kyunghyun Min",
+        "Youngjae Yu",
+        "Sung-Bae Cho"
+      ],
+      "source_url": "https://doi.org/10.48550/arxiv.2610.25645",
+      "source_name": "DataCite registered preprint metadata",
+      "presenter": "Sooyeon Park",
+      "abstract_filled": true,
+      "limitation": "预印本或索引作者已通过题名和报告人核对，最终出版作者仍待正式论文集复核。"
+    },
+    {
+      "kind": "authors_filled",
+      "paper_id": "program-7123-MAIN",
+      "venue": "EMNLP",
+      "title": "Accelerated Drift of Scientific Prose in the LLM Era: Evidence from an Interrupted Time-Series Analysis",
+      "authors": [
+        "Hanna Hubarava",
+        "Benjamin V. Ineichen"
+      ],
+      "source_url": "https://doi.org/10.48550/arxiv.2610.26008",
+      "source_name": "DataCite registered preprint metadata",
+      "presenter": "Hanna Hubarava",
+      "abstract_filled": true,
+      "limitation": "预印本或索引作者已通过题名和报告人核对，最终出版作者仍待正式论文集复核。"
+    },
+    {
+      "kind": "authors_filled",
+      "paper_id": "program-7521-MAIN",
+      "venue": "EMNLP",
+      "title": "TimelineAgent: An LLM-based Framework for Query-Centric Event Timeline Extraction Across Multiple Documents",
+      "authors": [
+        "Qingkai Min",
+        "Yunxin Bao",
+        "Yifeng Lu",
+        "Zhenyu Feng",
+        "Yulong Chen",
+        "Andreas Vlachos",
+        "Yue Zhang"
+      ],
+      "source_url": "https://doi.org/10.48550/arxiv.2610.25733",
+      "source_name": "DataCite registered preprint metadata",
+      "presenter": "Qingkai Min",
+      "abstract_filled": true,
+      "limitation": "预印本或索引作者已通过题名和报告人核对，最终出版作者仍待正式论文集复核。"
+    },
+    {
+      "kind": "authors_filled",
+      "paper_id": "program-7761-MAIN",
+      "venue": "EMNLP",
+      "title": "Joint Constraint Aggregation for Qualifier-Sensitive Retrieval-Augmented QA",
+      "authors": [
+        "Jennifer Hsia",
+        "Zachary C. Lipton",
+        "Aarti Singh"
+      ],
+      "source_url": "https://doi.org/10.48550/arxiv.2610.27114",
+      "source_name": "DataCite registered preprint metadata",
+      "presenter": "Jennifer Hsia",
+      "abstract_filled": true,
+      "limitation": "预印本或索引作者已通过题名和报告人核对，最终出版作者仍待正式论文集复核。"
+    },
+    {
+      "kind": "authors_filled",
+      "paper_id": "program-8104-MAIN",
+      "venue": "EMNLP",
+      "title": "Probing Ambiguity: Adversarial Intent Resolution for Robust Text-to-SQL",
+      "authors": [
+        "Youbing Yin",
+        "Xujun Peng",
+        "Muhammad S. Uddin",
+        "Erin Babinsky",
+        "Daben Liu",
+        "Anoop Kumar"
+      ],
+      "source_url": "https://doi.org/10.48550/arxiv.2610.24248",
+      "source_name": "DataCite registered preprint metadata",
+      "presenter": "Youbing Yin",
+      "abstract_filled": true,
+      "limitation": "预印本或索引作者已通过题名和报告人核对，最终出版作者仍待正式论文集复核。"
+    },
+    {
+      "kind": "authors_filled",
+      "paper_id": "program-8321-MAIN",
+      "venue": "EMNLP",
+      "title": "From Cause to Effect: Generating Intermediate Event Chains in Videos",
+      "authors": [
+        "Ridouane Ghermi",
+        "Vicky Kalogeiton",
+        "Ivan Laptev"
+      ],
+      "source_url": "https://doi.org/10.48550/arxiv.2610.26275",
+      "source_name": "DataCite registered preprint metadata",
+      "presenter": "Ridouane Ghermi",
+      "abstract_filled": true,
+      "limitation": "预印本或索引作者已通过题名和报告人核对，最终出版作者仍待正式论文集复核。"
+    },
+    {
+      "kind": "authors_filled",
+      "paper_id": "program-8583-MAIN",
+      "venue": "EMNLP",
+      "title": "Investigating Length Bias and Robustness in LVLMs for Multiple-Choice Question Answering",
+      "authors": [
+        "Md. Atabuzzaman",
+        "Hani Alomari",
+        "Chris Thomas"
+      ],
+      "source_url": "https://doi.org/10.48550/arxiv.2610.24500",
+      "source_name": "DataCite registered preprint metadata",
+      "presenter": "Md Atabuzzaman",
+      "abstract_filled": true,
+      "limitation": "预印本或索引作者已通过题名和报告人核对，最终出版作者仍待正式论文集复核。"
+    },
+    {
+      "kind": "authors_filled",
+      "paper_id": "program-9135-MAIN",
+      "venue": "EMNLP",
+      "title": "No Matter Who You Are: Addressivity and Sycophancy in Large Language Models",
+      "authors": [
+        "Seungjong Sun",
+        "Hyunmin Jun",
+        "Minsik Yoon",
+        "Eungu Lee",
+        "Choongwon Kang",
+        "Young Seok Woo",
+        "Jang Hyun Kim"
+      ],
+      "source_url": "https://doi.org/10.48550/arxiv.2610.25728",
+      "source_name": "DataCite registered preprint metadata",
+      "presenter": "Seungjong Sun",
+      "abstract_filled": true,
+      "limitation": "预印本或索引作者已通过题名和报告人核对，最终出版作者仍待正式论文集复核。"
+    }
+  ],
+  "journal_reviews": [
+    {
+      "candidate": {
+        "venue": "AIJ",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "10.1016/j.artint.2026.104644",
+        "title": "Central Description Length (CDL) Clustering Validation Index",
+        "doi": "10.1016/j.artint.2026.104644",
+        "paper_url": "https://doi.org/10.1016/j.artint.2026.104644"
+      },
+      "decision": "verified_registry",
+      "date_precision": "month",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "IJCV",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "10.1007/s11263-026-03057-x",
+        "title": "Event-Guided Decomposition from a Long-Exposure Nighttime Snapshot into Video Sequence",
+        "doi": "10.1007/s11263-026-03057-x",
+        "paper_url": "https://doi.org/10.1007/s11263-026-03057-x"
+      },
+      "decision": "verified_registry",
+      "date_precision": "day",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "IJCV",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "10.1007/s11263-026-03100-x",
+        "title": "Test-Time Computing for Referring Multimodal Large Language Models",
+        "doi": "10.1007/s11263-026-03100-x",
+        "paper_url": "https://doi.org/10.1007/s11263-026-03100-x"
+      },
+      "decision": "verified_registry",
+      "date_precision": "day",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "IJCV",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "10.1007/s11263-026-03093-7",
+        "title": "Multi-View Optimal Transport for Multi-View Crowd Localization and Tracking",
+        "doi": "10.1007/s11263-026-03093-7",
+        "paper_url": "https://doi.org/10.1007/s11263-026-03093-7"
+      },
+      "decision": "verified_registry",
+      "date_precision": "day",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TIP",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "10.1109/tip.2026.3743079",
+        "title": "SAR2Struct: Extracting 3D Semantic Structural Representation of Aircraft Targets from Single-View SAR Image",
+        "doi": "10.1109/tip.2026.3743079",
+        "paper_url": "https://doi.org/10.1109/tip.2026.3743079"
+      },
+      "decision": "verified_registry",
+      "date_precision": "year",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TIP",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "10.1109/tip.2026.3737046",
+        "title": "Crowded Video Individual Counting Informed by Social Grouping and Spatial-Temporal Displacement Priors",
+        "doi": "10.1109/tip.2026.3737046",
+        "paper_url": "https://doi.org/10.1109/tip.2026.3737046"
+      },
+      "decision": "verified_registry",
+      "date_precision": "year",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TIP",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "10.1109/tip.2026.3742663",
+        "title": "Recurrent Prompting With MambaFormer for Domain Generalized Few-Shot Hyperspectral Image Classification",
+        "doi": "10.1109/tip.2026.3742663",
+        "paper_url": "https://doi.org/10.1109/tip.2026.3742663"
+      },
+      "decision": "verified_registry",
+      "date_precision": "year",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TIP",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "10.1109/tip.2026.3739612",
+        "title": "Event-to-Video Controllable Generation and Evaluation",
+        "doi": "10.1109/tip.2026.3739612",
+        "paper_url": "https://doi.org/10.1109/tip.2026.3739612"
+      },
+      "decision": "verified_registry",
+      "date_precision": "year",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TIP",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "10.1109/tip.2026.3743754",
+        "title": "TOPSAC for Fast and Accurate Geometric Estimation",
+        "doi": "10.1109/tip.2026.3743754",
+        "paper_url": "https://doi.org/10.1109/tip.2026.3743754"
+      },
+      "decision": "verified_registry",
+      "date_precision": "year",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TIP",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "10.1109/tip.2026.3743733",
+        "title": "HVLCSR: Heuristic Visual Localization and Causal Semantic Reasoning for Multi-Label Remote Sensing Scene Classification",
+        "doi": "10.1109/tip.2026.3743733",
+        "paper_url": "https://doi.org/10.1109/tip.2026.3743733"
+      },
+      "decision": "verified_registry",
+      "date_precision": "year",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TIP",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "10.1109/tip.2026.3743775",
+        "title": "Learning Flow-Guided Registration for RGB-Event Semantic Segmentation",
+        "doi": "10.1109/tip.2026.3743775",
+        "paper_url": "https://doi.org/10.1109/tip.2026.3743775"
+      },
+      "decision": "verified_registry",
+      "date_precision": "year",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TIP",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "10.1109/tip.2026.3743793",
+        "title": "MTADUN: Multi-Stage Transmission Augmented Deep Unfolding Network for Task-Adaptable Image Restoration",
+        "doi": "10.1109/tip.2026.3743793",
+        "paper_url": "https://doi.org/10.1109/tip.2026.3743793"
+      },
+      "decision": "verified_registry",
+      "date_precision": "year",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TIP",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "10.1109/tip.2026.3743794",
+        "title": "RSReason: Remote Sensing Reasoning Segmentation via Rotation-aware Large Vision-Language Model",
+        "doi": "10.1109/tip.2026.3743794",
+        "paper_url": "https://doi.org/10.1109/tip.2026.3743794"
+      },
+      "decision": "verified_registry",
+      "date_precision": "year",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TIP",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "10.1109/tip.2026.3743796",
+        "title": "Collaborative Boundary Enhancement with Difficulty Awareness for Semi-Supervised Medical Image Segmentation",
+        "doi": "10.1109/tip.2026.3743796",
+        "paper_url": "https://doi.org/10.1109/tip.2026.3743796"
+      },
+      "decision": "verified_registry",
+      "date_precision": "year",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TKDE",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "10.1109/tkde.2026.3745591",
+        "title": "Thinking Fast and Slow: A Dual-System Framework for Multimodal Fake News Detection Via Dynamic Scheduling",
+        "doi": "10.1109/tkde.2026.3745591",
+        "paper_url": "https://doi.org/10.1109/tkde.2026.3745591"
+      },
+      "decision": "verified_registry",
+      "date_precision": "year",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TMLR",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "2aZPFrKYYb",
+        "title": "MeGA-MP: Metric Graph Advection Message Passing",
+        "doi": "",
+        "paper_url": "https://openreview.net/forum?id=2aZPFrKYYb"
+      },
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TMLR",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "HoQBaPXhKk",
+        "title": "Test-Time Scaling of Text-to-Image Flow Matching Models with Noise-Rejuvenated Sequential Monte Carlo",
+        "doi": "",
+        "paper_url": "https://openreview.net/forum?id=HoQBaPXhKk"
+      },
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TMLR",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "B7a0IAIEXZ",
+        "title": "DiCoDe: Diffusion-Compressed Deep Tokens for Autoregressive Video Generation with Language Models",
+        "doi": "",
+        "paper_url": "https://openreview.net/forum?id=B7a0IAIEXZ"
+      },
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TMLR",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "rdCPIjY3Dr",
+        "title": "Mathematical Theory of Collinearity Effects on Machine Learning Variable Importance Measures",
+        "doi": "",
+        "paper_url": "https://openreview.net/forum?id=rdCPIjY3Dr"
+      },
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TMLR",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "9R6EBFTzuy",
+        "title": "MIDAS: Mosaic Input-Specific Differentiable Architecture Search",
+        "doi": "",
+        "paper_url": "https://openreview.net/forum?id=9R6EBFTzuy"
+      },
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TMLR",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "4pwRl2G6je",
+        "title": "The Landscape of Medical Agents: A Survey",
+        "doi": "",
+        "paper_url": "https://openreview.net/forum?id=4pwRl2G6je"
+      },
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TMLR",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "Y70lnNnA6T",
+        "title": "Model-Agnostic Association Rule Learning with Tabular Foundation Models",
+        "doi": "",
+        "paper_url": "https://openreview.net/forum?id=Y70lnNnA6T"
+      },
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TMLR",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "dDEDwFnnoA",
+        "title": "Deterministic Prediction as Global Velocity: Flow Matching for Probabilistic Time-Series Forecast",
+        "doi": "",
+        "paper_url": "https://openreview.net/forum?id=dDEDwFnnoA"
+      },
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TMLR",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "R1g1Z4yX57",
+        "title": "Public Profile Matters: A Scalable Integrated Approach to Recommend Citations in the Wild",
+        "doi": "",
+        "paper_url": "https://openreview.net/forum?id=R1g1Z4yX57"
+      },
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TMLR",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "eAMLpW74rV",
+        "title": "What Survives Eviction? Information Recall Locality in Transformer KV Caches",
+        "doi": "",
+        "paper_url": "https://openreview.net/forum?id=eAMLpW74rV"
+      },
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TMLR",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "MXSAMrmktX",
+        "title": "Communication-Efficient Federated Low-Rank Update Algorithm and its Connection to Implicit Regularization",
+        "doi": "",
+        "paper_url": "https://openreview.net/forum?id=MXSAMrmktX"
+      },
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TMLR",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "qKM72YmSSw",
+        "title": "A Likely Geometry of Generative Models",
+        "doi": "",
+        "paper_url": "https://openreview.net/forum?id=qKM72YmSSw"
+      },
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TMLR",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "l0qZkSk2aH",
+        "title": "Opening Up a New Layer: A Deeper Look into \"Interpreting CLIP with Hierarchical Sparse Autoencoders\"",
+        "doi": "",
+        "paper_url": "https://openreview.net/forum?id=l0qZkSk2aH"
+      },
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TMLR",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "13ThuknGwY",
+        "title": "Estimating the Adoption of Software Engineering Best Practices in Machine Learning Research",
+        "doi": "",
+        "paper_url": "https://openreview.net/forum?id=13ThuknGwY"
+      },
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TMLR",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "Mx0ZcLznPS",
+        "title": "Learning without training: The implicit dynamics of in-context learning",
+        "doi": "",
+        "paper_url": "https://openreview.net/forum?id=Mx0ZcLznPS"
+      },
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TMLR",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "mZXoOgBxX2",
+        "title": "CausalEmbed: Auto-Regressive Multi-Vector Generation in Latent Space for Visual Document Embedding",
+        "doi": "",
+        "paper_url": "https://openreview.net/forum?id=mZXoOgBxX2"
+      },
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TMLR",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "5ChJTFLi5r",
+        "title": "Retrieval-Augmented Multimodal Language Model with Heterogeneous Evidence Integration for Clinical Prognosis",
+        "doi": "",
+        "paper_url": "https://openreview.net/forum?id=5ChJTFLi5r"
+      },
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TMLR",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "ppOrbSsMM0",
+        "title": "SafeExplorer: An Unbiased Mixed-Policy Gradient for Reinforcement Learning with Recovery Interventions",
+        "doi": "",
+        "paper_url": "https://openreview.net/forum?id=ppOrbSsMM0"
+      },
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TMLR",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "S2SdvYaPKm",
+        "title": "To Trust Or Not To Trust Your Vision-Language Model's Prediction",
+        "doi": "",
+        "paper_url": "https://openreview.net/forum?id=S2SdvYaPKm"
+      },
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TMLR",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "xFFYq6NFQT",
+        "title": "Learning to Partially Defer for Sequences",
+        "doi": "",
+        "paper_url": "https://openreview.net/forum?id=xFFYq6NFQT"
+      },
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TMLR",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "UibXoy4h3u",
+        "title": "Symbolic feature construction with false discovery rate control",
+        "doi": "",
+        "paper_url": "https://openreview.net/forum?id=UibXoy4h3u"
+      },
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TMLR",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "AKQ2b7VLA4",
+        "title": "The Argmax Gap in Human Chess Move Prediction",
+        "doi": "",
+        "paper_url": "https://openreview.net/forum?id=AKQ2b7VLA4"
+      },
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TMLR",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "S98skK3FfD",
+        "title": "Conflict-Averse IL-RL: Resolving Gradient Conflicts for Stable Imitation-to-Reinforcement Learning Transfer",
+        "doi": "",
+        "paper_url": "https://openreview.net/forum?id=S98skK3FfD"
+      },
+      "decision": "verified_official_list",
+      "date_precision": "month",
+      "limitation": "官方已发表目录列为 2026 年 10 月；具体日未提供，OpenReview 接口受限；缺摘要保持空值。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TPAMI",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "10.1109/tpami.2026.3745142",
+        "title": "Referring Multi-Object Tracking with Diverse Dynamic Expressions",
+        "doi": "10.1109/tpami.2026.3745142",
+        "paper_url": "https://doi.org/10.1109/tpami.2026.3745142"
+      },
+      "decision": "verified_registry",
+      "date_precision": "year",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TPAMI",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "10.1109/tpami.2026.3744888",
+        "title": "Inter- and Intra-Domain Priors Guided Mosaic-Based Spectral Imaging",
+        "doi": "10.1109/tpami.2026.3744888",
+        "paper_url": "https://doi.org/10.1109/tpami.2026.3744888"
+      },
+      "decision": "verified_registry",
+      "date_precision": "year",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TPAMI",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "10.1109/tpami.2026.3744952",
+        "title": "HOIAnimator++: Towards a Unified Semantic-Contact Paradigm for Human-Object Interaction Generation",
+        "doi": "10.1109/tpami.2026.3744952",
+        "paper_url": "https://doi.org/10.1109/tpami.2026.3744952"
+      },
+      "decision": "verified_registry",
+      "date_precision": "year",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TPAMI",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "10.1109/tpami.2026.3745073",
+        "title": "Redefining 360° Video Navigation: A Novel Benchmark for Enhanced Immersive and Automated Exploration",
+        "doi": "10.1109/tpami.2026.3745073",
+        "paper_url": "https://doi.org/10.1109/tpami.2026.3745073"
+      },
+      "decision": "verified_registry",
+      "date_precision": "year",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TPAMI",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "10.1109/tpami.2026.3744834",
+        "title": "Rectifying GAN Gradient Supervision Via Score Functions",
+        "doi": "10.1109/tpami.2026.3744834",
+        "paper_url": "https://doi.org/10.1109/tpami.2026.3744834"
+      },
+      "decision": "verified_registry",
+      "date_precision": "year",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TPAMI",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "10.1109/tpami.2026.3744812",
+        "title": "Learned Image Coding With Generative Reference of Conditional Latents",
+        "doi": "10.1109/tpami.2026.3744812",
+        "paper_url": "https://doi.org/10.1109/tpami.2026.3744812"
+      },
+      "decision": "verified_registry",
+      "date_precision": "year",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TPAMI",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "10.1109/tpami.2026.3745357",
+        "title": "ParaDeco: Frame-Level Parallel Generative Decoding for Large-Scale Surveillance Video Analytics",
+        "doi": "10.1109/tpami.2026.3745357",
+        "paper_url": "https://doi.org/10.1109/tpami.2026.3745357"
+      },
+      "decision": "verified_registry",
+      "date_precision": "year",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TVCG",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "10.1109/tvcg.2026.3744785",
+        "title": "Error-Bounded Adaptive Generalized Winding Number Evaluation for B-Reps",
+        "doi": "10.1109/tvcg.2026.3744785",
+        "paper_url": "https://doi.org/10.1109/tvcg.2026.3744785"
+      },
+      "decision": "verified_registry",
+      "date_precision": "year",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    },
+    {
+      "candidate": {
+        "venue": "TVCG",
+        "year": 2026,
+        "difference": "reference_unmatched",
+        "paper_id": "10.1109/tvcg.2026.3745621",
+        "title": "The Rheology Gap: A Component-Level Benchmark for VR-to-Reality Motor Skill Transfer under Linear Haptic Simulation",
+        "doi": "10.1109/tvcg.2026.3745621",
+        "paper_url": "https://doi.org/10.1109/tvcg.2026.3745621"
+      },
+      "decision": "verified_registry",
+      "date_precision": "year",
+      "limitation": "出版方登记元数据；仅保留来源提供的日期精度，不推定具体出版日或卷期已完整收齐。",
+      "existing_matches": [],
+      "near_title_candidates": []
+    }
+  ]
+}

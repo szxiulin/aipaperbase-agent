@@ -18,6 +18,7 @@ _FILTERS = {
         "venues": {"type": "array", "items": {"type": "string"}, "description": "e.g. ['CVPR','ICCV']"},
         "years": {"type": "array", "items": {"type": "integer", "minimum": 2023, "maximum": 2026}},
         "query": {"type": "string", "description": "case-insensitive substring on title/abstract/authors"},
+        "pending_direction": {"type": "boolean", "description": "Only papers with an assigned area and direction still pending"},
     },
     "additionalProperties": False,
 }
