@@ -304,7 +304,7 @@ def merge_rows(old, incoming, approved_titles=None):
             # Submission IDs are not proceedings IDs. Keep the accepted-list evidence.
             prev['doi'] = ''
             prev['paper_url'] = prev['source_url']
-            prev['pdf_url'] = '' 
+            prev['pdf_url'] = ''
     # A CSV has one list status. Preserve rolling unless the existing release was final.
     status = old[0]['list_status'] if old else (result[0]['list_status'] if result else 'rolling')
     for row in result:

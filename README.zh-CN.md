@@ -35,6 +35,18 @@ cd aipaperbase-agent
 
 右上角可以切换中 / EN 和深浅色。
 
+### 已安装版本升级
+
+先停止服务、保留自己的用户资料，再拉取代码并重建目录库：
+
+```bash
+git pull --ff-only
+.venv/bin/python -m backend.catalog.import_csv
+./run.sh
+```
+
+重建会保留原数据库备份，不改动 `data/user/` 中的会话和集合。仅拉取代码不会自动更新已有数据库；若重建报错，保留文件并先排查，不要清空用户目录。
+
 ### 让编程 Agent 帮你安装
 
 把下面这段交给 Claude Code、Codex、Cursor 等能操作终端的 Agent：

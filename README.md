@@ -35,6 +35,18 @@ The area map and paper search work right away, with no key. **To chat**, click *
 
 Language (中 / EN) and light / dark mode are in the top-right corner.
 
+### Upgrade an existing installation
+
+Stop the server and keep a backup of your user data, then update and rebuild:
+
+```bash
+git pull --ff-only
+.venv/bin/python -m backend.catalog.import_csv
+./run.sh
+```
+
+The rebuild retains the previous database and leaves conversations and collections under `data/user/` untouched. Pulling code alone does not update an existing database. If rebuilding fails, preserve the files and investigate; do not clear user data.
+
 ### Install with a coding agent
 
 Paste this into Claude Code, Codex, Cursor or another agent that can use a terminal:
