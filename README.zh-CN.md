@@ -6,7 +6,7 @@
 
 > **状态：** 个人项目，持续开发中。
 
-![对话回答：检索过程与来源](screenshots/chat-answer-zh.png)
+![问：当前对话入口](screenshots/ask-20261023-zh.png)
 
 ## 能做什么
 
@@ -17,7 +17,7 @@
 
 | 领域地图 | 设置 |
 |---|---|
-| ![领域地图](screenshots/area-map-zh.png) | ![模型与 API 设置](screenshots/settings-zh.png) |
+| ![领域地图](screenshots/area-map-20261023-zh.png) | ![模型与 API 设置](screenshots/settings-20261023-zh.png) |
 
 ## 快速开始
 

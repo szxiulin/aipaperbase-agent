@@ -6,7 +6,7 @@ A local research assistant over about **138,000 deduplicated research papers fro
 
 > **Status:** personal project, actively developed.
 
-![Chat answer with search steps and sources](screenshots/chat-answer.png)
+![Ask: current chat entry screen](screenshots/ask-20261023.png)
 
 ## What you can do
 
@@ -17,7 +17,7 @@ A local research assistant over about **138,000 deduplicated research papers fro
 
 | Area map | Settings |
 |---|---|
-| ![Area map](screenshots/area-map.png) | ![Model and API settings](screenshots/settings.png) |
+| ![Area map](screenshots/area-map-20261023.png) | ![Model and API settings](screenshots/settings-20261023.png) |
 
 ## Quick start
 
